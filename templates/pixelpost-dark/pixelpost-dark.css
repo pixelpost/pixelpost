@@ -1,0 +1,138 @@
+/* CSS - Cascading StyleSheet for Templates: pixelpost-dark */
+
+body {
+	background: #000000;
+	color: #444444;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10px;
+	margin: 10px;
+	padding: 0px;
+	text-align: center;
+}
+
+#addcomment {
+	background: #FFFFFF;
+	border-bottom: 0px dotted #444444;
+	border-left: 0px dotted #444444;
+	border-right: 0px dotted #444444;
+	border-top: 0px;
+	font-family: Verdana, Helvetica, sans-serif;
+	padding: 10px;
+}
+
+#comment-body {
+	background: #F5F5F5;
+	color: #444444;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10px;
+	margin: 10px;
+	padding: 0px;
+	text-align: center;
+}
+
+#comment-imageinfo {
+	font-family: Helvetica, Verdana, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+}
+
+#comments {
+	border: 0px solid #444444;
+	font-family: Verdana, Helvetica, sans-serif;
+	width: 100%;
+}
+
+#comments li {
+	border-bottom: 1px dotted #444444;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	margin: 0px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 0px;
+	padding-top: 10px;
+}
+
+#comments li a {
+	color: #444444;
+	text-decoration: none;
+}
+
+#comments li:hover {
+	background: #FFFFFF;
+}
+
+#comments ul {
+	display: block;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+#comment-wrapper {
+	border: 1px dotted #444444;
+	margin: 0px auto;
+	padding: 10px;
+	text-align: left;
+	width: 400px;
+}
+
+#header {
+	border-bottom: 0px dotted #111111;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	display: block;
+	float: right;
+	margin: 0px;
+	padding: 10px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	color: #999;
+}
+
+#image {
+	background: #111111;
+	border: 1px solid #333333;
+	padding: 5px;
+}
+
+#image-info, #info-notes {
+border: 0px;
+	color: #999999;
+	display: block;
+	font-size: 10px;
+	padding: 10px;
+	width: 590px;
+}
+
+#image-info a {
+	color: #999999;
+	text-decoration: none;
+		font-family: Verdana, Helvetica, sans-serif;
+}
+
+#title {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	text-transform: uppercase;
+}
+
+#wrapper {
+	margin: 0px auto;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	text-align: left;
+	width: 610px;
+}
+
+#poweredby {
+vertical-align:middle;
+}

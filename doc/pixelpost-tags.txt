@@ -1,0 +1,166 @@
+PixelPost, version 1.5
+Compilation of all Tags, which can be used in the template-files
+
+Names of the templates must be:
+image_template.html             || main page with the photo
+comment_template.html           || popup comments
+browse_template.html            || archive
+obsolete, not supported:        || referer_template.html (read the changelog.txt) 
+                                
+
+Image-related TAGs:
+an example for the reference to the image on the main-page:
+
+<img id="image" src="images/<IMAGE_NAME>" alt="<IMAGE_TITLE>" title="<IMAGE_PREVIOUS_TITLE>" width="<IMAGE_WIDTH>" height="<IMAGE_HEIGHT>" />
+
+<IMAGE_NAME>                    || filename of the photo
+<IMAGE_TITLE>                   || title of the photo, can be used to generate the 'alt-' and 'title-'tags of the HTML-IMG-TAG
+<IMAGE_WIDTH>                   || width of the image in pixel
+<IMAGE_HEIGHT>                  || height of the image in pixel
+<IMAGE_CATEGORY>                || will show the category or categories of the image as a link
+<IMAGE_CATEGORY_PAGED>		|| will show the category or categories of the image as a link for Paged archive addon
+<IMAGE_THUMBNAIL>               || thumbnail of that image with link to the image
+<IMAGE_THUMBNAIL_NO_LINK>       || thumbnail of that image without link
+<IMAGE_NOTES>                   || the description, the text which you entered for that image
+<IMAGE_NOTES_CLEAN>		|| the description, like above but without any HTML code inside
+<IMAGE_ID>                      || id of the actual image
+<IMAGE_PREVIOUS_LINK>           || full link that says "Previous", or empty if no previous
+<IMAGE_PREVIOUS_ID>             || id of previous image
+<IMAGE_PREVIOUS_TITLE>          || if empty, displays "No Previous Image"
+<IMAGE_NEXT_ID>                 || id of the next image
+<IMAGE_NEXT_TITLE>              || if empty, displays "No Next Image"
+<IMAGE_NEXT_LINK>               || full link that says "Next", or empty if no next
+<IMAGE_PERMALINK>               || supplies a permanent link to the post in question
+
+date-related information about the image:
+=========================================
+<IMAGE_DATE_YEAR_FULL>
+<IMAGE_DATE_YEAR>
+<IMAGE_DATE_MONTH>
+<IMAGE_DATE_DAY>
+<IMAGE_DATE>
+<IMAGE_TIME>
+<IMAGE_DATETIME>                || dateformat which you choose in Admin-Panel/OPTIONS/DATE FORMAT
+
+
+Thumbnail-related Tags:
+=======================
+
+<IMAGE_THUMBNAIL_ROW>           || shows thumbnails in a row, number of thumbnails is defined in the ADMIN/OPTION-panel
+                                   corresponding class: "thumbnails" or  "current_thumbnail" in the CSS-stylesheet
+<IMAGE_THUMBNAIL_ROW_REV>       || shows thumbnails in a row, number of thumbnails is defined in the ADMIN/OPTION-panel
+                                   corresponding class: "thumbnails" or  "current_thumbnail" in the CSS-stylesheet.
+                                   The same as above except that the squence is reversed. Usefull for vertical thumbs.
+
+<IMAGE_PREVIOUS_THUMBNAIL>      || link to previous image  with thumbnail
+<IMAGE_NEXT_THUMBNAIL>          || link to next image with thumbnail
+
+
+feed-related Tags, to be used in image_template.html
+=====================================================
+
+<ATOM_AUTODETECT>               || creates the "href-part" of the atom-feed-autodetect-link, 
+                                   better use:
+<ATOM_AUTODETECT_LINK>		|| to be used in header of image_template.html for Feed in ATOM-Format
+<RSS_AUTODETECT_LINK> 		|| to be used in header for Feed in RSS-Format
+				   these tags are implemented in the templates, which come with PP
+<SITE_RSS_LINK>                   || link to RSS-Feed (see also in the following list)
+<SITE_ATOM_LINK>                  || link to Atom-Feed (see also in the following list)
+
+
+navigation-related Tags and statistics, to be used in image_template.html
+=========================================================================
+<COMMENT_POPUP>                   || popup link, will provide a PopUp-Link with a given height and width and scrollbars
+                                    <a href='index.php?popup=comment&showimage=1' onclick="window.open('index.php?popup=comment&amp;showimage=1','Comments','width=480,height=540,scrollbars=yes');">Comments</a>
+<SITE_RSS_LINK>                   || link to RSS-Feed
+<SITE_ATOM_LINK>                  || link to Atom-Feed
+<SITE_TITLE>                      || name of photoblog, set in ADMIN-PANEL/OPTIONS
+<SITE_BROWSELINK>                 || link to the archive-page, needs (template browse_template.html) in your template-directory
+<SITE_BROWSELINK_PAGED>		      || link to the archive-page using paged archive addon, needs (template browse_template.html) in your template-directory
+<SITE_PHOTONUMBER>                || number of all photos in this photoblog
+<SITE_URL>                        || shows the complete URL of your PixelPost Installation
+<SITE_VISITORNUMBER>              || count of all visitors to this page ever
+
+
+instead of <SITE_VISITORNUMBER> better use 
+<ADVNCD_SITE_VISITORNUMBER        || improved statistic by the AddOn "advanced_stat.php"   
+
+EXIF-related Tags, to be used in the image_template.html
+=========================================================
+these TAGs just show the data:
+
+<EXIF_EXPOSURE_TIME>
+<EXIF_APERTURE>
+<EXIF_CAPTURE_DATE>
+<EXIF_FLASH> <= if EXIF-data exists, contains: "Flash fired / Flash not fired", empty if no EXIF-data at all
+<EXIF_FOCAL_LENGTH>
+<EXIF_CAMERA_MAKE>
+<EXIF_CAMERA_MODEL>
+<EXIF_ISO>
+
+these TAGs combine the EXIF-data with the words which are defined in the respective language-file
+
+<LANG_EXPOSURE_TIME>
+<LANG_APERTURE>
+<LANG_CAPTURE_DATE>
+<LANG_FOCAL_LENGTH>
+<LANG_CAMERA_MAKE>
+<LANG_CAMERA_MODEL>
+<LANG_ISO>
+
+General Tag, useful in all templates
+========================================
+<BASE_HREF>			|| this tag if set into header of your template,
+                                   helps to have all links relative to the URL of your 
+                                   PixelPost. 
+
+
+Comment-related Tags with info: used for example in  image_template.html
+========================================================================
+<IMAGE_COMMENTS_NUMBER>          || how many comments for this image
+<LATEST_COMMENT_ID>              || image-id of the image that has the latest comment
+<LATEST_COMMENT_NAME>            || image-title of the image that has the latest comment
+<IMAGE_COMMENTS>                 || UL list of all comments
+
+<VINFO_NAME>                     || name of the visitor, who commented the image
+<VINFO_URL>                      || URL of that visitor
+<VINFO_EMAIL>                    || email of that visitor, will only be visible in the
+                                    ADMIN/COMMENTS for the administrator to get in contact
+                                    with that visitor
+<IMAGE_COMMENTS>                 || all comments of that image
+
+
+Tags to be used in browse_template.html
+========================================
+<THUMBNAILS>                    || in browse archive template, class "thumbnails" in the CSS-file
+<BROWSE_CATEGORIES>             || OPTION-Box with all categories of your photoblog
+<BROWSE_CHECKBOXLIST>           || checkbox-list to choose between images of all categories
+                                   or some categories, shows all your categories + "all"
+
+If you use the ADDON paged_archive.php, you might use these Tags instead:
+==========================================================================
+<CATEGORY_LINKS_AS_LIST>         || Category links as a text list for default PP's archive page
+<CATEGORY_LINKS_AS_LIST_PAGED>   || Category links as a text list for page-by-page archive
+<BROWSE_MONTHLY_ARCHIVE_PAGED>   || Monthly drop box for default PP's archive page
+<BROWSE_MONTHLY_ARCHIVE_AS_LINK_PAGED>  || Monthly drop box for page-by-page archive
+<BROWSE_CATEGORIES_PAGED>        || Category drop box for page-by-page archive
+<THUMBNAILS_WHOLE_PAGED>         || Thumbnails in this page
+<THUMBNAILS_PAGES_LINKS>         || Link to the pages of thumbnail in the selected category
+<ARCHIVE_PAGES_NUM>              || Page number you are viewing
+<CATEGORY_OR_DATE_NAME_PAGED_ARCHIVE>   || Name of the category or Month you select
+<LINK_TO_PAGED_ARCHIVE>          ||  Link to Paged-by-page archive page  as <a href="index.php?x=browse&amp;pagenum=1">Archive</a>',$tpl);
+
+
+===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!
+OBSOLETE, not supported anymore:
+Referrer: was used in the refererlog, referer_template.html
+==========================================================================
+<REFERERS>                      || list of all referers in the last seven days
+===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!===!!!
+
+
+Calendar-ADDON calendar.php:
+===================================
+<SITE_CALENDAR>                 || if you decide to integrate a calendar in your template,
+                                   this tag will either show a "normal" or a horizontal calendar,
+                                   the layout is defined in the CSS (.td-calendar...)

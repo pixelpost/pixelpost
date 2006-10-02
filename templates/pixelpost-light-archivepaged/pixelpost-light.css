@@ -1,0 +1,241 @@
+/* CSS - Cascading StyleSheet for Templates: pixelpost-dark-archivepaged */
+
+body {
+	background:#f5f5f5;
+	margin:10px;
+	padding:0px;
+	text-align:center;
+	font-size:10px;
+	color:#444;
+	}
+.td-calendar-days-vz {
+	padding:1px;
+	text-align:center;
+	border-top:0px solid #999;
+	border-bottom:1px solid #999;
+	border-right:0px;
+	border-left:0px;
+	background:#fff;
+	color:#999;
+	}
+.td-calendar-days-vz:hover {
+    background:#444;
+    }
+.td-calendar-days {
+	padding:1px;
+	text-align:center;
+	border-top:1px solid #999;
+	border-bottom:1px solid #999;
+	border-right:0px;
+	border-left:0px;
+	background:#fff;
+	color:#999;
+	}
+.td-calendar-days:hover {
+    background:#444;
+    }
+.td-calendar-navi-vz {
+	border-top:0px;
+	border-bottom:1px solid #999;
+	border-right:0px;
+	border-left:0px;
+	text-align:center;
+	letter-spacing:1px;
+	word-spacing:5px;
+	}
+.td-calendar-navi-vz a {
+    text-decoration:none;
+    color:#444;
+    }
+.td-calendar-navi {
+	border-top:0px;
+	border-bottom:1px solid #999;
+	border-right:0px;
+	border-left:0px;
+	text-align:right;
+	letter-spacing:1px;
+	word-spacing:5px;
+	}
+.td-calendar-navi a {
+    text-decoration:none;
+    color:#444;
+    }
+.td-calendar-days-imagefound {
+	padding:1px;
+	text-align:center;
+	border-top:1px dotted #999;
+	border-bottom:1px dotted #999;
+	border-left:1px dotted #999;
+	border-right:1px dotted #999;
+	background:#f5f5f5;
+	}
+.td-calendar-days-imagefound:hover {
+    border-top:1px solid #999;
+	border-bottom:1px solid #999;
+	border-left:1px solid #999;
+	border-right:1px solid #999;
+	background:#666;
+    }
+.td-calendar-days-imagefound a {
+    text-decoration:none;
+    color:#444;
+    }
+.td-calendar-days-imagefound a:hover {
+    text-decoration:none;
+    color:#fff;
+    }
+.table-calendar {
+    font-family:Helvetica, verdana, sans-serif;
+	font-size:10px;
+	padding:0px;
+	margin:0px;
+	width:600px;
+	border-top:0px;
+	border-bottom:0px;
+	border-right:0px;
+	border-left:0px;
+	}
+.table-calendar-vz {
+    font-family:Helvetica, verdana, sans-serif;
+	font-size:10px;
+	padding:0px;
+	margin:0px;
+	width:200px;
+	border-top:0px;
+	border-bottom:0px;
+	border-right:0px;
+	border-left:0px;
+	}
+.headline {
+    font-size:22px;
+    font-weight:bold;
+    font-family:Helvetica, verdana, sans-serif;
+    color:#444;
+    letter-spacing:-1px;
+    }
+.thumbnails {
+    padding:5px;
+    border:0px;
+    }
+.current-thumbnail {
+    padding:5px;
+    border:1px dotted #666;
+    }
+#wrapper {
+	margin:0px auto;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+	padding-bottom:0px;
+	width:610px;
+	text-align:left;
+	}
+#calendar {
+    width:590px;
+    padding:10px;
+    font-family:Helvetica, verdana, sans-serif;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:-1px;
+    }
+#logo {
+    width:590px;
+    padding:10px;
+    font-family:Helvetica, verdana, sans-serif;
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:-1px;
+    }
+#image {
+    padding:5px;
+    background:#fff;
+    border:1px solid #333;
+    }
+#image-info {
+    width:590px;
+    padding:10px;
+    display:block;
+    font-size:10px;
+    background:#fff;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    border-top:0px;
+    border-bottom:1px dotted #999;
+    }
+#image-info:hover {
+    background:#f5f5f5;
+    }
+#image-navigation {
+    width:590px;
+    padding:10px;
+    background:#fff;
+    font-size:10px;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    border-top:0px;
+    border-bottom:1px solid #999;
+    }
+#image-navigation:hover {
+    background:#f5f5f5;
+    }
+#add-comment {
+    width:590px;
+    padding:10px;
+    background:#f5f5f5;
+    font-size:10px;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    border-top:0px;
+    border-bottom:1px solid #999;
+    }
+.input {
+    width:100%;
+	font-size:10px;
+	font-weight:bold;
+	border:1px solid #444;
+	background-color:#f5f5f5;
+	color:#444;
+    }
+#add-comment textarea {
+	width:100%;
+	height:50px;
+	font-size:10px;
+	font-weight:bold;
+	border:1px solid #444;
+	background-color:#f5f5f5;
+	color:#444;
+	}
+#comments {
+    width:590px;
+    padding:10px;
+    background:#fff;
+    font-size:10px;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    border-top:0px;
+    border-bottom:1px solid #999;
+    }
+#comments ul {
+	list-style-type:none;
+	margin:0px;
+	padding:10px;
+	}
+#comments li {
+	display:block;
+	margin:0px;
+	color:#444;
+	text-decoration:none;
+	padding:3px;
+	}
+#comments li a {
+	color:#444;
+	text-decoration:none;
+	}
+#comments li:hover {
+	background:#f5f5f5;
+	}
+#comments li a:hover {
+	background:#f5f5f5;
+	}
+#poweredby {
+vertical-align:middle;}

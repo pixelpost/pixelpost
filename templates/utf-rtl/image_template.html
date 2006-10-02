@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title><SITE_TITLE></title>
+<!-- Link for ATOM feed autodiscovery -->
+<ATOM_AUTODETECT_LINK>
+<!-- Link for RSS feed autodiscovery -->
+<RSS_AUTODETECT_LINK>
+<!-- Meta-Information -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta http-equiv="content-type" name="keywords" content="PhotoBlog,<SITE_TITLE>,<IMAGE_TITLE>,Pixelpost" />
+<meta http-equiv="content-type" name="description" content="<SITE_TITLE>-PhotoBlog: <IMAGE_TITLE>, <IMAGE_NOTES_CLEAN>" />
+<base href="<SITE_URL>" />
+<!-- StyleSheet -->
+<link rel="stylesheet" href="./templates/utf-rtl/utfrtl.css" type="text/css" />
+<script language='javascript' type='text/javascript'>
+<!-- BEGIN
+function flip(rid)
+{
+    current=(document.getElementById(rid).style.display == 'none') ? 'block' : 'none';
+    document.getElementById(rid).style.display = current;
+}
+// End -->
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="calendar">
+<SITE_CALENDAR>
+</div>
+
+<div id="logo">
+<SITE_TITLE>
+</div>
+<a href="index.php?showimage=<IMAGE_PREVIOUS_ID>">
+<img id="image" src="./images/<IMAGE_NAME>" alt="<IMAGE_TITLE>" title="<IMAGE_PREVIOUS_TITLE>"  width="<IMAGE_WIDTH>" height="<IMAGE_HEIGHT>" /></a>
+
+<div id="image-info">
+<span class='headline'><IMAGE_TITLE></span>
+<IMAGE_NOTES>
+<IMAGE_DATETIME> - <IMAGE_COMMENTS_NUMBER> comments. <IMAGE_CATEGORY><p />&nbsp;&nbsp;
+<IMAGE_THUMBNAIL_ROW>
+</div>
+
+<div id="image-navigation">
+<IMAGE_PREVIOUS_LINK>
+<a href="index.php">Current</a>
+<IMAGE_NEXT_LINK>
+&nbsp;&nbsp;&nbsp;
+<SITE_PHOTONUMBER> photos | <SITE_VISITORNUMBER> visitors
+&nbsp;&nbsp;&nbsp;
+<a href="index.php?showimage=<IMAGE_ID>">Permalink</a>
+&nbsp;&nbsp;&nbsp;
+<a href="<SITE_BROWSELINK>">Browse Archive</a>
+</div>
+<div id="comments">
+<a href='#addcomment' onclick="flip('add-comment'); gotocomments(); return false;">Add Comment</a><p />&nbsp;&nbsp;
+<IMAGE_COMMENTS>
+</div>
+<div id="add-comment">
+ <script type='text/javascript'>
+ <!--
+ function gotocomments()
+ {
+	document.location = '#addcomment';
+ }
+ -->
+ </script>
+<script language='javascript' type='text/javascript'>flip('add-comment');</script>
+<a name="addcomment">&nbsp;</a>
+<form method='post' action='index.php?x=save_comment' name='commentform' accept-charset='UTF-8'>
+Message:<br />
+<textarea name='message' rows='2' cols='40'></textarea><p />&nbsp;
+<input type='text' name='name' class='input' value='<VINFO_NAME>' id="name"/>&nbsp;&nbsp;&nbsp; <label for="name">Name</label> <p />&nbsp;
+<input type='text' name='url' class='input' value='<VINFO_URL>' id="url"/>&nbsp;&nbsp;&nbsp; <label for="url">Website URL, if any</label><p />&nbsp;
+<input class='input' type='text' name='email' value='<VINFO_EMAIL>' id="email"/>&nbsp;&nbsp;&nbsp; <label for="email">Email (not visible to others)</label><p />&nbsp;
+<input type='hidden' name='parent_name' value='<IMAGE_NAME>' />
+<input type='checkbox' value='set' name='vcookie' id="saveinfo" /> <label for="saveinfo">Save User Info</label><br /><br />
+&nbsp;&nbsp;<input type='submit' value='Add' />
+<input type='hidden' name='parent_id' value='<IMAGE_ID>' />
+<input type='hidden' name='parent_name' value='<IMAGE_NAME>' />
+</form>
+
+</div>
+<!-- Powered by PixelPost -->
+<a href="http://validator.w3.org/check/referer">Valid XHTML</a> |
+<a href="http://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a> |
+<SITE_RSS_LINK> | <SITE_ATOM_LINK> |
+<a href="http://www.pixelpost.org" target="_new">Powered by Pixelpost 1.5</a>
+</div>
+</body>
+</html>

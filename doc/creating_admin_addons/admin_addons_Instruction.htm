@@ -1,0 +1,731 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+
+  <title>Introducing PixelPost's Admin-AddonsPixelPost</title>
+  <style type="text/css">
+body {
+        background-color:#FFFFFF;
+        font-size:11px;
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        letter-spacing:0.5px;
+        color:black;
+        padding:10px;
+        margin:10px;margin-right:20px;
+        margin-bottom:20px;
+        text-align:left;
+        line-height:100%;
+        }
+
+  html, body {
+     min-height:100.1%;
+        }
+  a {text-decoration:none;
+  color:blue;}
+  a:hover{background:#FFFCE9;
+  color:red;};
+  h2 {font-size:12px;}
+  li {line-height:160%;margin-top:10px;}
+  ol {list-style-type:upper-latin;}
+  .lower {list-style-type:lower-latin;}
+  .red {color:red;}
+  .green {color:green;}
+  .code {padding-left:20px;}
+  .php-codes{padding:11px;background-color:#FFFCD9;font-family:courier;}
+  </style>
+</head>
+
+<body>
+  <h1><a name="top" id="top">Introducing PixelPost's Admin-Addons</a></h1>
+
+  <h2>Developed and documented by Ramin Mehran, last modified: april 2006</h2>
+
+  <p>In version 1.5 of PixelPost, team PixelPost has introduced a new feature, called <b>Admin-Addon,</b> that extends the flexibility and functionality of the PixelPost software. With this new feature people can simply use addons and plugins to add new new function inside the Admin-Panel of PixelPost. Read this article to get a better understanding of this new useful feature.</p>
+
+  <ol>
+    <li><a href="#A">What are Admin-Addons?</a></li>
+
+    <li><a href="#B">Which version of PixelPost supports Admin-Addons?</a></li>
+
+    <li><a href="#C">What are the new features?</a></li>
+
+    <li><a href="#how-it-works">How does Admin-Addons work?</a></li>
+
+    <li><a href="#D">How to write Admin-Addons?</a></li>
+
+    <li><a href="#E">Can I add new menu items and tabs to PixelPost Admin-Panel with Admin-Addons? How?</a></li>
+
+    <li><a href="#F">Should Admin-Addons have special filename style?</a></li>
+
+    <li><a href="#G">Do Admin-Addons work exclusively on the Admin-Panel or can they add new functions to the browsing side of a PixelPost photoblog?</a></li>
+
+    <li><a href="#H">What does the term <b>workspace</b> mean in the Admin-Addons?</a></li>
+
+    <li><a href="#H-1">What are the available workspaces?</a></li>
+
+    <li><a href="#I">How could I add new workspaces?</a></li>
+
+    <li><a href="#J">Does Admin-Addons eliminate the need for hacks in Admin-Panel?</a></li>
+
+    <li><a href="#K">Are there any available Admin-Addons for download?</a></li>
+
+    <li><a href="#L">How could I add a new page to Admin-Panel with multiple submenus?</a></li>
+
+    <li><a href="#other-q">I have other questions about Admin-Addons. What should I do?</a></li>
+  </ol>
+  <hr>
+
+  <ol class="main">
+    <!-- A What are Admin Addons -->
+
+    <li>
+      <a name="A" id="A"><b>What are Admin-Addons?</b></a>
+
+      <p dir="ltr">Basically, PixelPost accepts addons for adding custom functionality to its simple behavior. Before the release of PixelPost 1.5, addons were only able to add new feature to the visitors side of a photoblog. However, since version 1.5, addons can be used to add new functionalities to the Admin-Panel side, where admin user manages the photoblog. This realizes the dreams that the simple PixelPost software could perform complex behaviors with some customizations. People now can use addons in the Admin-Panel to have more options in posting an image, editing previously posted photos, having more options, and even adding new pages to the Admin-Panel. This new type of addons is called <i>Admin-Addon.</i></p>
+    </li><!-- B Which version of PixelPost supports Admin-Addons? -->
+
+    <li>
+      <a name="B" id="B"><b>Which version of PixelPost supports Admin-Addons?</b></a>
+
+      <p>Only PixelPost 1.5 or above supports the Admin-Addons feature.</p>
+    </li><!-- C What are the new features -->
+
+    <li>
+      <a name="C" id="C"><b>What are the new features?</b></a>
+
+      <p>With Admin-Addons you can</p>
+
+      <ul>
+        <li><b>add new content</b> to the Forms of Admin-Panel in the New Image, Image (editing images), and Options pages.</li>
+
+        <li><b>add new pages</b> to the Admin-Panel. This automatically adds new menu title link in the Admin-Panel and optional sub-menus.</li>
+
+        <li><b>For developers:</b> It adds new places in the Admin-Panel where a new function will be called. This way <b>you won't need to hack the PP code</b> deeply for new functionality; just write a new admin addon and place it into the addons page and add a single line to the places inside the admin PHP file that the function should run.</li>
+      </ul>
+    </li><!-- D How to write Admin-Addons? -->
+
+    <li>
+      <a name="how-it-works" id="how-it-works"></a>
+
+      <p dir="ltr"><b>How does Admin-Addon work?</b><br>
+      The logic behind the Admin-Addons are simple and once you get knowing it, you can write Admin-Addons even with one hand tied behind your back! Once admin user visits the admin pages and logs in, the script looks into the addons folder for the admin-addons and updates the list of available addons in the addons' table. Thereafter it will gather a list of functions from addons and their corresponding <a href="#H-1">workspaces</a> in an array. Consequently, at every workspace/anchor in run-time it will call the related functions from admin-addons.<br>
+      By considering the usage, the related functions can be categories in 5 different groups.</p>
+
+      <ol class="main">
+        <li dir="ltr">
+          <p dir="ltr">Functions for extending the HTML code between &lt;head&gt; and &lt;/head&gt; tags in admin pages.</p>
+        </li>
+
+        <li dir="ltr">
+          <p dir="ltr">Simple functions that don't need menu and submenus.</p>
+        </li>
+
+        <li dir="ltr">
+          <p dir="ltr">Function that act in menus or submenus.</p>
+        </li>
+
+        <li dir="ltr">
+          <p dir="ltr">Functions that add new menu items to admin area.</p>
+        </li>
+
+        <li dir="ltr">
+          <p dir="ltr">Functions that add new page content to admin area.</p>
+        </li>
+      </ol>
+
+      <p dir="ltr">All of the above different types of functions will be assigned through a single interface. The interface is the function named <i>add_admin_functions().</i><br>
+      Below, the syntax for using the interface function is decribed:</p>
+
+      <p dir="ltr"><b><font size="1">add_admin_functions ($function_name <font color="#008000">as string</font> ,$workspace <font color="#008000">as string</font> ,$menu <font color="#008000">as string</font> ,$admin_submenu <font color="#008000">as string</font> );</font></b></p>
+
+      <table border="1" cellpadding="3" cellspacing="3" style="border-collapse: collapse" width="94%" id="table2" bgcolor="#ECECEC">
+        <tr>
+          <td width="12" bgcolor="#000000">&nbsp;</td>
+
+          <td width="472" bgcolor="#000000"><b><font color="#FFFFFF">Syntax</font></b></td>
+
+          <td bgcolor="#000000"><b><font color="#FFFFFF">Description</font></b></td>
+        </tr>
+
+        <tr>
+          <td width="12"><b>1</b></td>
+
+          <td width="472"><font size="1"><b>add_admin_functions</b> (<font color="#000080">$function_name</font><font color="#008000">,</font><font color="#FF0000">'admin_html_head'</font>,<font color="#FF0000">''</font>,<font color="#FF0000">''</font>);</font></td>
+
+          <td><font size="1">This can be used to echo some additional HTML codes into the place between &lt;head&gt; and &lt;/head&gt; inside all page of admin area. For instance, the function with name as string in variable $function_name, could have simple code like: echo '&lt;script language="javascript" type="text/javascript"&gt;somescript code... &lt;/script&gt;';</font></td>
+        </tr>
+
+        <tr>
+          <td width="12"><b>2</b></td>
+
+          <td width="472"><font size="1"><b>add_admin_functions</b> (<font color="#000080">$function_name</font>,<font color="#000080">$workspace</font>,<font color="#FF0000">''</font>,<font color="#FF0000">''</font>);</font></td>
+
+          <td><font size="1">This can be used to assign a function (with name as string in variable $function_name) to a predefined <a href="#H-1">workspace</a> ($workspace as string) in the admin code without setting a specific menu or submenu for it. The second and third arguments are set to empty strings.</font></td>
+        </tr>
+
+        <tr>
+          <td width="12"><b>3</b></td>
+
+          <td width="472"><font size="1"><b>add_admin_functions</b> (<font color="#000080">$function_name</font>,<font color="#000080">$workspace</font>,<font color="#000080">$menu</font>,<font color="#000080">$submenu</font>);</font></td>
+
+          <td><font size="1">This will can be used to assign a function to the place in the code that user has selected a menu and/or submenu in the admin area. If you pass only menu string and leave submenu variable string as an empty string the function will be called just when menu is selected. If both menu and submenu strings are set the function will directly called when the submenu of the selected menu is visited. If the submenu you mention in this function does not exist in the package it will create that submenu automatically. The list of available menu and submenus is provided below this table.</font></td>
+        </tr>
+
+        <tr>
+          <td width="12" height="27"><b>4</b></td>
+
+          <td width="472" height="27"><font size="1"><b>add_admin_functions</b> (<font color="#FF0000">''</font><font color="#008000">,</font><font color="#FF0000">'admin_main_menu'</font>,<font color="#000080">$menu</font>,<font color="#FF0000">''</font>);</font></td>
+
+          <td height="27"><font size="1">This function call will create a new menu item with a link to a newpage. The $menu variable will indicate the title of the page in the menu as well as the link to that new page in the admin area. For instance if $menu is newitem, the link to the new page will end with index.php?x=newitem.</font></td>
+        </tr>
+
+        <tr>
+          <td width="12" height="27"><b>5</b></td>
+
+          <td width="472" height="27"><font size="1"><b>add_admin_functions</b> (<font color="#000080">$function_name</font><font color="#008000">,</font><font color="#FF0000">'admin_main_menu_contents'</font>,<font color="#000080">$menu</font>,<font color="#FF0000">''</font>);</font></td>
+
+          <td height="27"><font size="1">This function call will assign a function to print the content of a new page with name specified in $menu variable as string. The function with the name as string inside $function_name variable should will be called when the menu item as $menu is selected.</font></td>
+        </tr>
+      </table>
+
+      <p dir="ltr"><br>
+      Here is the list of available Menu/Submenus of Pixelpost 1.5 that can be used for Admin-Addons</p>
+
+      <table border="1" cellpadding="3" cellspacing="3" style="border-collapse: collapse" width="93%" id="table3" bgcolor="#ECECEC">
+        <tr>
+          <td width="127" bgcolor="#000000" align="center"><b><font size="1" color="#FFFFFF">menu name</font></b></td>
+
+          <td bgcolor="#000000" align="center"><b><font size="1" color="#FFFFFF">menu variable string</font></b></td>
+
+          <td width="128" bgcolor="#000000" align="center"><b><font size="1" color="#FFFFFF">submenu name</font></b></td>
+
+          <td width="152" bgcolor="#000000" align="center"><b><font size="1" color="#FFFFFF">submenu variable strings</font></b></td>
+
+          <td width="387" bgcolor="#000000" align="center"><b><font size="1" color="#FFFFFF">link</font></b></td>
+        </tr>
+
+        <tr>
+          <td width="127" align="center"><font size="1">New Image</font></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="128" align="center"><font size="1">-</font></td>
+
+          <td width="152" align="center"><font size="1">-</font></td>
+
+          <td width="387"><font size="1">index.php</font></td>
+        </tr>
+
+        <tr>
+          <td width="127" bgcolor="#FCFCFC" align="center"><font size="1">Options</font></td>
+
+          <td bgcolor="#FCFCFC" align="center"><font size="1">options</font></td>
+
+          <td width="128" bgcolor="#FCFCFC" align="center"><font size="1">General</font></td>
+
+          <td width="152" bgcolor="#FCFCFC" align="center"><font size="1">general</font></td>
+
+          <td width="387" bgcolor="#FCFCFC"><font size="1">index.php?x=options&amp;optionsview=general</font></td>
+        </tr>
+
+        <tr>
+          <td width="127" bgcolor="#FCFCFC" align="center"><font size="1">Options</font></td>
+
+          <td bgcolor="#FCFCFC" align="center"><font size="1">options</font></td>
+
+          <td width="128" bgcolor="#FCFCFC" align="center"><font size="1">Template</font></td>
+
+          <td width="152" bgcolor="#FCFCFC" align="center"><font size="1">template</font></td>
+
+          <td width="387" bgcolor="#FCFCFC"><font size="1">index.php?x=options&amp;optionsview=template</font></td>
+        </tr>
+
+        <tr>
+          <td width="127" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">Options</font></td>
+
+          <td dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">options</font></td>
+
+          <td width="128" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">Thumbnails</font></td>
+
+          <td width="152" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">thumb</font></td>
+
+          <td width="387" dir="ltr" bgcolor="#FCFCFC">
+            <p dir="ltr"><font size="1">index.php?x=options&amp;optionsview=thumb</font></p>
+          </td>
+        </tr>
+
+        <tr>
+          <td width="127" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">Options</font></td>
+
+          <td dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">options</font></td>
+
+          <td width="128" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">Spam Control</font></td>
+
+          <td width="152" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">antispam</font></td>
+
+          <td width="387" dir="ltr" bgcolor="#FCFCFC"><font size="1">index.php?x=options&amp;optionsview=antispam</font></td>
+        </tr>
+
+        <tr>
+          <td width="127" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">Options</font></td>
+
+          <td dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">options</font></td>
+
+          <td width="128" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">&lt;custom submenu&gt;</font></td>
+
+          <td width="152" dir="ltr" bgcolor="#FCFCFC" align="center"><font size="1">&lt;customsubmenu&gt;</font></td>
+
+          <td width="387" dir="ltr" bgcolor="#FCFCFC"><font size="1">index.php?x=options&amp;optionsview=customsubmenu</font></td>
+        </tr>
+
+        <tr>
+          <td width="127" align="center"><font size="1">Images</font></td>
+
+          <td align="center"><font size="1">images</font></td>
+
+          <td width="128" align="center"><font size="1">-</font></td>
+
+          <td width="152" align="center"><font size="1">-</font></td>
+
+          <td width="387"><font size="1">index.php?view=images</font></td>
+        </tr>
+
+        <tr>
+          <td width="127" align="center"><font size="1">Images</font></td>
+
+          <td align="center"><font size="1">images</font></td>
+
+          <td width="128" align="center"><font size="1">&lt;custom submenu&gt;</font></td>
+
+          <td width="152" align="center"><font size="1">&lt;customsubmenu&gt;</font></td>
+
+          <td width="387"><font size="1">index.php?view=images&amp;imagesview=customsubmenu</font></td>
+        </tr>
+      </table>
+
+      <p>As it is presented in the above table with a distinct color, if you want to add new submenus to images or options page the link these pages will be automatically created as index.php?view=images&amp;imagesview=<font size="1">customsubmenu and index.php?x=options&amp;optionsview=customsubmenu</font> respectively where you can replace the "<font size="1">customsubmenu" with the name of your choice.</font></p>
+    </li>
+
+    <li>
+      <a name="D" id="D"></a>
+
+      <p><b>How to write Admin-Addons?</b></p>
+
+      <p>There is a sample admin-addon named <i>Admin_12CropImage</i> that adds the cropping ability for creating thumbnails after uploading a new image or even when editing an old post.<br>
+      There are some detailed instructions for writing an admin addon (addons/admin_12CropImage.php).<br>
+      Key points are:</p>
+
+      <ol class="lower">
+        <li>To create such an addon you should fill $addon_* variables properly.<br>
+        All of the activity of each addon is encapsulated inside a custom function by the addon developer. The function should not have any arguments. It's recommended that the function name have a fixed variable name like $addon_function_name.</li>
+
+        <li>The addon for Admin-Panel must have <b>"admin_"</b> at the beginnig of its name.<br>
+        This is the only way that these addons are distinguished and included inside<br>
+        admin/index.php.</li>
+
+        <li>The needed variables of the admin/index.php OR new_image.php OR images_edit.php OR options.php are accessed as globals inside the function of the addons. This should be changed by some safer methods.</li>
+
+        <li>When creating an addon, please always use the <b>$addon_*variables.</b> These values will be displayed in a users Admin-Panel under addons:<br>
+        $addon_name<br>
+        $addon_description<br>
+        $addon_version<br>
+        and the others are used for the functionality of the addon in the Admin-Panel.<br>
+        &nbsp;</li>
+
+        <li>
+          <p dir="ltr">You can write separate functions for different places of the Admin-Panel. These function can be called in the proper place and the only thing you need to do is to assign each function to some predefined places in the code. These predefined places are called <b><a href="#H-1">workspaces</a></b> which anchors to some places inside Admin-Panel codes. With assigning new functions to each of these anchors you may get new functionalities in different parts of the code.<br>
+          Below is a part of the sample admin addon that assigns a custom function, <i>cropimage12_admin_addon,</i> to a predefined place, <i>image_edit,</i> which is actually the page that admin visits when it has to edit a post.<br>
+          This addon adds a submenu to the <i>edit image page</i> and thus, the menu name for this new submenu is specified as</p>
+
+          <div class="code">
+            $addon_menu = <span class="red">"images"</span>;
+          </div>Also the title of the submenu is introduced as
+
+          <div class="code">
+            $addon_admin_submenu = <span class="red">"12cropimage"</span>;
+          </div>Finally, the function <i>add_admin_functions</i>, performs the assignment by adding the function named <span class="red">cropimage12_admin_addon</span> to the workspace<br>
+          named <span class="red">image_edit</span>.<br>
+          It also adds a new submenu to the <span class="red">images</span> menu named <span class="red">12cropimage</span>.<br>
+
+          <div class="php-codes">
+            <span class="green">// The workspace. Where to activate the function inside index.php</span><br>
+            $addon_workspace = <span class="red">"image_edit"</span>;<br>
+            <br>
+            <span class="green">// menu where the addon should appear in Admin-Panel, in this case: images menu</span><br>
+            $addon_menu = <span class="red">"images"</span>;<br>
+            <br>
+            <span class="green">// What would be the title of submenu of this addon: 12cropimage</span><br>
+            $addon_admin_submenu = <span class="red">"12cropimage"</span>;<br>
+            <br>
+            <span class="green">// What is the function</span><br>
+            $addon_function_name = <span class="red">"cropimage12_admin_addon"</span>;<br>
+            <br>
+            <span class="green">// add the function</span><br>
+            add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);
+          </div>Assigning multiple functions to multiple workspaces is as simple as repeating the above procedure for each new function.
+        </li>
+
+        <li>
+          <p>To add new pages to Admin-Panel and add new menu and submenus you should take following steps:<br>
+          First to add the name of the new page to the menu</p>
+
+          <ul>
+            <li>set the workspace <span class="red">admin_main_menu:</span><br>
+            $addon_workspace = <span class="red">"admin_main_menu"</span>;</li>
+
+            <li>Choose a new admin menu name, for example:<br>
+            $addon_menu = <span class="red">"new-item"</span>;</li>
+
+            <li>Call the assinging function:<br>
+            add_admin_functions(<span class="red">''</span>,$addon_workspace,$addon_menu,<span class="red">''</span>);</li>
+
+            <li>Now it's time to create the content of the new page. To do that choose <font color="#FF0000">admin_main_menu_contents</font> workspace and write a function that works when user visits the new-item page.<br>
+              &nbsp;
+
+              <div class='php-codes'>
+                <p dir="ltr"><font color="#008000">// add the function</font><br>
+                $addon_workspace = <font color="#FF0000">'admin_main_menu_contents'</font>;<br>
+                $addon_function_name = <font color="#FF0000">'new_item_show_page'</font>;<br>
+                $addon_admin_submenu = <font color="#FF0000">""</font>;<br>
+                $$addon_menu = <font color="#FF0000">"NEWITEM"</font>;<br>
+                add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);</p>
+
+                <p dir="ltr"><font color="#008000">// the function to act on the new page</font> <font color="#0000FF"><br>
+                function</font> new_item_show_page()<br>
+                {<br>
+                <font color="#008000">global</font> $addon_admin_functions;<br>
+                <font color="#008000">global</font> $pixelpost_db_prefix;<br>
+                <font color="#0000FF">if</font> ($_GET[<font color="#FF0000">'view'</font>]==<font color="#FF0000">'</font><span class="red">newitem</span><font color="#FF0000">'</font>){<br>
+                <font color="#0000FF">echo</font> <font color="#FF0000">"<br>
+                &lt;div class='caption'&gt;<br>
+                NEWITEM<br>
+                &lt;/div&gt;<br>
+                &lt;div class='jcaption'&gt;<br>
+                Some Section Title...<br>
+                &lt;/div&gt;<br>
+                "</font>;</p>
+              </div>
+            </li>
+
+            <li style="list-style: none">
+              <br>
+              <font color="#0000FF">echo</font> <font color="#FF0000">"&lt;p/&gt; This is really a &lt;b&gt;new page&lt;/b&gt;!!"</font>;<br>
+              }<font color="#008000">// end if</font>
+
+              <p>}</p>
+            </li>
+
+            <li>This will produce a page like this<br>
+            <br>
+            <img src='newitem.jpg' alt='newitem: a new page in the AdminPanel' align="middle"> &nbsp;</li>
+
+            <li>The whole admin_newitem.php code will be like this<br>
+              &nbsp;
+
+              <div class='php-codes'>
+                <p dir="ltr"><font color="#008000">&lt;?php<br>
+                <br></font> // add the new page title to the main menu<br>
+                $addon_workspace = "admin_main_menu";<br>
+                $addon_menu = "NEWITEM";<br>
+                add_admin_functions('',$addon_workspace,$addon_menu,'');<br>
+                <br>
+                // assign a function name to make the content of the new page<br>
+                // add the function<br>
+                $addon_workspace = 'admin_main_menu_contents';<br>
+                $addon_function_name = 'new_item_show_page';<br>
+                $addon_admin_submenu = "";<br>
+                <br>
+                add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);<br>
+                <br>
+                // the function to write the content of the new page<br>
+                function new_item_show_page()<br>
+                {<br>
+                global $addon_admin_functions;<br>
+                global $pixelpost_db_prefix;<br>
+                if ($_GET['view']=='newitem'){<br>
+                echo "<br>
+                &lt;div class='caption'&gt;<br>
+                NEWITEM<br>
+                &lt;/div&gt;<br>
+                &lt;div class='jcaption'&gt;<br>
+                Some Section Title...<br>
+                &lt;/div&gt;<br>
+                ";<br>
+                echo "&lt;p/&gt; This is really a &lt;b&gt;new page&lt;/b&gt;!!";<br>
+                }// end if<br>
+                <br>
+                }<br>
+                <br>
+                ?&gt;</p>
+              </div>
+
+              <p>&nbsp;</p>
+            </li>
+          </ul>
+        </li>
+
+        <li><a name="add_submenus" id="add_submenus">To add content of the new page which includes the submenus:</a></li>
+      </ol>
+
+      <ul>
+        <li>set workspace <span class="red">admin_main_menu_contents</span><br>
+        $addon_workspace = <span class="red">'admin_main_menu_contents'</span>;</li>
+
+        <li>Choose addon function name (e.g <span class="red">newitem_show_config</span>)<br>
+        $addon_function_name = <span class="red">'newitem_show_config'</span>;</li>
+
+        <li>Consider these lines inside the addon-function which is responsible for the content of the new page:
+
+          <div class='php-codes'>
+            <span class="green">// show the config page of the portfolio</span><br>
+            function newitem_show_config()<br>
+            {<br>
+            <span class="green">global</span> $addon_admin_functions;<br>
+            <span class="green">global</span> $PixelPost_db_prefix;<br>
+            if ($_GET[<span class="red">'view'</span>]==<span class="red">'newitem'</span>){<br>
+            echo <span class="red">"<br>
+            &lt;div class='caption'&gt;<br>
+            NEWITEM<br>
+            &lt;/div&gt;<br>
+            &lt;div id='submenu'&gt;<br>
+            "</span>;
+
+            <p>$submenucssclass = <span class="red">'selectedsubmenu'</span>;<br>
+            else if (!isset($_GET[<span class="red">'newitemview'</span>])) $submenucssclass = <span class="red">'selectedsubmenu'</span>;<br>
+            echo <span class="red">"<br>
+            &lt;a href='?view=newitem&amp;amp;newitemview=info' id='infoselected' class="</span>.$submenucssclass.<span class="red">" &gt;Info&lt;/a&gt;<br>
+            "</span>;<br>
+            <br>
+            $submenucssclass = <span class="red">''</span>;<br>
+            if (isset($_GET[<span class="red">'newitemview'</span>]) &amp;&amp; ($_GET[<span class="red">'newitemview'</span>]==<span class="red">'moderate'</span> ))<br>
+            $submenucssclass = <span class="red">'selectedsubmenu'</span>;<br>
+            echo "<span class="red"><br>
+            &lt;a href='?view=newitem&amp;amp;newitemview=moderate' id='moderateselected' class="</span>.$submenucssclass.<span class="red">" &gt;Moderate&lt;/a&gt;<br>
+            "</span>;<br>
+            <br>
+            $submenucssclass = <span class="red">''</span>;<br>
+            if (isset($_GET[<span class="red">'newitemview'</span>]) &amp;&amp; ($_GET[<span class="red">'newitemview'</span>]==<span class="red">'edit'</span> ))<br>
+            $submenucssclass = <span class="red">'selectedsubmenu'</span>;<br>
+            echo <span class="red">"<br>
+            &lt;a href='?view=newitem&amp;amp;newitemview=edit' id='editselected' class=".$submenucssclass." &gt;Add/Remove Photos/Icon&lt;/a&gt;<br>
+            ";</span><br>
+            <br>
+            echo <span class="red">"&lt;/div&gt;"</span>;</p>
+
+            <p><span class="green">// .. the rest of the code</span></p>
+
+            <p>}<br></p>
+          </div>
+        </li>
+
+        <li style="list-style: none"><b>admin_portfolio addon</b> is an example of an Admin-AddOn that adds a new page to the Admin-Panel. <img src='portfolio.jpg' title='snaphot of portfolio admin addon' alt='portfolio admin addon' hspace="5px" border="1"></li>
+      </ul>
+    </li>
+
+    <li style="list-style: none"><!-- E Can I add new menu items --></li>
+
+    <li>
+      <p dir="ltr"><a name="E" id="E"><b>Can I add new menu items and tabs to PixelPost Admin-Panel with Admin-Addons?</b></a><br>
+      yes, read "<a href="#D">How to write Admin-Addons</a>"</p>
+    </li>
+
+    <li style="list-style: none">. <!-- F special filename style -->
+    <br>
+    <a href="#top">^</a></li>
+
+    <li><a name="F" id="F"><b>Should Admin-Addons have special filename style?</b></a><br>
+    yes, they should start with <b>admin_</b></li><!-- G Exclusively on the Admin Panel -->
+
+    <li style="list-style: none">for example admin_newitem.php is an admin addon named newitem and admin_ in the start of the file name identify it as and Admin-Addon.<br>
+    <a href="#top">^</a></li>
+
+    <li>
+      <a name="G" id="G"><b>Do Admin-Addons work exclusively on the Admin-Panel or can they add new functions to the browsing side of a PixelPost photoblog?</b></a><br>
+      They can add new functionalities to the browsing side of a PixelPost photoblog as well! Every script that is written inside every type of addon will be executed when someone is browsing the photoblog and this is the same for admin addons. BUT the codes for admin new features are encapsulated into separated functions and these function are assigned to specific workspaces. Thus, in the admin addons the functions that are assigned to workspaces will run on admin page but you can always put some code there to add some new tags to the visiting side of photoblog too.<br>
+      <br>
+      For example: you can add these lines to an Admin-Addon called admin_newitem.php to replace the current date with tag <font color="#FF0000">&lt;NEWITEM_DATE&gt;</font><br>
+
+      <div class='php-codes'>
+        $newitem_time = <font color="#0000FF">date</font>();<br>
+        $tpl = <font color="#0000FF">ereg_replace</font>(<font color="#FF0000">"&lt;NEWITEM_DATE&gt;"</font>,$newitem_time,$tpl);
+      </div><br>
+      <a href="#top">^</a>
+    </li>
+
+    <li><a name="H" id="H"><b>What does the term workspace mean in the Admin-Addons?</b></a><br>
+    Workspaces are the anchors in the admin code that you can assign functions to them. When the code executes and reaches the anchors all functions that are assigned to that anchor will be called. This way you can add new functionalities to any place inside the admin codes. There are some pre-defined workspaces in the code.<br>
+    <a href="#top">^</a></li>
+
+    <li>
+      <b><a name="H-1" id="H-1">What are the available workspaces?</a></b><br>
+      Here is the list of available workspaces<br>
+      &nbsp;
+
+      <table border="1" cellpadding="3" style="border-collapse: collapse" width="100%" id="table1" bgcolor="#ECECEC" cellspacing="3">
+        <tr>
+          <td width="179" align="center" bgcolor="#000000">
+            <p align="center"><b><font size="1" color="#FFFFFF">Workspace Name</font></b></p>
+          </td>
+
+          <td align="center" bgcolor="#000000"><b><font size="1" color="#FFFFFF">Menu Name</font></b></td>
+
+          <td width="137" align="center" bgcolor="#000000"><b><font size="1" color="#FFFFFF">file/ near line</font></b></td>
+
+          <td width="528" align="center" bgcolor="#000000"><b><font size="1" color="#FFFFFF">Description</font></b></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><p><b><font size="1">image_edit</font></b></p>
+          </td>
+
+          <td align="center"><font size="1">images</font></td>
+
+          <td width="137" align="center"><font size="1">images_edit.php/267</font></td>
+
+          <td width="528" align="left"><font size="1">Place that executes the code when admin tries to edit an image. Useful when you want to add new submenus to the image edit page. Admin_12CropImage sample addon uses this workspace.</font></td>
+        </tr>
+	<tr>
+	
+          <td width="179" align="center"><p><b><font size="1">image_edit_form</font></b></p>
+          </td>
+
+          <td align="center"><font size="1">images</font></td>
+
+          <td width="137" align="center"><font size="1">images_edit.php/274</font></td>
+
+          <td width="528" align="left"><font size="1">To add any new input to the form for the editing of an individual image. </font></td>
+	</tr>
+	
+	<tr>
+	
+          <td width="179" align="center"><p><b><font size="1">image_update</font></b></p>
+          </td>
+
+          <td align="center"><font size="1">images</font></td>
+
+          <td width="137" align="center"><font size="1">images_edit.php/73</font></td>
+
+          <td width="528" align="left"><font size="1">Place that executes the code when admin updates an image via the editing page. Useful when adding new functions to editing images. </font></td>
+	</tr>
+
+	<tr>
+          <td width="179" align="center"><b><font size="1">image_deleted</font></b></td>
+
+          <td align="center"><font size="1">images</font></td>
+
+          <td width="137" align="center"><font size="1">images_edit.php/120</font></td>
+
+          <td width="528" align="left"><font size="1">Place that executes the code when admin deleted an image. Useful when you want to add new submenus to the image edit page. </font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><b><font size="1">admin_html_head</font></b></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="137" align="center"><font size="1">index.php/187</font></td>
+
+          <td width="528" align="left"><font size="1">Executes when code is producing HTML to be placed between &lt;head&gt; and &lt;/head&gt; tags and will work for every page of Admin-Panel.</font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><b><font size="1">admin_main_menu</font></b></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="137" align="center"><font size="1">index.php/244</font></td>
+
+          <td width="528" align="left"><font size="1">Place that executes the code to automatically produce the menu items.</font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><b><font size="1">admin_main_menu_contents</font></b></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="137" align="center"><font size="1">index.php/271</font></td>
+
+          <td width="528" align="left"><font size="1">Place that executes the code to show the contents of every new page in the Admin-Panel.</font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><b><font size="1">new_image_form</font></b></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="137" align="center"><font size="1">new_image.php/127</font></td>
+
+          <td width="528" align="left"><font size="1">To add any new element to the HTML form in the New Image page you can use this workspace.</font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><b><font size="1">image_uploaded</font></b></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="137" align="center">
+            <p dir="ltr"><font size="1">new_image.php/228</font></p>
+          </td>
+
+          <td width="528" align="left"><font size="1">A part of code that will execute JUST after the successful uploading of an image.</font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center"><b><font size="1">thumb_created</font></b></td>
+
+          <td align="center"><font size="1">-</font></td>
+
+          <td width="137" align="center"><font size="1">new_image.php/255</font></td>
+
+          <td width="528" align="left"><font size="1">A part of code that will execute right after uploading a new file and the creation of the thumbnail image. This is useful when you want to add new tools or information after file upload. For example, Admin_FlashCrop addon uses this to let you crop the image for creation of a thumbnail in a Flash screen below the uploaded page.</font></td>
+        </tr>
+
+        <tr>
+          <td width="179" align="center" height="55"><b><font size="1">options</font></b></td>
+
+          <td align="center" height="55"><font size="1">options</font></td>
+
+          <td width="137" align="center" height="55"><font size="1">options.php/186</font></td>
+
+          <td width="528" align="left" height="55"><font size="1">A part of code which executes when admin browses to the options page. You may use this to create new option pages with submenus to the option page.</font></td>
+        </tr>
+      </table>
+
+      <p><a href="#top">^</a><br>
+      &nbsp;</p>
+    </li>
+
+    <li>
+      <a name="I" id="I"><b>How can I add new workspaces?</b></a><br>
+      To add/define a new workspace <!-- J No need for hacks  -->
+       just append the name of the admin code where you want to place the anchor with call of function eval_addon_admin_workspace_menu:<br>
+
+      <div class='php-codes'>
+        eval_addon_admin_workspace_menu(<font color="#FF0000">'new_workspace','menu_name'</font>);
+      </div>where <font color="#FF0000">new_workspace</font> is the name of new workspace and <font color="#FF0000">'menu_name'</font> is the name of the menu that this workspace is working under. If you don't need to have submenu in that workspace/anchor you can only pass the first argument to the above function (e.g. eval_addon_admin_workspace_menu(<font color="#FF0000">'new_workspace'</font>); ).<br>
+      <a href="#top">^</a>
+    </li>
+
+    <li><a name="J" id="J"><b>Does Admin-Addons eliminate the need for hacks in Admin-Panel?</b></a><br>
+    Almost no hack is necessary in Admin-Panel unless there is no workspace available for the required functionality. Only in that case, a very simple hack can be done by <a href="#I">adding a new workspace</a> to that part of the code and assigning addons to that workspace. This way it will increase the modularity of the hacks/addons and also it will enormously simplify the procedure for users.<br>
+    <a href="#top">^</a></li>
+
+    <li><a name="K" id="K"><b>Are there any Admin-Addons available for download?</b></a><br>
+    Yes! Always check <a href="http://www.pixelpost.org">Pixelpost.org</a> &gt;&gt; addons for new admin addons!<br>
+    <a href="#top">^</a></li>
+
+    <li><b><a name="L" id="L">How could I add a new page to Admin-Panel with multiple submenus?</a><br></b>Adding submenus to a new page in the Admin-Panel is described <a href="#add_submenus">here</a> where the creation of new pages is discussed.<br>
+    <a href="#top">^</a></li>
+
+    <li><b><a name="other-q" id="other-q">I have other questions about Admin-Addons. What should I do?</a></b><br>
+    Check out <a href="http://forum.pixelpost.org">Pixelpost support forum</a> and ask your questions there.</li>
+  </ol>
+  <hr>
+
+  <p><a href="#top">Top of page</a></p>
+</body>
+</html>

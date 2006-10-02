@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title><SITE_TITLE></title>
+<!-- Link for ATOM feed autodiscovery -->
+<ATOM_AUTODETECT_LINK>
+<!-- Link for RSS feed autodiscovery -->
+<RSS_AUTODETECT_LINK>
+<!-- Meta-Information -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta http-equiv="content-type" name="keywords" content="PhotoBlog,<SITE_TITLE>,<IMAGE_TITLE>,Pixelpost" />
+<meta http-equiv="content-type" name="description" content="<SITE_TITLE>-PhotoBlog: <IMAGE_TITLE>, <IMAGE_NOTES_CLEAN>" />
+<base href="<SITE_URL>" />
+<!-- StyleSheet -->
+<link rel="stylesheet" type="text/css" href="./templates/pixelpost-dark/pixelpost-dark.css" />
+</head>
+
+<body>
+<div id="header">
+<SITE_TITLE> :: <SITE_PHOTONUMBER> photos posted :: <SITE_VISITORNUMBER> visitors
+</div>
+<p /><br />
+<div id="wrapper">
+<div id="image-info">
+<IMAGE_PREVIOUS_LINK> :: <a href="index.php">Current</a> :: <IMAGE_NEXT_LINK>
+</div>
+<a href="index.php?showimage=<IMAGE_PREVIOUS_ID>"><img id="image" src="./images/<IMAGE_NAME>" alt="<IMAGE_TITLE>" title="<IMAGE_PREVIOUS_TITLE>" width="<IMAGE_WIDTH>" height="<IMAGE_HEIGHT>" /></a>
+
+<div id="info-notes">
+<b><IMAGE_TITLE></b> <IMAGE_NOTES><br />
+<COMMENT_POPUP> (<IMAGE_COMMENTS_NUMBER>)
+
+<p />
+<EXIF_CAMERA_MODEL><br />
+<EXIF_EXPOSURE_TIME> <EXIF_APERTURE> <EXIF_FOCAL_LENGTH> <EXIF_FLASH>
+</div>
+</div>
+<a href="http://validator.w3.org/check/referer">Valid XHTML</a> |
+<a href="http://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a> |
+<SITE_RSS_LINK> | <SITE_ATOM_LINK> |
+<!-- Powered by PixelPost -->
+<a href="http://www.pixelpost.org" target="_new">Powered by Pixelpost 1.5</a>
+</body>
+</html>
