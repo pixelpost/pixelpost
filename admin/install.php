@@ -42,7 +42,7 @@ mysql_select_db($pixelpost_db_pixelpost) || die("Error: ". mysql_error());
 
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version( $pixelpost_db_prefix );
-if( $installed_version == 1.5 ) {
+if( $installed_version == 1.6 ) {
     header("Location: index.php");
     exit;
 }
@@ -152,6 +152,8 @@ switch( $installed_version ) {
 		UpgradeTo15beta($prefix,'1.49995');
 	case 1.5:
 		UpgradeTo15final($prefix,'1.5');
+	case 1.6:
+		UpgradeTo16($prefix,'1.6');
 		
 	
 	

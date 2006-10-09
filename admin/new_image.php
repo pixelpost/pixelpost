@@ -22,9 +22,11 @@ if($_GET['view'] == "")
    <div class="jcaption"><?php echo $admin_lang_ni_post_a_new_image; ?></div>
    <div class="content">
 	<?php echo $admin_lang_ni_image ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <input name="userfile" type="file" size="60" /><p />
+   <input name="userfile" type="file" size="76" /><p />
 	<?php echo $admin_lang_ni_image_title; ?>&nbsp;&nbsp;&nbsp;
-   <input type="text" name="headline" style="width:450px;" value="<?=$_POST['headline'];?>" /><p />
+   <input type="text" name="headline" style="width:550px;" value="<?=$_POST['headline'];?>" /><p />
+	<?php echo $admin_lang_ni_tags; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="text" name="tags" style="width:550px;" value="<?=$_POST['tags'];?>" /><p />
   <?php echo $admin_lang_ni_select_cat; ?>
 	<?php
 	category_list_as_table($_POST['category']);
@@ -339,6 +341,9 @@ if($_GET['view'] == "")
 					} // end else
 				} // gd info
 			} // function_exists
+
+			// save tags
+			save_tags_new($_POST['tags'],$theid);
 		} // end status ok
 	} // end save
 } // end view=null

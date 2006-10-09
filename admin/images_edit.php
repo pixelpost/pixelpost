@@ -9,7 +9,8 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 }
 
 // view=images
-if($_GET['view'] == "images") {
+if($_GET['view'] == "images")
+{
 	 // Mass add or delete categories to images
 	 $_GET['id'] = (int)$_GET['id'];
  		if($_GET['action'] == "masscatedit") {
@@ -68,55 +69,71 @@ if($_GET['view'] == "images") {
 
 
   // x=update
-    if($_GET['x'] == "update") {
-        $headline = clean($_POST['headline']);
-        $body = clean($_POST['body']);
-        $getid = $_GET['imageid'];
-        $newdatetime = $_POST['newdatetime'];
-        $query = "delete from ".$pixelpost_db_prefix."catassoc where image_id='$getid'";
-        $result = mysql_query($query) ||("Error: ".mysql_error());
-        eval_addon_admin_workspace_menu('image_update'); 
+    if($_GET['x'] == "update")
+    {
+			$headline = clean($_POST['headline']);
+			$body = clean($_POST['body']);
+			$getid = $_GET['imageid'];
+			$newdatetime = $_POST['newdatetime'];
+			save_tags_edit($_POST['tags'],$getid);
+			$query = "delete from ".$pixelpost_db_prefix."catassoc where image_id='$getid'";
+			$result = mysql_query($query) ||("Error: ".mysql_error());
+			eval_addon_admin_workspace_menu('image_update');
 //------------
 
-         if($_FILES['userfile']['tmp_name'] != "") {
-         $oldfilename = $_POST['oldfilename'];
-         $userfile = strtolower($_FILES['userfile']['name']);
-         $uploadfile = $upload_dir .$oldfilename;
-         if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-						 chmod($uploadfile, 0644);
-						 $result = check_upload($_FILES['userfile']['error']);
-						 //$filnamn =strtolower($_FILES['userfile']['name']);
-						 //$filnamn = $oldfilename
-						 $filtyp = $_FILES['userfile']['type'];
-						 $filstorlek = $_FILES['userfile']['size'];
-						 $status = "ok";
-						 createthumbnail($oldfilename);
-						 $file_reupload_str = '<br />'.$admin_lang_imgedit_file.'<b>' .$oldfilename .'</b> '.$admin_lang_imgedit_file_isuploaded;
-						 } else {
-						 // something went wrong, try to describe what
-						 if ($_FILES['userfile']['error']!='0')
-						 	$result = check_upload($_FILES['userfile']['error']);
-						 else $result = "$admin_lang_ni_upload_error";
-						 echo "<div id='warning'>$admin_lang_error ";
-						 echo "<br>$result</div><hr>";
+			if($_FILES['userfile']['tmp_name'] != "")
+			{
+				$oldfilename = $_POST['oldfilename'];
+				$userfile = strtolower($_FILES['userfile']['name']);
+				$uploadfile = $upload_dir .$oldfilename;
+
+				if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
+				{
+					chmod($uploadfile, 0644);
+					$result = check_upload($_FILES['userfile']['error']);
+					//$filnamn =strtolower($_FILES['userfile']['name']);
+					//$filnamn = $oldfilename
+					$filtyp = $_FILES['userfile']['type'];
+					$filstorlek = $_FILES['userfile']['size'];
+					$status = "ok";
+					createthumbnail($oldfilename);
+					$file_reupload_str = '<br />'.$admin_lang_imgedit_file.'<b>' .$oldfilename .'</b> '.$admin_lang_imgedit_file_isuploaded;
+				}
+				else
+				{
+						// something went wrong, try to describe what
+						if ($_FILES['userfile']['error']!='0')
+						{
+								$result = check_upload($_FILES['userfile']['error']);
+						}
+						else
+						{
+							$result = "$admin_lang_ni_upload_error";
+						}
+
+						echo "<div id='warning'>$admin_lang_error ";
+						echo "<br>$result</div><hr>";
 						 $status = "no";
-             } // end move
-           } // end prepare of file */
+				} // end move
+			} // end prepare of file */
 //------------
-		if (isset($_POST['category'])){
-			foreach($_POST['category'] as $val) {
+			if (isset($_POST['category']))
+			{
+				foreach($_POST['category'] as $val)
+				{
 					$category = $val;
 					$query  ="insert into ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'$val','$getid')";
 					$result = mysql_query($query) || die("Error: ".mysql_error());
 				}
-	   }
-        $query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category' where id='$getid'";
-        $result = mysql_query($query) ||("Error: ".mysql_error().$admin_lang_imgedit_db_error);
+			}
+
+			$query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category' where id='$getid'";
+			$result = mysql_query($query) ||("Error: ".mysql_error().$admin_lang_imgedit_db_error);
 
 
-        echo "<div class='jcaption'>$admin_lang_imgedit_update</div>
+			echo "<div class='jcaption'>$admin_lang_imgedit_update</div>
         <div class='content confirm'>$admin_lang_done $admin_lang_imgedit_updated #".$getid.". ".$file_reupload_str.	"</div><p />";
-        }
+    }
 
 		echo "<div id='caption'><b>$admin_lang_images</b></div>";
 
@@ -124,6 +141,7 @@ if($_GET['view'] == "images") {
     if($_GET['x'] == "delete") {
 	eval_addon_admin_workspace_menu('image_deleted'); 
         $getid = $_GET['imageid'];
+        del_tags_edit($getid);
         $imagerow = sql_array("SELECT image FROM ".$pixelpost_db_prefix."pixelpost where id='$getid'");
         $image = $imagerow['image'];
         $file_to_del = "$upload_dir".$imagerow['image'];
@@ -304,6 +322,7 @@ if($_GET['view'] == "images") {
 // edit image, list categories etc.
 
      if ($_GET['imagesview']=='edit' or $_GET['imagesview']=='')  {
+      $tags = list_tags_edit($_GET['id']);
 			echo "
 			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=$getid' enctype='multipart/form-data' accept-charset='UTF-8'>";
 			eval_addon_admin_workspace_menu("image_edit_form","images");
@@ -316,6 +335,9 @@ if($_GET['view'] == "images") {
 			<div class='jcaption'>$admin_lang_imgedit_title</div>
 			<div class='content'>
 				<input type='text' name='headline' value='$headline' style='width:300px;' />
+			</div>
+			<div class='jcaption'>$admin_lang_imgedit_tags</div>
+			<div class='content'><input type='text' name='tags' style='width:550px;' value='$tags' />
 			</div>
 			<div class='jcaption'>$admin_lang_imgedit_txt_desc</div>
 			<div class='content'>

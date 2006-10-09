@@ -958,4 +958,57 @@ function clean_comment($string)
 	return $string;
 }
 
+//=============================== TAGS SECTION BEGINS ===========================
+
+function save_tags_new($tags_str,$theid)
+{
+	global $pixelpost_db_prefix;
+
+	if(strlen($tags_str) > 0)
+	{
+		$tags = strtr($tags_str, ',', ' ');
+		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
+
+		for($i = 0; $i < count($tags_arr); $i++)
+		{
+			$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
+			mysql_query($sql_tag);
+		}
+	}
+}
+
+function list_tags_edit($id)
+{
+	global $pixelpost_db_prefix;
+	$tags = '';
+
+	$sql_tag = "SELECT tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " ORDER BY tag ASC";
+	$query = mysql_query($sql_tag);
+
+	while(list($tag) = mysql_fetch_row($query))
+	{
+		$tags .= ' '.$tag;
+	}
+	return $tags;
+}
+
+function save_tags_edit($tags_str,$id)
+{
+	global $pixelpost_db_prefix;
+
+	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id;
+	mysql_query($sql_tag);
+
+	save_tags_new($tags_str,$id);
+}
+
+function del_tags_edit($id)
+{
+	global $pixelpost_db_prefix;
+
+	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id;
+	mysql_query($sql_tag);
+}
+//
+//=============================== TAGS SECTION ENDS =============================
 ?>

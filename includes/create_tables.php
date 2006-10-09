@@ -439,6 +439,19 @@ global $pixelpost_db_prefix;
 	}	
 }
 
+function UpgradeTo16( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+
+	$table = $prefix."tags";
+	mysql_query("CREATE TABLE `$table` (
+`img_id` INT NOT NULL ,
+`tag` TINYTEXT NOT NULL
+);")
+			or die("Error: ". mysql_error());
+
+}
+
 // Upgrade the version table from the 1.4 to the 141
 function UpgradeTo141( $prefix )
 {
