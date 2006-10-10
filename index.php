@@ -925,6 +925,8 @@ $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
 $tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
+$tag_list = list_tags_frontend();
+$tpl = str_replace("<TAG_LIST>",$tag_list,$tpl);
 
 // ##########################################################################################//
 // SAVE COMMENT

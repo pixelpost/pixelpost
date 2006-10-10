@@ -967,6 +967,11 @@ function save_tags_new($tags_str,$theid)
 	if(strlen($tags_str) > 0)
 	{
 		$tags = strtr($tags_str, ',', ' ');
+		$pat1 = '/([^a-zA-Z 0-9_]+)/';
+		$tags = preg_replace( $pat1, '_', $tags);
+		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/');
+		$rep2 = array('', '', '_');
+		$tags = preg_replace( $pat2, $rep2, $tags);
 		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
 
 		for($i = 0; $i < count($tags_arr); $i++)
@@ -1008,6 +1013,39 @@ function del_tags_edit($id)
 
 	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id;
 	mysql_query($sql_tag);
+}
+
+function list_tags_frontend()
+{
+	global $pixelpost_db_prefix;
+	$tags['tag'] = array();
+	$tags['val'] = array();
+	$tag_list = '';
+	$tag_count = 0;
+
+	$sql_tag = "SELECT tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags GROUP BY tag ORDER BY a";
+	$query = mysql_query($sql_tag);
+
+	while(list($tag,$val) = mysql_fetch_row($query))
+	{
+		$tags['tag'][] = $tag;
+		$tags['val'][] = $val;
+		$tag_count++;
+	}
+
+	$max = max($tags['val']);
+
+	for($i = 0; $i < $tag_count; $i++)
+	{
+		$weight = round($tags['val'][$i]/$max,1);
+		$weight = substr($weight,0,1).substr($weight,2,1);
+		$tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $tags['tag'][$i] . '\' class=\'tag' . $weight . '\'>' . $tags['tag'][$i] . '</a>';
+	}
+
+	$tag_list = substr($tag_list, 1);
+	$tag_list = strtr($tag_list, array("='tag1'" => "='tag10'"));
+
+	return $tag_list;
 }
 //
 //=============================== TAGS SECTION ENDS =============================
