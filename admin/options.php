@@ -28,13 +28,22 @@ if ($_GET['optaction']=='updateall'){
         //break;
 
     //case "updateadmin": // admin user+password
-    if ($_POST['newadminpass']!= '' ){
-    		if ($_POST['newadminpass_re'] == $_POST['newadminpass']){
-         $new_pass = md5($_POST['newadminpass']);
-         $update = sql_query("update ".$pixelpost_db_prefix."config set admin='".$_POST['new_admin_user']."', password='$new_pass' where admin='".$cfgrow['admin']."'");
-         echo "<div class='content confirm'>$admin_lang_optn_pass_chngd_txt</div>";
-         }else if ( $_POST['newadminpass_re']!='') echo "<div class='content confirm'>$admin_lang_optn_pass_notchngd_txt</div>";
-        }
+		if ($_POST['newadminpass']!= '')
+		{
+			if ($_POST['newadminpass_re'] == $_POST['newadminpass'])
+			{
+				$new_pass = md5($_POST['newadminpass']);
+				$update = sql_query("update ".$pixelpost_db_prefix."config set admin='".$_POST['new_admin_user']."', password='$new_pass' where admin='".$cfgrow['admin']."'");
+				echo "<div class='content confirm'>$admin_lang_optn_pass_chngd_txt</div>";
+		    unset($_SESSION["pixelpost_admin"]);
+		   	setcookie( "pp_user", "", time()-36000);
+		   	setcookie( "pp_password", "", time()-36000);
+		  }
+		  elseif ( $_POST['newadminpass_re']!='')
+		  {
+		  	echo "<div class='content confirm'>$admin_lang_optn_pass_notchngd_txt</div>";
+		  }
+    }
          //break;
 
     //case "updatelang":
