@@ -50,7 +50,7 @@ $admin_start_userpw           = "Username or Password incorrect.";
 $admin_start_pw_forgot        = "Forgot password?";
 $admin_start_browser_title    = "ADMIN";
 $admin_start_welcome          = "Welcome to Pixelpost Admin - You need to login.";
-$admin_start_pp_name          = "Link to your Pixelpost-Site:";
+$admin_start_pp_name          = "Link to your Pixelpost Photoblog:";
 $admin_start_pp_tit           = "click here to load your photoblog";
 $admin_start_cookie           = "Login sets a cookie";
 $admin_start_username         = "Username";
@@ -78,7 +78,7 @@ $admin_lang_pw_noemail          = "You did not mention email address at all! \n<
 $admin_lang_pw_notsent          = "Nothing send! \n<br /> The email address you have entered is not the email address you have set in the admin panel.<br />";
 $admin_lang_pw_subject          = "Pixelpost Password Recovery Message";
 $admin_lang_pw_usertext         = "Your User-Name:"; 
-$admin_lang_pw_mailtext         = "Your email-Adress:";
+$admin_lang_pw_mailtext         = "Your Email Address:";
 $admin_lang_pw_newpw            = "Your new password:";
 $admin_lang_pw_text_1           = "This the password recovery of Pixelpost";
 $admin_lang_pw_text_2           = "From: Pixelpost Admin Section";
@@ -87,7 +87,7 @@ $admin_lang_pw_text_4           = "<span style='color:red;'>Error! Something hap
 $admin_lang_pw_text_5           = "Database error:";
 $admin_lang_pw_text_6           = "<br />Updating the new password failed.";
 $admin_lang_pw_text_7           = "This email is sent automatically from the LogIn of your Photoblog.\nSomebody requested a new password for the Admin Section.\n\nYou should log in to your Photoblog\n\nat ";
-$admin_lang_pw_text_8           = "\n\nand login with that new password to reset this automatical generated password\n\nimmediately!";
+$admin_lang_pw_text_8           = "\n\nand login with that new password to reset this automatically generated password\n\nimmediately!";
 
 // Admin Menu
 $admin_lang_new_image          = "New Image";
@@ -127,7 +127,7 @@ $admin_lang_ni_missing_data       = "Missing data<br />\nYou need at least a tit
 $admin_lang_ni_crop_nextstep      = "Now you should select the thumbnail window:";
 $admin_lang_ni_crop_background    = "This is the background of the image to crop";
 $admin_lang_ni_post_exif_date     = "Use exif date";
-$admin_lang_ni_db_error           = "an error occured writing into database";
+$admin_lang_ni_db_error           = "an error occurred writing into database";
 $admin_lang_ni_tags               = "Tags";
 
 // Images
@@ -141,7 +141,7 @@ $admin_lang_imgedit_delete          = "Delete";
 $admin_lang_imgedit_deleted         = "Post removal / Image deletion / thumbnail deletion";
 $admin_lang_imgedit_deleted1        = "Post deleted.";
 $admin_lang_imgedit_deleted2        = "Image deleted.";
-$admin_lang_imgedit_delete_error    = "Could not delete imagefile.\n
+$admin_lang_imgedit_delete_error    = "Could not delete image file.\n
                                        You have to do that some other way, with your ftp software perhaps.";
 $admin_lang_imgedit_deleted3        = "Thumbnail deleted.";
 $admin_lang_imgedit_delete_error2   = "Could not delete thumbnail.\n
@@ -152,14 +152,14 @@ $admin_lang_imgedit_file_isuploaded = "is re-uploaded!";
 $admin_lang_imgedit_update          = "Image update";
 $admin_lang_imgedit_updated         = "Updated image";
 $admin_lang_imgedit_txt_desc        = "Text/description:";
-$admin_lang_imgedit_dtime           = "Datetime:";
+$admin_lang_imgedit_dtime           = "Date-time:";
 $admin_lang_imgedit_img             = "Image:";
 $admin_lang_imgedit_fsize           = "File-Size:";
 $admin_lang_imgedit_12cropimg       = "CropImage tool:";
 $admin_lang_imgedit_12cropimg_txt   = "To edit the thumbnail for this photo, drag the crop window with mouse or expand/shrink it with '+'/'-' buttons:";
 $admin_lang_imgedit_uthmb_button    = "Update Thumbnail";
 $admin_lang_imgedit_u_post_button   = "Update Post";
-$admin_lang_imgedit_title1          = "Images - Reupload, Edit or Delete images || ";
+$admin_lang_imgedit_title1          = "Images - Re-upload, Edit or Delete images || ";
 $admin_lang_imgedit_title2          = " image(s) in the database \n<br /> Showing ";
 $admin_lang_imgedit_title3          = " posts, page ";
 $admin_lang_imgedit_title4          = " of ";
@@ -175,7 +175,7 @@ $admin_lang_imgedit_tags                 = $admin_lang_ni_tags;
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "Mass edit category";
 $admin_lang_imgedit_mass_2          = "Assign";
-$admin_lang_imgedit_mass_3          = "Unassign";
+$admin_lang_imgedit_mass_3          = "Un-Assign";
 $admin_lang_imgedit_mass_4          = "Update in mass";
 
 
@@ -220,13 +220,13 @@ $admin_lang_cmnt_save               = "Save";
 $admin_lang_cmnt_massdelete_text    = "Check all comments, which you want to delete at once";
 $admin_lang_cmnt_js_del_comm        = "Are you sure you want to delete that comment?";
 $admin_lang_cmnt_publish_sel        = "Publish Selected";
-$admin_lang_cmnt_unpublish_sel      = "Add to mooderation queue";
+$admin_lang_cmnt_unpublish_sel      = "Add to moderation queue";
 $admin_lang_cmnt_published          = "Published";
 $admin_lang_cmnt_unpublished_cmnts  = "previously masked comment(s).";
 $admin_lang_cmnt_unpublished        = "Masked";
 $admin_lang_cmnt_published_cmnts    = "previously published comment(s).";
 $admin_lang_cmnt_error_blacklist    = "Error in updating the blacklist: ";
-$admin_lang_cmnt_error_banlist      = "Error in updating the referer ban list: ";
+$admin_lang_cmnt_error_banlist      = "Error in updating the referrer ban list: ";
 $admin_lang_cmnt_moderation_que     = "Moderation queue";
 $admin_lang_cmnt_rep_spam           = 'Report Spam';
 
@@ -295,7 +295,7 @@ $admin_lang_optn_visitorbooking_desc  = 'Should Pixelpost book information of ev
 $admin_lang_optn_upd_done             = "Update done.";
 
 // Info
-$admin_lang_info_gd                  = "Not installed, ask your hoster to install it for you!";
+$admin_lang_info_gd                  = "Not installed, ask your host to install it for you!";
 $admin_lang_info_gd_jpg              = "with JPEG support";
 $admin_lang_pp_version1              = "Latest Pixelpost version:";
 $admin_lang_pp_forum                 = "Looking for help or want to give feedback, please step into Pixelpost forum.";
@@ -318,7 +318,7 @@ $admin_lang_pp_addfolder             = "Addons Directory:";
 $admin_lang_pp_incfolder             = "Includes Directory:";
 $admin_lang_pp_tempfolder            = "Templates Directory:";
 $admin_lang_pp_folder_missing        = "Does Not Exist (should be";
-$admin_lang_pp_ref_log_title         = "Referers of Last Seven Days";
+$admin_lang_pp_ref_log_title         = "Referrers of Last Seven Days";
 $admin_lang_hostinfo                 = "Host Information";
 $admin_lang_fileuploads              = "<b>File Uploads</b> to Pixelpost site are";
 $admin_lang_serversoft               = "Server Software";
@@ -351,31 +351,31 @@ $admin_lang_spam_err_1      = "Error in creating banlist table: ";
 $admin_lang_spam_tableadd   = "Banlist table is added to fight spam from core";
 $admin_lang_spam_err_2      = "Error in updating the moderation list: ";
 $admin_lang_spam_err_3      = "Error in updating the blacklist: ";
-$admin_lang_spam_err_4      = "Error in updating the referer ban list: ";
+$admin_lang_spam_err_4      = "Error in updating the referrer ban list: ";
 $admin_lang_spam_err_5      = "Error in updating the acceptable number of links in comments : ";
 $admin_lang_spam_upd        = "Successfully updated all ban-lists";
 $admin_lang_spam_err_6      = "Error in updating the comments when comparing with moderation list: ";
 $admin_lang_spam_com_upd    = "Past: comments are compared with the moderation list ";
 $admin_lang_spam_err_7      = "Error in deleting the comments when comparing with blacklist: ";
 $admin_lang_spam_com_del    = "Past: comments which contain words/IPs from the blacklist are deleted.";
-$admin_lang_spam_err_8      = "Error in deleting the visitors when comparing with bad-referers-list: ";
-$admin_lang_spam_visit_del  = "Visitors with words/IPs from the bad-referer-list are deleted.";
+$admin_lang_spam_err_8      = "Error in deleting the visitors when comparing with bad-referrers-list: ";
+$admin_lang_spam_visit_del  = "Visitors with words/IPs from the bad-referrer-list are deleted.";
 
 // Spam 
 $admin_lang_spam_ban        = "Update Ban Lists";
-$admin_lang_spam_content    = "Add lists of banned words/IPs/names to the textboxs below, one word per line.<br/>\n
+$admin_lang_spam_content    = "Add lists of banned words/IPs/names to the text-boxes below, one word per line.<br/>\n
                                Any comment with a word, an IP, or name inside the moderation list will be sent to the moderation queue.<br/>\n
                                Any comment with a word, an IP, or name inside the black list never gets permission to enter the comment list.<br/>
-                               Any visitor with the IP inside the <b>Referer Banned List</b> or with address that contains words in that list will\n
+                               Any visitor with the IP inside the <b>Referrer Banned List</b> or with address that contains words in that list will\n
                                be denied from accessing your photoblog. ( You should add the given code to .htaccess to make it work!)";
 $admin_lang_spam_modlist    = "Moderation List";
 $admin_lang_spam_blacklist  = "Black List";
-$admin_lang_spam_reflist    = "Referer Banned List";
-$admin_lang_spam_blacklist_text = "Copy the code below (CTRL+A and CTRL+C in Windows) and paste it into .htaccess file of your website to ban spam IPs and referers.";
+$admin_lang_spam_reflist    = "Referrer Banned List";
+$admin_lang_spam_blacklist_text = "Copy the code below (CTRL+A and CTRL+C in Windows) and paste it into .htaccess file of your website to ban spam IPs and referrers.";
 $admin_lang_spam_htaccess_text = "Get .htaccess code";
 $admin_lang_spam_check_comm  = "Check Past Comments";
 $admin_lang_spam_del_bad_comm = "Delete Bad Comments";
-$admin_lang_spam_del_bad_ref = "Delete Bad Referers";
+$admin_lang_spam_del_bad_ref = "Delete Bad Referrers";
 $admin_lang_spam_updateblacklist = "Update All Banlists";
 
 // End of Admin-Language-File 
