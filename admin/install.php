@@ -150,10 +150,16 @@ switch( $installed_version ) {
 		//UpgradeTo15012($prefix);
 	case 1.4995:
 		UpgradeTo15beta($prefix,'1.49995');
-	case 1.5:
+	//case 1.5:
+	//	UpgradeTo15final($prefix,'1.5');
+	//case 1.6:
+	//	UpgradeTo16($prefix,'1.6');
+	// Changed the above code to:
+	case 1.49995:  //upgrade from beta to final 1.5
 		UpgradeTo15final($prefix,'1.5');
-	case 1.6:
+	case 1.5:  //upgrade from final to SVN 1.6
 		UpgradeTo16($prefix,'1.6');
+	
 		
 	
 	
