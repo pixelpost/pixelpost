@@ -426,10 +426,11 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$tpl = ereg_replace("<IMAGE_PREVIOUS_THUMBNAIL>",$image_previous_thumbnail,$tpl);
 	$tpl = ereg_replace("<IMAGE_PREVIOUS_ID>",$image_previous_id,$tpl);
 	$tpl = ereg_replace("<IMAGE_PREVIOUS_TITLE>",$image_previous_title,$tpl);
+	$tpl = ereg_replace("<IMAGE_NEXT_LINK>",$image_next_link,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_ID>",$image_next_id,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_TITLE>",$image_next_title,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_THUMBNAIL>",$image_next_thumbnail,$tpl);
-	$tpl = ereg_replace("<IMAGE_NEXT_LINK>",$image_next_link,$tpl);
+	
 
 	// get number of comments
 	$cnumb_row = sql_array("SELECT count(*) as count FROM ".$pixelpost_db_prefix."comments WHERE parent_id='$image_id' and publish='yes'");
