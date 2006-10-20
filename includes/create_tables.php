@@ -450,6 +450,13 @@ function UpgradeTo16( $prefix, $newversion)
 );")
 			or die("Error: ". mysql_error());
 
+	//the following code was forgotten. This would caused an infinite install.php loop when updating.
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES (1.6)
+	") or die("Error: ". mysql_error());
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.6 SVN ...</li>";
+
 }
 
 // Upgrade the version table from the 1.4 to the 141
