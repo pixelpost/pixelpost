@@ -848,18 +848,18 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 	$tzoner = $tprefix.$hh.":".$mm;
 	$url = $cfgrow['siteurl'];
 	$atom = "<?xml version='1.0' encoding='UTF-8'?>
-         <feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>
-	     <title>$pixelpost_site_title photoblog</title>
-	    <link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />
-	 <link rel='self' href='".$cfgrow['siteurl']."index.php?x=atom' title='".$pixelpost_site_title."' />	  
+   <feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>
+   <title>$pixelpost_site_title photoblog</title>
+   <link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />
+	 <link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom' title='".$pixelpost_site_title."' />	 
 	 <author>
 	 <name>".$pixelpost_site_title."</name>
 	 <uri>$url</uri>
 	 </author>
 	 <generator uri='http://www.pixelpost.org/' version='1.5BETA'>PixelPost</generator>
-	  <id>$url</id>
-	    <updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>
-	    ";
+	 <id>$url</id>
+	 <updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>
+";
 	$tag_url = $_SERVER['HTTP_HOST'];
 	$query = mysql_query("SELECT id,datetime,headline,body,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime <='$cdate') ORDER BY datetime desc limit 0,20");
 
@@ -881,18 +881,18 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 			$modified_date =substr($datetime,0,10);
 		$modified_date = $modified_date."T".(substr($datetime,11,8));
 		$datetime = strtotime($datetime);
-		$atom .= "<entry xmlns='http://www.w3.org/2005/Atom'>
-		<title type='html'>$headline</title>
+		$atom .= "	 <entry xmlns='http://www.w3.org/2005/Atom'>
+	  <title type='html'>$headline</title>
 		<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."?showimage=$id' title='$headline' />
-	    <id>tag:$tag_url,$id_date:/$id</id>
-        	<content type='html'>
-		<![CDATA[
+	  <id>tag:$tag_url,$id_date:/$id</id>
+    <content type='html'>
+		  <![CDATA[
         	<img src='$image' /><br />$headline<br />$body]]>
-	        </content>
-	     <published>$tag_date</published>
-	     <updated>$modified_date$tzoner</updated>
-	       </entry>
-		        ";
+	  </content>
+	  <published>$tag_date</published>
+	  <updated>$modified_date$tzoner</updated>
+	 </entry>
+";
 		}
 
 	$atom .= "</feed>";
