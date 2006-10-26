@@ -110,7 +110,7 @@ else
 // Double Quotes in <SITE_TITLE> break HTML Code
 $pixelpost_site_title = $cfgrow['sitetitle'];
 $pixelpost_site_title = pullout($cfgrow['sitetitle']);
-$pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_COMPAT);
+$pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_QUOTES);
 
 
 //  Added ability to use header and footers for templates.  They are not needed but used if included in the template
@@ -770,7 +770,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
     <channel>
     <title>".$pixelpost_site_title."</title>
     <link>".$cfgrow['siteurl']."</link>
-    <description>$pixelpost_site_title photoblog</description>
+    <description>$pixelpost_site_title</description>
     <docs>http://blogs.law.harvard.edu/tech/rss</docs>
     <generator>pixelpost</generator>
     ";
