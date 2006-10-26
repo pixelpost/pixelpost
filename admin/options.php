@@ -20,11 +20,26 @@ if($_GET['view'] == "options") {
 if ($_GET['optaction']=='updateall'){
 	if($_GET['optionsview']=='' OR $_GET['optionsview']=='general'){
     //case "updatetitle":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".$_POST['new_site_title']."' where admin='".$cfgrow['admin']."'");
+    		if(!get_magic_quotes_gpc()) 
+				{
+						// we need to escape the string before saving it to the db
+						$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".addslashes($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
+				} else {
+        		$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
+        }
         //break;
 
     //case "updateurl":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".$_POST['new_site_url']."' where admin='".$cfgrow['admin']."'");
+    		if(!get_magic_quotes_gpc()) 
+				{
+						// we need to escape the string before saving it to the db
+				    $update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".addslashes($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
+    
+				} else {
+     		    $update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
+    
+        }
+    
         //break;
 
     //case "updateadmin": // admin user+password
