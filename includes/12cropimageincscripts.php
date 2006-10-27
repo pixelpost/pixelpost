@@ -16,7 +16,10 @@
 /////				 compatible with Pixelpost (Pixelpost.org) and the original php
 /////				 file has been broken into seperated parts.
 /////
-///// CVS file version: $Id: 12cropimageincscripts.php,v 1.7 2006/07/09 11:10:20 gajcy Exp $
+///// SVN file version:
+///// $Rev: 24 $
+///// $LastChangedBy: Administrator $
+///// $LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 /////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

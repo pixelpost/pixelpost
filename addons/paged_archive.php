@@ -5,7 +5,10 @@ Requires Pixelpost version 1.4 or newer
 Page-By-Page-Archive
 ADDON-Version 1.1
 
-CVS file version: $Id: paged_archive.php,v 1.16 2006/09/19 17:54:44 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Version 1.1: Fixed regex issue
 

@@ -2,7 +2,10 @@
 // Admin-Ping addon for Pixelpost 1.5 
 // Version 1.0
 // 
-// CVS file version: $Id: admin_ping.php,v 1.14 2006/07/09 11:15:22 gajcy Exp $
+// SVN file version:
+// $Rev: 24 $
+// $LastChangedBy: Administrator $
+// $LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 //
 // Written By Ramin Mehran - 2005/06/22
 //

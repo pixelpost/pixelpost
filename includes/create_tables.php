@@ -3,7 +3,10 @@
 
 Pixelpost version 1.5
 
-CVS file version: $Id: create_tables.php,v 1.22 2006/07/26 21:52:33 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Pixelpost www: http://www.pixelpost.org/
 

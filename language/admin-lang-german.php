@@ -6,7 +6,10 @@ admin-lang-german.php : german language file for Pixelpost-Admin-Section
 ========================================================================
 Pixelpost version 1.5
 
-CVS file version: $Id: admin-lang-german.php,v 1.28 2006/06/20 22:40:17 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Language file: german (D)
 Author:  Connie Mueller-Goedecke

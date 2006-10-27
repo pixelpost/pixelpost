@@ -6,7 +6,10 @@
 Admin Sample 12CropImage addon 1.0
 Pixelpost 1.5
 
-CVS file version: $Id: admin_12CropImage.php,v 1.11 2006/07/12 06:17:10 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 ================================================================
 Provided as a basic example.

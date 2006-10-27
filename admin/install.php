@@ -3,7 +3,10 @@
 /*
 Pixelpost version 1.5
 
-CVS file version: $Id: install.php,v 1.15 2006/07/25 19:08:15 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Pixelpost www: http://www.pixelpost.org/
 

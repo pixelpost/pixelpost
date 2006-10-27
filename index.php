@@ -3,7 +3,10 @@
 
 Pixelpost version 1.5
 
-CVS file version: $Id: index.php,v 1.83 2006/08/14 19:14:08 conniemg Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Pixelpost www: http://www.pixelpost.org/
 

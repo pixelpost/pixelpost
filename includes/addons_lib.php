@@ -1,6 +1,9 @@
 <?php
 
-// CVS file version: $Id: addons_lib.php,v 1.3 2006/06/20 22:40:17 gajcy Exp $
+// SVN file version:
+// $Rev: 24 $
+// $LastChangedBy: Administrator $
+// $LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 $query_ad_s = "SELECT * FROM {$pixelpost_db_prefix}addons WHERE status='on'";
 $query_ad_s = mysql_query($query_ad_s);

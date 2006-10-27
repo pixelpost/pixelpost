@@ -1,11 +1,14 @@
-<?php
+﻿<?php
 /*
 
 admin-lang-polish.php : polish language file for PixelPost-Admin-Section
 ========================================================================
 Pixelpost version 1.5
 
-CVS file version: $Id: admin-lang-polish.php,v 1.20 2006/06/20 22:40:17 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Language file: polish (PL)
 Author:  Piotr "GeoS" Galas

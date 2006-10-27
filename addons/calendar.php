@@ -7,7 +7,10 @@ Calendar addon version 1.1.4
 Modified by jdleung 2006.05.23
 Contact: jdleung@yahoo.com
 
-CVS file version: $Id: calendar.php,v 1.14 2006/09/19 17:54:44 gajcy Exp $
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 Pixelpost www: http://www.pixelpost.org/
 

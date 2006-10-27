@@ -1,5 +1,10 @@
 Pixelpost version 1.5
 
+SVN file version:
+$Rev: 24 $
+$LastChangedBy: Administrator $
+$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+
 Welcome as User of PixelPost!
 
 This file provides you with the necessary steps to upgrade from

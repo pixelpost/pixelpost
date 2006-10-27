@@ -1,6 +1,9 @@
 <?php
 
-// CVS file version: $Id: referer_spam.php,v 1.6 2006/06/20 22:40:16 gajcy Exp $
+// SVN file version:
+// $Rev: 24 $
+// $LastChangedBy: Administrator $
+// $LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
 
 // Admin page
 if( isset( $_GET['view'] ) && $_GET['view']=='addons' ) 
