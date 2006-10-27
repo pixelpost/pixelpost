@@ -1,9 +1,7 @@
 ﻿Pixelpost version 1.5
 
 SVN file version:
-$Revision: 24 $
-$LastChangedBy: Administrator $
-$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+$Id$
 
 Welcome to the PixelPost Version 1.5!
 
