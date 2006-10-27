@@ -6,9 +6,7 @@ admin-lang-english.php : english (default) language file for PixelPost-Admin-Sec
 Pixelpost version 1.5
 
 SVN file version:
-$Rev: 24 $
-$LastChangedBy: Administrator $
-$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+$Id$
 
 Pixelpost www: http://www.pixelpost.org/
 Pixelpost forum: http://forum.pixelpost.org

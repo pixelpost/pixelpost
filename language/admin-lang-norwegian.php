@@ -6,9 +6,7 @@ admin-lang-norwegian.php : norwegian language file for PixelPost-Admin-Section
 Pixelpost version 1.5
 
 SVN file version:
-$Rev: 24 $
-$LastChangedBy: Administrator $
-$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+$Id$
 
 Language file: norwegian (NO)
 Author:  John Christian Olsen

@@ -18,9 +18,7 @@
 /////  			 Updated in release of Pixelpost 1.5 for PHP 4.4.1 and PHP 5.1.1 compatibility.
 /////
 ///// SVN file version:
-///// $Rev: 24 $
-///// $LastChangedBy: Administrator $
-///// $LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+///// $Id$
 /////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // set the 12cropimage file path (in the include directory)

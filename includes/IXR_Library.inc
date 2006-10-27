@@ -3,9 +3,7 @@
 /*
 
 SVN file version:
-$Rev: 24 $
-$LastChangedBy: Administrator $
-$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+$Id$
 
    IXR - The Inutio XML-RPC Library - (c) Incutio Ltd 2002
    Version 1.61 - Simon Willison, 11th July 2003 (htmlentities -> htmlspecialchars)

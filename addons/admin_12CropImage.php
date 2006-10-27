@@ -7,9 +7,7 @@ Admin Sample 12CropImage addon 1.0
 Pixelpost 1.5
 
 SVN file version:
-$Rev: 24 $
-$LastChangedBy: Administrator $
-$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+$Id$
 
 ================================================================
 Provided as a basic example.

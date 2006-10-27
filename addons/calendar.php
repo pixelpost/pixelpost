@@ -8,9 +8,7 @@ Modified by jdleung 2006.05.23
 Contact: jdleung@yahoo.com
 
 SVN file version:
-$Rev: 24 $
-$LastChangedBy: Administrator $
-$LastChangedDate: 2006-07-24 02:24:39 +0200 (Pn, 24 lip 2006) $
+$Id$
 
 Pixelpost www: http://www.pixelpost.org/
 
