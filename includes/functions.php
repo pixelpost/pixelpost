@@ -82,7 +82,7 @@ function print_comments($imageid) {
 			}
 		$comment_datetime = strtotime($comment_datetime);
 		$comment_datetime = date($cfgrow['dateformat'],$comment_datetime);
-		$image_comments .= "<li>".nl2br($comment_message)."<br />$comment_name @ $comment_datetime</li>";
+		$image_comments .= "<li>$comment_message<br />$comment_name @ $comment_datetime</li>";
 		$comment_count++;
 		}
 	if($comment_count == 0) { $image_comments .= "<li>$lang_no_comments_yet</li>"; }
