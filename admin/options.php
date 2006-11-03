@@ -274,8 +274,10 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 					$file = ereg_replace(".php","",$file);
 		// check that admin-language-files are not listed
 					$admin_pre = substr("$file",0,6);
-					if ($admin_pre != "admin-")
-					{echo "<option value='$file'>$file</option>";}
+					if ($admin_pre != "admin-"){
+						if ($file !== $cfgrow['langfile']) {
+						echo "<option value='$file'>$file</option>";}
+						}
 					}
 				}
 			closedir($handle);
