@@ -20,14 +20,9 @@ GNU General Public License for more details.
 
 
 /* TODO list:
-+ Provide a nice description on the admin page
-+ Provide a nice message when in the <LANGUAGE=XX> tag a nonavailable language is given
-+ Provide LANGUAGE file support in some way
 + Talk about Persian not being a country and determine if language is really Farsi
 + Ask Jdleung about simplified chinese.
-+ Thing of a better tag then <CH_LANG> (<PP_SECOND_LANG> ???)
 + Talk to Piotr or Will about the comments on top
-+ Make function create_language_url_from_tag more robust
 
 */
 $addon_name = "Bilingual addon (for PP 1.6 SVN)";
@@ -61,7 +56,6 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 		$addon_message = "<p><font style='color:#ff0000;font-weight:bold;'>Fields succesfully created, installation completed.</font></p>";
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 	}
-
 	// Perform update routine if update was pressed
 	if($_GET['addonaction'] =='updatelang')
 	{
@@ -71,7 +65,18 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 	}
 	
 	// do admin stuff (to be written)
- 	$addon_description="
+	$addon_description="This addon provides language support in Pixelpost and introduces two tags for inclusion in the templates:<br />
+	<strong>&lt;SECONDARY_LANGUAGE&gt;</strong> => Provides an URL to switch from the default to the secondary language and vice versa<br />
+	<strong>&lt;LANGUAGE=XX&gt;</strong> => Provides an URL to another language where XX is the country code</br /><br />
+	When the provided URL is clicked a language variable is set and the corresponding language file is loaded. 
+	Based on the language selection specific templates are also loaded. For each supported language a set of corresponding 
+	template files must be present in the format \"name_xx_template.html\" (where xx is the language code in lowercase).<br /><br />
+	An example: let's assume you want to support Polish (language code=PL). When the corresponding URL is clicked the Polish language
+	file is loaded and the system search for \"image_pl_template.html\", \"browse_pl_template.html\" and so on. If these templates are
+	not present the language isn't supported.<br /><br />
+	Select secondary language:<br />
+	";
+ 	$addon_description=$addon_description."
  			<form method='post' action='$PHP_SELF?view=addons&amp;addonaction=updatelang' accept-charset='UTF-8'>
  			<select name='second_lang'>
 			<option value='".$cfgrow['secondlangfile']."'>".$cfgrow['secondlangfile']."</option>
@@ -106,43 +111,18 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 else
 {
 	// if we are not in the adminpanel do this code
-	if($admin_panel != 1){
+	if(isset($PP_supp_lang)){
   	// Aditional functions
   	function create_language_url_from_tag( $language_link_abr, $language_link_full ){
-  			// If the query string is empty or already contains only previous language query, only need to pass the new language query
-  		$language_link="<a href='".$_SERVER['PHP_SELF'];
-  		if (( $_SERVER["QUERY_STRING"] == "" )OR( substr( $_SERVER["QUERY_STRING"],0,5) == "lang=" ) ){
-      	$language_link = $language_link."?lang=".strtolower( $language_link_abr );
+			if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0]=="lang=",0,5))){
+  			$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
   		} else {
-  			// If the query string is not empty, collect all the elements of the query for reassembly with new language query
-  	  	// Extract queries on "browse" and "about" pages and other custom pages
-      	if( isset($_GET['x'])) {
-          $templatequery = "x=".$_GET['x'];
-          if( isset($_GET['category']))
-              $categoryquery = "&amp;category=".$_GET['category'];
-          else
-              $categoryquery = "";
-          if( isset($_GET['archivedate']))
-              $archivequery = "&amp;archivedate=".$_GET['archivedate'];
-          else
-              $archivequery = "";
-          // reassemble the query with the new language instruction        
-          $language_link = $language_link."?".$templatequery.$categoryquery.$archivequery."&amp;lang=".strtolower( $language_link_abr );
-      	} else {
-      		// Extract queries on "image" page with GeoS Browse addon and JBGmap addon enabled
-          $imagequery = "showimage=".$_GET['showimage'];
-          if( isset($_GET['category']))
-              $categoryquery = "&amp;category=".$_GET['category'];
-          else
-              $categoryquery = "";
-          // reassemble the query with the new language instruction        
-          $language_link = $language_link."?".$imagequery.$categoryquery."&amp;lang=".strtolower( $language_link_abr );
-      	}
-    	}
-    	$language_link = $language_link."'>".$language_link_full."</a>";
-    	return $language_link;
+  			$arguments=str_replace("&","&amp;",$_SERVER['argv'][0]);
+  			$language_link="<a href='".$_SERVER['PHP_SELF']."?".$arguments."&amp;lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
+  		}
+  		return $language_link;
   	}
-  	
+ 	
   	// TAG REPLACEMENT AND BUILD UP
   		// This addon supports a switch_language tag to enable the user to switch to another
   	// language. 
@@ -169,7 +149,7 @@ else
   	$language_link_full=$PP_supp_lang[$language_link_key][1];
   	$language_link	=	create_language_url_from_tag( $link_language_abr, $language_link_full  );
   	// Create one template tag for all templates and both languages
-  	$tpl = str_replace("<CH_LANG>",$language_link,$tpl); 
+  	$tpl = str_replace("<SECONDARY_LANGUAGE>",$language_link,$tpl); 
   	
   	
   	// support for <LANGUAGE=XX> TAG
