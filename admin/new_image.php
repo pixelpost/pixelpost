@@ -152,10 +152,30 @@ if($_GET['view'] == "")
     </div>
 		<?php // workspace: new_image_form
 		eval_addon_admin_workspace_menu('new_image_form');
+		// added for language support
+		// Check if the language addon is enabled. If not there is no need to show these fields
+			$language_enabled = sql_array("SELECT * FROM ".$pixelpost_db_prefix."addons where addon_name = 'admin_language'");
+			$language_status = pullout($language_enabled['status']);
+			if ($language_status =='on'){
+				echo "
+				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
+   			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
+   			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p />
+	  		<div class='content'>".$admin_lang_ni_markdown_text."<br />
+    			<a href='http://daringfireball.net/projects/markdown/' title='<? echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
+    			&nbsp;&nbsp;&nbsp;
+    			<a href='http://daringfireball.net/projects/markdown/basics' title='<? echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
+    			&nbsp;&nbsp;&nbsp;
+    			<a href='http://daringfireball.net/projects/markdown/syntax' title='<? echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
+    			<p />
+					<div style='text-align:center;'>
+    				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$_POST['alt_body']."</textarea><p />
+					</div>
+    		</div>";
+			}
 		?>
     <div class='jcaption'>
     <?php echo $admin_lang_ni_post_entry; ?></div>
-
     <div class="content">
     <input type="submit" value="<?php echo $admin_lang_ni_upload; ?>" style='width:100px;font-weight:bold;' />
 	<a name="warnings">&nbsp;</a>
@@ -169,6 +189,14 @@ if($_GET['view'] == "")
 	{
 		$headline = clean($_POST['headline']);
 		$body =  clean($_POST['body']);
+		if (isset($_POST['alt_headline'])) {
+ 		  //Obviously we would like to add secondary language
+			$alt_headline = clean($_POST['alt_headline']);
+			$alt_body =  clean($_POST['alt_body']);
+		} else {
+			$alt_headline = "";
+			$alt_body =  "";
+		}
 	  $datetime =
              $_POST['post_year']."-".
              $_POST['post_month']."-".
@@ -257,8 +285,8 @@ if($_GET['view'] == "")
 		$image = $filnamn;
 		if($status == "ok")
 		{
-			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image)
-			VALUES('$datetime','$headline','$body','$image')";
+			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body)
+			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body')";
 			$result = mysql_query($query) || die("Error: ".mysql_error().$admin_lang_ni_db_error);
 	
 	    $theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"

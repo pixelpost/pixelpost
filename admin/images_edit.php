@@ -74,6 +74,8 @@ if($_GET['view'] == "images")
     {
 			$headline = clean($_POST['headline']);
 			$body = clean($_POST['body']);
+			$alt_headline = clean($_POST['alt_headline']);
+			$alt_body = clean($_POST['alt_body']);
 			$getid = $_GET['imageid'];
 			$newdatetime = $_POST['newdatetime'];
 			save_tags_edit($_POST['tags'],$getid);
@@ -128,7 +130,7 @@ if($_GET['view'] == "images")
 				}
 			}
 
-			$query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category' where id='$getid'";
+			$query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category', alt_headline='$alt_headline', alt_body='$alt_body' where id='$getid'";
 			$result = mysql_query($query) ||("Error: ".mysql_error().$admin_lang_imgedit_db_error);
 
 
@@ -307,6 +309,11 @@ if($_GET['view'] == "images")
       $headline = pullout($imagerow['headline']);
       $headline = htmlspecialchars($headline,ENT_QUOTES);
       $body = pullout($imagerow['body']);
+      
+      $alt_headline = pullout($imagerow['alt_headline']);
+      $alt_headline = htmlspecialchars($alt_headline,ENT_QUOTES);
+      $alt_body = pullout($imagerow['alt_body']);
+      
 	    $image = $imagerow['image'];
 	    $category = $imagerow['category'];
       $category = explode(",",$category);
@@ -357,12 +364,26 @@ if($_GET['view'] == "images")
 			<div class='jcaption'>$admin_lang_imgedit_dtime</div>
 			<div class='content'>
 				<input type='text' name='newdatetime' value='".$imagerow['datetime']."' style='width:300px;' />
-			</div>
+			</div>";
+			// Check if the language addon is enabled. If not there is no need to show these fields
+			$language_enabled = sql_array("SELECT * FROM ".$pixelpost_db_prefix."addons where addon_name = 'admin_language'");
+			$language_status = pullout($language_enabled['status']);
+			if ($language_status =='on'){
+				echo "
+					<div class='jcaption'>$admin_lang_imgedit_alt_language</div>
+						<div class='content'>$admin_lang_imgedit_title<br />
+							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />
+						</div>
+						<div class='content'>$admin_lang_imgedit_txt_desc<br />
+							<textarea name='alt_body' cols='50' rows='5' style='width:95%;'>$alt_body</textarea>
+						</div>";
+			}
+			echo "
 			<div class='jcaption'>$admin_lang_imgedit_img</div>
 			<div class='content'>
 	    	<b>$admin_lang_imgedit_file_name</b> $image, <b>$admin_lang_imgedit_fsize</b> $img_width x $img_height; $img_size <b>kb</b>
-			<br />
-      	    <img id='itemimg' src='../thumbnails/thumb_$image' alt='' />
+				<br />
+         <img id='itemimg' src='../thumbnails/thumb_$image' alt='' />
 			</div>
 			<div class='content'>
 	    	<input type='submit' value='$admin_lang_imgedit_u_post_button' />
