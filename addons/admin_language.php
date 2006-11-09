@@ -167,6 +167,24 @@ else
   		$alt_language_link=create_language_url_from_tag( $matches[2][$i],$PP_supp_lang[$language_link_key][1] );
   		$tpl = str_replace("<LANGUAGE=".strtoupper($matches[2][$i]).">",$alt_language_link,$tpl);
   	}
+  	
+  	// Get the secondary language texts from database (only if we have an image)
+  	if ( isset( $image_id ) )
+		{
+  		$sec_lang = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
+			$alt_headline = pullout($sec_lang['alt_headline']);
+			$alt_body = pullout($sec_lang['alt_body']);
+			
+			$alt_body_clean = strip_tags($alt_body);
+      $$alt_body_clean = htmlspecialchars($alt_body_clean,ENT_QUOTES);
+     	$tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
+     	
+			$tpl = str_replace("<IMAGE_SECLANG_TITLE>",$alt_headline,$tpl); 
+			$tpl = str_replace("<IMAGE_SECLANG_NOTES>",$alt_body,$tpl); 
+			$tpl = str_replace("<IMAGE_SECLANG_NOTES_CLEAN>",$alt_body_clean,$tpl); 
+		}
+		
+			
   }
 }
 ?>
