@@ -33,29 +33,43 @@ $addon_message="";
 // If on Admin page, get information
 if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 {
-		// Checks whether specified field exists in current or specified table.
-	$fieldname = "secondlangfile";
-	// Assume field doesn't exist
-	$fieldexists = 0;
-	//Execute SQL query
-	$result_id = mysql_list_fields( $pixelpost_db_pixelpost, $pixelpost_db_prefix."config" );
-	for ($t = 0; $t < mysql_num_fields($result_id); $t++)
-	{
-		if (strtolower( $fieldname) == strtolower(mysql_field_name($result_id, $t)))
+	function CheckField ( $fieldname, $table, $pixelpost_db_pixelpost, $pixelpost_db_prefix ){
+		//Execute SQL query
+		$result_id = mysql_list_fields( $pixelpost_db_pixelpost, $pixelpost_db_prefix.$table );
+		for ($t = 0; $t < mysql_num_fields($result_id); $t++)
 		{
-			$fieldexists = 1;
-			break;
+			if (strtolower( $fieldname) == strtolower(mysql_field_name($result_id, $t)))
+			{
+				$fieldexists = 1;
+				break;
+			} else {
+				$fieldexists = 0;
+			}
 		}
+		return $fieldexists;
 	}
-
+	// Checks whether specified field exists in current or specified table.
+	$languagefieldexists=CheckField("secondlangfile", "config",$pixelpost_db_pixelpost, $pixelpost_db_prefix);
 	// if the field does not exit: Create it!
-	if ($fieldexists==0)
+	if ($languagefieldexists==0)
 	{
-		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `secondlangfile` VARCHAR( 100 ) DEFAULT '".$cfgrow['langfile']."' NOT NULL");
-		$addon_message = "<p><font style='color:#ff0000;font-weight:bold;'>Fields succesfully created, installation completed.</font></p>";
+		$addon_message = "<p><font style='color:#ff0000;font-weight:bold;'>Language fields succesfully created, installation completed.</font></p>";
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 	}
+	
+	$altfieldexists=CheckField("alt_headline","pixelpost",$pixelpost_db_pixelpost, $pixelpost_db_prefix);
+	// if the field does not exit: Create it!
+	if ($altfieldexists==0)
+	{
+		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `alt_headline` VARCHAR( 150 ) DEFAULT '' NOT NULL,
+		ADD `alt_body` TEXT DEFAULT '' NOT NULL, 
+		ADD `alt_category` VARCHAR( 150 ) DEFAULT '' NOT NULL ");
+		$addon_message = $addon_message."<p><font style='color:#ff0000;font-weight:bold;'>Language support for title, description and categories succesfully created, installation completed.</font></p>";
+	}
+	
+	
+	
 	// Perform update routine if update was pressed
 	if($_GET['addonaction'] =='updatelang')
 	{
@@ -74,6 +88,12 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 	An example: let's assume you want to support Polish (language code=PL). When the corresponding URL is clicked the Polish language
 	file is loaded and the system search for \"image_pl_template.html\", \"browse_pl_template.html\" and so on. If these templates are
 	not present the language isn't supported.<br /><br />
+	Support for title and description in secondary language is added. Three new tags are introduced:<br />
+	<strong>&lt;IMAGE_SECLANG_TITLE&gt;</strong> => Shows the user provided secondary language title<br />
+	<strong>&lt;IMAGE_SECLANG_NOTES&gt;</strong> => Shows the user provided secondary language description<br />
+	<strong>&lt;IMAGE_SECLANG_NOTES_CLEAN&gt;</strong> => Shows the user provided secondary language description with HTML stripped</br /><br />
+	<br />Still working on secondary language for Categories and Tags.<br />
+	<br />
 	Select secondary language:<br />
 	";
  	$addon_description=$addon_description."
