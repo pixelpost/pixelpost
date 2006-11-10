@@ -65,11 +65,11 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `alt_headline` VARCHAR( 150 ) DEFAULT '' NOT NULL,
 		ADD `alt_body` TEXT DEFAULT '' NOT NULL, 
 		ADD `alt_category` VARCHAR( 150 ) DEFAULT '' NOT NULL ");
-		$addon_message = $addon_message."<p><font style='color:#ff0000;font-weight:bold;'>Language support for title, description and categories succesfully created, installation completed.</font></p>";
+		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100 ) DEFAULT '' NOT NULL");
+		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD `alt_tag` TINYTEXT DEFAULT '' NOT NULL");
+		$addon_message = $addon_message."<p><font style='color:#ff0000;font-weight:bold;'>Language support for title, description, categories and tags succesfully created, installation completed.</font></p>";
 	}
-	
-	
-	
+
 	// Perform update routine if update was pressed
 	if($_GET['addonaction'] =='updatelang')
 	{
@@ -92,7 +92,7 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 	<strong>&lt;IMAGE_SECLANG_TITLE&gt;</strong> => Shows the user provided secondary language title<br />
 	<strong>&lt;IMAGE_SECLANG_NOTES&gt;</strong> => Shows the user provided secondary language description<br />
 	<strong>&lt;IMAGE_SECLANG_NOTES_CLEAN&gt;</strong> => Shows the user provided secondary language description with HTML stripped</br /><br />
-	<br />Still working on secondary language for Categories and Tags.<br />
+	<br />Still working on secondary language for Categories and Tags. Added fields to both tables (alt_name in Categories & alt_tag in Tags) <br />
 	<br />
 	Select secondary language:<br />
 	";
