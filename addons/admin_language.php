@@ -65,7 +65,7 @@ if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
 		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `alt_headline` VARCHAR( 150 ) DEFAULT '' NOT NULL,
 		ADD `alt_body` TEXT DEFAULT '' NOT NULL, 
 		ADD `alt_category` VARCHAR( 150 ) DEFAULT '' NOT NULL ");
-		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100 ) DEFAULT '' NOT NULL");
+		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100 ) DEFAULT 'default_seclang' NOT NULL");
 		$result = mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD `alt_tag` TINYTEXT DEFAULT '' NOT NULL");
 		$addon_message = $addon_message."<p><font style='color:#ff0000;font-weight:bold;'>Language support for title, description, categories and tags succesfully created, installation completed.</font></p>";
 	}

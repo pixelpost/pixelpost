@@ -160,8 +160,11 @@ if($_GET['view'] == "")
 				echo "
 				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p />
-	  		<div class='content'>".$admin_lang_ni_markdown_text."<br />
+   			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p />".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><p />";
+   			echo $admin_lang_ni_select_cat;
+    		category_list_seclang_as_table($_POST['category']);
+   			echo "<div class='content'>".$admin_lang_ni_markdown_text."<br />
     			<a href='http://daringfireball.net/projects/markdown/' title='<? echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
     			&nbsp;&nbsp;&nbsp;
     			<a href='http://daringfireball.net/projects/markdown/basics' title='<? echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
@@ -172,6 +175,7 @@ if($_GET['view'] == "")
     				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$_POST['alt_body']."</textarea><p />
 					</div>
     		</div>";
+    		
 			}
 		?>
     <div class='jcaption'>

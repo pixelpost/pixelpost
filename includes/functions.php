@@ -328,6 +328,53 @@ function category_list_as_table($categories)
 	echo "</table>\n\n";
 }
 
+function category_list_seclang_as_table($categories)
+{
+	global $pixelpost_db_prefix;
+	if(!is_array($categories))	$categories = array();
+  // get the id and alt_name of the first entered category, default category.
+  $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by id asc LIMIT 0,1");
+  list($firstid,$firstname) = mysql_fetch_row($query);
+  $getid = $_GET['id'];
+ // begin of category-list as a table
+	$query = mysql_query("select t1.id, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.alt_name");
+	while(list($id,$alt_name) = mysql_fetch_row($query))
+	{
+		echo "<table id='cattable'><tr>";
+		$query = mysql_query("select t1.id, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.alt_name");
+		while(list($id,$alt_name,$image_id) = mysql_fetch_row($query))
+		{
+			$alt_name = pullout($alt_name);
+			$id = pullout($id);
+			$catcounter++;
+			$inarow = 4;
+			if (($image_id != "" AND $_GET['view']=='images') || in_array($id,$categories))
+			{
+				echo "<td><input type='checkbox' CHECKED name='category[]' value='".$id."' />&nbsp;".$alt_name."</td>";
+			}
+			else
+			{
+				if ($firstid==$id && $_GET['view']!='images') // if it is the first defualt category in the new_image page
+					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$alt_name."</td>";
+				else // if it is other categories in the new image page
+					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$alt_name."</td>";
+			}
+
+			if ($catcounter % $inarow == 0)
+			{
+				echo "\n</tr><tr>\n";
+			}
+			else
+			{
+				echo "\n";
+			}
+		}
+	}
+
+	if ($catcounter % $inarow > 0) {echo "</tr>";}
+	echo "</table>\n\n";
+}
+
 // function refresh addon table
 function refresh_addons_table($dir)
 {
