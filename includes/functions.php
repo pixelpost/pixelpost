@@ -281,7 +281,7 @@ return $exposure;
 
 
 // categories as table
-function category_list_as_table($categories)
+function category_list_as_table($categories, $cfgrow)
 {
 	global $pixelpost_db_prefix;
 	if(!is_array($categories))	$categories = array();
@@ -290,74 +290,34 @@ function category_list_as_table($categories)
   list($firstid,$firstname) = mysql_fetch_row($query);
   $getid = $_GET['id'];
  // begin of category-list as a table
-	$query = mysql_query("select t1.id, name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.name");
+	$query = mysql_query("select t1.id, name, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.name");
 	while(list($id,$name) = mysql_fetch_row($query))
 	{
 		echo "<table id='cattable'><tr>";
-		$query = mysql_query("select t1.id, name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.name");
-		while(list($id,$name,$image_id) = mysql_fetch_row($query))
+		$query = mysql_query("select t1.id, name, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.name");
+		while(list($id,$name,$alt_name,$image_id) = mysql_fetch_row($query))
 		{
 			$name = pullout($name);
+			// Check if the secondary language is enabled. If not there is no need to show these fields
+			if ($cfgrow['secondlangfile'] != 'Off'){
+				$alt_name = " (".pullout($alt_name).")"; 
+			} else {
+				// replace with empty string.
+				$alt_name = null;
+			} 
 			$id = pullout($id);
 			$catcounter++;
 			$inarow = 4;
 			if (($image_id != "" AND $_GET['view']=='images') || in_array($id,$categories))
 			{
-				echo "<td><input type='checkbox' CHECKED name='category[]' value='".$id."' />&nbsp;".$name."</td>";
+				echo "<td><input type='checkbox' CHECKED name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
 			}
 			else
 			{
 				if ($firstid==$id && $_GET['view']!='images') // if it is the first defualt category in the new_image page
-					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name."</td>";
+					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
 				else // if it is other categories in the new image page
-					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name."</td>";
-			}
-
-			if ($catcounter % $inarow == 0)
-			{
-				echo "\n</tr><tr>\n";
-			}
-			else
-			{
-				echo "\n";
-			}
-		}
-	}
-
-	if ($catcounter % $inarow > 0) {echo "</tr>";}
-	echo "</table>\n\n";
-}
-
-function category_list_seclang_as_table($categories)
-{
-	global $pixelpost_db_prefix;
-	if(!is_array($categories))	$categories = array();
-  // get the id and alt_name of the first entered category, default category.
-  $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by id asc LIMIT 0,1");
-  list($firstid,$firstname) = mysql_fetch_row($query);
-  $getid = $_GET['id'];
- // begin of category-list as a table
-	$query = mysql_query("select t1.id, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.alt_name");
-	while(list($id,$alt_name) = mysql_fetch_row($query))
-	{
-		echo "<table id='cattable'><tr>";
-		$query = mysql_query("select t1.id, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.alt_name");
-		while(list($id,$alt_name,$image_id) = mysql_fetch_row($query))
-		{
-			$alt_name = pullout($alt_name);
-			$id = pullout($id);
-			$catcounter++;
-			$inarow = 4;
-			if (($image_id != "" AND $_GET['view']=='images') || in_array($id,$categories))
-			{
-				echo "<td><input type='checkbox' CHECKED name='category[]' value='".$id."' />&nbsp;".$alt_name."</td>";
-			}
-			else
-			{
-				if ($firstid==$id && $_GET['view']!='images') // if it is the first defualt category in the new_image page
-					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$alt_name."</td>";
-				else // if it is other categories in the new image page
-					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$alt_name."</td>";
+					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
 			}
 
 			if ($catcounter % $inarow == 0)
@@ -1097,4 +1057,66 @@ function list_tags_frontend()
 }
 //
 //=============================== TAGS SECTION ENDS =============================
+
+//============================= LANGUAGE SECTION BEGINS =========================
+function create_language_url_from_tag( $language_link_abr, $language_link_full ){
+	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0]=="lang=",0,5))){
+		$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
+	} else {
+		$arguments=str_replace("&","&amp;",$_SERVER['argv'][0]);
+		$language_link="<a href='".$_SERVER['PHP_SELF']."?".$arguments."&amp;lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
+	}
+	return $language_link;
+}
+
+function replace_seclang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){ 	
+  $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
+  $second_language_abr = strtolower($PP_supp_lang[$cfgrow['secondlangfile']][0]);
+  if ($language_abr == $default_language_abr) {
+  	$link_language_abr = $second_language_abr;
+  } else {
+  	$link_language_abr = $default_language_abr;
+  }
+  // Determine the full name of the link_language
+  foreach ($PP_supp_lang as $key => $row)	{
+  	foreach($row as $cell) {
+   		if ($cell == strtoupper($link_language_abr))
+     		$language_link_key = $key;
+    }
+  }
+  $language_link_full=$PP_supp_lang[$language_link_key][1];
+  $language_link	=	create_language_url_from_tag( $link_language_abr, $language_link_full  );
+  // Create one template tag for all templates and both languages
+  $tpl = str_replace("<SECONDARY_LANGUAGE>",$language_link,$tpl); 
+    	
+  // support for <LANGUAGE=XX> TAG
+  preg_match_all("/<(\s*language\s*=\s*([^<>\s]*)\s*)>/iU", $tpl, $matches);
+  for($i = 0; $i < count($matches[0]); $i++){
+  	foreach ($PP_supp_lang as $key => $row){
+  		foreach($row as $cell){
+   			if ($cell == strtoupper($matches[2][$i]))
+     		$language_link_key = $key;
+  	  }
+  	}
+  	$alt_language_link=create_language_url_from_tag( $matches[2][$i],$PP_supp_lang[$language_link_key][1] );
+  	$tpl = str_replace("<LANGUAGE=".strtoupper($matches[2][$i]).">",$alt_language_link,$tpl);
+  }
+  	
+  // Get the secondary language texts from database (only if we have an image)
+	$sec_lang = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
+	$alt_headline = pullout($sec_lang['alt_headline']);
+	$alt_body = pullout($sec_lang['alt_body']);
+			
+	$alt_body_clean = strip_tags($alt_body);
+  $$alt_body_clean = htmlspecialchars($alt_body_clean,ENT_QUOTES);
+ 	$tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
+	$tpl = str_replace("<IMAGE_SECLANG_TITLE>",$alt_headline,$tpl); 
+	$tpl = str_replace("<IMAGE_SECLANG_NOTES>",$alt_body,$tpl); 
+	$tpl = str_replace("<IMAGE_SECLANG_NOTES_CLEAN>",$alt_body_clean,$tpl); 
+	
+	// return the template
+	return $tpl;
+}
+//
+//============================= LANGUAGE SECTION ENDS ===========================
 ?>

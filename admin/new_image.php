@@ -30,7 +30,7 @@ if($_GET['view'] == "")
    <input type="text" name="tags" style="width:550px;" value="<?=$_POST['tags'];?>" /><p />
   <?php echo $admin_lang_ni_select_cat; ?>
 	<?php
-	category_list_as_table($_POST['category']);
+	category_list_as_table($_POST['category'], $cfgrow);
  	$tz = $cfgrow["timezone"];
  	$cur_time = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
  	$cur_year = gmdate("Y",time()+(3600 * $tz));
@@ -154,17 +154,13 @@ if($_GET['view'] == "")
 		eval_addon_admin_workspace_menu('new_image_form');
 		// added for language support
 		// Check if the language addon is enabled. If not there is no need to show these fields
-			$language_enabled = sql_array("SELECT * FROM ".$pixelpost_db_prefix."addons where addon_name = 'admin_language'");
-			$language_status = pullout($language_enabled['status']);
-			if ($language_status =='on'){
+			if ($cfgrow['secondlangfile'] != 'Off'){
 				echo "
 				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
    			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p />".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><p />";
-   			echo $admin_lang_ni_select_cat;
-    		category_list_seclang_as_table($_POST['category']);
-   			echo "<div class='content'>".$admin_lang_ni_markdown_text."<br />
+   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><p />
+   			<div class='content'>".$admin_lang_ni_markdown_text."<br />
     			<a href='http://daringfireball.net/projects/markdown/' title='<? echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
     			&nbsp;&nbsp;&nbsp;
     			<a href='http://daringfireball.net/projects/markdown/basics' title='<? echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
@@ -303,9 +299,10 @@ if($_GET['view'] == "")
 					$result = mysql_query($query) || die("Error: ".mysql_error());
 				}
 	    }
-	
+	    
 	    // done
-
+			
+			
 			// workspace: image_uploaded
 			eval_addon_admin_workspace_menu('image_uploaded');
 			$headline = pullout($_POST['headline']);

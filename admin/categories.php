@@ -11,11 +11,6 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 
 // categories
 if($_GET['view'] == "categories") {
-// added for language support
-// Check if the language addon is enabled. If not there is no need to show these fields
-$language_enabled = sql_array("SELECT * FROM ".$pixelpost_db_prefix."addons where addon_name = 'admin_language'");
-$language_status = pullout($language_enabled['status']);
-
 echo "<div id='caption'>$admin_lang_categories</div>";
 
     if($_GET['action'] == "delete") {
@@ -43,7 +38,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
 
 	<form method='post' action='$PHP_SELF?view=categories&amp;action=update&amp;id=".$query['id']."' accept-charset='UTF-8'>
         <input type='text' name='category' value='$name' style='width:300px;'/>";
-     		if ($language_status =='on'){
+     		if ($cfgrow['secondlangfile'] != 'Off'){
 	        echo "<br /><input type='text' name='alt_category' value='$alt_name' style='width:300px;'/>";
 	      }
         echo "<input type='submit' value='$admin_lang_cats_update_cat_button' />
@@ -69,7 +64,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     <div class='content'>$admin_lang_cats_add_cat_txt<p />
     <form method='post' action='$PHP_SELF?view=categories&amp;action=add' accept-charset='UTF-8'>
     <input type='text' name='category' style='width:300px;' /><p />";
-		if ($language_status =='on'){
+		if ($cfgrow['secondlangfile'] != 'Off'){
     	echo "Secondary language:<br />
     				<input type='text' name='alt_category' style='width:300px;' /><p />";
     }
@@ -86,7 +81,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by name");
     while(list($id,$name,$alt_name) = mysql_fetch_row($query)) {
         $name = pullout($name);
-        if ($language_status =='on'){
+        if ($cfgrow['secondlangfile'] != 'Off'){
     			$alt_name = pullout($alt_name);
     			echo "<option value='$id'>".$name." (".$alt_name.")</option>\n";
     		}else {
@@ -109,7 +104,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by name");
     while(list($id,$name,$alt_name) = mysql_fetch_row($query)) {
         $name = pullout($name);
-        if ($language_status =='on'){
+        if ($cfgrow['secondlangfile'] != 'Off'){
     			$alt_name = pullout($alt_name);
     			echo "<option value='$id'>".$name." (".$alt_name.")</option>\n";
     		}else {

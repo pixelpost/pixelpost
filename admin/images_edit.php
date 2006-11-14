@@ -366,10 +366,8 @@ if($_GET['view'] == "images")
 				<input type='text' name='newdatetime' value='".$imagerow['datetime']."' style='width:300px;' />
 			</div>";
 			// Check if the language addon is enabled. If not there is no need to show these fields
-			$language_enabled = sql_array("SELECT * FROM ".$pixelpost_db_prefix."addons where addon_name = 'admin_language'");
-			$language_status = pullout($language_enabled['status']);
-			if ($language_status =='on'){
-				echo "
+			if ($cfgrow['secondlangfile'] != 'Off'){
+					echo "
 					<div class='jcaption'>$admin_lang_imgedit_alt_language</div>
 						<div class='content'>$admin_lang_imgedit_title<br />
 							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />
