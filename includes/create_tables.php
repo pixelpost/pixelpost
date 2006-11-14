@@ -446,11 +446,19 @@ function UpgradeTo16( $prefix, $newversion)
 
 	$table = $prefix."tags";
 	mysql_query("CREATE TABLE `$table` (
-`img_id` INT NOT NULL ,
-`tag` TINYTEXT NOT NULL
-);")
-			or die("Error: ". mysql_error());
+		`img_id` INT NOT NULL ,
+		`tag` TINYTEXT NOT NULL,
+		`alt_tag` TINYTEXT NOT NULL
+		);")or die("Error: ". mysql_error());
 
+	// Language stuff
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `secondlangfile` VARCHAR( 100 ) DEFAULT 'Off' NOT NULL")
+	or die("Error: ". mysql_error());
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `alt_headline` VARCHAR( 150 ) DEFAULT '' NOT NULL,
+		ADD `alt_body` TEXT DEFAULT '' NOT NULL ") or die("Error: ". mysql_error());
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100 ) DEFAULT 'default' NOT NULL")
+	or die("Error: ". mysql_error());
+		
 	//the following code was forgotten. This would caused an infinite install.php loop when updating.
 	// update version
 	mysql_query("
