@@ -440,7 +440,7 @@ global $pixelpost_db_prefix;
 	}	
 }
 
-function UpgradeTo16( $prefix, $newversion)
+function UpgradeTo151( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
 
@@ -462,9 +462,9 @@ function UpgradeTo16( $prefix, $newversion)
 	//the following code was forgotten. This would caused an infinite install.php loop when updating.
 	// update version
 	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES (1.6)
+	INSERT INTO `{$prefix}version` (version) VALUES (1.51)
 	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.6 SVN ...</li>";
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.51 SVN ...</li>";
 
 }
 
