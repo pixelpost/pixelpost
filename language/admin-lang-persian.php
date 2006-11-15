@@ -125,6 +125,8 @@ $admin_lang_ni_missing_data       = "اطلاعات ناقص است!<br />\n
 $admin_lang_ni_crop_nextstep      = "پنجره برش عکس کوچک را انتخاب کنيد";
 $admin_lang_ni_crop_background    = "اين پس زمينه قسمت برش است";
 $admin_lang_ni_db_error           = "an error occured writing into database";
+$admin_lang_ni_tags               = "Tags";
+$admin_lang_ni_alt_language				= "Provide an image title and description in the secondary language";
 
 // Images
 $admin_lang_imgedit_edit           = "ويرايش";
@@ -165,6 +167,8 @@ $admin_lang_imgedit_img_page        = "عکس در هر صفحه";
 $admin_lang_imgedit_cropbg          = "اينجا پس‌زمينه برش عکس است";
 $admin_lang_imgedit_js_del_im       = "عکس حذف خواهد شد، مطمئن هستيد؟";
 $admin_lang_imgedit_db_error        = "<br />Check if permalink string isn't used so far!";
+$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
+$admin_lang_imgedit_alt_language  	= "Change the secondary language image title and description";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "ويرايش عمده طبقه‌بندي‌ها";
