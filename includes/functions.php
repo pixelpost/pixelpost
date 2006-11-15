@@ -1087,7 +1087,7 @@ function replace_seclang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){
   $language_link_full=$PP_supp_lang[$language_link_key][1];
   $language_link	=	create_language_url_from_tag( $link_language_abr, $language_link_full  );
   // Create one template tag for all templates and both languages
-  $tpl = str_replace("<SECONDARY_LANGUAGE>",$language_link,$tpl); 
+  $tpl = str_replace("<ALTERNATIVE_LANGUAGE>",$language_link,$tpl); 
     	
   // support for <LANGUAGE=XX> TAG
   preg_match_all("/<(\s*language\s*=\s*([^<>\s]*)\s*)>/iU", $tpl, $matches);
@@ -1103,17 +1103,46 @@ function replace_seclang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){
   }
   	
   // Get the secondary language texts from database (only if we have an image)
-	$sec_lang = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
-	$alt_headline = pullout($sec_lang['alt_headline']);
-	$alt_body = pullout($sec_lang['alt_body']);
+	$alt_lang = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
+	$alt_headline = pullout($alt_lang['alt_headline']);
+	$alt_body = pullout($alt_lang['alt_body']);
 			
 	$alt_body_clean = strip_tags($alt_body);
-  $$alt_body_clean = htmlspecialchars($alt_body_clean,ENT_QUOTES);
- 	$tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
-	$tpl = str_replace("<IMAGE_SECLANG_TITLE>",$alt_headline,$tpl); 
-	$tpl = str_replace("<IMAGE_SECLANG_NOTES>",$alt_body,$tpl); 
-	$tpl = str_replace("<IMAGE_SECLANG_NOTES_CLEAN>",$alt_body_clean,$tpl); 
+  $alt_body_clean = htmlspecialchars($alt_body_clean,ENT_QUOTES);
+	$tpl = str_replace("<IMAGE_ALTLANG_TITLE>",$alt_headline,$tpl); 
+	$tpl = str_replace("<IMAGE_ALTLANG_NOTES>",$alt_body,$tpl); 
+	$tpl = str_replace("<IMAGE_ALTLANG_NOTES_CLEAN>",$alt_body_clean,$tpl); 
 	
+	
+	// Categories
+	// build browse menu
+	// $browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='?x=browse&amp;category='>$lang_browse_all</option>";
+	$browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all</option>";
+	$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
+
+	while(list($id,$alt_name) = mysql_fetch_row($query))
+	{
+		$alt_name = pullout($alt_name);
+		//		$browse_select .= "<option value='?x=browse&amp;category=$id'>$name</option>";
+		$browse_select .= "<option value='index.php?x=browse&amp;category=$id'>$alt_name</option>";
+	}
+	$browse_select .= "</select>";
+	$tpl = ereg_replace("<BROWSE_ALTLANG_CATEGORIES>",$browse_select,$tpl);
+
+	// build browse checkboxes
+	$checkboxes = "<form method='post' action='index.php?x=browse'>";
+	$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
+
+	while(list($id,$alt_name) = mysql_fetch_row($query))
+	{
+		$alt_name = pullout($alt_name);
+		$checkbox_checked = "";
+		if(isset($category)&&is_array($category)&& in_array($id,$category))	$checkbox_checked = "checked";
+		$checkboxes .= "<input type='checkbox' name='category[]' value='$id' $checkbox_checked />$alt_name&nbsp;&nbsp;&nbsp;\n";
+	}
+	$checkboxes .= "<input type='submit' value='Filter' /></form>";
+	$tpl = ereg_replace("<BROWSE_ALTLANG_CHECKBOXLIST>",$checkboxes,$tpl);
+
 	// return the template
 	return $tpl;
 }
