@@ -354,7 +354,7 @@ if($_GET['view'] == "images")
 			<div class='jcaption'>$admin_lang_imgedit_category_plural</div>
 			<div class='content'>
 			";
-			category_list_as_table(array());
+			category_list_as_table(array(), $cfgrow);
 			echo "</div>";
 			
 			list($img_width,$img_height,$type,$attr) = getimagesize('../images/'.$image);
@@ -377,11 +377,7 @@ if($_GET['view'] == "images")
 						</div>";
 						echo "<div class='content'>".$admin_lang_imgedit_tags."<br />
 							<input type='text' name='alt_tags' style='width:550px;' value='$alt_tags' />
-						</div>
-						<div class='content'>
-						".$admin_lang_imgedit_category_plural;
-						category_list_seclang_as_table(array());
-						echo "</div>";
+						</div>";
 			}
 			echo "
 			<div class='jcaption'>$admin_lang_imgedit_img</div>

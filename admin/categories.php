@@ -39,7 +39,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
 	<form method='post' action='$PHP_SELF?view=categories&amp;action=update&amp;id=".$query['id']."' accept-charset='UTF-8'>
         <input type='text' name='category' value='$name' style='width:300px;'/>";
      		if ($cfgrow['secondlangfile'] != 'Off'){
-	        echo "<br /><input type='text' name='alt_category' value='$alt_name' style='width:300px;'/>";
+	        echo "<p /><input type='text' name='alt_category' value='$alt_name' style='width:300px;'/>";
 	      }
         echo "<input type='submit' value='$admin_lang_cats_update_cat_button' />
         </form>
@@ -65,7 +65,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     <form method='post' action='$PHP_SELF?view=categories&amp;action=add' accept-charset='UTF-8'>
     <input type='text' name='category' style='width:300px;' /><p />";
 		if ($cfgrow['secondlangfile'] != 'Off'){
-    	echo "Secondary language:<br />
+    	echo $admin_lang_cats_add_cat_txt_altlang."<p />
     				<input type='text' name='alt_category' style='width:300px;' /><p />";
     }
     echo "<input type='submit' value='$admin_lang_cats_add_cat' />

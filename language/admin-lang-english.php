@@ -172,7 +172,7 @@ $admin_lang_imgedit_cropbg          = "This is background text of 12cropimage";
 $admin_lang_imgedit_js_del_im       = "Are you sure you want to delete the image?";
 $admin_lang_imgedit_preview         = "Preview";
 $admin_lang_imgedit_db_error        = "<br />Check if permalink string isn't used so far!";
-$admin_lang_imgedit_tags                 = $admin_lang_ni_tags;
+$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
 $admin_lang_imgedit_alt_language  	= "Change the secondary language image title and description";
 
 // Mass-Edit Categories
@@ -186,10 +186,11 @@ $admin_lang_imgedit_mass_4          = "Update in mass";
 $admin_lang_cats_add_cat            = "Add Category";
 $admin_lang_cats_added              = "Category added.";
 $admin_lang_cats_add_cat_txt        = "Add a category which you can assign to images.";
+$admin_lang_cats_add_cat_txt_altlang= "Give the translation of the above category.";
 $admin_lang_cats_edit_cat           = "Edit Categories";
 $admin_lang_cats_edit_cat_txt       = "Edit a category";
 $admin_lang_cats_edit_cat_button    = "Edit Category";
-$admin_lang_cats_edit_tip           = "Edit the name of the following category.<br />All images belonging to the old name will belong to the new name you enter.";
+$admin_lang_cats_edit_tip           = "Edit the name of the following category for both languages.<br />All images belonging to the old name will belong to the new name you enter.";
 $admin_lang_cats_delete_cat         = "Delete Categories";
 $admin_lang_cats_delete_cat_txt     = "Delete a category";
 $admin_lang_cats_delete_cat2        = "Deletion:";
