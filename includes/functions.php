@@ -1045,7 +1045,11 @@ function list_tags_frontend()
 	{
 		$weight = round($tags['val'][$i]/$max,1);
 		$weight = substr($weight,0,1).substr($weight,2,1);
-		$tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $tags['tag'][$i] . '\' class=\'tag' . $weight . '\'>' . $tags['tag'][$i] . '</a>';
+		if ($weight==1){
+			// added because tags0 in the css is the most important one....
+			$weight=0;
+		}
+		$tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $tags['tag'][$i] . '\' class=\'tags' . $weight . '\'>' . $tags['tag'][$i] . '</a>';
 	}
 
 	$tag_list = substr($tag_list, 1);
@@ -1137,7 +1141,11 @@ function list_alt_tags_frontend()
 	{
 		$weight = round($alt_tags['val'][$i]/$max,1);
 		$weight = substr($weight,0,1).substr($weight,2,1);
-		$alt_tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $alt_tags['alt_tag'][$i] . '\' class=\'tag' . $weight . '\'>' . $alt_tags['alt_tag'][$i] . '</a>';
+		if ($weight==1){
+			// added because tags0 in the css is the most important one....
+			$weight=0;
+		}
+		$alt_tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $alt_tags['alt_tag'][$i] . '\' class=\'tags' . $weight . '\'>' . $alt_tags['alt_tag'][$i] . '</a>';
 	}
 
 	$alt_tag_list = substr($alt_tag_list, 1);
