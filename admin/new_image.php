@@ -154,7 +154,7 @@ if($_GET['view'] == "")
 		eval_addon_admin_workspace_menu('new_image_form');
 		// added for language support
 		// Check if the language addon is enabled. If not there is no need to show these fields
-			if ($cfgrow['secondlangfile'] != 'Off'){
+			if ($cfgrow['altlangfile'] != 'Off'){
 				echo "
 				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
@@ -190,7 +190,7 @@ if($_GET['view'] == "")
 		$headline = clean($_POST['headline']);
 		$body =  clean($_POST['body']);
 		if (isset($_POST['alt_headline'])) {
- 		  //Obviously we would like to add secondary language
+ 		  //Obviously we would like to use the alternative language
 			$alt_headline = clean($_POST['alt_headline']);
 			$alt_body =  clean($_POST['alt_body']);
 		} else {
@@ -374,6 +374,10 @@ if($_GET['view'] == "")
 
 			// save tags
 			save_tags_new($_POST['tags'],$theid);
+			// save the alt_tags to if the variable is set
+			if ($cfgrow['altlangfile'] != 'Off'){
+				save_alt_tags_new($_POST['alt_tags'],$theid);
+			}
 		} // end status ok
 	} // end save
 } // end view=null

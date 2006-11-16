@@ -63,7 +63,7 @@ if ($_GET['optaction']=='updateall'){
          //break;
 
     //case "updatelang":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set langfile='".$_POST['new_lang']."', secondlangfile='".$_POST['second_lang']."' where admin='".$cfgrow['admin']."'");
+        $update = sql_query("update ".$pixelpost_db_prefix."config set langfile='".$_POST['new_lang']."', altlangfile='".$_POST['alt_lang']."' where admin='".$cfgrow['admin']."'");
         //break;
 
     //case "updateemail":
@@ -283,11 +283,11 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 			closedir($handle);
 			}
 		echo "</select><p />";
-		// Secondary language settings
-		echo "Secondary language settings:<br />
-		<select name='second_lang'>";
-		if ($cfgrow['secondlangfile'] != 'Off'){
-			echo " <option value='".$cfgrow['secondlangfile']."'>".$cfgrow['secondlangfile']."</option>
+		// Alternative language settings
+		echo "Alternative language settings:<br />
+		<select name='alt_lang'>";
+		if ($cfgrow['altlangfile'] != 'Off'){
+			echo " <option value='".$cfgrow['altlangfile']."'>".$cfgrow['altlangfile']."</option>
 			<option value='Off'> -=disable=-</option>";
 		} else {
 			echo "<option value='Off'>Disabled</option>";
@@ -302,7 +302,7 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 			// check that admin-language-files are not listed
 					$admin_pre = substr("$file",0,6);
 					if ($admin_pre != "admin-"){
-						if (($file !== $cfgrow['secondlangfile']) and ($file !== $cfgrow['langfile'])) {
+						if (($file !== $cfgrow['altlangfile']) and ($file !== $cfgrow['langfile'])) {
 							echo "<option value='$file'>$file</option>";}
 						}
 					}

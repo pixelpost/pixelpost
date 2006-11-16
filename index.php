@@ -1207,8 +1207,8 @@ $lang_email_notification_pt4
 // REPLACE LANGUAGE SPECIFIC TAGS
 // ##########################################################################################//
 
-if ($cfgrow['secondlangfile'] != 'Off'){
-	$tpl = replace_seclang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow );
+if ($cfgrow['altlangfile'] != 'Off'){
+	$tpl = replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow );
 }
 
 // ##########################################################################################//

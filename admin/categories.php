@@ -20,7 +20,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     if($_GET['action'] == "add") {
         $category = clean($_POST['category']);
         if (isset($_POST['alt_category'])) {
- 		 		 //Obviously we would like to add secondary language
+ 		 		 //Obviously we would like to use the alternative language
 					$alt_category = clean($_POST['alt_category']);
 					} else {
 						$alt_category = "";
@@ -38,7 +38,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
 
 	<form method='post' action='$PHP_SELF?view=categories&amp;action=update&amp;id=".$query['id']."' accept-charset='UTF-8'>
         <input type='text' name='category' value='$name' style='width:300px;'/>";
-     		if ($cfgrow['secondlangfile'] != 'Off'){
+     		if ($cfgrow['altlangfile'] != 'Off'){
 	        echo "<p /><input type='text' name='alt_category' value='$alt_name' style='width:300px;'/>";
 	      }
         echo "<input type='submit' value='$admin_lang_cats_update_cat_button' />
@@ -49,7 +49,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     if($_GET['action'] == "update") {
         $category = clean($_POST['category']);
         if (isset($_POST['alt_category'])) {
- 		 		 //Obviously we would like to add secondary language
+ 		 		 //Obviously we would like to use the alternative language
 					$alt_category = clean($_POST['alt_category']);
 					} else {
 						$alt_category = "";
@@ -64,7 +64,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     <div class='content'>$admin_lang_cats_add_cat_txt<p />
     <form method='post' action='$PHP_SELF?view=categories&amp;action=add' accept-charset='UTF-8'>
     <input type='text' name='category' style='width:300px;' /><p />";
-		if ($cfgrow['secondlangfile'] != 'Off'){
+		if ($cfgrow['altlangfile'] != 'Off'){
     	echo $admin_lang_cats_add_cat_txt_altlang."<p />
     				<input type='text' name='alt_category' style='width:300px;' /><p />";
     }
@@ -81,7 +81,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by name");
     while(list($id,$name,$alt_name) = mysql_fetch_row($query)) {
         $name = pullout($name);
-        if ($cfgrow['secondlangfile'] != 'Off'){
+        if ($cfgrow['altlangfile'] != 'Off'){
     			$alt_name = pullout($alt_name);
     			echo "<option value='$id'>".$name." (".$alt_name.")</option>\n";
     		}else {
@@ -104,7 +104,7 @@ echo "<div id='caption'>$admin_lang_categories</div>";
     $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by name");
     while(list($id,$name,$alt_name) = mysql_fetch_row($query)) {
         $name = pullout($name);
-        if ($cfgrow['secondlangfile'] != 'Off'){
+        if ($cfgrow['altlangfile'] != 'Off'){
     			$alt_name = pullout($alt_name);
     			echo "<option value='$id'>".$name." (".$alt_name.")</option>\n";
     		}else {

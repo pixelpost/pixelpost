@@ -299,7 +299,7 @@ function category_list_as_table($categories, $cfgrow)
 		{
 			$name = pullout($name);
 			// Check if the secondary language is enabled. If not there is no need to show these fields
-			if ($cfgrow['secondlangfile'] != 'Off'){
+			if ($cfgrow['altlangfile'] != 'Off'){
 				$alt_name = " (".pullout($alt_name).")"; 
 			} else {
 				// replace with empty string.
@@ -984,7 +984,8 @@ function save_tags_new($tags_str,$theid)
 
 		for($i = 0; $i < count($tags_arr); $i++)
 		{
-			$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
+			$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags (img_id, tag) VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
+			//$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
 			mysql_query($sql_tag);
 		}
 	}
@@ -995,32 +996,29 @@ function list_tags_edit($id)
 	global $pixelpost_db_prefix;
 	$tags = '';
 
-	$sql_tag = "SELECT tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " ORDER BY tag ASC";
+	$sql_tag = "SELECT tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND alt_tag LIKE '' ORDER BY tag ASC";
 	$query = mysql_query($sql_tag);
 
 	while(list($tag) = mysql_fetch_row($query))
 	{
 		$tags .= ' '.$tag;
 	}
-	return $tags;
-}
-
-function save_tags_edit($tags_str,$id)
-{
-	global $pixelpost_db_prefix;
-
-	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id;
-	mysql_query($sql_tag);
-
-	save_tags_new($tags_str,$id);
+	return trim($tags);
 }
 
 function del_tags_edit($id)
 {
 	global $pixelpost_db_prefix;
 
-	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id;
+	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND tag NOT LIKE ''" ;
 	mysql_query($sql_tag);
+}
+
+function save_tags_edit($tags_str,$id)
+{
+	global $pixelpost_db_prefix;
+	del_tags_edit($id);
+	save_tags_new($tags_str,$id);
 }
 
 function list_tags_frontend()
@@ -1059,6 +1057,96 @@ function list_tags_frontend()
 //=============================== TAGS SECTION ENDS =============================
 
 //============================= LANGUAGE SECTION BEGINS =========================
+
+// alt_tag functions
+
+function save_alt_tags_new($tags_str,$theid)
+{
+	global $pixelpost_db_prefix;
+
+	if(strlen($tags_str) > 0)
+	{
+		$tags = strtr($tags_str, ',', ' ');
+		$pat1 = '/([^a-zA-Z 0-9_]+)/';
+		$tags = preg_replace( $pat1, '_', $tags);
+		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/');
+		$rep2 = array('', '', '_');
+		$tags = preg_replace( $pat2, $rep2, $tags);
+		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
+
+		for($i = 0; $i < count($tags_arr); $i++)
+		{
+			$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags (img_id, alt_tag) VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
+			mysql_query($sql_tag);
+		}
+	}
+}
+
+function list_alt_tags_edit($id)
+{
+	global $pixelpost_db_prefix;
+	$tags = '';
+
+	$sql_tag = "SELECT alt_tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND tag LIKE '' ORDER BY tag ASC";
+	$query = mysql_query($sql_tag);
+
+	while(list($alt_tag) = mysql_fetch_row($query))
+	{
+		$tags .= ' '.$alt_tag;
+	}
+	return trim($tags);
+}
+
+function del_alt_tags_edit($id)
+{
+	global $pixelpost_db_prefix;
+
+	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND tag NOT LIKE ''" ;
+	mysql_query($sql_tag);
+}
+
+
+function save_alt_tags_edit($tags_str,$id)
+{
+	global $pixelpost_db_prefix;
+	del_alt_tags_edit($id);
+	save_alt_tags_new($tags_str,$id);
+}
+
+function list_alt_tags_frontend()
+{
+	global $pixelpost_db_prefix;
+	$alt_tags['alt_tag'] = array();
+	$alt_tags['val'] = array();
+	$alt_tag_list = '';
+	$alt_tag_count = 0;
+
+	$sql_tag = "SELECT alt_tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags GROUP BY alt_tag ORDER BY a";
+	$query = mysql_query($sql_tag);
+
+	while(list($alt_tag,$val) = mysql_fetch_row($query))
+	{
+		$alt_tags['alt_tag'][] = $alt_tag;
+		$alt_tags['val'][] = $val;
+		$alt_tag_count++;
+	}
+
+	$max = max($alt_tags['val']);
+
+	for($i = 0; $i < $alt_tag_count; $i++)
+	{
+		$weight = round($alt_tags['val'][$i]/$max,1);
+		$weight = substr($weight,0,1).substr($weight,2,1);
+		$alt_tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $alt_tags['alt_tag'][$i] . '\' class=\'tag' . $weight . '\'>' . $alt_tags['alt_tag'][$i] . '</a>';
+	}
+
+	$alt_tag_list = substr($alt_tag_list, 1);
+	$alt_tag_list = strtr($alt_tag_list, array("='tag1'" => "='tag10'"));
+
+	return $alt_tag_list;
+}
+//
+
 function create_language_url_from_tag( $language_link_abr, $language_link_full ){
 	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0]=="lang=",0,5))){
 		$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
@@ -1069,11 +1157,11 @@ function create_language_url_from_tag( $language_link_abr, $language_link_full )
 	return $language_link;
 }
 
-function replace_seclang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){ 	
+function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){ 	
   $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
-  $second_language_abr = strtolower($PP_supp_lang[$cfgrow['secondlangfile']][0]);
+  $alt_language_abr = strtolower($PP_supp_lang[$cfgrow['secondlangfile']][0]);
   if ($language_abr == $default_language_abr) {
-  	$link_language_abr = $second_language_abr;
+  	$link_language_abr = $alt_language_abr;
   } else {
   	$link_language_abr = $default_language_abr;
   }
@@ -1143,8 +1231,13 @@ function replace_seclang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){
 	$checkboxes .= "<input type='submit' value='Filter' /></form>";
 	$tpl = ereg_replace("<BROWSE_ALTLANG_CHECKBOXLIST>",$checkboxes,$tpl);
 
+	//TAGS
+	$alt_tag_list = list_alt_tags_frontend();
+	$tpl = str_replace("<ALT_TAG_LIST>",$alt_tag_list,$tpl);
+	
 	// return the template
 	return $tpl;
+	
 }
 //
 //============================= LANGUAGE SECTION ENDS ===========================

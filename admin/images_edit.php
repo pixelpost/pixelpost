@@ -79,6 +79,9 @@ if($_GET['view'] == "images")
 			$getid = $_GET['imageid'];
 			$newdatetime = $_POST['newdatetime'];
 			save_tags_edit($_POST['tags'],$getid);
+			if ($cfgrow['altlangfile'] != 'Off'){
+				save_alt_tags_edit($_POST['alt_tags'],$getid);
+			}
 			$query = "delete from ".$pixelpost_db_prefix."catassoc where image_id='$getid'";
 			$result = mysql_query($query) ||("Error: ".mysql_error());
 			eval_addon_admin_workspace_menu('image_update');
@@ -331,6 +334,9 @@ if($_GET['view'] == "images")
 
      if ($_GET['imagesview']=='edit' or $_GET['imagesview']=='')  {
       $tags = list_tags_edit($_GET['id']);
+      if ($cfgrow['altlangfile'] != 'Off'){
+      	$alt_tags = list_alt_tags_edit($_GET['id']);
+      }
 			echo "
 			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=$getid' enctype='multipart/form-data' accept-charset='UTF-8'>";
 			eval_addon_admin_workspace_menu("image_edit_form","images");
@@ -366,7 +372,7 @@ if($_GET['view'] == "images")
 				<input type='text' name='newdatetime' value='".$imagerow['datetime']."' style='width:300px;' />
 			</div>";
 			// Check if the language addon is enabled. If not there is no need to show these fields
-			if ($cfgrow['secondlangfile'] != 'Off'){
+			if ($cfgrow['altlangfile'] != 'Off'){
 					echo "
 					<div class='jcaption'>$admin_lang_imgedit_alt_language</div>
 						<div class='content'>$admin_lang_imgedit_title<br />
