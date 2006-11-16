@@ -1167,7 +1167,7 @@ function create_language_url_from_tag( $language_link_abr, $language_link_full )
 
 function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){ 	
   $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
-  $alt_language_abr = strtolower($PP_supp_lang[$cfgrow['secondlangfile']][0]);
+  $alt_language_abr = strtolower($PP_supp_lang[$cfgrow['altlangfile']][0]);
   if ($language_abr == $default_language_abr) {
   	$link_language_abr = $alt_language_abr;
   } else {
