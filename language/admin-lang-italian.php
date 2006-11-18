@@ -135,7 +135,7 @@ $admin_lang_ni_crop_background    = "Questo  lo sfondo dell'immagine da ritaglia
 $admin_lang_ni_post_exif_date     = "Usa la data exif";
 $admin_lang_ni_db_error           = "si &egrave; verificato un errore durante la scrittura nel database";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_alt_language				= "Provide an image title and description in the secondary language";
+$admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
 $admin_lang_imgedit_edit           = "Modifica";
@@ -178,7 +178,7 @@ $admin_lang_imgedit_js_del_im       = "Sicuro di voler cancellare l'immagine?";
 $admin_lang_imgedit_preview         = "Preview";
 $admin_lang_imgedit_db_error        = "<br />Verifica che la stringa del permalink non sia attualmente in uso!";
 $admin_lang_imgedit_tags            = $admin_lang_ni_tags;
-$admin_lang_imgedit_alt_language  	= "Change the secondary language image title and description";
+$admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "Modifica di massa categoria";

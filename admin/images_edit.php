@@ -12,6 +12,35 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 // view=images
 if($_GET['view'] == "images")
 {
+	if($_GET['action'] == "masspublish") {
+		$idz= $_POST['moderate_image_boxes'];
+ 		$query = "UPDATE ".$pixelpost_db_prefix."pixelpost SET datetime = now() ";
+ 		$where = "WHERE";
+ 		for ($i=0; $i < count($idz)-1; $i++)
+ 		{	$where .= " id = '$idz[$i]' or ";	}
+ 		$lastid = $idz[count($idz)-1];
+ 		$where .= " id = '$lastid'  ";
+ 		$query .= $where;
+ 		$query  = sql_query($query);
+ 		$c = count($idz);
+ 		echo "<div class='jcaption confirm'>$admin_lang_imgedit_published  $c $admin_lang_imgedit_unpublished_cmnts</div>";
+ 	}
+	
+	if($_GET['action'] == "massdelete") {
+ 		$idz= $_POST['moderate_image_boxes'];
+
+ 		$query = "DELETE FROM ".$pixelpost_db_prefix."pixelpost ";
+ 		$where = "WHERE";
+ 		for ($i=0; $i < count($idz)-1; $i++)
+ 		{	$where .= " id = '$idz[$i]' or ";	}
+ 		$lastid = $idz[count($idz)-1];
+ 		$where .= " id = '$lastid'  ";
+ 		$query .= $where;
+ 		$query  = sql_query($query);
+ 		$c = count($idz);
+ 		echo "<div class='jcaption'>$admin_lang_imgedit_delete1  $c $admin_imgedit_cmnt_delete2</div>";
+ 		}
+
 	 // Mass add or delete categories to images
 	 $_GET['id'] = (int)$_GET['id'];
  		if($_GET['action'] == "masscatedit") {
@@ -219,6 +248,16 @@ if($_GET['view'] == "images")
 		   		 </div>
            <div class=\"content\">
            <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"\">
+           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" /> 
+					 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"clearAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_clear_all\" name=\"clearallbox\" /> 
+					 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
+	 				 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
+					   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=massdelete'
+					   return confirm('Delete all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')\"/>
+					 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
+					   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masspublish'
+					   return confirm('Publish all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')\"/>
+					   <br /><br />
            <select name=\"mass-edit-cat\" id=\"mass-edit-cat\" onchange=\"document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masscatedit&amp;cmd='+this.options[this.selectedIndex].value; \" >\n
            <option value=\"\">$admin_lang_imgedit_mass_1</option> \n
            <option value=\"\"></option> \n

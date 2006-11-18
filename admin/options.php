@@ -512,7 +512,7 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 		$dir = "../templates";
 		if($handle = opendir($dir)) {
 			while (false !== ($file = readdir($handle))) {
-				if($file != "." && $file != ".." && $file != "splash_page.html") {
+				if($file != "." && $file != ".." && $file != "splash_page.html" && $file != $cfgrow['template']) {
 					echo "<option value='$file'>$file</option>";
 					}
 				}
