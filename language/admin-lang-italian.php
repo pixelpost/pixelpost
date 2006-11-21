@@ -345,6 +345,8 @@ $admin_lang_pp_up_error_1            = "Superata la dimensione massima del file 
 $admin_lang_pp_up_error_2            = "Superata la dimensione massima del file.";
 $admin_lang_pp_up_error_3            = "Il file non &egrave; stato caricato completamente.";
 $admin_lang_pp_up_error_4            = "Nessun file &egrave; stato caricato.";
+$admin_lang_pp_up_error_6            = "Missing a temporary folder.";
+$admin_lang_pp_up_error_7            = "Failed to write file to disk.";
 
 
 // options >> time stamps

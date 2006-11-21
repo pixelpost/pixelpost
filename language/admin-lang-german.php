@@ -341,6 +341,8 @@ $admin_lang_pp_up_error_1           = "Die vom Webserver erlaubte Dateigr&ouml;s
 $admin_lang_pp_up_error_2           = "Maximal m&ouml;gliche Dateigr&ouml;sse wurde &uuml;berschritten.";
 $admin_lang_pp_up_error_3           = "Datei wurde nicht komplett &uuml;bertragen.";
 $admin_lang_pp_up_error_4           = "Es wurde keine Datei hochgeladen.";
+$admin_lang_pp_up_error_6           = "Missing a temporary folder.";
+$admin_lang_pp_up_error_7           = "Failed to write file to disk.";
 
 $admin_lang_cmnt_moderation_que     = "Freigabe-Queue";
 

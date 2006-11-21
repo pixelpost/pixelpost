@@ -346,6 +346,8 @@ $admin_lang_pp_up_error_1            = "Exceeded maximum filesize for webserver 
 $admin_lang_pp_up_error_2            = "Exceeded maximum filesize.";
 $admin_lang_pp_up_error_3            = "File was not fully uploaded.";
 $admin_lang_pp_up_error_4            = "No file was uploaded.";
+$admin_lang_pp_up_error_6            = "Missing a temporary folder.";
+$admin_lang_pp_up_error_7            = "Failed to write file to disk.";
 
 
 // options >> time stamps

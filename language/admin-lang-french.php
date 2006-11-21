@@ -340,6 +340,8 @@ $admin_lang_pp_up_error_1      = "Le poids du fichier est trop lourd pour le ser
 $admin_lang_pp_up_error_2      = "Taille du fichier trop importante.";
 $admin_lang_pp_up_error_3      = "Le fichier n'a pas &eacute;t&eacute; t&eacute;l&eacute;charg&eacute; enti&egrave;rement.";
 $admin_lang_pp_up_error_4      = "Aucun fichier n'a &eacute;t&eacute; t&eacute;l&eacute;charg&eacute;.";
+$admin_lang_pp_up_error_6      = "Missing a temporary folder.";
+$admin_lang_pp_up_error_7      = "Failed to write file to disk.";
 
 // newly added ones
 $admin_lang_cmnt_moderation_que   = "File d&lsquo;attente de validation";

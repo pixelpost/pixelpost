@@ -342,6 +342,8 @@ $admin_lang_pp_up_error_1            = "Overgikk maksimum filest&oslash;rrelse f
 $admin_lang_pp_up_error_2            = "Overgikk maksimum filest&oslash;rrelse.";
 $admin_lang_pp_up_error_3            = "Filen ble ikke fullstendig opplastet.";
 $admin_lang_pp_up_error_4            = "Ingen fil ble lastet opp.";
+$admin_lang_pp_up_error_6            = "Missing a temporary folder.";
+$admin_lang_pp_up_error_7            = "Failed to write file to disk.";
 
 // newly added ones
 $admin_lang_cmnt_moderation_que    = "Moderasjons k&oslash;";

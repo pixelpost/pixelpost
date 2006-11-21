@@ -343,6 +343,8 @@ $admin_lang_pp_up_error_1            = "超过服务器能够处理的最大文�
 $admin_lang_pp_up_error_2            = "超过最大的文件大小。";
 $admin_lang_pp_up_error_3            = "文件没有完全上传。";
 $admin_lang_pp_up_error_4            = "没有上传到文件。";
+$admin_lang_pp_up_error_6            = "Missing a temporary folder.";
+$admin_lang_pp_up_error_7            = "Failed to write file to disk.";
 
 
 // options >> time stamps

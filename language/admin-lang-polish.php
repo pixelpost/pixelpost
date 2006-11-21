@@ -378,6 +378,8 @@ $admin_lang_pp_up_error_1 = "Osiągnięto maksymalny rozmiar pliku jaki może ob
 $admin_lang_pp_up_error_2 = "Osiągnięto maksymalny rozmiar pliku.";
 $admin_lang_pp_up_error_3 = "Plik nie został przesłany w całości.";
 $admin_lang_pp_up_error_4 = "Żaden plik nie został przesłany.";
+$admin_lang_pp_up_error_6 = "Brak katalogu tymczasowego.";
+$admin_lang_pp_up_error_7 = "Plik nie został zapisany na dysku.";
 
 
 // options >> time stamps

@@ -99,7 +99,9 @@ function check_upload($string)
 		"1" => "$admin_lang_pp_up_error_1",
 		"2" => "$admin_lang_pp_up_error_2",
 		"3" => "$admin_lang_pp_up_error_3",
-		"4" => "$admin_lang_pp_up_error_4"
+		"4" => "$admin_lang_pp_up_error_4",
+		"6" => "$admin_lang_pp_up_error_6",
+		"7" => "$admin_lang_pp_up_error_7"
 		);
 
  	$result = $error_explained[$string];
