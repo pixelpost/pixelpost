@@ -444,7 +444,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 			{
 				$headline = pullout($headline);
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
-				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_name");
+				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image");
 				$ahead_thumbs .= "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
 				$ahead_thumbs_reverse = "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>" .$ahead_thumbs_reverse ;
 				$totalthumbcounter++;
@@ -458,7 +458,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 			{
 				$headline = pullout($headline);
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
-				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_name");
+				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image");
 				$behind_thumbs = "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>$behind_thumbs";
 				$behind_thumbs_reverse .= "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
 				$totalthumbcounter++;
