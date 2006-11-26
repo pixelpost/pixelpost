@@ -14,14 +14,24 @@ if($_GET['view'] == "images")
 {
 	if($_GET['action'] == "masspublish") {
 		$idz= $_POST['moderate_image_boxes'];
- 		$query = "UPDATE ".$pixelpost_db_prefix."pixelpost SET datetime = now() ";
- 		$where = "WHERE";
- 		for ($i=0; $i < count($idz)-1; $i++)
- 		{	$where .= " id = '$idz[$i]' or ";	}
- 		$lastid = $idz[count($idz)-1];
- 		$where .= " id = '$lastid'  ";
- 		$query .= $where;
- 		$query  = sql_query($query);
+		// This is rather interesting since when multiple pictures have the same datetime stamp only the last one
+		// will be shown. This means we have to construct single queries for each selected id and give them a
+		// unique datetimestamp.
+		// Since the latest image is displayed first we need to sort the idz because the lowest id have to be
+		// published first.
+		sort($idz);
+		$minute_offset = ceil(count($idz)/60);
+		$current_hour = date("H");
+		$current_minutes = date("i");
+		$current_seconds = date("S");
+ 		$query = "UPDATE ".$pixelpost_db_prefix."pixelpost SET datetime = ";
+ 		for ($i=0; $i < count($idz); $i++)
+ 		{
+ 			
+ 			$datetimestamp = date("Y-m-d H:i:s",mktime($current_hour,$current_minutes-$minute_offset,$current_seconds+$i,date("m"),date("d"),date("Y")));
+			$finalquery=$query."'".$datetimestamp."' WHERE id = '$idz[$i]'";
+ 			$finalquery  = sql_query($finalquery);
+ 		}
  		$c = count($idz);
  		echo "<div class='jcaption confirm'>$admin_lang_imgedit_published  $c $admin_lang_imgedit_unpublished_cmnts</div>";
  	}
