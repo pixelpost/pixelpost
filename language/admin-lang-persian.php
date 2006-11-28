@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 
 admin-lang-persian.php : persian (default) language file for PixelPost-Admin-Section

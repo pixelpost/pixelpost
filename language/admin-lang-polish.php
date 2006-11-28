@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 
 admin-lang-polish.php : polish language file for PixelPost-Admin-Section

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 
 admin-lang-fench.php : french language file for Pixelpost-Admin-Section
