@@ -561,16 +561,16 @@ $tag_max = mysql_query($queryr);
 $tag_max = mysql_fetch_row($tag_max);
 $tag_max = $tag_max[0];
 
-$queryr = "SELECT SUBSTRING(COUNT(*)/$tag_max,3,1) AS rank, tag
+$queryr = "SELECT SUBSTRING(COUNT(*)/$tag_max,3,1) AS rank, tag, COUNT(*) as cnt
 FROM {$pixelpost_db_prefix}tags
 GROUP BY tag
 ORDER BY tag";
 $tags = mysql_query($queryr);
 
-while(list($rank, $tag)  = mysql_fetch_array($tags))
+while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
 {
-	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank.'">'.$tag.' ('.$rank.')</a> ';
-	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank.'">'.$tag.' ('.$rank.')</a> ';
+	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank.'">'.$tag.' ('.$cnt.')</a> ';
+	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank.'">'.$tag.' ('.$cnt.')</a> ';
 }
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
