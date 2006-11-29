@@ -1054,7 +1054,7 @@ function list_tags_frontend()
 		$tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $tags['tag'][$i] . '\' class=\'tags' . $weight . '\'>' . $tags['tag'][$i] . '</a>';
 	}
 
-	$tag_list = substr($tag_list, 1);
+	$tag_list = trim($tag_list);
 	$tag_list = strtr($tag_list, array("='tag1'" => "='tag10'"));
 
 	return $tag_list;
@@ -1150,7 +1150,7 @@ function list_alt_tags_frontend()
 		$alt_tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $alt_tags['alt_tag'][$i] . '\' class=\'tags' . $weight . '\'>' . $alt_tags['alt_tag'][$i] . '</a>';
 	}
 
-	$alt_tag_list = substr($alt_tag_list, 1);
+	$alt_tag_list = trim($alt_tag_list);
 	$alt_tag_list = strtr($alt_tag_list, array("='tag1'" => "='tag10'"));
 
 	return $alt_tag_list;
