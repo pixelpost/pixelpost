@@ -47,6 +47,8 @@ NEW TAGS:
 <LINK_TO_PAGED_ARCHIVE> // Link to Paged-by-page archive page as <a href="index.php?x=browse&pagenum=1">Archive</a>',$tpl);
 <TAG_LINKS_AS_LIST> // Tag links as a text list for default PP's archive page
 <TAG_LINKS_AS_LIST_PAGED> // Tag links as a text list for page-by-page archive
+<TAG_IMG_LIST> // list of tags for showed image
+<TAG_IMG_LIST_PAGED> // list of tags for showed image
 */
 
 $addon_name = "Page-By-Page-Archive for category and month (for PP v1.4)";
@@ -112,7 +114,7 @@ Enter the maximum number of thumbnails in each page of the archive page:
 <input type='submit' value='update'>
 </form> $isupdated
 
-<p>NEW TAGS:<br/>
+<p>TAGS:<br/>
 <br/>
 &lt;CATEGORY_LINKS_AS_LIST&gt; // Category links as a text list for default PP's
 archive page<br/>
@@ -129,6 +131,13 @@ category<br/>
 &lt;CATEGORY_OR_DATE_NAME_PAGED_ARCHIVE&gt; // Name of the category or Month you
 select<br/>
 &lt;LINK_TO_PAGED_ARCHIVE&gt; // Link to Paged-by-page archive page</p>
+
+<p>NEW TAGS:<br/>
+<br/>
+&lt;TAG_LINKS_AS_LIST&gt; // Tag links as a text list for default PP's archive page<br/>
+&lt;TAG_LINKS_AS_LIST_PAGED&gt; // Tag links as a text list for page-by-page archive<br/>
+&lt;TAG_IMG_LIST&gt; // list of tags for showed image<br/>
+&lt;TAG_IMG_LIST_PAGED&gt; // list of tags for showed image</p>
 
 ";
 
@@ -574,8 +583,28 @@ while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
 }
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
+
+$queryr = "SELECT tag
+FROM {$pixelpost_db_prefix}tags
+WHERE img_id = " . $image_id . "
+ORDER BY tag";
+$tags = mysql_query($queryr);
+
+$tags_img = "Tags: ";
+$tags_paged_img = $tags_img;
+
+while(list($tag)  = mysql_fetch_array($tags))
+{
+	$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
+	$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
+}
+$tags_img = trim($tags_img);
+$tags_paged_img = trim($tags_paged_img);
+
 $tpl = str_replace("<TAG_LINKS_AS_LIST>",$tags_output,$tpl); //thumbnails in this page
 $tpl = str_replace("<TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output,$tpl); //thumbnails in this page
+$tpl = str_replace("<TAG_IMG_LIST>",$tags_img,$tpl); // list of tags for showed image
+$tpl = str_replace("<TAG_IMG_LIST_PAGED>",$tags_paged_img,$tpl); // list of tags for showed image
 
 //----------------- Build the additional new tages
 //-- If you use paged archive
