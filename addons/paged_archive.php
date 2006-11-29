@@ -558,7 +558,7 @@ $browse_select .= "</select>";
 $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
 /* TAGS support */
-$tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">Tags:</div><br />';
+$tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">'.$lang_tags.':</div><br />';
 $tags_paged_output = $tags_output;
 
 $queryr = "SELECT COUNT( * ) AS max
@@ -570,7 +570,7 @@ $tag_max = mysql_query($queryr);
 $tag_max = mysql_fetch_row($tag_max);
 $tag_max = $tag_max[0];
 
-$queryr = "SELECT SUBSTRING(COUNT(*)/$tag_max,3,1) AS rank, tag, COUNT(*) as cnt
+$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
 FROM {$pixelpost_db_prefix}tags
 GROUP BY tag
 ORDER BY tag";
@@ -579,7 +579,7 @@ $tags = mysql_query($queryr);
 while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
 {
 	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank.'">'.$tag.' ('.$cnt.')</a> ';
-	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank.'">'.$tag.' ('.$cnt.')</a> ';
+	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.' ('.$cnt.')</a> ';
 }
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
@@ -590,7 +590,7 @@ WHERE img_id = " . $image_id . "
 ORDER BY tag";
 $tags = mysql_query($queryr);
 
-$tags_img = "Tags: ";
+$tags_img = $lang_tags.": ";
 $tags_paged_img = $tags_img;
 
 while(list($tag)  = mysql_fetch_array($tags))

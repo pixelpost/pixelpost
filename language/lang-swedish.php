@@ -71,7 +71,8 @@ $lang_comment_redirect_error  = "Comment submition error! Please click to be tra
 $lang_message_moderating_comment = "Your comment is received! It will become public after authorizing by photoblog admin.";
 $lang_comment_page_title      = "Kommentera";
 $lang_comment_popup           = "Kommentarer";
-$lang_message_banned_comment     = "Your comment is not saved! It contains one or more banned words/email/ips.";
+$lang_message_banned_comment  = "Your comment is not saved! It contains one or more banned words/email/ips.";
+$lang_tags                    = "Tags";
 
 // EXIF DATA
 $lang_exposure              = "Exponering:";

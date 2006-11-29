@@ -111,6 +111,7 @@ $lang_december                  = "December";
 
 // newly added
 $lang_message_banned_comment     = "Your comment hasn't been saved! It contains one or more banned words/email/IPs.";
+$lang_tags                       = "Tags";
 
 // Email Notification
 

@@ -414,52 +414,53 @@ h3 {
 	border-left:0px;
 	}
 
-.tags1
+/* TAG SUPPORT */
+.tags01
 {
-	font-size: 11px !important;
+	font-size: 10px !important;
 }
 
-.tags2
+.tags02
 {
 	font-size: 12px !important;
 }
 
-.tags3
-{
-	font-size: 13px !important;
-}
-
-.tags4
+.tags03
 {
 	font-size: 14px !important;
 }
 
-.tags5
-{
-	font-size: 15px !important;
-}
-
-.tags6
+.tags04
 {
 	font-size: 16px !important;
 }
 
-.tags7
-{
-	font-size: 17px !important;
-}
-
-.tags8
+.tags05
 {
 	font-size: 18px !important;
 }
 
-.tags9
-{
-	font-size: 19px !important;
-}
-
-.tags0
+.tags06
 {
 	font-size: 20px !important;
+}
+
+.tags07
+{
+	font-size: 22px !important;
+}
+
+.tags08
+{
+	font-size: 24px !important;
+}
+
+.tags09
+{
+	font-size: 26px !important;
+}
+
+.tags10
+{
+	font-size: 28px !important;
 }

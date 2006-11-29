@@ -69,6 +69,7 @@ $lang_comment_redirect_error       = "Il y a eu un probl&egrave;me en envoyant v
 $lang_comment_page_title           = "Commentaire";
 $lang_comment_popup                = "Commentaires";
 $lang_message_banned_comment       = "Votre commentaire n'a pas pu &ecirc;tre enregistr&eacute; ! Il contient au moins un mot, adresse mail ou IP sur la liste des interdits.";
+$lang_tags                         = "Tags";
 
 // EXIF DATA
 $lang_exposure                     = "Exposition :";

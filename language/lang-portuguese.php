@@ -73,6 +73,7 @@ $lang_comment_redirect_error   = "Erro do submition do coment&aacute;rio! Estale
 $lang_comment_page_title       = "Coment&aacute;rio";
 $lang_comment_popup            = "Coment&aacute;rios";
 $lang_message_banned_comment   = "Seu coment&aacute;rio n&atilde;o &eacute; conservado! Contem aquele ou mais palavras/email/ips proibidas.";
+$lang_tags                     = "Tags";
 
 // EXIF DATA
 $lang_exposure                 = "Exposi&ccedil;&atilde;o:";

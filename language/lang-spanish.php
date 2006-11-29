@@ -74,7 +74,8 @@ $lang_comment_redirect          = "Has click para ir hacia tras.";
 $lang_comment_redirect_error    = "&iexcl;Error del submition del comentario! Chasque por favor para ser transferido detr&aacute;s, si el cambio de direcci&oacute;n no trabaja";
 $lang_comment_page_title        = "Opini&oacute;n";
 $lang_comment_popup             = "Opiniones";
-$lang_message_banned_comment     = "&iexcl;Su comentario no se ahorra! Contiene unas o m&aacute;s palabras/email/ips prohibidas.";
+$lang_message_banned_comment    = "&iexcl;Su comentario no se ahorra! Contiene unas o m&aacute;s palabras/email/ips prohibidas.";
+$lang_tags                      = "Tags";
 
 // EXIF DATA
 $lang_exposure                  = "Exposici&oacute;n:";
