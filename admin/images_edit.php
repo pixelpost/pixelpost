@@ -157,7 +157,7 @@ if($_GET['view'] == "images")
 						}
 
 						echo "<div id='warning'>$admin_lang_error ";
-						echo "<br>$result</div><hr>";
+						echo "<br/>$result</div><hr/>";
 						 $status = "no";
 				} // end move
 			} // end prepare of file */

@@ -299,7 +299,7 @@ if($_GET['view'] == "comments") {
 	        else
 	          $image_page_Links  = "<a href='index.php?view=comments&amp;page=$newpage'>$admin_lang_prev</a>\n" .$image_page_Links;
 	      }
-	       echo "\n".$image_page_Links."<br>";
+	       echo "\n".$image_page_Links."<br/>";
 
 	      }
 

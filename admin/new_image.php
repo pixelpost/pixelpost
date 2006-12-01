@@ -276,7 +276,9 @@ if($_GET['view'] == "")
 					$result = "$admin_lang_ni_upload_error ";
 
 				echo "<div id='warning'>$admin_lang_error  ";
-				echo "<br>$result</div><hr>";
+				echo "<br/>$result";
+				if(!is_writable($upload_dir))	echo "<br/>$admin_lang_pp_img_chmod1";
+				echo "</div><hr/>";
 	 			$status = "no";
 			} // end move
 		} // end prepare of file ($_FILES['userfile'] != "")

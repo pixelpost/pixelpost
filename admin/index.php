@@ -81,11 +81,11 @@ if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
 					 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<html>
 					<head><title="Error, missing language file"></head><body>
-					<hr><p style="color:black;font-weight:bold;margin-left:20%;font-family:verdana,arial,sans-serif;">Attention! Take care, that at least the file <br /><br />
+					<hr/><p style="color:black;font-weight:bold;margin-left:20%;font-family:verdana,arial,sans-serif;">Attention! Take care, that at least the file <br /><br />
 					<i style="color:red;font-size:bigger">admin-lang-english.php</i><br />
 					<br />sits in the directory <i style="color:red;font-size:bigger">language</i>.<br /><br />
 					You can find this file in the PixelPost-ZIP-File in the directory <i style="color:red;font-size:bigger">language</i>.<br />
-					<br />Please upload it to your server!</p><hr></body></html>';
+					<br />Please upload it to your server!</p><hr/></body></html>';
 					exit;}
 			}
 	}
