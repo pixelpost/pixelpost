@@ -647,9 +647,9 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 		}
 
 	// only perform this code when the user has commenting enabled
-	$allow_comments_result = sql_array("SELECT allow_comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
- 	$allow_comments = pullout($allow_comments_result['allow_comments']);
- 	if ($allow_comments =='Y'){
+	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
+ 	$cmnt_setting = pullout($comments_result['comments']);
+ 	if ($cmnt_setting !=='F'){
   	/////////////
   	// build a string with all comments
   	if(isset($_GET['x'])&&($_GET['x'] == "") or (isset($_GET['popup'])&&$_GET['popup'] == "comment"))
@@ -706,7 +706,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
   				$cmnt_publish_permission ='no';
   			if ($cmnt_moderate_permission=='no')
   				$cmnt_publish_permission ='yes';
-  
+  			
+  			
   			if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />";
   
   			if($message == "")	$extra_message = "<b>$lang_message_missing_comment</b><p />";
@@ -1021,10 +1022,10 @@ $tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
 
-if ($allow_comments =='Y'){
-	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
-} else {
+if ($allow_comments =='F'){
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('Commenting on this picture has been disabled');\">$lang_comment_popup</a>",$tpl);	
+} else {
+	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
 }
 
 	
@@ -1048,7 +1049,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$cmnt_moderate_permission = $cfgrow['moderate_comments'];
-
+	
 // $parent_id		
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){  die("No intrusion! ?? :(");}

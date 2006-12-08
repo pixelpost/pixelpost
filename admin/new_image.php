@@ -155,10 +155,12 @@ if($_GET['view'] == "")
     	echo "<div class='jcaption'>Allow comments on picture</div>
     		<div class='content'>Allow comments:
     		<select name=\"allow_comments\">";
-    		if ($cfgrow["global_allow_comments"] =='Y'){
- 					echo "<option selected=\"selected\" value=\"Y\">".$admin_lang_optn_yes."</option><option value=\"N\">".$admin_lang_optn_no."</option>";
+    		if ($cfgrow["global_comments"] =='A'){
+ 					echo "<option selected=\"selected\" value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
+ 				} elseif ($cfgrow["global_comments"] =='M'){
+ 						echo "<option value=\"A\">Allowed</option><option  selected=\"selected\" value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
  				} else {
- 					echo "<option value=\"Y\">".$admin_lang_optn_yes."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_no."</option>";
+					echo "<option value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option selected=\"selected\" value=\"F\">Disabled</option>"; 				
  				}
 				echo"</select></div>";
     
@@ -209,7 +211,7 @@ if($_GET['view'] == "")
 			$alt_headline = "";
 			$alt_body =  "";
 		}
-		$allow_comments = clean($_POST['allow_comments']);
+		$comments_settings = clean($_POST['comments_settings']);
 	  $datetime =
              $_POST['post_year']."-".
              $_POST['post_month']."-".
@@ -300,8 +302,8 @@ if($_GET['view'] == "")
 		$image = $filnamn;
 		if($status == "ok")
 		{
-			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,allow_comments)
-			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$allow_comments')";
+			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,comments)
+			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$comments_settings')";
 			$result = mysql_query($query) || die("Error: ".mysql_error().$admin_lang_ni_db_error);
 	
 	    $theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"

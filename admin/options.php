@@ -80,7 +80,7 @@ if ($_GET['optaction']=='updateall'){
 				//break;
 
 		//case "updateallowcomments":
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set global_allow_comments='".$_POST['global_allow_comments']."'");
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set global_comments='".$_POST['global_comments']."'");
 				//break;
     
     //case "updatecommentemail":
@@ -357,11 +357,13 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 		<!-- Allow commenting on pictures -->
 		<div class='jcaption'>Allow comments on picture</div>
     <div class='content'>Default setting when uploading a new picture:
-    		<select name=\"global_allow_comments\">";
-    		if ($cfgrow["global_allow_comments"] =='Y'){
- 					echo "<option selected=\"selected\" value=\"Y\">".$admin_lang_optn_yes."</option><option value=\"N\">".$admin_lang_optn_no."</option>";
+    		<select name=\"global_comments\">";
+    		if ($cfgrow["global_comments"] =='A'){
+ 					echo "<option selected=\"selected\" value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
+ 				} elseif ($cfgrow["global_comments"] =='M'){
+ 					echo "<option value=\"A\">Allowed</option><option  selected=\"selected\" value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
  				} else {
- 					echo "<option value=\"Y\">".$admin_lang_optn_yes."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_no."</option>";
+					echo "<option value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option selected=\"selected\" value=\"F\">Disabled</option>"; 				
  				}
 		echo"</select></div>
 		<div class='jcaption'>
