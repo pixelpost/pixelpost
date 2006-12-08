@@ -150,7 +150,19 @@ if($_GET['view'] == "")
 </td></tr></table>
     <p />
     </div>
-		<?php // workspace: new_image_form
+    <?php
+    	// added select box for allowing comments posted for picture
+    	echo "<div class='jcaption'>Allow comments on picture</div>
+    		<div class='content'>Allow comments:
+    		<select name=\"allow_comments\">";
+    		if ($cfgrow["global_allow_comments"] =='Y'){
+ 					echo "<option selected=\"selected\" value=\"Y\">".$admin_lang_optn_yes."</option><option value=\"N\">".$admin_lang_optn_no."</option>";
+ 				} else {
+ 					echo "<option value=\"Y\">".$admin_lang_optn_yes."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_no."</option>";
+ 				}
+				echo"</select></div>";
+    
+    // workspace: new_image_form
 		eval_addon_admin_workspace_menu('new_image_form');
 		// added for language support
 		// Check if the language addon is enabled. If not there is no need to show these fields
@@ -197,6 +209,7 @@ if($_GET['view'] == "")
 			$alt_headline = "";
 			$alt_body =  "";
 		}
+		$allow_comments = clean($_POST['allow_comments']);
 	  $datetime =
              $_POST['post_year']."-".
              $_POST['post_month']."-".
@@ -287,8 +300,8 @@ if($_GET['view'] == "")
 		$image = $filnamn;
 		if($status == "ok")
 		{
-			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body)
-			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body')";
+			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,allow_comments)
+			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$allow_comments')";
 			$result = mysql_query($query) || die("Error: ".mysql_error().$admin_lang_ni_db_error);
 	
 	    $theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"

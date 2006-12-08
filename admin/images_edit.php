@@ -115,6 +115,7 @@ if($_GET['view'] == "images")
 			$body = clean($_POST['body']);
 			$alt_headline = clean($_POST['alt_headline']);
 			$alt_body = clean($_POST['alt_body']);
+			$allow_comments = clean($_POST['allow_comments']);
 			$getid = $_GET['imageid'];
 			$newdatetime = $_POST['newdatetime'];
 			save_tags_edit($_POST['tags'],$getid);
@@ -172,7 +173,7 @@ if($_GET['view'] == "images")
 				}
 			}
 
-			$query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category', alt_headline='$alt_headline', alt_body='$alt_body' where id='$getid'";
+			$query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category', alt_headline='$alt_headline', alt_body='$alt_body', allow_comments='$allow_comments' where id='$getid'";
 			$result = mysql_query($query) ||("Error: ".mysql_error().$admin_lang_imgedit_db_error);
 
 
@@ -419,7 +420,21 @@ if($_GET['view'] == "images")
 			<div class='jcaption'>$admin_lang_imgedit_dtime</div>
 			<div class='content'>
 				<input type='text' name='newdatetime' value='".$imagerow['datetime']."' style='width:300px;' />
-			</div>";
+			</div>
+			<div class='jcaption'>Allow comments on picture</div>
+ 			<div class='content'>Allow comments:
+ 				<select name=\"allow_comments\">";
+ 				$allow_comments_result = sql_array("SELECT allow_comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$getid'");
+ 				$allow_comments = pullout($allow_comments_result['allow_comments']);
+ 				if ($allow_comments =='Y'){
+ 					echo "<option selected=\"selected\" value=\"Y\">".$admin_lang_optn_yes."</option><option value=\"N\">".$admin_lang_optn_no."</option>";
+ 				} else {
+ 					echo "<option value=\"Y\">".$admin_lang_optn_yes."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_no."</option>";
+ 				}
+				echo "</select></div>";
+			
+			
+			
 			// Check if the language addon is enabled. If not there is no need to show these fields
 			if ($cfgrow['altlangfile'] != 'Off'){
 					echo "

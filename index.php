@@ -259,8 +259,7 @@ if ($language_full==$cfgrow['langfile'])
 	}
 
 if(isset($_GET['popup'])&&$_GET['popup'] == "comment")
-{
-		
+{	
 	$tpl = file_get_contents("templates/".$cfgrow['template']."/comment_template.html");
 }
 
@@ -647,110 +646,115 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 			$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
 		}
 
+	// only perform this code when the user has commenting enabled
+	$allow_comments_result = sql_array("SELECT allow_comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
+ 	$allow_comments = pullout($allow_comments_result['allow_comments']);
+ 	if ($allow_comments =='Y'){
+  	/////////////
+  	// build a string with all comments
+  	if(isset($_GET['x'])&&($_GET['x'] == "") or (isset($_GET['popup'])&&$_GET['popup'] == "comment"))
+  	{
+  		if(isset($_GET['comment'])&&$_GET['comment'] == "save")
+  		{
+  			// Ramin added more protections
+  			if (eregi ("Content-Transfer-Encoding", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
+  			if (eregi ("MIME-Version", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
+  			if (eregi ("Content-Type", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
+  
+  			$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])); // current date+time //was date("Y-m-d H:i:s");
+  			$ip = $_SERVER['REMOTE_ADDR'];
+  // $parent_id		$parent_id = $_POST['parent_id'];
+  			$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
+  			if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){  die("No intrusion! ?? :(");}
+  			if (!is_numeric($parent_id))
+  				die('parent_id is not correct!');
+  
+  // $message		$message = clean(nl2br($_POST['message']));
+  			$message = isset($_POST['message']) ? $_POST['message'] : "";
+  			$message = clean_comment($message);
+  			$message = nl2br($message);
+  		
+  // $name 		$name = clean($_POST['name']);
+  			$name = isset($_POST['name']) ? $_POST['name'] : "";
+  			if (eregi("\r",$name) || eregi("\n",$name)){  die("No intrusion! ?? :(");}
+  			$name = clean_comment($name);	
+  		
+  // $url 		$url = clean($_POST['url']);
+  			$url = isset($_POST['url']) ? $_POST['url'] : "";
+  			if(eregi("\r",$url) || eregi("\n",$url)){  die("No intrusion! ?? :(");}
+  			if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
+  			$url = clean_comment($url);
+  
+  // $parent_name		$parent_name = clean($_POST['parent_name']);
+  			$parent_name = isset($_POST['parent_name']) ? $_POST['parent_name'] : "";
+  			if (eregi("\r",$parent_name) || eregi("\n",$parent_name)){  die("No intrusion! ?? :(");}
+  			$parent_name = clean_comment($parent_name);	
+  
+  // $email 		$email = clean($_POST['email']);
+  			$email = isset($_POST['email']) ? $_POST['email'] : "";
+  			if (eregi("\r",$email) || eregi("\n",$email)){  die("No intrusion! ?? :(");}
+  			$email = clean_comment($email);	
+  			
+  			// check that only one email-adress entered
+  			$onlyone = $email;
+  			$numberofats = substr_count("$onlyone", "@");
+  			if ($numberofats > 1) {die("only one email-adress allowed");}
+  
+  			$cmnt_moderate_permission = $cfgrow['moderate_comments'];
+  
+  			if ($cmnt_moderate_permission=='yes')
+  				$cmnt_publish_permission ='no';
+  			if ($cmnt_moderate_permission=='no')
+  				$cmnt_publish_permission ='yes';
+  
+  			if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />";
+  
+  			if($message == "")	$extra_message = "<b>$lang_message_missing_comment</b><p />";
+  
+  			if(($parent_id != "") and ($message != "")){
+  
+  			// check the comment with banlists
+  			if (!is_comment_in_blacklist($message,$ip,$name)){
+  
+  				// send it to moderation if contains banned words but not black listed!
+  				if(is_comment_in_moderation_list($message,$ip,$name)){
+  					$cmnt_publish_permission = 'no';
+  					$cmnt_moderate_permission = 'yes';
+  					}
+  
+  				// to the job now
+  				if ($cmnt_moderate_permission =='yes')
+  					$extra_message = "<p /><b>$lang_message_moderating_comment</b><p />";
+  				sql_save("INSERT INTO ".$pixelpost_db_prefix."comments(id,parent_id,datetime,ip,message,name,url,email,publish)
+  					VALUES(NULL,'$parent_id','$datetime','$ip','$message','$name','$url','$email','$cmnt_publish_permission')");
+  				}
+  			} // end if not in the black list
+  		}
+  	} // end if comment
+  	// visitor information in comments
+  	$vinfo_name = "";
+  	$vinfo_url = "";
+  	$vinfo_email = "";
+  	if(isset($_COOKIE['visitorinfo']))	list($vinfo_name,$vinfo_url,$vinfo_email) = split("%",$_COOKIE['visitorinfo']);
+  
+  	$tpl = ereg_replace("<VINFO_NAME>",$vinfo_name,$tpl);
+  	$tpl = ereg_replace("<VINFO_URL>",$vinfo_url,$tpl);
+  	$tpl = ereg_replace("<VINFO_EMAIL>",$vinfo_email,$tpl);
+		if($_GET['showimage'] == "")	$imageid = $image_id;
+		else	$imageid = $_GET['showimage'];
 
-	/////////////
-	// build a string with all comments
-	if(isset($_GET['x'])&&($_GET['x'] == "") or (isset($_GET['popup'])&&$_GET['popup'] == "comment"))
-	{
-		if(isset($_GET['comment'])&&$_GET['comment'] == "save")
+		$image_comments = print_comments($imageid);
+		$tpl = ereg_replace("<IMAGE_COMMENTS>",$image_comments,$tpl);
+
+		if(($_GET['popup'] == "comment") AND (!isset($_GET['x'])OR$_GET['x'] != "save_comment"))
 		{
-			// Ramin added more protections
-			if (eregi ("Content-Transfer-Encoding", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
-			if (eregi ("MIME-Version", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
-			if (eregi ("Content-Type", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
-
-			$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])); // current date+time //was date("Y-m-d H:i:s");
-			$ip = $_SERVER['REMOTE_ADDR'];
-// $parent_id		$parent_id = $_POST['parent_id'];
-			$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
-			if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){  die("No intrusion! ?? :(");}
-			if (!is_numeric($parent_id))
-				die('parent_id is not correct!');
-
-// $message		$message = clean(nl2br($_POST['message']));
-			$message = isset($_POST['message']) ? $_POST['message'] : "";
-			$message = clean_comment($message);
-			$message = nl2br($message);
-		
-// $name 		$name = clean($_POST['name']);
-			$name = isset($_POST['name']) ? $_POST['name'] : "";
-			if (eregi("\r",$name) || eregi("\n",$name)){  die("No intrusion! ?? :(");}
-			$name = clean_comment($name);	
-		
-// $url 		$url = clean($_POST['url']);
-			$url = isset($_POST['url']) ? $_POST['url'] : "";
-			if(eregi("\r",$url) || eregi("\n",$url)){  die("No intrusion! ?? :(");}
-			if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
-			$url = clean_comment($url);
-
-// $parent_name		$parent_name = clean($_POST['parent_name']);
-			$parent_name = isset($_POST['parent_name']) ? $_POST['parent_name'] : "";
-			if (eregi("\r",$parent_name) || eregi("\n",$parent_name)){  die("No intrusion! ?? :(");}
-			$parent_name = clean_comment($parent_name);	
-
-// $email 		$email = clean($_POST['email']);
-			$email = isset($_POST['email']) ? $_POST['email'] : "";
-			if (eregi("\r",$email) || eregi("\n",$email)){  die("No intrusion! ?? :(");}
-			$email = clean_comment($email);	
-			
-			// check that only one email-adress entered
-			$onlyone = $email;
-			$numberofats = substr_count("$onlyone", "@");
-			if ($numberofats > 1) {die("only one email-adress allowed");}
-
-			$cmnt_moderate_permission = $cfgrow['moderate_comments'];
-
-			if ($cmnt_moderate_permission=='yes')
-				$cmnt_publish_permission ='no';
-			if ($cmnt_moderate_permission=='no')
-				$cmnt_publish_permission ='yes';
-
-			if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />";
-
-			if($message == "")	$extra_message = "<b>$lang_message_missing_comment</b><p />";
-
-			if(($parent_id != "") and ($message != "")){
-
-			// check the comment with banlists
-			if (!is_comment_in_blacklist($message,$ip,$name)){
-
-				// send it to moderation if contains banned words but not black listed!
-				if(is_comment_in_moderation_list($message,$ip,$name)){
-					$cmnt_publish_permission = 'no';
-					$cmnt_moderate_permission = 'yes';
-					}
-
-				// to the job now
-				if ($cmnt_moderate_permission =='yes')
-					$extra_message = "<p /><b>$lang_message_moderating_comment</b><p />";
-				sql_save("INSERT INTO ".$pixelpost_db_prefix."comments(id,parent_id,datetime,ip,message,name,url,email,publish)
-					VALUES(NULL,'$parent_id','$datetime','$ip','$message','$name','$url','$email','$cmnt_publish_permission')");
-				}
-			} // end if not in the black list
+			include_once('includes/addons_lib.php');
+			echo $tpl;
+			exit;
 		}
-	} // end if comment
-	// visitor information in comments
-	$vinfo_name = "";
-	$vinfo_url = "";
-	$vinfo_email = "";
-	if(isset($_COOKIE['visitorinfo']))	list($vinfo_name,$vinfo_url,$vinfo_email) = split("%",$_COOKIE['visitorinfo']);
-
-	$tpl = ereg_replace("<VINFO_NAME>",$vinfo_name,$tpl);
-	$tpl = ereg_replace("<VINFO_URL>",$vinfo_url,$tpl);
-	$tpl = ereg_replace("<VINFO_EMAIL>",$vinfo_email,$tpl);
-
-	if($_GET['showimage'] == "")	$imageid = $image_id;
-	else	$imageid = $_GET['showimage'];
-
-	$image_comments = print_comments($imageid);
-	$tpl = ereg_replace("<IMAGE_COMMENTS>",$image_comments,$tpl);
-
-	if(($_GET['popup'] == "comment") AND (!isset($_GET['x'])OR$_GET['x'] != "save_comment"))
-	{
-		include_once('includes/addons_lib.php');
-		echo $tpl;
-		exit;
-	}
+	} else {
+  	// we do not want comments
+  }
 //} // end if comment
 } // end imageprint
 
@@ -1016,7 +1020,16 @@ $tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
 $tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
-$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
+
+if ($allow_comments =='Y'){
+	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
+} else {
+	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('Commenting on this picture has been disabled');\">$lang_comment_popup</a>",$tpl);	
+}
+
+	
+
+
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
 $tag_list = list_tags_frontend();

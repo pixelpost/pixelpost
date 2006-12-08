@@ -79,6 +79,10 @@ if ($_GET['optaction']=='updateall'){
 				$upquery = sql_query("update ".$pixelpost_db_prefix."config set timezone='".$_POST['timezone']."'");
 				//break;
 
+		//case "updateallowcomments":
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set global_allow_comments='".$_POST['global_allow_comments']."'");
+				//break;
+    
     //case "updatecommentemail":
         $update = sql_query("update ".$pixelpost_db_prefix."config set commentemail='".$_POST['new_commentemail']."' where admin='".$cfgrow['admin']."'");
         //break;
@@ -350,7 +354,16 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 		</select>
 		$admin_lang_optn_gmt<p />
 		</div>
-
+		<!-- Allow commenting on pictures -->
+		<div class='jcaption'>Allow comments on picture</div>
+    <div class='content'>Default setting when uploading a new picture:
+    		<select name=\"global_allow_comments\">";
+    		if ($cfgrow["global_allow_comments"] =='Y'){
+ 					echo "<option selected=\"selected\" value=\"Y\">".$admin_lang_optn_yes."</option><option value=\"N\">".$admin_lang_optn_no."</option>";
+ 				} else {
+ 					echo "<option value=\"Y\">".$admin_lang_optn_yes."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_no."</option>";
+ 				}
+		echo"</select></div>
 		<div class='jcaption'>
 		$admin_lang_optn_sendemail
 		</div>

@@ -458,6 +458,13 @@ function UpgradeTo151( $prefix, $newversion)
 		ADD `alt_body` TEXT DEFAULT '' NOT NULL ") or die("Error: ". mysql_error());
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100 ) DEFAULT 'default' NOT NULL")
 	or die("Error: ". mysql_error());
+	
+	// global settings disabling comments (default for new picture)
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `global_allow_comments` ENUM( 'Y', 'N' ) NOT NULL DEFAULT 'Y'")
+	or die("Error: ". mysql_error());
+	// picture based disabling comments
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `allow_comments` ENUM( 'Y', 'N' ) NOT NULL DEFAULT 'Y'")
+	or die("Error: ". mysql_error());
 		
 	//the following code was forgotten. This would caused an infinite install.php loop when updating.
 	// update version
