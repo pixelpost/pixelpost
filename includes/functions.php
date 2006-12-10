@@ -987,7 +987,8 @@ function save_tags_new($tags_str,$theid)
 
 	if(strlen($tags_str) > 0)
 	{
-		$tags = strtr($tags_str, ',', ' ');
+		$strtr_arr = array(',' => ' ', ';' => ' ');
+		$tags = strtr($tags_str, $strtr_arr);
 		$pat1 = '/([^a-zA-Z 0-9_]+)/';
 		$tags = preg_replace( $pat1, '_', $tags);
 		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/');
@@ -1078,7 +1079,8 @@ function save_alt_tags_new($tags_str,$theid)
 
 	if(strlen($tags_str) > 0)
 	{
-		$tags = strtr($tags_str, ',', ' ');
+		$strtr_arr = array(',' => ' ', ';' => ' ');
+		$tags = strtr($tags_str, $strtr_arr);
 		$pat1 = '/([^a-zA-Z 0-9_]+)/';
 		$tags = preg_replace( $pat1, '_', $tags);
 		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/');

@@ -23,11 +23,12 @@ if($_GET['view'] == "")
    <div class="jcaption"><?php echo $admin_lang_ni_post_a_new_image; ?></div>
    <div class="content">
 	<?php echo $admin_lang_ni_image ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <input name="userfile" type="file" size="76" /><p />
+   <input name="userfile" type="file" size="76" /><p/>
 	<?php echo $admin_lang_ni_image_title; ?>&nbsp;&nbsp;&nbsp;
-   <input type="text" name="headline" style="width:550px;" value="<?=$_POST['headline'];?>" /><p />
+   <input type="text" name="headline" style="width:550px;" value="<?=$_POST['headline'];?>" /><p/>
 	<?php echo $admin_lang_ni_tags; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <input type="text" name="tags" style="width:550px;" value="<?=$_POST['tags'];?>" /><p />
+   <input type="text" name="tags" style="width:550px;" value="<?=$_POST['tags'];?>" /><br/>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $admin_lang_ni_tags_desc; ?><p/>
   <?php echo $admin_lang_ni_select_cat; ?>
 	<?php
 	category_list_as_table($_POST['category'], $cfgrow);
@@ -43,24 +44,24 @@ if($_GET['view'] == "")
     <div class='content'>
     <?php	if($cfgrow['markdown'] == 't')
 				{
-					echo $admin_lang_ni_markdown_text; ?><br />
+					echo $admin_lang_ni_markdown_text; ?><br/>
     <a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_hp; ?></a>
     &nbsp;&nbsp;&nbsp;
     <a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_element; ?></a>
     &nbsp;&nbsp;&nbsp;
     <a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_syntax; ?></a><?php } ?>
-    <p />
+    <p/>
 	<div style="text-align:center;">
-    <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?=$_POST['body'];?></textarea><p />
+    <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?=$_POST['body'];?></textarea><p/>
 	</div>
     </div>
     <div class='jcaption'>
     <?php echo $admin_lang_ni_datetime; ?></div>
     <div class='content'>
-     <input type="radio" name="autodate" value="2" <?php if($selected_autodate[2]) echo 'checked="checked"';?> /><?php echo $admin_lang_ni_post_now . ' (~'.$cur_time.')'; ?><br />
-     <input type="radio" name="autodate" value="1" <?php if($selected_autodate[1]) echo 'checked="checked"';?> /><?php echo $admin_lang_ni_post_one_day_after; ?><br />
-     <input type='radio' name='autodate' value='3' <?php if($selected_autodate[3]) echo 'checked="checked"';?>id="exifdate" /><?php echo $admin_lang_ni_post_exif_date; ?><br />
-     <input type='radio' name='autodate' value='0' <?php if($selected_autodate[0]) echo 'checked="checked"';?>id="specificdate" /><?php echo $admin_lang_ni_post_spec_date; ?><br /><br />
+     <input type="radio" name="autodate" value="2" <?php if($selected_autodate[2]) echo 'checked="checked"';?> /><?php echo $admin_lang_ni_post_now . ' (~'.$cur_time.')'; ?><br/>
+     <input type="radio" name="autodate" value="1" <?php if($selected_autodate[1]) echo 'checked="checked"';?> /><?php echo $admin_lang_ni_post_one_day_after; ?><br/>
+     <input type='radio' name='autodate' value='3' <?php if($selected_autodate[3]) echo 'checked="checked"';?>id="exifdate" /><?php echo $admin_lang_ni_post_exif_date; ?><br/>
+     <input type='radio' name='autodate' value='0' <?php if($selected_autodate[0]) echo 'checked="checked"';?>id="specificdate" /><?php echo $admin_lang_ni_post_spec_date; ?><br/><br/>
      
 	 <table id="datetable">
 	 <tr>
@@ -150,7 +151,7 @@ if($_GET['view'] == "")
 	?>
 	</select>
 </td></tr></table>
-    <p />
+    <p/>
     </div>
     <?php
     	// added select box for allowing comments posted for picture
@@ -180,24 +181,24 @@ if($_GET['view'] == "")
 				echo "
 				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p />".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><p />";
+   			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
 
 				if($cfgrow['markdown'] == 't')
 				{
 					echo "
-   			<div>".$admin_lang_ni_markdown_text."<br />
+   			<div>".$admin_lang_ni_markdown_text."<br/>
     			<a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
     			&nbsp;&nbsp;&nbsp;
     			<a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
     			&nbsp;&nbsp;&nbsp;
     			<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
-    			<p />";
+    			<p/>";
     		}
     		
     		echo "
 					<div style='text-align:center;'>
-    				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$_POST['alt_body']."</textarea><p />
+    				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$_POST['alt_body']."</textarea><p/>
 					</div>
     		</div>";
 			}
@@ -254,7 +255,7 @@ if($_GET['view'] == "")
 	  if($headline == "")
 	  {
 			echo  "
-  		 <div id='warning'>$admin_lang_ni_missing_data</div><p />
+  		 <div id='warning'>$admin_lang_ni_missing_data</div><p/>
        <script type='text/javascript'>
 			 <!--
 			 document.location = '#warnings'
@@ -342,18 +343,18 @@ if($_GET['view'] == "")
 			$body = htmlspecialchars($body,ENT_QUOTES);
 			$to_echo = "
 			 <div id='caption'>$admin_lang_ni_posted: $headline</div>
-			 <div class='content'>$body<br />
+			 <div class='content'>$body<br/>
 			 $datetime<br/><a href=\"$PHP_SELF?view=images&id=$theid\">[$admin_lang_imgedit_edit]</a><p>
 			 ";
 			// Check if the '12c' is selected as the crop then add 3 buttons to the page '+', '-', and 'crop'
 			if ($cfgrow['crop']=='12c')
 			{
 				$to_echo .="
-							 $admin_lang_ni_crop_nextstep<br />
+							 $admin_lang_ni_crop_nextstep<br/>
 							 <input type='button' name='Submit1' value='".$txt['cropimage']."' onclick=\"cropCheck('def','".$filnamn ."');\" />
 							 <input type='button' name='Submit3' value='".$txt['smaller']."' onmousedown=\"cropZoom('in');\" onmouseup='stopZoom();' />
 							 <input type='button' name='Submit4' value='".$txt['bigger']."' onmousedown=\"cropZoom('out');\" onmouseup='stopZoom();' />
-							 <br /> ";
+							 <br/> ";
 			};
 			echo $to_echo; // tag of content div still open
 

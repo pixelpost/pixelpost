@@ -130,6 +130,7 @@ $admin_lang_ni_crop_background    = "This is the background of the image to crop
 $admin_lang_ni_post_exif_date     = "Use exif date";
 $admin_lang_ni_db_error           = "an error occurred writing into database";
 $admin_lang_ni_tags               = "Tags";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -174,7 +175,7 @@ $admin_lang_imgedit_cropbg          = "This is background text of 12cropimage";
 $admin_lang_imgedit_js_del_im       = "Are you sure you want to delete the image?";
 $admin_lang_imgedit_preview         = "Preview";
 $admin_lang_imgedit_db_error        = "<br />Check if permalink string isn't used so far!";
-$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
+$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
 $admin_lang_imgedit_published          = "Published";
 $admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";

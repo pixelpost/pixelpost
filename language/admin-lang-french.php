@@ -135,6 +135,7 @@ $admin_lang_ni_crop_background      = "Ceci est l'arri&egrave;re-plan de l'image
 $admin_lang_ni_db_error             = "il y a eu une erreur d'&eacute;criture dans la base de donn&eacute;es";
 $admin_lang_ni_post_exif_date       = "Utiliser la date exif de l'appareil photo";
 $admin_lang_ni_tags               = "Tags";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -177,7 +178,7 @@ $admin_lang_imgedit_cropbg          = "Ceci est le texte d'arri&egrave;re-plan d
 $admin_lang_imgedit_js_del_im       = "Etes-vous certain de vouloir supprimer cette image ?";
 $admin_lang_imgedit_db_error        = "<br />V&eacute;rifiez si le permalien n'est pas d&eacute;j&agrave; utilis&eacute; !";
 $admin_lang_imgedit_preview         = "Pr&eacute;visualisation";
-$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
+$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
 
 // Mass-Edit Categories

@@ -134,6 +134,7 @@ $admin_lang_ni_crop_nextstep      = "N&aring; b&oslash;r du velge miniatyrbilde 
 $admin_lang_ni_crop_background    = "Dette er bakgrunnen av bildet &aring; beskj&aelig;re";
 $admin_lang_ni_db_error             =  "en feil oppstod ved overf&oslash;rsel til databasen";
 $admin_lang_ni_tags               = "Tags";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -181,7 +182,7 @@ $admin_lang_imgedit_mass_1          = "Mengde rediger kategori";
 $admin_lang_imgedit_mass_2          = "Tildele";
 $admin_lang_imgedit_mass_3          = "Frasi";
 $admin_lang_imgedit_mass_4          = "Mengde oppdater";
-$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
+$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
 
 

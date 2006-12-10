@@ -153,6 +153,7 @@ $admin_lang_ni_crop_background    = "To jest tło obrazka do przycięcia";
 $admin_lang_ni_post_exif_date     = "Użyj daty z EXIFa";
 $admin_lang_ni_db_error           = "<br />Problem aktualizacji danych w bazie!";
 $admin_lang_ni_tags               = "Tagi";
+$admin_lang_ni_tags_desc          = "(do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia)";
 $admin_lang_ni_alt_language				= "Podaj tytył i opis obrazka dla drugiego języka";
 
 // Images
@@ -196,7 +197,7 @@ $admin_lang_imgedit_cropbg          = "To jest tło tekstowe 12cropimage";
 $admin_lang_imgedit_js_del_im       = "Czy napewno chcesz skasować ten obrazek?";
 $admin_lang_imgedit_preview         = "Podgląd";
 $admin_lang_imgedit_db_error        = "<br />Problem aktualizacji danych w bazie!";
-$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
+$admin_lang_imgedit_tags_edit       = "Tagi (do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia):";
 $admin_lang_imgedit_alt_language  	= "Zmiana tytułu i opisu obrazka dla drugiego języka";
 
 // Mass-Edit Categories

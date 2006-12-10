@@ -135,6 +135,7 @@ $admin_lang_ni_crop_background    = "Questo  lo sfondo dell'immagine da ritaglia
 $admin_lang_ni_post_exif_date     = "Usa la data exif";
 $admin_lang_ni_db_error           = "si &egrave; verificato un errore durante la scrittura nel database";
 $admin_lang_ni_tags               = "Tags";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -177,7 +178,7 @@ $admin_lang_imgedit_cropbg          = "Questo &egrave; il testo di sfondo di 12C
 $admin_lang_imgedit_js_del_im       = "Sicuro di voler cancellare l'immagine?";
 $admin_lang_imgedit_preview         = "Preview";
 $admin_lang_imgedit_db_error        = "<br />Verifica che la stringa del permalink non sia attualmente in uso!";
-$admin_lang_imgedit_tags            = $admin_lang_ni_tags;
+$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
 
 // Mass-Edit Categories

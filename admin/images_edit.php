@@ -400,7 +400,7 @@ if($_GET['view'] == "images")
 			<div class='content'>
 				<input type='text' name='headline' value='$headline' style='width:300px;' />
 			</div>
-			<div class='jcaption'>$admin_lang_imgedit_tags</div>
+			<div class='jcaption'>$admin_lang_imgedit_tags_edit</div>
 			<div class='content'><input type='text' name='tags' style='width:550px;' value='$tags' />
 			</div>
 			<div class='jcaption'>$admin_lang_imgedit_txt_desc</div>
@@ -448,7 +448,7 @@ if($_GET['view'] == "images")
 						<div class='content'>$admin_lang_imgedit_txt_desc<br />
 							<textarea name='alt_body' cols='50' rows='5' style='width:95%;'>$alt_body</textarea>
 						</div>";
-						echo "<div class='content'>".$admin_lang_imgedit_tags."<br />
+						echo "<div class='content'>".$admin_lang_imgedit_tags_edit."<br />
 							<input type='text' name='alt_tags' style='width:550px;' value='$alt_tags' />
 						</div>";
 			}
