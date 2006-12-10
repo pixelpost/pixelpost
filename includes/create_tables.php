@@ -500,7 +500,7 @@ function UpgradeTo1511( $prefix, $newversion)
 	or die("Error: ". mysql_error());
 
 	// creation of primary key on tags table
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD PRIMARY KEY ( `img_id` , `tag` ( 255 ) ) ")
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD PRIMARY KEY ( `img_id` , `tag` ( 128 ), `alt_tag` (128) ) ")
 	or die("Error: ". mysql_error());
 
 	// update version
