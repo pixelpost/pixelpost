@@ -51,7 +51,7 @@ Dont edit                     ||      Edit                                   */
 
 $admin_lang_isrtl  = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update = "Aktualizacja";
-$admin_lang_reload = "<br /> Musisz przeładować stronę, aby zobaczyć zmiany.";
+$admin_lang_reload = "<br/> Musisz przeładować stronę, aby zobaczyć zmiany.";
 $admin_lang_error  = "Błąd";
 $admin_lang_post   = "wpisów";
 $admin_lang_page   = "strona";
@@ -334,6 +334,8 @@ $admin_lang_optn_updated              = "miniaturki uaktualnione.";
 $admin_lang_optn_visitorbooking_title = "Zapis odwiedzających";
 $admin_lang_optn_visitorbooking_desc  = "Czy Pixelpost powinien zapisywać informacje o każdym odwiedzającym?";
 $admin_lang_optn_upd_done             = "Zaktualizowano dane.";
+$admin_lang_optn_markdown             = "Dostępność Markdown";
+$admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie obrazka?";
 
 // Info
 $admin_lang_info_gd           = "Nie zainstalowane, poproś swojego dostawcę o zainstalowanie!";

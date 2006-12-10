@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 
 admin-lang-english.php : english (default) language file for PixelPost-Admin-Section
@@ -299,6 +299,8 @@ $admin_lang_optn_updated             = "缩略图更新成功！";
 $admin_lang_optn_visitorbooking_title = '登记来访者';
 $admin_lang_optn_visitorbooking_desc  = '要Pixelpost登记每个来访者的信息吗？';
 $admin_lang_optn_upd_done     = "更新成功！";
+$admin_lang_optn_markdown             = "Enable Markdown";
+$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 
 // Info
 $admin_lang_info_gd                  = "没有安装，请咨询您的主机管理员为您安装！";

@@ -385,6 +385,8 @@ $admin_lang_spam_updateblacklist = "Update All Banlists";
 $admin_lang_ni_post_exif_date = "Use exif date";
 
 $admin_lang_optn_upd_done     = "Update done.";
+$admin_lang_optn_markdown             = "Enable Markdown";
+$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 $admin_lang_imgedit_preview   = "Preview";
 
 $admin_lang_cmnt_rep_spam = 'Report Spam';

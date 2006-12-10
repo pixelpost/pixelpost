@@ -389,6 +389,8 @@ $admin_lang_ni_post_exif_date = "Exif-Datum verwenden";
 
 $admin_lang_optn_upd_done    = "Update durchgef&uuml;hrt.";
 $admin_lang_imgedit_preview  = "Vorschau";
+$admin_lang_optn_markdown             = "Enable Markdown";
+$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 
 $admin_lang_cmnt_rep_spam = "Spam melden!!";
 

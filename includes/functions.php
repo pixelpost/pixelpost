@@ -66,29 +66,40 @@ function print_comments($imageid) {
 	$comment_count = 0;
 	$image_comments = "<ul>"; // comments stored in this string
 	$cquery = mysql_query("select datetime, message, name, url, email  from ".$pixelpost_db_prefix."comments where parent_id='".$imageid."' and publish='yes' order by id asc");
-	while(list($comment_datetime, $comment_message, $comment_name, $comment_url, $comment_email) = mysql_fetch_row($cquery)) {
+	while(list($comment_datetime, $comment_message, $comment_name, $comment_url, $comment_email) = mysql_fetch_row($cquery))
+	{
 		$comment_message = pullout($comment_message);
 		$comment_name = pullout($comment_name);
 		$comment_email = pullout($comment_email);
 
-		if($comment_url != "") {
-	  		if( preg_match( '/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}'.'((:[0-9]{1,5})?\/.*)?$/i' ,$comment_url))
+		if($comment_url != "")
+		{
+	  	if( preg_match( '/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}'.'((:[0-9]{1,5})?\/.*)?$/i' ,$comment_url))
 			{
   			$comment_name = "<a href=\"$comment_url\" title=\"$lang_visit_homepage\" target=\"new\" rel=\"nofollow\">$comment_name</a>";
-			} else {
-			unset($comment_url);
-			$comment_name = "$comment_name";
 			}
+			else
+			{
+				unset($comment_url);
+				$comment_name = "$comment_name";
 			}
+		}
+
 		$comment_datetime = strtotime($comment_datetime);
 		$comment_datetime = date($cfgrow['dateformat'],$comment_datetime);
 		$image_comments .= "<li>$comment_message<br />$comment_name @ $comment_datetime</li>";
 		$comment_count++;
-		}
-	if($comment_count == 0) { $image_comments .= "<li>$lang_no_comments_yet</li>"; }
-	$image_comments .= "</ul>";
-	return $image_comments;
+
 	}
+
+	if($comment_count == 0)	$image_comments .= "<li>$lang_no_comments_yet</li>";
+
+	$image_comments .= "</ul>";
+
+	return $image_comments;
+}
+
+
 
 function check_upload($string)
 {

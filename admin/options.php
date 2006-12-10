@@ -15,35 +15,38 @@ create_banlist();
 // view = options
 
 if($_GET['view'] == "options") {
-//    switch ($_GET['optaction']) {
+// switch ($_GET['optaction']) {
 
 //=========== START PAGE ONE: GENERAL ===========
-if ($_GET['optaction']=='updateall'){
-	if($_GET['optionsview']=='' OR $_GET['optionsview']=='general'){
-    //case "updatetitle":
-    		if(!get_magic_quotes_gpc()) 
-				{
-						// we need to escape the string before saving it to the db
-						$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".addslashes($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
-				} else {
-        		$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
-        }
-        //break;
+if ($_GET['optaction']=='updateall')
+{
+	if($_GET['optionsview']=='' OR $_GET['optionsview']=='general')
+	{
+		//case "updatetitle":
+		if(!get_magic_quotes_gpc()) 
+		{
+			// we need to escape the string before saving it to the db
+			$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".addslashes($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
+		}
+		else
+		{
+			$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
+		}
+		//break;
 
-    //case "updateurl":
-    		if(!get_magic_quotes_gpc()) 
-				{
-						// we need to escape the string before saving it to the db
-				    $update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".addslashes($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
-    
-				} else {
-     		    $update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
-    
-        }
-    
-        //break;
+		//case "updateurl":
+		if(!get_magic_quotes_gpc()) 
+		{
+			// we need to escape the string before saving it to the db
+			$update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".addslashes($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
+		}
+		else
+		{
+			$update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
+		}
+		//break;
 
-    //case "updateadmin": // admin user+password
+		//case "updateadmin": // admin user+password
 		if ($_POST['newadminpass']!= '')
 		{
 			if ($_POST['newadminpass_re'] == $_POST['newadminpass'])
@@ -51,180 +54,194 @@ if ($_GET['optaction']=='updateall'){
 				$new_pass = md5($_POST['newadminpass']);
 				$update = sql_query("update ".$pixelpost_db_prefix."config set admin='".$_POST['new_admin_user']."', password='$new_pass' where admin='".$cfgrow['admin']."'");
 				echo "<div class='content confirm'>$admin_lang_optn_pass_chngd_txt</div>";
-		    unset($_SESSION["pixelpost_admin"]);
-		   	setcookie( "pp_user", "", time()-36000);
-		   	setcookie( "pp_password", "", time()-36000);
-		  }
-		  elseif ( $_POST['newadminpass_re']!='')
-		  {
-		  	echo "<div class='content confirm'>$admin_lang_optn_pass_notchngd_txt</div>";
-		  }
-    }
-         //break;
+				unset($_SESSION["pixelpost_admin"]);
+			 	setcookie( "pp_user", "", time()-36000);
+				setcookie( "pp_password", "", time()-36000);
+			}
+			elseif ( $_POST['newadminpass_re']!='')
+			{
+				echo "<div class='content confirm'>$admin_lang_optn_pass_notchngd_txt</div>";
+			}
+		}
+		//break;
 
-    //case "updatelang":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set langfile='".$_POST['new_lang']."', altlangfile='".$_POST['alt_lang']."' where admin='".$cfgrow['admin']."'");
-        //break;
+		//case "updatelang":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set langfile='".$_POST['new_lang']."', altlangfile='".$_POST['alt_lang']."' where admin='".$cfgrow['admin']."'");
+		//break;
 
-    //case "updateemail":
-    if ($_POST['new_email']!='')
-        $update = sql_query("update ".$pixelpost_db_prefix."config set email='".$_POST['new_email']."' where admin='".$cfgrow['admin']."'");
-        //break;
+		//case "updateemail":
+		if ($_POST['new_email']!='')
+			$update = sql_query("update ".$pixelpost_db_prefix."config set email='".$_POST['new_email']."' where admin='".$cfgrow['admin']."'");
+		//break;
 
-    //case "updateimagepath": // imagepath
-        $update = sql_query("update ".$pixelpost_db_prefix."config set imagepath='".$_POST['new_image_path']."' where admin='".$cfgrow['admin']."'");
-        //break;
+		//case "updateimagepath": // imagepath
+		$update = sql_query("update ".$pixelpost_db_prefix."config set imagepath='".$_POST['new_image_path']."' where admin='".$cfgrow['admin']."'");
+		//break;
 
 		//case "updatetimezone":
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set timezone='".$_POST['timezone']."'");
-				//break;
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set timezone='".$_POST['timezone']."'");
+		//break;
 
 		//case "updateallowcomments":
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set global_comments='".$_POST['global_comments']."'");
-				//break;
-    
-    //case "updatecommentemail":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set commentemail='".$_POST['new_commentemail']."' where admin='".$cfgrow['admin']."'");
-        //break;
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set global_comments='".$_POST['global_comments']."'");
+		//break;
+
+		//case "updatecommentemail":
+			$update = sql_query("update ".$pixelpost_db_prefix."config set commentemail='".$_POST['new_commentemail']."' where admin='".$cfgrow['admin']."'");
+		//break;
 
 		//case "updatehtmlemailnote":
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set htmlemailnote='".$_POST['new_htmlemailnote']."'");
-				//break;
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set htmlemailnote='".$_POST['new_htmlemailnote']."'");
+		//break;
 
 		//case "updatecmntmod":
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set moderate_comments='".$_POST['comment-moderate']."'");
-				//break;
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set moderate_comments='".$_POST['comment-moderate']."'");
+		//break;
 
 		// time stamps
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set timestamp='".$_POST['timestamp']."'");
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set timestamp='".$_POST['timestamp']."'");
 		
 		// book visitors
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set visitorbooking='".$_POST['visitorbooking']."'");
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set visitorbooking='".$_POST['visitorbooking']."'");
+		
+		// markdown
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set markdown='".$_POST['markdown']."'");
 
 	}// end frist page
 } //end update all
 
 //=========== END OF PAGE ONE: GENERAL ===========
-switch ($_GET['optaction']) {
+switch ($_GET['optaction'])
+{
 
 //=========== START PAGE TWO: TEMPLATE ===========
-   case "updatetemplate":
-	$update = sql_query("update ".$pixelpost_db_prefix."config set template='".$_POST['new_template']."' where admin='".$cfgrow['admin']."'");
+	case "updatetemplate":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set template='".$_POST['new_template']."' where admin='".$cfgrow['admin']."'");
 	break;
 
 
-    case "updatedateformat":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set dateformat='".$_POST['new_dateformat']."'");
-        break;
+	case "updatedateformat":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set dateformat='".$_POST['new_dateformat']."'");
+	break;
 
-		case "updatecatformat":
-				if ($_POST['catformat']=='') break;
-				if ($_POST['catformat']!='custom')
-				{
-					// selected from the drop box
-					$startcatformat = '';
-					$endcatformat = $_POST['catformat'];
-					if ($_POST['catformat'] == '[')
-					{
+	case "updatecatformat":
+		if ($_POST['catformat']=='') break;
+
+		if ($_POST['catformat']!='custom')
+		{
+			// selected from the drop box
+			$startcatformat = '';
+			$endcatformat = $_POST['catformat'];
+			if ($_POST['catformat'] == '[')
+			{
 						$startcatformat = '[';
 						$endcatformat = ']';
-					} // end if '['
-				} // end if custom
-				else{
-					// custom fromat
-					$startcatformat = $_POST['startcatformat'];
-					$endcatformat = $_POST['endcatformat'];
-					}
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set catgluestart='" .$startcatformat ."', catglueend='" .$endcatformat ."'");
-				break;
+			} // end if '['
+		} // end if custom
+		else
+		{
+			// custom fromat
+			$startcatformat = $_POST['startcatformat'];
+			$endcatformat = $_POST['endcatformat'];
+		}
 
-    case "updatecalendar":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set calendar='".$_POST['cal']."'");
-        break;
+		$upquery = sql_query("update ".$pixelpost_db_prefix."config set catgluestart='" .$startcatformat ."', catglueend='" .$endcatformat ."'");
+	break;
+
+	case "updatecalendar":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set calendar='".$_POST['cal']."'");
+	break;
 //=========== END OF PAGE TWO: TEMPLATE ===========
 
 
 //=========== START PAGE THREE: THUMBNAIL ===========
-    case "updatethumbrow":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set thumbnumber='".$_POST['thumbnumber']."' where admin='".$cfgrow['admin']."'");
-        break;
+	case "updatethumbrow":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set thumbnumber='".$_POST['thumbnumber']."' where admin='".$cfgrow['admin']."'");
+	break;
 
-    case "updatecrop":
-        $update = sql_query("update ".$pixelpost_db_prefix."config set crop='".$_POST['new_crop']."' where admin='".$cfgrow['admin']."'");
-        break;
+	case "updatecrop":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set crop='".$_POST['new_crop']."' where admin='".$cfgrow['admin']."'");
+	break;
 
-    case "updatethumbsize":
-        $upquery = sql_query("update ".$pixelpost_db_prefix."config set thumbwidth='".$_POST['thumbwidth']."', thumbheight='".$_POST['thumbheight']."'");
-        break;
+	case "updatethumbsize":
+		$upquery = sql_query("update ".$pixelpost_db_prefix."config set thumbwidth='".$_POST['thumbwidth']."', thumbheight='".$_POST['thumbheight']."'");
+	break;
 
-    case "updatethumbnails":
-        if(function_exists('gd_info')) {
-            $thumbnail_counter = 0;
-            $dir = "../images"; // images folder
-            if($handle = opendir($dir)) {
-                while (false !== ($file = readdir($handle))) {
-                    if(is_file($dir."/".$file)) {
-                        $thumbnail = createthumbnail($file);
-                        $thumbnail_counter++;
-                        } // if
-                    } // while
-                closedir($handle);
-                echo "<div class='jcaption'>$admin_lang_optn_thumb_updated</div><div class='content confirm'>$admin_lang_done $thumbnail_counter $admin_lang_optn_updated </div><p />";
-                } // if handle
-            } // if function exists
-        break;
+	case "updatethumbnails":
+		if(function_exists('gd_info'))
+		{
+			$thumbnail_counter = 0;
+			$dir = "../images"; // images folder
 
-		case "updatecompression":
-				$update = sql_query("update ".$pixelpost_db_prefix."config set compression='".$_POST['new_compression']."' where admin='".$cfgrow['admin']."'");
-				break;
+			if($handle = opendir($dir))
+			{
+				while (false !== ($file = readdir($handle)))
+				{
+					if(is_file($dir."/".$file))
+					{
+						$thumbnail = createthumbnail($file);
+						$thumbnail_counter++;
+					} // if
+				} // while
+
+				closedir($handle);
+
+				echo "<div class='jcaption'>$admin_lang_optn_thumb_updated</div><div class='content confirm'>$admin_lang_done $thumbnail_counter $admin_lang_optn_updated </div><p />";
+			} // if handle
+		} // if function exists
+	break;
+
+	case "updatecompression":
+		$update = sql_query("update ".$pixelpost_db_prefix."config set compression='".$_POST['new_compression']."' where admin='".$cfgrow['admin']."'");
+	break;
 //=========== END OF PAGE THREE: THUMBNAIL ===========
 
-	} // end of switch:
+} // end of switch:
 
 
-    if($_GET['optaction'] != "") {
-    echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload </a></div><p />\n";
-    }
+if($_GET['optaction'] != "")
+{
+	echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload </a></div><p />\n";
+}
 
-    echo "<div id='caption'>$admin_lang_options</div>\n<div id='submenu'>";
-    if (!isset($_GET['optionsview']) || $_GET['optionsview']=='general')
-	   	$submenucssclass = 'selectedsubmenu';
-  	  echo "<a href='index.php?view=options&amp;optionsview=general' class='".$submenucssclass."'>$admin_lang_optn_general</a>\n";
-    	$submenucssclass = 'notselected';
+echo "<div id='caption'>$admin_lang_options</div>\n<div id='submenu'>";
 
-		if (isset($_GET['optionsview']) && $_GET['optionsview']=='template')
-	    $submenucssclass = 'selectedsubmenu';
-  	  echo "<a href='index.php?view=options&amp;optionsview=template' class='".$submenucssclass."'>$admin_lang_optn_template</a>\n";
-    	$submenucssclass = 'notselected';
+if (!isset($_GET['optionsview']) || $_GET['optionsview']=='general')	$submenucssclass = 'selectedsubmenu';
 
+echo "<a href='index.php?view=options&amp;optionsview=general' class='".$submenucssclass."'>$admin_lang_optn_general</a>\n";
+			$submenucssclass = 'notselected';
 
-	 if (isset($_GET['optionsview']) && $_GET['optionsview']=='thumb')
-  		$submenucssclass = 'selectedsubmenu';
-		  echo "<a href='?view=options&amp;optionsview=thumb' class='".$submenucssclass."'>$admin_lang_optn_thumbnails</a>\n";
-  		$submenucssclass = 'notselected';
+if (isset($_GET['optionsview']) && $_GET['optionsview']=='template')	$submenucssclass = 'selectedsubmenu';
+
+echo "<a href='index.php?view=options&amp;optionsview=template' class='".$submenucssclass."'>$admin_lang_optn_template</a>\n";
+			$submenucssclass = 'notselected';
 
 
-		if (isset($_GET['optionsview']) && $_GET['optionsview']=='antispam')
-			$submenucssclass = 'selectedsubmenu';
-			echo "<a href='?view=options&amp;optionsview=antispam' class='".$submenucssclass."'>$admin_lang_spam</a>\n";
+if (isset($_GET['optionsview']) && $_GET['optionsview']=='thumb')	$submenucssclass = 'selectedsubmenu';
 
-   echo_addon_admin_menus($addon_admin_functions,"options");
-   echo "</div>\n";
+echo "<a href='?view=options&amp;optionsview=thumb' class='".$submenucssclass."'>$admin_lang_optn_thumbnails</a>\n";
+			$submenucssclass = 'notselected';
 
 
-if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
+if (isset($_GET['optionsview']) && $_GET['optionsview']=='antispam')	$submenucssclass = 'selectedsubmenu';
+
+echo "<a href='?view=options&amp;optionsview=antispam' class='".$submenucssclass."'>$admin_lang_spam</a>\n";
+
+echo_addon_admin_menus($addon_admin_functions,"options");
+echo "</div>\n";
+
 // get the config row again after updates
-	$cfgrow = mysql_fetch_assoc($cfgquery);
+if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))	$cfgrow = mysql_fetch_assoc($cfgquery);
 
-	eval_addon_admin_workspace_menu("options","options");
+eval_addon_admin_workspace_menu("options","options");
 
 	//showoptions();
 // functions for view = options
 //function showoptions(){
 	//global $cfgrow;
 
-    if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
-    {
+if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
+{
 		$decoded_pass = "";
 		$_POST['newadminpass'] ='';
 		$pixelpost_site_title = $cfgrow['sitetitle'];
@@ -453,14 +470,17 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 			$toecho = $admin_lang_optn_yes;
 		else
 			$toecho = $admin_lang_optn_no;
+
 		if ($cfgrow['timestamp']=='yes')
 			$optnecho = $admin_lang_optn_no;
 		else
 			$optnecho = $admin_lang_optn_yes;
+
 		if ($cfgrow['timestamp']=='yes')
 			$optnval = 'no';
 		else
 			$optnval = 'yes';
+
 		echo "
 		$admin_lang_optn_timestamps_desc
 		<select name='timestamp'><option value='".$cfgrow['timestamp']."'>".$toecho."</option>
@@ -482,18 +502,53 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 					$toecho = $admin_lang_optn_yes;
 				else
 					$toecho = $admin_lang_optn_no;
-					if ($cfgrow['visitorbooking']=='yes')
+
+				if ($cfgrow['visitorbooking']=='yes')
 					$optnecho = $admin_lang_optn_no;
 				else
 					$optnecho = $admin_lang_optn_yes;
-					if ($cfgrow['visitorbooking']=='yes')
+
+				if ($cfgrow['visitorbooking']=='yes')
 					$optnval = 'no';
 				else
 					$optnval = 'yes';
+
 				echo "
 				$admin_lang_optn_visitorbooking_desc
 				<select name='visitorbooking'><option value='".$cfgrow['visitorbooking']."'>".$toecho."</option>
-				<option value='optnval'>$optnecho</option>
+				<option value='$optnval'>$optnecho</option>
+				</select>
+		
+				</div>
+
+		
+		
+		<!-- Markdown -->
+				<div class='jcaption'>
+				$admin_lang_optn_markdown
+				</div>
+		
+				<div class='content'>
+						";
+				if ($cfgrow['markdown']=='t')
+					$toecho = $admin_lang_optn_yes;
+				else
+					$toecho = $admin_lang_optn_no;
+
+				if ($cfgrow['markdown']=='t')
+					$optnecho = $admin_lang_optn_no;
+				else
+					$optnecho = $admin_lang_optn_yes;
+
+				if ($cfgrow['markdown']=='t')
+					$optnval = 'f';
+				else
+					$optnval = 't';
+
+				echo "
+				$admin_lang_optn_markdown_desc
+				<select name='markdown'><option value='".$cfgrow['markdown']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
 				</select>
 		
 				</div>

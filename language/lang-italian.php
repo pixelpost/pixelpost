@@ -70,6 +70,7 @@ $lang_comment_redirect_error  = "Errore nell&prime;invio del commento! Fare clic
 $lang_comment_page_title      = "Commento";
 $lang_comment_popup           = "Commenti";
 $lang_message_banned_comment  = "Il vostro commento non &egrave; stato accettato! Contiene una o pi&ugrave; parole/email/ip vietati.";
+$lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
 $lang_tags                    = "Tags";
 
 // EXIF DATA

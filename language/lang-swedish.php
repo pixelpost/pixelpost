@@ -72,6 +72,7 @@ $lang_message_moderating_comment = "Your comment is received! It will become pub
 $lang_comment_page_title      = "Kommentera";
 $lang_comment_popup           = "Kommentarer";
 $lang_message_banned_comment  = "Your comment is not saved! It contains one or more banned words/email/ips.";
+$lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
 $lang_tags                    = "Tags";
 
 // EXIF DATA

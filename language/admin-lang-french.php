@@ -295,6 +295,8 @@ $admin_lang_optn_updated              = "vignettes mises &agrave; jour.";
 $admin_lang_optn_visitorbooking_title = "Enregistrer les visiteurs";
 $admin_lang_optn_visitorbooking_desc  = "Souhaitez-vous que Pixelpost enregistre les informations de chaque visiteur ?";
 $admin_lang_optn_upd_done             = "Mise &agrave; jour termin&eacute;e.";
+$admin_lang_optn_markdown             = "Enable Markdown";
+$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 
 
 // Info

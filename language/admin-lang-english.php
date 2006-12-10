@@ -302,6 +302,8 @@ $admin_lang_optn_updated             = "thumbnails updated.";
 $admin_lang_optn_visitorbooking_title = 'Book visitors';
 $admin_lang_optn_visitorbooking_desc  = 'Should Pixelpost book information of every visitor?';
 $admin_lang_optn_upd_done             = "Update done.";
+$admin_lang_optn_markdown             = "Enable Markdown";
+$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 
 // Info
 $admin_lang_info_gd                  = "Not installed, ask your host to install it for you!";

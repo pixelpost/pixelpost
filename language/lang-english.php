@@ -71,6 +71,7 @@ $lang_comment_redirect           = "Please click to be transferred back, if redi
 $lang_comment_redirect_error     = "Comment submission error! Please click to be transferred back, if redirection doesn't work";
 $lang_comment_page_title         = "Comment";
 $lang_comment_popup              = "Comments";
+$lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
 
 // EXIF DATA
 $lang_exposure                   = "Exposure:";

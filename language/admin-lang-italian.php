@@ -301,6 +301,8 @@ $admin_lang_optn_updated               = "miniature aggiornate.";
 $admin_lang_optn_visitorbooking_title  = 'Registra visitatori';
 $admin_lang_optn_visitorbooking_desc   = 'Vuoi che Pixelpost memorizzi informazioni per ogni visitatore?';
 $admin_lang_optn_upd_done              = "Aggiornamento eseguito.";
+$admin_lang_optn_markdown              = "Enable Markdown";
+$admin_lang_optn_markdown_desc         = "Should Pixelpost enable Markdown feature in Image description?";
 
 // Info
 $admin_lang_info_gd                   = "Non installato, chiedi all'Amministratore del tuo host di installarlo!";

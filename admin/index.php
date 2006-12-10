@@ -41,6 +41,7 @@ if(isset($_GET["loginmessage"]) || isset($_POST["loginmessage"]))	$loginmessage 
 // variable saying we are inside admin panel (i.e. to use in addons)
 $admin_panel = 1;
 
+error_reporting(0);
 session_start();
 
 require("../includes/pixelpost.php");
@@ -52,32 +53,38 @@ start_mysql();
 // added to allow upgrades
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version($pixelpost_db_prefix );
-if( $installed_version < 1.51 ) {
-    header("Location: install.php");
-    exit;
+if( $installed_version < 1.511 )
+{
+	header("Location: install.php");
+	exit;
 }
 
 // Changed to allow upgrades
-if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config")) {
+if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
+{
 	$cfgrow = mysql_fetch_assoc($cfgquery);
 	$upload_dir = $cfgrow['imagepath'];
 } else {
-    header("Location: install.php");
-    exit;
+	header("Location: install.php");
+	exit;
 }
 
 /* Special language file for Admin-Section, default is english */
 if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
- {
+{
 	if (file_exists("../language/admin-lang-".$cfgrow['langfile'].".php") )
-		{	$admin_lang_file_name = "admin-lang-".$cfgrow['langfile'];
+	{
+		$admin_lang_file_name = "admin-lang-".$cfgrow['langfile'];
 	}
+	else
+	{
+		if (file_exists("../language/admin-lang-english.php") )
+		{
+			$admin_lang_file_name = "admin-lang-english";
+		}
 		else
-			{if (file_exists("../language/admin-lang-english.php") )
-				{ $admin_lang_file_name = "admin-lang-english";
-				require("../language/".$admin_lang_file_name.".php");}
-				else
-				{echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		{
+			echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 					 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<html>
 					<head><title="Error, missing language file"></head><body>
@@ -86,25 +93,13 @@ if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
 					<br />sits in the directory <i style="color:red;font-size:bigger">language</i>.<br /><br />
 					You can find this file in the PixelPost-ZIP-File in the directory <i style="color:red;font-size:bigger">language</i>.<br />
 					<br />Please upload it to your server!</p><hr/></body></html>';
-					exit;}
-			}
+			exit;
+		}
 	}
+}
 
 require("../language/".$admin_lang_file_name.".php");
 
-
-
-// refresh the addons table
-$dir = "../addons/";
-refresh_addons_table($dir);
-
-
-//------------- addons in admin panel begins
-$addon_admin_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
-create_admin_addon_array();
-
-
-//------------- addons in admin panel ends
 // check whether the language-files for the public part exist
 if (file_exists("../language/lang-".$cfgrow['langfile'].".php"))
 {
@@ -116,17 +111,15 @@ else
 	exit;
 }
 
-if($cfgrow['crop']=="12c" && isset($_SESSION["pixelpost_admin"]))
-{
-	require("../includes/12cropimageinc.php");
-}
+/************************ BEGINNING OF LOGIN STUFF ************************/
 
 // forgot password?
 include('pass_recovery.php');
 
-// autologin data are valid
+// autologin data are valid and cookies are set for a week (604800 seconds)
 if(($cfgrow['admin'] == $_COOKIE['pp_user']) AND (sha1($cfgrow['password'].$_SERVER["REMOTE_ADDR"]) === $_COOKIE['pp_password']) AND !isset($_SESSION["pixelpost_admin"]))
 {
+  error_reporting('E_ALL');
   unset($login);
   $_SESSION["pixelpost_admin"] = $cfgrow['password'];
   setcookie( "pp_user", $_COOKIE['pp_user'], time()+604800);
@@ -135,42 +128,62 @@ if(($cfgrow['admin'] == $_COOKIE['pp_user']) AND (sha1($cfgrow['password'].$_SER
 
 if($_GET['x'] == "login")
 {
-    $cfgrow_password = md5($_POST['password']);
-    if(($cfgrow['admin'] == $_POST['user']) AND ($cfgrow_password == $cfgrow['password']))
-    {
-      // login is valid, set session
-      unset($login);
-      $_SESSION["pixelpost_admin"]  = $cfgrow_password;
-      // set autologin cookie
-      if($_POST['remember'] == 'on')
-      {
-      	setcookie( "pp_user", $_POST['user'], time()+604800);
-      	setcookie( "pp_password", sha1($cfgrow_password.$_SERVER["REMOTE_ADDR"]), time()+604800);
-      }
-      header("Location:index.php");
-    }
-    else
-    {
+	$cfgrow_password = md5($_POST['password']);
+	if(($cfgrow['admin'] == $_POST['user']) AND ($cfgrow_password == $cfgrow['password']))
+	{
+		error_reporting('E_ALL');
+		// login is valid, set session
+		unset($login);
+		$_SESSION["pixelpost_admin"]  = $cfgrow_password;
+
+		// set autologin cookie
+		if($_POST['remember'] == 'on')
+		{
+			setcookie( "pp_user", $_POST['user'], time()+604800);
+			setcookie( "pp_password", sha1($cfgrow_password.$_SERVER["REMOTE_ADDR"]), time()+604800);
+		}
+		header("Location:index.php");
+	}
+	else
+	{
       $loginmessage = "$admin_start_userpw <br />
         <a href='#' onclick=\"flip('askforpass'); return false;\">$admin_start_pw_forgot</a><br /><br />
         ";
-    }
+	}
 } // if (login = yes) end
 
-if($_GET['x'] == "logout") {
-    unset($_SESSION["pixelpost_admin"]);
-   	setcookie( "pp_user", "", time()-36000);
-   	setcookie( "pp_password", "", time()-36000);
-    header("Location:index.php");
+if($_GET['x'] == "logout")
+{
+	unset($_SESSION["pixelpost_admin"]);
+	setcookie( "pp_user", "", time()-36000);
+	setcookie( "pp_password", "", time()-36000);
+	header("Location:index.php");
 }
 
-if(!isset($_SESSION["pixelpost_admin"])) {
-    // cookie is not set, send them to a form
-    $login = "true";
+if(!isset($_SESSION["pixelpost_admin"]))
+{
+	// cookie is not set, send them to a form
+	$login = "true";
 } else {
-    // cookie exists, check for validity
-    if($cfgrow['password'] != $_SESSION["pixelpost_admin"]) { $login = "true"; }
+	// cookie exists, check for validity
+	if($cfgrow['password'] != $_SESSION["pixelpost_admin"])	$login = "true";
 }
+
+/************************ END OF LOGIN STUFF ************************/
+
+//------------- addons in admin panel begins
+// refresh the addons table
+$dir = "../addons/";
+refresh_addons_table($dir);
+
+$addon_admin_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
+create_admin_addon_array();
+
+if($cfgrow['crop']=="12c" && isset($_SESSION["pixelpost_admin"]))
+{
+	require("../includes/12cropimageinc.php");
+}
+//------------- addons in admin panel ends
 
 ?>
 
@@ -188,14 +201,14 @@ if(!isset($_SESSION["pixelpost_admin"])) {
 <script type="text/javascript">
 function confirmSubmit()
 {
-var agree=confirm("<? echo $admin_lang_imgedit_js_del_im;?>");
+var agree=confirm("<?php echo $admin_lang_imgedit_js_del_im;?>");
 if (agree) return true ;
 else return false ;
 }
 
 function confirmDeleteComment()
 {
-var agree2=confirm("<? echo $admin_lang_cmnt_js_del_comm;?>");
+var agree2=confirm("<?php echo $admin_lang_cmnt_js_del_comm;?>");
 if (agree2) return true ;
 else  return false ;
 }
@@ -214,7 +227,8 @@ eval_addon_admin_workspace_menu('admin_html_head');
 <div id="wrapper">
 
 <?php
-if($login == "true") {
+if($login == "true")
+{
     ?>
 	<div id="header">
 <a href="index.php"><?php echo $admin_start_admin_1;?></a>&nbsp;<?php echo $admin_start_admin_2;?> <a href="../" title="<?php echo $admin_start_pp_tit;?>"><?php echo $cfgrow['sitetitle']; ?></a>
@@ -248,7 +262,7 @@ if($login == "true") {
 	 </body></html>
     <?php
     exit();
-    }
+}
 ?>
 
 <div id="header">

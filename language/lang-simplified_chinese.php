@@ -107,6 +107,7 @@ $lang_december                  = "十二月";
 
 // newly added
 $lang_message_banned_comment     = "您的评论没有保存！因里面含有禁止使用的语句或电子邮件。";
+$lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
 
 // Email Notification
 

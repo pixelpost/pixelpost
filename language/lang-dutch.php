@@ -77,6 +77,7 @@ $lang_comment_redirect_error  = "Comment submition error! Please click to be tra
 $lang_comment_page_title      = "Commentaar";
 $lang_comment_popup           = "Commentaren";
 $lang_message_banned_comment  = "Uw commentaar wordt niet bewaard! Het bevat &eacute;&eacute;n of meerdere verboden woorden/email/ips.";
+$lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
 $lang_tags                    = "Tags";
 
 // EXIF DATA

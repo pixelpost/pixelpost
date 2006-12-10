@@ -68,6 +68,7 @@ $lang_comment_redirect_error    = "Comment submition error! Please click to be t
 $lang_comment_page_title        = "Kommentar";
 $lang_comment_popup             = "Kommentarer";
 $lang_message_banned_comment    = "Your comment is not saved! It contains one or more banned words/email/ips.";
+$lang_comment_popup_disabled    = "Commenting on this picture has been disabled";
 $lang_tags                      = "Tags";
 
 // EXIF DATA

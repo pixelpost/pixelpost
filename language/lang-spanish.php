@@ -75,6 +75,7 @@ $lang_comment_redirect_error    = "&iexcl;Error del submition del comentario! Ch
 $lang_comment_page_title        = "Opini&oacute;n";
 $lang_comment_popup             = "Opiniones";
 $lang_message_banned_comment    = "&iexcl;Su comentario no se ahorra! Contiene unas o m&aacute;s palabras/email/ips prohibidas.";
+$lang_comment_popup_disabled    = "Commenting on this picture has been disabled";
 $lang_tags                      = "Tags";
 
 // EXIF DATA

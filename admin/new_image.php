@@ -41,12 +41,14 @@ if($_GET['view'] == "")
 
     <div class='jcaption'><?php echo $admin_lang_ni_description; ?></div>
     <div class='content'>
-    <? echo $admin_lang_ni_markdown_text; ?><br />
-    <a href='http://daringfireball.net/projects/markdown/' title='<? echo $admin_lang_ni_markdown_hp; ?>' target='_blank'><? echo $admin_lang_ni_markdown_hp; ?></a>
+    <?php	if($cfgrow['markdown'] == 't')
+				{
+					echo $admin_lang_ni_markdown_text; ?><br />
+    <a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_hp; ?></a>
     &nbsp;&nbsp;&nbsp;
-    <a href='http://daringfireball.net/projects/markdown/basics' title='<? echo $admin_lang_ni_markdown_element; ?>' target='_blank'><? echo $admin_lang_ni_markdown_element; ?></a>
+    <a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_element; ?></a>
     &nbsp;&nbsp;&nbsp;
-    <a href='http://daringfireball.net/projects/markdown/syntax' title='<? echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'><? echo $admin_lang_ni_markdown_syntax; ?></a>
+    <a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_syntax; ?></a><?php } ?>
     <p />
 	<div style="text-align:center;">
     <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?=$_POST['body'];?></textarea><p />
@@ -155,11 +157,16 @@ if($_GET['view'] == "")
     	echo "<div class='jcaption'>Allow comments on picture</div>
     		<div class='content'>Allow comments:
     		<select name=\"allow_comments\">";
-    		if ($cfgrow["global_comments"] =='A'){
+    		if ($cfgrow["global_comments"] =='A')
+    		{
  					echo "<option selected=\"selected\" value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
- 				} elseif ($cfgrow["global_comments"] =='M'){
- 						echo "<option value=\"A\">Allowed</option><option  selected=\"selected\" value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
- 				} else {
+ 				}
+ 				elseif ($cfgrow["global_comments"] =='M')
+ 				{
+ 					echo "<option value=\"A\">Allowed</option><option  selected=\"selected\" value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
+ 				}
+ 				else
+ 				{
 					echo "<option value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option selected=\"selected\" value=\"F\">Disabled</option>"; 				
  				}
 				echo"</select></div>";
@@ -168,24 +175,31 @@ if($_GET['view'] == "")
 		eval_addon_admin_workspace_menu('new_image_form');
 		// added for language support
 		// Check if the language addon is enabled. If not there is no need to show these fields
-			if ($cfgrow['altlangfile'] != 'Off'){
+			if ($cfgrow['altlangfile'] != 'Off')
+			{
 				echo "
 				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
    			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p />".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><p />
-   			<div class='content'>".$admin_lang_ni_markdown_text."<br />
-    			<a href='http://daringfireball.net/projects/markdown/' title='<? echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
+   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><p />";
+
+				if($cfgrow['markdown'] == 't')
+				{
+					echo "
+   			<div>".$admin_lang_ni_markdown_text."<br />
+    			<a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
     			&nbsp;&nbsp;&nbsp;
-    			<a href='http://daringfireball.net/projects/markdown/basics' title='<? echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
+    			<a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
     			&nbsp;&nbsp;&nbsp;
-    			<a href='http://daringfireball.net/projects/markdown/syntax' title='<? echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
-    			<p />
+    			<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
+    			<p />";
+    		}
+    		
+    		echo "
 					<div style='text-align:center;'>
     				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$_POST['alt_body']."</textarea><p />
 					</div>
     		</div>";
-    		
 			}
 		?>
     <div class='jcaption'>

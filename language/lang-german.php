@@ -77,6 +77,7 @@ $lang_comment_redirect_error   = "Kommentar konnte nicht eingetragen werden. Kli
 $lang_comment_page_title       = "Kommentar";
 $lang_comment_popup            = "Kommentare";
 $lang_message_banned_comment   = "Ihr Kommentar wurde nicht gespeichert, da er Worte, Email-Adressen oder IP-Adressen enth&auml;lt, die in Ban-Listen vorkommen.";
+$lang_comment_popup_disabled   = "Commenting on this picture has been disabled";
 $lang_tags                     = "Tags";
 
 // EXIF DATA

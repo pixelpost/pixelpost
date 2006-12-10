@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 
 lang-polish.php
@@ -71,6 +71,7 @@ $lang_comment_redirect_error	= "Wystąpił błąd dodawania komentarza! Kliknij,
 $lang_comment_page_title			= "Komentarz";
 $lang_comment_popup						= "Komentarze";
 $lang_message_banned_comment  = "Komentarz nie został zapisany! Zawiera on jedno lub więcej zabronionych słów/emaili/IP.";
+$lang_comment_popup_disabled  = "Komentarze dla tego obrazka zostały wyłączone";
 $lang_tags                    = "Tagi";
 
 // EXIF DATA

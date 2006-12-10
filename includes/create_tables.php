@@ -40,6 +40,18 @@ require('functions.php');
 
 echo "<ul>";
 
+// Converts the password from the 1.3 base64encoded to MD5 hash
+// Do not do this unless we are upgrading
+function ConvertPassword( $prefix )
+{
+	$result = mysql_query("SELECT password FROM {$prefix}config LIMIT 1") or die("Error: ". mysql_error());
+	if( $row = mysql_fetch_array( $result ) ) {
+		$adm_pass = base64_decode($row[0]);
+		mysql_query("UPDATE {$prefix}config SET password=MD5('$adm_pass') LIMIT 1") or die("Error: ". mysql_error());
+		echo "<li style=\"list-style-type:none;\">Password updated from 1.3 to 1.4 hash ...</li>";
+	}
+}
+
 function Create13Tables( $prefix )
 {
 	// Config table
@@ -258,9 +270,15 @@ function UpgradeTo14( $prefix )
 	while( $row = mysql_fetch_array( $result ) ) {
 		mysql_query("INSERT INTO {$prefix}catassoc VALUES ( 0, '{$row[1]}', '{$row[0]}' )") or die("Error: ". mysql_error());
 	}
+}
 
-
-
+// Upgrade the version table from the 1.4 to the 141
+function UpgradeTo141( $prefix )
+{
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES (1.41)
+	") or die("Error: ". mysql_error());
+	//echo "table ".$prefix."version updated to 1.4.1 ...<p />";
 }
 
 
@@ -465,35 +483,33 @@ function UpgradeTo151( $prefix, $newversion)
 	// picture based disabling comments
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `comments` ENUM( 'A', 'M', 'F' ) NOT NULL DEFAULT 'A'")
 	or die("Error: ". mysql_error());
-		
-	//the following code was forgotten. This would caused an infinite install.php loop when updating.
+
 	// update version
 	mysql_query("
 	INSERT INTO `{$prefix}version` (version) VALUES (1.51)
 	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.51 SVN ...</li>";
-
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.51 ...</li>";
 }
 
-// Upgrade the version table from the 1.4 to the 141
-function UpgradeTo141( $prefix )
+function UpgradeTo1511( $prefix, $newversion)
 {
+	global $pixelpost_db_prefix;
+
+	// new field used to disable Markdown
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `markdown` VARCHAR(1) DEFAULT 'f' NOT NULL")
+	or die("Error: ". mysql_error());
+
+	// creation of primary key on tags table
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD PRIMARY KEY ( `img_id` , `tag` ( 255 ) ) ")
+	or die("Error: ". mysql_error());
+
+	// update version
 	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES (1.41)
-	") or die("Error: ". mysql_error());
-	//echo "table ".$prefix."version updated to 1.4.1 ...<p />";
-}
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
 
-// Converts the password from the 1.3 base64encoded to MD5 hash
-// Do not do this unless we are upgrading
-function ConvertPassword( $prefix )
-{
-	$result = mysql_query("SELECT password FROM {$prefix}config LIMIT 1") or die("Error: ". mysql_error());
-	if( $row = mysql_fetch_array( $result ) ) {
-		$adm_pass = base64_decode($row[0]);
-		mysql_query("UPDATE {$prefix}config SET password=MD5('$adm_pass') LIMIT 1") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Password updated from 1.3 to 1.4 hash ...</li>";
-	}
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
 
 
