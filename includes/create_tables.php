@@ -477,13 +477,6 @@ function UpgradeTo151( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100 ) DEFAULT 'default' NOT NULL")
 	or die("Error: ". mysql_error());
 	
-	// global settings disabling comments (default for new picture)
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `global_comments` ENUM( 'A', 'M', 'F' ) NOT NULL DEFAULT 'A'")
-	or die("Error: ". mysql_error());
-	// picture based disabling comments
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `comments` ENUM( 'A', 'M', 'F' ) NOT NULL DEFAULT 'A'")
-	or die("Error: ". mysql_error());
-
 	// update version
 	mysql_query("
 	INSERT INTO `{$prefix}version` (version) VALUES (1.51)
@@ -512,5 +505,28 @@ function UpgradeTo1511( $prefix, $newversion)
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
 
+function UpgradeTo1512( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+
+	// Drop field moderate comments
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `moderate_comments`;")
+	or die("Error: ". mysql_error());
+
+// global settings disabling comments (default for new picture)
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `global_comments` ENUM( 'A', 'M', 'F' ) NOT NULL DEFAULT 'A'")
+	or die("Error: ". mysql_error());
+	// picture based disabling comments
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `comments` ENUM( 'A', 'M', 'F' ) NOT NULL DEFAULT 'A'")
+	or die("Error: ". mysql_error());
+	
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
+
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+}
 
 ?>

@@ -94,10 +94,6 @@ if ($_GET['optaction']=='updateall')
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set htmlemailnote='".$_POST['new_htmlemailnote']."'");
 		//break;
 
-		//case "updatecmntmod":
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set moderate_comments='".$_POST['comment-moderate']."'");
-		//break;
-
 		// time stamps
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set timestamp='".$_POST['timestamp']."'");
 		
@@ -372,15 +368,15 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		$admin_lang_optn_gmt<p />
 		</div>
 		<!-- Allow commenting on pictures -->
-		<div class='jcaption'>Allow comments on picture</div>
-    <div class='content'>Default setting when uploading a new picture:
+		<div class='jcaption'>$admin_lang_optn_comment_setting</div>
+    <div class='content'>$admin_lang_optn_cmnt_mod_txt
     		<select name=\"global_comments\">";
     		if ($cfgrow["global_comments"] =='A'){
- 					echo "<option selected=\"selected\" value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
+ 					echo "<option selected=\"selected\" value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				} elseif ($cfgrow["global_comments"] =='M'){
- 					echo "<option value=\"A\">Allowed</option><option  selected=\"selected\" value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
+ 					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option  selected=\"selected\" value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				} else {
-					echo "<option value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option selected=\"selected\" value=\"F\">Disabled</option>"; 				
+					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>"; 				
  				}
 		echo"</select></div>
 		<div class='jcaption'>
@@ -435,30 +431,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<div class='jcaption'>
 		$admin_lang_optn_comment_moderation
 		</div>
-
-		<div class='content'>
-								";
-				if ($cfgrow['moderate_comments']=='yes')
-					$toecho = $admin_lang_optn_yes;
-				else
-					$toecho = $admin_lang_optn_no;
-					
-				if ($cfgrow['moderate_comments']=='yes')
-					$optnecho = $admin_lang_optn_no;
-				else
-					$optnecho = $admin_lang_optn_yes;
-					
-				if ($cfgrow['moderate_comments']=='yes')
-					$optnval = 'no';
-				else
-					$optnval = 'yes';
-				echo "
-		$admin_lang_optn_cmnt_mod_txt
-		<select name='comment-moderate'><option value='".$cfgrow['moderate_comments']."'> ".$toecho." </option>
-		<option value='$optnval'>$optnecho</option>
-		</select>
-		</div>
-
 		<!-- Timestamp -->
 		<div class='jcaption'>
 		$admin_lang_optn_timestamps_title

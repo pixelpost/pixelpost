@@ -264,8 +264,13 @@ $admin_lang_optn_tz_txt            = "选择您所在的时区。";
 $admin_lang_optn_sendemail         = "为每个评论发送电子邮件";
 $admin_lang_optn_sendemail_txt     = "为每个评论发送电子邮件通知？";
 $admin_lang_optn_sendemail_html_txt = "使用HTML格式的电子邮件通知函？";
-$admin_lang_optn_comment_moderation = "评论审阅";
-$admin_lang_optn_cmnt_mod_txt       = "您想评论发布前先审阅一下吗？";
+$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
+$admin_lang_optn_comment_setting2		= "Comment setting";
+$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
+$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
+$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
 
 $admin_lang_optn_switch_template    = "切换模板";
 $admin_lang_optn_lang_file           = "语言文件";
@@ -302,6 +307,7 @@ $admin_lang_optn_visitorbooking_desc  = '要Pixelpost登记每个来访者的信
 $admin_lang_optn_upd_done     = "更新成功！";
 $admin_lang_optn_markdown             = "Enable Markdown";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
+
 
 // Info
 $admin_lang_info_gd                  = "没有安装，请咨询您的主机管理员为您安装！";

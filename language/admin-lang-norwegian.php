@@ -263,8 +263,14 @@ $admin_lang_optn_tz_txt            = "Velg tidssone avvik for ditt land/by.";
 $admin_lang_optn_sendemail         = "SEND EPOST VED NY KOMMENTAR";
 $admin_lang_optn_sendemail_txt     = "Sende epost varsel ved ny kommentar?";
 $admin_lang_optn_sendemail_html_txt = "bruk HTML varsel epost?";
-$admin_lang_optn_comment_moderation = "KOMMENTAR MODERASJON";
-$admin_lang_optn_cmnt_mod_txt       = "Vil du moderere kommentarer f&oslash;r publisering?";
+// NEW!
+$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
+$admin_lang_optn_comment_setting2		= "Comment setting";
+$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
+$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
+$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
 
 $admin_lang_optn_switch_template    = "Bytt stilmal";
 $admin_lang_optn_lang_file           = "Velg spr&aring;k";

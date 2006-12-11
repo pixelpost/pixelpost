@@ -260,8 +260,13 @@ $admin_lang_optn_tz_txt             = "W&auml;hlen Sie den Zeitversatz Ihrer Zei
 $admin_lang_optn_sendemail          = "BEI KOMMENTAREN EMAIL VERSENDEN";
 $admin_lang_optn_sendemail_txt      = "Benachrichtigen, wenn Kommentare eingetragen wurden?";
 $admin_lang_optn_sendemail_html_txt = "Benachrichtigungs-Mails im HTML-Format?";
-$admin_lang_optn_comment_moderation = "KOMMENTAR FREIGABE";
-$admin_lang_optn_cmnt_mod_txt       = "M&ouml;chten Sie die Kommentare vor der Ver&ouml;ffentlichung erst &uuml;berpr&uuml;fen?";
+$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
+$admin_lang_optn_comment_setting2		= "Comment setting";
+$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
+$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
+$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
 
 $admin_lang_optn_switch_template     = "TEMPLATE-AUSWAHL";
 $admin_lang_optn_lang_file           = "SPRACHDATEI";

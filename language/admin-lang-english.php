@@ -267,8 +267,13 @@ $admin_lang_optn_tz_txt            = "Select the timezone offset of your locatio
 $admin_lang_optn_sendemail         = "SEND EMAIL ON COMMENT";
 $admin_lang_optn_sendemail_txt     = "Send notification email on comments?";
 $admin_lang_optn_sendemail_html_txt = "use HTML notification emails?";
-$admin_lang_optn_comment_moderation = "COMMENT MODERATION";
-$admin_lang_optn_cmnt_mod_txt       = "Do you want to moderate comments before publishing?";
+$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
+$admin_lang_optn_comment_setting2		= "Comment setting";
+$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
+$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
+$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
 
 $admin_lang_optn_switch_template    = "SWITCH TEMPLATE";
 $admin_lang_optn_lang_file           = "LANGUAGE FILE";

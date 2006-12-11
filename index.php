@@ -652,7 +652,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
   {
 		$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '".$_POST['parent_id']."'");
 		$cmnt_setting = pullout($comments_result['comments']);
-		if($cmnt_setting == 'F')	die('Die you SPAMER!!');
+		if($cmnt_setting == 'F')	die('Die you SPAMMER!!');
 
   	if(isset($_GET['comment'])&&$_GET['comment'] == "save")
   	{
@@ -700,13 +700,14 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
  			$numberofats = substr_count("$onlyone", "@");
  			if ($numberofats > 1) {die("only one email-adress allowed");}
 
- 			$cmnt_moderate_permission = $cfgrow['moderate_comments'];
+			if($cmnt_setting == 'A'){
+				$cmnt_moderate_permission='no';
+				$cmnt_publish_permission ='yes';
+			}else{
+				$cmnt_moderate_permission='yes';
+				$cmnt_publish_permission ='no';
+			}
   
- 			if ($cmnt_moderate_permission=='yes')
- 				$cmnt_publish_permission ='no';
- 			if ($cmnt_moderate_permission=='no')
- 				$cmnt_publish_permission ='yes';
-
  			if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />";
 
  			if($message == "")	$extra_message = "<b>$lang_message_missing_comment</b><p />";
@@ -1018,17 +1019,12 @@ $tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
 $tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
-
 if ($row['comments'] == 'F')
 {
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);	
 } else {
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
 }
-
-	
-
-
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
 $tag_list = list_tags_frontend();
@@ -1053,11 +1049,17 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // check if current image has got enabled comments
 	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
 	$cmnt_setting = pullout($comments_result['comments']);
-	if($cmnt_setting == 'F')	die('Die you SPAMER!!');
+	if($cmnt_setting == 'F')	die('Die you SPAMMER!!');
 
 	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	$ip = $_SERVER['REMOTE_ADDR'];
-	$cmnt_moderate_permission = $cfgrow['moderate_comments'];
+	if($cmnt_setting == 'A'){
+		$cmnt_moderate_permission='no';
+		$cmnt_publish_permission ='yes';
+	}else{
+		$cmnt_moderate_permission='yes';
+		$cmnt_publish_permission ='no';
+	}
 
 // $message		
 	$message = isset($_POST['message']) ? $_POST['message'] : "";
@@ -1096,13 +1098,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if (eregi ("Content-Transfer-Encoding", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
 	if (eregi ("MIME-Version", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
 	if (eregi ("Content-Type", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
-
-
-	if ($cmnt_moderate_permission=='yes')
-		$cmnt_publish_permission ='no';
-	if ($cmnt_moderate_permission=='no')
-		$cmnt_publish_permission ='yes';
-
 
 	if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 

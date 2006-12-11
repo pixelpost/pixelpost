@@ -289,8 +289,13 @@ $admin_lang_optn_tz_txt             = "Wybierz strefę czasową dla Twojej lokal
 $admin_lang_optn_sendemail          = "POWIADAMIANIE EMAILEM O KOMENTARZACH";
 $admin_lang_optn_sendemail_txt      = "Powiadamiać emailem o nowych komentarzach?";
 $admin_lang_optn_sendemail_html_txt = "Używać powiadamiania emailem w formacie HTML?";
-$admin_lang_optn_comment_moderation = "MODERACJA KOMENTARZY";
-$admin_lang_optn_cmnt_mod_txt       = "Chcesz moderować komentarze przed ich publikacją?";
+$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
+$admin_lang_optn_comment_setting2		= "Comment setting";
+$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
+$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
+$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
 
 $admin_lang_optn_switch_template    = "ZMIEŃ SKÓRKĘ";
 $admin_lang_optn_lang_file          = "PLIK Z LOKALIZACJĄ";

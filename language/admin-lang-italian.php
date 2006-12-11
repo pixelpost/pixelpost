@@ -266,9 +266,6 @@ $admin_lang_optn_tz_txt            = "Seleziona il fuso orario della tua localit
 $admin_lang_optn_sendemail         = "NOTIFICA EMAIL DEI COMMENTI";
 $admin_lang_optn_sendemail_txt     = "Desideri la notifica via email dei commenti?";
 $admin_lang_optn_sendemail_html_txt = "utilizzare HTML nella email di notifica?";
-$admin_lang_optn_comment_moderation = "MODERAZIONE DEI COMMENTI";
-$admin_lang_optn_cmnt_mod_txt       = "Vuoi moderare i commenti prima della pubblicazione?";
-
 $admin_lang_optn_switch_template       = "CAMBIA TEMPLATE";
 $admin_lang_optn_lang_file             = "FILE DEL LINGUAGGIO";
 $admin_lang_optn_dateformat            = "FORMATO DELLA DATA";
@@ -304,6 +301,13 @@ $admin_lang_optn_visitorbooking_desc   = 'Vuoi che Pixelpost memorizzi informazi
 $admin_lang_optn_upd_done              = "Aggiornamento eseguito.";
 $admin_lang_optn_markdown              = "Enable Markdown";
 $admin_lang_optn_markdown_desc         = "Should Pixelpost enable Markdown feature in Image description?";
+$admin_lang_optn_comment_setting 		   = "GLOBAL COMMENT SETTINGS";
+$admin_lang_optn_comment_setting2			 = "Comment setting";
+$admin_lang_optn_cmnt_mod_txt          = "Default action for comments:";
+$admin_lang_optn_cmnt_mod_txt2         = "Action for comments:";
+$admin_lang_optn_cmnt_mod_allowed		   =	"Publish instantly";
+$admin_lang_optn_cmnt_mod_moderation   =	"To moderation queue";
+$admin_lang_optn_cmnt_mod_forbidden	   =	"Disable commenting";
 
 // Info
 $admin_lang_info_gd                   = "Non installato, chiedi all'Amministratore del tuo host di installarlo!";

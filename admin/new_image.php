@@ -155,20 +155,15 @@ if($_GET['view'] == "")
     </div>
     <?php
     	// added select box for allowing comments posted for picture
-    	echo "<div class='jcaption'>Allow comments on picture</div>
-    		<div class='content'>Allow comments:
+    	echo "<div class='jcaption'>$admin_lang_optn_comment_setting2</div>
+    		<div class='content'>$admin_lang_optn_cmnt_mod_txt2
     		<select name=\"allow_comments\">";
-    		if ($cfgrow["global_comments"] =='A')
-    		{
- 					echo "<option selected=\"selected\" value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
- 				}
- 				elseif ($cfgrow["global_comments"] =='M')
- 				{
- 					echo "<option value=\"A\">Allowed</option><option  selected=\"selected\" value=\"M\">Moderation Queue</option><option value=\"F\">Disabled</option>";
- 				}
- 				else
- 				{
-					echo "<option value=\"A\">Allowed</option><option value=\"M\">Moderation Queue</option><option selected=\"selected\" value=\"F\">Disabled</option>"; 				
+    		if ($cfgrow["global_comments"] =='A'){
+ 					echo "<option selected=\"selected\" value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
+ 				} elseif ($cfgrow["global_comments"] =='M'){
+ 					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option  selected=\"selected\" value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
+ 				} else {
+					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>"; 				
  				}
 				echo"</select></div>";
     
