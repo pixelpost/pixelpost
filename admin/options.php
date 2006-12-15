@@ -102,6 +102,9 @@ if ($_GET['optaction']=='updateall')
 		
 		// markdown
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set markdown='".$_POST['markdown']."'");
+			
+		// exif
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set exif='".$_POST['exif']."'");
 
 	}// end frist page
 } //end update all
@@ -502,24 +505,52 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		
 				<div class='content'>
 						";
-				if ($cfgrow['markdown']=='t')
+				if ($cfgrow['markdown']=='T')
 					$toecho = $admin_lang_optn_yes;
 				else
 					$toecho = $admin_lang_optn_no;
 
-				if ($cfgrow['markdown']=='t')
+				if ($cfgrow['markdown']=='T')
 					$optnecho = $admin_lang_optn_no;
 				else
 					$optnecho = $admin_lang_optn_yes;
 
-				if ($cfgrow['markdown']=='t')
-					$optnval = 'f';
+				if ($cfgrow['markdown']=='T')
+					$optnval = 'F';
 				else
-					$optnval = 't';
+					$optnval = 'T';
 
 				echo "
 				$admin_lang_optn_markdown_desc
 				<select name='markdown'><option value='".$cfgrow['markdown']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
+				</select>
+		
+				</div>
+				<div class='jcaption'>
+				$admin_lang_optn_exif
+				</div>
+		
+				<div class='content'>
+						";
+				if ($cfgrow['exif']=='T')
+					$toecho = $admin_lang_optn_yes;
+				else
+					$toecho = $admin_lang_optn_no;
+
+				if ($cfgrow['exif']=='T')
+					$optnecho = $admin_lang_optn_no;
+				else
+					$optnecho = $admin_lang_optn_yes;
+
+				if ($cfgrow['exif']=='T')
+					$optnval = 'F';
+				else
+					$optnval = 'T';
+
+				echo "
+				$admin_lang_optn_exif_desc
+				<select name='exif'><option value='".$cfgrow['exif']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>
 		

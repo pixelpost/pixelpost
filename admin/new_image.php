@@ -42,7 +42,7 @@ if($_GET['view'] == "")
 
     <div class='jcaption'><?php echo $admin_lang_ni_description; ?></div>
     <div class='content'>
-    <?php	if($cfgrow['markdown'] == 't')
+    <?php	if($cfgrow['markdown'] == 'T')
 				{
 					echo $admin_lang_ni_markdown_text; ?><br/>
     <a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_hp; ?></a>
@@ -179,7 +179,7 @@ if($_GET['view'] == "")
    			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
 
-				if($cfgrow['markdown'] == 't')
+				if($cfgrow['markdown'] == 'T')
 				{
 					echo "
    			<div>".$admin_lang_ni_markdown_text."<br/>
@@ -221,7 +221,7 @@ if($_GET['view'] == "")
 			$alt_headline = "";
 			$alt_body =  "";
 		}
-		$comments_settings = clean($_POST['comments_settings']);
+		$comments_settings = $_POST['allow_comments'];
 	  $datetime =
              $_POST['post_year']."-".
              $_POST['post_month']."-".
@@ -269,7 +269,6 @@ if($_GET['view'] == "")
 				$time_stamp_r = gmdate("YmdHis",time()+(3600 * $tz)) .'_';
 
 			$uploadfile = $upload_dir .$time_stamp_r .$userfile;
-
 			if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
 			{
 				chmod($uploadfile, 0644);
@@ -279,6 +278,11 @@ if($_GET['view'] == "")
 				$filtyp = $_FILES['userfile']['type'];
 				$filstorlek = $_FILES['userfile']['size'];
 				$status = "ok";
+				//Get the exif data so we can store it.
+				// what about files that don't have exif data??
+				include_once('../includes/functions_exif.php');
+				$exif_info_db = serialize_exif ($uploadfile);
+				echo $exif_info_db;
 				if($postdatefromexif == TRUE)
 				{
 					$exif_result = read_exif_data_raw($uploadfile,"0");
@@ -312,8 +316,8 @@ if($_GET['view'] == "")
 		$image = $filnamn;
 		if($status == "ok")
 		{
-			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,comments)
-			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$comments_settings')";
+			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,comments,exif_info)
+			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$comments_settings','$exif_info_db')";
 			$result = mysql_query($query) || die("Error: ".mysql_error().$admin_lang_ni_db_error);
 	
 	    $theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"

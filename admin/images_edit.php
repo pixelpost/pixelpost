@@ -404,8 +404,19 @@ if($_GET['view'] == "images")
 			<div class='content'><input type='text' name='tags' style='width:550px;' value='$tags' />
 			</div>
 			<div class='jcaption'>$admin_lang_imgedit_txt_desc</div>
-			<div class='content'>
-				<textarea name='body' cols='50' rows='5' style='width:95%;'>$body</textarea>
+			<div class='content'>";
+			if($cfgrow['markdown'] == 'T')
+				{
+					echo "
+   			<div>".$admin_lang_ni_markdown_text."<br/>
+    			<a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
+    			&nbsp;&nbsp;&nbsp;
+    			<a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
+    			&nbsp;&nbsp;&nbsp;
+    			<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
+    			<p/>";
+    		}
+			echo"	<textarea name='body' cols='50' rows='5' style='width:95%;'>$body</textarea>
 			</div>
 			<div class='jcaption'>$admin_lang_imgedit_category_plural</div>
 			<div class='content'>
@@ -444,7 +455,19 @@ if($_GET['view'] == "images")
 						<div class='content'>$admin_lang_imgedit_title<br />
 							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />
 						</div>
-						<div class='content'>$admin_lang_imgedit_txt_desc<br />
+						<div class='content'>";
+						if($cfgrow['markdown'] == 'T')
+						{
+							echo "
+   							<div>".$admin_lang_ni_markdown_text."<br/>
+    						<a href='http://daringfireball.net/projects/markdown/' title='<?php echo $admin_lang_ni_markdown_hp; ?>' target='_blank'>".$admin_lang_ni_markdown_hp."</a>
+    						&nbsp;&nbsp;&nbsp;
+    						<a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
+    						&nbsp;&nbsp;&nbsp;
+    						<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
+    						<p/>";
+    				}
+						echo" $admin_lang_imgedit_txt_desc<br />
 							<textarea name='alt_body' cols='50' rows='5' style='width:95%;'>$alt_body</textarea>
 						</div>";
 						echo "<div class='content'>".$admin_lang_imgedit_tags_edit."<br />

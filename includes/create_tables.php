@@ -529,4 +529,33 @@ function UpgradeTo1512( $prefix, $newversion)
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
 
+function UpgradeTo1513( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+
+	// Drop field markdown by GeoS
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `markdown`;")
+	or die("Error: ". mysql_error());
+
+	// new markdown field
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `markdown` ENUM( 'F', 'T' ) NOT NULL DEFAULT 'F'")
+	or die("Error: ". mysql_error());
+	
+	// new exif
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `exif` ENUM( 'F', 'T' ) NOT NULL DEFAULT 'T'")
+	or die("Error: ". mysql_error());
+	
+	// picture based exif
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `exif_info` TEXT NULL DEFAULT NULL")
+	or die("Error: ". mysql_error());
+	
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
+
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+}
+
 ?>

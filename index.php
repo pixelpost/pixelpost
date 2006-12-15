@@ -34,7 +34,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-error_reporting(0);
+error_reporting(E_All);
 ini_set('arg_separator.output', '&amp;');
 session_start();
 
@@ -42,9 +42,7 @@ $PHP_SELF = "index.php";
 
 // includes
 require("includes/pixelpost.php");
-require("includes/markdown.php");
 require("includes/functions.php");
-require("includes/exifer1_5/exif.php");
 
 // Set cookie for visitor counter, re-count a person after 60 mins
 setcookie("lastvisit","expires in 60 minutes",time() +60*60);
@@ -72,6 +70,10 @@ if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config")) {
 	show_splash($extra_message,"templates");
 	//echo "Coming Soon. Not Installed Yet.";
 	//exit;
+}
+
+if ($cfgrow['markdown'] == 'T'){
+	require("includes/markdown.php");
 }
 
 // book visitors
@@ -336,7 +338,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$image_date_year   = substr($row['datetime'],2,2);
 	$image_date_month = substr($row['datetime'],5,2);
 	$image_date_day = substr($row['datetime'],8,2);
-	$image_notes        = ($cfgrow['markdown'] == 't') ? markdown(pullout($row['body']))	: pullout($row['body']);
+	$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);
 	$thumbnail_extra = getimagesize("thumbnails/thumb_$image_name");
 	$image_extra = getimagesize("images/$image_name");
 	$image_width = $image_extra['0'];
@@ -345,9 +347,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$tpl = str_replace("<IMAGE_HEIGHT>",$image_height,$tpl);
 	$local_width = $thumbnail_extra['0'];
 	$local_height = $thumbnail_extra['1'];
-
-
-
+	$image_exif = $row['exif_info'];
 
 	//$image_title = htmlentities($image_title );
 	$image_thumbnail = "<a href='$showprefix$image_id'><img src='thumbnails/thumb_$image_name' alt='$image_title' title='$image_title' width='$local_width' height='$local_height' /></a>";
@@ -533,117 +533,23 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$queryrow = sql_array("SELECT headline FROM ".$pixelpost_db_prefix."pixelpost WHERE id='$latest_comment'");
 	$latest_comment_name = pullout($queryrow['headline']);
 
-
+	// ##########################################################################################//
 	// EXIF STUFF
-	$curr_image = "images/$image_name";
-
-	// set empty-tag + prepare not to produce empty exif-tags in the template
-	$empty_exif = "";
-
-	$exif_result = read_exif_data_raw($curr_image,"0");
-	if (isset($exif_result['SubIFD']))
-		$exposure = $exif_result['SubIFD']['ExposureTime']; // exposure time
-	if(isset($exposure)&&$exposure != "")
-	{
-		$exposure = reduceExif($exposure);
-		$exposure = "$exposure sec";
-	}
-
-	if (isset($exif_result['SubIFD'])){
-		$aperture = $exif_result['SubIFD']['FNumber']; // Aperture
-		$capture_date = $exif_result['SubIFD']['DateTimeOriginal']; // Date and Time
-
-		$flash = $exif_result['SubIFD']['Flash']; // flash
-		$focal = $exif_result['SubIFD']['FocalLength']; // focal length
-	}
-	if (isset($exif_result['IFD0'])){
-	$info_camera_manu = trim($exif_result['IFD0']['Make']); // camera maker
-	$info_camera_model = trim($exif_result['IFD0']['Model']); // camera model
-	}
-	if (isset($exif_result['SubIFD']))
-		$iso = pullout($exif_result['SubIFD']['ISOSpeedRatings']); // not working apparently
-
-	if(isset($flash)&&$flash == "No Flash")	$flash = "$lang_flash_not_fired";
-	elseif(isset($flash)&&$flash)	$flash = "$lang_flash_fired";
-
-
-	if(isset($exposure)&&$exposure != "") 	{
-			$exposure = "$exposure";
-			$tpl = ereg_replace("<EXIF_EXPOSURE_TIME>",$exposure,$tpl);
-		}	else 	{
-			$exposure = "$empty_exif";
-			$tpl = ereg_replace("<EXIF_EXPOSURE_TIME>",$exposure,$tpl);
-		}
-		$langexposure = "$lang_exposure $exposure";
-		$tpl = ereg_replace("<LANG_EXPOSURE_TIME>",$langexposure,$tpl);
-
-
-	if(isset($aperture)&&$aperture != "") 	{
-		 $tpl = ereg_replace("<EXIF_APERTURE>",$aperture,$tpl);
-		} else 	{
-		 $aperture = "$empty_exif";
-		 $tpl = ereg_replace("<EXIF_APERTURE>",$aperture,$tpl);
-		}
-		$langaperture = "$lang_aperture $aperture";
-	  $tpl = ereg_replace("<LANG_APERTURE>",$langaperture,$tpl);
-
-
-
-	if(isset($capture_date)&&$capture_date != "") 	{
-			$tpl = ereg_replace("<EXIF_CAPTURE_DATE>",$capture_date,$tpl);
-		}	else {
-			$capture_date = "$empty_exif";
-			$tpl = ereg_replace("<EXIF_CAPTURE_DATE>",$capture_date,$tpl);
-		}
-		$langcapture_date = "$lang_capture_date $capture_date";
-		$tpl = ereg_replace("<LANG_CAPTURE_DATE>",$langcapture_date,$tpl);
-
-
-	if(isset($focal)&&$focal != "") 	{
-			$tpl = ereg_replace("<EXIF_FOCAL_LENGTH>",$focal,$tpl);
-		} else 	{
-			$focal = "$empty_exif";
-			$tpl = ereg_replace("<EXIF_FOCAL_LENGTH>",$focal,$tpl);
-		}
-		$langfocal = "$lang_focal $focal";
-		$tpl = ereg_replace("<LANG_FOCAL_LENGTH>",$langfocal,$tpl);
-
-
-	if(isset($info_camera_manu)&&$info_camera_manu != "") 	{
-			$langcamera_manu = "$lang_camera_maker $info_camera_manu";
-			$tpl = ereg_replace("<EXIF_CAMERA_MAKE>",$info_camera_manu,$tpl);
-		}	else {
-		  $info_camera_manu = "$empty_exif";
-	  	$tpl = ereg_replace("<EXIF_CAMERA_MAKE>",$info_camera_manu,$tpl);
-		}
-		$tpl = ereg_replace("<LANG_CAMERA_MAKE>",$langcamera_manu,$tpl);
-
-
-	if(isset($info_camera_model)&&$info_camera_model != "") {
-			$langcamera_model = "$lang_camera_model $info_camera_model";
-			$tpl = ereg_replace("<EXIF_CAMERA_MODEL>",$info_camera_model,$tpl);
+	// ##########################################################################################//
+	if ($cfgrow['exif']=='T'){
+		include_once('includes/functions_exif.php');
+		if ($image_exif!==null){
+			$tpl = replace_exif_tags ($language_full, $image_exif, $tpl);
 		} else {
-			$info_camera_model = "$empty_exif";
-			$tpl = ereg_replace("<EXIF_CAMERA_MODEL>",$info_camera_model,$tpl);
+			$tpl = replace_exif_tags_null($tpl);
 		}
-		$tpl = ereg_replace("<LANG_CAMERA_MODEL>",$langcamera_model,$tpl);
+	} else {
+		$tpl = replace_exif_tags_null($tpl);
+	}
 
 
-	if(isset($iso)&&$iso != "")
-	{	$tpl = ereg_replace("<EXIF_ISO>",$iso,$tpl);
-		$iso = "$iso";} else {$iso = "$empty_exif";
-		$tpl = ereg_replace("<EXIF_ISO>",$iso,$tpl);}
-		$langiso = "$lang_iso $iso";
-		$tpl = ereg_replace("<LANG_ISO>",$langiso,$tpl);
+			
 
-
-	if(isset($flash)&&$flash != "")	{
-			$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
-			$flash = "$flash";
-		} else	{
-			$flash = "$empty_exif";
-			$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
-		}
 
   /////////////
   // build a string with all comments
