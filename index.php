@@ -933,8 +933,6 @@ if ($row['comments'] == 'F')
 }
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
-$tag_list = list_tags_frontend();
-$tpl = str_replace("<TAG_LIST>",$tag_list,$tpl);
 
 // ##########################################################################################//
 // SAVE COMMENT
