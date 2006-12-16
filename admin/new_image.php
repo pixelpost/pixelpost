@@ -282,11 +282,10 @@ if($_GET['view'] == "")
 				// what about files that don't have exif data??
 				include_once('../includes/functions_exif.php');
 				$exif_info_db = serialize_exif ($uploadfile);
-				echo $exif_info_db;
 				if($postdatefromexif == TRUE)
 				{
-					$exif_result = read_exif_data_raw($uploadfile,"0");
-					$exposuredatetime = $exif_result['SubIFD']['DateTimeOriginal'];
+					$exif_result=unserialize($exif_info_db);
+					$exposuredatetime = $exif_result['DateTimeOriginalSubIFD'];
 					if ($exposuredatetime!='')
 					{
 						list($exifyear,$exifmonth,$exifday,$exifhour,$exifmin, $exifsec) = split('[: ]', $exposuredatetime);

@@ -39,12 +39,6 @@ function unserialize_exif ($exif_info){
   return $exif_info;
 }
 
-function update_exif_in_db ($imageid, $exif_info){
-	$query = "update ".$pixelpost_db_prefix."pixelpost set exif='$exif_info' where id='$imageid'";
-	$result = mysql_query($query) ||("Error: ".mysql_error().$admin_lang_imgedit_db_error);
-	return $result;
-}
-
 
 function replace_exif_tags ($language_full, $image_exif, $tpl){
 	// get exif
