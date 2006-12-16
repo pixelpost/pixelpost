@@ -544,6 +544,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 			$tpl = replace_exif_tags_null($tpl);
 		}
 	} else {
+		include_once('includes/functions_exif.php');
 		$tpl = replace_exif_tags_null($tpl);
 	}
 
