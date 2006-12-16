@@ -547,11 +547,6 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 		include_once('includes/functions_exif.php');
 		$tpl = replace_exif_tags_null($tpl);
 	}
-
-
-			
-
-
   /////////////
   // build a string with all comments
 	// only perform this code when the user has commenting enabled
