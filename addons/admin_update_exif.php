@@ -53,7 +53,7 @@ if(isset($_POST['Action']) && ($_POST['Action']=="Update EXIF")){
 		mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$id'");
 	 	$counter=$counter+1;
 	}
-	$Msg = "<font color=\"blue\">Updated ".$counter." images.</font>";
+	$Exif_Msg = "<font color=\"blue\">Updated ".$counter." images.</font>";
 } 
   
 /**************************/
@@ -64,7 +64,7 @@ $addon_description.="<form name=\"update_exif_info\" action=\"index.php?view=add
  		<input type=\"submit\" name=\"Action\" value=\"Update EXIF\" />
 </form>";
 
-if ($Msg!==""){
-	$addon_description.="<br /><strong>".$Msg."</strong>";
+if ($Exif_Msg!==""){
+	$addon_description.="<br /><strong>".$Exif_Msg."</strong>";
 }
 ?>
