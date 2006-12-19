@@ -510,8 +510,7 @@ function UpgradeTo1512( $prefix, $newversion)
 	global $pixelpost_db_prefix;
 
 	// Drop field moderate comments
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `moderate_comments`;")
-	or die("Error: ". mysql_error());
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `moderate_comments`;");
 
 // global settings disabling comments (default for new picture)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `global_comments` ENUM( 'A', 'M', 'F' ) NOT NULL DEFAULT 'A'")
