@@ -580,7 +580,7 @@ $tags = mysql_query($queryr);
 
 while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
 {
-	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank.'">'.$tag.' ('.$cnt.')</a> ';
+	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.' ('.$cnt.')</a> ';
 	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.' ('.$cnt.')</a> ';
 }
 $tags_output .= '</div>';
