@@ -706,6 +706,19 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 									ORDER BY datetime, t2.id DESC";
 		$query = mysql_query($querystr);
 	}
+	ELSEIF(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
+	{
+		$lookingfor = 1;
+		$querystr = "SELECT 1, t1.id,t1.headline,t1.image, t1.datetime
+		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
+		WHERE (t1.datetime<='$cdate')
+		$where
+		AND (t1.id = t2.img_id )
+		AND (t2.tag = '" . $_GET['tag'] . "')
+		GROUP BY t1.id
+		ORDER BY t1.datetime DESC";
+		$query = mysql_query($querystr);
+	}
 	ELSE
 	{
 		$lookingfor = 1;

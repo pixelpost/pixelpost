@@ -563,6 +563,7 @@ $tags_paged_output = $tags_output;
 
 $queryr = "SELECT COUNT( * ) AS max
 FROM {$pixelpost_db_prefix}tags
+WHERE alt_tag LIKE ''
 GROUP BY tag
 ORDER BY max DESC
 LIMIT 1";
@@ -572,6 +573,7 @@ $tag_max = $tag_max[0];
 
 $queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
 FROM {$pixelpost_db_prefix}tags
+WHERE alt_tag LIKE ''
 GROUP BY tag
 ORDER BY tag";
 $tags = mysql_query($queryr);

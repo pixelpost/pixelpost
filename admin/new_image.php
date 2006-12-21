@@ -25,9 +25,9 @@ if($_GET['view'] == "")
 	<?php echo $admin_lang_ni_image ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    <input name="userfile" type="file" size="76" /><p/>
 	<?php echo $admin_lang_ni_image_title; ?>&nbsp;&nbsp;&nbsp;
-   <input type="text" name="headline" style="width:550px;" value="<?=$_POST['headline'];?>" /><p/>
+   <input type="text" name="headline" style="width:550px;" value="<?if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['headline'];?>" /><p/>
 	<?php echo $admin_lang_ni_tags; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <input type="text" name="tags" style="width:550px;" value="<?=$_POST['tags'];?>" /><br/>
+   <input type="text" name="tags" style="width:550px;" value="<?if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['tags'];?>" /><br/>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $admin_lang_ni_tags_desc; ?><p/>
   <?php echo $admin_lang_ni_select_cat; ?>
 	<?php
@@ -52,7 +52,7 @@ if($_GET['view'] == "")
     <a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_syntax; ?></a><?php } ?>
     <p/>
 	<div style="text-align:center;">
-    <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?=$_POST['body'];?></textarea><p/>
+    <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['body'];?></textarea><p/>
 	</div>
     </div>
     <div class='jcaption'>
@@ -173,11 +173,16 @@ if($_GET['view'] == "")
 		// Check if the language addon is enabled. If not there is no need to show these fields
 			if ($cfgrow['altlangfile'] != 'Off')
 			{
+				if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok'){ 
+					$alt_headline = $_POST['alt_headline'];
+					$alt_tags = $_POST['alt_tags'];
+					$alt_body = $_POST['alt_body'];
+				}
 				echo "
 				<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_headline' style='width:550px;' value='".$_POST['alt_headline']."' /><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   			<input type='text' name='alt_tags' style='width:550px;' value='".$_POST['tags']."' /><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
+   			<input type='text' name='alt_headline' style='width:550px;' value='".$alt_headline."' /><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   			<input type='text' name='alt_tags' style='width:550px;' value='".$alt_tags."' /><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
 
 				if($cfgrow['markdown'] == 'T')
 				{
@@ -193,7 +198,7 @@ if($_GET['view'] == "")
     		
     		echo "
 					<div style='text-align:center;'>
-    				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$_POST['alt_body']."</textarea><p/>
+    				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$alt_body."</textarea><p/>
 					</div>
     		</div>";
 			}
@@ -408,6 +413,7 @@ if($_GET['view'] == "")
 			if ($cfgrow['altlangfile'] != 'Off'){
 				save_alt_tags_new($_POST['alt_tags'],$theid);
 			}
+			$_SESSION['upload_status']=$status;
 		} // end status ok
 	} // end save
 } // end view=null

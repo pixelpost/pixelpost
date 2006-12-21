@@ -1043,7 +1043,7 @@ function list_tags_frontend()
 	$tag_list = '';
 	$tag_count = 0;
 
-	$sql_tag = "SELECT tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags GROUP BY tag ORDER BY a";
+	$sql_tag = "SELECT tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags WHERE alt_tag LIKE '' GROUP BY tag ORDER BY a";
 	$query = mysql_query($sql_tag);
 
 	while(list($tag,$val) = mysql_fetch_row($query))
@@ -1135,7 +1135,7 @@ function list_alt_tags_frontend()
 	$alt_tag_list = '';
 	$alt_tag_count = 0;
 
-	$sql_tag = "SELECT alt_tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags GROUP BY alt_tag ORDER BY a";
+	$sql_tag = "SELECT alt_tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags WHERE tag LIKE '' GROUP BY alt_tag ORDER BY a";
 	$query = mysql_query($sql_tag);
 
 	while(list($alt_tag,$val) = mysql_fetch_row($query))
