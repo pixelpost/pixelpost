@@ -307,6 +307,9 @@ $admin_lang_optn_visitorbooking_desc  = '要Pixelpost登记每个来访者的信
 $admin_lang_optn_upd_done     = "更新成功！";
 $admin_lang_optn_markdown             = "Enable Markdown";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
+$admin_lang_optn_exif			            = "Enable Exif";
+$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
+
 
 
 // Info

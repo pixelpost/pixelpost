@@ -342,6 +342,9 @@ $admin_lang_optn_visitorbooking_desc  = "Czy Pixelpost powinien zapisywać infor
 $admin_lang_optn_upd_done             = "Zaktualizowano dane.";
 $admin_lang_optn_markdown             = "Dostępność Markdown";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie obrazka?";
+$admin_lang_optn_exif			            = "Enable Exif";
+$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
+
 
 // Info
 $admin_lang_info_gd           = "Nie zainstalowane, poproś swojego dostawcę o zainstalowanie!";

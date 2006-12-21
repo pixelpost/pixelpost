@@ -399,6 +399,8 @@ $admin_lang_ni_post_exif_date = "Bruk exif dato";
 $admin_lang_optn_upd_done     = "Oppdatering ferdig.";
 $admin_lang_optn_markdown             = "Enable Markdown";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
+$admin_lang_optn_exif			            = "Enable Exif";
+$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
 $admin_lang_imgedit_preview   = "Forh&aring;ndsvis";
 
 $admin_lang_cmnt_rep_spam = 'Rapporter Spam';
