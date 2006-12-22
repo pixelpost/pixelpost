@@ -395,6 +395,12 @@ $admin_lang_optn_markdown             = "Enable Markdown";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 $admin_lang_optn_exif			            = "Enable Exif";
 $admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
+$admin_lang_optn_token			          = "Enable token in forms";
+$admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
+																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
+																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
+																				 Should this setting be enabled?";
+$admin_lang_optn_token_time						= "Maximum time between opening the comment window and submit a comment: ";
 
 $admin_lang_imgedit_preview   = "Preview";
 

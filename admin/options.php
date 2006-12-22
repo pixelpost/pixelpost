@@ -105,6 +105,9 @@ if ($_GET['optaction']=='updateall')
 			
 		// exif
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set exif='".$_POST['exif']."'");
+		
+		// token
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".$_POST['token_time']."'");
 
 	}// end frist page
 } //end update all
@@ -555,7 +558,36 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				</select>
 		
 				</div>
+				
+				<div class='jcaption'>
+				$admin_lang_optn_token
+				</div>
 		
+				<div class='content'>
+						";
+				if ($cfgrow['token']=='T')
+					$toecho = $admin_lang_optn_yes;
+				else
+					$toecho = $admin_lang_optn_no;
+
+				if ($cfgrow['token']=='T')
+					$optnecho = $admin_lang_optn_no;
+				else
+					$optnecho = $admin_lang_optn_yes;
+
+				if ($cfgrow['token']=='T')
+					$optnval = 'F';
+				else
+					$optnval = 'T';
+
+				echo "
+				$admin_lang_optn_token_desc
+				<select name='token'><option value='".$cfgrow['token']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
+				</select><br />
+				$admin_lang_optn_token_time <input type='text' size=\"1\" name='token_time' value='".$cfgrow['token_time']."' /> minutes.
+				
+				</div>
 		<div class='jcaption'>
 				$admin_lang_optn_update
 				</div>

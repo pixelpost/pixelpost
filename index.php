@@ -37,14 +37,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 error_reporting(E_All);
 ini_set('arg_separator.output', '&amp;');
 session_start();
-// added token support for use in forms
-if (!isset($_SESSION['token'])){
-	$_SESSION['token'] = md5(uniqid(rand(), TRUE));
-}
-if(!isset($_GET['x'])&&$_GET['x'] !== "save_comment"){
-	$_SESSION['token_time'] = time();
-}
-
 $PHP_SELF = "index.php";
 
 // includes
@@ -81,6 +73,16 @@ if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config")) {
 
 if ($cfgrow['markdown'] == 'T'){
 	require("includes/markdown.php");
+}
+
+// added token support for use in forms only if it is set on
+if ($cfgrow['token'] == 'T'){
+	if (!isset($_SESSION['token'])){
+		$_SESSION['token'] = md5(uniqid(rand(), TRUE));
+	}
+	if(!isset($_GET['x'])&&$_GET['x'] !== "save_comment"){
+		$_SESSION['token_time'] = time();
+	}
 }
 
 // book visitors
@@ -598,7 +600,11 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
  	$tpl = ereg_replace("<VINFO_NAME>",$vinfo_name,$tpl);
  	$tpl = ereg_replace("<VINFO_URL>",$vinfo_url,$tpl);
  	$tpl = ereg_replace("<VINFO_EMAIL>",$vinfo_email,$tpl);
- 	$tpl = ereg_replace("<TOKEN>",$_SESSION['token'],$tpl);
+ 	if ($cfgrow['token'] == 'T'){
+ 		$tpl = ereg_replace("<TOKEN>","<input type='hidden' name='token' value='".$_SESSION['token']."' />",$tpl);
+ 	} else {
+ 		$tpl = ereg_replace("<TOKEN>",null,$tpl);
+ 	}
 	if($_GET['showimage'] == "")	$imageid = $image_id;
 	else	$imageid = $_GET['showimage'];
 

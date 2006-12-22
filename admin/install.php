@@ -166,7 +166,8 @@ switch( $installed_version ) {
 		UpgradeTo1512($prefix,'1.512');
 	case 1.512:  //upgrade from final to SVN 1.6
 		UpgradeTo1513($prefix,'1.513');
-		
+	case 1.513:  //upgrade from final to SVN 1.6
+		UpgradeTo1514($prefix,'1.514');
 	
 	
 	// Add the upgrade to 1.6 here later	

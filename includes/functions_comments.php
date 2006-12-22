@@ -10,14 +10,16 @@ $email_flag = 0;
 if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 {
 // token check
-	if (isset($_SESSION['token']) && ($_POST['token'] == $_SESSION['token']))
-	{
-		if ((time() - $_SESSION['token_time']) > 300)
+	if ($cfgrow['token'] == 'T'){
+		if (isset($_SESSION['token']) && ($_POST['token'] == $_SESSION['token']))
 		{
-    	die("You waited more then five minutes to enter the comment");
-    }
-	} else {
-		die("Die you SPAMMER!");
+			if ((time() - $_SESSION['token_time']) > ($cfgrow['token_time']*60))
+			{
+    		die("You waited more then five minutes to enter the comment");
+    	}
+		} else {
+			die("Die you SPAMMER!");
+		}
 	}
 // $parent_id		
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
