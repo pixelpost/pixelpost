@@ -37,6 +37,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 error_reporting(E_All);
 ini_set('arg_separator.output', '&amp;');
 session_start();
+// added token support for use in forms
+if (!isset($_SESSION['token'])){
+	$_SESSION['token'] = md5(uniqid(rand(), TRUE));
+}
+if(!isset($_GET['x'])&&$_GET['x'] !== "save_comment"){
+	$_SESSION['token_time'] = time();
+}
 
 $PHP_SELF = "index.php";
 
@@ -326,7 +333,13 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 
 	$image_name         = $row['image'];
-	$image_title        = pullout($row['headline']);
+	if ($language_abr == $default_language_abr) {
+  	$image_title        = pullout($row['headline']);
+		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);	
+	} else {
+  	$image_title        = pullout($row['alt_headline']);
+		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['body']);	
+  }
 	$image_title = htmlspecialchars($image_title,ENT_QUOTES);
 	$image_id           = $row['id'];
 	$image_datetime     = $row['datetime'];
@@ -338,7 +351,6 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$image_date_year   = substr($row['datetime'],2,2);
 	$image_date_month = substr($row['datetime'],5,2);
 	$image_date_day = substr($row['datetime'],8,2);
-	$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);
 	$thumbnail_extra = getimagesize("thumbnails/thumb_$image_name");
 	$image_extra = getimagesize("images/$image_name");
 	$image_width = $image_extra['0'];
@@ -360,15 +372,19 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	// get previous image id and name
 	if(!isset($_SESSION["pixelpost_admin"]))
 	{
-		$previous_row = sql_array("SELECT id,headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
+		$previous_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
 	}
 	else
 	{
-		$previous_row = sql_array("SELECT id,headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime')  ORDER BY datetime desc limit 0,1");
+		$previous_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime')  ORDER BY datetime desc limit 0,1");
 	}
 	$image_previous_name = $previous_row['image'];
 	$image_previous_id = $previous_row['id'];
-	$image_previous_title = pullout($previous_row['headline']);
+	if ($language_abr == $default_language_abr) {
+		$image_previous_title = pullout($previous_row['headline']);
+	} else {
+		$image_previous_title = pullout($previous_row['alt_headline']);
+	}
 	$image_previous_datetime = $previous_row['datetime'];
 	$image_previous_link = "<a href='$showprefix$image_previous_id'>$lang_previous</a>";
 	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_previous_name");
@@ -385,15 +401,19 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	// get next image id and name
 	if(!isset($_SESSION["pixelpost_admin"]))
 	{
-		$next_row = sql_array("SELECT id,headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate') ORDER BY datetime asc limit 0,1");
+		$next_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate') ORDER BY datetime asc limit 0,1");
 	}
 	else
 	{
-		$next_row = sql_array("SELECT id,headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') ORDER BY datetime asc limit 0,1");
+		$next_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') ORDER BY datetime asc limit 0,1");
 	}
 	$image_next_name = $next_row['image'];
 	$image_next_id = $next_row['id'];
-	$image_next_title = pullout($next_row['headline']);
+	if ($language_abr == $default_language_abr) {
+		$image_next_title = pullout($next_row['headline']);
+	} else {
+		$image_next_title = pullout($next_row['alt_headline']);
+	}
 	$image_next_datetime = $next_row['datetime'];
 	$image_next_link = "<a href='$showprefix$image_next_id'>$lang_next</a>";
 	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_next_name");
@@ -436,11 +456,15 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 			$totalthumbcounter = 1;
 			$ahead_thumbs = "";
 			$ahead_thumbs_reverse  ="";
-			$thumbs_ahead = mysql_query("SELECT id,headline,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate') ORDER BY datetime asc limit 0,$aheadlimit");
+			$thumbs_ahead = mysql_query("SELECT id,headline,alt_headline,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate') ORDER BY datetime asc limit 0,$aheadlimit");
 
-			while(list($id,$headline,$image) = mysql_fetch_row($thumbs_ahead))
+			while(list($id,$headline,$alt_headline,$image) = mysql_fetch_row($thumbs_ahead))
 			{
-				$headline = pullout($headline);
+				if ($language_abr == $default_language_abr) {
+					$headline = pullout($headline);
+				} else {
+					$headline = pullout($alt_headline);
+				}
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
 				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image");
 				$ahead_thumbs .= "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
@@ -450,11 +474,15 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 
 			$behind_thumbs = "";
 			$behind_thumbs_reverse ="";
-			$thumbs_behind = mysql_query("SELECT id,headline,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate') ORDER BY datetime desc limit 0,$behindlimit");
+			$thumbs_behind = mysql_query("SELECT id,headline,alt_headline,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate') ORDER BY datetime desc limit 0,$behindlimit");
 
-			while(list($id,$headline,$image) = mysql_fetch_row($thumbs_behind))
+			while(list($id,$headline,$alt_headline,$image) = mysql_fetch_row($thumbs_behind))
 			{
-				$headline = pullout($headline);
+				if ($language_abr == $default_language_abr) {
+					$headline = pullout($headline);
+				} else {
+					$headline = pullout($alt_headline);
+				}
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
 				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image");
 				$behind_thumbs = "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>$behind_thumbs";
@@ -471,15 +499,19 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	} // func exist
 
 	// Modified from Mark Lewin's hack for multiple categories
-	$querystr = "SELECT t1.cat_id,t2.name FROM ".$pixelpost_db_prefix."catassoc as t1 inner join ".$pixelpost_db_prefix."categories t2 on t1.cat_id = t2.id WHERE t1.image_id = '$image_id' ORDER BY t2.name ";
+	$querystr = "SELECT t1.cat_id,t2.name,t2.alt_name FROM ".$pixelpost_db_prefix."catassoc as t1 inner join ".$pixelpost_db_prefix."categories t2 on t1.cat_id = t2.id WHERE t1.image_id = '$image_id' ORDER BY t2.name ";
 	$query = mysql_query($querystr);
 	$image_category_number = 0;
 
 	$image_category_all ="";
 	$image_category_all_paged = "";
-	while(list($cat_id,$name) = mysql_fetch_row($query))
+	while(list($cat_id,$name,$alt_name) = mysql_fetch_row($query))
 	{
-		$name = pullout($name);
+		if ($language_abr == $default_language_abr) {
+			$name = pullout($name);
+		} else {
+			$name = pullout($alt_name);
+		}
 		$image_category_all .= "<a href='$PHP_SELF?x=browse&amp;category=$cat_id'>" .$cfgrow['catgluestart'] .$name .$cfgrow['catglueend']."</a> &nbsp;";
 		$image_category_all_paged .= "<a href='$PHP_SELF?x=browse&amp;category=$cat_id&amp;pagenum=1'>" .$cfgrow['catgluestart'] .$name .$cfgrow['catglueend']."</a> &nbsp;";
 		$image_category_number = $image_category_number +1;
@@ -566,6 +598,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
  	$tpl = ereg_replace("<VINFO_NAME>",$vinfo_name,$tpl);
  	$tpl = ereg_replace("<VINFO_URL>",$vinfo_url,$tpl);
  	$tpl = ereg_replace("<VINFO_EMAIL>",$vinfo_email,$tpl);
+ 	$tpl = ereg_replace("<TOKEN>",$_SESSION['token'],$tpl);
 	if($_GET['showimage'] == "")	$imageid = $image_id;
 	else	$imageid = $_GET['showimage'];
 

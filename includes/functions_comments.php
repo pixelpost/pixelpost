@@ -9,6 +9,16 @@ $email_flag = 0;
 
 if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 {
+// token check
+	if (isset($_SESSION['token']) && ($_POST['token'] == $_SESSION['token']))
+	{
+		if ((time() - $_SESSION['token_time']) > 300)
+		{
+    	die("You waited more then five minutes to enter the comment");
+    }
+	} else {
+		die("Die you SPAMMER!");
+	}
 // $parent_id		
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){  die("No intrusion! ?? :(");}

@@ -310,12 +310,17 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
+  	if ($language_abr == $default_language_abr) {
+  		$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
+	  } else {
+  		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+  	}
 		$query = "SELECT t1.id,t1.headline,t1.image
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
 		AND (t1.id = t2.img_id )
-		AND (t2.tag = '" . $_GET['tag'] . "')
+		$tag_selection
 		GROUP BY t1.id
 		ORDER BY t1.datetime DESC" .$limit;
 	}
@@ -359,11 +364,16 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}// end if
 	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
+  	if ($language_abr == $default_language_abr) {
+  		$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
+	  } else {
+  		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+  	}
 		$queryr = "SELECT count(*) AS count
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
 		AND (t1.id = t2.img_id )
-		AND (t2.tag = '" . $_GET['tag'] . "')";
+		$tag_selection";
 	}
 	else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']) )
 	{
@@ -529,9 +539,13 @@ else
 
 
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
-while(list($id,$name) = mysql_fetch_row($query))
+while(list($id,$name,$alt_name) = mysql_fetch_row($query))
 {
-	$name = pullout($name);
+	if ($language_abr == $default_language_abr) {
+  	$name = pullout($name);
+	} else {
+  	$name = pullout($alt_name);
+  }
 	$queryr = "SELECT count(*) AS count,datetime
 	FROM {$pixelpost_db_prefix}catassoc AS t1
 	INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
@@ -561,21 +575,39 @@ $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse me
 $tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">'.$lang_tags.':</div><br />';
 $tags_paged_output = $tags_output;
 
-$queryr = "SELECT COUNT( * ) AS max
-FROM {$pixelpost_db_prefix}tags
-WHERE alt_tag LIKE ''
-GROUP BY tag
-ORDER BY max DESC
-LIMIT 1";
+$default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
+if ($language_abr == $default_language_abr) {
+	$queryr = "SELECT COUNT( * ) AS max
+		FROM {$pixelpost_db_prefix}tags
+		WHERE alt_tag LIKE ''
+		GROUP BY tag
+		ORDER BY max DESC
+		LIMIT 1";
+} else {
+	$queryr = "SELECT COUNT( * ) AS max
+		FROM {$pixelpost_db_prefix}tags
+		WHERE tag LIKE ''
+		GROUP BY alt_tag
+		ORDER BY max DESC
+		LIMIT 1";
+}
 $tag_max = mysql_query($queryr);
 $tag_max = mysql_fetch_row($tag_max);
 $tag_max = $tag_max[0];
 
-$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
-FROM {$pixelpost_db_prefix}tags
-WHERE alt_tag LIKE ''
-GROUP BY tag
-ORDER BY tag";
+if ($language_abr == $default_language_abr) {
+	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
+		FROM {$pixelpost_db_prefix}tags
+		WHERE alt_tag LIKE ''
+		GROUP BY tag
+		ORDER BY tag";
+} else {
+	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as cnt
+		FROM {$pixelpost_db_prefix}tags
+		WHERE tag LIKE ''
+		GROUP BY alt_tag
+		ORDER BY alt_tag";
+}
 $tags = mysql_query($queryr);
 
 while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
@@ -586,10 +618,18 @@ while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
 
-$queryr = "SELECT tag
-FROM {$pixelpost_db_prefix}tags
-WHERE img_id = " . $image_id . "
-ORDER BY tag";
+if ($language_abr == $default_language_abr) {
+	$queryr = "SELECT tag
+		FROM {$pixelpost_db_prefix}tags
+		WHERE img_id = " . $image_id . "
+		ORDER BY tag";
+} else {
+	$queryr = "SELECT alt_tag
+		FROM {$pixelpost_db_prefix}tags
+		WHERE img_id = " . $image_id . "
+		ORDER BY alt_tag";
+}
+
 $tags = mysql_query($queryr);
 
 $tags_img = $lang_tags.": ";

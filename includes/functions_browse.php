@@ -45,12 +45,18 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 	ELSEIF(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
 		$lookingfor = 1;
+		$default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
+  	if ($language_abr == $default_language_abr) {
+  		$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
+	  } else {
+  		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+  	}
 		$querystr = "SELECT 1, t1.id,t1.headline,t1.image, t1.datetime
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
 		AND (t1.id = t2.img_id )
-		AND (t2.tag = '" . $_GET['tag'] . "')
+		$tag_selection
 		GROUP BY t1.id
 		ORDER BY t1.datetime DESC";
 		$query = mysql_query($querystr);
@@ -79,9 +85,13 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 $browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all</option>";
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
 
-while(list($id,$name) = mysql_fetch_row($query))
+while(list($id,$name, $alt_name) = mysql_fetch_row($query))
 {
-	$name = pullout($name);
+	if ($language_abr == $default_language_abr) {
+  	$name = pullout($name);
+	} else {
+  	$name = pullout($alt_name);
+  }
 //		$browse_select .= "<option value='?x=browse&amp;category=$id'>$name</option>";
 	$browse_select .= "<option value='index.php?x=browse&amp;category=$id'>$name</option>";
 }
@@ -94,8 +104,11 @@ $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY 
 
 while(list($id,$name) = mysql_fetch_row($query))
 {
-	$name = pullout($name);
-
+	if ($language_abr == $default_language_abr) {
+  	$name = pullout($name);
+	} else {
+  	$name = pullout($alt_name);
+  }
 	$checkbox_checked = "";
 
 	if(isset($category)&&is_array($category)&& in_array($id,$category))	$checkbox_checked = "checked";

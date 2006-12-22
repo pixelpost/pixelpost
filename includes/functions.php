@@ -1035,37 +1035,6 @@ function save_tags_edit($tags_str,$id)
 	save_tags_new($tags_str,$id);
 }
 
-function list_tags_frontend()
-{
-	global $pixelpost_db_prefix;
-	$tags['tag'] = array();
-	$tags['val'] = array();
-	$tag_list = '';
-	$tag_count = 0;
-
-	$sql_tag = "SELECT tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags WHERE alt_tag LIKE '' GROUP BY tag ORDER BY a";
-	$query = mysql_query($sql_tag);
-
-	while(list($tag,$val) = mysql_fetch_row($query))
-	{
-		$tags['tag'][] = $tag;
-		$tags['val'][] = $val;
-		$tag_count++;
-	}
-
-	$max = max($tags['val']);
-
-	for($i = 0; $i < $tag_count; $i++)
-	{
-		$weight = round($tags['val'][$i]/$max,1)."";
-		$weight = $weight[0].$weight[2];
-		$tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $tags['tag'][$i] . '\' class=\'tags' . $weight . '\'>' . $tags['tag'][$i] . '</a>';
-	}
-
-	$tag_list = trim($tag_list);
-
-	return $tag_list;
-}
 //
 //=============================== TAGS SECTION ENDS =============================
 
@@ -1115,7 +1084,7 @@ function del_alt_tags_edit($id)
 {
 	global $pixelpost_db_prefix;
 
-	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND tag NOT LIKE ''" ;
+	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND alt_tag NOT LIKE ''" ;
 	mysql_query($sql_tag);
 }
 
@@ -1125,38 +1094,6 @@ function save_alt_tags_edit($tags_str,$id)
 	global $pixelpost_db_prefix;
 	del_alt_tags_edit($id);
 	save_alt_tags_new($tags_str,$id);
-}
-
-function list_alt_tags_frontend()
-{
-	global $pixelpost_db_prefix;
-	$alt_tags['alt_tag'] = array();
-	$alt_tags['val'] = array();
-	$alt_tag_list = '';
-	$alt_tag_count = 0;
-
-	$sql_tag = "SELECT alt_tag, count( * ) as a FROM " . $pixelpost_db_prefix . "tags WHERE tag LIKE '' GROUP BY alt_tag ORDER BY a";
-	$query = mysql_query($sql_tag);
-
-	while(list($alt_tag,$val) = mysql_fetch_row($query))
-	{
-		$alt_tags['alt_tag'][] = $alt_tag;
-		$alt_tags['val'][] = $val;
-		$alt_tag_count++;
-	}
-
-	$max = max($alt_tags['val']);
-
-	for($i = 0; $i < $alt_tag_count; $i++)
-	{
-		$weight = round($alt_tags['val'][$i]/$max,1)."";
-		$weight = $weight[0].$weight[2];
-		$alt_tag_list .= ' <a href=\'index.php?x=browse&amp;tag=' . $alt_tags['alt_tag'][$i] . '\' class=\'tags' . $weight . '\'>' . $alt_tags['alt_tag'][$i] . '</a>';
-	}
-
-	$alt_tag_list = trim($alt_tag_list);
-
-	return $alt_tag_list;
 }
 //
 
@@ -1202,52 +1139,6 @@ function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){
   	$alt_language_link=create_language_url_from_tag( $matches[2][$i],$PP_supp_lang[$language_link_key][1] );
   	$tpl = str_replace("<LANGUAGE=".strtoupper($matches[2][$i]).">",$alt_language_link,$tpl);
   }
-  	
-  // Get the secondary language texts from database (only if we have an image)
-	$alt_lang = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost where id = '$image_id'");
-	$alt_headline = pullout($alt_lang['alt_headline']);
-	$alt_body = pullout($alt_lang['alt_body']);
-			
-	$alt_body_clean = strip_tags($alt_body);
-  $alt_body_clean = htmlspecialchars($alt_body_clean,ENT_QUOTES);
-	$tpl = str_replace("<IMAGE_ALTLANG_TITLE>",$alt_headline,$tpl); 
-	$tpl = str_replace("<IMAGE_ALTLANG_NOTES>",$alt_body,$tpl); 
-	$tpl = str_replace("<IMAGE_ALTLANG_NOTES_CLEAN>",$alt_body_clean,$tpl); 
-	
-	
-	// Categories
-	// build browse menu
-	// $browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='?x=browse&amp;category='>$lang_browse_all</option>";
-	$browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all</option>";
-	$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
-
-	while(list($id,$alt_name) = mysql_fetch_row($query))
-	{
-		$alt_name = pullout($alt_name);
-		//		$browse_select .= "<option value='?x=browse&amp;category=$id'>$name</option>";
-		$browse_select .= "<option value='index.php?x=browse&amp;category=$id'>$alt_name</option>";
-	}
-	$browse_select .= "</select>";
-	$tpl = ereg_replace("<BROWSE_ALTLANG_CATEGORIES>",$browse_select,$tpl);
-
-	// build browse checkboxes
-	$checkboxes = "<form method='post' action='index.php?x=browse'>";
-	$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
-
-	while(list($id,$alt_name) = mysql_fetch_row($query))
-	{
-		$alt_name = pullout($alt_name);
-		$checkbox_checked = "";
-		if(isset($category)&&is_array($category)&& in_array($id,$category))	$checkbox_checked = "checked";
-		$checkboxes .= "<input type='checkbox' name='category[]' value='$id' $checkbox_checked />$alt_name&nbsp;&nbsp;&nbsp;\n";
-	}
-	$checkboxes .= "<input type='submit' value='Filter' /></form>";
-	$tpl = ereg_replace("<BROWSE_ALTLANG_CHECKBOXLIST>",$checkboxes,$tpl);
-
-	//TAGS
-	$alt_tag_list = list_alt_tags_frontend();
-	$tpl = str_replace("<ALT_TAG_LIST>",$alt_tag_list,$tpl);
-	
 	// return the template
 	return $tpl;
 	
