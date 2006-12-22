@@ -340,7 +340,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);	
 	} else {
   	$image_title        = pullout($row['alt_headline']);
-		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['body']);	
+		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['alt_body']);	
   }
 	$image_title = htmlspecialchars($image_title,ENT_QUOTES);
 	$image_id           = $row['id'];
