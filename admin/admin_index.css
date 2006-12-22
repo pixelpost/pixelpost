@@ -78,7 +78,7 @@ a {
     margin-bottom:10px;
     background:#f5f5f5;
     color:#993333;
-    font-size:11px;
+    font-size:12px;
 	font-variant:small-caps;
     border-top:1px solid #ccc;
     border-bottom:1px solid #ccc;
@@ -90,7 +90,7 @@ a {
     color:#993333;
 	background:#f5f5f5;
     text-decoration:none;
-	padding:10px;
+	padding:8px;
     }
 
 #navigation a:hover {
