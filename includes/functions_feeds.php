@@ -4,7 +4,7 @@
 Pixelpost version 1.5
 
 SVN file version:
-$Id: create_tables.php 72 2006-12-22 19:06:09Z schonhose $
+$Id$
 
 Pixelpost www: http://www.pixelpost.org/
 
