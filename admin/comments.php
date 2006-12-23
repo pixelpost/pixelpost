@@ -20,7 +20,7 @@ if($_GET['view'] == "comments") {
  // edit a comment
  		if($_GET['action'] == "edit") {
  			$editid = $_GET['editid'];
- 			$message = $_POST['message'.$editid]; 			
+ 			$message = $_POST['message'.$editid];
  			$query = "update ".$pixelpost_db_prefix."comments set message='$message' where id='$editid'";
  			$query  = sql_query($query);
  			echo "<div class='jcaption'>$admin_lang_cmnt_edited </div>";
@@ -196,7 +196,7 @@ if($_GET['view'] == "comments") {
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
 				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />
 
-				
+
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
 				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massdelete'
 				return confirm('Delete all selected comments? \\n  \'Cancel\' to stop, \'OK\' to delete.')
@@ -252,7 +252,7 @@ if($_GET['view'] == "comments") {
 				<div id='editme$id' class='editcmtarea'>
 				<script language='javascript' type='text/javascript'>flip('editme$id');</script>
 				<textarea name='message$id' rows='4' cols='70' >$message</textarea><br/>
-				<input type='submit' class='cmnt-buttons' value='$admin_lang_cmnt_save' 
+				<input type='submit' class='cmnt-buttons' value='$admin_lang_cmnt_save'
 				onclick=\" document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=edit&amp;editid=$id' \"
 				/>
 				<!-- </form> -->

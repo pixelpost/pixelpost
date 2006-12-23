@@ -35,39 +35,46 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 function flip(rid)
-  {
+{
     current=(document.getElementById(rid).style.display == 'none') ? 'block' : 'none';
     document.getElementById(rid).style.display = current;
-  }
-  
- function ondatechange() {
+}
+
+function ondatechange()
+{
 	var a=document.getElementById("specificdate");
 	a.checked = true;
 }
 
 function invertselection(form)
 {
-	for (i = 0, n = form.elements.length; i < n; i++) {
-		if(form.elements[i].type == "checkbox") {
-		form.elements[i].checked = !form.elements[i].checked;
+	for (i = 0, n = form.elements.length; i < n; i++)
+	{
+		if(form.elements[i].type == "checkbox")
+		{
+			form.elements[i].checked = !form.elements[i].checked;
 		}
 	}
 }
 
 function checkAll(form)
 {
-	for (i = 0, n = form.elements.length; i < n; i++) {
-		if(form.elements[i].type == "checkbox") {
-		form.elements[i].checked = true;
+	for (i = 0, n = form.elements.length; i < n; i++)
+	{
+		if(form.elements[i].type == "checkbox")
+		{
+			form.elements[i].checked = true;
 		}
 	}
 }
 
 function clearAll(form)
 {
-	for (i = 0, n = form.elements.length; i < n; i++) {
-		if(form.elements[i].type == "checkbox") {
-		form.elements[i].checked = false;
+	for (i = 0, n = form.elements.length; i < n; i++)
+	{
+		if(form.elements[i].type == "checkbox")
+		{
+			form.elements[i].checked = false;
 		}
 	}
 }

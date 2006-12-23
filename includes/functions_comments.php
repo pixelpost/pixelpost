@@ -3,41 +3,50 @@
 // SAVE COMMENT
 // ##########################################################################################//
 
-// variable which says if notofication can be send (SPAM and problem free comment) 
+// variable which says if notofication can be send (SPAM and problem free comment)
 // by default it can't
 $email_flag = 0;
 
 if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 {
 // token check
-	if ($cfgrow['token'] == 'T'){
+	if ($cfgrow['token'] == 'T')
+	{
 		if (isset($_SESSION['token']) && ($_POST['token'] == $_SESSION['token']))
 		{
 			if ((time() - $_SESSION['token_time']) > ($cfgrow['token_time']*60))
 			{
     		die("You waited more then five minutes to enter the comment");
     	}
-		} else {
+		}
+		else
+		{
 			die("Die you SPAMMER!");
 		}
 	}
 // $parent_id		
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
-	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){  die("No intrusion! ?? :(");}
-	if (!is_numeric($parent_id))
-		die('parent_id is not correct!');
+
+	if (eregi("\r",$parent_id) || eregi("\n",$parent_id))	die("No intrusion! ?? :(");
+
+	if (!is_numeric($parent_id))	die('parent_id is not correct!');
 
 // check if current image has got enabled comments
 	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
 	$cmnt_setting = pullout($comments_result['comments']);
+
 	if($cmnt_setting == 'F')	die('Die you SPAMMER!!');
 
 	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	$ip = $_SERVER['REMOTE_ADDR'];
-	if($cmnt_setting == 'A'){
+
+	if($cmnt_setting == 'A')
+	{
 		$cmnt_moderate_permission='no';
 		$cmnt_publish_permission ='yes';
-	}else{
+	}
+	else
+	{
 		$cmnt_moderate_permission='yes';
 		$cmnt_publish_permission ='no';
 	}
@@ -50,35 +59,35 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 
 // $name 	
 	$name = isset($_POST['name']) ? $_POST['name'] : "";
-	if (eregi("\r",$name) || eregi("\n",$name)){  die("No intrusion! ?? :(");}
+	if (eregi("\r",$name) || eregi("\n",$name))	die("No intrusion! ?? :(");
 	$name = clean_comment($name);	
 
 // $url 	
 	$url = isset($_POST['url']) ? $_POST['url'] : "";
-	if(eregi("\r",$url) || eregi("\n",$url)){  die("No intrusion! ?? :(");}
+	if(eregi("\r",$url) || eregi("\n",$url))	die("No intrusion! ?? :(");
 	if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
 	$url = clean_comment($url);
 
 // $parent_name		
 	$parent_name = isset($_POST['parent_name']) ? $_POST['parent_name'] : "";
-	if (eregi("\r",$parent_name) || eregi("\n",$parent_name)){  die("No intrusion! ?? :(");}
+	if (eregi("\r",$parent_name) || eregi("\n",$parent_name))	die("No intrusion! ?? :(");
 	$parent_name = clean_comment($parent_name);	
 
 
 // $email 		
 	$email = isset($_POST['email']) ? clean_comment($_POST['email']) : "";
-	if (eregi("\r",$email) || eregi("\n",$email)){  die("No intrusion! ?? :(");}
+	if (eregi("\r",$email) || eregi("\n",$email))	die("No intrusion! ?? :(");
 
 
 	// check that only one email-adress entered
 	$onlyone = $email;
 	$numberofats = substr_count("$onlyone", "@");
-	if ($numberofats > 1) {die("only one email-adress allowed");}
+	if ($numberofats > 1)	die("only one email-adress allowed");
 	
 	// Ramin added more protections
-	if (eregi ("Content-Transfer-Encoding", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
-	if (eregi ("MIME-Version", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
-	if (eregi ("Content-Type", $_POST['parent_name'].$_POST['email'].$_POST['url'].$_POST['name'].$_POST['message'].$_POST['parent_id'])) {die("SPAM Injection Error :(");}
+	if (eregi("Content-Transfer-Encoding", $_POST['parent_name'] . $_POST['email'] . $_POST['url'] . $_POST['name'] . $_POST['message'] . $_POST['parent_id']))	die("SPAM Injection Error :(");
+	if (eregi ("MIME-Version", $_POST['parent_name'] . $_POST['email'] . $_POST['url'] . $_POST['name'] . $_POST['message'] . $_POST['parent_id']))	die("SPAM Injection Error :(");
+	if (eregi ("Content-Type", $_POST['parent_name'] . $_POST['email'] . $_POST['url'] . $_POST['name'] . $_POST['message'] . $_POST['parent_id']))	die("SPAM Injection Error :(");
 
 	if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
@@ -86,29 +95,31 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	
 	if($name == "")	$extra_message = "<b>$lang_message_missing_name</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-	if(($parent_id != "") and ($message != "") and ($name != "")){
+	if(($parent_id != "") and ($message != "") and ($name != ""))
+	{
 		// check the comment with banlists
-		if (!is_comment_in_blacklist($message,$ip,$name)){
-
+		if (!is_comment_in_blacklist($message,$ip,$name))
+		{
 			// send it to moderation if contains banned words but not black listed!
-			if(is_comment_in_moderation_list($message,$ip,$name)){
+			if(is_comment_in_moderation_list($message,$ip,$name))
+			{
 				$cmnt_publish_permission = 'no';
 				$cmnt_moderate_permission ='yes';
-				}
+			}
 
-		// to the job now
+			// to the job now
 			if ($cmnt_moderate_permission =='yes')
 				$extra_message = "<b>$lang_message_moderating_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 			$query = "INSERT INTO ".$pixelpost_db_prefix."comments(id,parent_id,datetime,ip,message,name,url,email,publish)
 		VALUES(NULL,'$parent_id','$datetime','$ip','$message','$name','$url','$email','$cmnt_publish_permission')";
-		$result = mysql_query($query);
-		if (!mysql_error())
-		// added by GeoS for sure that comment is saved (moved by ramin for bug fixing)
+			$result = mysql_query($query);
+
+			// added by GeoS for sure that comment is saved (moved by ramin for bug fixing)
+			if (!mysql_error())
 			$email_flag = 1;
 		} // end if is not in the blacklist
 		else $extra_message = "<b>$lang_message_banned_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	}
-	
 }
 
 // ##########################################################################################//
@@ -122,7 +133,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$admin_email = $cfgrow['email'];
 		$comment_name = clean_comment($_POST['name']);
 		$comment_url  = clean_comment($_POST['url']);
+
 		if(strpos($comment_url,'https://') === false && strpos($comment_url,'http://') === false && strlen($comment_url) > 0)	$comment_url = "http://".$comment_url;
+
 		$comment_image_id = $_POST['parent_id'];
 		$comment_message = clean_comment($_POST['message']);
 		$comment_message = stripslashes($comment_message);
@@ -139,14 +152,17 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		if ($cfgrow['htmlemailnote']!='yes')
 		{
 		// Plain text note email
-		$body = "$lang_email_notificationplain_pt1 : $link_to_comment\n\n$lang_email_notificationplain_pt2\n\n$comment_message\n\n$lang_email_notificationplain_pt3: $comment_name";
-		if ($comment_email!="")		{$body .=  "- $comment_email";}
-		$body .= "\n\n$lang_email_notificationplain_pt4";
-		$headers = "Content-type: text/plain; charset=UTF-8\n";
-		$headers .= "Content-Transfer-Encoding: 8bit\n";
+			$body = "$lang_email_notificationplain_pt1 : $link_to_comment\n\n$lang_email_notificationplain_pt2\n\n$comment_message\n\n$lang_email_notificationplain_pt3: $comment_name";
 
-		if ($comment_email!="")	$headers .= "From: $comment_name<$comment_email>\n";
+			if ($comment_email!="")		$body .=  "- $comment_email";
+
+			$body .= "\n\n$lang_email_notificationplain_pt4";
+			$headers = "Content-type: text/plain; charset=UTF-8\n";
+			$headers .= "Content-Transfer-Encoding: 8bit\n";
+	
+			if ($comment_email!="")	$headers .= "From: $comment_name<$comment_email>\n";
 			else $headers .= "From: PIXELPOST <$admin_email>\n";
+
 			$recipient_email = "admin <$admin_email>";
 		}
 		else

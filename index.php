@@ -140,7 +140,7 @@ if ( isset ($_GET['lang']) ) {
     $language_abr = $_GET['lang'];
 }
 
-// Set the &language variable to session 'lang' - this variable is the one used below  
+// Set the &language variable to session 'lang' - this variable is the one used below
 $language_abr = $_COOKIE['lang'];
 
 // Use the default language if none of the previous steps captured a language preference
@@ -151,7 +151,7 @@ if ( !isset ($language_abr) ) {
 if ( isset ($_GET['lang']) ) {
     $language_abr = $_GET['lang'];
 }
-// convert the two letter $language variable to full name of language file 
+// convert the two letter $language variable to full name of language file
 // (used in language file switch but not template switch (template uses abbreviation))
 foreach ($PP_supp_lang as $key => $row)
 {
@@ -214,30 +214,28 @@ if ($language_full==$cfgrow['langfile'])
 		// we have our default language from the PP installation, so we use our default templates
     if( isset($_GET['x'])&&file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html" ) )
     {
-    	if (eregi("[.]",$_GET['x']))
-    		die("Come on! forget about it...");
+    	if (eregi("[.]",$_GET['x']))	die("Come on! forget about it...");
     	
     	$tpl = file_get_contents("templates/".$cfgrow['template']."/".$_GET['x']."_template.html");
     }
     else
     {
-    
     	if (!file_exists("templates/".$cfgrow['template']."/image_template.html"))
     	{
     		echo '<b>Error:</b><br />No template folder exists by the name of <b>"' .$cfgrow['template'] .'"</b> or the file <b>image_template.html</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
     		exit;
     	}
-    
-    // if the x=foo does not exist prompt it! don't show the main page anymore!
-    
-    	if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment' ){ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html" ))
+
+	    // if the x=foo does not exist prompt it! don't show the main page anymore!
+    	if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment' )
+    	{ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html" ))
     			header("HTTP/1.0 404 Not Found");
     			header("Status: 404 File Not Found!");
     			// header("Location: index.php");
     			echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe requested URL /index.php was not found on this server.<P>\n<P>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
     			exit;
-    		}
-    
+    	}
+
     	$tpl = file_get_contents("templates/".$cfgrow['template']."/image_template.html");
     }
   }

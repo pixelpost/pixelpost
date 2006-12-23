@@ -23,7 +23,7 @@ if ($_GET['optaction']=='updateall')
 	if($_GET['optionsview']=='' OR $_GET['optionsview']=='general')
 	{
 		//case "updatetitle":
-		if(!get_magic_quotes_gpc()) 
+		if(!get_magic_quotes_gpc())
 		{
 			// we need to escape the string before saving it to the db
 			$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".addslashes($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
@@ -35,7 +35,7 @@ if ($_GET['optaction']=='updateall')
 		//break;
 
 		//case "updateurl":
-		if(!get_magic_quotes_gpc()) 
+		if(!get_magic_quotes_gpc())
 		{
 			// we need to escape the string before saving it to the db
 			$update = sql_query("update ".$pixelpost_db_prefix."config set siteurl='".addslashes($_POST['new_site_url'])."' where admin='".$cfgrow['admin']."'");
@@ -96,16 +96,16 @@ if ($_GET['optaction']=='updateall')
 
 		// time stamps
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set timestamp='".$_POST['timestamp']."'");
-		
+
 		// book visitors
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set visitorbooking='".$_POST['visitorbooking']."'");
-		
+
 		// markdown
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set markdown='".$_POST['markdown']."'");
-			
+
 		// exif
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set exif='".$_POST['exif']."'");
-		
+
 		// token
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".$_POST['token_time']."'");
 
@@ -289,7 +289,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		";
 		// go through template folder
 		$dir = "../language";
-		
+
 		if($handle = opendir($dir)) {
 			while (false !== ($file = readdir($handle))) {
 					if($file != "." && $file != "..") {
@@ -377,12 +377,17 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<div class='jcaption'>$admin_lang_optn_comment_setting</div>
     <div class='content'>$admin_lang_optn_cmnt_mod_txt
     		<select name=\"global_comments\">";
-    		if ($cfgrow["global_comments"] =='A'){
+    		if ($cfgrow["global_comments"] =='A')
+    		{
  					echo "<option selected=\"selected\" value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
- 				} elseif ($cfgrow["global_comments"] =='M'){
+ 				}
+ 				elseif ($cfgrow["global_comments"] =='M')
+ 				{
  					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option  selected=\"selected\" value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
- 				} else {
-					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>"; 				
+ 				}
+ 				else
+ 				{
+					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				}
 		echo"</select></div>
 		<div class='jcaption'>
@@ -394,16 +399,16 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 					$toecho = $admin_lang_optn_yes;
 				else
 					$toecho = $admin_lang_optn_no;
-					
+
 				if ($cfgrow['commentemail']=='yes')
 					$optnecho = $admin_lang_optn_no;
 				else
 					$optnecho = $admin_lang_optn_yes;
-				
+
 				if ($cfgrow['commentemail']=='yes')
 					$optnval = 'no';
 				else
-					$optnval = 'yes';			
+					$optnval = 'yes';
 				echo "
 		$admin_lang_optn_sendemail_txt
 		<select name='new_commentemail'>
@@ -415,12 +420,12 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 					$toecho = $admin_lang_optn_yes;
 				else
 					$toecho = $admin_lang_optn_no;
-					
+
 				if ($cfgrow['htmlemailnote']=='yes')
 					$optnecho = $admin_lang_optn_no;
 				else
 					$optnecho = $admin_lang_optn_yes;
-					
+
 				if ($cfgrow['htmlemailnote']=='yes')
 					$optnval = 'no';
 				else
@@ -467,13 +472,11 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 		</div>
 
-		
-		
 		<!-- Visitor Booking -->
 				<div class='jcaption'>
 				$admin_lang_optn_visitorbooking_title
 				</div>
-		
+
 				<div class='content'>
 						";
 				if ($cfgrow['visitorbooking']=='yes')
@@ -496,16 +499,14 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<select name='visitorbooking'><option value='".$cfgrow['visitorbooking']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>
-		
+
 				</div>
 
-		
-		
 		<!-- Markdown -->
 				<div class='jcaption'>
 				$admin_lang_optn_markdown
 				</div>
-		
+
 				<div class='content'>
 						";
 				if ($cfgrow['markdown']=='T')
@@ -528,12 +529,12 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<select name='markdown'><option value='".$cfgrow['markdown']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>
-		
+
 				</div>
 				<div class='jcaption'>
 				$admin_lang_optn_exif
 				</div>
-		
+
 				<div class='content'>
 						";
 				if ($cfgrow['exif']=='T')
@@ -556,13 +557,13 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<select name='exif'><option value='".$cfgrow['exif']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>
-		
+
 				</div>
-				
+
 				<div class='jcaption'>
 				$admin_lang_optn_token
 				</div>
-		
+
 				<div class='content'>
 						";
 				if ($cfgrow['token']=='T')
@@ -586,12 +587,12 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<option value='$optnval'>$optnecho</option>
 				</select><br />
 				$admin_lang_optn_token_time <input type='text' size=\"1\" name='token_time' value='".$cfgrow['token_time']."' /> minutes.
-				
+
 				</div>
 		<div class='jcaption'>
 				$admin_lang_optn_update
 				</div>
-		
+
 		<div class='content'>
 		<input type='submit' value='$admin_lang_optn_update'  />
 		</div>
@@ -650,14 +651,17 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<form name='catformatform' method='post' action='$PHP_SELF?view=options&amp;optaction=updatecatformat' accept-charset='UTF-8' >
 		$admin_lang_optn_cat_link_format_txt<br />
 		<select name='catformat' onchange=\"if (this.selectedIndex=='6') {flip('costumcatformat')};return false;\" >";
-		if($cfgrow['catglueend'] == ""){ 
-            $catglue = "Select Category Links Format";
-        } else { 
-            $catglue = $cfgrow['catgluestart'] . "category-1" . $cfgrow['catglueend']." ".$cfgrow['catgluestart']. "category-2" . $cfgrow['catglueend']." ".$cfgrow['catgluestart'] . "etc" . $cfgrow['catglueend']; 
-        } 
+		if($cfgrow['catglueend'] == "")
+		{
+      $catglue = "Select Category Links Format";
+    }
+    else
+    {
+      $catglue = $cfgrow['catgluestart'] . "category-1" . $cfgrow['catglueend']." ".$cfgrow['catgluestart']. "category-2" . $cfgrow['catglueend']." ".$cfgrow['catgluestart'] . "etc" . $cfgrow['catglueend'];
+    }
 		echo"
 		<option value='".$cfgrow['catglueend']."' >$catglue</option>
-		
+
 		<option value='['>[category-1] [category-2] [etc]</option>
 		<option value='	,'>category-1, category-2, etc</option>
 		<option value=' -'>category-1 - category-2 - etc</option>

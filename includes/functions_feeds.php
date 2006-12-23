@@ -66,7 +66,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 	exit;
 }
 // ##########################################################################################//
-// ATOM FEED, Version 1.0 
+// ATOM FEED, Version 1.0
 // ##########################################################################################//
 
 if(isset($_GET['x'])&&$_GET['x'] == "atom")
@@ -92,7 +92,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
    <feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>
    <title>$pixelpost_site_title photoblog</title>
    <link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />
-	 <link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom' title='".$pixelpost_site_title."' />	 
+	 <link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom' title='".$pixelpost_site_title."' />
 	 <author>
 	 <name>".$pixelpost_site_title."</name>
 	 <uri>$url</uri>
@@ -141,7 +141,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 	exit;
 }
 // ##########################################################################################//
-// RSS- + ATOM - tags
+// RSS + ATOM - tags
 // ##########################################################################################//
 // keeping this "old" tag because it is used in user's template maybe
 $atom_url = "http://".$HTTP_HOST.$REQUEST_URI."&amp;x=atom";

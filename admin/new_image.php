@@ -62,7 +62,7 @@ if($_GET['view'] == "")
      <input type="radio" name="autodate" value="1" <?php if($selected_autodate[1]) echo 'checked="checked"';?> /><?php echo $admin_lang_ni_post_one_day_after; ?><br/>
      <input type='radio' name='autodate' value='3' <?php if($selected_autodate[3]) echo 'checked="checked"';?>id="exifdate" /><?php echo $admin_lang_ni_post_exif_date; ?><br/>
      <input type='radio' name='autodate' value='0' <?php if($selected_autodate[0]) echo 'checked="checked"';?>id="specificdate" /><?php echo $admin_lang_ni_post_spec_date; ?><br/><br/>
-     
+
 	 <table id="datetable">
 	 <tr>
 	 <td><?php echo $admin_lang_ni_year; ?></td><td style="width:5px;">-</td><td><?php echo $admin_lang_ni_month; ?></td><td style="width:5px;">-</td><td><?php echo $admin_lang_ni_day; ?></td><td><img src='../includes/spacer.gif' height='1' width='30' alt=""/></td><td><?php echo $admin_lang_ni_hour; ?></td><td style="width:5px;">-</td><td><?php echo $admin_lang_ni_min; ?></td>
@@ -163,17 +163,18 @@ if($_GET['view'] == "")
  				} elseif ($cfgrow["global_comments"] =='M'){
  					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option  selected=\"selected\" value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				} else {
-					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>"; 				
+					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				}
 				echo"</select></div>";
-    
+
     // workspace: new_image_form
 		eval_addon_admin_workspace_menu('new_image_form');
 		// added for language support
 		// Check if the language addon is enabled. If not there is no need to show these fields
 			if ($cfgrow['altlangfile'] != 'Off')
 			{
-				if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok'){ 
+				if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok')
+				{
 					$alt_headline = $_POST['alt_headline'];
 					$alt_tags = $_POST['alt_tags'];
 					$alt_body = $_POST['alt_body'];
@@ -195,7 +196,7 @@ if($_GET['view'] == "")
     			<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
     			<p/>";
     		}
-    		
+
     		echo "
 					<div style='text-align:center;'>
     				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$alt_body."</textarea><p/>
@@ -251,7 +252,7 @@ if($_GET['view'] == "")
 			// just set a flag so we know what to do later on
 			$postdatefromexif = TRUE;
 		};
-	
+
 	  if($headline == "")
 	  {
 			echo  "
@@ -323,9 +324,9 @@ if($_GET['view'] == "")
 			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,comments,exif_info)
 			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$comments_settings','$exif_info_db')";
 			$result = mysql_query($query) || die("Error: ".mysql_error().$admin_lang_ni_db_error);
-	
+
 	    $theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"
-	
+
 			if (isset($_POST['category']))
 			{
 				foreach($_POST['category'] as $val)
@@ -334,10 +335,9 @@ if($_GET['view'] == "")
 					$result = mysql_query($query) || die("Error: ".mysql_error());
 				}
 	    }
-	    
 	    // done
-			
-			
+
+
 			// workspace: image_uploaded
 			eval_addon_admin_workspace_menu('image_uploaded');
 			$headline = pullout($_POST['headline']);
@@ -365,13 +365,13 @@ if($_GET['view'] == "")
 			if(function_exists('gd_info'))
 			{
 				$gd_info = gd_info();
-	
+
 				if($gd_info != "")
 				{
 					$thumbnail = $filnamn;
 					$thumbnail = createthumbnail($thumbnail);
 					eval_addon_admin_workspace_menu('thumb_created');
-					
+
 					// if crop is not '12c' use the oldfashioned crop
 					if ($cfgrow['crop']!='12c')
 					{

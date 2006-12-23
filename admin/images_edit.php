@@ -12,7 +12,8 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 // view=images
 if($_GET['view'] == "images")
 {
-	if($_GET['action'] == "masspublish") {
+	if($_GET['action'] == "masspublish")
+	{
 		$idz= $_POST['moderate_image_boxes'];
 		// This is rather interesting since when multiple pictures have the same datetime stamp only the last one
 		// will be shown. This means we have to construct single queries for each selected id and give them a
@@ -27,7 +28,6 @@ if($_GET['view'] == "images")
  		$query = "UPDATE ".$pixelpost_db_prefix."pixelpost SET datetime = ";
  		for ($i=0; $i < count($idz); $i++)
  		{
- 			
  			$datetimestamp = date("Y-m-d H:i:s",mktime($current_hour,$current_minutes-$minute_offset,$current_seconds+$i,date("m"),date("d"),date("Y")));
 			$finalquery=$query."'".$datetimestamp."' WHERE id = '$idz[$i]'";
  			$finalquery  = sql_query($finalquery);
@@ -35,21 +35,24 @@ if($_GET['view'] == "images")
  		$c = count($idz);
  		echo "<div class='jcaption confirm'>$admin_lang_imgedit_published  $c $admin_lang_imgedit_unpublished_cmnts</div>";
  	}
-	
-	if($_GET['action'] == "massdelete") {
+
+	if($_GET['action'] == "massdelete")
+	{
  		$idz= $_POST['moderate_image_boxes'];
 
  		$query = "DELETE FROM ".$pixelpost_db_prefix."pixelpost ";
  		$where = "WHERE";
  		for ($i=0; $i < count($idz)-1; $i++)
- 		{	$where .= " id = '$idz[$i]' or ";	}
+ 		{
+ 			$where .= " id = '$idz[$i]' or ";
+ 		}
  		$lastid = $idz[count($idz)-1];
  		$where .= " id = '$lastid'  ";
  		$query .= $where;
  		$query  = sql_query($query);
  		$c = count($idz);
  		echo "<div class='jcaption'>$admin_lang_imgedit_delete1  $c $admin_imgedit_cmnt_delete2</div>";
- 		}
+ 	}
 
 	 // Mass add or delete categories to images
 	 $_GET['id'] = (int)$_GET['id'];
@@ -185,7 +188,7 @@ if($_GET['view'] == "images")
 
  // x=delete
     if($_GET['x'] == "delete") {
-	eval_addon_admin_workspace_menu('image_deleted'); 
+	eval_addon_admin_workspace_menu('image_deleted');
         $getid = $_GET['imageid'];
         del_tags_edit($getid);
         $imagerow = sql_array("SELECT image FROM ".$pixelpost_db_prefix."pixelpost where id='$getid'");
@@ -238,7 +241,7 @@ if($_GET['view'] == "images")
 	{
 		$page = $_GET['page'];
 	}
-	
+
 	$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
 
 	if ($_SESSION['numimg_pp'] == 0)
@@ -259,8 +262,8 @@ if($_GET['view'] == "images")
 		   		 </div>
            <div class=\"content\">
            <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"\">
-           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" /> 
-					 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"clearAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_clear_all\" name=\"clearallbox\" /> 
+           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
+					 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"clearAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_clear_all\" name=\"clearallbox\" />
 					 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
 	 				 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
 					   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=massdelete'
@@ -362,11 +365,11 @@ if($_GET['view'] == "images")
       $headline = pullout($imagerow['headline']);
       $headline = htmlspecialchars($headline,ENT_QUOTES);
       $body = pullout($imagerow['body']);
-      
+
       $alt_headline = pullout($imagerow['alt_headline']);
       $alt_headline = htmlspecialchars($alt_headline,ENT_QUOTES);
       $alt_body = pullout($imagerow['alt_body']);
-      
+
 	    $image = $imagerow['image'];
 	    $category = $imagerow['category'];
       $category = explode(",",$category);
@@ -423,7 +426,7 @@ if($_GET['view'] == "images")
 			";
 			category_list_as_table(array(), $cfgrow);
 			echo "</div>";
-			
+
 			list($img_width,$img_height,$type,$attr) = getimagesize('../images/'.$image);
 			$img_size = filesize('../images/'.$image);
       $img_size = number_format($img_size);
@@ -442,12 +445,10 @@ if($_GET['view'] == "images")
  				} elseif ($comments =='M'){
  					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option  selected=\"selected\" value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				} else {
-					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>"; 				
+					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
  				}
  				echo "</select></div>";
-			
-			
-			
+
 			// Check if the language addon is enabled. If not there is no need to show these fields
 			if ($cfgrow['altlangfile'] != 'Off'){
 					echo "

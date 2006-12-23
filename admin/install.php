@@ -141,7 +141,7 @@ switch( $installed_version ) {
 		UpgradeTo141($prefix);
 
 	case 1.41: // fall to the next
-	case 1.42: 		
+	case 1.42:
 	case 1.499:
 	case 1.4993:
 		//UpgradeTo1501($prefix);
@@ -168,11 +168,10 @@ switch( $installed_version ) {
 		UpgradeTo1513($prefix,'1.513');
 	case 1.513:  //upgrade from final to SVN 1.6
 		UpgradeTo1514($prefix,'1.514');
-	
-	
-	// Add the upgrade to 1.6 here later	
+
+	// Add the upgrade to 1.6 here later
 }
-	
+
 echo "<b>The tables are all set.</b><p />";
 if(!is_writable("../images/")) {
     $chmod_message = "<b>Images folder not writable!</b><p />You must set correct permissions on this folder or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
