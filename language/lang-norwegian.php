@@ -57,6 +57,7 @@ $lang_no_previous               = "Ingen tidligere bilder";
 $lang_no_next                   = "Ingen flere bilder";
 $lang_browse_select_category    = "Velg kategori";
 $lang_browse_all                = "Alle";
+$lang_paged_archive							= "Archive";
 
 // COMMENTS
 $lang_message_missing_image     = "Inget bilde var valgt, kommentaren ble ikke lagret.";

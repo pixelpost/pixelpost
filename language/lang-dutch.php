@@ -65,6 +65,7 @@ $lang_no_next                  = "Geen volgende foto";
 $lang_browse_select_category   = "Kies categorie";
 $lang_browse_all               = "Alles";
 $lang_permalink                = "Permalink";
+$lang_paged_archive						 = "Archief";
 
 // COMMENTS
 $lang_message_missing_image   = "Geen foto geselecteerd. Uw commentaar werd niet bewaard.";

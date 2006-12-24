@@ -57,6 +57,7 @@ $lang_no_next									= "Brak następnego obrazka";
 $lang_browse_select_category	= "Wybierz kategorię";
 $lang_browse_all							= "Wszystkie";
 $lang_permalink								= "Permalink";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image		= "Nie wybrano obrazka. Komentarz nie został zapisany.";

@@ -63,6 +63,7 @@ $lang_no_next                     = "keine neueren Bilder";
 $lang_browse_select_category      = "Kategorie w&auml;hlen";
 $lang_browse_all                  = "alle";
 $lang_permalink			          = "Permalink";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image    = "Kein Bild ausgew&auml;hlt. Der Kommentar wurde nicht gespeichert.";

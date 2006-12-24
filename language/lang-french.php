@@ -56,6 +56,7 @@ $lang_no_next                      = "Pas d'image suivante";
 $lang_browse_select_category       = "S&eacute;lectionnez un mot-cl&eacute;";
 $lang_browse_all                   = "Toutes";
 $lang_permalink                    = "Permalien";
+$lang_paged_archive								 = "Archive";
 
 // COMMENTS
 $lang_message_missing_image        = "Pas d'image s&eacute;lectionn&eacute;e. Commentaire non sauvegard&eacute;.";

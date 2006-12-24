@@ -55,6 +55,7 @@ $lang_no_next                     = "没有下一张图片";
 $lang_browse_select_category      = "选择类别";
 $lang_browse_all                  = "全部";
 $lang_permalink                   = "永久连接";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image      = "没有选取图片。评论没有保存。";

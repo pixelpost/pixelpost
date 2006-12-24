@@ -61,6 +61,7 @@ $lang_no_previous             = "Ingen bild";
 $lang_no_next                 = "Ingen bild";
 $lang_browse_select_category  = "V&auml;lj kategori";
 $lang_browse_all              = "Alla";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image   = "Ingen bild vald, kommentaren sparades inte.";

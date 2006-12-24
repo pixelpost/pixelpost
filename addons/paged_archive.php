@@ -633,6 +633,6 @@ else
 	$tpl = str_replace("<CATEGORY_OR_DATE_NAME_PAGED_ARCHIVE>",$images_category_or_date,$tpl); // Name of the category or Month you select
 }// end else
 
-$tpl = str_replace("<LINK_TO_PAGED_ARCHIVE>",'<a href="index.php?x=browse&amp;pagenum=1">Archive</a>',$tpl);
+$tpl = str_replace("<LINK_TO_PAGED_ARCHIVE>",'<a href="index.php?x=browse&amp;pagenum=1">'.$lang_paged_archive.'</a>',$tpl);
 
 ?>

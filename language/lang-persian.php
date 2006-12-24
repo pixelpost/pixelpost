@@ -54,6 +54,7 @@ $lang_no_next               = "عکس بعدي نداريم";
 $lang_browse_select_category    = "انتخاب زيرمجموعه";
 $lang_browse_all            = "همه";
 $lang_permalink								= "Permalink";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image = "هيچ تص?يري انتخاب نشده. يادداشت ذخيره نشد";

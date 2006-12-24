@@ -59,6 +59,7 @@ $lang_no_next                     = "No Next Image";
 $lang_browse_select_category      = "Select Category";
 $lang_browse_all                  = "All";
 $lang_permalink                   = "Permalink";
+$lang_paged_archive								= "Archive";
 
 // COMMENTS
 $lang_message_missing_image      = "No image selected. Comment was not saved.";

@@ -60,6 +60,7 @@ $lang_no_next                  = "Sem Imagem Seguinte";
 $lang_browse_select_category   = "Seleccionar Categoria";
 $lang_browse_all               = "Todas";
 $lang_permalink                = "Permalink";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image    = "Nenhuma imagem seleccionada. O coment&aacute;rio n&atilde;o foi registado.";

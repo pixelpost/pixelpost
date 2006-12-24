@@ -62,6 +62,7 @@ $lang_no_next                   = "No hay Siguiente";
 $lang_browse_select_category    = "Seleccione una Categor&iacute;a";
 $lang_browse_all                = "Todas";
 $lang_permalink                 = "Permalink";
+$lang_paged_archive						= "Archive";
 
 // COMMENTS
 $lang_message_missing_image     = "Ninguna imagen seleccionada. Opini&oacute;n no guardada.";
