@@ -289,13 +289,13 @@ $admin_lang_optn_tz_txt             = "Wybierz strefę czasową dla Twojej lokal
 $admin_lang_optn_sendemail          = "POWIADAMIANIE EMAILEM O KOMENTARZACH";
 $admin_lang_optn_sendemail_txt      = "Powiadamiać emailem o nowych komentarzach?";
 $admin_lang_optn_sendemail_html_txt = "Używać powiadamiania emailem w formacie HTML?";
-$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
-$admin_lang_optn_comment_setting2		= "Comment setting";
-$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
-$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
-$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
-$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
-$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
+$admin_lang_optn_comment_setting 		= "GLOBALNE USTAWIENIA KOMENTARZY";
+$admin_lang_optn_comment_setting2		= "Ustawienia komentarza";
+$admin_lang_optn_cmnt_mod_txt       = "Domyślna akcja dla komentarzy:";
+$admin_lang_optn_cmnt_mod_txt2      = "Akcja dla komentarzy:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Niezwłoczna publikacja";
+$admin_lang_optn_cmnt_mod_moderation=	"Kolejka moderacji";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Deaktywacja komentowania";
 
 $admin_lang_optn_switch_template    = "ZMIEŃ SKÓRKĘ";
 $admin_lang_optn_lang_file          = "PLIK Z LOKALIZACJĄ";
@@ -342,14 +342,14 @@ $admin_lang_optn_visitorbooking_desc  = "Czy Pixelpost powinien zapisywać infor
 $admin_lang_optn_upd_done             = "Zaktualizowano dane.";
 $admin_lang_optn_markdown             = "Dostępność Markdown";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie obrazka?";
-$admin_lang_optn_exif			            = "Enable Exif";
-$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
-$admin_lang_optn_token			          = "Enable token in forms";
-$admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
-																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
-																				 Should this setting be enabled?";
-$admin_lang_optn_token_time						= "Maximum time between opening the comment window and submit a comment: ";
+$admin_lang_optn_exif			            = "Aktywacja EXIF";
+$admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF?";
+$admin_lang_optn_token			          = "Aktywacja tokenów w formularzach";
+$admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobieństwo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
+																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
+																				 Jeśli zapomnisz tagu <strong>&lt;TOKEN&gt;</strong>, wtedy komentarze nie będą działać, a użytkownik zobaczy komunikat o błędzie.<br /><br/>\n
+																				 Czy to ustawienie powinno być aktywne?";
+$admin_lang_optn_token_time						= "Maksymalny czas pomiędzy otwarciem okna z formularzem dla komentarzy i przesłaniem komentarza: ";
 
 
 // Info
