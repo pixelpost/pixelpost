@@ -1126,7 +1126,7 @@ function save_alt_tags_edit($tags_str,$id)
 
 function create_language_url_from_tag( $language_link_abr, $language_link_full)
 {
-	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0]=="lang=",0,5)))
+	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0],0,5)=="lang="))
 	{
 		$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr)."'>".$language_link_full."</a>";
 	}
