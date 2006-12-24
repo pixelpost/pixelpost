@@ -438,10 +438,11 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</select>
 		</div>
 
-		<!-- comment moderation -->
+		<!-- comment moderation
 		<div class='jcaption'>
 		$admin_lang_optn_comment_moderation
-		</div>
+		</div> -->
+
 		<!-- Timestamp -->
 		<div class='jcaption'>
 		$admin_lang_optn_timestamps_title
