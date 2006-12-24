@@ -165,7 +165,7 @@ $category_Link_List_paged = "<ul id=\"taglist\">";
 $category_Link_List_paged .= "<li><a href='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$count .")</a></li>";
 
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
-while(list($id,$name) = mysql_fetch_row($query))
+while(list($id,$name, $alt_name) = mysql_fetch_row($query))
 {
 	$queryr = "SELECT count(*) AS count,datetime
 	FROM {$pixelpost_db_prefix}catassoc AS t1
@@ -176,7 +176,8 @@ while(list($id,$name) = mysql_fetch_row($query))
 	$count = mysql_query($queryr);
 	$count = mysql_fetch_array($count);
 	$count= $count['count'];
-	$name = pullout($name);
+	if($language_abr == $default_language_abr)	$name = pullout($name);
+	else	$name = pullout($alt_name);
 	$catname_count = $name ." (" .$count .")";
 
 	$category_Link_List .= "<a href='index.php?x=browse&amp;category=$id'>$catname_count</a><br />";
