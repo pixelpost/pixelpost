@@ -285,22 +285,7 @@ if (file_exists($splash_dir."/splash_page.html")){
 	die($extra_message);
 	}
 }
-/*
-function &reduceExif($exifvalue)
-{
-  $vals = split("/",$exifvalue);
-  if(count($vals) == 2)
-  {
-		$exposure = round($vals[0]/$vals[1],2);
-		if($exposure < 1) $exposure = '1/'.round($vals[1]/$vals[0],0);
-  }
-  else
-  {
-		$exposure = round($vals[0]/$vals[1], 2);
-  }
- return $exposure;
-}
-*/
+
 function &reduceExif($exifvalue)
 {
 	$vals = split("/",$exifvalue);

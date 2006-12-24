@@ -199,7 +199,7 @@ if($cfgrow['crop']=="12c" && isset($_SESSION["pixelpost_admin"]))
 <link rel="stylesheet" type="text/css" href="admin_index.css" />
 <script src="script.js" type="text/javascript"></script>
 <script type="text/javascript">
-function confirmSubmit()
+function confirmDeleteImg()
 {
 var agree=confirm("<?php echo $admin_lang_imgedit_js_del_im;?>");
 if (agree) return true ;

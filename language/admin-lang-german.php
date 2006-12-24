@@ -170,7 +170,7 @@ $admin_lang_imgedit_edit_post       = "Eintrag bearbeiten";
 $admin_lang_imgedit_img_page        = "Bilder pro Seite";
 $admin_lang_imgedit_cropbg          = "Hintergrundtext f&uuml;r 12cropimage";
 $admin_lang_imgedit_js_del_im       = "Wollen Sie das Bild wirklich l&ouml;schen?";
-$admin_lang_imgedit_db_error      = "<br />Stellen Sie sicher, dass dieser Permalink noch nicht genutzt wurde!";
+$admin_lang_imgedit_db_error        = "<br />Stellen Sie sicher, dass dieser Permalink noch nicht genutzt wurde!";
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
 

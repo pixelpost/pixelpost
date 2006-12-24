@@ -146,7 +146,7 @@ if($_GET['view'] == "images")
 					$filstorlek = $_FILES['userfile']['size'];
 					$status = "ok";
 					createthumbnail($oldfilename);
-					$file_reupload_str = '<br />'.$admin_lang_imgedit_file.'<b>' .$oldfilename .'</b> '.$admin_lang_imgedit_file_isuploaded;
+					$file_reupload_str = '<br/>'.$admin_lang_imgedit_file.'<b>' .$oldfilename .'</b> '.$admin_lang_imgedit_file_isuploaded;
 				}
 				else
 				{
@@ -201,6 +201,8 @@ if($_GET['view'] == "images")
         $result = mysql_query($query) ||("Error: ".mysql_error());
         // added by ramin to delete the comments too!!
         $query = "delete from ".$pixelpost_db_prefix."comments where parent_id='$getid'";
+        $result = mysql_query($query) ||("Error: ".mysql_error());
+        $query = "delete from ".$pixelpost_db_prefix."tags where img_id='$getid'";
         $result = mysql_query($query) ||("Error: ".mysql_error());
 
         echo "&nbsp;$admin_lang_imgedit_deleted1&nbsp;";
@@ -271,7 +273,7 @@ if($_GET['view'] == "images")
 					 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
 					   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masspublish'
 					   return confirm('Publish all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')\"/>
-					   <br /><br />
+					   <br/><br/>
            <select name=\"mass-edit-cat\" id=\"mass-edit-cat\" onchange=\"document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masscatedit&amp;cmd='+this.options[this.selectedIndex].value; \" >\n
            <option value=\"\">$admin_lang_imgedit_mass_1</option> \n
            <option value=\"\"></option> \n
@@ -304,19 +306,27 @@ if($_GET['view'] == "images")
       				$fs*=0.001;
 			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"../thumbnails/thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
 				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" />
-				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a></strong>
-				<strong>#$id, $admin_lang_imgedit_title</strong>$headline,
-				<strong>$admin_lang_imgedit_file_name</strong>$image<br />
-				<strong>$admin_lang_imgedit_dimensions</strong>$local_width x $local_height, $fs Kb<br />
-				<strong>$admin_lang_imgedit_tbpublished</strong> $datetime<br />";
+				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
+				<strong>#$id<br/>
+				$admin_lang_imgedit_title</strong>$headline<br/>
+				<strong>$admin_lang_imgedit_file_name</strong>$image<br/>
+				<strong>$admin_lang_imgedit_dimensions</strong>$local_width x $local_height, $fs Kb<br/>
+				<strong>$admin_lang_imgedit_tbpublished</strong> $datetime<br/>";
 
+			// categories
 			echo "<strong>$admin_lang_imgedit_category_plural &nbsp;</strong>";
 					$category_list = mysql_query("SELECT t2.name FROM ".$pixelpost_db_prefix."catassoc t1 INNER JOIN ".$pixelpost_db_prefix."categories t2 ON t1.cat_id = t2.id WHERE t1.image_id = '$id' ORDER BY t2.name ");
 				    while(list($category_name) = mysql_fetch_row($category_list)) {
 	      		 	$category_name = pullout($category_name);
 			   			echo "[$category_name]";
 							}
-			echo "&nbsp;&nbsp;<strong><a onclick=\"return confirmSubmit()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong>";
+			echo "<br/>";
+
+			// tags
+			echo "<strong>$admin_lang_ni_tags: &nbsp;</strong>";
+			echo list_tags_edit($id);
+			echo "<br/>";
+
 			echo "</li>";
 
           $pagec++;
@@ -349,7 +359,7 @@ if($_GET['view'] == "images")
 	      echo $image_page_Links;
 			}
 
-	    echo '<br />
+	    echo '<br/>
 	       <form method="post" action="'.$PHP_SELF .'?view=images&page=0" accept-charset="UTF-8">';
    		echo $admin_lang_show.' ';
 	    echo '<input type="text" name="numimg_pp" size="2" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_imgedit_img_page.'.
@@ -453,7 +463,7 @@ if($_GET['view'] == "images")
 			if ($cfgrow['altlangfile'] != 'Off'){
 					echo "
 					<div class='jcaption'>$admin_lang_imgedit_alt_language</div>
-						<div class='content'>$admin_lang_imgedit_title<br />
+						<div class='content'>$admin_lang_imgedit_title<br/>
 							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />
 						</div>
 						<div class='content'>";
@@ -468,10 +478,10 @@ if($_GET['view'] == "images")
     						<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
     						<p/>";
     				}
-						echo" $admin_lang_imgedit_txt_desc<br />
+						echo" $admin_lang_imgedit_txt_desc<br/>
 							<textarea name='alt_body' cols='50' rows='5' style='width:95%;'>$alt_body</textarea>
 						</div>";
-						echo "<div class='content'>".$admin_lang_imgedit_tags_edit."<br />
+						echo "<div class='content'>".$admin_lang_imgedit_tags_edit."<br/>
 							<input type='text' name='alt_tags' style='width:550px;' value='$alt_tags' />
 						</div>";
 			}
@@ -479,7 +489,7 @@ if($_GET['view'] == "images")
 			<div class='jcaption'>$admin_lang_imgedit_img</div>
 			<div class='content'>
 	    	<b>$admin_lang_imgedit_file_name</b> $image, <b>$admin_lang_imgedit_fsize</b> $img_width x $img_height; $img_size <b>kb</b>
-				<br />
+				<br/>
          <img id='itemimg' src='../thumbnails/thumb_$image' alt='' />
 			</div>
 			<div class='content'>
@@ -491,8 +501,8 @@ if($_GET['view'] == "images")
 // Check if the '12c' is selected as the crop then add 3 buttons to the page '+', '-', and 'crop'
          if ($cfgrow['crop']=='12c'){
             $to_echo ="
-			<br /><br />
-			&nbsp;&nbsp;&nbsp;<strong>$admin_lang_imgedit_12cropimg</strong><br />
+			<br/><br/>
+			&nbsp;&nbsp;&nbsp;<strong>$admin_lang_imgedit_12cropimg</strong><br/>
             $admin_lang_imgedit_12cropimg_txt
             <input type='button' name='Submit1' value='$admin_lang_imgedit_uthmb_button' onclick=\"cropCheck('def','".$image ."');\" />
  	    	<input type='button' name='Submit3' value='".$txt['smaller']."' onmousedown=\"cropZoom('in');\" onmouseup='stopZoom();' />

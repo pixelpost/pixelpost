@@ -342,8 +342,8 @@ $admin_lang_optn_visitorbooking_desc  = "Czy Pixelpost powinien zapisywać infor
 $admin_lang_optn_upd_done             = "Zaktualizowano dane.";
 $admin_lang_optn_markdown             = "Dostępność Markdown";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie obrazka?";
-$admin_lang_optn_exif			            = "Aktywacja EXIF";
-$admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF?";
+$admin_lang_optn_exif			            = "EXIF";
+$admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF do pokazania na stronie głównej?";
 $admin_lang_optn_token			          = "Aktywacja tokenów w formularzach";
 $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobieństwo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
