@@ -21,7 +21,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		{
 			if ((time() - $_SESSION['token_time']) > ($cfgrow['token_time']*60))
 			{
-    		die("You waited more then five minutes to enter the comment");
+    		die("You waited more then ".$cfgrow['token_time']." minutes to enter the comment");
     	}
 		}
 		else
