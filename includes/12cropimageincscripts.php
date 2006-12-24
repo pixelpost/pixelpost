@@ -21,8 +21,9 @@
 /////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// You do not need to access this if not logged in - securing it  
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+// You do not need to access this if not logged in - securing it
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
@@ -35,16 +36,16 @@ mysql_error();
 // save new post when '12c' is selected as the croping tool
 
     $cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config");
-    $cfgrow = mysql_fetch_array($cfgquery);	
-		if(($_GET['x'] == "save" || ($_GET['view']=="images" && $_GET['id']!=""))&& $cfgrow['crop']=='12c' ) {
+    $cfgrow = mysql_fetch_array($cfgquery);
+		if(($_GET['x'] == "save" || ($_GET['view']=="images" && $_GET['id']!=""))&& $cfgrow['crop']=='12c')
+		{
 			$headline = 	clean($_POST['headline']);
-			if($headline == "" & $_GET['view']!="images") {
+			if($headline == "" & $_GET['view']!="images")
+			{
 				echo "<div id='cropdiv'></div>
 						 <div id='myimg'></div>";
+			}
 		}
-
-	}
-
 
 // put these jscripts on the html section
     echo '<script type="text/javascript">';
@@ -57,8 +58,8 @@ mysql_error();
 
 	function cropCheck(crA,thumbfilename){
 	   if (
-	   ( (obj.x ) <=rimg.cr+ rimg.x)&&
-	   ( (obj.y ) <= rimg.cb+rimg.y)&&
+	   ( (obj.x) <=rimg.cr+ rimg.x)&&
+	   ( (obj.y) <= rimg.cb+rimg.y)&&
 	   (obj.x >= rimg.x)&&
 	   (obj.y >= rimg.y)&&
 	   (obj.x+obj.cr<=rimg.cr+rimg.x)&&
@@ -70,7 +71,7 @@ mysql_error();
 		   location.href=url;
 		}
 	   } else {
-		alert('".$txt['selectioninpicture']."' );
+		alert('".$txt['selectioninpicture']."');
 	   }
 	}
 

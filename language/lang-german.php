@@ -1,10 +1,9 @@
 <?php
-
 /*
 
 lang-german.php
 ===============
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -16,13 +15,13 @@ WWW: http:www.zweiterblick.de + http://www.avantart.com
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Achtung:
@@ -78,7 +77,7 @@ $lang_comment_page_title       = "Kommentar";
 $lang_comment_popup            = "Kommentare";
 $lang_message_banned_comment   = "Ihr Kommentar wurde nicht gespeichert, da er Worte, Email-Adressen oder IP-Adressen enth&auml;lt, die in Ban-Listen vorkommen.";
 $lang_comment_popup_disabled   = "Commenting on this picture has been disabled";
-$lang_tags                     = "Tags";
+$lang_tags                     = "Tags:<br/>";
 
 // EXIF DATA
 $lang_exposure              = "Verschlusszeit:";
@@ -122,21 +121,21 @@ $lang_december            = "Dezember";
 
 $lang_email_notification_subject = "Neuer Kommentar";
 $lang_email_notification_pt1 = "Hallo,<br>ein neuer Kommentar wurde in Ihrem Photoblog eingetragen.<br><br>";
-$lang_email_notification_pt2 = "<br>Kommentartext<br>----------------------------------------------------------------------<br>";	  
-$lang_email_notification_pt3 = "abgegeben von";  
+$lang_email_notification_pt2 = "<br>Kommentartext<br>----------------------------------------------------------------------<br>";
+$lang_email_notification_pt3 = "abgegeben von";
 $lang_email_notification_pt4 = "----------------------------------------------------------------------<br>diese Mail wurde von Pixelpost automatisch versandt<br>";
 
-// Benachrichtigungstext in reinem Textformat: 
+// Benachrichtigungstext in reinem Textformat:
 // Damit der Text richtig umbrochen wird, ist es notwendig, ab und an einen Zeilenumbruch
 // einzubinden. Dazu wird "\n" genutzt.
 // Achten Sie bitte darauf, diese Sonderzeichen beizubehalten
 
-$lang_email_notificationplain_pt1 = "Hallo,\n\nein neuer Kommentar wurde in Ihrem Photoblog zu diesem Eintrag abgegeben";	  
-$lang_email_notificationplain_pt2 = "Kommentartext:";	  
-$lang_email_notificationplain_pt3 = "abgegeben von";	  
+$lang_email_notificationplain_pt1 = "Hallo,\n\nein neuer Kommentar wurde in Ihrem Photoblog zu diesem Eintrag abgegeben";
+$lang_email_notificationplain_pt2 = "Kommentartext:";
+$lang_email_notificationplain_pt3 = "abgegeben von";
 $lang_email_notificationplain_pt4 = "---------------------------------------------------------------------- \n\ndies ist eine von Pixelpost automatisch erstellte Benachrichtigung";
 
-// Error Message 
+// Error Message
 $lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei!";
 
 // Ende der Sprachdatei

@@ -3,20 +3,20 @@
 
 admin-lang-english.php : english (default) language file for Pixelpost-Admin-Section
 ===================================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 Attention:
 ============
@@ -78,7 +78,7 @@ $admin_lang_pw_noemail          = "You did not mention email address at all! \n<
                                    If you have no clue about your password, leave a message in <a href='http://forum.pixelpost.org/'>Pixelpost forum</a> for help.\n<br />";
 $admin_lang_pw_notsent          = "Nothing send! \n<br /> The email address you have entered is not the email address you have set in the admin panel.<br />";
 $admin_lang_pw_subject          = "Pixelpost Password Recovery Message";
-$admin_lang_pw_usertext         = "Your User-Name:"; 
+$admin_lang_pw_usertext         = "Your User-Name:";
 $admin_lang_pw_mailtext         = "Your Email Address:";
 $admin_lang_pw_newpw            = "Your new password:";
 $admin_lang_pw_text_1           = "This the password recovery of Pixelpost";
@@ -387,7 +387,7 @@ $admin_lang_spam_com_del    = "Past: comments which contain words/IPs from the b
 $admin_lang_spam_err_8      = "Error in deleting the visitors when comparing with bad-referrers-list: ";
 $admin_lang_spam_visit_del  = "Visitors with words/IPs from the bad-referrer-list are deleted.";
 
-// Spam 
+// Spam
 $admin_lang_spam_ban        = "Update Ban Lists";
 $admin_lang_spam_content    = "Add lists of banned words/IPs/names to the text-boxes below, one word per line.<br/>\n
                                Any comment with a word, an IP, or name inside the moderation list will be sent to the moderation queue.<br/>\n
@@ -404,5 +404,5 @@ $admin_lang_spam_del_bad_comm = "Delete Bad Comments";
 $admin_lang_spam_del_bad_ref = "Delete Bad Referrers";
 $admin_lang_spam_updateblacklist = "Update All Banlists";
 
-// End of Admin-Language-File 
+// End of Admin-Language-File
 ?>

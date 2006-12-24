@@ -78,8 +78,8 @@ if ($table != "")
 	{
 		$current_table = $table;
 	}
-	$result_id = mysql_list_fields( $pixelpost_db_pixelpost, $table );
-	
+	$result_id = mysql_list_fields( $pixelpost_db_pixelpost, $table);
+
 	for($t = 0; $t < mysql_num_fields($result_id); $t++)
 	{
 		if (strtolower( $fieldname) == strtolower(mysql_field_name($result_id, $t)))
@@ -93,7 +93,7 @@ if ($table != "")
 // if the field does not exit: Create it!
 if($fieldexists==0)
 {
-	$result = mysql_query("ALTER TABLE $table ADD `maxpthumb` VARCHAR( 5 ) DEFAULT '100' NOT NULL ");
+	$result = mysql_query("ALTER TABLE $table ADD `maxpthumb` VARCHAR( 5) DEFAULT '100' NOT NULL ");
 }
 
 // if the maximum number of thumbnails in the admin section is updated
@@ -101,7 +101,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "maxpthumb")
 {
 	$newmaxpthumb = (int) $_POST['newmaxpthumb'];
 	$query = "update ".$pixelpost_db_prefix."config set maxpthumb='" .$newmaxpthumb ."'" ;
-	$update = mysql_query($query );
+	$update = mysql_query($query);
 };
 
 // description
@@ -150,7 +150,7 @@ $maxnumber_thumbs = $cfgrow['maxpthumb'];
 
 
 // number of all photos
-$photonumb = mysql_query("SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$datetime'" );
+$photonumb = mysql_query("SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$datetime'");
 $row = mysql_fetch_array($photonumb);
 // number of photos in the database
 $pixelpost_all_photonumb = $row['count'] ;
@@ -230,7 +230,7 @@ else
 	$tz = $cfgrow['timezone'];
 	$thismonth = gmdate("Y-m",gmdate("U")+(3600 * $tz));
 	$select_display_thismonth=date("F, Y",strtotime($thismonth."-01"));
-	
+
 	if (isset($thedate))
 	{
 		$archive_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;archivedate=$thedate&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
@@ -241,22 +241,22 @@ else
 		$archive_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 		$archive_select_links = "<ul id='monthlist'><li><a href='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</a></li>";
 	}
-	
+
 	$query = mysql_query("SELECT DISTINCT DATE_FORMAT(datetime, '%Y-%m') FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime desc");
-	
+
 	while(list($thedate) = mysql_fetch_row($query))
 	{
 		$query3 = "SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE DATE_FORMAT(datetime, '%Y-%m')='".$thedate ."'";
 		$count = mysql_query($query3);
 		$count = mysql_fetch_array($count);
 		$count= $count['count'];
-	
+
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
 		$thedate = pullout($thedate);
 		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate'>$name (" .$select_display_date .") (" .$count .")</option>";
 		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate'>$name " .$select_display_date ." (" .$count .")</a></li>";
 	}; // end while
-	
+
 	$archive_select .= "</select>";
 	$archive_select_links .= "</ul>";
 } // end else
@@ -273,21 +273,21 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	$where = "";
 	$limit = "";
 	$pagenum = ($_GET['pagenum']!='') ? (int)$_GET['pagenum'] : 1;
-	
+
 	// did user select a category?
-	
+
 	if($_GET['category'] != "")
 	{
 		$where = "and (t2.cat_id ='".(int)$_GET['category']."')";
 	}
-	
+
 	// do you use links with page number?
 	if ($_GET['pagenum'] != "")
 	{
 		$start = $maxnumber_thumbs*((int)$_GET['pagenum']-1);// calculate start and end of the thumbs in the selected page
 		$limit = " limit $start , $maxnumber_thumbs "; // create the limit command (in MS-SQL this should be TOP)
 	}// end if ($_GET['pagenum'] != "")
-	
+
 	// build query
 	if (!isset($_GET['archivedate']) && $_GET['category'] != "")
 	{
@@ -296,7 +296,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}catassoc AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
-		AND (t1.id = t2.image_id )
+		AND (t1.id = t2.image_id)
 		GROUP BY t1.id
 		ORDER BY t1.datetime DESC" .$limit;
 	} // if ($_GET['archivedate']=="")
@@ -310,16 +310,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
-  	if ($language_abr == $default_language_abr) {
-  		$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
-	  } else {
-  		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
-  	}
+  	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
+	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+
 		$query = "SELECT t1.id,t1.headline,t1.image
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
-		AND (t1.id = t2.img_id )
+		AND (t1.id = t2.img_id)
 		$tag_selection
 		GROUP BY t1.id
 		ORDER BY t1.datetime DESC" .$limit;
@@ -333,9 +331,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 
 	$query = mysql_query($query);
-	
+
 	//---------------------------- Making thumbs row
-	
+
 	// for each record ...
 	while(list($id,$title,$name) = mysql_fetch_row($query))
 	{
@@ -346,13 +344,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	} //end while
 	// initialize page counter
 	$pagecounter=0;
-	
+
 	//---------------- Get number of photos in database in the selected category
-	
+
 	// initialize where command
 	$where = "";
 	$monthname = "";
-	
+
 	// check if user selects a category
 	if(isset($_GET['category'])&&$_GET['category'] != "")
 	{
@@ -364,18 +362,16 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}// end if
 	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
-  	if ($language_abr == $default_language_abr) {
-  		$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
-	  } else {
-  		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
-  	}
+  	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
+	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+
 		$queryr = "SELECT count(*) AS count
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
-		AND (t1.id = t2.img_id )
+		AND (t1.id = t2.img_id)
 		$tag_selection";
 	}
-	else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']) )
+	else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 	{
 		$archivedate_start = $_GET['archivedate'] ."-01 00:00:00";
 		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
@@ -389,51 +385,44 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		FROM {$pixelpost_db_prefix}pixelpost
 		WHERE ( datetime<='$datetime')";
 	} //end else
-	
+
 	$photonumb = mysql_query($queryr);
 	$row = mysql_fetch_array($photonumb);
 	// number of photos in the database in the same category
 	$pixelpost_photonumb = $row['count'];
-	
+
 	// calculate the number of pages
 	$num_browse_pages = (isset($_GET['pagenum'])) ? ceil($pixelpost_photonumb/$maxnumber_thumbs) : "";
-	
-	
+
 	// initialize archive links
 	$Archive_pages_Links = "";
 	// selected category id
 	$cat_id = ((isset($_GET['category']) && !empty($_GET['category'])) ? ((int)$_GET['category']) : "");
-	
+
 	//-------- Make page number to archive as links (for the selected category)
-	
+
 	// produce Previous page link
 	if ($pagenum > 1)
 	{
 		$temp =$pagenum-1;
-		if($cat_id != '')
-		{
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_previous</a> ";
-		}
+		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_previous</a> ";
 		else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 		{
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_previous</a> ";
 		}
-		else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']) )
+		else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 		{
 			$monthname=str_replace(" ","%20",$monthname);
 			$archivedate=$_GET['archivedate'];
 			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$temp'>$lang_previous</a> ";
 		}
-		else
-		{
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;pagenum=$temp'>$lang_previous</a> ";
-		}
+		else	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;pagenum=$temp'>$lang_previous</a> ";
 	}
-	        
+
 	if($cat_id != '')
 	{
 		$pagecounter = 0;
-	
+
 		while ($pagecounter < $num_browse_pages)
 		{
 			$pagecounter++;
@@ -443,7 +432,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
 		$pagecounter = 0;
-	
+
 		while ($pagecounter < $num_browse_pages)
 		{
 			$pagecounter++;
@@ -472,29 +461,23 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a> ";
 		}// end while
 	}// end else
-	
+
 	// produce Next page link
 	if ($pagenum < $num_browse_pages)
 	{
-		$temp =$pagenum+1;
-		if($cat_id != '')
-		{
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_next</a>";
-		}
+		$temp = $pagenum+1;
+		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_next</a>";
 		else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 		{
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_next</a>";
 		}
-		else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']) )
+		else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 		{
 			$monthname=str_replace(" ","%20",$monthname);
 			$archivedate=$_GET['archivedate'];
 			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$temp'>$lang_next</a>";
 		}
-		else
-		{
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;pagenum=$temp'>$lang_next</a>";
-		}
+		else	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;pagenum=$temp'>$lang_next</a>";
 	}
 
 	// selected category name
@@ -506,18 +489,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else
 	{
-		if (isset($_GET['tag']))
-		{
-			$images_category_or_date = $_GET['tag'];
-		}
-		else if (isset($_GET['archivedate']))
-		{
-			$images_category_or_date = $_GET['monthname'];
-		}
-		else
-		{
-			$images_category_or_date = $lang_browse_all;
-		}
+		if (isset($_GET['tag']))	$images_category_or_date = $_GET['tag'];
+		else if (isset($_GET['archivedate']))	$images_category_or_date = $_GET['monthname'];
+		else	$images_category_or_date = $lang_browse_all;
 	}
 } // end if ($_GET['x'] == "browse")
 
@@ -537,15 +511,13 @@ else
 	$browse_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 }
 
-
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
+
 while(list($id,$name,$alt_name) = mysql_fetch_row($query))
 {
-	if ($language_abr == $default_language_abr) {
-  	$name = pullout($name);
-	} else {
-  	$name = pullout($alt_name);
-  }
+	if($language_abr == $default_language_abr)	$name = pullout($name);
+	else	$name = pullout($alt_name);
+
 	$queryr = "SELECT count(*) AS count,datetime
 	FROM {$pixelpost_db_prefix}catassoc AS t1
 	INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
@@ -555,16 +527,10 @@ while(list($id,$name,$alt_name) = mysql_fetch_row($query))
 	$count = mysql_fetch_array($count);
 	$count= $count['count'];
 	// check if you are using this addon
-	if ($maxpthumb>0)
-	{
-		// u r using
-		$browse_select .= "<option value='index.php?x=browse&amp;category=$id&amp;pagenum=1'>$name (" .$count .")</option>";
-	} // end if pagenum!=""
-	else
-	{
-		// use the original browse category menu
-		$browse_select .= "<option value='index.php?x=browse&amp;category=$id'>$name (" .$count .")</option>";
-	};
+	// u r using
+	if ($maxpthumb>0)	$browse_select .= "<option value='index.php?x=browse&amp;category=$id&amp;pagenum=1'>$name (" .$count .")</option>";
+	// use the original browse category menu
+	else	$browse_select .= "<option value='index.php?x=browse&amp;category=$id'>$name (" .$count .")</option>";
 } // end while
 
 // finilize the tag
@@ -572,67 +538,61 @@ $browse_select .= "</select>";
 $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
 /* TAGS support */
-$tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">'.$lang_tags.':</div><br />';
+$tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">'.$lang_tags.'</div>';
 $tags_paged_output = $tags_output;
 
 $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
-if ($language_abr == $default_language_abr) {
-	$queryr = "SELECT COUNT( * ) AS max
+
+if($language_abr == $default_language_abr)	$queryr = "SELECT COUNT( *) AS max
 		FROM {$pixelpost_db_prefix}tags
 		WHERE alt_tag LIKE ''
 		GROUP BY tag
 		ORDER BY max DESC
 		LIMIT 1";
-} else {
-	$queryr = "SELECT COUNT( * ) AS max
+else	$queryr = "SELECT COUNT( *) AS max
 		FROM {$pixelpost_db_prefix}tags
 		WHERE tag LIKE ''
 		GROUP BY alt_tag
 		ORDER BY max DESC
 		LIMIT 1";
-}
+
 $tag_max = mysql_query($queryr);
 $tag_max = mysql_fetch_row($tag_max);
 $tag_max = $tag_max[0];
 
-if ($language_abr == $default_language_abr) {
-	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
+if ($language_abr == $default_language_abr)	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
 		FROM {$pixelpost_db_prefix}tags
 		WHERE alt_tag LIKE ''
 		GROUP BY tag
 		ORDER BY tag";
-} else {
-	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as cnt
+else	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as cnt
 		FROM {$pixelpost_db_prefix}tags
 		WHERE tag LIKE ''
 		GROUP BY alt_tag
 		ORDER BY alt_tag";
-}
+
 $tags = mysql_query($queryr);
 
 while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
 {
-	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.' ('.$cnt.')</a> ';
-	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.' ('.$cnt.')</a> ';
+	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
+	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
 }
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
 
-if ($language_abr == $default_language_abr) {
-	$queryr = "SELECT tag
+if ($language_abr == $default_language_abr)	$queryr = "SELECT tag
 		FROM {$pixelpost_db_prefix}tags
 		WHERE img_id = " . $image_id . "
 		ORDER BY tag";
-} else {
-	$queryr = "SELECT alt_tag
+else	$queryr = "SELECT alt_tag
 		FROM {$pixelpost_db_prefix}tags
 		WHERE img_id = " . $image_id . "
 		ORDER BY alt_tag";
-}
 
 $tags = mysql_query($queryr);
 
-$tags_img = $lang_tags.": ";
+$tags_img = $lang_tags;
 $tags_paged_img = $tags_img;
 
 while(list($tag)  = mysql_fetch_array($tags))
@@ -663,13 +623,11 @@ else
 	$tpl = str_replace("<THUMBNAILS_PAGES_LINKS>","",$tpl); // this does not use paged archive so there should be no links
 	$tpl = str_replace("<ARCHIVE_PAGES_NUM>","",$tpl); // page number you are viewing (it's empty for this case)
 
-	if(!isset($thumb_output))
-		$thumb_output = "";
+	if(!isset($thumb_output))	$thumb_output = "";
 
 	$tpl = str_replace("<THUMBNAILS_WHOLE_PAGED>",$thumb_output,$tpl); // the original thumb row in the archive
 
-	if(!isset($images_category_or_date))
-		$images_category_or_date = "";
+	if(!isset($images_category_or_date))	$images_category_or_date = "";
 
 	$tpl = str_replace("<CATEGORY_OR_DATE_NAME_PAGED_ARCHIVE>",$images_category_or_date,$tpl); // Name of the category or Month you select
 }// end else

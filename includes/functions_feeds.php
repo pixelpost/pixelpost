@@ -1,7 +1,7 @@
 <?php
 /*
 
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -10,7 +10,7 @@ Pixelpost www: http://www.pixelpost.org/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org
@@ -77,7 +77,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 		$datetime .= ' ' .$tzoner;
 		$body = pullout($body);
 		$body = stripslashes($body);
-		$body = strip_tags( $body );
+		$body = strip_tags( $body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
 		$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 		$output .= "
@@ -154,8 +154,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$tag_date .=T;
 		$tag_date .=$tag_time;
 		$tag_date .=Z;
-		
-			$modified_date =substr($datetime,0,10);
+
+		$modified_date =substr($datetime,0,10);
 		$modified_date = $modified_date."T".(substr($datetime,11,8));
 		$datetime = strtotime($datetime);
 		$atom .= "	 <entry xmlns='http://www.w3.org/2005/Atom'>

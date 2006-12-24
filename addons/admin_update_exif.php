@@ -41,13 +41,15 @@ $addon_description = "Since Pixelpost 1.6 the old behaviour of reading the EXIF 
 /***********************/
 /* ADDON CODE (action) */
 /***********************/
-if(isset($_POST['Action']) && ($_POST['Action']=="Update EXIF")){
+if(isset($_POST['Action']) && ($_POST['Action']=="Update EXIF"))
+{
 	// select all the images with no EXIF
 	include_once('../includes/functions_exif.php');
 	$counter = 0;
 	$query = "SELECT id,image FROM ".$pixelpost_db_prefix."pixelpost WHERE exif_info IS NULL";
   $sql = mysql_query($query) or die("db error");
-  while($row = mysql_fetch_array($sql)) {
+  while($row = mysql_fetch_array($sql))
+  {
   	$exif_info_db = serialize_exif ("../images/".$row['image']);
   	$id=$row['id'];
 		mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$id'");

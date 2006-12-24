@@ -1,6 +1,7 @@
 <?php
 /*
-Pixelpost version 1.5
+
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -9,7 +10,7 @@ Pixelpost www: http://www.pixelpost.org/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org
@@ -35,29 +36,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 // Returns the Pixelpost version by looking at the database.  Returns 0 if not installed.
 // This is used when performing the initial install/upgrade
-function Get_Pixelpost_Version( $prefix )
+function Get_Pixelpost_Version( $prefix)
 {
 	// First, check to see if we are 1.4 or better
 	$querystr = "SELECT version FROM {$prefix}version ORDER BY version DESC LIMIT 1";
 	$query = mysql_query($querystr);
-	if( $query ) {
-		if( $row = mysql_fetch_array( $query ) ) {
-			if( $row[0] > 1.3 ) return $row[0];
+	if($query)
+	{
+		if( $row = mysql_fetch_array( $query))
+		{
+			if( $row[0] > 1.3) return $row[0];
 		}
 	}
 
 	// Are we even installed?
 	$query = mysql_query("SELECT COUNT(admin) FROM {$prefix}config");
-	if( $query ) {
-		if( $row = mysql_fetch_array( $query ) ) {
-			if( $row[0] > 0 ) return 1.3;	// This could also be 1.2, but that is okay
+	if($query)
+	{
+		if( $row = mysql_fetch_array( $query))
+		{
+			if( $row[0] > 0) return 1.3;	// This could also be 1.2, but that is okay
 		}
 	}
 	return 0;	// Everything failed, must not be installed
 }
 
 
-function print_comments($imageid) {
+function print_comments($imageid)
+{
 	global $pixelpost_db_prefix;
 	global $lang_no_comments_yet;
 	global $lang_visit_homepage;
@@ -119,61 +125,80 @@ function check_upload($string)
 	return($result);
 	}
 
-function createthumbnail($file) {
-    global $pixelpost_db_prefix;
-    $cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config");
-    $cfgrow = mysql_fetch_array($cfgquery);
-    // credit to codewalkers.com - there is 90% a tutorial there
-    $max_width = $cfgrow['thumbwidth'];
-    $max_height = $cfgrow['thumbheight'];
-    define(IMAGE_BASE, "../images");
-    $image_path = IMAGE_BASE . "/$file";
-    $img = null;
-    $image_path_exp = explode('.', $image_path);
-    $image_path_end = end($image_path_exp);
-    $ext = strtolower($image_path_end);
-    if ($ext == 'jpg' || $ext == 'jpeg') {
-      $img = @imagecreatefromjpeg($image_path);
-        } else if ($ext == 'png') {
-        $img = @imagecreatefrompng($image_path);
-        } else if ($ext == 'gif') {
-        $img = @imagecreatefromgif($image_path);
-        }
-    if($img) {
-        $width = imagesx($img);
-        $height = imagesy($img);
-        $scale = max($max_width/$width, $max_height/$height);
-        if($scale < 1) {
-            $new_width = floor($scale*$width);
-            $new_height = floor($scale*$height);
-            $tmp_img = imagecreatetruecolor($new_width,$new_height);
+function createthumbnail($file)
+{
+  global $pixelpost_db_prefix;
+  $cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config");
+  $cfgrow = mysql_fetch_array($cfgquery);
+  // credit to codewalkers.com - there is 90% a tutorial there
+  $max_width = $cfgrow['thumbwidth'];
+  $max_height = $cfgrow['thumbheight'];
+  define(IMAGE_BASE, "../images");
+  $image_path = IMAGE_BASE . "/$file";
+  $img = null;
+  $image_path_exp = explode('.', $image_path);
+  $image_path_end = end($image_path_exp);
+  $ext = strtolower($image_path_end);
+  if ($ext == 'jpg' || $ext == 'jpeg')
+  {
+    $img = @imagecreatefromjpeg($image_path);
+  }
+  elseif($ext == 'png')
+  {
+    $img = @imagecreatefrompng($image_path);
+  }
+  elseif($ext == 'gif')
+  {
+    $img = @imagecreatefromgif($image_path);
+  }
+
+  if($img)
+  {
+    $width = imagesx($img);
+    $height = imagesy($img);
+    $scale = max($max_width/$width, $max_height/$height);
+
+    if($scale < 1)
+    {
+      $new_width = floor($scale*$width);
+      $new_height = floor($scale*$height);
+      $tmp_img = imagecreatetruecolor($new_width,$new_height);
       // gd 2.0.1 or later: imagecopyresampled
       // gd less than 2.0: imagecopyresized
-            if(function_exists(imagecopyresampled)) {
-                imagecopyresampled($tmp_img, $img, 0,0,0,0,$new_width,$new_height,$width,$height);
-                } else {
-                imagecopyresized($tmp_img, $img, 0,0,0,0,$new_width,$new_height,$width,$height);
-                }
-            imagedestroy($img);
-            $img = $tmp_img;
-            }
-        if($cfgrow['crop'] == "yes" | $cfgrow['crop'] == "12c") {
-            // crop
-            $tmp_img = imagecreatetruecolor($max_width,$max_height);
-            if(function_exists(imagecopyresampled)) {
-                imagecopyresampled($tmp_img, $img, 0,0,0,0,$max_width,$max_height,$max_width,$max_height);
-                } else {
-                imagecopyresized($tmp_img, $img, 0,0,0,0,$max_width,$max_height,$max_width,$max_height);
-                }
-            imagedestroy($img);
-            $img = $tmp_img;
-            } // end crop yes
-        }
-    touch("../thumbnails/thumb_$file");
-    imagejpeg($img,"../thumbnails/thumb_$file",$cfgrow['compression']);
-    $thumbimage = "../thumbnails/thumb_$file";
-    chmod($thumbimage,0644);
+      if(function_exists(imagecopyresampled))
+      {
+        imagecopyresampled($tmp_img, $img, 0,0,0,0,$new_width,$new_height,$width,$height);
+      }
+      else
+      {
+        imagecopyresized($tmp_img, $img, 0,0,0,0,$new_width,$new_height,$width,$height);
+      }
+
+	    imagedestroy($img);
+	    $img = $tmp_img;
     }
+
+    if($cfgrow['crop'] == "yes" | $cfgrow['crop'] == "12c")
+    {
+      // crop
+      $tmp_img = imagecreatetruecolor($max_width,$max_height);
+      if(function_exists(imagecopyresampled))
+      {
+        imagecopyresampled($tmp_img, $img, 0,0,0,0,$max_width,$max_height,$max_width,$max_height);
+      }
+      else
+      {
+        imagecopyresized($tmp_img, $img, 0,0,0,0,$max_width,$max_height,$max_width,$max_height);
+      }
+      imagedestroy($img);
+      $img = $tmp_img;
+    } // end crop yes
+  }
+  touch("../thumbnails/thumb_$file");
+  imagejpeg($img,"../thumbnails/thumb_$file",$cfgrow['compression']);
+  $thumbimage = "../thumbnails/thumb_$file";
+  chmod($thumbimage,0644);
+}
 
 function sql_query($str)
 {
@@ -242,10 +267,10 @@ function start_mysql()
 	if (!file_exists($dir ."/splash_page.html"))
 		$dir = '../templates';
 
-	if(!mysql_connect($pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass) )
+	if(!mysql_connect($pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass))
 		show_splash("Connect DB Error: ". mysql_error()." Cause #2",$dir);
 
-	if(!mysql_select_db($pixelpost_db_pixelpost) )
+	if(!mysql_select_db($pixelpost_db_pixelpost))
 		show_splash("Select DB Error: ". mysql_error()." Cause #2",$dir);
 }
 
@@ -264,10 +289,13 @@ if (file_exists($splash_dir."/splash_page.html")){
 function &reduceExif($exifvalue)
 {
   $vals = split("/",$exifvalue);
-  if(count($vals) == 2)  {
+  if(count($vals) == 2)
+  {
 		$exposure = round($vals[0]/$vals[1],2);
 		if($exposure < 1) $exposure = '1/'.round($vals[1]/$vals[0],0);
-  }  else {
+  }
+  else
+  {
 		$exposure = round($vals[0]/$vals[1], 2);
   }
  return $exposure;
@@ -275,21 +303,20 @@ function &reduceExif($exifvalue)
 */
 function &reduceExif($exifvalue)
 {
-
-$vals = split("/",$exifvalue);
-if(count($vals) == 2) {
-	// MJS 29092005 - Code to deal with exposure times of > 1 sec
-	if ( $vals[1] == 0 ) {
-		$exposure = round($vals[0].$vals[1],2);
-	} else {
-		$exposure = round($vals[0]/$vals[1],2);
-		if ( $exposure < 1 ) $exposure = '1/'.round($vals[1]/$vals[0],0);
+	$vals = split("/",$exifvalue);
+	if(count($vals) == 2)
+	{
+		// MJS 29092005 - Code to deal with exposure times of > 1 sec
+		if ( $vals[1] == 0)	$exposure = round($vals[0].$vals[1],2);
+		else
+		{
+			$exposure = round($vals[0]/$vals[1],2);
+			if ( $exposure < 1) $exposure = '1/'.round($vals[1]/$vals[0],0);
+		}
 	}
-} else {
-	$exposure = round($vals[0]/$vals[1], 2);
-}
-return $exposure;
+	else	$exposure = round($vals[0]/$vals[1], 2);
 
+	return $exposure;
 }
 
 
@@ -297,6 +324,7 @@ return $exposure;
 function category_list_as_table($categories, $cfgrow)
 {
 	global $pixelpost_db_prefix;
+
 	if(!is_array($categories))	$categories = array();
   // get the id and name of the first entered category, default category.
   $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by id asc LIMIT 0,1");
@@ -312,12 +340,15 @@ function category_list_as_table($categories, $cfgrow)
 		{
 			$name = pullout($name);
 			// Check if the secondary language is enabled. If not there is no need to show these fields
-			if ($cfgrow['altlangfile'] != 'Off'){
-				$alt_name = " (".pullout($alt_name).")"; 
-			} else {
+			if ($cfgrow['altlangfile'] != 'Off')
+			{
+				$alt_name = " (".pullout($alt_name).")";
+			}
+			else
+			{
 				// replace with empty string.
 				$alt_name = null;
-			} 
+			}
 			$id = pullout($id);
 			$catcounter++;
 			$inarow = 4;
@@ -333,18 +364,13 @@ function category_list_as_table($categories, $cfgrow)
 					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
 			}
 
-			if ($catcounter % $inarow == 0)
-			{
-				echo "\n</tr><tr>\n";
-			}
-			else
-			{
-				echo "\n";
-			}
+			if ($catcounter % $inarow == 0)	echo "\n</tr><tr>\n";
+			else	echo "\n";
 		}
 	}
 
-	if ($catcounter % $inarow > 0) {echo "</tr>";}
+	if ($catcounter % $inarow > 0)	echo "</tr>";
+
 	echo "</table>\n\n";
 }
 
@@ -365,12 +391,12 @@ function add_new_addons_2table($dir)
 	// Check to see if the ban table exists, if not, create it
 	//$query = "show tables from ".$pixelpost_db_pixelpost." like '".$pixelpost_db_prefix."addons'";
 	$query = "SHOW TABLES FROM `".$pixelpost_db_pixelpost."` LIKE '".$pixelpost_db_prefix."addons'";
-	$query = mysql_query( $query );
+	$query = mysql_query( $query);
 	$query = mysql_fetch_array($query);
 	if ($query !='')
 	{// addons table does exist
 		$str = '';
-		
+
 		if($handle = opendir($dir))
 		{
 			while (false !== ($file = readdir($handle)))
@@ -378,22 +404,24 @@ function add_new_addons_2table($dir)
 				if($file != "." && $file != "..")
 				{
 					$farry = explode('.', $file);
-					reset($farry);			
+					reset($farry);
 					$filename = current($farry);
 					$filename_exp = explode('_', $filename);
-					if (is_array($filename_exp))
-						$filename_crnt = current($filename_exp);
+
+					if (is_array($filename_exp))	$filename_crnt = current($filename_exp);
+
 					$addontype = strtolower($filename_crnt);
 					$farry_end = end($farry);
 					$ftype = strtolower($farry_end);
-					if($ftype == "php" AND !check_addon_exists($filename,$pixelpost_db_prefix))	{
-						if ( strtolower($addontype) != 'admin')
-							$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal' )";
-						else
-							$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on','admin' )";
-						mysql_query( $query );
-						if (mysql_error())
-							echo 'Failed to insert addon: ' .$filename .'.php';
+
+					if($ftype == "php" AND !check_addon_exists($filename,$pixelpost_db_prefix))
+					{
+						if(strtolower($addontype) != 'admin')	$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal')";
+						else	$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on','admin')";
+
+						mysql_query( $query);
+
+						if (mysql_error())	echo 'Failed to insert addon: ' .$filename .'.php';
 					}//end if
 				}//end if
 			}// end while
@@ -412,19 +440,21 @@ function delete_obsolute_addon($dir,$db_prefix)
 	// Check to see if the ban table exists, if not, create it
 	//$query = "show tables from `".$pixelpost_db_pixelpost."` like '".$pixelpost_db_prefix."addons'";
 	$query = "SHOW TABLES FROM `".$pixelpost_db_pixelpost."` LIKE '".$pixelpost_db_prefix."addons'";
-	$query = mysql_query( $query );
+	$query = mysql_query( $query);
 	$query = mysql_fetch_array($query);
-	if ($query !='') {     // addons table does exist
-		$query = "select id,addon_name from {$db_prefix}addons ";				
-		$query = mysql_query($query);		
-		while (list($id,$addon_name)= mysql_fetch_row($query)){
-				if (!file_exists($dir.$addon_name.".php")){				
-						$querydel = "delete from {$db_prefix}addons where id='$id' ";												
-						$resquerydel = mysql_query($querydel);
-						if (mysql_error())
-							echo 'Failed to delete the addon_name: ' .$addon_name;
-				} // end if file not exists
-			}	/// end while		
+	if ($query !='')
+	{     // addons table does exist
+		$query = "select id,addon_name from {$db_prefix}addons ";
+		$query = mysql_query($query);
+		while (list($id,$addon_name)= mysql_fetch_row($query))
+		{
+			if (!file_exists($dir.$addon_name.".php"))
+			{
+				$querydel = "delete from {$db_prefix}addons where id='$id' ";
+				$resquerydel = mysql_query($querydel);
+				if (mysql_error())	echo 'Failed to delete the addon_name: ' .$addon_name;
+			} // end if file not exists
+		}	/// end while
 	}// end if addon exists
 }
 
@@ -434,29 +464,27 @@ function check_addon_exists($name,$db_prefix)
 	$returnvalue = FALSE;
 	$query = "select id from {$db_prefix}addons where addon_name='$name'";
 	$query = mysql_query($query);
-	while (list($id)= mysql_fetch_row($query)){
-		if (is_numeric($id))
-			$returnvalue = TRUE;
+	while (list($id)= mysql_fetch_row($query))
+	{
+		if (is_numeric($id))	$returnvalue = TRUE;
 	}
 	return $returnvalue;
 }
 // check if a table exists inside PP DB
 function is_table_created($table_name)
 {
-global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix;
 
-   // Check to see if the ban table exists, if not, create it
-   $query = "SELECT id FROM {$pixelpost_db_prefix}".$table_name." LIMIT 1";
-   if( mysql_query($query)) 
-   	return true;
-   else return false;
-}   
-   
+  // Check to see if the ban table exists, if not, create it
+  $query = "SELECT id FROM {$pixelpost_db_prefix}".$table_name." LIMIT 1";
+  if( mysql_query($query))	return true;
+  else	return false;
+}
+
 // check if a field exist inside a table
 function is_field_exists ($fieldname,$table)
 {
-	global $pixelpost_db_prefix;
-	global $pixelpost_db_pixelpost;
+	global $pixelpost_db_prefix, $pixelpost_db_pixelpost;
 	// FIELD_EXISTS
 	// Checks whether specified field exists in current or specified table.
 	//$fieldname = "maxpthumb";
@@ -464,12 +492,16 @@ function is_field_exists ($fieldname,$table)
 	$fieldexists = FALSE;
 	$t = 0;
 	$attention_call = "";
-	if ($table != "") {
+	if ($table != "")
+	{
 		if ($table_name != "") $current_table = $table;
-		$result_id = mysql_list_fields( $pixelpost_db_pixelpost, $table );
-		for ($t = 0; $t < mysql_num_fields($result_id); $t++) {
+		$result_id = mysql_list_fields( $pixelpost_db_pixelpost, $table);
+		for ($t = 0; $t < mysql_num_fields($result_id); $t++)
+		{
 			$msql_fname = mysql_field_name($result_id, $t);
-			if (strtolower( $fieldname) == strtolower($msql_fname)) {
+
+			if (strtolower( $fieldname) == strtolower($msql_fname))
+			{
 				$fieldexists = TRUE;
 				break;
 			}
@@ -498,39 +530,38 @@ function eval_addon_admin_workspace_menu ($workspace,$menu_name ='')
 {
 	global $addon_admin_functions;
 	for ($i = 0 ; $i < count($addon_admin_functions) ; $i++)
-		{
-			$funcs = $addon_admin_functions[$i];
+	{
+		$funcs = $addon_admin_functions[$i];
 //	foreach ($addon_admin_functions as $key => $funcs)
 //	{
-	$view_menu = $menu_name ."view";
+		$view_menu = $menu_name ."view";
 
-	// if action is needed
-	if ($funcs['workspace']== strtolower($workspace) )
-	{
-		// if main menu
-		if ($funcs['workspace']=='admin_main_menu'){
-			echo "<a href='".$_SERVER['PHP_SELF']."?view=".strtolower($funcs['menu_name'])."'>".$funcs['menu_name']."</a>"; 
-			continue;
-		}
-		
-		// no menu
-		if ($menu_name=='')
+		// if action is needed
+		if ($funcs['workspace']== strtolower($workspace))
 		{
-			if ($funcs['workspace']=='admin_main_menu_contents' & $_GET['view']!=strtolower($funcs['menu_name']) ){
+			// if main menu
+			if ($funcs['workspace']=='admin_main_menu')
+			{
+				echo "<a href='".$_SERVER['PHP_SELF']."?view=".strtolower($funcs['menu_name'])."'>".$funcs['menu_name']."</a>";
 				continue;
 			}
-			call_user_func ($funcs['function_name'] );
-		}	// end if menu is empty
-		else {
-		// if menu is needed
-			if ($_GET['view']==strtolower($menu_name) &
-					$_GET[$view_menu] == strtolower($funcs['submenu_name']))
+	
+			// no menu
+			if ($menu_name=='')
+			{
+				if ($funcs['workspace']=='admin_main_menu_contents' & $_GET['view']!=strtolower($funcs['menu_name']))	continue;
+				call_user_func ($funcs['function_name']);
+			}	// end if menu is empty
+			else
+			{
+			// if menu is needed
+				if ($_GET['view']==strtolower($menu_name) && $_GET[$view_menu] == strtolower($funcs['submenu_name']))
 				{
-				// add style (show that the button is pushed!)
-				// BANNED! AND REPLACED WITH SOMETHING ELSE!
-				//$style_of_selected = "<style> #".$_GET['view'].$_GET[$view_menu] ."{background:#FFA500;}	</style>";
-				//echo $style_of_selected ;
-				call_user_func ($funcs['function_name'] );
+					// add style (show that the button is pushed!)
+					// BANNED! AND REPLACED WITH SOMETHING ELSE!
+					//$style_of_selected = "<style> #".$_GET['view'].$_GET[$view_menu] ."{background:#FFA500;}	</style>";
+					//echo $style_of_selected ;
+					call_user_func ($funcs['function_name']);
 				}// end if menu is need
 			} // end else
 		} // end if workspace
@@ -544,19 +575,19 @@ function create_admin_addon_array()
 	global $pixelpost_db_prefix;
 	$acounter = 0;
 	$dir = "../addons/";
-	if( $_GET['view'] != "addons" ) {
-			//-----------
+
+	if( $_GET['view'] != "addons")
+	{
 		$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='admin'";
 		$query_ad_s = mysql_query($query_ad_s);
-			//-----------
-	while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($query_ad_s))	{
+
+		while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($query_ad_s))
+		{
 			//$addontype = strtolower(current(explode('_', $filename)));
 			$dir = "../addons/";
-			 include($dir.$filename.".php");
-	} // end while
-} // end if not addons
-
-
+			include($dir.$filename.".php");
+		} // end while
+	} // end if not addons
 //return $addon_admin_functions;
 }
 
@@ -577,7 +608,7 @@ function echo_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = '')
 			$menuitem = strtolower($menu_name).'view';
 			$submenuitem = strtolower($submenu_name);
 			$selecteclass = '';
-			if (isset($_GET[$menuitem]) && ($_GET[$menuitem] == $submenuitem) )
+			if (isset($_GET[$menuitem]) && ($_GET[$menuitem] == $submenuitem))
 				$selecteclass='selectedsubmenu';
 				$toecho ="<a class='".$selecteclass."' href='?view=".strtolower($menu_name) ."&amp;".$menuitem ."=".$submenuitem.$additional."' id='".$menu_name.$submenu_name."'>" .strtoupper($submenu_name) ."</a>";
 			echo $toecho;
@@ -593,7 +624,7 @@ function banlist_exist()
 	// Check to see if the banlist table exists, if not, create it
 	$ret = TRUE;
 	$query = "SELECT id FROM {$pixelpost_db_prefix}banlist LIMIT 1";
-	if( !mysql_query( $query ) )
+	if( !mysql_query( $query))
 	 $ret = FALSE;
 	return $ret;
 }
@@ -612,9 +643,9 @@ function create_banlist()
 		acceptable_num_links int(3) NOT NULL default '2',
 		PRIMARY KEY  (id)
 		)";
-	  mysql_query( $query );
-	  $query = "INSERT INTO {$pixelpost_db_prefix}banlist VALUES ( NULL,'','','tramadol\n-online\nadipex\nadvicer\nambien\nbllogspot\ncarisoprodol\ncasino\ncasinos\nbaccarrat\ncialis\ncwas\ncyclen\ncyclobenzaprine\nday-trading\ndiscreetordering\ndutyfree\nduty-free\nfioricet\nfreenet-shopping\nincest\nlevitra\nmacinstruct\nmeridia\nonline-gambling\npaxil\nphentermine\nplatinum-celebs\npoker-chip\npoze\nprescription\nsoma\nslot-machine\ntaboo\nteen\ntramadol\ntrim-spa\nultram\nviagra\nxanax\nbooker\nzolus\nchatroom\npoker\ncasino\ntexas\nholdem','2' )";
-	  mysql_query( $query );
+	  mysql_query( $query);
+	  $query = "INSERT INTO {$pixelpost_db_prefix}banlist VALUES ( NULL,'','','tramadol\n-online\nadipex\nadvicer\nambien\nbllogspot\ncarisoprodol\ncasino\ncasinos\nbaccarrat\ncialis\ncwas\ncyclen\ncyclobenzaprine\nday-trading\ndiscreetordering\ndutyfree\nduty-free\nfioricet\nfreenet-shopping\nincest\nlevitra\nmacinstruct\nmeridia\nonline-gambling\npaxil\nphentermine\nplatinum-celebs\npoker-chip\npoze\nprescription\nsoma\nslot-machine\ntaboo\nteen\ntramadol\ntrim-spa\nultram\nviagra\nxanax\nbooker\nzolus\nchatroom\npoker\ncasino\ntexas\nholdem','2')";
+	  mysql_query( $query);
 	  if (mysql_error())
 	  	$result = "$admin_lang_spam_err_1".mysql_error();
 	  else
@@ -626,70 +657,67 @@ function create_banlist()
 // Update the ban list if the form is called
 function update_banlist()
 {
-global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix;
 
-	if( isset( $_POST['banlistupdate'] ) ){
-
+	if( isset( $_POST['banlistupdate']))
+	{
 		// moderation list
-		if (isset( $_POST['moderation_list'] ) ) {
-			$banlist = str_replace( "\r\n", "\n", $_POST['moderation_list'] );
-			$banlist = str_replace( "\r", "\n", $banlist );
-			if (version_compare(phpversion(),"4.3.0")=="-1") {
-				 $banlist = mysql_escape_string($banlist);
-			 } else {
-				 $banlist = mysql_real_escape_string($banlist);
-			 }// end if
+		if (isset( $_POST['moderation_list']))
+		{
+			$banlist = str_replace( "\r\n", "\n", $_POST['moderation_list']);
+			$banlist = str_replace( "\r", "\n", $banlist);
+			if (version_compare(phpversion(),"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
+			else	$banlist = mysql_real_escape_string($banlist);
 
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET moderation_list='$banlist' LIMIT 1";
 			mysql_query($query) ;
 
-			if ( mysql_error() )
-				$result .= "$admin_lang_spam_err_2".mysql_error()."<br/>";
+			if ( mysql_error())	$result .= "$admin_lang_spam_err_2".mysql_error()."<br/>";
 		}// end if
 
 		// black list
-		if (isset( $_POST['blacklist'] ) ) {
-			$banlist = str_replace( "\r\n", "\n", $_POST['blacklist'] );
-			$banlist = str_replace( "\r", "\n", $banlist );
-			if (version_compare(phpversion(),"4.3.0")=="-1") {
-				 $banlist = mysql_escape_string($banlist);
-			 } else {
-				 $banlist = mysql_real_escape_string($banlist);
-			 } // end if
+		if (isset( $_POST['blacklist']))
+		{
+			$banlist = str_replace( "\r\n", "\n", $_POST['blacklist']);
+			$banlist = str_replace( "\r", "\n", $banlist);
+			if (version_compare(phpversion(),"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
+			else	$banlist = mysql_real_escape_string($banlist);
+
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET blacklist='$banlist' LIMIT 1";
 			mysql_query($query) ;
-			if ( mysql_error() )
-				$result .= "$admin_lang_spam_err_3".mysql_error()."<br/>";
+
+			if ( mysql_error())	$result .= "$admin_lang_spam_err_3".mysql_error()."<br/>";
 		}// end if
 
 		// referer ban list
-		if (isset( $_POST['ref_ban_list'] ) ) {
-			$banlist = str_replace( "\r\n", "\n", $_POST['ref_ban_list'] );
-			$banlist = str_replace( "\r", "\n", $banlist );
-			if(version_compare(phpversion(),"4.3.0")=="-1") {
-				 $banlist = mysql_escape_string($banlist);
-			 } else {
-				 $banlist = mysql_real_escape_string($banlist);
-			 }// end if
+		if (isset( $_POST['ref_ban_list']))
+		{
+			$banlist = str_replace( "\r\n", "\n", $_POST['ref_ban_list']);
+			$banlist = str_replace( "\r", "\n", $banlist);
+
+			if(version_compare(phpversion(),"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
+			else	$banlist = mysql_real_escape_string($banlist);
+
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET ref_ban_list='$banlist' LIMIT 1";
 			mysql_query($query) ;
-			if ( mysql_error() )
-				$result .= "$admin_lang_spam_err_4 ".mysql_error()."<br/>";
+
+			if ( mysql_error())	$result .= "$admin_lang_spam_err_4 ".mysql_error()."<br/>";
 		}// end if
 
 		// acceptable_num_links
-		if (isset( $_POST['acceptable_num_links'] ) ) {
+		if (isset( $_POST['acceptable_num_links']))
+		{
 			$acceptable_num_links= $_POST['acceptable_num_links'];
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET acceptable_num_links='$acceptable_num_links' LIMIT 1";
 			mysql_query($query) ;
-			if ( mysql_error() )
-				$result .= "$admin_lang_spam_err_5 ".mysql_error()."<br/>";
+
+			if ( mysql_error())	$result .= "$admin_lang_spam_err_5 ".mysql_error()."<br/>";
 		}
 
-		if (!isset($result))
-			$result = "$admin_lang_spam_upd";
+		if (!isset($result))	$result = "$admin_lang_spam_upd";
+
 		$result = $result."<br/>";
-	} // end if isset( $_POST['banlistupdate'] )
+	} // end if isset( $_POST['banlistupdate'])
 
 	return $result;
 }
@@ -697,76 +725,70 @@ global $pixelpost_db_prefix;
 // Get the moderation_list
 function get_moderation_banlist()
 {
-global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix;
 	$query = "SELECT moderation_list FROM {$pixelpost_db_prefix}banlist LIMIT 1";
-	$result = mysql_query($query) or die( mysql_error() );
-	if( $row = mysql_fetch_row($result) )
-		$banlist = $row[0];
+	$result = mysql_query($query) or die( mysql_error());
 
- return $banlist;
+	if( $row = mysql_fetch_row($result))	$banlist = $row[0];
+
+	return $banlist;
 }
 
 // Get the blacklist
 function get_blacklist()
 {
-global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix;
 	$query = "SELECT blacklist FROM {$pixelpost_db_prefix}banlist LIMIT 1";
-	$result = mysql_query($query) or die( mysql_error() );
-	if( $row = mysql_fetch_row($result) )
-		$banlist = $row[0];
+	$result = mysql_query($query) or die( mysql_error());
+	if( $row = mysql_fetch_row($result))	$banlist = $row[0];
 
 	return $banlist;
-
 }
 
 // Get the ref_ban_list
 function get_ref_ban_list()
 {
-global $pixelpost_db_prefix;
+  global $pixelpost_db_prefix;
 	$query = "SELECT ref_ban_list FROM {$pixelpost_db_prefix}banlist LIMIT 1";
-	$result = mysql_query($query) or die( mysql_error() );
-	if( $row = mysql_fetch_row($result) )
-		$banlist = $row[0];
+	$result = mysql_query($query) or die( mysql_error());
+	if( $row = mysql_fetch_row($result))	$banlist = $row[0];
 
 	return $banlist;
-
 }
 
-
-
-
 // prevent bad comments!
-function check_moderation_blacklist($cmnt_message,$cmnt_ip,$cmnt_name,$field){
+function check_moderation_blacklist($cmnt_message,$cmnt_ip,$cmnt_name,$field)
+{
 	global $pixelpost_db_prefix;
- 
+
 // help from wordpress codes
   $query = "select ".$field." from {$pixelpost_db_prefix}banlist LIMIT 1";
   $result = mysql_query($query);
   $bad_keys = mysql_fetch_array($result);
 
-	$words = explode("\n", $bad_keys[$field] );
+	$words = explode("\n", $bad_keys[$field]);
 
-	foreach ($words as $word) {
+	foreach ($words as $word)
+	{
 		$word = trim($word);
 
 		// Skip empty lines
-		if ( empty($word) ) { continue; }
-	
-		// Do some escaping magic so that '#' chars in the 
+		if ( empty($word))	continue;
+
+		// Do some escaping magic so that '#' chars in the
 		// spam words don't break things:
 		$word = preg_quote($word, '#');
 
-		$pattern = "#$word#i"; 
-		if ( preg_match($pattern, $cmnt_message    ) ) return true;
-		if ( preg_match($pattern, $cmnt_ip     ) ) return true;
-		if ( preg_match($pattern, $cmnt_name   ) ) return true;
+		$pattern = "#$word#i";
+		if ( preg_match($pattern, $cmnt_message)) return true;
+		if ( preg_match($pattern, $cmnt_ip)) return true;
+		if ( preg_match($pattern, $cmnt_name)) return true;
 		/*
-		if ( preg_match($pattern, $comment   ) ) return true;
-		if ( preg_match($pattern, $user_ip   ) ) return true;
-		if ( preg_match($pattern, $user_agent) ) return true;
+		if ( preg_match($pattern, $comment)) return true;
+		if ( preg_match($pattern, $user_ip)) return true;
+		if ( preg_match($pattern, $user_agent)) return true;
 		*/
 	}
-
 	return false;
 }
 // is it in blacklist
@@ -774,7 +796,6 @@ function is_comment_in_blacklist($cmnt_message,$cmnt_ip,$cmnt_name)
 {
 	$field = 'blacklist';
 	return check_moderation_blacklist($cmnt_message,$cmnt_ip,$cmnt_name,$field);
-
 }
 
 // is it in blacklist
@@ -782,7 +803,6 @@ function is_comment_in_moderation_list($cmnt_message,$cmnt_ip,$cmnt_name)
 {
 	$field = 'moderation_list';
 	return check_moderation_blacklist($cmnt_message,$cmnt_ip,$cmnt_name,$field);
-
 }
 
 // clean the reflist entry. no http
@@ -809,24 +829,25 @@ function create_htaccess_banlist()
 	$badreflist = "SetEnvIfNoCase Referer \".*(";
 	$ref_banlist = get_ref_ban_list();
 	$ref_banlist = explode("\n",$ref_banlist);
-	if (is_array($ref_banlist) ){
-		foreach ($ref_banlist as $entry){
-			if ($entry=='')
-				continue;
+	if (is_array($ref_banlist))
+	{
+		foreach ($ref_banlist as $entry)
+		{
+			if ($entry=='')	continue;
+
 			$entry = trim($entry);
 			$entry = clean_reflist($entry);
-			if (is_entry_ip($entry))
-				$denylist .= "deny from " .$entry."\n";
-			else
-				$badreflist .= $entry."|";
+
+			if (is_entry_ip($entry))	$denylist .= "deny from " .$entry."\n";
+			else	$badreflist .= $entry."|";
 		}// end for each
-	} else {
+	}
+	else
+	{
 		$entry = trim($ref_banlist);
 		$entry = clean_reflist($entry);
-		if (is_entry_ip($entry))
-			$denylist .= "deny from " .$entry."\n";
-		else
-			$badreflist .= $entry."|";
+		if (is_entry_ip($entry))	$denylist .= "deny from " .$entry."\n";
+		else	$badreflist .= $entry."|";
 	}
 	$badreflist .="baccarat.host-c.com).*\" BadReferrer\norder deny,allow\n";
 	$badreflist .="deny from env=BadReferrer";
@@ -839,43 +860,46 @@ function create_htaccess_banlist()
 // compare the moderation list with comments
 function moderate_past_with_list()
 {
-global $pixelpost_db_prefix;
-//	if( isset( $_POST['banlistupdate'] ) ){
-		// moderation list
-	//	if (isset( $_POST['moderation_list'] ) ) {
+	global $pixelpost_db_prefix;
+	//	if( isset( $_POST['banlistupdate'])){
+	// moderation list
+	//	if (isset( $_POST['moderation_list'])) {
 
-			$where ='';
-			//if moderation of past comments pressed
-			if ($_GET['antispamaction']=='moderation'){
-				$banlist= get_moderation_banlist();
-				$banlist = str_replace( "\r\n", "\n",$banlist );
-				$banlist = str_replace( "\r", "\n", $banlist );
-				$banlist = explode("\n",$banlist );
+	$where ='';
+	//if moderation of past comments pressed
+	if ($_GET['antispamaction']=='moderation')
+	{
+		$banlist= get_moderation_banlist();
+		$banlist = str_replace( "\r\n", "\n",$banlist);
+		$banlist = str_replace( "\r", "\n", $banlist);
+		$banlist = explode("\n",$banlist);
 
-				if (is_array($banlist) ){
-					foreach ($banlist as $entry){
-						if ($entry=='')
-							continue;
-						$entry = trim($entry);
-						$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
-					}// end for each
-				} else
-				{
-					$entry = trim($ref_banlist);
-					$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
-				}
-				$where .= ' 0 ';
+		if (is_array($banlist))
+		{
+			foreach ($banlist as $entry)
+			{
+				if ($entry=='')	continue;
+				$entry = trim($entry);
+				$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
+			}// end for each
+		}
+		else
+		{
+			$entry = trim($ref_banlist);
+			$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
+		}
 
-				$query = "UPDATE {$pixelpost_db_prefix}comments SET publish='no' WHERE $where ";
-				mysql_query($query);
-				if (mysql_error())
-					$additional_msg = "$admin_lang_spam_err_6 ".mysql_error()."<br/>";
-				else
-					$additional_msg = "$admin_lang_spam_com_upd"."<br/>";
-			}// end if moderation
+		$where .= ' 0 ';
 
-	//	}// end if (isset( $_POST['moderation_list'] ) ) {
-//	}// end if isset( $_POST['banlistupdate'] ) ){
+		$query = "UPDATE {$pixelpost_db_prefix}comments SET publish='no' WHERE $where ";
+		mysql_query($query);
+
+		if (mysql_error())	$additional_msg = "$admin_lang_spam_err_6 ".mysql_error()."<br/>";
+		else	$additional_msg = "$admin_lang_spam_com_upd"."<br/>";
+	}// end if moderation
+
+//	}// end if (isset( $_POST['moderation_list'])) {
+//	}// end if isset( $_POST['banlistupdate'])){
 	$additional_msg = $additional_msg;
 	return $additional_msg;
 }
@@ -884,44 +908,45 @@ global $pixelpost_db_prefix;
 // delete comments which contains words from the blacklist
 function delete_past_with_list()
 {
-global $pixelpost_db_prefix;
-//	if( isset( $_POST['banlistupdate'] ) ){
-		// moderation list
-	//	if (isset( $_POST['moderation_list'] ) ) {
+	global $pixelpost_db_prefix;
+	//	if( isset( $_POST['banlistupdate'])){
+	// moderation list
+	//	if (isset( $_POST['moderation_list'])) {
 
-			$where ='';
-			//if moderation of past comments pressed
-			if ($_GET['antispamaction']=='deletecmnt'){
-				$banlist= get_blacklist();
-				$banlist = str_replace( "\r\n", "\n",$banlist );
-				$banlist = str_replace( "\r", "\n", $banlist );
-				$banlist = explode("\n",$banlist );
+	$where ='';
+	//if moderation of past comments pressed
+	if ($_GET['antispamaction']=='deletecmnt')
+	{
+		$banlist= get_blacklist();
+		$banlist = str_replace( "\r\n", "\n",$banlist);
+		$banlist = str_replace( "\r", "\n", $banlist);
+		$banlist = explode("\n",$banlist);
 
-				if (is_array($banlist) ){
-					foreach ($banlist as $entry){
-						if ($entry=='')
-							continue;
-						$entry = trim($entry);
-						$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
-					}// end for each
-				} else
-				{
-					$entry = trim($ref_banlist);
-					$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
-				}
-				$where .= ' 0 ';
+		if (is_array($banlist))
+		{
+			foreach ($banlist as $entry)
+			{
+				if ($entry=='')	continue;
+				$entry = trim($entry);
+				$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
+			}// end for each
+		}
+		else
+		{
+			$entry = trim($ref_banlist);
+			$where .= " message LIKE '%{$entry}%' OR name LIKE '%{$entry}%' OR ip LIKE '%{$entry}%' OR ";
+		}
+		$where .= ' 0 ';
 
-				$query = "delete from {$pixelpost_db_prefix}comments WHERE $where ";
+		$query = "delete from {$pixelpost_db_prefix}comments WHERE $where ";
 
-				mysql_query($query);
-				if (mysql_error())
-					$additional_msg = "$admin_lang_spam_err_7 ".mysql_error()."<br/>";
-				else
-					$additional_msg = "$admin_lang_spam_com_del"."<br/>";
-			}// end if moderation
+		mysql_query($query);
+		if (mysql_error())	$additional_msg = "$admin_lang_spam_err_7 ".mysql_error()."<br/>";
+		else	$additional_msg = "$admin_lang_spam_com_del"."<br/>";
+	}// end if moderation
 
-	//	}// end if (isset( $_POST['moderation_list'] ) ) {
-//	}// end if isset( $_POST['banlistupdate'] ) ){
+//	}// end if (isset( $_POST['moderation_list'])) {
+//	}// end if isset( $_POST['banlistupdate'])){
 	$additional_msg = $additional_msg;
 	return $additional_msg;
 }
@@ -929,42 +954,46 @@ global $pixelpost_db_prefix;
 // delete refs that are listed in the ref ban list
 function delete_from_badreferer_list()
 {
-global $pixelpost_db_prefix;
-//	if( isset( $_POST['banlistupdate'] ) ){
-		// moderation list
-	//	if (isset( $_POST['moderation_list'] ) ) {
+	global $pixelpost_db_prefix;
+	//	if( isset( $_POST['banlistupdate'])){
+	// moderation list
+	//	if (isset( $_POST['moderation_list'])) {
 
-			$where ='';
-			//if moderation of past comments pressed
-			if ($_GET['antispamaction']=='deleterefs'){
-				$banlist= get_ref_ban_list();
-				$banlist = str_replace( "\r\n", "\n",$banlist );
-				$banlist = str_replace( "\r", "\n", $banlist );
-				$banlist = explode("\n",$banlist );
+	$where ='';
+	//if moderation of past comments pressed
+	if ($_GET['antispamaction']=='deleterefs')
+	{
+		$banlist= get_ref_ban_list();
+		$banlist = str_replace( "\r\n", "\n",$banlist);
+		$banlist = str_replace( "\r", "\n", $banlist);
+		$banlist = explode("\n",$banlist);
 
-				if (is_array($banlist) ){
-					foreach ($banlist as $entry){
-						if ($entry=='')
-							continue;
-						$entry = trim($entry);
-						$where .= " referer LIKE '%{$entry}%' OR ";
-					}// end for each
-				} else {
-					$entry = trim($ref_banlist);
-					$where .= " referer LIKE '%{$entry}%' OR ";
-				}
-				$where .= ' 0 ';
+		if (is_array($banlist))
+		{
+			foreach ($banlist as $entry)
+			{
+				if ($entry=='')	continue;
+				$entry = trim($entry);
+				$where .= " referer LIKE '%{$entry}%' OR ";
+			}// end for each
+		}
+		else
+		{
+			$entry = trim($ref_banlist);
+			$where .= " referer LIKE '%{$entry}%' OR ";
+		}
+		$where .= ' 0 ';
 
-				$query = "delete from {$pixelpost_db_prefix}visitors WHERE $where ";
-				mysql_query($query);
-				if (mysql_error())
-					$additional_msg = "$admin_lang_spam_err_8".mysql_error()."<br/>";
-				else
-					$additional_msg = "$admin_lang_spam_visit_del"."<br/>";
-			}// end if moderation
+		$query = "delete from {$pixelpost_db_prefix}visitors WHERE $where ";
+		mysql_query($query);
+		if (mysql_error())
+			$additional_msg = "$admin_lang_spam_err_8".mysql_error()."<br/>";
+		else
+			$additional_msg = "$admin_lang_spam_visit_del"."<br/>";
+	}// end if moderation
 
-	//	}// end if (isset( $_POST['moderation_list'] ) ) {
-//	}// end if isset( $_POST['banlistupdate'] ) ){
+//	}// end if (isset( $_POST['moderation_list'])) {
+//	}// end if isset( $_POST['banlistupdate'])){
 	$additional_msg = $additional_msg;
 	return $additional_msg;
 }
@@ -1013,10 +1042,8 @@ function list_tags_edit($id)
 	$sql_tag = "SELECT tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND alt_tag LIKE '' ORDER BY tag ASC";
 	$query = mysql_query($sql_tag);
 
-	while(list($tag) = mysql_fetch_row($query))
-	{
-		$tags .= ' '.$tag;
-	}
+	while(list($tag) = mysql_fetch_row($query))	$tags .= ' '.$tag;
+
 	return trim($tags);
 }
 
@@ -1097,51 +1124,61 @@ function save_alt_tags_edit($tags_str,$id)
 }
 //
 
-function create_language_url_from_tag( $language_link_abr, $language_link_full ){
-	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0]=="lang=",0,5))){
-		$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
-	} else {
+function create_language_url_from_tag( $language_link_abr, $language_link_full)
+{
+	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0]=="lang=",0,5)))
+	{
+		$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr)."'>".$language_link_full."</a>";
+	}
+	else
+	{
 		$arguments=str_replace("&","&amp;",$_SERVER['argv'][0]);
-		$language_link="<a href='".$_SERVER['PHP_SELF']."?".$arguments."&amp;lang=".strtolower( $language_link_abr )."'>".$language_link_full."</a>";
+		$language_link="<a href='".$_SERVER['PHP_SELF']."?".$arguments."&amp;lang=".strtolower( $language_link_abr)."'>".$language_link_full."</a>";
 	}
 	return $language_link;
 }
 
-function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow ){ 	
+function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow)
+{
   $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
   $alt_language_abr = strtolower($PP_supp_lang[$cfgrow['altlangfile']][0]);
-  if ($language_abr == $default_language_abr) {
+  if ($language_abr == $default_language_abr)
+  {
   	$link_language_abr = $alt_language_abr;
-  } else {
+  }
+  else
+  {
   	$link_language_abr = $default_language_abr;
   }
   // Determine the full name of the link_language
-  foreach ($PP_supp_lang as $key => $row)	{
-  	foreach($row as $cell) {
-   		if ($cell == strtoupper($link_language_abr))
-     		$language_link_key = $key;
+  foreach ($PP_supp_lang as $key => $row)
+  {
+  	foreach($row as $cell)
+  	{
+   		if ($cell == strtoupper($link_language_abr))	$language_link_key = $key;
     }
   }
   $language_link_full=$PP_supp_lang[$language_link_key][1];
-  $language_link	=	create_language_url_from_tag( $link_language_abr, $language_link_full  );
+  $language_link	=	create_language_url_from_tag( $link_language_abr, $language_link_full);
   // Create one template tag for all templates and both languages
-  $tpl = str_replace("<ALTERNATIVE_LANGUAGE>",$language_link,$tpl); 
-    	
+  $tpl = str_replace("<ALTERNATIVE_LANGUAGE>",$language_link,$tpl);
+
   // support for <LANGUAGE=XX> TAG
   preg_match_all("/<(\s*language\s*=\s*([^<>\s]*)\s*)>/iU", $tpl, $matches);
-  for($i = 0; $i < count($matches[0]); $i++){
-  	foreach ($PP_supp_lang as $key => $row){
-  		foreach($row as $cell){
-   			if ($cell == strtoupper($matches[2][$i]))
-     		$language_link_key = $key;
+  for($i = 0; $i < count($matches[0]); $i++)
+  {
+  	foreach ($PP_supp_lang as $key => $row)
+  	{
+  		foreach($row as $cell)
+  		{
+   			if ($cell == strtoupper($matches[2][$i]))	$language_link_key = $key;
   	  }
   	}
-  	$alt_language_link=create_language_url_from_tag( $matches[2][$i],$PP_supp_lang[$language_link_key][1] );
+  	$alt_language_link=create_language_url_from_tag( $matches[2][$i],$PP_supp_lang[$language_link_key][1]);
   	$tpl = str_replace("<LANGUAGE=".strtoupper($matches[2][$i]).">",$alt_language_link,$tpl);
   }
 	// return the template
 	return $tpl;
-	
 }
 //
 //============================= LANGUAGE SECTION ENDS ===========================

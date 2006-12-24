@@ -1,18 +1,18 @@
-﻿Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
 
-Welcome to the PixelPost Version 1.5!
+Welcome to the Pixelpost version 1.6!
 
 -------------------------------------------------------------------------
 Pixelpost www:  	http://www.pixelpost.org/
 Pixelpost wiki: 	http://wiki.pixelpost.org/ 
 Pixelpost forum: 	http://forum.pixelpost.org
 
-Version 1.5:
+Version 1.6:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Robert Prouse, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Robert Prouse, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org

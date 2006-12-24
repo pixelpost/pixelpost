@@ -3,7 +3,7 @@
 
 admin-lang-english.php : english (default) language file for PixelPost-Admin-Section
 ===================================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -13,7 +13,7 @@ Pixelpost forum: http://forum.pixelpost.org
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright ?2006 Pixelpost.org <http://www.pixelpost.org>
@@ -74,11 +74,11 @@ $admin_lang_pw_title            = "Pixelpost密码恢复";
 $admin_lang_pw_wronguser	= "您输入的用户名与Pixelpost管理员名称不一致。";
 $admin_lang_pw_back             =  "返回管理页面";
 $admin_lang_pw_noemail          = "您没有输入电子邮件！\n<br />
-				   如果您真的记不起密码的话，发个信息到<a href='http://www.pixelpost.org/forum'>Pixelpost论坛</a> 
+				   如果您真的记不起密码的话，发个信息到<a href='http://www.pixelpost.org/forum'>Pixelpost论坛</a>
 				   寻求帮助吧。\n<br />";
 $admin_lang_pw_notsent          = "没有任何东西！ \n<br /> 您输入的电子邮件与管理面板设置的不一致。<br />";
 $admin_lang_pw_subject		= "Pixelpost密码恢复信息";
-$admin_lang_pw_usertext		= "您的用户名："; 
+$admin_lang_pw_usertext		= "您的用户名：";
 $admin_lang_pw_mailtext		= "您的电子邮件：";
 $admin_lang_pw_newpw		= "您的新密码：";
 $admin_lang_pw_text_1		= "这是Pixelpost的密码恢复";
@@ -386,7 +386,7 @@ $admin_lang_spam_com_del    = "结束：含有黑名单中的词语/IPs的评论
 $admin_lang_spam_err_8      = "当与恶意referers清单比较的时候删除来访者有误：";
 $admin_lang_spam_visit_del  = "含有恶意referers清单中的词语/IPs的来访者已被删除。";
 
-// Spam 
+// Spam
 $admin_lang_spam_ban        = "禁止清单";
 $admin_lang_spam_content    = "	增加禁止的词语/IPs/名字的清单到以下的文本框，一个词一行。<br/>\n
 				任何评论含有待审阅清单中的词语，IP，或名字将会发送到待审阅队列中。<br/>\n

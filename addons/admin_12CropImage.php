@@ -25,8 +25,8 @@ variable name, $addon_function_name.
 example:
 	add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);
 description:
-	This addes a function $addon_function_name to a place in admin area with anchor named in 
-	$addon_workspace, in $addon_menu and submenu $addon_admin_submenu. If your function does 
+	This addes a function $addon_function_name to a place in admin area with anchor named in
+	$addon_workspace, in $addon_menu and submenu $addon_admin_submenu. If your function does
 	not need any menu/submenu you can pass empty strings for each.
 
 
@@ -38,7 +38,7 @@ This is the only way that these addons are distinguished and included inside
 admin/index.php.
 
 4 - If you need variables of the admin files, you can access them as "global" inside
-the custom function of the addon. 
+the custom function of the addon.
 (In later versions, This should be changed by some safer methods)
 
 5 - To use this addon, open the images menu and try to edit an image.
@@ -82,9 +82,7 @@ function crop_image12_make_ready()
 	global $cfgrow , $txt ,$image, $spacer,$pixelpost_db_prefix,$javafile;
 	if($_GET['view']=="images" && isset($_GET['id']))
 	{
-		if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
-			die ("Try another day!!");
-		}
+		if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])	die ("Try another day!!");
 
 		include_once("../includes/12cropimageinc.php");
 		include_once("../includes/12cropimageincscripts.php");
@@ -93,7 +91,7 @@ function crop_image12_make_ready()
 // your function to show a new page under a submenu in admin panel
 function cropimage12_admin_addon()
 {
-	// user defined globals ( used in your addon)	
+	// user defined globals ( used in your addon)
 
 	global $cfgrow , $txt ,$image, $spacer;
 

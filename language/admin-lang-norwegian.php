@@ -3,7 +3,7 @@
 
 admin-lang-norwegian.php : norwegian language file for PixelPost-Admin-Section
 ===================================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -15,13 +15,13 @@ WWW: http://jcolsen.com
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 ______________________________________________________________________________
@@ -58,7 +58,7 @@ $admin_start_username         = "Brukernavn";
 $admin_start_pw               = "Passord";
 $admin_start_pw_button        = "Send meg mitt nye passord";
 $admin_start_pw_recover       = "Det er ikke mulig &aring; hente ditt gamle passord, men Pixelpost kan
-                                 lage ett nytt tilfeldig passord for deg.\nVennligst skriv inn epost adressen du har registret i administrasjons panelet, 
+                                 lage ett nytt tilfeldig passord for deg.\nVennligst skriv inn epost adressen du har registret i administrasjons panelet,
                                  s&aring; sendes det nye passordet &oslash;yeblikkelig til deg.";
 $admin_start_email            = "Epost Adresse:";
 $admin_start_email_button     = "Skriv inn din epost adresse";
@@ -71,16 +71,16 @@ $admin_lang_pw_title            = "Pixelpost Password Recovery";
 $admin_lang_pw_wronguser	= "Der eingegebene Username ist nicht der Username des Pixelpost-Administrators.";
 $admin_lang_pw_back             =  "Zur&uuml;ck zur Verwaltungs-Seite";
 $admin_lang_pw_noemail          = "Sie haben noch keine email-Adresse eingegeben! Ein neues Passwort kann Ihnen nicht zugesandt werden! \n<br />
-				   Wenn Sie sich gar nicht mehr an Ihr Passwort erinnern k&ouml;nnen und nicht weiterkommen, schreiben Sie eine Nachricht im <a href='http://www.pixelpost.org/forum'>Pixelpost Forum</a> 
+				   Wenn Sie sich gar nicht mehr an Ihr Passwort erinnern k&ouml;nnen und nicht weiterkommen, schreiben Sie eine Nachricht im <a href='http://www.pixelpost.org/forum'>Pixelpost Forum</a>
 				   for help.\n<br />";
 $admin_lang_pw_notsent          = "Nichts gesendet! \n<br /> Die eingegebene email-Adresse entspricht nicht der eMail-Adresse, die Sie im Verwaltungssystem eingetragen haben!<br />";
 $admin_lang_pw_subject		= "Pixelpost Passwort: Neues Passwort wurde angelegt";
-$admin_lang_pw_usertext		= "Ihr User-Name:"; 
+$admin_lang_pw_usertext		= "Ihr User-Name:";
 $admin_lang_pw_mailtext		= "Ihre email-Adresse:";
 $admin_lang_pw_newpw		= "Ihr neues Passwort:";
 $admin_lang_pw_text_1		= "PixelPost Passwort-Wiederherstellung";
 $admin_lang_pw_text_2		= "From: PIXELPOST Administration";
-$admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthält Ihren User-Namen und ein neues Passwort. \n<br /> 
+$admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthält Ihren User-Namen und ein neues Passwort. \n<br />
 				   Prüfen Sie Ihren Postkorb:  ";
 $admin_lang_pw_text_4 		= "<span style='color:red;'>Fehler! Ein Fehler ist aufgetreten! \n<br />
 				   Die email-Adresse und der User-Name, den Sie eingegeben haben, ist ok, aber es konnte keine Mail verschickt werden. \n<br />
@@ -232,7 +232,7 @@ $admin_lang_cmnt_unpublished_cmnts  = "tidligere maskert kommentar(er).";
 $admin_lang_cmnt_unpublished        = "Maskerte";
 $admin_lang_cmnt_published_cmnts    = "tidligere publiserte kommentar(er).";
 
-// New in comment: 
+// New in comment:
 $admin_lang_cmnt_error_blacklist    = "Error in updating the blacklist: ";
 $admin_lang_cmnt_error_banlist      = "Error in updating the referer ban list: ";
 
@@ -302,7 +302,7 @@ $admin_lang_optn_img_compression_txt = "Hvor mye &oslash;nsker du jpg komprimeri
 $admin_lang_optn_pass_chngd_txt      = "Passordet er forandret.";
 $admin_lang_optn_pass_notchngd_txt   = "Passordet er ikke forandret. Skriv inn det samme passordet i gjennta feltet.";
 $admin_lang_optn_title_url_text      = "Sjekk eller forandre sidens tittel og URL for din installasjon";
-// NEW! 
+// NEW!
 $admin_lang_optn_thumb_updated       = "Thumbnails updated!";
 $admin_lang_optn_updated             = "thumbnails updated.";
 
@@ -377,7 +377,7 @@ $admin_lang_spam_com_del    = "Tidligere: kommentarer som inneholder ord/IPer fr
 $admin_lang_spam_err_8      = "Feil under sletting av bes&oslash;kende n&aring;r sammenlignet med d&aring;rlig-referanse-listen: ";
 $admin_lang_spam_visit_del  = "Bes&oslash;kende med ord/IPer fra d&aring;rlige-referanse-listen er slettet.";
 
-// New! 
+// New!
 $admin_lang_spam_ban        = "Ban Lists";
 $admin_lang_spam_content    = "	Add lists of banned words/IPs/names to the textboxs below, one word per line.<br/>\n
 				Any comment with a word, an IP, or name inside the moderation list will be sent to the moderation queue.<br/>\n

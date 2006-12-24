@@ -1,9 +1,9 @@
 <?php
-
 /*
+
 lang-dutch.php
 ===============
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -14,12 +14,12 @@ WWW: http://schuppe.be
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 
@@ -78,7 +78,7 @@ $lang_comment_page_title      = "Commentaar";
 $lang_comment_popup           = "Commentaren";
 $lang_message_banned_comment  = "Uw commentaar wordt niet bewaard! Het bevat &eacute;&eacute;n of meerdere verboden woorden/email/ips.";
 $lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
-$lang_tags                    = "Tags";
+$lang_tags                    = "Tags:<br/>";
 
 // EXIF DATA
 $lang_exposure              = "Belichting:";
@@ -123,25 +123,25 @@ $lang_email_notification_subject = "New Comment";
 $lang_email_notification_pt1 = "
 	  Hello,<br>
       A new comment has been made at your photoblog.<br><br>
-	  ";	  
+	  ";
 $lang_email_notification_pt2 = "
       <br>
       The comment is: <br>
       ----------------------------------------------------------------------<br>
-	  ";	  
-$lang_email_notification_pt3 = "by";  
-$lang_email_notification_pt4 = "	  
+	  ";
+$lang_email_notification_pt3 = "by";
+$lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
       Email sent by pixelpost<br>
 ";
 $lang_email_notificationplain_pt1 = "
 	  Hello,
-      A new comment has been made at your photoblog.";	  
+      A new comment has been made at your photoblog.";
 $lang_email_notificationplain_pt2 = "
       The comment is:
-      ----------------------------------------------------------------------";	  
-$lang_email_notificationplain_pt3 = "by";	  
-$lang_email_notificationplain_pt4 = "	  
+      ----------------------------------------------------------------------";
+$lang_email_notificationplain_pt3 = "by";
+$lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
       Email sent by pixelpost
 ";

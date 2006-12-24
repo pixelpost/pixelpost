@@ -1,10 +1,9 @@
 <?php
-
 /*
 
 lang-persian.php
 ================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -16,12 +15,12 @@ WWW: http://www.raminia.com
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Robert Prouse, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Robert Prouse, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 ______________________________________________________________________________
 
@@ -68,6 +67,7 @@ $lang_comment_page_title    = "يادداشت";
 $lang_comment_popup         = "يادداشت‌ها";
 $lang_message_banned_comment     = "Your comment is not saved! It contains one or more banned words/email/ips.";
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
+$lang_tags                      = "Tags:<br/>";
 
 // EXIF DATA
 $lang_exposure              = "Exposure:";
@@ -117,28 +117,28 @@ $lang_email_notification_subject = "New Comment";
 $lang_email_notification_pt1 = "
 	  Hello,<br>
       A new comment has been made at your photoblog.<br><br>
-	  ";	  
+	  ";
 $lang_email_notification_pt2 = "
       <br>
       The comment is: <br>
       ----------------------------------------------------------------------<br>
-	  ";	  
-$lang_email_notification_pt3 = "by";  
-$lang_email_notification_pt4 = "	  
+	  ";
+$lang_email_notification_pt3 = "by";
+$lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
       Email sent by pixelpost<br>
 ";
 $lang_email_notificationplain_pt1 = "
 	  Hello,
-      A new comment has been made at your photoblog.";	  
+      A new comment has been made at your photoblog.";
 $lang_email_notificationplain_pt2 = "
       The comment is:
-      ----------------------------------------------------------------------";	  
-$lang_email_notificationplain_pt3 = "by";	  
-$lang_email_notificationplain_pt4 = "	  
+      ----------------------------------------------------------------------";
+$lang_email_notificationplain_pt3 = "by";
+$lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
       Email sent by pixelpost
 ";
-// Error Message 
+// Error Message
 $lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
 ?>

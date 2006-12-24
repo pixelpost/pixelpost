@@ -3,7 +3,7 @@
 
 lang-polish.php
 ===============
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -15,13 +15,13 @@ WWW: http://blog.piotrgalas.com/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr Galas aka GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Please check that the file "admin-lang-polish.php" is uploaded to the
@@ -72,7 +72,7 @@ $lang_comment_page_title			= "Komentarz";
 $lang_comment_popup						= "Komentarze";
 $lang_message_banned_comment  = "Komentarz nie został zapisany! Zawiera on jedno lub więcej zabronionych słów/emaili/IP.";
 $lang_comment_popup_disabled  = "Komentarze dla tego obrazka zostały wyłączone";
-$lang_tags                    = "Tagi";
+$lang_tags                    = "Tagi:<br/>$lang_tags\1= "Tags:<br/>";";
 
 // EXIF DATA
 $lang_exposure              = "Ekspozycja:";
@@ -117,29 +117,29 @@ $lang_email_notification_subject = "Nowy komentarz";
 $lang_email_notification_pt1 = "
 	  Witaj,<br>
       Na Twoim photoblogu został dodany nowy komentarz.<br><br>
-	  ";	  
+	  ";
 $lang_email_notification_pt2 = "
       <br>
       Treść komentarza: <br>
       ----------------------------------------------------------------------<br>
-	  ";	  
-$lang_email_notification_pt3 = "przez";  
-$lang_email_notification_pt4 = "	  
+	  ";
+$lang_email_notification_pt3 = "przez";
+$lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
       Email wysłany przez pixelposta<br>
 ";
 $lang_email_notificationplain_pt1 = "
 	  Witaj,
-      Na Twoim photoblogu został dodany nowy komentarz.";	  
+      Na Twoim photoblogu został dodany nowy komentarz.";
 $lang_email_notificationplain_pt2 = "
       Treść komentarza:
-      ----------------------------------------------------------------------";	  
-$lang_email_notificationplain_pt3 = "przez";	  
-$lang_email_notificationplain_pt4 = "	  
+      ----------------------------------------------------------------------";
+$lang_email_notificationplain_pt3 = "przez";
+$lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
       Email wysłany przez pixelposta
 ";
 
-// Error Message 
+// Error Message
 $lang_nothing_to_show             = "Już niebawem! Obecnie jeszcze nie ma czego oglądać!";
 ?>

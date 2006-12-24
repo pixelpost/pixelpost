@@ -3,20 +3,20 @@
 
 admin-lang-english.php : english (default) language file for Pixelpost-Admin-Section
 ===================================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 Attention:
 ============
@@ -74,16 +74,16 @@ $admin_lang_pw_title           = "Pixelpost Recupero Password";
 $admin_lang_pw_wronguser	   = "Lo username indicato non &egrave; quello dell&prime;amministratore di Pixelpost.";
 $admin_lang_pw_back            = "Torna alla pagina di admin";
 $admin_lang_pw_noemail         = "Non hai inserito alcun indirizzo email! \n<br />
-				                 Se non hai idea della tua password, scrivi nel <a href='http://forum.pixelpost.org/'>forum di Pixelpost</a> 
+				                 Se non hai idea della tua password, scrivi nel <a href='http://forum.pixelpost.org/'>forum di Pixelpost</a>
 				                 una richiesta di aiuto.\n<br />";
 $admin_lang_pw_notsent         = "Nessun invio! \n<br /> L'indirizzo email inserito &egrave; diverso da quello che hai indicato nel pannello di amministrazione.<br />";
 $admin_lang_pw_subject	       = "Messaggio di Recupero Password di Pixelpost";
-$admin_lang_pw_usertext	 	   = "Il tuo username:"; 
+$admin_lang_pw_usertext	 	   = "Il tuo username:";
 $admin_lang_pw_mailtext		   = "Il tuo indirizzo email:";
 $admin_lang_pw_newpw	       = "La tua nuova password:";
 $admin_lang_pw_text_1		   = "Recupero password di Pixelpost";
 $admin_lang_pw_text_2		   = "Da: sezione di amministrazione di Pixelpost";
-$admin_lang_pw_text_3		   = "Il tuo username e la tua nuova password sono stati inviati al tuo indirizzo email. \n<br /> 
+$admin_lang_pw_text_3		   = "Il tuo username e la tua nuova password sono stati inviati al tuo indirizzo email. \n<br />
 				                 Controlla il tuo indirizzo email ";
 $admin_lang_pw_text_4 		   = "<span style='color:red;'>Errore! Qualcosa non ha funzionato! \n<br />
 				                 Indirizzo email e username forniti sono OK ma non &egrave; stato possibile inviare la email! \n<br />
@@ -386,7 +386,7 @@ $admin_lang_spam_com_del    = "Passati: i commenti che contengono parole/IP pres
 $admin_lang_spam_err_8      = "Errore nella cancellazione dei visitatori durante il confronto con la ban list dei referer: ";
 $admin_lang_spam_visit_del  = "I visitatori con parole/IP presenti nella bad-referer-list sono cancellati.";
 
-// Spam 
+// Spam
 $admin_lang_spam_ban        = "Aggiorna le Liste di Esclusione (Ban List)";
 $admin_lang_spam_content    = "	Aggiungi liste di parole/IP/nomi da escludere nei box sottostanti, una parola per linea.<br/>\n
 				Qualsiasi commento contenente una parola, un indirizzo IP, o un nome presente nella lista di moderazione sar&agrave; inviato alla coda di moderazione.<br/>\n

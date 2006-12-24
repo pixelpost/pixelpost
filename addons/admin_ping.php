@@ -1,7 +1,7 @@
 <?php
-// Admin-Ping addon for Pixelpost 1.5 
+// Admin-Ping addon for Pixelpost 1.5
 // Version 1.0
-// 
+//
 // SVN file version:
 // $Id$
 //
@@ -17,8 +17,8 @@ variable name, $addon_function_name.
 example:
 	add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);
 description:
-	This addes a function $addon_function_name to a place in admin area with anchor named in 
-	$addon_workspace, in $addon_menu and submenu $addon_admin_submenu. If your function does 
+	This addes a function $addon_function_name to a place in admin area with anchor named in
+	$addon_workspace, in $addon_menu and submenu $addon_admin_submenu. If your function does
 	not need any menu/submenu you can pass empty strings for each.
 
 
@@ -30,7 +30,7 @@ This is the only way that these addons are distinguished and included inside
 admin/index.php.
 
 4 - If you need variables of the admin files, you can access them as "global" inside
-the custom function of the addon. 
+the custom function of the addon.
 (In later versions, This should be changed by some safer methods)
 
 
@@ -51,44 +51,47 @@ if( isset($_GET['x']) && $_GET['x']=='save')
 	include_once('../includes/IXR_Library.inc');
 	$pinglist ='';
 }
+
 // Admin page
-if( isset( $_GET['view'] ) && $_GET['view']=='addons' )
+if( isset( $_GET['view']) && $_GET['view']=='addons')
 {
-
-
-// Check to see if the ban table exists, if not, create it
-$query = "SELECT id FROM {$pixelpost_db_prefix}ping LIMIT 1";
-if( !mysql_query( $query ) ) {
-  $query = "CREATE TABLE {$pixelpost_db_prefix}ping (
-	  id INT(11) NOT NULL auto_increment,
-	  pinglist MEDIUMTEXT NOT NULL default '',
-	  PRIMARY KEY  (id)
-	)";
-  mysql_query( $query );
- // $query = "INSERT INTO {$pixelpost_db_prefix}ping VALUES ( NULL, 'http://rpc.pingomatic.com/\nhttp://rpc.blogrolling.com/pinger/\nhttp://ping.blo.gs/' )";
- // mysql_query( $query );
+	// Check to see if the ban table exists, if not, create it
+	$query = "SELECT id FROM {$pixelpost_db_prefix}ping LIMIT 1";
+	if( !mysql_query( $query))
+	{
+	  $query = "CREATE TABLE {$pixelpost_db_prefix}ping (
+		  id INT(11) NOT NULL auto_increment,
+		  pinglist MEDIUMTEXT NOT NULL default '',
+		  PRIMARY KEY  (id)
+		)";
+	  mysql_query( $query);
+	 // $query = "INSERT INTO {$pixelpost_db_prefix}ping VALUES ( NULL, 'http://rpc.pingomatic.com/\nhttp://rpc.blogrolling.com/pinger/\nhttp://ping.blo.gs/')";
+	 // mysql_query( $query);
 	}
 
 	// Update the ban list if the form is called
-	if( isset( $_POST['pinglistupdate'] ) && isset( $_POST['pinglist'] ) ) {
-		$pinglist = str_replace( "\r\n", "\n", $_POST['pinglist'] );
-		$pinglist = str_replace( "\r", "\n", $pinglist );
-		if(version_compare(phpversion(),"4.3.0")=="-1") {
-			 $pinglist = mysql_escape_string($pinglist);
-		 } else {
-			 $pinglist = mysql_real_escape_string($pinglist);
-		 }
+	if( isset( $_POST['pinglistupdate']) && isset( $_POST['pinglist']))
+	{
+		$pinglist = str_replace( "\r\n", "\n", $_POST['pinglist']);
+		$pinglist = str_replace( "\r", "\n", $pinglist);
+		if(version_compare(phpversion(),"4.3.0")=="-1")	$pinglist = mysql_escape_string($pinglist);
+		else	$pinglist = mysql_real_escape_string($pinglist);
+
 		$query = "UPDATE {$pixelpost_db_prefix}ping SET pinglist='$pinglist' LIMIT 1";
-		mysql_query($query) or die( mysql_error() );
+		mysql_query($query) or die( mysql_error());
 	}
 
 	// Get the ban list
 	$query = "SELECT pinglist FROM {$pixelpost_db_prefix}ping LIMIT 1";
-	$result = mysql_query($query) or die( mysql_error() );
-	if( $row = mysql_fetch_row($result) ) {
+	$result = mysql_query($query) or die( mysql_error());
+
+	if( $row = mysql_fetch_row($result))
+	{
 		$pinglist = $row[0];
-		$pinglistarray = explode( "\n", $pinglist );
-	} else {
+		$pinglistarray = explode( "\n", $pinglist);
+	}
+	else
+	{
 		$pinglist = '';
 		$pinglistarray = array();
 	}
@@ -119,7 +122,7 @@ $addon_workspace = "image_uploaded";
 // menu where the addon should appear in admin panel. in this case: images menu
 $addon_menu = "";
 
-// What would be the title of submenu of this addon: 
+// What would be the title of submenu of this addon:
 $addon_admin_submenu = "";
 
 // What is the function
@@ -127,7 +130,8 @@ $addon_function_name = "do_pings";
 
 // Check to see if the ban table exists, if exist add the admin function
 $query = "SELECT id FROM {$pixelpost_db_prefix}ping LIMIT 1";
-if( mysql_query( $query ) ) {
+if( mysql_query( $query))
+{
 	// add the function
 	add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);
 }
@@ -138,11 +142,14 @@ function do_pings()
 	global $pixelpost_db_prefix;
 	// Get the ban list
 	$query = "SELECT pinglist FROM {$pixelpost_db_prefix}ping LIMIT 1";
-	$result = mysql_query($query) or die( mysql_error() );
-	if( $row = mysql_fetch_row($result) ) {
+	$result = mysql_query($query) or die( mysql_error());
+	if( $row = mysql_fetch_row($result))
+	{
 		$pinglist = $row[0];
-		$pinglistarray = explode( "\n", $pinglist );
-	} else {
+		$pinglistarray = explode( "\n", $pinglist);
+	}
+	else
+	{
 		$pinglist = '';
 		$pinglistarray = array();
 	}
@@ -150,8 +157,7 @@ function do_pings()
 	foreach ($pinglistarray as $ping)
 	{
 		$ping = trim($ping);
-		if ($ping!='')
-			weblog_pings($ping);
+		if ($ping!='')	weblog_pings($ping);
 	}
 
 }
@@ -167,20 +173,16 @@ function weblog_pings($server = '', $path = '')
 
 	// when set to true, this outputs debug messages by itself
 	$client->debug = false;
-	$home = trailingslashit( $cfgrow['siteurl'] );
+	$home = trailingslashit( $cfgrow['siteurl']);
 
 	$r = $client->query('weblogUpdates.ping', $cfgrow['sitetitle'], $home);
-	if ($r)
-		echo "<div class='content'>". $server ." is pinged! </div>";
-
-
+	if ($r)	echo "<div class='content'>". $server ." is pinged! </div>";
 }
 
 function trailingslashit($string)
 {
-    if ( '/' != substr($string, -1)) {
-        $string .= '/';
-    }
-    return $string;
+  if ( '/' != substr($string, -1))	$string .= '/';
+
+  return $string;
 }
 ?>

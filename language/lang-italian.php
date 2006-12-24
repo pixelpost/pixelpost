@@ -1,9 +1,9 @@
 <?php
-
 /*
+
 lang-italian.php
 ================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -14,12 +14,12 @@ WWW: http://www.roomk.it
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 ______________________________________________________________________________
@@ -71,7 +71,7 @@ $lang_comment_page_title      = "Commento";
 $lang_comment_popup           = "Commenti";
 $lang_message_banned_comment  = "Il vostro commento non &egrave; stato accettato! Contiene una o pi&ugrave; parole/email/ip vietati.";
 $lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
-$lang_tags                    = "Tags";
+$lang_tags                    = "Tags:<br/>";
 
 // EXIF DATA
 $lang_exposure              = "Esposizione:";
@@ -114,17 +114,17 @@ $lang_december            = "Dicembre";
 // Email Notification
 
 $lang_email_notification_subject = "Nuovo Commento";
-$lang_email_notification_pt1 = "Ciao,<br />Il tuo photoblog ha ricevuto un nuovo commento.<br /><br />";	  
-$lang_email_notification_pt2 = "<br />Il commento &egrave;: <br />\n----------------------------------------------------------------------<br />";	  
-$lang_email_notification_pt3 = "da";  
+$lang_email_notification_pt1 = "Ciao,<br />Il tuo photoblog ha ricevuto un nuovo commento.<br /><br />";
+$lang_email_notification_pt2 = "<br />Il commento &egrave;: <br />\n----------------------------------------------------------------------<br />";
+$lang_email_notification_pt3 = "da";
 $lang_email_notification_pt4 = "----------------------------------------------------------------------    <br />
                                Email inviata da Pixelpost<br />";
-$lang_email_notificationplain_pt1 = "Ciao,\n\Il tuo photoblog ha ricevuto un nuovo commento.";	  
-$lang_email_notificationplain_pt2 = "Il commento &egrave;:\n----------------------------------------------------------------------";	  
-$lang_email_notificationplain_pt3 = "da";	  
+$lang_email_notificationplain_pt1 = "Ciao,\n\Il tuo photoblog ha ricevuto un nuovo commento.";
+$lang_email_notificationplain_pt2 = "Il commento &egrave;:\n----------------------------------------------------------------------";
+$lang_email_notificationplain_pt3 = "da";
 $lang_email_notificationplain_pt4 = "----------------------------------------------------------------------\nEmail inviata da Pixelpost";
 
-// Error Message 
+// Error Message
 $lang_nothing_to_show             = "Presto online! Niente da mostrare. Nessuna immagine qu&igrave;!";
 
 // End of language file

@@ -1,8 +1,9 @@
 <?php
-
 /*
 
-Pixelpost version 1.5
+lang-simplified_chinese.php
+===============
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -14,7 +15,7 @@ Pixelpost www: http://www.pixelpost.org/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org
@@ -108,6 +109,7 @@ $lang_december                  = "十二月";
 // newly added
 $lang_message_banned_comment     = "您的评论没有保存！因里面含有禁止使用的语句或电子邮件。";
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
+$lang_tags                       = "Tags:<br/>";
 
 // Email Notification
 
@@ -115,25 +117,25 @@ $lang_email_notification_subject = "新评论";
 $lang_email_notification_pt1 = "
 	  您好,<br>
       网站有新的评论。<br><br>
-	  ";	  
+	  ";
 $lang_email_notification_pt2 = "
       <br>
       以下是评论：<br>
       ----------------------------------------------------------------------<br>
-	  ";	  
-$lang_email_notification_pt3 = "来自";  
-$lang_email_notification_pt4 = "	  
+	  ";
+$lang_email_notification_pt3 = "来自";
+$lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
       电子邮件发自pixelpost<br>
 ";
 $lang_email_notificationplain_pt1 = "
 	  您好,
-      网站有新的评论。";	  
+      网站有新的评论。";
 $lang_email_notificationplain_pt2 = "
       以下是评论：
-      ----------------------------------------------------------------------";	  
-$lang_email_notificationplain_pt3 = "来自";	  
-$lang_email_notificationplain_pt4 = "	  
+      ----------------------------------------------------------------------";
+$lang_email_notificationplain_pt3 = "来自";
+$lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
       电子邮件发自pixelpost
 ";

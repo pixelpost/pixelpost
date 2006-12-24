@@ -1,39 +1,9 @@
 <?php
-/*
+// ##########################################################################################//
+// SVN file version:
+// $Id$
+// ##########################################################################################//
 
-Pixelpost version 1.5
-
-SVN file version:
-$Id$
-
-Pixelpost www: http://www.pixelpost.org/
-
-Version 1.5:
-Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
-Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
-
-Contact: thecrew@pixelpost.org
-Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
-
-
-License: http://www.gnu.org/copyleft/gpl.html
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-*/
 // ##########################################################################################//
 // SAVE COMMENT
 // ##########################################################################################//
@@ -59,7 +29,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			die("Die you SPAMMER!");
 		}
 	}
-// $parent_id		
+// $parent_id
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 
 	if (eregi("\r",$parent_id) || eregi("\n",$parent_id))	die("No intrusion! ?? :(");
@@ -86,30 +56,30 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$cmnt_publish_permission ='no';
 	}
 
-// $message		
+// $message
 	$message = isset($_POST['message']) ? $_POST['message'] : "";
 	$message = clean_comment($message);
 	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
 	$message = nl2br($message);
 
-// $name 	
+// $name
 	$name = isset($_POST['name']) ? $_POST['name'] : "";
 	if (eregi("\r",$name) || eregi("\n",$name))	die("No intrusion! ?? :(");
-	$name = clean_comment($name);	
+	$name = clean_comment($name);
 
-// $url 	
+// $url
 	$url = isset($_POST['url']) ? $_POST['url'] : "";
 	if(eregi("\r",$url) || eregi("\n",$url))	die("No intrusion! ?? :(");
 	if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
 	$url = clean_comment($url);
 
-// $parent_name		
+// $parent_name
 	$parent_name = isset($_POST['parent_name']) ? $_POST['parent_name'] : "";
 	if (eregi("\r",$parent_name) || eregi("\n",$parent_name))	die("No intrusion! ?? :(");
-	$parent_name = clean_comment($parent_name);	
+	$parent_name = clean_comment($parent_name);
 
 
-// $email 		
+// $email
 	$email = isset($_POST['email']) ? clean_comment($_POST['email']) : "";
 	if (eregi("\r",$email) || eregi("\n",$email))	die("No intrusion! ?? :(");
 
@@ -118,7 +88,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$onlyone = $email;
 	$numberofats = substr_count("$onlyone", "@");
 	if ($numberofats > 1)	die("only one email-adress allowed");
-	
+
 	// Ramin added more protections
 	if (eregi("Content-Transfer-Encoding", $_POST['parent_name'] . $_POST['email'] . $_POST['url'] . $_POST['name'] . $_POST['message'] . $_POST['parent_id']))	die("SPAM Injection Error :(");
 	if (eregi ("MIME-Version", $_POST['parent_name'] . $_POST['email'] . $_POST['url'] . $_POST['name'] . $_POST['message'] . $_POST['parent_id']))	die("SPAM Injection Error :(");
@@ -127,7 +97,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 	if($message == "")	$extra_message = "<b>$lang_message_missing_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	
+
 	if($name == "")	$extra_message = "<b>$lang_message_missing_name</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 	if(($parent_id != "") and ($message != "") and ($name != ""))
@@ -194,7 +164,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			$body .= "\n\n$lang_email_notificationplain_pt4";
 			$headers = "Content-type: text/plain; charset=UTF-8\n";
 			$headers .= "Content-Transfer-Encoding: 8bit\n";
-	
+
 			if ($comment_email!="")	$headers .= "From: $comment_name<$comment_email>\n";
 			else $headers .= "From: PIXELPOST <$admin_email>\n";
 

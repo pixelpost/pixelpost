@@ -68,7 +68,7 @@ if($_GET['view'] == "images")
 				$query = "DELETE FROM ".$pixelpost_db_prefix."catassoc ";
 				$where = "WHERE";
 				for ($i=0; $i < count($idz); $i++)
-				{	$where .= " (cat_id='$cat_id' and image_id='$idz[$i]' ) or ";	}
+				{	$where .= " (cat_id='$cat_id' and image_id='$idz[$i]') or ";	}
 
 				$where .= " 0 ";
 				$query .= $where;
@@ -88,7 +88,7 @@ if($_GET['view'] == "images")
 					$query = "DELETE FROM ".$pixelpost_db_prefix."catassoc ";
 					$where = "WHERE";
 					for ($i=0; $i < count($idz); $i++)
-					{	$where .= " (cat_id='$cat_id' and image_id='$idz[$i]' ) or ";	}
+					{	$where .= " (cat_id='$cat_id' and image_id='$idz[$i]') or ";	}
 
 					$where .= " 0 ";
 					$query .= $where;

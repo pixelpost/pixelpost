@@ -19,12 +19,13 @@ DHTML library from DHTMLCentral.com
 // Detect browser
 var ua = navigator.userAgent.toLowerCase();
 
-function detectbw(text) {
+function detectbw(text)
+{
    stringposition = ua.indexOf(text) + 1;
    data = text;
    return stringposition;
-   }
-   
+}
+
 //Browsercheck (needed) ***************
 function lib_bwcheck(){
   this.ver=navigator.appVersion
@@ -44,11 +45,14 @@ function lib_bwcheck(){
 bw=new lib_bwcheck() //Browsercheck object
 
 //Debug function ******************
-function lib_message(txt){//alert(txt); 
-return false}
+function lib_message(txt)
+{//alert(txt);
+	return false
+}
 
 //Lib objects  ********************
-function lib_obj(obj,nest){
+function lib_obj(obj,nest)
+{
   if(!bw.bw) return lib_message('Old browser')
   nest=(!nest) ? "":'document.'+nest+'.'
   this.evnt=bw.dom? document.getElementById(obj):
@@ -64,10 +68,11 @@ function lib_obj(obj,nest){
   this.h=this.evnt.offsetHeight||this.css.clip.height||
     this.ref.height||this.css.pixelHeight||0
   this.c=0 //Clip values
-  if((bw.dom || bw.ie4) && this.css.clip) {
-  this.c=this.css.clip; this.c=this.c.slice(5,this.c.length-1);
-  this.c=this.c.split(' ');
-  for(var i=0;i<4;i++){this.c[i]=parseInt(this.c[i])}
+  if((bw.dom || bw.ie4) && this.css.clip)
+	{
+	  this.c=this.css.clip; this.c=this.c.slice(5,this.c.length-1);
+	  this.c=this.c.split(' ');
+	  for(var i=0;i<4;i++){this.c[i]=parseInt(this.c[i])}
   }
   this.ct=this.css.clip.top||this.c[0]||0;
   this.cr=this.css.clip.right||this.c[1]||this.w||0
@@ -78,26 +83,31 @@ function lib_obj(obj,nest){
 }
 
 //Moving object to **************
-lib_obj.prototype.moveIt = function(x,y){
+lib_obj.prototype.moveIt = function(x,y)
+{
   this.x=x;this.y=y; this.css.left=x+'px';this.css.top=y+'px';
 }
 
 //Clipping object to ******
-lib_obj.prototype.clipTo = function(t,r,b,l,setwidth){
+lib_obj.prototype.clipTo = function(t,r,b,l,setwidth)
+{
   this.ct=t; this.cr=r; this.cb=b; this.cl=l
-  if(bw.ns4){
+  if(bw.ns4)
+  {
     this.css.clip.top=t;this.css.clip.right=r
     this.css.clip.bottom=b;this.css.clip.left=l
-  }else{
-    if(t<0)t=0;if(r<0)r=0;if(b<0)b=0;if(b<0)b=0;    
+  }
+  else
+  {
+    if(t<0)t=0;if(r<0)r=0;if(b<0)b=0;if(b<0)b=0;
     // make it compatilbe with firefox/omniweb/safari browsers
     if (detectbw('firefox')|| detectbw('omniweb')|| detectbw('safari'))
-    { 
+    {
 	    this.css.clip="rect("+t+"px,"+r+"px,"+b+"px,"+l+"px)";
 	    if(setwidth){this.css.pixelWidth=this.css.width=r+'px';
 	    this.css.pixelHeight=this.css.height=b+'px';}
   	}
-  else
+  	else
   	{// Opera7/IE6/...
     	this.css.clip="rect("+t+","+r+","+b+","+l+")";
 	    if(setwidth){this.css.pixelWidth=this.css.width=r;

@@ -2,7 +2,7 @@
 
 /*
 
-Pixelpost version 1.5
+Pixelpost version 1.6
 Datetime addon version 1.1
 
 SVN file version:

@@ -44,7 +44,7 @@ if($_GET['view'] == "comments") {
  		}
 
 	 // Mass SPAM-delete comments
-		if($_GET['action'] == "spamdelete" && isset($_POST['moderate_commnts_boxes']) ) {
+		if($_GET['action'] == "spamdelete" && isset($_POST['moderate_commnts_boxes'])) {
 		$idz= $_POST['moderate_commnts_boxes'];
 
 		foreach ($idz as $id){
@@ -57,14 +57,14 @@ if($_GET['view'] == "comments") {
 
 		// update the blaklist	ips
 		$blacklist = get_blacklist();
-		if (count($blacklist)>2 && $blacklist(count($blacklist)-1)!="n" && $blacklist(count($blacklist)-2)!= "\\" );
+		if (count($blacklist)>2 && $blacklist(count($blacklist)-1)!="n" && $blacklist(count($blacklist)-2)!= "\\");
 			$blacklist .= "\n";
 		foreach ($row as $bad_ip){
 			$blacklist .="$bad_ip\n";
 			}
 
-		$banlist = str_replace( "\r\n", "\n", $blacklist );
-		$banlist = str_replace( "\r", "\n", $banlist );
+		$banlist = str_replace( "\r\n", "\n", $blacklist);
+		$banlist = str_replace( "\r", "\n", $banlist);
 		if(version_compare(phpversion(),"4.3.0")=="-1") {
 			 $banlist = mysql_escape_string($banlist);
 		 } else {
@@ -72,18 +72,18 @@ if($_GET['view'] == "comments") {
 		 }// end if
 		$query = "UPDATE {$pixelpost_db_prefix}banlist SET blacklist='$banlist' LIMIT 1";
 		mysql_query($query) ;
-		if ( mysql_error() )
+		if ( mysql_error())
 			$result .= "$admin_lang_cmnt_error_blacklist".mysql_error()."<br/>";
 
 		// update relist ips
 		$ref_banlist = get_ref_ban_list();
-		if (count($ref_banlist)>2 && $blacklist(count($ref_banlist)-1)!="n" && $blacklist(count($ref_banlist)-2)!= "\\" );
+		if (count($ref_banlist)>2 && $blacklist(count($ref_banlist)-1)!="n" && $blacklist(count($ref_banlist)-2)!= "\\");
 			$ref_banlist .= "\n";
 		foreach ($row as $bad_ip){
 			$ref_banlist .="$bad_ip\n";
 		}
-		$banlist = str_replace( "\r\n", "\n", $ref_banlist );
-		$banlist = str_replace( "\r", "\n", $banlist );
+		$banlist = str_replace( "\r\n", "\n", $ref_banlist);
+		$banlist = str_replace( "\r", "\n", $banlist);
 		if(version_compare(phpversion(),"4.3.0")=="-1") {
 			 $banlist = mysql_escape_string($banlist);
 		 } else {
@@ -91,7 +91,7 @@ if($_GET['view'] == "comments") {
 		 }// end if
 		$query = "UPDATE {$pixelpost_db_prefix}banlist SET ref_ban_list='$banlist' LIMIT 1";
 		mysql_query($query) ;
-		if ( mysql_error() )
+		if ( mysql_error())
 			$result .= "$admin_lang_cmnt_error_banlist".mysql_error()."<br/>";
 
 
@@ -264,7 +264,7 @@ if($_GET['view'] == "comments") {
 
 
 	  // to show page number and link to next and previous pages
-    if($pixelpost_commentnumb > $_SESSION['numimg_pp'] )
+    if($pixelpost_commentnumb > $_SESSION['numimg_pp'])
     {
 	    	$pagecounter = 0;
 	    	$pcntr = 0;

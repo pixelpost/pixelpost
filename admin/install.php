@@ -1,7 +1,7 @@
 <?php
-
 /*
-Pixelpost version 1.5
+
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -10,7 +10,7 @@ Pixelpost www: http://www.pixelpost.org/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org
@@ -42,8 +42,8 @@ mysql_connect($pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass) || die
 mysql_select_db($pixelpost_db_pixelpost) || die("Error: ". mysql_error());
 
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
-$installed_version = Get_Pixelpost_Version( $pixelpost_db_prefix );
-if( $installed_version == 1.514 ) {
+$installed_version = Get_Pixelpost_Version( $pixelpost_db_prefix);
+if( $installed_version == 1.514) {
     header("Location: index.php");
     exit;
 }
@@ -124,16 +124,16 @@ $prefix = $pixelpost_db_prefix;
 <?php
 
 // This is where the fun starts and the work happens.  Hold on tight...
-switch( $installed_version ) {
+switch( $installed_version) {
 	case 0:	// Not installed
-		Create13Tables( $prefix );
+		Create13Tables( $prefix);
 		Set_Configuration($prefix);
 		// Do not break, fall through to the next case statement
 	case 1.3:	// Installed 1.3 or earlier
-		UpgradeTo14( $prefix );
-		if( $installed_version == 1.3 )
+		UpgradeTo14( $prefix);
+		if( $installed_version == 1.3)
 		{
-			ConvertPassword( $prefix );
+			ConvertPassword( $prefix);
 		}
 
 		// Do not break, fall through to the next case statement

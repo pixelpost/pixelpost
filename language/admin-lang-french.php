@@ -3,7 +3,7 @@
 
 admin-lang-fench.php : french language file for Pixelpost-Admin-Section
 ===================================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -14,12 +14,12 @@ Contact: phdurand@yahoo.com
 WWW: http://www.photofloue.net
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
@@ -74,16 +74,16 @@ $admin_lang_pw_title          = "R&eacute;cup&eacute;ration de votre mot de pass
 $admin_lang_pw_wronguser      = "Le nom d'utilisateur que vous avez entr&eacute; n'est pas celui de l'administrateur de Pixelpost.";
 $admin_lang_pw_back           =  "Retour &agrave; la page d'administration";
 $admin_lang_pw_noemail        = "Vous n'avez pas entr&eacute; d'adresse email ! \n<br />
-                                 Si vous n'avez aucune id&eacute;e de votre mot de passe, laissez un message dans le  <a href='http://forum.pixelpost.org/'>forum Pixelpost</a> 
+                                 Si vous n'avez aucune id&eacute;e de votre mot de passe, laissez un message dans le  <a href='http://forum.pixelpost.org/'>forum Pixelpost</a>
                                  pour obtenir de l'aide.\n<br />";
 $admin_lang_pw_notsent        = "Rien envoy&eacute; ! \n<br /> L'adresse email indiqu&eacute;e n'est pas celle de l'administrateur.<br />";
 $admin_lang_pw_subject        = "Message de r&eacute;cup&eacute;ration de votre mot de passe Pixelpost";
-$admin_lang_pw_usertext       = "Votre nom :"; 
+$admin_lang_pw_usertext       = "Votre nom :";
 $admin_lang_pw_mailtext       = "Votre adresse email :";
 $admin_lang_pw_newpw          = "Votre nouveau mot de passe :";
 $admin_lang_pw_text_1         = "R&eacute;cup&eacute;ration de votre mot de passe Pixelpost";
 $admin_lang_pw_text_2         = "De : Administration de Pixelpost";
-$admin_lang_pw_text_3         = "Un email est envoy&eacute; &agrave; votre adresse, avec votre nom d'utilisateur et un nouveau mot de passe. \n<br /> 
+$admin_lang_pw_text_3         = "Un email est envoy&eacute; &agrave; votre adresse, avec votre nom d'utilisateur et un nouveau mot de passe. \n<br />
                                  V&eacute;rifiez votre boite aux lettres : ";
 $admin_lang_pw_text_4         = "<span style='color:red;'>Erreur! Il y a eu un probl&egrave;me ! \n<br />
                                 L'adresse email et le nom d'utilisateur sont les bons, mais il n'est pas possible d'envoyer un mail. \n<br />
@@ -402,5 +402,5 @@ $admin_lang_spam_updateblacklist = "Mettre &agrave; jour toutes les listes";
 // Error Message
 $lang_nothing_to_show            = "Revenez bient&ocirc;t, il n'y a pas encore d'image ici !";
 
-// End of Admin-Language file 
+// End of Admin-Language file
 ?>

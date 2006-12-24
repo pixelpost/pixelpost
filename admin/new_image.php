@@ -235,13 +235,13 @@ if($_GET['view'] == "")
              $_POST['post_hour'].":".
              $_POST['post_minute'].":".date('s');
 
-		if( $_POST['autodate'] == 1 )
+		if( $_POST['autodate'] == 1)
 		{
 			$query = mysql_query("select datetime + INTERVAL 1 DAY from ".$pixelpost_db_prefix."pixelpost order by datetime desc limit 1");
 			$row = mysql_fetch_row($query);
-			if( $row ) $datetime = $row[0];	// If there is none, will default to the other value
+			if( $row) $datetime = $row[0];	// If there is none, will default to the other value
 		}
-		else if( $_POST['autodate'] == 2 )
+		else if( $_POST['autodate'] == 2)
 		{
 			$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
 		}

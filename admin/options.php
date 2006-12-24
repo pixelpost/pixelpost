@@ -806,8 +806,8 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 	$ref_list		= get_ref_ban_list();
 
 	$query = "SELECT acceptable_num_links FROM {$pixelpost_db_prefix}banlist LIMIT 1";
-	$result = mysql_query($query) or die( mysql_error() );
-	if( $row = mysql_fetch_row($result) )
+	$result = mysql_query($query) or die( mysql_error());
+	if( $row = mysql_fetch_row($result))
 		$acceptable_num_links = $row[0];
 
 	// htaccess stuff
@@ -854,7 +854,7 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 		</form>
 		$additional_msg
 		";
-		if( isset( $_POST['banlistupdate'] ) ){
+		if( isset( $_POST['banlistupdate'])){
 			$HTML .="
 			<div id='htaccess-deny' >
 			$admin_lang_spam_blacklist_text
@@ -884,7 +884,7 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 		    $referer_print = "<ul><li>&nbsp;</li>";
 		    // only count referers from the last seven days
 		    gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])); // current date+time
-		    $from_date = mktime(0,0,0,gmdate("m",time()+(3600 * $cfgrow['timezone'])) ,gmdate("d",time()+(3600 * $cfgrow['timezone'])) -7,gmdate("Y",time()+(3600 * $cfgrow['timezone'])) );
+		    $from_date = mktime(0,0,0,gmdate("m",time()+(3600 * $cfgrow['timezone'])) ,gmdate("d",time()+(3600 * $cfgrow['timezone'])) -7,gmdate("Y",time()+(3600 * $cfgrow['timezone'])));
 		    $from_date = strftime("%Y-%m-%d", $from_date);
 		    $from_date = "$from_date 00:00:00";
 		    $referer = "";

@@ -132,7 +132,7 @@ echo "
     $referer_print = "<ul>";
     // only count referers from the last seven days
     gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])); // current date+time
-    $from_date = mktime(0,0,0,gmdate("m",time()+(3600 * $cfgrow['timezone'])) ,gmdate("d",time()+(3600 * $cfgrow['timezone'])) -7,gmdate("Y",time()+(3600 * $cfgrow['timezone'])) );
+    $from_date = mktime(0,0,0,gmdate("m",time()+(3600 * $cfgrow['timezone'])) ,gmdate("d",time()+(3600 * $cfgrow['timezone'])) -7,gmdate("Y",time()+(3600 * $cfgrow['timezone'])));
     $from_date = strftime("%Y-%m-%d", $from_date);
     $from_date = "$from_date 00:00:00";
     $referer = "";

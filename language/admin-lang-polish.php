@@ -3,7 +3,7 @@
 
 admin-lang-polish.php : polish language file for PixelPost-Admin-Section
 ========================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -15,13 +15,13 @@ WWW: http://blog.piotrgalas.com/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr Galas aka GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Please check that the file "admin-lang-polish.php" is uploaded to the
@@ -97,12 +97,12 @@ $admin_lang_pw_noemail   = "Nie wprowadzono wymaganego adresu email! \n<br />
   Jeśli nie masz pojęcia o haśle, to napisz z prośbą o pomoc na <a href='http://www.pixelpost.org/forum'>forum Pixelposta</a>.\n<br />";
 $admin_lang_pw_notsent   = "Nic nie wysłano! \n<br /> Wprowadzony adres email nie jest zgodny z wprowadzonym w panelu administratora.<br />";
 $admin_lang_pw_subject   = "Pixelpost - Wiadomość Przywracania Hasła";
-$admin_lang_pw_usertext  = "Nazwa użytkownika:"; 
+$admin_lang_pw_usertext  = "Nazwa użytkownika:";
 $admin_lang_pw_mailtext  = "Adres email:";
 $admin_lang_pw_newpw     = "Nowe hasło:";
 $admin_lang_pw_text_1    = "Przywracanie hasła przez Pixelposta";
 $admin_lang_pw_text_2    = "From: PIXELPOST - Sekcja Administratora";
-$admin_lang_pw_text_3    = "Na podany adres email została wysłana wiadomość z loginem i nowym hasłem. \n<br /> 
+$admin_lang_pw_text_3    = "Na podany adres email została wysłana wiadomość z loginem i nowym hasłem. \n<br />
   Sprawdź pocztę email o adresie ";
 $admin_lang_pw_text_4    = "<span style='color:red;'>Błąd! Coś się wydarzyło! \n<br />
   Wprowadzony adres email oraz nazwa użytkownika są prawidłowe, ale poczta nie może być wysłana! \n<br />
@@ -420,7 +420,7 @@ $admin_lang_spam_com_del   = "Wykonano: komentarze ze słowami/adresami IP z lis
 $admin_lang_spam_err_8     = "Błąd usunięcia odwiedzających, gdy porównywano z blacklistą: ";
 $admin_lang_spam_visit_del = "Odwiedzający ze słowami/adresami IP z listy bad-referer są skasowani.";
 
-// New! 
+// New!
 $admin_lang_spam_ban             = "Lista banów";
 $admin_lang_spam_content         = "Dodaj listy zbanowanych słów/adresów IP/nazw do pól tekstowych poniżej, jedno słowo w linii.<br/>\n
   Każdy komentarz ze słowem, adresem IP lub nazwą na liście moderacji zostanie wysłany do kolejki moderacji.<br/>\n

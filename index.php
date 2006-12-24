@@ -1,16 +1,16 @@
 <?php
 /*
 
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
 
 Pixelpost www: http://www.pixelpost.org/
 
-Version 1.5:
+Version 1.6:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org
@@ -34,7 +34,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-error_reporting(E_All);
+error_reporting(0);
 ini_set('arg_separator.output', '&amp;');
 session_start();
 $PHP_SELF = "index.php";
@@ -62,16 +62,20 @@ start_mysql();
 
 
 // get config
-if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config")) {
+if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
+{
 	$upload_dir = $cfgrow['imagepath'];
-} else {
+}
+else
+{
 	$extra_message= "Coming Soon. Not Installed Yet. Cause #1";
 	show_splash($extra_message,"templates");
 	//echo "Coming Soon. Not Installed Yet.";
 	//exit;
 }
 
-if ($cfgrow['markdown'] == 'T'){
+if ($cfgrow['markdown'] == 'T')
+{
 	require("includes/markdown.php");
 }
 
@@ -86,17 +90,11 @@ if ($cfgrow['token'] == 'T'){
 }
 
 // book visitors
-if (strtolower($cfgrow['visitorbooking'])!='no')
-{
-	book_visitor($pixelpost_db_prefix."visitors");	
-	}
-	
+if (strtolower($cfgrow['visitorbooking'])!='no')	book_visitor($pixelpost_db_prefix."visitors");
 
-if(isset($mod_rewrite)&&$mod_rewrite == "1"){
-	$showprefix = "";
-} else {
-	$showprefix = "./index.php?showimage=";
-}
+
+if(isset($mod_rewrite)&&$mod_rewrite == "1")	$showprefix = "";
+else	$showprefix = "./index.php?showimage=";
 
 // refresh the addons table
 $dir = "addons/";
@@ -135,37 +133,35 @@ $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
 
 // Try to find if another language was selected or not (different ways)
 // Set a cookie to the GET arg 'lang' if it exists.
-if ( isset ($_GET['lang']) ) {
-    setcookie ('lang', $_GET['lang'], false, '/', false, 0);
-    $language_abr = $_GET['lang'];
+if(isset($_GET['lang']))
+{
+	setcookie ('lang', $_GET['lang'], false, '/', false, 0);
+	$language_abr = $_GET['lang'];
 }
 
 // Set the &language variable to session 'lang' - this variable is the one used below
 $language_abr = $_COOKIE['lang'];
 
 // Use the default language if none of the previous steps captured a language preference
-if ( !isset ($language_abr) ) {
-    $language_abr = $default_language_abr;
-}
+if(!isset($language_abr))	$language_abr = $default_language_abr;
+
 // override the language if $_GET['lang'] is set.
-if ( isset ($_GET['lang']) ) {
-    $language_abr = $_GET['lang'];
-}
+if(isset($_GET['lang']))	$language_abr = $_GET['lang'];
+
 // convert the two letter $language variable to full name of language file
 // (used in language file switch but not template switch (template uses abbreviation))
 foreach ($PP_supp_lang as $key => $row)
 {
 	foreach($row as $cell)
   {
-  	if ($cell == strtoupper($language_abr))
-    	$language_full = $key;
+  	if ($cell == strtoupper($language_abr))	$language_full = $key;
   }
 }
 
 // ##########################################################################################//
 // GET LANGUAGE FILE BASED ON LANGUAGE SELECTION
 // ##########################################################################################//
-if (file_exists("language/lang-".$language_full.".php") )
+if (file_exists("language/lang-".$language_full.".php"))
 {
 	if ( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom"))
       require("language/lang-".$language_full.".php");
@@ -190,7 +186,7 @@ if(file_exists("templates/".$cfgrow['template']."/footer.html"))
 
 // You can now add any template you want by just adding the template and a link to it.  For example,
 // ?x=about will load the template about_template.html
-if(isset($_GET['x'])&& $_GET['x'] == "ref" )
+if(isset($_GET['x'])&& $_GET['x'] == "ref")
 {
 	// Maintain backwards compatibility with the referer template
 	$_GET['x'] = "referer";
@@ -212,10 +208,10 @@ echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>4
 if ($language_full==$cfgrow['langfile'])
 	{
 		// we have our default language from the PP installation, so we use our default templates
-    if( isset($_GET['x'])&&file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html" ) )
+    if( isset($_GET['x'])&&file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html"))
     {
     	if (eregi("[.]",$_GET['x']))	die("Come on! forget about it...");
-    	
+
     	$tpl = file_get_contents("templates/".$cfgrow['template']."/".$_GET['x']."_template.html");
     }
     else
@@ -227,8 +223,8 @@ if ($language_full==$cfgrow['langfile'])
     	}
 
 	    // if the x=foo does not exist prompt it! don't show the main page anymore!
-    	if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment' )
-    	{ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html" ))
+    	if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment')
+    	{ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html"))
     			header("HTTP/1.0 404 Not Found");
     			header("Status: 404 File Not Found!");
     			// header("Location: index.php");
@@ -242,7 +238,7 @@ if ($language_full==$cfgrow['langfile'])
   else
   {
   	// we use our special designed language templates.
-  	if( isset($_GET['x'])&&file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_".$language_abr."_template.html" ) )
+  	if( isset($_GET['x'])&&file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_".$language_abr."_template.html"))
 		{
     	if (eregi("[.]",$_GET['x']))
         die("Come on! forget about it...");
@@ -256,7 +252,7 @@ if ($language_full==$cfgrow['langfile'])
         exit;
     	}
 			// if the x=foo does not exist prompt it! don't show the main page anymore!
-	    if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment' ){ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html" ))
+	    if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment'){ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html"))
             header("HTTP/1.0 404 Not Found");
             header("Status: 404 File Not Found!");
             // header("Location: index.php");
@@ -268,7 +264,7 @@ if ($language_full==$cfgrow['langfile'])
 	}
 
 if(isset($_GET['popup'])&&$_GET['popup'] == "comment")
-{	
+{
 	$tpl = file_get_contents("templates/".$cfgrow['template']."/comment_template.html");
 }
 
@@ -285,7 +281,7 @@ if (isset($_GET['showimage']) && !is_numeric($_GET['showimage'])){
 // Added ability to use header and footers for templates.  They are not needed but used if included in the template
 if(isset($header))
 	$tpl = $header . $tpl;
-if(isset($footer))	
+if(isset($footer))
 	$tpl = $tpl. $footer;
 
 // Get visitor count
@@ -335,10 +331,10 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$image_name         = $row['image'];
 	if ($language_abr == $default_language_abr) {
   	$image_title        = pullout($row['headline']);
-		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);	
+		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);
 	} else {
   	$image_title        = pullout($row['alt_headline']);
-		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['alt_body']);	
+		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['alt_body']);
   }
 	$image_title = htmlspecialchars($image_title,ENT_QUOTES);
 	$image_id           = $row['id'];
@@ -361,7 +357,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$local_height = $thumbnail_extra['1'];
 	$image_exif = $row['exif_info'];
 
-	//$image_title = htmlentities($image_title );
+	//$image_title = htmlentities($image_title);
 	$image_thumbnail = "<a href='$showprefix$image_id'><img src='thumbnails/thumb_$image_name' alt='$image_title' title='$image_title' width='$local_width' height='$local_height' /></a>";
 
 	// thumnail no link
@@ -553,7 +549,6 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$tpl = ereg_replace("<IMAGE_NEXT_ID>",$image_next_id,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_TITLE>",$image_next_title,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_THUMBNAIL>",$image_next_thumbnail,$tpl);
-	
 
 	// get number of comments
 	$cnumb_row = sql_array("SELECT count(*) as count FROM ".$pixelpost_db_prefix."comments WHERE parent_id='$image_id' and publish='yes'");
@@ -643,8 +638,10 @@ $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
 if ($row['comments'] == 'F')
 {
-	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);	
-} else {
+	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);
+}
+else
+{
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
 }
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
@@ -659,8 +656,9 @@ require("includes/functions_comments.php");
 // REPLACE LANGUAGE SPECIFIC TAGS
 // ##########################################################################################//
 
-if ($cfgrow['altlangfile'] != 'Off'){
-	$tpl = replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow );
+if ($cfgrow['altlangfile'] != 'Off')
+{
+	$tpl = replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow);
 }
 
 // ##########################################################################################//
@@ -673,6 +671,6 @@ include_once('includes/addons_lib.php');
 // END - ECHO TEMPLATE
 // ##########################################################################################//
 
-if( (isset($_GET['x'])&&$_GET['x'] != "save_comment")OR(!isset($_GET['x'])) )	echo $tpl;
+if( (isset($_GET['x'])&&$_GET['x'] != "save_comment") || (!isset($_GET['x'])))	echo $tpl;
 
 ?>

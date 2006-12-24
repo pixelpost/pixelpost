@@ -3,14 +3,14 @@
 
 admin-lang-persian.php : persian (default) language file for PixelPost-Admin-Section
 ===================================================================================
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Translated by Ramin Mehran
@@ -18,7 +18,7 @@ Translated by Ramin Mehran
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/ 
+Pixelpost wiki: 	    http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 _____________________________________________________________________
 
@@ -66,16 +66,16 @@ $admin_lang_pw_title            = "Pixelpost Password Recovery";
 $admin_lang_pw_wronguser	= "The username you have mentioned is not the same as the admin user of Pixelpost.";
 $admin_lang_pw_back             =  "Back to admin page";
 $admin_lang_pw_noemail          = "You did not mention email address at all! \n<br />
-				   If you have no clue about your password, leave a message in <a href='http://www.pixelpost.org/forum'>Pixelpost forum</a> 
+				   If you have no clue about your password, leave a message in <a href='http://www.pixelpost.org/forum'>Pixelpost forum</a>
 				   for help.\n<br />";
 $admin_lang_pw_notsent          = "Nothing send! \n<br /> The email address you have entered is not the email address you have set in the admin panel.<br />";
 $admin_lang_pw_subject		= "Pixelpost Password Recovery Message";
-$admin_lang_pw_usertext		= "Your User-Name:"; 
+$admin_lang_pw_usertext		= "Your User-Name:";
 $admin_lang_pw_mailtext		= "Your email-Adress:";
 $admin_lang_pw_newpw		= "Your new password:";
 $admin_lang_pw_text_1		= "This the password recovery of Pixelpost";
 $admin_lang_pw_text_2		= "From: PIXELPOST Admin Section";
-$admin_lang_pw_text_3		= "An email is sent to your email address with your username and a new password. \n<br /> 
+$admin_lang_pw_text_3		= "An email is sent to your email address with your username and a new password. \n<br />
 				   Check your email address at ";
 $admin_lang_pw_text_4 		= "<span style='color:red;'>Error! Something happened! \n<br />
 				   The email address and username you have provided is OK but no email could be sent! \n<br />
@@ -224,7 +224,7 @@ $admin_lang_cmnt_unpublished_cmnts  = "previously masked comment(s).";
 $admin_lang_cmnt_unpublished        = "Masked";
 $admin_lang_cmnt_published_cmnts    = "previously published comment(s).";
 
-// New in comment: 
+// New in comment:
 $admin_lang_cmnt_error_blacklist    = "Error in updating the blacklist: ";
 $admin_lang_cmnt_error_banlist      = "Error in updating the referer ban list: ";
 
@@ -269,7 +269,7 @@ $admin_lang_optn_dateformat          = "DATE FORMAT";
 $admin_lang_optn_dateformat_txt      = "The dateformat for images and comments display. This syntax used is identical for the PHP <a href='http://www.php.net/date' target='_blank'>date()</a> function. These are examples of what would replace some common parameters: Y:year m:month d:day H:hour i:minute s:second";
 $admin_lang_optn_gmt                 = "Note that this does not support daylight saving automatically and you should change it manually.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> if you are not sure about your local time offset form GMT.<br />";
 $admin_lang_optn_cat_link_format     = "CATEGORY LINKS FORMAT";
-// New! 
+// New!
 $admin_lang_optn_catlinkformat_select = "Select Category Links Format";
 $admin_lang_optn_cat_link_format_txt = "The format for displaying links to categories in the template.";
 
@@ -288,7 +288,7 @@ $admin_lang_optn_crop_thumbs_txt     = "If you want, that thumbnails should be c
                                          If you want to crop the thumbnails manually after uploading the images, choose <b>12CropImage.</b>";
 $admin_lang_optn_thumb_size          = "THUMBNAILS SIZE";
 $admin_lang_optn_thumb_size_txt      = "Set thumbnails size, Width x Height.";
-// NEW! 
+// NEW!
 $admin_lang_optn_thumb_size_new      = "set new sizes";
 $admin_lang_optn_reg_thumbs_button   = "Re-generate thumbs";
 $admin_lang_optn_regen_thumbs_txt    = "This generates new thumbnails from all posted images. Losing all manually cropped thumbnails to the default thumbnail generation. However, you can change thumbnail with 12CropImage when editing each image.";
@@ -297,7 +297,7 @@ $admin_lang_optn_img_compression_txt = "How hard do you want the jpg-compression
 $admin_lang_optn_pass_chngd_txt      = "Password is changed.";
 $admin_lang_optn_pass_notchngd_txt   = "Password is not changed. Type the same password in the reconfirm field.";
 $admin_lang_optn_title_url_text      = "Check or modify the Site title and the URL of your installation";
-// NEW! 
+// NEW!
 $admin_lang_optn_thumb_updated       = "Thumbnails updated!";
 $admin_lang_optn_updated             = "thumbnails updated.";
 
@@ -371,7 +371,7 @@ $admin_lang_spam_err_7      = "Error in deleting the comments when comparing wit
 $admin_lang_spam_com_del    = "Past: comments which contain words/IPs from the blacklist are deleted.";
 $admin_lang_spam_err_8      = "Error in deleting the visitors when comparing with bad-referers-list: ";
 $admin_lang_spam_visit_del  = "Visitors with words/IPs from the bad-referer-list are deleted.";
-// New! 
+// New!
 $admin_lang_spam_ban        = "Ban Lists";
 $admin_lang_spam_content    = "	Add lists of banned words/IPs/names to the textboxs below, one word per line.<br/>\n
 				Any comment with a word, an IP, or name inside the moderation list will be sent to the moderation queue.<br/>\n

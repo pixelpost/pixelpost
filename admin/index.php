@@ -2,7 +2,7 @@
 
 /*
 
-Pixelpost version 1.5
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -11,7 +11,7 @@ Pixelpost www: http://www.pixelpost.org/
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@pixelpost.org
@@ -52,8 +52,8 @@ start_mysql();
 
 // added to allow upgrades
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
-$installed_version = Get_Pixelpost_Version($pixelpost_db_prefix );
-if( $installed_version < 1.514 )
+$installed_version = Get_Pixelpost_Version($pixelpost_db_prefix);
+if( $installed_version < 1.514)
 {
 	header("Location: install.php");
 	exit;
@@ -72,13 +72,13 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 /* Special language file for Admin-Section, default is english */
 if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
 {
-	if (file_exists("../language/admin-lang-".$cfgrow['langfile'].".php") )
+	if (file_exists("../language/admin-lang-".$cfgrow['langfile'].".php"))
 	{
 		$admin_lang_file_name = "admin-lang-".$cfgrow['langfile'];
 	}
 	else
 	{
-		if (file_exists("../language/admin-lang-english.php") )
+		if (file_exists("../language/admin-lang-english.php"))
 		{
 			$admin_lang_file_name = "admin-lang-english";
 		}
@@ -216,7 +216,7 @@ else  return false ;
 
 <?php
 if
-($cfgrow['crop']=="12c" &&  ( (!isset($_GET['view']) && isset($_GET['x']) && $_GET['x']=='save')  ||  ($_GET['view']=="images" && isset($_GET['id']) ) 	) ){
+($cfgrow['crop']=="12c" &&  ( (!isset($_GET['view']) && isset($_GET['x']) && $_GET['x']=='save')  ||  ($_GET['view']=="images" && isset($_GET['id'])))){
 	require("../includes/12cropimageincscripts.php");
 }
 eval_addon_admin_workspace_menu('admin_html_head');

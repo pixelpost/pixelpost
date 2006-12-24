@@ -22,17 +22,17 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 		echo "<br /><a href='index.php'>$admin_lang_pw_back</a></body></html>";
 		die();
 	}
-	if ($cfgrow['email']== "" )
+	if ($cfgrow['email']== "")
 	{
 		echo "<span class=\"confirm\">$admin_lang_pw_noemail</span><br />";
 		echo "<br /><a href='index.php' > $admin_lang_pw_back </a></body></html>";
 		die();
 	}
 
-	if (strtolower($cfgrow['email'])==strtolower($_POST['reminderemail']) )
+	if (strtolower($cfgrow['email'])==strtolower($_POST['reminderemail']))
 	{
 		// generate a random new pass
-		$user_pass = substr( MD5('time' . rand(1, 16000) ), 0, 6);
+		$user_pass = substr( MD5('time' . rand(1, 16000)), 0, 6);
 		$query = "update ".$pixelpost_db_prefix."config set password=MD5('$user_pass') where admin='".$cfgrow['admin']."'";
 		if(mysql_query($query))
 		{
@@ -66,7 +66,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 		echo "<span class=\"confirm\">$admin_lang_pw_notsent</span><br />";
 		echo "<br /><a href='index.php'> $admin_lang_pw_back </a></body></html>";
 		die();
-	}// end else (strtolower($cfgrow['email'])==strtolower($_POST['reminderemail']) & $cfgrow['email']!= "" )
+	}// end else (strtolower($cfgrow['email'])==strtolower($_POST['reminderemail']) & $cfgrow['email']!= "")
 
 } // end if($_GET['x']=='passreminder')
 ?>

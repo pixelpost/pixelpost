@@ -1,8 +1,9 @@
 <?php
-
 /*
 
-Pixelpost version 1.5
+lang-french.php
+===============
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -12,12 +13,12 @@ Translated by Philippe Durand <http://www.photofloue.net>
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright &copy; 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:       http://www.pixelpost.org/
-Pixelpost wiki:     http://wiki.pixelpost.org/ 
+Pixelpost wiki:     http://wiki.pixelpost.org/
 Pixelpost forum:    http://forum.pixelpost.org
 
 ______________________________________________________________________________
@@ -70,7 +71,7 @@ $lang_comment_page_title           = "Commentaire";
 $lang_comment_popup                = "Commentaires";
 $lang_message_banned_comment       = "Votre commentaire n'a pas pu &ecirc;tre enregistr&eacute; ! Il contient au moins un mot, adresse mail ou IP sur la liste des interdits.";
 $lang_comment_popup_disabled       = "Commenting on this picture has been disabled";
-$lang_tags                         = "Tags";
+$lang_tags                         = "Tags:<br/>";
 
 // EXIF DATA
 $lang_exposure                     = "Exposition :";
@@ -121,7 +122,7 @@ $lang_email_notificationplain_pt2  = "Le commentaire est:\n\n-------------------
 $lang_email_notificationplain_pt3  = "de la part de";
 $lang_email_notificationplain_pt4  = "\n ----------------------------------------------------------------------\n\nEmail envoye par Pixelpost";
 
-// Error Message 
+// Error Message
 $lang_nothing_to_show             = "Revenez bient&ocirc;t, il n'y a pas encore d'image ici !";
 
 // end of french language file

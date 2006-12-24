@@ -1,8 +1,9 @@
 <?php
-
 /*
 
-Pixelpost version 1.5
+lang-english.php
+===============
+Pixelpost version 1.6
 
 SVN file version:
 $Id$
@@ -12,14 +13,14 @@ Language file: english/default
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew@Pixelpost.org
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki:     http://wiki.pixelpost.org/ 
+Pixelpost wiki:     http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 
@@ -112,17 +113,17 @@ $lang_december                  = "December";
 
 // newly added
 $lang_message_banned_comment     = "Your comment hasn't been saved! It contains one or more banned words/email/IPs.";
-$lang_tags                       = "Tags";
+$lang_tags                       = "Tags:<br/>";
 
 // Email Notification
 
 $lang_email_notification_subject = "New Comment";
-$lang_email_notification_pt1 = "Hello,<br>A new comment has been made at your photoblog.<br><br>";	  
-$lang_email_notification_pt2 = "<br>The comment is: <br> ----------------------------------------------------------------------<br>";	  
-$lang_email_notification_pt3 = "by";  
+$lang_email_notification_pt1 = "Hello,<br>A new comment has been made at your photoblog.<br><br>";
+$lang_email_notification_pt2 = "<br>The comment is: <br> ----------------------------------------------------------------------<br>";
+$lang_email_notification_pt3 = "by";
 $lang_email_notification_pt4 = "----------------------------------------------------------------------<br>\n\nEmail sent by Pixelpost<br>";
-$lang_email_notificationplain_pt1 = "Hello,\n\A new comment has been made at your photoblog.";	  
-$lang_email_notificationplain_pt2 = "\n\nThe comment is:\n\n----------------------------------------------------------------------";	  
+$lang_email_notificationplain_pt1 = "Hello,\n\A new comment has been made at your photoblog.";
+$lang_email_notificationplain_pt2 = "\n\nThe comment is:\n\n----------------------------------------------------------------------";
 $lang_email_notificationplain_pt3 = "by";
 $lang_email_notificationplain_pt4 = "\n\n----------------------------------------------------------------------\n\nEmail sent by Pixelpost";
 
