@@ -139,7 +139,7 @@ if(isset($_GET['lang']))
 }
 else
 {
-	$_GET['lang'] = 'en';
+	$_GET['lang'] = $default_language_abr;
 }
 
 setcookie ('lang', $_GET['lang'], false, '/', false, 0);
