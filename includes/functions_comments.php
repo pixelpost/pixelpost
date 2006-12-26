@@ -36,7 +36,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	// Get the time of the latest comment in the db
 	$comments_time_result = sql_array("SELECT datetime FROM ".$pixelpost_db_prefix."comments ORDER BY datetime DESC LIMIT 1");
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
-	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $tz)); // current date+time
 	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
 	{
   	die("Possible SPAM flood....");
