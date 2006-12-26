@@ -108,6 +108,12 @@ if ($_GET['optaction']=='updateall')
 
 		// token
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".$_POST['token_time']."'");
+			
+		// DSBL settings
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_dsbl='".$_POST['comment_dsbl']."'");
+		
+		// SPAM Flood settings
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
 
 	}// end frist page
 } //end update all
@@ -590,6 +596,42 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				$admin_lang_optn_token_time <input type='text' size=\"1\" name='token_time' value='".$cfgrow['token_time']."' /> minutes.
 
 				</div>
+				
+				<div class='jcaption'>
+				$admin_lang_optn_dsbl_list
+				</div>
+
+				<div class='content'>
+						";
+				if ($cfgrow['comment_dsbl']=='T')
+					$toecho = $admin_lang_optn_yes;
+				else
+					$toecho = $admin_lang_optn_no;
+
+				if ($cfgrow['comment_dsbl']=='T')
+					$optnecho = $admin_lang_optn_no;
+				else
+					$optnecho = $admin_lang_optn_yes;
+
+				if ($cfgrow['comment_dsbl']=='T')
+					$optnval = 'F';
+				else
+					$optnval = 'T';
+
+				echo "
+				$admin_lang_optn_dsbl_list_desc
+				<select name='comment_dsbl'><option value='".$cfgrow['comment_dsbl']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
+				</select>
+				</div>
+				
+				<div class='jcaption'>
+				$admin_lang_optn_time_between_comments
+				</div>
+				<div class='content'>
+				$admin_lang_optn_time_between_comments_desc <input type='text' size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' /> seconds.
+				</div>
+				
 		<div class='jcaption'>
 				$admin_lang_optn_update
 				</div>

@@ -586,4 +586,25 @@ function UpgradeTo1514( $prefix, $newversion)
 
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
+
+function UpgradeTo1515( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+
+	// token field
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `comment_dsbl` ENUM( 'F', 'T') NOT NULL DEFAULT 'F'")
+	or die("Error: ". mysql_error());
+
+	// token_time
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `comment_timebetween` VARCHAR( 3) NOT NULL DEFAULT '30'")
+	or die("Error: ". mysql_error());
+
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
+
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+}
 ?>

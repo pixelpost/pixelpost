@@ -407,6 +407,12 @@ $admin_lang_optn_token_desc		        = "Using a token will reduce the probabilit
 																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
 																				 Should this setting be enabled?";
 $admin_lang_optn_token_time						= "Maximum time between opening the comment window and submit a comment: ";
+$admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
+																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
+$admin_lang_optn_time_between_comments = "Prevent SPAM flood";
+$admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
+
 $admin_lang_imgedit_preview   = "Forh&aring;ndsvis";
 
 $admin_lang_cmnt_rep_spam = 'Rapporter Spam';

@@ -29,6 +29,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			die("Die you SPAMMER!");
 		}
 	}
+	// Get the time of the latest comment in the db
+	$comments_time_result = sql_array("SELECT datetime FROM ".$pixelpost_db_prefix."comments ORDER BY datetime DESC LIMIT 1");
+	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
+	if ((time() - $time_latest_comment) < ($cfgrow['comment_timebetween']))
+	{
+  	die("Possible SPAM flood....");
+  }
+
 // $parent_id
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 
@@ -44,7 +52,17 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 
 	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	$ip = $_SERVER['REMOTE_ADDR'];
-
+	
+	//Check the used IP adress against the Distributed Sender Blackhole List @ http://www.dsbl.org
+	if ($cfgrow['comments_dsbl'] == 'T')
+	{
+		list($a, $b, $c, $d) = split('.', $ip);
+		if( gethostbyname("$d.$c.$b.$a.list.dsbl.org") != "$d.$c.$b.$a.list.dsbl.org") {
+  		header( "Location: http://dsbl.org/listing?".$ip);
+ 			return false;
+		}
+	}
+	
 	if($cmnt_setting == 'A')
 	{
 		$cmnt_moderate_permission='no';
