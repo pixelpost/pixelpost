@@ -135,15 +135,9 @@ $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
 // Set a cookie to the GET arg 'lang' if it exists.
 if(isset($_GET['lang']))
 {
-	$_GET['lang'] = substr($_GET['lang'],0,2);
+	setcookie ('lang', substr($_GET['lang'],0,2), false, '/', false, 0);
+	$language_abr = substr($_GET['lang'],0,2);
 }
-else
-{
-	$_GET['lang'] = $default_language_abr;
-}
-
-setcookie ('lang', $_GET['lang'], false, '/', false, 0);
-$language_abr = $_GET['lang'];
 
 // Set the &language variable to session 'lang' - this variable is the one used below
 $language_abr = $_COOKIE['lang'];
