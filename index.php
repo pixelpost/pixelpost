@@ -89,7 +89,6 @@ if ($cfgrow['token'] == 'T'){
 	}
 }
 
-
 // book visitors
 if (strtolower($cfgrow['visitorbooking'])!='no')	book_visitor($pixelpost_db_prefix."visitors");
 
