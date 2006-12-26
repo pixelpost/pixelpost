@@ -22,8 +22,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			if ((time() - $_SESSION['token_time']) > ($cfgrow['token_time']*60))
 			{
     		die("You waited more then ".$cfgrow['token_time']." minutes to enter the comment");
+    	} else {
+    		// token was good, regenerate a new one
+    		$_SESSION['token'] = md5(uniqid(rand(), TRUE));
+    		$_SESSION['token_time'] = time();
     	}
-		}
+		}		
 		else
 		{
 			die("Die you SPAMMER!");
@@ -32,7 +36,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	// Get the time of the latest comment in the db
 	$comments_time_result = sql_array("SELECT datetime FROM ".$pixelpost_db_prefix."comments ORDER BY datetime DESC LIMIT 1");
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
-	if ((time() - $time_latest_comment) < ($cfgrow['comment_timebetween']))
+	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $tz)); // current date+time
+	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
 	{
   	die("Possible SPAM flood....");
   }
