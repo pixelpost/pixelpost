@@ -459,7 +459,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		while ($pagecounter < $num_browse_pages)
 		{
 			$pagecounter++;
-			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+			// added support for bold page number
+			if ($pagecounter != $pagenum){
+				$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+			}else{
+				$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'><strong>$pagecounter</strong></a> ";
+			}
 		}// end while
 	}// end else
 
