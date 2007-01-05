@@ -549,15 +549,15 @@ $tags_paged_output = $tags_output;
 
 $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
 
-if($language_abr == $default_language_abr)	$queryr = "SELECT COUNT( *) AS max
-		FROM {$pixelpost_db_prefix}tags
-		WHERE alt_tag LIKE ''
-		GROUP BY tag
+if($language_abr == $default_language_abr)	$queryr = "SELECT COUNT(*) AS max
+		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t
+		WHERE t.alt_tag LIKE '' AND p.id = t.img_id AND p.datetime<='$cdate'
+		GROUP BY t.tag
 		ORDER BY max DESC
 		LIMIT 1";
-else	$queryr = "SELECT COUNT( *) AS max
-		FROM {$pixelpost_db_prefix}tags
-		WHERE tag LIKE ''
+else	$queryr = "SELECT COUNT(*) AS max
+		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t
+		WHERE t.tag LIKE '' AND p.id = t.img_id AND p.datetime<='$cdate'
 		GROUP BY alt_tag
 		ORDER BY max DESC
 		LIMIT 1";
@@ -567,13 +567,13 @@ $tag_max = mysql_fetch_row($tag_max);
 $tag_max = $tag_max[0];
 
 if ($language_abr == $default_language_abr)	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
-		FROM {$pixelpost_db_prefix}tags
-		WHERE alt_tag LIKE ''
+		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t
+		WHERE t.alt_tag LIKE '' AND p.id = t.img_id AND p.datetime<='$cdate'
 		GROUP BY tag
 		ORDER BY tag";
 else	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as cnt
-		FROM {$pixelpost_db_prefix}tags
-		WHERE tag LIKE ''
+		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t
+		WHERE t.tag LIKE '' AND p.id = t.img_id AND p.datetime<='$cdate'
 		GROUP BY alt_tag
 		ORDER BY alt_tag";
 
