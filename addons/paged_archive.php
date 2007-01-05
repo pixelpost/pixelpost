@@ -461,9 +461,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$pagecounter++;
 			// added support for bold page number
 			if ($pagecounter != $pagenum){
-				$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
 			}else{
-				$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'><strong>$pagecounter</strong></a> ";
+				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
 			}
 		}// end while
 	}// end else

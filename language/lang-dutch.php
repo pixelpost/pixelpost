@@ -118,6 +118,20 @@ $lang_october             = "oktober";
 $lang_november            = "november";
 $lang_december            = "december";
 
+// Alternative language
+$lang_alt_lang_dutch							="Nederlands";
+$lang_alt_lang_english						="English";
+$lang_alt_lang_french							="Français";
+$lang_alt_lang_german							="Deutsch";
+$lang_alt_lang_italian						="Italiano";
+$lang_alt_lang_norwegian					="Norsk";
+$lang_alt_lang_persian						="Farsi";
+$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_portuguese					="Português";
+$lang_alt_lang_simplified_chinese	="Chinese";
+$lang_alt_lang_spanish						="Español";
+$lang_alt_lang_swedish						="Svenska";
+
 // Email Notification
 
 $lang_email_notification_subject = "New Comment";

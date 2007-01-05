@@ -1125,6 +1125,10 @@ function create_language_url_from_tag( $language_link_abr, $language_link_full)
 
 function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow)
 {
+	global $lang_alt_lang_dutch,$lang_alt_lang_english,$lang_alt_lang_french,$lang_alt_lang_german;
+	global $lang_alt_lang_italian,$lang_alt_lang_norwegian,$lang_alt_lang_persian,$lang_alt_lang_polish;
+  global $lang_alt_lang_portuguese,$lang_alt_lang_simplified_chinese,$lang_alt_lang_spanish,$lang_alt_lang_swedish;
+	
   $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
   $alt_language_abr = strtolower($PP_supp_lang[$cfgrow['altlangfile']][0]);
   if ($language_abr == $default_language_abr)
@@ -1143,7 +1147,9 @@ function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow)
    		if ($cell == strtoupper($link_language_abr))	$language_link_key = $key;
     }
   }
-  $language_link_full=$PP_supp_lang[$language_link_key][1];
+  $language_link_name="lang_alt_lang_".$language_link_key;
+  $language_link_full=${$language_link_name};
+  
   $language_link	=	create_language_url_from_tag( $link_language_abr, $language_link_full);
   // Create one template tag for all templates and both languages
   $tpl = str_replace("<ALTERNATIVE_LANGUAGE>",$language_link,$tpl);

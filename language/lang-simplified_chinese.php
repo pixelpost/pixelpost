@@ -112,6 +112,20 @@ $lang_message_banned_comment     = "您的评论没有保存！因里面含有�
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
 $lang_tags                       = "Tags:<br/>";
 
+// Alternative language
+$lang_alt_lang_dutch							="Nederlands";
+$lang_alt_lang_english						="English";
+$lang_alt_lang_french							="Français";
+$lang_alt_lang_german							="Deutsch";
+$lang_alt_lang_italian						="Italiano";
+$lang_alt_lang_norwegian					="Norsk";
+$lang_alt_lang_persian						="Farsi";
+$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_portuguese					="Português";
+$lang_alt_lang_simplified_chinese	="Chinese";
+$lang_alt_lang_spanish						="Español";
+$lang_alt_lang_swedish						="Svenska";
+
 // Email Notification
 
 $lang_email_notification_subject = "新评论";
