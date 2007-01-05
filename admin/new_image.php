@@ -69,7 +69,7 @@ if($_GET['view'] == "")
  </tr>
  <tr><td>
   <select name='post_year' onchange="return ondatechange()" >
-	<option value='<?php $cur_year; ?>'><?php echo $cur_year; ?></option>
+	<option value='<?php echo $cur_year; ?>'><?php echo $cur_year; ?></option>
 	<?php
 	$lc = 2002;
 	while($lc <= 2010)
