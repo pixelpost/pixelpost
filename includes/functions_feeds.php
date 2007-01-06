@@ -43,14 +43,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 
 {
     $output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-    <rss version=\"2.0\">
-    <channel>
-    <title>".$pixelpost_site_title."</title>
-    <link>".$cfgrow['siteurl']."</link>
-    <description>$pixelpost_site_title</description>
-    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-    <generator>pixelpost</generator>
-    ";
+	<rss version=\"2.0\">
+	<channel>
+	<title>".$pixelpost_site_title."</title>
+	<link>".$cfgrow['siteurl']."</link>
+	<description>$pixelpost_site_title</description>
+	<docs>http://blogs.law.harvard.edu/tech/rss</docs>
+	<generator>pixelpost</generator>";
 	$tzoner = $cfgrow['timezone'];
 	$tprefix = '+';
 	$tzoner = sprintf ("%01.2f", $tzoner);
@@ -81,22 +80,21 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 		$body = htmlspecialchars($body,ENT_QUOTES);
 		$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 		$output .= "
-        <item>
-        <title>$headline</title>
-        <link>".$cfgrow['siteurl']."?showimage=$id</link>
-        <description>
-	&lt;img src=&quot;$image&quot;&gt;
-	&lt;br /&gt;$body
-	</description>
-        <pubDate>$datetime</pubDate>
-	<guid>".$cfgrow['siteurl']."index.php?showimage=$id</guid>
-        </item>
-        ";
+		<item>
+		<title>$headline</title>
+		<link>".$cfgrow['siteurl']."index.php?showimage=$id</link>
+		<description>
+			&lt;img src=&quot;$image&quot;&gt;
+			&lt;br /&gt;$body
+		</description>
+		<pubDate>$datetime</pubDate>
+		<guid isPermaLink='true'>".$cfgrow['siteurl']."index.php?showimage=$id</guid>
+		</item>";
 	}
 
  	$output .= "
-        </channel>
-        </rss>";
+	</channel>
+	</rss>";
 	header("Content-type:application/xml");
 	echo $output;
 	exit;
@@ -125,18 +123,17 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 	$tzoner = $tprefix.$hh.":".$mm;
 	$url = $cfgrow['siteurl'];
 	$atom = "<?xml version='1.0' encoding='UTF-8'?>
-   <feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>
-   <title>$pixelpost_site_title photoblog</title>
-   <link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />
-	 <link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom' title='".$pixelpost_site_title."' />
-	 <author>
-	 <name>".$pixelpost_site_title."</name>
-	 <uri>$url</uri>
-	 </author>
-	 <generator uri='http://www.pixelpost.org/' version='1.5BETA'>PixelPost</generator>
-	 <id>$url</id>
-	 <updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>
-";
+	<feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>
+	<title>$pixelpost_site_title photoblog</title>
+	<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />
+	<link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom' title='".$pixelpost_site_title."' />
+	<author>
+	<name>".$pixelpost_site_title."</name>
+	<uri>$url</uri>
+	</author>
+	<generator uri='http://www.pixelpost.org/' version='1.5BETA'>PixelPost</generator>
+	<id>$url</id>
+	<updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>";
 	$tag_url = $_SERVER['HTTP_HOST'];
 	$query = mysql_query("SELECT id,datetime,headline,body,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime <='$cdate') ORDER BY datetime desc limit 0,20");
 
@@ -158,21 +155,22 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$modified_date =substr($datetime,0,10);
 		$modified_date = $modified_date."T".(substr($datetime,11,8));
 		$datetime = strtotime($datetime);
-		$atom .= "	 <entry xmlns='http://www.w3.org/2005/Atom'>
-	  <title type='html'>$headline</title>
+		$atom .= "
+		<entry xmlns='http://www.w3.org/2005/Atom'>
+		<title type='html'>$headline</title>
 		<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."?showimage=$id' title='$headline' />
-	  <id>tag:$tag_url,$id_date:/$id</id>
-    <content type='html'>
-		  <![CDATA[
-        	<img src='$image' /><br />$headline<br />$body]]>
-	  </content>
-	  <published>$tag_date</published>
-	  <updated>$modified_date$tzoner</updated>
-	 </entry>
-";
+		<id>tag:$tag_url,$id_date:/$id</id>
+		<content type='html'>
+			<![CDATA[
+				<img src='$image' /><br />$headline<br />$body]]>
+		</content>
+		<published>$tag_date</published>
+		<updated>$modified_date$tzoner</updated>
+		</entry>";
 		}
 
-	$atom .= "</feed>";
+	$atom .= "
+	</feed>";
 	echo $atom;
 	exit;
 }
