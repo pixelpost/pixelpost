@@ -35,6 +35,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
+$feeditems = (($cfgrow['feeditems'] > 0) ? $cfgrow['feeditems'] : 10);
+$rsspicdir = (($cfgrow['rsstype'] == 'T') ? 'thumbnails/thumb_' : (($cfgrow['rsstype'] == 'F') ? 'images/' : ''));
+
 // ##########################################################################################//
 // RSS 2.0 FEED
 // ##########################################################################################//
@@ -64,13 +67,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 	$hh = substr($tzoner,0,2);
 	$mm = substr($tzoner,-2);
 	$tzoner = $tprefix.$hh.$mm;
-	$query = mysql_query("SELECT id,datetime,headline,body,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit 10");
+	$query = mysql_query("SELECT id,datetime,headline,body,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit ".$feeditems);
 
 	while(list($id,$datetime,$headline,$body,$image) = mysql_fetch_row($query))
 	{
 		$headline = pullout($headline);
 		$headline = htmlspecialchars($headline,ENT_QUOTES);
-		$image = $cfgrow['siteurl']."thumbnails/thumb_$image";
+		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$datetime = strtotime($datetime);
 		$datetime =date("D, d M Y H:i",$datetime);
 		$datetime .= ' ' .$tzoner;
@@ -84,8 +87,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 		<title>$headline</title>
 		<link>".$cfgrow['siteurl']."index.php?showimage=$id</link>
 		<description>
-			&lt;img src=&quot;$image&quot;&gt;
-			&lt;br /&gt;$body
+";
+		if($rsspicdir) $output .= "			&lt;img src=&quot;$image&quot;&gt;&lt;br/&gt;
+";
+		$output .= "			$body
 		</description>
 		<pubDate>$datetime</pubDate>
 		<guid isPermaLink='true'>".$cfgrow['siteurl']."index.php?showimage=$id</guid>
@@ -135,7 +140,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 	<id>$url</id>
 	<updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>";
 	$tag_url = $_SERVER['HTTP_HOST'];
-	$query = mysql_query("SELECT id,datetime,headline,body,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime <='$cdate') ORDER BY datetime desc limit 0,20");
+	$query = mysql_query("SELECT id,datetime,headline,body,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime <='$cdate') ORDER BY datetime desc limit ".$feeditems);
 
 	while(list($id,$datetime,$headline,$body,$image) = mysql_fetch_row($query))
 	{
@@ -144,7 +149,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$body = pullout($body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
 		$body = strip_tags($body);
-		$image = $cfgrow['siteurl']."thumbnails/thumb_$image";
+		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$tag_date =substr($datetime,0,10);
 		$id_date = substr($datetime,0,10);
 		$tag_time = substr($datetime,11,8);
@@ -158,11 +163,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$atom .= "
 		<entry xmlns='http://www.w3.org/2005/Atom'>
 		<title type='html'>$headline</title>
-		<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."?showimage=$id' title='$headline' />
+		<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."index.php?showimage=$id' title='$headline' />
 		<id>tag:$tag_url,$id_date:/$id</id>
 		<content type='html'>
 			<![CDATA[
-				<img src='$image' /><br />$headline<br />$body]]>
+";
+		if($rsspicdir) $atom .= "				<img src='$image' /><br />";
+		$atom .= "$headline<br />$body]]>
 		</content>
 		<published>$tag_date</published>
 		<updated>$modified_date$tzoner</updated>
