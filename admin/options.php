@@ -114,6 +114,10 @@ if ($_GET['optaction']=='updateall')
 		
 		// SPAM Flood settings
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
+			
+		// RSS settings
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feeditems='".$_POST['feeditems']."'");
+		
 
 	}// end frist page
 } //end update all
@@ -593,7 +597,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<select name='token'><option value='".$cfgrow['token']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select><br />
-				$admin_lang_optn_token_time <input type='text' size=\"1\" name='token_time' value='".$cfgrow['token_time']."' /> minutes.
+				$admin_lang_optn_token_time <input type='text' size=\"1\" name='token_time' value='".$cfgrow['token_time']."' />
 
 				</div>
 				
@@ -629,9 +633,28 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				$admin_lang_optn_time_between_comments
 				</div>
 				<div class='content'>
-				$admin_lang_optn_time_between_comments_desc <input type='text' size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' /> seconds.
+				$admin_lang_optn_time_between_comments_desc <input type='text' size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' />
 				</div>
 				
+				<!-- RSS feed options -->
+				<div class='jcaption'>$admin_lang_optn_rss_setting</div>
+    		<div class='content'>$admin_lang_optn_rsstype_desc
+    			<select name=\"rsstype\">";
+    			if ($cfgrow["rsstype"] =='F')
+    			{
+ 						echo "<option selected=\"selected\" value=\"F\">$admin_lang_optn_rss_full</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
+ 					}
+ 					elseif ($cfgrow["rsstype"] =='T')
+ 					{
+ 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option selected=\"selected\" value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
+ 					}
+ 					else
+ 					{
+						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option selected=\"selected\" value=\"N\">$admin_lang_optn_rss_text</option>";
+ 					}
+			echo"</select><br /><br />
+			$admin_lang_optn_feeditems_desc <input type='text' size=\"2\" name='feeditems' value='".$cfgrow['feeditems']."' />
+			</div>
 		<div class='jcaption'>
 				$admin_lang_optn_update
 				</div>

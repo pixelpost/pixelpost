@@ -349,12 +349,19 @@ $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobie
 																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
 																				 Jeśli zapomnisz tagu <strong>&lt;TOKEN&gt;</strong>, wtedy komentarze nie będą działać, a użytkownik zobaczy komunikat o błędzie.<br /><br/>\n
 																				 Czy to ustawienie powinno być aktywne?";
-$admin_lang_optn_token_time						= "Maksymalny czas pomiędzy otwarciem okna z formularzem dla komentarzy i przesłaniem komentarza: ";
+$admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
 $admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
 $admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
 																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
 $admin_lang_optn_time_between_comments = "Prevent SPAM flood";
 $admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
+$admin_lang_optn_rss_setting					= "RSS feed settings";
+$admin_lang_optn_rsstype_desc					= "Select the style of the RSS feed: ";
+$admin_lang_optn_rss_full							= "Show full size pictures";
+$admin_lang_optn_rss_thumbs						= "Show thumbnails";
+$admin_lang_optn_rss_text							= "Show text only";
+$admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+
 
 
 
