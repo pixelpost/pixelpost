@@ -218,6 +218,7 @@ if (isset($_GET['pagenum'])&&$_GET['pagenum'] != "")
 		$count = mysql_fetch_array($count);
 		$count= $count['count'];
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
+		$select_display_date=str_replace(" ","%20",$select_display_date);
 		$thedate = pullout($thedate);
 		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date&amp;pagenum=1'>$name (" .$select_display_date .") (" .$count .")</option>";
 		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date&amp;pagenum=1'>$name " .$select_display_date ." (" .$count .")</a></li>";
