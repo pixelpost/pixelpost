@@ -22,11 +22,11 @@ an example for the reference to the image on the main-page:
 <IMAGE_WIDTH>                   || width of the image in pixel
 <IMAGE_HEIGHT>                  || height of the image in pixel
 <IMAGE_CATEGORY>                || will show the category or categories of the image as a link
-<IMAGE_CATEGORY_PAGED>		|| will show the category or categories of the image as a link for Paged archive addon
+<IMAGE_CATEGORY_PAGED>					|| will show the category or categories of the image as a link for Paged archive addon
 <IMAGE_THUMBNAIL>               || thumbnail of that image with link to the image
 <IMAGE_THUMBNAIL_NO_LINK>       || thumbnail of that image without link
 <IMAGE_NOTES>                   || the description, the text which you entered for that image
-<IMAGE_NOTES_CLEAN>		|| the description, like above but without any HTML code inside
+<IMAGE_NOTES_CLEAN>							|| the description, like above but without any HTML code inside
 <IMAGE_ID>                      || id of the actual image
 <IMAGE_PREVIOUS_LINK>           || full link that says "Previous", or empty if no previous
 <IMAGE_PREVIOUS_ID>             || id of previous image
@@ -34,6 +34,14 @@ an example for the reference to the image on the main-page:
 <IMAGE_NEXT_ID>                 || id of the next image
 <IMAGE_NEXT_TITLE>              || if empty, displays "No Next Image"
 <IMAGE_NEXT_LINK>               || full link that says "Next", or empty if no next
+<IMAGE_LAST_LINK>								|| full link that says "Last", or empty if last picture is displayed
+<IMAGE_LAST_ID>									|| id of the last image
+<IMAGE_LAST_TITLE>							|| if last picture is displayed, displays nothing, otherwise title
+<IMAGE_FIRST_LINK>							|| full link that says "First", or empty if first picture is displayed
+<IMAGE_FIRST_ID>								|| id of the first image
+<IMAGE_FIRST_TITLE>							|| if first picture is displayed, displays nothing, otherwise title
+
+
 <IMAGE_PERMALINK>               || supplies a permanent link to the post in question
 
 date-related information about the image:
@@ -58,6 +66,8 @@ Thumbnail-related Tags:
 
 <IMAGE_PREVIOUS_THUMBNAIL>      || link to previous image  with thumbnail
 <IMAGE_NEXT_THUMBNAIL>          || link to next image with thumbnail
+<IMAGE_FIRST_THUMBNAIL>         || link to first image with thumbnail
+<IMAGE_LAST_THUMBNAIL>          || link to last image with thumbnail
 
 
 feed-related Tags, to be used in image_template.html

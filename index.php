@@ -422,7 +422,64 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 		$image_next_link = "";
 		$image_next_thumbnail = "";
 	}
+	
+	// get first image
+	if(!isset($_SESSION["pixelpost_admin"]))
+	{
+		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime asc limit 0,1");
+	}
+	else
+	{
+		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE ORDER BY datetime asc limit 0,1");
+	}
+	$first_image_name = $first_image_row['image'];
+	$first_image_id = $first_image_row['id'];
+	if ($language_abr == $default_language_abr) {
+		$first_image_title = pullout($first_image_row['headline']);
+	} else {
+		$first_image_title = pullout($first_image_row['alt_headline']);
+	}
+	$first_image_datetime = $first_image_row['datetime'];
+	$first_image_link = "<a href='$showprefix$first_image_id'>$lang_first</a>";
+	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$first_image_name");
+	$first_image_thumbnail = "<a href='$showprefix$first_image_id'><img src='thumbnails/thumb_$first_image_name' alt='$first_image_title' width='$local_width' height='$local_height' title='$first_image_title' /></a>";
 
+	if($first_image_id == $image_id)
+	{
+		$first_image_title = null;
+		$first_image_link = null;
+		$first_image_thumbnail = null;
+	}
+	
+		// get latest image
+	if(!isset($_SESSION["pixelpost_admin"]))
+	{
+		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
+	}
+	else
+	{
+		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE ORDER BY datetime desc limit 0,1");
+	}
+	$last_image_name = $last_image_row['image'];
+	$last_image_id = $last_image_row['id'];
+	if ($language_abr == $default_language_abr) {
+		$last_image_title = pullout($last_image_row['headline']);
+	} else {
+		$last_image_title = pullout($last_image_row['alt_headline']);
+	}
+	$last_image_datetime = $last_image_row['datetime'];
+	$last_image_link = "<a href='$showprefix$last_image_id'>$lang_latest</a>";
+	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$last_image_name");
+	$last_image_thumbnail = "<a href='$showprefix$last_image_id'><img src='thumbnails/thumb_$last_image_name' alt='$last_image_title' width='$local_width' height='$local_height' title='$last_image_title' /></a>";
+
+	if($last_image_id == $image_id)
+	{
+		$last_image_title = null;
+		$last_image_link = null;
+		$last_image_thumbnail = null;
+	}
+	
+	
 	if(function_exists('gd_info'))
 	{
 		$gd_info = gd_info();
@@ -549,6 +606,17 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$tpl = ereg_replace("<IMAGE_NEXT_ID>",$image_next_id,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_TITLE>",$image_next_title,$tpl);
 	$tpl = ereg_replace("<IMAGE_NEXT_THUMBNAIL>",$image_next_thumbnail,$tpl);
+
+	$tpl = ereg_replace("<IMAGE_LAST_LINK>",$last_image_link,$tpl);
+	$tpl = ereg_replace("<IMAGE_LAST_THUMBNAIL>",$last_image_thumbnail,$tpl);
+	$tpl = ereg_replace("<IMAGE_LAST_ID>",$last_image_id,$tpl);
+	$tpl = ereg_replace("<IMAGE_LAST_TITLE>",$last_image_title,$tpl);
+	$tpl = ereg_replace("<IMAGE_FIRST_LINK>",$first_image_link,$tpl);
+	$tpl = ereg_replace("<IMAGE_FIRST_ID>",$first_image_id,$tpl);
+	$tpl = ereg_replace("<IMAGE_FIRST_TITLE>",$first_image_title,$tpl);
+	$tpl = ereg_replace("<IMAGE_FIRST_THUMBNAIL>",$first_image_thumbnail,$tpl);
+
+
 
 	// get number of comments
 	$cnumb_row = sql_array("SELECT count(*) as count FROM ".$pixelpost_db_prefix."comments WHERE parent_id='$image_id' and publish='yes'");
