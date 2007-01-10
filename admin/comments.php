@@ -21,6 +21,8 @@ if($_GET['view'] == "comments") {
  		if($_GET['action'] == "edit") {
  			$editid = $_GET['editid'];
  			$message = $_POST['message'.$editid];
+ 			// added by schonhose to escape characters
+ 			$message = clean_comment($message);
  			$query = "update ".$pixelpost_db_prefix."comments set message='$message' where id='$editid'";
  			$query  = sql_query($query);
  			echo "<div class='jcaption'>$admin_lang_cmnt_edited </div>";
