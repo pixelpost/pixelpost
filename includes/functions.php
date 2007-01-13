@@ -601,6 +601,19 @@ function echo_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = '')
 	}
 }
 
+function count_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = '')
+{
+	$menu_items=0;
+	for ($i = 0 ; $i < count($addon_admin_menus) ; $i++)
+	{
+	$submenus = $addon_admin_menus[$i];
+		if ($submenus['menu_name'] == $menu_name)
+		{
+			$menu_items=$menu_items+1;
+		}
+	}
+	return $menu_items;
+}
 //============================= CONTROL SPAM SECTION BEGINS ========================
 
 function banlist_exist()

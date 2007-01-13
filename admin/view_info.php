@@ -11,10 +11,14 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 
 // view info
 if($_GET['view'] == "info") {
-echo "<div id='caption'>$admin_lang_general_info</div><div id='submenu'>";
-	// add a workspace
-  echo_addon_admin_menus($addon_admin_functions,"general_info");
-  echo "</div>\n";
+echo "<div id='caption'>$admin_lang_general_info</div>";
+
+	// add a workspace (only show when there are items.
+	if (count_addon_admin_menus($addon_admin_functions,"general_info") > 0){
+		echo"<div id='submenu'>";
+  	echo_addon_admin_menus($addon_admin_functions,"general_info");
+  	echo "</div>\n";
+  }
   // get the config row again after updates
   if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))	$cfgrow = mysql_fetch_assoc($cfgquery);
   eval_addon_admin_workspace_menu("general_info","general_info");
