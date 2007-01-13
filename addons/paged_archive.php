@@ -176,14 +176,16 @@ while(list($id,$name, $alt_name) = mysql_fetch_row($query))
 	$count = mysql_query($queryr);
 	$count = mysql_fetch_array($count);
 	$count= $count['count'];
-	if($language_abr == $default_language_abr)	$name = pullout($name);
-	else	$name = pullout($alt_name);
-	$catname_count = $name ." (" .$count .")";
+	if ($count > 0){
+		if($language_abr == $default_language_abr)	$name = pullout($name);
+		else	$name = pullout($alt_name);
+		$catname_count = $name ." (" .$count .")";
 
-	$category_Link_List .= "<a href='index.php?x=browse&amp;category=$id'>$catname_count</a><br />";
+		$category_Link_List .= "<a href='index.php?x=browse&amp;category=$id'>$catname_count</a><br />";
 
-	// paged version of the browse archive
-	$category_Link_List_paged .= "<li><a href='index.php?x=browse&amp;category=$id&amp;pagenum=1'>$catname_count</a></li>";
+		// paged version of the browse archive
+		$category_Link_List_paged .= "<li><a href='index.php?x=browse&amp;category=$id&amp;pagenum=1'>$catname_count</a></li>";
+	}
 }
 
 $category_Link_List_paged .= "</ul>";
