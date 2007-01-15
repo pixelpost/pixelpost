@@ -14,17 +14,21 @@ if($_GET['view'] == "info") {
 echo "<div id='caption'>$admin_lang_general_info</div>";
 
 	// add a workspace (only show when there are items.
-	if (count_addon_admin_menus($addon_admin_functions,"general_info") > 0){
+	if (count_addon_admin_menus($addon_admin_functions,"info") > 0){
 		echo"<div id='submenu'>";
-  	echo_addon_admin_menus($addon_admin_functions,"general_info");
+		if (!isset($_GET['infoview']) || $_GET['infoview']=='general')	$submenucssclass = 'selectedsubmenu';
+		echo "<a href='index.php?view=info&amp;infoview=general' class='".$submenucssclass."'>$admin_lang_optn_general</a>\n";
+		$submenucssclass = 'notselected';
+  	echo_addon_admin_menus($addon_admin_functions,"info");
   	echo "</div>\n";
   }
   // get the config row again after updates
   if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))	$cfgrow = mysql_fetch_assoc($cfgquery);
-  eval_addon_admin_workspace_menu("general_info","general_info");
+  eval_addon_admin_workspace_menu("info","info");
   // end add a workspace	
 
-
+if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
+{
     if($_GET['version'] == "check") {
       $pixelpost_latest_version = file_get_contents("http://www.pixelpost.org/service/version.txt");
         } else {
@@ -181,4 +185,5 @@ $referer_print .= "<li><a href='$referer' rel='nofollow'>$numb &nbsp;&nbsp;&nbsp
 	echo "</div><p />";
 //-------------
     }
+  }
 ?>
