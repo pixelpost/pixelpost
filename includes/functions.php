@@ -93,7 +93,12 @@ function print_comments($imageid)
 
 		$comment_datetime = strtotime($comment_datetime);
 		$comment_datetime = date($cfgrow['dateformat'],$comment_datetime);
-		$image_comments .= "<li>$comment_message<br />$comment_name @ $comment_datetime</li>";
+		if ($comment_email == $cfgrow['email']){
+			// admin comment
+			$image_comments .= "<li class=\"admin_comment\">$comment_message<br />$comment_name @ $comment_datetime</li>";
+		} else {
+			$image_comments .= "<li>$comment_message<br />$comment_name @ $comment_datetime</li>";
+		}
 		$comment_count++;
 
 	}

@@ -76,8 +76,13 @@ if( isset( $_GET['view']) && $_GET['view']=='addons')
 		$pinglist = str_replace( "\r", "\n", $pinglist);
 		if(version_compare(phpversion(),"4.3.0")=="-1")	$pinglist = mysql_escape_string($pinglist);
 		else	$pinglist = mysql_real_escape_string($pinglist);
-
-		$query = "UPDATE {$pixelpost_db_prefix}ping SET pinglist='$pinglist' LIMIT 1";
+		$query = "SELECT COUNT( * ) FROM {$pixelpost_db_prefix}ping";
+		$row = sql_array($query);
+		if ($row[0]==1){
+			$query = "UPDATE {$pixelpost_db_prefix}ping SET pinglist='$pinglist' LIMIT 1";
+		} else {
+			$query = "INSERT INTO {$pixelpost_db_prefix}ping VALUES ( NULL, '$pinglist')";
+		}
 		mysql_query($query) or die( mysql_error());
 	}
 
