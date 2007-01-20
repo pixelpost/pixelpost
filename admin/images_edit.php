@@ -326,7 +326,9 @@ if($_GET['view'] == "images")
 			echo "<strong>$admin_lang_ni_tags: &nbsp;</strong>";
 			echo list_tags_edit($id);
 			echo "<br/>";
-
+			// added workspace requested by KArin on the forums
+				eval_addon_admin_workspace_menu('image_list');
+			// end workspace
 			echo "</li>";
 
           $pagec++;
