@@ -125,7 +125,8 @@ $PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
 											'portuguese'=>array('PT','Português'),
 											'simplified_chinese'=>array('CN','Chinese'),
 											'spanish'=>array('ES','Español'),
-											'swedish'=>array('SE','Svenska')
+											'swedish'=>array('SE','Svenska'),
+											'japanese'=>array('JP','Japanese')
 									);
 // The default language is the language the user has set in the adminpanel
 // We have to find the abbreviation

@@ -133,6 +133,7 @@ $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
+$lang_alt_lang_japanese						="Japanese";
 
 // Email Notification
 
