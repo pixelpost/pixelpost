@@ -6,7 +6,7 @@ lang-japanese.php
 Pixelpost version 1.6
 
 SVN file version:
-$Id: lang-japanese.php 97 2007-01-05 11:54:10Z schonhose $
+$Id$
 
 Language file: Japanese
 Author:  Mitsuhiro Yoshida - http://mitstek.com/

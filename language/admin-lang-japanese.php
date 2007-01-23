@@ -6,7 +6,7 @@ admin-lang-japanese.php : english (default) language file for Pixelpost-Admin-Se
 Pixelpost version 1.6
 
 SVN file version:
-$Id: admin-lang-japanese.php 90 2006-12-26 14:00:12Z schonhose $
+$Id$
 
 Language file: Japanese
 Author:  Mitsuhiro Yoshida - http://mitstek.com/
