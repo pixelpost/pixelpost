@@ -137,7 +137,7 @@ $admin_lang_ni_crop_background    = "这是准备裁剪图的背景";
 $admin_lang_ni_post_exif_date     = "使用exif日期";
 $admin_lang_ni_db_error           =  "写入数据库时有误";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -181,7 +181,13 @@ $admin_lang_imgedit_js_del_im       = "确定删除这张图片吗？";
 $admin_lang_imgedit_preview         = "预览";
 $admin_lang_imgedit_db_error        = "<br />检查目前是否没用永久连接！";
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
-$admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
+$admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
+$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
+$admin_lang_imgedit_masstag_set     = "Add tag(s)";
+$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
+$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
+$admin_lang_imgedit_published          = "Published";
+$admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "批量编辑类别";

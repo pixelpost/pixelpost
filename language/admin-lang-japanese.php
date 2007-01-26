@@ -137,7 +137,7 @@ $admin_lang_ni_crop_background    = "イメージトリミング時の背景で�
 $admin_lang_ni_post_exif_date     = "Exif日時を使用する";
 $admin_lang_ni_db_error           = "データベースへの書込み中にエラーが発生しました。";
 $admin_lang_ni_tags               = "タグ";
-$admin_lang_ni_tags_desc          = "(タグを分離するためには、カンマ、セミコロンおよびスペースを使用してください。単語を連結するためには、アンダーバー「_」を使用してください。)";
+$admin_lang_ni_tags_desc          = "(タグを分離するためには、カンマ、セミコロンおよびスペースを使用してください。単語を連結するためには、アンダーバー「_」を使用してください。 and dash)";
 $admin_lang_ni_alt_language       = "イメージタイトルおよび説明のための代替テキストを入力してください。";
 
 // Images
@@ -184,6 +184,10 @@ $admin_lang_imgedit_preview         = "プレビュー";
 $admin_lang_imgedit_db_error        = "<br />パーマリンクストリングが使用されていないか確認してください!";
 $admin_lang_imgedit_tags_edit       = "タグ (タグを分離するためには、カンマ、セミコロンおよびスペースを使用してください。単語を連結するためには、アンダーバー「_」を使用してください。):";
 $admin_lang_imgedit_alt_language  	= "イメージタイトルおよび説明のための代替テキストを変更する";
+$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
+$admin_lang_imgedit_masstag_set     = "Add tag(s)";
+$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
+$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
 $admin_lang_imgedit_published          = "非公開にされたイメージ";
 $admin_lang_imgedit_unpublished_cmnts  = "件を公開しました。";
 

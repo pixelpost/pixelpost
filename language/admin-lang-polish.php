@@ -157,7 +157,7 @@ $admin_lang_ni_crop_background    = "To jest tło obrazka do przycięcia";
 $admin_lang_ni_post_exif_date     = "Użyj daty z EXIFa";
 $admin_lang_ni_db_error           = "<br />Problem aktualizacji danych w bazie!";
 $admin_lang_ni_tags               = "Tagi";
-$admin_lang_ni_tags_desc          = "(do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia)";
+$admin_lang_ni_tags_desc          = "(do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia i myślnika)";
 $admin_lang_ni_alt_language				= "Podaj tytył i opis obrazka dla drugiego języka";
 
 // Images
@@ -203,6 +203,12 @@ $admin_lang_imgedit_preview         = "Podgląd";
 $admin_lang_imgedit_db_error        = "<br />Problem aktualizacji danych w bazie!";
 $admin_lang_imgedit_tags_edit       = "Tagi (do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia):";
 $admin_lang_imgedit_alt_language  	= "Zmiana tytułu i opisu obrazka dla drugiego języka";
+$admin_lang_imgedit_masstag  	      = "Dodaj/usuń tagi z wybranych zdjęć";
+$admin_lang_imgedit_masstag_set     = "Dodaj tag(i)";
+$admin_lang_imgedit_masstag_set2    = "Dodaj tag(i) dla alternatywnego języka";
+$admin_lang_imgedit_masstag_unset   = "Usuń tag(i)";
+$admin_lang_imgedit_published          = "Opublikowano";
+$admin_lang_imgedit_unpublished_cmnts  = "poprzednio zamaskowanych obrazów.";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1 = "Masowa edycja kategorii";

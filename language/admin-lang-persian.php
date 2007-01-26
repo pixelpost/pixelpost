@@ -130,7 +130,7 @@ $admin_lang_ni_crop_nextstep      = "پنجره برش عکس کوچک را ان
 $admin_lang_ni_crop_background    = "اين پس زمينه قسمت برش است";
 $admin_lang_ni_db_error           = "an error occured writing into database";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -173,7 +173,13 @@ $admin_lang_imgedit_cropbg          = "اينجا پس‌زمينه برش عک�
 $admin_lang_imgedit_js_del_im       = "عکس حذف خواهد شد، مطمئن هستيد؟";
 $admin_lang_imgedit_db_error        = "<br />Check if permalink string isn't used so far!";
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
-$admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
+$admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
+$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
+$admin_lang_imgedit_masstag_set     = "Add tag(s)";
+$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
+$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
+$admin_lang_imgedit_published          = "Published";
+$admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "ويرايش عمده طبقه‌بندي‌ها";

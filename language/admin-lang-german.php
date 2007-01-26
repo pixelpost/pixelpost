@@ -131,7 +131,7 @@ $admin_lang_ni_crop_nextstep      = "Bearbeiten Sie nun den Thumbnail-Ausschnitt
 $admin_lang_ni_crop_background    = "Dies ist der Hintergrund des Bildes, aus dem der Ausschnitt gew&auml;hlt wird.";
 $admin_lang_ni_db_error           = "Es konnte nicht in die Datenbank geschrieben werden.";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -176,7 +176,13 @@ $admin_lang_imgedit_cropbg          = "Hintergrundtext f&uuml;r 12cropimage";
 $admin_lang_imgedit_js_del_im       = "Wollen Sie das Bild wirklich l&ouml;schen?";
 $admin_lang_imgedit_db_error        = "<br />Stellen Sie sicher, dass dieser Permalink noch nicht genutzt wurde!";
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
-$admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
+$admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
+$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
+$admin_lang_imgedit_masstag_set     = "Add tag(s)";
+$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
+$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
+$admin_lang_imgedit_published          = "Published";
+$admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "Kategorien mehrfach editieren";

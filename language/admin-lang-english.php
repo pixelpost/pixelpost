@@ -134,7 +134,7 @@ $admin_lang_ni_crop_background    = "This is the background of the image to crop
 $admin_lang_ni_post_exif_date     = "Use exif date";
 $admin_lang_ni_db_error           = "an error occurred writing into database";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline)";
+$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
 $admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
 
 // Images
@@ -181,6 +181,10 @@ $admin_lang_imgedit_preview         = "Preview";
 $admin_lang_imgedit_db_error        = "<br />Check if permalink string isn't used so far!";
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language  	= "Change the alternative language image title and description";
+$admin_lang_imgedit_masstag  	      = "Add/remove tags from selected images";
+$admin_lang_imgedit_masstag_set     = "Add tag(s)";
+$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
+$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
 $admin_lang_imgedit_published          = "Published";
 $admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
 
