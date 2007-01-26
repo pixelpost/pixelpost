@@ -1021,10 +1021,10 @@ function save_tags_new($tags_str,$theid)
 	{
 		$strtr_arr = array(',' => ' ', ';' => ' ');
 		$tags = strtr($tags_str, $strtr_arr);
-		$pat1 = '/([^a-zA-Z 0-9_]+)/';
+		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
 		$tags = preg_replace( $pat1, '_', $tags);
-		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/');
-		$rep2 = array('', '', '_');
+		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/','/ - /', '/ -/', '/(-){2,}/');
+		$rep2 = array('', '', '_', '', '', '-');
 		$tags = preg_replace( $pat2, $rep2, $tags);
 		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
 
@@ -1080,10 +1080,10 @@ function save_alt_tags_new($tags_str,$theid)
 	{
 		$strtr_arr = array(',' => ' ', ';' => ' ');
 		$tags = strtr($tags_str, $strtr_arr);
-		$pat1 = '/([^a-zA-Z 0-9_]+)/';
+		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
 		$tags = preg_replace( $pat1, '_', $tags);
-		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/');
-		$rep2 = array('', '', '_');
+		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/','/ - /', '/ -/', '/(-){2,}/');
+		$rep2 = array('', '', '_', '', '', '-');
 		$tags = preg_replace( $pat2, $rep2, $tags);
 		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
 
