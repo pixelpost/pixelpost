@@ -19,7 +19,7 @@ Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 Attention:
 ============
@@ -33,7 +33,11 @@ ADMIN PANEL LANGUAGE VARIABLES:
 
 Dont edit                    ||      Edit                                   */
 
-$admin_lang_isrtl              = "no"; // yes for right-to-left languages and no for left-to-right languages
+$_lang_file_translator        = 'Mitsuhiro Yoshida - <a href="http://mitstek.com/" target="_blank">mitstek.com</a>';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.5';
+
+$admin_lang_isrtl             = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update            = "更新";
 $admin_lang_reload            = "<br /> 変更内容を表示するには、ページをリロードしてください。";
 $admin_lang_error             = "エラー";
@@ -322,10 +326,19 @@ $admin_lang_optn_token_desc           = "トークンを使用することで、
                                          この設定を有効にしてもよろしいですか?";
 $admin_lang_optn_token_time           = "コメントウィンドウを開いてコメントを送信するまでの最大時間: ";
 $admin_lang_optn_dsbl_list            = "Distributed Sender Blackhole List設定 (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc       = "<a href=\"http://www.dsbl.org\">Distributed Sender Blackhole List</a>には、オープンリレー、オープンプロクシまたはその他の脆弱性があるホストのIPアドレスを含んでいます。これらのサーバは、しばしばスパム送信者からメール送信に悪用されますが、コメントスパムを登録するためのサーバとしても知られています。<br /> <br />
+$admin_lang_optn_dsbl_list_desc       = "<a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a>には、オープンリレー、オープンプロクシまたはその他の脆弱性があるホストのIPアドレスを含んでいます。これらのサーバは、しばしばスパム送信者からメール送信に悪用されますが、コメントスパムを登録するためのサーバとしても知られています。<br /> <br />
                                          Distributed Sender Blackhole ListでコメントのIPアドレスをチェックしますか?";
 $admin_lang_optn_time_between_comments = "スパムフラッドを防ぐ";
 $admin_lang_optn_time_between_comments_desc = "次に新しいコメントを投稿できる秒数 (フラッドを避けるため): ";
+$admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
+$admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
+$admin_lang_optn_rss_full							= "Show full size pictures";
+$admin_lang_optn_rss_thumbs						= "Show thumbnails";
+$admin_lang_optn_rss_text							= "Show text only";
+$admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+$admin_lang_optn_alt_lang             = "Alternative language settings: ";
+$admin_lang_optn_alt_lang_dis         = "disabled";
+$admin_lang_optn_alt_lang_no          = "disabled";
 
 // Info
 $admin_lang_info_gd                  = "インストールされていません。サーバの管理者にお問い合わせください!";
@@ -357,6 +370,16 @@ $admin_lang_fileuploads              = "Pixelpostサイトへの<b>ファイル�
 $admin_lang_serversoft               = "サーバソフトウェア";
 $admin_lang_pixelpostinfo           = "Pixelpost情報";
 $admin_lang_pp_currversion          = "Pixelpostバージョン: ";
+$admin_lang_pp_check                 = "Check";
+$admin_lang_pp_sess_path             = "Session save path";
+$admin_lang_pp_sess_path_emp         = "is empty";
+$admin_lang_pp_fileupload_np         = 'NOT possible! Check file_upload variable in php.ini file!';
+$admin_lang_pp_fileupload_p          = 'possible.';
+$admin_lang_pp_langs                 = 'Pixelpost language translations';
+$admin_lang_pp_lng_fname             = 'Filename';
+$admin_lang_pp_lng_author            = 'Author';
+$admin_lang_pp_lng_ver               = 'Version';
+$admin_lang_pp_lng_email             = 'Email';
 
 // AddOns
 $admin_lang_addon_title              = "インストール済みアドオン";

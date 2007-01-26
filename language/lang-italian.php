@@ -50,6 +50,10 @@ BEGIN OF LANGUAGE VARIABLES:
 
 Dont edit                     ||       Edit                                    */
 
+$_lang_file_translator        = 'Cristiano Gazzi (kroom) - <a href="http://www.roomk.it/" target="_blank">www.roomk.it</a>';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.0.0';
+
 // IMAGE NAVIGATION
 $lang_previous                = "Precedente";
 $lang_next                    = "Successiva";
@@ -122,7 +126,7 @@ $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";

@@ -1189,6 +1189,48 @@ function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow)
 	// return the template
 	return $tpl;
 }
+
+function translation_data()
+{
+	global $admin_lang_pp_lng_fname, $admin_lang_pp_lng_author, $admin_lang_pp_lng_ver, $admin_lang_pp_lng_email;
+	$d = dir("../language");
+	$dir_con = array();
+	while (false !== ($entry = $d->read()))
+	{
+		($entry != '.' && $entry != '..')	? $dir_con[] = $entry : '';
+	}
+	$d->close();
+
+	sort($dir_con);
+
+	$out = '<table border="0" cellspacing="5">
+<tr>
+	<td><b>'.$admin_lang_pp_lng_fname.'</b></td>
+	<td><b>'.$admin_lang_pp_lng_author.'</b></td>
+	<td><b>'.$admin_lang_pp_lng_ver.'</b></td>
+	<td><b>'.$admin_lang_pp_lng_email.'</b></td>
+</tr>';
+
+	foreach($dir_con as $k => $v)
+	{
+		$_lang_file_translator = '';
+		$_lang_file_rev = '';
+		$_lang_file_email = '';
+		include('../language/'.$v);
+		$out .= '
+<tr>
+	<td>'.$dir_con[$k].'</td>
+	<td>'.$_lang_file_translator.'</td>
+	<td>'.$_lang_file_rev.'</td>
+	<td><a href="mailto:'.$_lang_file_email.'?subject=Pixelpost translation">'.$_lang_file_email.'</a></td>
+</tr>';
+	}
+
+	$out .= '
+</table>';
+
+	return $out;
+}
 //
 //============================= LANGUAGE SECTION ENDS ===========================
 ?>

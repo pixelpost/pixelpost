@@ -49,6 +49,10 @@ in other languages.
 
 /* Dont edit                      ||  Edit                                                        */
 
+$_lang_file_translator        = 'Mitsuhiro Yoshida - <a href="http://mitstek.com/" target="_blank">mitstek.com</a>';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.5';
+
 // IMAGE NAVIGATION
 $lang_nothing_to_show             = "Coming Soon! まだ投稿されたイメージはありません。";
 
@@ -125,7 +129,7 @@ $lang_alt_lang_italian            ="Italiano";
 $lang_alt_lang_japanese           ="Japanese";
 $lang_alt_lang_norwegian          ="Norsk";
 $lang_alt_lang_persian            ="Farsi";
-$lang_alt_lang_polish             ="Polskiego";
+$lang_alt_lang_polish             ="Polski";
 $lang_alt_lang_portuguese         ="Portugues";
 $lang_alt_lang_simplified_chinese ="Chinese";
 $lang_alt_lang_spanish            ="Espanol";

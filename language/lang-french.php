@@ -48,6 +48,10 @@ Vous pouvez modifier ce fichier si les termes proposes ne vous conviennent pas.
 
 /* Dont edit                      ||       Edit                                    */
 
+$_lang_file_translator        = 'Philippe Durand - <a href="http:///www.photofloue.net/" target="_blank">www.photofloue.net</a>';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.5';
+
 // IMAGE NAVIGATION
 $lang_previous                     = "Pr&eacute;c&eacute;dente";
 $lang_next                         = "Suivante";
@@ -121,7 +125,7 @@ $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";

@@ -20,7 +20,7 @@ Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Info: if you want to have the admin-section in swedish language as well,
@@ -53,6 +53,10 @@ ______________________________________________________________________________
 BEGIN OF LANGUAGE VARIABLES
 
 Dont edit                     ||      Edit                             */
+
+$_lang_file_translator        = 'Linus - <a href="http://www.shapestyle.se/" target="_blank">www.shapestyle.se</a>';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.0.0';
 
 // IMAGE NAVIGATION
 $lang_previous                = "F&ouml;reg&aring;ende";
@@ -125,7 +129,7 @@ $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";

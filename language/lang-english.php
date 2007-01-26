@@ -49,6 +49,10 @@ in other languages.
 
 /* Dont edit                      ||  Edit                                                        */
 
+$_lang_file_translator        = 'The PixelPost Crew';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.6';
+
 // IMAGE NAVIGATION
 $lang_nothing_to_show             = "Coming Soon! Nothing has been posted yet.";
 
@@ -126,7 +130,7 @@ $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";

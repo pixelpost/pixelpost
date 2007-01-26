@@ -30,6 +30,10 @@ VARIABILI PER L'INTERFACCIA DI AMMINISTRAZIONE IN ITALIANO:
 
 Non modificare                    ||      Modificare                                   */
 
+$_lang_file_translator        = 'The PixelPost Crew';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.0.0';
+
 $admin_lang_isrtl             = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update            = "Aggiorna";
 $admin_lang_reload            = "<br /> Potrebbe essere necessario ricaricare la pagina per vedere i cambiamenti.";
@@ -310,7 +314,7 @@ $admin_lang_optn_token_desc		        = "Using a token will reduce the probabilit
 																				 Should this setting be enabled?";
 $admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
 $admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
+$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
 																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
 $admin_lang_optn_time_between_comments = "Prevent SPAM flood";
 $admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
@@ -328,6 +332,9 @@ $admin_lang_optn_rss_full							= "Show full size pictures";
 $admin_lang_optn_rss_thumbs						= "Show thumbnails";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+$admin_lang_optn_alt_lang             = "Alternative language settings: ";
+$admin_lang_optn_alt_lang_dis         = "disabled";
+$admin_lang_optn_alt_lang_no          = "disabled";
 
 
 // Info
@@ -360,6 +367,16 @@ $admin_lang_fileuploads		          = "Gli <b>Upload</b> al sito Pixelpost sono";
 $admin_lang_serversoft		          = "Server Software";
 $admin_lang_Pixelpostinfo	          = "Informazioni Pixelpost";
 $admin_lang_pp_currversion	          = "Stai utilizzando Pixelpost versione :";
+$admin_lang_pp_check                 = "Check";
+$admin_lang_pp_sess_path             = "Session save path";
+$admin_lang_pp_sess_path_emp         = "is empty";
+$admin_lang_pp_fileupload_np         = 'NOT possible! Check file_upload variable in php.ini file!';
+$admin_lang_pp_fileupload_p          = 'possible.';
+$admin_lang_pp_langs                 = 'Pixelpost language translations';
+$admin_lang_pp_lng_fname             = 'Filename';
+$admin_lang_pp_lng_author            = 'Author';
+$admin_lang_pp_lng_ver               = 'Version';
+$admin_lang_pp_lng_email             = 'Email';
 
 // AddOns
 $admin_lang_addon_title              = "Addon Installati";

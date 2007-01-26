@@ -32,7 +32,7 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
     if($_GET['version'] == "check") {
       $pixelpost_latest_version = file_get_contents("http://www.pixelpost.org/service/version.txt");
         } else {
-        $pixelpost_latest_version = "<a href='$PHP_SELF?view=info&amp;version=check'>Check</a>";
+        $pixelpost_latest_version = "<a href='$PHP_SELF?view=info&amp;version=check'>$admin_lang_pp_check</a>";
         }
     $mysql_version = mysql_get_server_info();
 	if(function_exists('gd_info'))
@@ -46,7 +46,7 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	}		// func exist
     $version = base64_decode($version);
     $version = stripslashes($version);
-    $sess_save_path = ((session_save_path() != '') ? '<b>Session save path</b> ' . session_save_path() : '<b style="color:red">Session save path is empty!!</b>');
+    $sess_save_path = ((session_save_path() != '') ? '<b>'.$admin_lang_pp_sess_path.'</b> ' . session_save_path() : '<b style="color:red">' . $admin_lang_pp_sess_path . ' '. $admin_lang_pp_sess_path_emp . '!!</b>');
     echo "<div class='jcaption'>$admin_lang_pixelpostinfo</div>
     <div class='content'>
     $admin_lang_pp_currversion $version<br />
@@ -65,9 +65,9 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	$admin_lang_fileuploads  ";
 
 		if(ini_get('file_uploads')==0)
-			echo 'NOT possible! Check file_upload variable in php.ini file!';
+			echo $admin_lang_pp_fileupload_np;
 		else
-			echo 'possible.';
+			echo $admin_lang_pp_fileupload_p;
 
 		echo "<p />\n	<b>$admin_lang_serversoft</b> ".$_SERVER['SERVER_SOFTWARE']."<p />
 	";
@@ -141,6 +141,17 @@ if(file_exists($work_path."templates")) {
 echo "$admin_lang_pp_folder_missing ".$work_path."templates)<p />";
 }
 echo "</div><p />";
+
+echo "
+	<div class='jcaption'>$admin_lang_pp_langs</div>
+	<div class='content'>";
+
+echo translation_data();
+
+echo "
+  </div>";
+
+
 // refererlog
 echo "
 	<div class='jcaption'>$admin_lang_pp_ref_log_title </div>

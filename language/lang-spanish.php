@@ -54,6 +54,10 @@ BEGIN OF LANGUAGE VARIABLES:
 
 Dont edit                                ||       Edit                                    */
 
+$_lang_file_translator        = 'The PixelPost Crew';
+$_lang_file_email             = 'thecrew@pixelpost.org';
+$_lang_file_rev               = '1.0.0';
+
 // IMAGE NAVIGATION
 $lang_previous                  = "Anterior";
 $lang_next                      = "Siguiente";
@@ -78,7 +82,7 @@ $lang_comment_page_title        = "Opini&oacute;n";
 $lang_comment_popup             = "Opiniones";
 $lang_message_banned_comment    = "&iexcl;Su comentario no se ahorra! Contiene unas o m&aacute;s palabras/email/ips prohibidas.";
 $lang_comment_popup_disabled    = "Commenting on this picture has been disabled";
-$lang_tags\1= "Tags:<br/>";                      = "Tags:<br/>";
+$lang_tags                      = "Tags:<br/>";
 
 // EXIF DATA
 $lang_exposure                  = "Exposici&oacute;n:";
@@ -125,7 +129,7 @@ $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";

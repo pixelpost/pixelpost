@@ -317,13 +317,14 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			}
 		echo "</select><p />";
 		// Alternative language settings
-		echo "Alternative language settings:<br />
+		echo "$admin_lang_optn_alt_lang<br />
 		<select name='alt_lang'>";
-		if ($cfgrow['altlangfile'] != 'Off'){
+		if ($cfgrow['altlangfile'] != 'Off')
+		{
 			echo " <option value='".$cfgrow['altlangfile']."'>".$cfgrow['altlangfile']."</option>
-			<option value='Off'> -=disable=-</option>";
+			<option value='Off'> -=$admin_lang_optn_alt_lang_dis=-</option>";
 		} else {
-			echo "<option value='Off'>Disabled</option>";
+			echo "<option value='Off'>".ucfirst($admin_lang_optn_alt_lang_no)."</option>";
 		}
 		// go through template folder
 		$dir = "../language";
@@ -633,7 +634,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				$admin_lang_optn_time_between_comments
 				</div>
 				<div class='content'>
-				$admin_lang_optn_time_between_comments_desc <input type='text' size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' />
+				$admin_lang_optn_time_between_comments_desc <input type='text' size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' /> s
 				</div>
 				
 				<!-- RSS feed options -->

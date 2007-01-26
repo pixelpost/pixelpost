@@ -11,7 +11,7 @@ $Id$
 Language file: polish (PL)
 Author:  Piotr "GeoS" Galas
 Contact: geos@pixelpost.org
-WWW: http://blog.piotrgalas.com/
+WWW: http://www.piotrgalas.com/
 
 Version 1.5:
 Development Team:
@@ -21,7 +21,7 @@ Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Please check that the file "admin-lang-polish.php" is uploaded to the
@@ -48,6 +48,10 @@ ______________________________________________________________________________
 ADMIN PANEL LANGUAGE VARIABLES:
 
 Dont edit                     ||      Edit                                   */
+
+$_lang_file_translator        = 'Piotr "GeoS" Galas - <a href="http://piotrgalas.com/" target="_blank">piotrgalas.com</a>';
+$_lang_file_email             = 'geos@pixelpost.org';
+$_lang_file_rev               = '1.6';
 
 $admin_lang_isrtl  = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update = "Aktualizacja";
@@ -291,11 +295,11 @@ $admin_lang_optn_sendemail_txt      = "Powiadamiać emailem o nowych komentarzac
 $admin_lang_optn_sendemail_html_txt = "Używać powiadamiania emailem w formacie HTML?";
 $admin_lang_optn_comment_setting 		= "GLOBALNE USTAWIENIA KOMENTARZY";
 $admin_lang_optn_comment_setting2		= "Ustawienia komentarza";
-$admin_lang_optn_cmnt_mod_txt       = "Domyślna akcja dla komentarzy:";
+$admin_lang_optn_cmnt_mod_txt       = "Domyślne zachowanie dla komentarzy (wybierane dla każdego nowego publikowanego wpisu - można je zmienić):";
 $admin_lang_optn_cmnt_mod_txt2      = "Akcja dla komentarzy:";
 $admin_lang_optn_cmnt_mod_allowed		=	"Niezwłoczna publikacja";
 $admin_lang_optn_cmnt_mod_moderation=	"Kolejka moderacji";
-$admin_lang_optn_cmnt_mod_forbidden	=	"Deaktywacja komentowania";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Deaktywacja komentarzy";
 
 $admin_lang_optn_switch_template    = "ZMIEŃ SKÓRKĘ";
 $admin_lang_optn_lang_file          = "PLIK Z LOKALIZACJĄ";
@@ -303,7 +307,7 @@ $admin_lang_optn_dateformat         = "FORMAT DATY";
 $admin_lang_optn_dateformat_txt     = "Format daty dla obrazków oraz wyświetlania komentarzy.  Wykorzystana składnia jest identyczna z tą dla
   funkcji PHP <a href='http://www.php.net/date' target='_blank'>date()</a>. To są przykłady znaczenia najczęściej używanych parametrów: Y:rok
   m:miesiąc d:dzień H:godzina i:minuta s:sekunda";
-$admin_lang_optn_gmt                = "NALEŻY PAMIĘTAĆ, że to nie wspiera przejścia na czas letni/zimowy automatycznie i należy to zmienić
+$admin_lang_optn_gmt                = "<br/>NALEŻY PAMIĘTAĆ, że to nie wspiera przejścia na czas letni/zimowy automatycznie i należy to zmienić
   ręcznie.<br />Sprawdź <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx'> aktualny czas GMT </a> jeśli nie masz pewności
   odnośnie przesunięcia Twojego czasu lokalnego względem GMT.<br />";
 $admin_lang_optn_cat_link_format            = "FORMAT LINKÓW KATEGORII";
@@ -346,24 +350,24 @@ $admin_lang_optn_exif			            = "EXIF";
 $admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF do pokazania na stronie głównej?";
 $admin_lang_optn_token			          = "Aktywacja tokenów w formularzach";
 $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobieństwo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
+																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html lub innego, w którym znajduje się formularz komentarzy) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
 																				 Jeśli zapomnisz tagu <strong>&lt;TOKEN&gt;</strong>, wtedy komentarze nie będą działać, a użytkownik zobaczy komunikat o błędzie.<br /><br/>\n
 																				 Czy to ustawienie powinno być aktywne?";
-$admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
-$admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
-																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
-$admin_lang_optn_time_between_comments = "Prevent SPAM flood";
-$admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
-$admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
-$admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
-$admin_lang_optn_rss_full							= "Show full size pictures";
-$admin_lang_optn_rss_thumbs						= "Show thumbnails";
-$admin_lang_optn_rss_text							= "Show text only";
-$admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
-
-
-
+$admin_lang_optn_token_time						= "Maksymalny czas (w minutach) pomiędzy otwarciem okna komentarzy i wysłaniem komentarza: ";
+$admin_lang_optn_dsbl_list 						= "Ustwienia Distributed Sender Blackhole List (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list_desc 			= "<a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> zawiera adresy IP serwerów, które mogą służyć do różnego rodzaju nadużyć (są używane jako tzw. open relay, open proxy lub są podatne na wykorzystanie w inny sposób). Te serwery często są wykorzystywane przez SPAMerów do rozsyłania emaili, ale są również znane jako źródła wysyłania komentarzy.<br /> <br />
+																				 Czy adresy IP powinny być sprawdzane pod kątem znajdowania się na Distributed Sender Blackhole List?";
+$admin_lang_optn_time_between_comments = "Zapobieganie \"powodzi\" SPAMu";
+$admin_lang_optn_time_between_comments_desc = "Liczba sekund, po której upłynięciu można dodać kolejny komentarzy (zapobieganie \"powodzi\" komentarzy): ";
+$admin_lang_optn_rss_setting					= "Ustawienia RSS/ATOM";
+$admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
+$admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe obrazki";
+$admin_lang_optn_rss_thumbs						= "Pokazuj miniaturki";
+$admin_lang_optn_rss_text							= "Pokazuj tylko tekst";
+$admin_lang_optn_feeditems_desc				= "Liczba publikowanych w RSS/ATOM wiadomości: ";
+$admin_lang_optn_alt_lang             = "Ustawienia alternatywnego języka: ";
+$admin_lang_optn_alt_lang_dis         = "niedostępne";
+$admin_lang_optn_alt_lang_no          = "nieaktywowany";
 
 // Info
 $admin_lang_info_gd           = "Nie zainstalowane, poproś swojego dostawcę o zainstalowanie!";
@@ -391,10 +395,20 @@ $admin_lang_pp_tempfolder     = "Katalog skórek:";
 $admin_lang_pp_folder_missing = "Nie istnieje (powinno być";
 $admin_lang_pp_ref_log_title  = "Referujący z ostatnich siedmiu dni";
 $admin_lang_hostinfo          = "Informacje o serwerze";
-$admin_lang_fileuploads       = "<b>Wysyłanie plików</b> na stronę pixelposta są";
+$admin_lang_fileuploads       = "<b>Wysyłanie plików</b> do PixelPosta jest";
 $admin_lang_serversoft        = "Oprogramowanie serwera";
-$admin_lang_pixelpostinfo     = "Pixelpost Information";
+$admin_lang_pixelpostinfo     = "Informacje o Pixelpost";
 $admin_lang_pp_currversion    = "Używasz PixelPosta w wersji";
+$admin_lang_pp_check          = "Sprawdź";
+$admin_lang_pp_sess_path      = "Ścieżka zapisu plików sesji";
+$admin_lang_pp_sess_path_emp  = "jest pusta";
+$admin_lang_pp_fileupload_np  = 'niemożliwe! Sprawdź zmienną file_upload w pliku php.ini!';
+$admin_lang_pp_fileupload_p   = 'możliwe.';
+$admin_lang_pp_langs          = 'Tłumaczenia językowe PixelPosta';
+$admin_lang_pp_lng_fname      = 'Nazwa pliku';
+$admin_lang_pp_lng_author     = 'Autor';
+$admin_lang_pp_lng_ver        = 'Wersja';
+$admin_lang_pp_lng_email      = 'Email';
 
 // AddOns
 $admin_lang_addon_title        = "ZAINSTALOWANE DODATKI";

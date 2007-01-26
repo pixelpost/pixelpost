@@ -11,7 +11,7 @@ $Id$
 Language file: polish (PL)
 Author:  Piotr "GeoS" Galas
 Contact: geos@pixelpost.org
-WWW: http://blog.piotrgalas.com/
+WWW: http://www.piotrgalas.com/
 
 Version 1.5:
 Development Team:
@@ -21,7 +21,7 @@ Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Please check that the file "admin-lang-polish.php" is uploaded to the
@@ -49,13 +49,17 @@ BEGIN OF LANGUAGE VARIABLES
 
 Dont edit                     ||      Edit                          */
 
+$_lang_file_translator        = 'Piotr "GeoS" Galas - <a href="http://piotrgalas.com/" target="_blank">piotrgalas.com</a>';
+$_lang_file_email             = 'geos@pixelpost.org';
+$_lang_file_rev               = '1.6';
+
 // IMAGE NAVIGATION
 $lang_previous								= "Poprzedni";
 $lang_next										= "Następny";
 $lang_no_previous							= "Brak poprzedniego obrazka";
 $lang_no_next									= "Brak następnego obrazka";
-$lang_latest									 = "Last";
-$lang_first										 = "First";
+$lang_latest									 = "Ostatnie";
+$lang_first										 = "Pierwsze";
 $lang_browse_select_category	= "Wybierz kategorię";
 $lang_browse_all							= "Wszystkie";
 $lang_permalink								= "Permalink";
@@ -122,7 +126,7 @@ $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish							="Polskiego";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
