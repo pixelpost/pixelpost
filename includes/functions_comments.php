@@ -47,17 +47,40 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if (eregi("\r",$parent_id) || eregi("\n",$parent_id))	die("No intrusion! ?? :(");
 
 	if (!is_numeric($parent_id))	die('parent_id is not correct!');
-
-// check if current image has got enabled comments
-	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
-	$cmnt_setting = pullout($comments_result['comments']);
-
-	if($cmnt_setting == 'F')	die('Die you SPAMMER!!');
-
-	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
-	$ip = $_SERVER['REMOTE_ADDR'];
 	
-	//Check the used IP adress against the Distributed Sender Blackhole List @ http://www.dsbl.org
+	// $message
+	$message = isset($_POST['message']) ? $_POST['message'] : "";
+	$message = clean_comment($message);
+	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
+	$message = nl2br($message);
+
+// New feature for testing!!
+	$blacklists = array('multi.surbl.org','multi.uribl.com','sbl-xbl.spamhaus.org','list.dsbl.org','multihop.dsbl.org','dnsbl.sorbs.net','spam.dnsbl.sorbs.net');
+	$spam_domains_found=0;
+	//get site names found in body of comment.
+	$regex_url = "/(http:\/\/|https:\/\/|ftp:\/\/|www\.)([^\/\"<\s]*)/im";
+	$mk_regex_array = array();
+	preg_match_all($regex_url, $message, $mk_regex_array);
+	for( $cnt=0; $cnt < count($mk_regex_array[2]); $cnt++ ) {
+		$domain_to_test = rtrim($mk_regex_array[2][$cnt],"\\");
+		if (strlen($domain_to_test) > 3){
+			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
+				$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
+				//echo gethostbyname($spam_domain_to_test)."<br />";
+				if( !strstr(gethostbyname($spam_domain_to_test),$spam_domain_to_test)) {
+					echo $spam_domain_to_test;
+					$spam_domains_found++;
+				}
+				$spam_domain_to_test=null;
+			}
+		}
+	}
+  if ($spam_domains_found>0){
+		die('Die you SPAMMER!!');
+	}
+
+//Check the used IP adress against the Distributed Sender Blackhole List @ http://www.dsbl.org
+	$ip = $_SERVER['REMOTE_ADDR'];
 	if ($cfgrow['comments_dsbl'] == 'T')
 	{
 		list($a, $b, $c, $d) = split('.', $ip);
@@ -66,7 +89,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
  			return false;
 		}
 	}
+
+// check if current image has got enabled comments
+	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
+	$cmnt_setting = pullout($comments_result['comments']);
+	if($cmnt_setting == 'F')	die('Die you SPAMMER!!');
 	
+	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	if($cmnt_setting == 'A')
 	{
 		$cmnt_moderate_permission='no';
@@ -77,12 +106,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$cmnt_moderate_permission='yes';
 		$cmnt_publish_permission ='no';
 	}
-
-// $message
-	$message = isset($_POST['message']) ? $_POST['message'] : "";
-	$message = clean_comment($message);
-	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
-	$message = nl2br($message);
 
 // $name
 	$name = isset($_POST['name']) ? $_POST['name'] : "";
