@@ -571,72 +571,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				</select>
 
 				</div>
-
-				<div class='jcaption'>
-				$admin_lang_optn_token
-				</div>
-
-				<div class='content'>
-						";
-				if ($cfgrow['token']=='T')
-					$toecho = $admin_lang_optn_yes;
-				else
-					$toecho = $admin_lang_optn_no;
-
-				if ($cfgrow['token']=='T')
-					$optnecho = $admin_lang_optn_no;
-				else
-					$optnecho = $admin_lang_optn_yes;
-
-				if ($cfgrow['token']=='T')
-					$optnval = 'F';
-				else
-					$optnval = 'T';
-
-				echo "
-				$admin_lang_optn_token_desc
-				<select name='token'><option value='".$cfgrow['token']."'>".$toecho."</option>
-				<option value='$optnval'>$optnecho</option>
-				</select><br />
-				$admin_lang_optn_token_time <input type='text' size=\"1\" name='token_time' value='".$cfgrow['token_time']."' />
-
-				</div>
-				
-				<div class='jcaption'>
-				$admin_lang_optn_dsbl_list
-				</div>
-
-				<div class='content'>
-						";
-				if ($cfgrow['comment_dsbl']=='T')
-					$toecho = $admin_lang_optn_yes;
-				else
-					$toecho = $admin_lang_optn_no;
-
-				if ($cfgrow['comment_dsbl']=='T')
-					$optnecho = $admin_lang_optn_no;
-				else
-					$optnecho = $admin_lang_optn_yes;
-
-				if ($cfgrow['comment_dsbl']=='T')
-					$optnval = 'F';
-				else
-					$optnval = 'T';
-
-				echo "
-				$admin_lang_optn_dsbl_list_desc
-				<select name='comment_dsbl'><option value='".$cfgrow['comment_dsbl']."'>".$toecho."</option>
-				<option value='$optnval'>$optnecho</option>
-				</select>
-				</div>
-				
-				<div class='jcaption'>
-				$admin_lang_optn_time_between_comments
-				</div>
-				<div class='content'>
-				$admin_lang_optn_time_between_comments_desc <input type='text' size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' /> s
-				</div>
-				
 				<!-- RSS feed options -->
 				<div class='jcaption'>$admin_lang_optn_rss_setting</div>
     		<div class='content'>$admin_lang_optn_rsstype_desc
@@ -654,7 +588,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option selected=\"selected\" value=\"N\">$admin_lang_optn_rss_text</option>";
  					}
 			echo"</select><br /><br />
-			$admin_lang_optn_feeditems_desc <input type='text' size=\"2\" name='feeditems' value='".$cfgrow['feeditems']."' />
+			$admin_lang_optn_feeditems_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='feeditems' value='".$cfgrow['feeditems']."' />
 			</div>
 		<div class='jcaption'>
 				$admin_lang_optn_update
@@ -841,10 +775,92 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     };
 
 
-    if ($_GET['optionsview']=='antispam')
+    if ($_GET['optionsview']=='antispam'){
+    	if ($_GET['optaction']=='updateantispam'){
+				// token
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".$_POST['token_time']."'");
+				// DSBL settings
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_dsbl='".$_POST['comment_dsbl']."'");
+				// SPAM Flood settings
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
+			} 
     	show_anti_spam();
+    	
+    	echo "<form method='post' action='$PHP_SELF?view=options&amp;optionsview=antispam&amp;optaction=updateantispam' accept-charset='UTF-8'>
+    		<div class='jcaption'>
+				$admin_lang_optn_token
+				</div>
 
-    echo "<p />";
+				<div class='content'>
+						";
+				if ($cfgrow['token']=='T')
+					$toecho = $admin_lang_optn_yes;
+				else
+					$toecho = $admin_lang_optn_no;
+
+				if ($cfgrow['token']=='T')
+					$optnecho = $admin_lang_optn_no;
+				else
+					$optnecho = $admin_lang_optn_yes;
+
+				if ($cfgrow['token']=='T')
+					$optnval = 'F';
+				else
+					$optnval = 'T';
+
+				echo "
+				$admin_lang_optn_token_desc
+				<select name='token'><option value='".$cfgrow['token']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
+				</select><br />
+				$admin_lang_optn_token_time <input type='text' style=\"text-align: right;\" size=\"1\" name='token_time' value='".$cfgrow['token_time']."' />
+
+				</div>
+				
+				<div class='jcaption'>
+				$admin_lang_optn_dsbl_list
+				</div>
+
+				<div class='content'>
+						";
+				if ($cfgrow['comment_dsbl']=='T')
+					$toecho = $admin_lang_optn_yes;
+				else
+					$toecho = $admin_lang_optn_no;
+
+				if ($cfgrow['comment_dsbl']=='T')
+					$optnecho = $admin_lang_optn_no;
+				else
+					$optnecho = $admin_lang_optn_yes;
+
+				if ($cfgrow['comment_dsbl']=='T')
+					$optnval = 'F';
+				else
+					$optnval = 'T';
+
+				echo "
+				$admin_lang_optn_dsbl_list_desc
+				<select name='comment_dsbl'><option value='".$cfgrow['comment_dsbl']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
+				</select>
+				</div>
+				
+				<div class='jcaption'>
+				$admin_lang_optn_time_between_comments
+				</div>
+				<div class='content'>
+				$admin_lang_optn_time_between_comments_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' /> s
+				</div>
+				<div class='jcaption'>
+				$admin_lang_optn_update
+				</div>
+
+		<div class='content'>
+		<input type='submit' value='$admin_lang_optn_update'  />
+		</div>
+		</form>";
+		echo options_refererlog_html();
+		}
 
 } // end if view options    }
 
@@ -913,10 +929,6 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 
 		</tr>\n
 		</table >\n
-		<!-- TODO FIND HYPERLINKS INSIDE MESSAGE
-		\tComments with more than <input name='acceptable_num_links' type='text' class='input-small-int' value='$acceptable_num_links' style='width:15px;' /> links will be added to the moderation queue.
-		-->
-		<p />
 		<input type='submit' value='$admin_lang_spam_updateblacklist' />\n
 		</form>
 		$additional_msg
@@ -940,9 +952,11 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 		$HTML .="
 		</div> <!-- end of content-->
 		";
+	return $HTML;
+}
 
-
-		// refererlog
+function options_refererlog_html() {
+			// refererlog
 		global $admin_lang_pp_ref_log_title;
 		global $pixelpost_db_prefix;
 		$HTML .= "<div class=\"jcaption\">$admin_lang_pp_ref_log_title</div>
@@ -986,7 +1000,6 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 			$HTML .= $referer_print;
 			$HTML .= "</div><p />";
 //-------------
-
-	return $HTML;
+return $HTML;
 }
  ?>

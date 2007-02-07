@@ -255,7 +255,7 @@ $admin_lang_optn_template           = "TEMPLATE";
 $admin_lang_optn_thumbnails         = "THUMBNAILS";
 $admin_lang_optn_tip                = "Don't forget the tailing slash <b>'/'</b> e.g. <i>http://www.pixelpost.org/</i>";
 
-$admin_lang_optn_update             = "Update";
+$admin_lang_optn_update             = "UPDATE";
 $admin_lang_optn_yes                = "Yes";
 $admin_lang_optn_no                 = "No";
 
@@ -270,7 +270,7 @@ $admin_lang_optn_pss_re            = "Reconfirm Password:";
 $admin_lang_optn_email             = "ADMIN EMAIL";
 $admin_lang_optn_fillit            = "Fill it. This will be used for password recovery.";
 $admin_lang_optn_img_path          = "IMAGES PATH";
-$admin_lang_optn_tz                = "Timezone";
+$admin_lang_optn_tz                = "TIMEZONE";
 $admin_lang_optn_tz_txt            = "Select the timezone offset of your location.";
 $admin_lang_optn_sendemail         = "SEND EMAIL ON COMMENT";
 $admin_lang_optn_sendemail_txt     = "Send notification email on comments?";
@@ -313,25 +313,25 @@ $admin_lang_optn_pass_notchngd_txt   = "Password is not changed. Type the same p
 $admin_lang_optn_title_url_text      = "Check or modify the Site title and the URL of your installation";
 $admin_lang_optn_thumb_updated       = "Thumbnails updated!";
 $admin_lang_optn_updated             = "thumbnails updated.";
-$admin_lang_optn_visitorbooking_title = 'Book visitors';
+$admin_lang_optn_visitorbooking_title = 'BOOK VISITORS';
 $admin_lang_optn_visitorbooking_desc  = 'Should Pixelpost book information of every visitor?';
 $admin_lang_optn_upd_done             = "Update done.";
-$admin_lang_optn_markdown             = "Enable Markdown";
+$admin_lang_optn_markdown             = "ENABLE MARKDOWN";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
-$admin_lang_optn_exif			            = "Enable Exif";
+$admin_lang_optn_exif			            = "ENABLE EXIF";
 $admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
-$admin_lang_optn_token			          = "Enable token in forms";
+$admin_lang_optn_token			          = "ENABLE TOKEN IN FORMS";
 $admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
 																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
 																				 Should this setting be enabled?";
 $admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
-$admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list 						= "DISTRIBUTED SENDER BLACKHOLE LIST SETTING (http://www.dsbl.org)";
 $admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
 																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
-$admin_lang_optn_time_between_comments = "Prevent SPAM flood";
+$admin_lang_optn_time_between_comments = "PREVENT SPAM FLOOD";
 $admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
-$admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
+$admin_lang_optn_rss_setting					= "RSS/ATOM FEED SETTINGS";
 $admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Show full size pictures";
 $admin_lang_optn_rss_thumbs						= "Show thumbnails";
@@ -400,7 +400,7 @@ $admin_lang_pp_up_error_7            = "Failed to write file to disk.";
 
 
 // options >> time stamps
-$admin_lang_optn_timestamps_title  = "Time Stamps";
+$admin_lang_optn_timestamps_title  = "TIME STAMPS";
 $admin_lang_optn_timestamps_desc   = "Adding time stamps to file names avoids overwriting images with same name. <br/>
                                      Use time stamps? ";
 

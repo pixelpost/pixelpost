@@ -1213,17 +1213,19 @@ function translation_data()
 
 	foreach($dir_con as $k => $v)
 	{
-		$_lang_file_translator = '';
-		$_lang_file_rev = '';
-		$_lang_file_email = '';
-		include('../language/'.$v);
-		$out .= '
+		if($v != "index.html") {
+			$_lang_file_translator = '';
+			$_lang_file_rev = '';
+			$_lang_file_email = '';
+			include('../language/'.$v);
+			$out .= '
 <tr>
 	<td>'.$dir_con[$k].'</td>
 	<td>'.$_lang_file_translator.'</td>
 	<td>'.$_lang_file_rev.'</td>
 	<td><a href="mailto:'.$_lang_file_email.'?subject=Pixelpost translation">'.$_lang_file_email.'</a></td>
 </tr>';
+		}
 	}
 
 	$out .= '
