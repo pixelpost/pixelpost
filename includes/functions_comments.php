@@ -54,7 +54,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
 	$message = nl2br($message);
 
-	$blacklists = array('multi.surbl.org','multi.uribl.com','sbl-xbl.spamhaus.org','list.dsbl.org','multihop.dsbl.org','dnsbl.sorbs.net','spam.dnsbl.sorbs.net');
+	$blacklists = array('multi.surbl.org','multi.uribl.com','sbl-xbl.spamhaus.org','multihop.dsbl.org','dnsbl.sorbs.net','spam.dnsbl.sorbs.net');
 	$spam_domains_found=0;
 	//get site names found in body of comment.
 	$regex_url = "/(http:\/\/|https:\/\/|ftp:\/\/|www\.)([^\/\"<\s]*)/im";
