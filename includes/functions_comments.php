@@ -70,7 +70,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
   		if (strlen($domain_to_test) > 3){
   			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
   				$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
-  				if( !strstr(gethostbyname($spam_domain_to_test),$spam_domain_to_test)) {
+  				if (gethostbyname("completebogus")=="completebogus"){
+						$domain_check = $spam_domain_to_test;
+					}else {
+						$domain_check = gethostbyname("completebogus");
+					}
+  				if( !strstr(gethostbyname($spam_domain_to_test),$domain_check)) {
   					$spam_domains_found++;
   				}
   				$spam_domain_to_test=null;
