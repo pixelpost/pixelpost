@@ -71,7 +71,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
   			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
   				$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
   				if( !strstr(gethostbyname($spam_domain_to_test),$spam_domain_to_test)) {
-  					echo $spam_domain_to_test;
   					$spam_domains_found++;
   				}
   				$spam_domain_to_test=null;
