@@ -413,6 +413,8 @@ $admin_lang_spam_updateblacklist = "alle Sperr-Listen aktualisieren";
 $admin_lang_ni_post_exif_date = "Exif-Datum verwenden";
 
 $admin_lang_optn_upd_done    = "Update durchgef&uuml;hrt.";
+$admin_lang_optn_upd_error            = "Update Error.";
+$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
 $admin_lang_imgedit_preview  = "Vorschau";
 $admin_lang_optn_markdown             = "Enable Markdown";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
@@ -429,6 +431,8 @@ $admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target
 																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
 $admin_lang_optn_time_between_comments = "Prevent SPAM flood";
 $admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
+$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
+$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
 $admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Show full size pictures";

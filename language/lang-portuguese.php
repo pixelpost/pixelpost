@@ -165,5 +165,6 @@ $lang_email_notificationplain_pt4 = "
 ";
 // Error Message
 $lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
 
 ?>

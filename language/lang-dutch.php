@@ -168,4 +168,6 @@ $lang_email_notificationplain_pt4 = "
       Email sent by pixelpost
 ";
 
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
+
 ?>

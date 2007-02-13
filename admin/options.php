@@ -66,7 +66,12 @@ if ($_GET['optaction']=='updateall')
 		//break;
 
 		//case "updatelang":
-		$update = sql_query("update ".$pixelpost_db_prefix."config set langfile='".$_POST['new_lang']."', altlangfile='".$_POST['alt_lang']."' where admin='".$cfgrow['admin']."'");
+		if ($_POST['new_lang']!=$_POST['alt_lang']){
+			$update = sql_query("update ".$pixelpost_db_prefix."config set langfile='".$_POST['new_lang']."', altlangfile='".$_POST['alt_lang']."' where admin='".$cfgrow['admin']."'");
+			$lang_error=0;
+		} else {
+			$lang_error=1;
+		}
 		//break;
 
 		//case "updateemail":
@@ -213,7 +218,12 @@ switch ($_GET['optaction'])
 
 if($_GET['optaction'] != "")
 {
-	echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload </a></div><p />\n";
+	if ($lang_error==0){
+		echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload </a></div><p />\n";
+	} else {
+		echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color=\"red\">$admin_lang_optn_upd_lang_error</font></div><p />\n";
+	}
+	
 }
 
 echo "<div id='caption'>$admin_lang_options</div>\n<div id='submenu'>";
@@ -309,10 +319,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 					$admin_pre = substr("$file",0,6);
 					if ($admin_pre != "admin-"){
 						if ($file !== $cfgrow['langfile']) {
-						echo "<option value='$file'>$file</option>";}
-						}
+							echo "<option value='$file'>$file</option>";}
 					}
 				}
+			}
 			closedir($handle);
 			}
 		echo "</select><p />";
@@ -336,8 +346,8 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			// check that admin-language-files are not listed
 					$admin_pre = substr("$file",0,6);
 					if ($admin_pre != "admin-"){
-						if (($file !== $cfgrow['altlangfile']) and ($file !== $cfgrow['langfile'])) {
-							echo "<option value='$file'>$file</option>";}
+						if ($file !== $cfgrow['altlangfile']) {
+						echo "<option value='$file'>$file</option>";}
 						}
 					}
 				}
@@ -783,6 +793,8 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_dsbl='".$_POST['comment_dsbl']."'");
 				// SPAM Flood settings
 				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
+				// Maximum URI in comment
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set max_uri_comments='".$_POST['max_uri_comment']."'");
 			} 
     	show_anti_spam();
     	
@@ -850,6 +862,12 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				</div>
 				<div class='content'>
 				$admin_lang_optn_time_between_comments_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='comment_timebetween' value='".$cfgrow['comment_timebetween']."' /> s
+				</div>
+				<div class='jcaption'>
+				$admin_lang_optn_max_uri_comment
+				</div>
+				<div class='content'>
+				$admin_lang_optn_max_uri_comment_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='max_uri_comment' value='".$cfgrow['max_uri_comments']."' />
 				</div>
 				<div class='jcaption'>
 				$admin_lang_optn_update

@@ -612,12 +612,28 @@ function UpgradeTo1516( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
 
-	// token field
+	// rsstype field
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'N') NOT NULL DEFAULT 'T'")
 	or die("Error: ". mysql_error());
 
-	// token_time
+	// feeditems
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feeditems` VARCHAR( 3) NOT NULL DEFAULT '10'")
+	or die("Error: ". mysql_error());
+
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
+
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+}
+function UpgradeTo1517( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+
+	// no_uri_comments
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `max_uri_comments` VARCHAR( 3) NOT NULL DEFAULT '5'")
 	or die("Error: ". mysql_error());
 
 	// update version

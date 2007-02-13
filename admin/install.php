@@ -43,7 +43,7 @@ mysql_select_db($pixelpost_db_pixelpost) || die("Error: ". mysql_error());
 
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version( $pixelpost_db_prefix);
-if( $installed_version == 1.516) {
+if( $installed_version == 1.517) {
     header("Location: index.php");
     exit;
 }
@@ -66,7 +66,7 @@ Installation
 if($_GET['install'] == "" && $installed_version == 0) {
 ?>
 
-<div id="caption">Welcome to Pixelpost 1.5rc installation!</div>
+<div id="caption">Welcome to Pixelpost 1.6 installation!</div>
 <div class="jcaption">STEP 1: Prepare database</div>
 <div class="content">
 This will install/create the database tables that are needed for pixelpost.<p />
@@ -100,7 +100,7 @@ Table prefix: <?php echo "<b>$pixelpost_db_prefix</b>"; ?><p />
 // Start of Upgrade
 else if($_GET['install'] == "") {
 ?>
-<div id="caption">Welcome to Pixelpost 1.5rc upgrade!</div>
+<div id="caption">Welcome to Pixelpost 1.6 upgrade!</div>
 <div class="jcaption">STEP 1: Prepare database upgrade</div>
 <div class="content">
 This will update the database tables that are needed for this version of Pixelpost
@@ -172,6 +172,8 @@ switch( $installed_version) {
 		UpgradeTo1515($prefix,'1.515');
 	case 1.515:  //upgrade from final to SVN 1.6
 		UpgradeTo1516($prefix,'1.516');
+	case 1.516:  //upgrade from final to SVN 1.6
+		UpgradeTo1517($prefix,'1.517');
 	// Add the upgrade to 1.6 here later
 }
 

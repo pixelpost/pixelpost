@@ -319,6 +319,8 @@ $admin_lang_optn_updated             = "サムネイルが更新されました�
 $admin_lang_optn_visitorbooking_title = '訪問者の記録';
 $admin_lang_optn_visitorbooking_desc  = 'Pixelpostですべての訪問者情報を記録しますか?';
 $admin_lang_optn_upd_done             = "正常に更新されました。";
+$admin_lang_optn_upd_error            = "Update Error.";
+$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
 $admin_lang_optn_markdown             = "Markdownを有効にする";
 $admin_lang_optn_markdown_desc        = "イメージ説明でPixelpostのMarkdown機能を有効にしますか?";
 $admin_lang_optn_exif                 = "Exifを有効にする";
@@ -334,6 +336,8 @@ $admin_lang_optn_dsbl_list_desc       = "<a href=\"http://www.dsbl.org\" target=
                                          Distributed Sender Blackhole ListでコメントのIPアドレスをチェックしますか?";
 $admin_lang_optn_time_between_comments = "スパムフラッドを防ぐ";
 $admin_lang_optn_time_between_comments_desc = "次に新しいコメントを投稿できる秒数 (フラッドを避けるため): ";
+$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
+$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
 $admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Show full size pictures";

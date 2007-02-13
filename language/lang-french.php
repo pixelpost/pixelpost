@@ -146,6 +146,7 @@ $lang_email_notificationplain_pt4  = "\n ---------------------------------------
 
 // Error Message
 $lang_nothing_to_show             = "Revenez bient&ocirc;t, il n'y a pas encore d'image ici !";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
 
 // end of french language file
 ?>

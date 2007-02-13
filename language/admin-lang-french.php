@@ -304,6 +304,8 @@ $admin_lang_optn_updated              = "vignettes mises &agrave; jour.";
 $admin_lang_optn_visitorbooking_title = "Enregistrer les visiteurs";
 $admin_lang_optn_visitorbooking_desc  = "Souhaitez-vous que Pixelpost enregistre les informations de chaque visiteur ?";
 $admin_lang_optn_upd_done             = "Mise &agrave; jour termin&eacute;e.";
+$admin_lang_optn_upd_error            = "Update Error.";
+$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
 $admin_lang_optn_markdown             = "Enable Markdown";
 $admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
 $admin_lang_optn_exif			            = "Enable Exif";
@@ -319,6 +321,9 @@ $admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target
 																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
 $admin_lang_optn_time_between_comments = "Prevent SPAM flood";
 $admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
+$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
+$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
+
 
 $admin_lang_optn_comment_setting 		   = "GLOBAL COMMENT SETTINGS";
 $admin_lang_optn_comment_setting2			 = "Comment setting";

@@ -350,6 +350,8 @@ $admin_lang_optn_updated              = "miniaturki uaktualnione.";
 $admin_lang_optn_visitorbooking_title = "Zapis odwiedzających";
 $admin_lang_optn_visitorbooking_desc  = "Czy Pixelpost powinien zapisywać informacje o każdym odwiedzającym?";
 $admin_lang_optn_upd_done             = "Zaktualizowano dane.";
+$admin_lang_optn_upd_error            = "Update Error.";
+$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
 $admin_lang_optn_markdown             = "Dostępność Markdown";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie obrazka?";
 $admin_lang_optn_exif			            = "EXIF";
@@ -365,6 +367,8 @@ $admin_lang_optn_dsbl_list_desc 			= "<a href=\"http://www.dsbl.org\" target=\"_
 																				 Czy adresy IP powinny być sprawdzane pod kątem znajdowania się na Distributed Sender Blackhole List?";
 $admin_lang_optn_time_between_comments = "Zapobieganie \"powodzi\" SPAMu";
 $admin_lang_optn_time_between_comments_desc = "Liczba sekund, po której upłynięciu można dodać kolejny komentarzy (zapobieganie \"powodzi\" komentarzy): ";
+$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
+$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
 $admin_lang_optn_rss_setting					= "Ustawienia RSS/ATOM";
 $admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
 $admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe obrazki";
