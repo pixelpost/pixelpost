@@ -64,22 +64,22 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if (count($mk_regex_array[2]) > $cfgrow['max_uri_comments']){
 		die("die you SPAMMER!");
 	} else {
-  	for( $cnt=0; $cnt < count($mk_regex_array[2]); $cnt++ ) {
-  		$domain_to_test = rtrim($mk_regex_array[2][$cnt],"\\");
-  		$domain_to_test = preg_replace($unwanted_chars, "", $domain_to_test);
-  		if (strlen($domain_to_test) > 3){
-  			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
-  				$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
-  				if( !strstr(gethostbyname($spam_domain_to_test),$spam_domain_to_test)) {
-  					$spam_domains_found++;
-  				}
-  				$spam_domain_to_test=null;
-  			}
-  		}
-  	}
-    if ($spam_domains_found>0){
-  		die('Die you SPAMMER!!');
-  	}
+//  	for( $cnt=0; $cnt < count($mk_regex_array[2]); $cnt++ ) {
+//  		$domain_to_test = rtrim($mk_regex_array[2][$cnt],"\\");
+//  		$domain_to_test = preg_replace($unwanted_chars, "", $domain_to_test);
+//  		if (strlen($domain_to_test) > 3){
+//  			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
+//  				$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
+//  				if( !strstr(gethostbyname($spam_domain_to_test),$spam_domain_to_test)) {
+//  					$spam_domains_found++;
+//  				}
+//  				$spam_domain_to_test=null;
+//  			}
+//  		}
+//  	}
+//    if ($spam_domains_found>0){
+//  		die('Die you SPAMMER!!');
+//  	}
 	}
 
 //Check the used IP adress against the Distributed Sender Blackhole List @ http://www.dsbl.org
