@@ -30,7 +30,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		}		
 		else
 		{
-			die("Die you SPAMMER!");
+			die("Die you SPAMMER! (1)");
 		}
 	}
 	// Get the time of the latest comment in the db
@@ -62,7 +62,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$mk_regex_array = array();
 	preg_match_all($regex_url, $message, $mk_regex_array);
 	if (count($mk_regex_array[2]) > $cfgrow['max_uri_comments']){
-		die("die you SPAMMER!");
+		die("die you SPAMMER! (2)");
 	} else {
   	for( $cnt=0; $cnt < count($mk_regex_array[2]); $cnt++ ) {
   		$domain_to_test = rtrim($mk_regex_array[2][$cnt],"\\");
@@ -83,7 +83,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
   		}
   	}
     if ($spam_domains_found>0){
-  		die('Die you SPAMMER!!');
+  		die('Die you SPAMMER! (3)');
   	}
 	}
 
@@ -101,7 +101,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // check if current image has got enabled comments
 	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
 	$cmnt_setting = pullout($comments_result['comments']);
-	if($cmnt_setting == 'F')	die('Die you SPAMMER!!');
+	if($cmnt_setting == 'F')	die('Die you SPAMMER! (4)');
 	
 	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	if($cmnt_setting == 'A')
@@ -200,7 +200,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$comment_email = clean_comment($_POST['email']);
 		$link_to_comment = $cfgrow['siteurl']."./index.php?showimage=$comment_image_id";
 		$comment_image_name = clean_comment($_POST['parent_name']);
-		$link_to_comment = $cfgrow['siteurl']."?showimage=$comment_image_id";
 		$link_to_img_thumb_cmmnt = "Thumbnail Link:" .$cfgrow['siteurl'] ."thumbnails/thumb_$comment_image_name";
 		$img_thumb_cmmnt = "<img src='" .$cfgrow['siteurl'] ."thumbnails/thumb_$comment_image_name' >";
 		$subject = "$pixelpost_site_title - $lang_email_notification_subject";
@@ -251,13 +250,16 @@ $lang_email_notification_pt4
 
 	} // end of if($_GET['x'] == "save_comment")
 
+	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
+
+	if($_POST['withthankyou'] == 'no')	header('Location: ' . $comment_redirect_url);
 ?>
 
 <!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html><head>
-	<meta http-equiv="refresh" content="8; URL=<?php echo $_SERVER['HTTP_REFERER']; ?>" />
+	<meta http-equiv="refresh" content="8; URL=<?php echo $comment_redirect_url; ?>" />
 	<title><?php echo $lang_comment_page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="admin/admin_index.css" type="text/css" />
