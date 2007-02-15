@@ -121,8 +121,9 @@ if ($_GET['optaction']=='updateall')
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
 			
 		// RSS settings
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feeditems='".$_POST['feeditems']."'");
-		
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feeditems='".(int) $_POST['feeditems']."'");
+		// Refresh the settings
+		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 
 	}// end frist page
 } //end update all
@@ -788,13 +789,15 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     if ($_GET['optionsview']=='antispam'){
     	if ($_GET['optaction']=='updateantispam'){
 				// token
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".$_POST['token_time']."'");
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".(int) $_POST['token_time']."'");
 				// DSBL settings
 				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_dsbl='".$_POST['comment_dsbl']."'");
 				// SPAM Flood settings
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".(int) $_POST['comment_timebetween']."'");
 				// Maximum URI in comment
-				$upquery = sql_query("update ".$pixelpost_db_prefix."config set max_uri_comments='".$_POST['max_uri_comment']."'");
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set max_uri_comments='".(int) $_POST['max_uri_comment']."'");
+				// refresh the settings
+				$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 			} 
     	show_anti_spam();
     	
@@ -826,7 +829,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<option value='$optnval'>$optnecho</option>
 				</select><br />
 				$admin_lang_optn_token_time <input type='text' style=\"text-align: right;\" size=\"1\" name='token_time' value='".$cfgrow['token_time']."' />
-
 				</div>
 				
 				<div class='jcaption'>

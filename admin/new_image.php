@@ -275,6 +275,8 @@ if($_GET['view'] == "")
 				$time_stamp_r = gmdate("YmdHis",time()+(3600 * $tz)) .'_';
 
 			$uploadfile = $upload_dir .$time_stamp_r .$userfile;
+			// NEW WORKSPACE ADDED
+      eval_addon_admin_workspace_menu('image_upload_start');
 			if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
 			{
 				chmod($uploadfile, 0644);
@@ -300,6 +302,8 @@ if($_GET['view'] == "")
 				  else
 				  	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
 	      }
+	      // NEW WORKSPACE ADDED
+        eval_addon_admin_workspace_menu('image_upload_succesful');
 			}
 			else
 			{
@@ -314,6 +318,8 @@ if($_GET['view'] == "")
 				if(!is_writable($upload_dir))	echo "<br/>$admin_lang_pp_img_chmod1";
 				echo "</div><hr/>";
 	 			$status = "no";
+	 			// NEW WORKSPACE ADDED
+        eval_addon_admin_workspace_menu('image_upload_failed');
 			} // end move
 		} // end prepare of file ($_FILES['userfile'] != "")
 

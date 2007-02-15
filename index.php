@@ -249,7 +249,7 @@ if ($language_full==$cfgrow['langfile'])
 		{
 	    if (!file_exists("templates/".$cfgrow['template']."/image_".$language_abr."_template.html"))
   	  {
-        echo '<b>Error:</b><br />No template folder exists by the name of <b>"' .$cfgrow['template'] .'"</b> or the file <b>image_'.$language_abr .'_template.html</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+        echo '<b>Error:</b><br />No template folder exists by the name of <b>"' .$cfgrow['template'] .'"</b> or the file <b>image_'.$language_abr .'_template.html</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.<br /><br /><a href="index.php?lang='.$default_language_abr.'" alt="return to default language">Click here to return to the default language.</a>';
         exit;
     	}
 			// if the x=foo does not exist prompt it! don't show the main page anymore!

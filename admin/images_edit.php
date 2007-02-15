@@ -202,7 +202,8 @@ if($_GET['view'] == "images")
 			$oldfilename = $_POST['oldfilename'];
 			$userfile = strtolower($_FILES['userfile']['name']);
 			$uploadfile = $upload_dir .$oldfilename;
-
+			// NEW WORKSPACE ADDED
+      eval_addon_admin_workspace_menu('image_reupload_start');
 			if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
 			{
 				chmod($uploadfile, 0644);
@@ -214,6 +215,8 @@ if($_GET['view'] == "images")
 				$status = "ok";
 				createthumbnail($oldfilename);
 				$file_reupload_str = '<br/>'.$admin_lang_imgedit_file.'<b>' .$oldfilename .'</b> '.$admin_lang_imgedit_file_isuploaded;
+				// NEW WORKSPACE ADDED
+        eval_addon_admin_workspace_menu('image_reupload_succesful');
 			}
 			else
 			{
@@ -230,6 +233,8 @@ if($_GET['view'] == "images")
 				echo "<div id='warning'>$admin_lang_error ";
 				echo "<br/>$result</div><hr/>";
 				$status = "no";
+				// NEW WORKSPACE ADDED
+        eval_addon_admin_workspace_menu('image_reupload_failed');
 			} // end move
 		} // end prepare of file */
 //------------
