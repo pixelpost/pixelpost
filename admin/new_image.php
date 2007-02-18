@@ -420,6 +420,8 @@ if($_GET['view'] == "")
 				save_alt_tags_new($_POST['alt_tags'],$theid);
 			}
 			$_SESSION['upload_status']=$status;
+			// workspace: image_uploaded
+			eval_addon_admin_workspace_menu('upload_finished');
 		} // end status ok
 	} // end save
 } // end view=null
