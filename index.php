@@ -37,6 +37,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 error_reporting(0);
 ini_set('arg_separator.output', '&amp;');
 session_start();
+
+if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
+	error_reporting(E_ALL ^ E_NOTICE);
+	
+}elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"]){
+	error_reporting(E_ALL);
+	
+}
+
 $PHP_SELF = "index.php";
 
 // includes

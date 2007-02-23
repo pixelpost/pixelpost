@@ -44,6 +44,14 @@ $admin_panel = 1;
 error_reporting(0);
 session_start();
 
+if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
+	error_reporting(E_ALL ^ E_NOTICE);
+	
+}elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"]){
+	error_reporting(E_ALL);
+	
+}
+
 require("../includes/pixelpost.php");
 require("../includes/functions.php");
 
