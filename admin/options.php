@@ -313,7 +313,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 		if($handle = opendir($dir)) {
 			while (false !== ($file = readdir($handle))) {
-					if(($file != ".") && ($file != "..") && ($file != "index.html")) {
+					if(is_file('../language/'.$file) && ($file != "index.html")) {
 					$file = ereg_replace("lang-","",$file);
 					$file = ereg_replace(".php","",$file);
 		// check that admin-language-files are not listed
@@ -341,7 +341,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		$dir = "../language";
 		if($handle = opendir($dir)) {
 			while (false !== ($file = readdir($handle))) {
-					if(($file != ".") && ($file != "..") && ($file != "index.html")) {
+					if(is_file('../language/'.$file) && ($file != "index.html")) {
 					$file = ereg_replace("lang-","",$file);
 					$file = ereg_replace(".php","",$file);
 			// check that admin-language-files are not listed
