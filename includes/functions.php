@@ -1213,7 +1213,8 @@ function translation_data()
 
 	foreach($dir_con as $k => $v)
 	{
-		if($v != "index.html") {
+		if($v != "index.html" && is_file('../language/'.$v))
+		{
 			$_lang_file_translator = '';
 			$_lang_file_rev = '';
 			$_lang_file_email = '';

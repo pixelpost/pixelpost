@@ -49,7 +49,7 @@ ADMIN PANEL LANGUAGE VARIABLES:
 
 Dont edit                     ||      Edit                                   */
 
-$_lang_file_translator        = 'Piotr "GeoS" Galas - <a href="http://piotrgalas.com/" target="_blank">piotrgalas.com</a>';
+$_lang_file_translator        = 'Piotr "GeoS" Galas - <a href="http://www.piotrgalas.com/" target="_blank">www.piotrgalas.com</a>';
 $_lang_file_email             = 'geos@pixelpost.org';
 $_lang_file_rev               = '1.6';
 
