@@ -29,11 +29,40 @@ echo "<div id='caption'>$admin_lang_general_info</div>";
 
 if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 {
-    if($_GET['version'] == "check") {
-      $pixelpost_latest_version = file_get_contents("http://www.pixelpost.org/service/version.txt");
-        } else {
-        $pixelpost_latest_version = "<a href='$PHP_SELF?view=info&amp;version=check'>$admin_lang_pp_check</a>";
-        }
+    if(isset($_GET['version']) && $_GET['version'] == "check") {
+
+	// URL to pixelpost version file
+	$url = 'http://www.pixelpost.org/service/version.txt';
+  	  
+   		// Request file, but don't report errors, if it doesn't work:
+		$pixelpost_latest_version = @file_get_contents($url);
+		
+		// If errors occur, attempt to use cURL:   
+    	if(!$pixelpost_latest_version){
+  		
+			$curl = curl_init();
+	    	
+	    	// If cURL errors occur, display message
+			if(!$curl){
+				$pixelpost_latest_version = "<strong>Unable to retrieve current version</strong>";
+			}else{
+
+			curl_setopt($curl, CURLOPT_URL, $url);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_HEADER, false);
+
+			// execute and return string
+			$str = curl_exec($curl);
+
+			curl_close($curl);
+
+			// the value of $str
+			$pixelpost_latest_version = $str;
+			}
+   		}
+	} else {
+		$pixelpost_latest_version = "<a href='$PHP_SELF?view=info&amp;version=check'>$admin_lang_pp_check</a>";
+	}
     $mysql_version = mysql_get_server_info();
 	if(function_exists('gd_info'))
 	{
