@@ -24,7 +24,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
     		die("You waited more then ".$cfgrow['token_time']." minutes to enter the comment");
     	} else {
     		// token was good, regenerate a new one
-    		$_SESSION['token'] = md5(uniqid(rand(), TRUE));
+    		$_SESSION['token'] = md5($_SERVER["HTTP_USER_AGENT"].$_SERVER["HTTP_ACCEPT_LANGUAGE"].$_SERVER["HTTP_ACCEPT_ENCODING"].$_SERVER["HTTP_ACCEPT_CHARSET"].$_SERVER["HTTP_ACCEPT"].$_SERVER["SERVER_SOFTWARE"].session_id().uniqid(rand(), TRUE));
     		$_SESSION['token_time'] = time();
     	}
 		}		

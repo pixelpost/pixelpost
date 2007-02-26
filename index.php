@@ -91,7 +91,7 @@ if ($cfgrow['markdown'] == 'T')
 // added token support for use in forms only if it is set on
 if ($cfgrow['token'] == 'T'){
 	if (!isset($_SESSION['token'])){
-		$_SESSION['token'] = md5(uniqid(rand(), TRUE));
+		$_SESSION['token'] = md5($_SERVER["HTTP_USER_AGENT"].$_SERVER["HTTP_ACCEPT_LANGUAGE"].$_SERVER["HTTP_ACCEPT_ENCODING"].$_SERVER["HTTP_ACCEPT_CHARSET"].$_SERVER["HTTP_ACCEPT"].$_SERVER["SERVER_SOFTWARE"].session_id().uniqid(rand(), TRUE));
 	}
 	if(!isset($_GET['x'])&&$_GET['x'] !== "save_comment"){
 		$_SESSION['token_time'] = time();
