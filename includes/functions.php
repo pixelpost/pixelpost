@@ -403,14 +403,20 @@ function add_new_addons_2table($dir)
 					$addontype = strtolower($filename_crnt);
 					$farry_end = end($farry);
 					$ftype = strtolower($farry_end);
-
 					if($ftype == "php" AND !check_addon_exists($filename,$pixelpost_db_prefix))
 					{
-						if(strtolower($addontype) != 'admin')	$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal')";
-						else	$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on','admin')";
-
+						switch (strtolower($addontype)){
+							case "admin":
+								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+								break;	
+							case "front":
+								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+								break;	
+							default:
+								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal')";
+								break; 	
+						}
 						mysql_query( $query);
-
 						if (mysql_error())	echo 'Failed to insert addon: ' .$filename .'.php';
 					}//end if
 				}//end if
