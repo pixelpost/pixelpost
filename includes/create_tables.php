@@ -141,8 +141,8 @@ function Create13Tables( $prefix)
 function Set_Configuration($prefix)
 {
 	// guess environment
-	$site_url = $_SERVER['HTTP_HOST'];
-	$site_url .= $_SERVER['SCRIPT_NAME'];
+	$site_url = $_SERVER['SERVER_NAME'];
+	$site_url .= $_SERVER['PHP_SELF'];
 	$site_url = pathinfo($site_url);
 	$site_url = $site_url['dirname'];
 	$site_url = str_replace("admin","",$site_url);

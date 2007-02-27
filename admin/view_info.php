@@ -86,7 +86,7 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
     <div class='jcaption'>$admin_lang_hostinfo</div>
     <div class='content'>
 	<br />
-	<b>URL</b> http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']."<p />
+	<b>URL</b> http://".$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']."<p />
 	<b>PHP-version</b> ".phpversion()." ($admin_lang_pp_min_php: 4.3.0&nbsp;)<p />
 	$sess_save_path<p />
 	<b>MySQL version</b> ".$mysql_version." ($admin_lang_pp_min_mysql: 3.23.58&nbsp;)<p />
@@ -107,12 +107,12 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	<div class='jcaption'>$admin_lang_pp_path</div>
 	<div class='content'>
 	<i><b>$admin_lang_pp_imagepath  ";
-   $guess_path = pullout($_SERVER['DOCUMENT_ROOT']);
-	 $guess_path .= $_SERVER['SCRIPT_NAME'];
-   $guess_path = pathinfo($guess_path);
+	 $guess_path = pullout($_SERVER['DOCUMENT_ROOT']);
+	 $guess_path .= $_SERVER['PHP_SELF'];
+     $guess_path = pathinfo($guess_path);
 	 $guess_path = $guess_path['dirname'];
 	 $guess_path = eregi_replace("admin","",$guess_path);
-   echo $guess_path."images/</b></i><p />
+     echo $guess_path."images/</b></i><p />
 	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']."<p />";
 	 $work_path = eregi_replace("images/","",$cfgrow['imagepath']);
 
