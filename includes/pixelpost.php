@@ -47,6 +47,6 @@ $pixelpost_db_prefix = "pixelpost_"; // table prefix, leave as is unless you wan
 
 // pixelpost version
 
-$version = "MS41IEZpbmFsIC0gSnVseSAyMDA2";
+$version = "MS42IEJldGEgKGxpZmUgb24gdGhlIGVkZ2UhKSAtIE1hcmNoIDIwMDc=";
 
 ?>
