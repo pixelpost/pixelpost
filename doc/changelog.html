@@ -20,6 +20,12 @@ Version 1.1 to Version 1.3: Linus &lt;<a href="http://www.shapestyle.se">http://
 <p>License: <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a></p>
 <hr />
 <h2>Changelog from Pixelpost 1.5 to Pixelpost 1.6</h2>
+<h3>The Big Changes</h3>
+<ul>
+  <li>Tag support</li>
+  <li>Secondary language support</li>
+  <li>More anti-spam features </li>
+</ul>
 <h3>Feeds</h3>
 
 <ul>
@@ -29,6 +35,57 @@ Version 1.1 to Version 1.3: Linus &lt;<a href="http://www.shapestyle.se">http://
 <br />Example where nn stands for the image-number: &lt;guid&gt;http://www.yourdomainhere.de/index.php?showimage=nn&lt;/guid&gt;</li>
 </ul>
 
+<h3>Security</h3>
+<ul>
+  <li>Comments enable/disable/modarated for individual posts</li>
+  <li>More secure thanks to switching off by default error_reporting when not logged in</li>
+  <li>Check if the commenter IP address is in the DSBL list @ http://www.dsbl.org. If it is, the user is redirected to a warning page mentioning the used address is blocked. Otherwise, comment gets trough</li>
+  <li>Users can set the number of seconds between comments in the admin user panel. If a comment is posted before that the script dies because of a possible spam flood</li>
+</ul>
+<h3>Comments</h3>
+<ul>
+  <li>Bug fix with twice much &lt;br /&gt; in comments visible on page</li>
+  <li>Markdown enable/disable</li>
+  <li>Comments for an individual picture can now be disabled through editing picture properties or set when uploading a picture</li>
+  <li>User comments with the same mail address as the admin mail address get a new style &lt;li class=&quot;admin_comment&quot;&gt; to differentiate</li>
+  <li>Fixed comment redirection when $_SERVER['HTTP_REFERER'] is empty</li>
+  <li>Added new functionality: direct redirection after posting comment (without &quot;thank you screen&quot;); it needs &lt;input type='hidden' name='withthankyou' value='no' /&gt; in comment form (in template file)</li>
+</ul>
+<h3>Language and Tags </h3>
+<ul>
+  <li>Fixed a bug that the selected language for the blog was shown twice in the list</li>
+  <li>Code added for selecting language files and language specific templates while maintaining backwards compatibility</li>
+  <li>TAG replacement and stuff is added in an addon</li>
+  <li>If no language is set the 'old' way is used to display the page</li>
+  <li>Support for &lt;LANGUAGE=XX&gt; tags (creates url) and &lt;CH_LANG&gt; tag (for switching between the secondary language)</li>
+  <li>Added secondary language support for title and description</li>
+</ul>
+<h3>Usability</h3>
+<ul>
+  <li>Switch template select: removed duplicate entry</li>
+  <li>Showing exif is an option in the admin panel</li>
+  <li>Added Mark all images in admin area (see: http://forum.pixelpost.org/showthread.php?t=5361)</li>
+  <li>Added a massdelete image option and a mass publish option</li>
+  <li>Added additional info to the file upload error message when there are incorrect write rights to the /images directory</li>
+  <li>Global setting, set through the Options, is used as default for new picture</li>
+  <li>Nice error message when the user selects an alternative language similar to the default language</li>
+  <li>Nice spam flood error message in the language file</li>
+</ul>
+<h3>Other Changes </h3>
+<ul>
+  <li>Many spelling errors corrected</li>
+  <li>Addon type 'front' added for workspaces in the frontpage. See: http://forum.pixelpost.org/showthread.php?p=42907#post42907</li>
+  <li>Added error_reporting switch. index.php?errors (E_ALL ^ E_NOTICE) or index.php?errorsall (E_ALL). Must be logged into admin to work</li>
+  <li>Added a count_addon_admin_menus function. If count_addon_admin_menus &gt; 0 then show HTML menu code. Otherwise don't show code</li>
+  <li>Small bug where index.html needed to prevent folder browsing showed up in the selection lists for language and templates fixed</li>
+  <li>When uploading picture Exif info is stored in database and on viewing restored from database</li>
+  <li>Added SVN tags for development</li>
+  <li>Fixed small bug when get_file_contents is disabled when checking for latest pixelpost version. if get_file_contents returns false, cURL method is tried. If cURL returns false, &quot;Unable to retrieve current version&quot; is displayed</li>
+  <li>When gpc_magic_quotes is not set PP title and site url is escaped by using addslahes. Bug fix for http://forum.pixelpost.org/showthread.php?t=5366</li>
+  <li>Added code for adding alt_fields in the categories table and tags table</li>
+  <li>Fixed problem with incorrect variable name used for taking thumbnail image size</li>
+  <li>Many more minor bugs fixed</li>
+</ul>
 <hr />
 
 <h2>Changelog from Pixelpost 1.4 to Pixelpost 1.5</h2>
