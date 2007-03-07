@@ -384,9 +384,9 @@ if($_GET['view'] == "images")
 				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" />
 				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
 				<strong>#$id<br/>
-				$admin_lang_imgedit_title</strong>$headline<br/>
-				<strong>$admin_lang_imgedit_file_name</strong>$image<br/>
-				<strong>$admin_lang_imgedit_dimensions</strong>$local_width x $local_height, $fs Kb<br/>
+				$admin_lang_imgedit_title</strong> $headline<br/>
+				<strong>$admin_lang_imgedit_file_name</strong> $image<br/>
+				<strong>$admin_lang_imgedit_dimensions</strong> $local_width x $local_height, $fs Kb<br/>
 				<strong>$admin_lang_imgedit_tbpublished</strong> $datetime<br/>";
 
 			// categories
@@ -402,7 +402,7 @@ if($_GET['view'] == "images")
 			echo "<br/>";
 
 			// tags
-			echo "<strong>$admin_lang_ni_tags: &nbsp;</strong>";
+			echo "<strong>$admin_lang_ni_tags:</strong> ";
 			echo list_tags_edit($id);
 			echo "<br/>";
 			// added workspace requested by KArin on the forums
