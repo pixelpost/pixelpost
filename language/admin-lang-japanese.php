@@ -388,6 +388,7 @@ $admin_lang_pp_lng_fname             = 'Filename';
 $admin_lang_pp_lng_author            = 'Author';
 $admin_lang_pp_lng_ver               = 'Version';
 $admin_lang_pp_lng_email             = 'Email';
+$admin_lang_pp_newest_ver            = 'You have the newest version of Pixelpost!';
 
 // AddOns
 $admin_lang_addon_title              = "インストール済みアドオン";

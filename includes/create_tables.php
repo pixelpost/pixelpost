@@ -467,7 +467,7 @@ function UpgradeTo15final( $prefix,$newversion)
 	}
 }
 
-function UpgradeTo151( $prefix, $newversion)
+function UpgradeTo16beta( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
 
@@ -486,17 +486,6 @@ function UpgradeTo151( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100) DEFAULT 'default' NOT NULL")
 	or die("Error: ". mysql_error());
 
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES (1.51)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.51 ...</li>";
-}
-
-function UpgradeTo1511( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-
 	// new field used to disable Markdown
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `markdown` VARCHAR(1) DEFAULT 'f' NOT NULL")
 	or die("Error: ". mysql_error());
@@ -504,19 +493,6 @@ function UpgradeTo1511( $prefix, $newversion)
 	// creation of primary key on tags table
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD PRIMARY KEY ( `img_id` , `tag` ( 128), `alt_tag` (128)) ")
 	or die("Error: ". mysql_error());
-
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
-
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
-}
-
-function UpgradeTo1512( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
 
 	// Drop field moderate comments
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `moderate_comments`;");
@@ -527,19 +503,6 @@ function UpgradeTo1512( $prefix, $newversion)
 	// picture based disabling comments
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `comments` ENUM( 'A', 'M', 'F') NOT NULL DEFAULT 'A'")
 	or die("Error: ". mysql_error());
-
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
-
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
-}
-
-function UpgradeTo1513( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
 
 	// Drop field markdown by GeoS
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `markdown`;")
@@ -557,19 +520,6 @@ function UpgradeTo1513( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `exif_info` TEXT NULL DEFAULT NULL")
 	or die("Error: ". mysql_error());
 
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
-
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
-}
-
-function UpgradeTo1514( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-
 	// token field
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `token` ENUM( 'F', 'T') NOT NULL DEFAULT 'F'")
 	or die("Error: ". mysql_error());
@@ -578,39 +528,13 @@ function UpgradeTo1514( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `token_time` VARCHAR( 2) NOT NULL DEFAULT '5'")
 	or die("Error: ". mysql_error());
 
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
-
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
-}
-
-function UpgradeTo1515( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-
-	// token field
+	// comment field
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `comment_dsbl` ENUM( 'F', 'T') NOT NULL DEFAULT 'F'")
 	or die("Error: ". mysql_error());
 
-	// token_time
+	// comment_timebetween
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `comment_timebetween` VARCHAR( 3) NOT NULL DEFAULT '30'")
 	or die("Error: ". mysql_error());
-
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
-
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
-}
-
-function UpgradeTo1516( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
 
 	// rsstype field
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'N') NOT NULL DEFAULT 'T'")
@@ -620,6 +544,10 @@ function UpgradeTo1516( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feeditems` VARCHAR( 3) NOT NULL DEFAULT '10'")
 	or die("Error: ". mysql_error());
 
+	// no_uri_comments
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `max_uri_comments` VARCHAR( 3) NOT NULL DEFAULT '5'")
+	or die("Error: ". mysql_error());
+
 	// update version
 	mysql_query("
 	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
@@ -628,13 +556,10 @@ function UpgradeTo1516( $prefix, $newversion)
 
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
-function UpgradeTo1517( $prefix, $newversion)
+
+function UpgradeDevTo16beta( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
-
-	// no_uri_comments
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `max_uri_comments` VARCHAR( 3) NOT NULL DEFAULT '5'")
-	or die("Error: ". mysql_error());
 
 	// update version
 	mysql_query("

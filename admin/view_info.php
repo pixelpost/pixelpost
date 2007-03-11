@@ -10,11 +10,13 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 }
 
 // view info
-if($_GET['view'] == "info") {
-echo "<div id='caption'>$admin_lang_general_info</div>";
+if($_GET['view'] == "info")
+{
+	echo "<div id='caption'>$admin_lang_general_info</div>";
 
 	// add a workspace (only show when there are items.
-	if (count_addon_admin_menus($addon_admin_functions,"info") > 0){
+	if (count_addon_admin_menus($addon_admin_functions,"info") > 0)
+	{
 		echo"<div id='submenu'>";
 		if (!isset($_GET['infoview']) || $_GET['infoview']=='general')	$submenucssclass = 'selectedsubmenu';
 		echo "<a href='index.php?view=info&amp;infoview=general' class='".$submenucssclass."'>$admin_lang_optn_general</a>\n";
@@ -29,58 +31,24 @@ echo "<div id='caption'>$admin_lang_general_info</div>";
 
 if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 {
-    if(isset($_GET['version']) && $_GET['version'] == "check") {
+	$mysql_version = mysql_get_server_info();
 
-	// URL to pixelpost version file
-	$url = 'http://www.pixelpost.org/service/version.txt';
-  	  
-   		// Request file, but don't report errors, if it doesn't work:
-		$pixelpost_latest_version = @file_get_contents($url);
-		
-		// If errors occur, attempt to use cURL:   
-    	if(!$pixelpost_latest_version){
-  		
-			$curl = curl_init();
-	    	
-	    	// If cURL errors occur, display message
-			if(!$curl){
-				$pixelpost_latest_version = "<strong>Unable to retrieve current version</strong>";
-			}else{
-
-			curl_setopt($curl, CURLOPT_URL, $url);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($curl, CURLOPT_HEADER, false);
-
-			// execute and return string
-			$str = curl_exec($curl);
-
-			curl_close($curl);
-
-			// the value of $str
-			$pixelpost_latest_version = $str;
-			}
-   		}
-	} else {
-		$pixelpost_latest_version = "<a href='$PHP_SELF?view=info&amp;version=check'>$admin_lang_pp_check</a>";
-	}
-    $mysql_version = mysql_get_server_info();
 	if(function_exists('gd_info'))
 	{
 		$gd_info1 = gd_info();
 		$gd_info = $gd_info1['GD Version'];
-		if($gd_info == "")
-		{
-			$gd_info = "$admin_lang_info_gd";
-		} else if ($gd_info1["JPG Support"]) $gd_info .= " $admin_lang_info_gd_jpg";
+		if($gd_info == "")	$gd_info = "$admin_lang_info_gd";
+		else if ($gd_info1["JPG Support"]) $gd_info .= " $admin_lang_info_gd_jpg";
 	}		// func exist
-    $version = base64_decode($version);
-    $version = stripslashes($version);
-    $sess_save_path = ((session_save_path() != '') ? '<b>'.$admin_lang_pp_sess_path.'</b> ' . session_save_path() : '<b style="color:red">' . $admin_lang_pp_sess_path . ' '. $admin_lang_pp_sess_path_emp . '!!</b>');
-    echo "<div class='jcaption'>$admin_lang_pixelpostinfo</div>
+
+  $version = base64_decode($version);
+  $version = stripslashes($version);
+  $sess_save_path = ((session_save_path() != '') ? '<b>'.$admin_lang_pp_sess_path.'</b> ' . session_save_path() : '<b style="color:red">' . $admin_lang_pp_sess_path . ' '. $admin_lang_pp_sess_path_emp . '!!</b>');
+  echo "<div class='jcaption'>$admin_lang_pixelpostinfo</div>
     <div class='content'>
     $admin_lang_pp_currversion $version<br />
-    $admin_lang_pp_version1  $pixelpost_latest_version<p />
-    $admin_lang_pp_forum: <a href='http://www.pixelpost.org/forum'>www.pixelpost.org/forum/</a>
+    $admin_lang_pp_version1 <script type=\"text/javascript\" src=\"http://www.pixelpost.org/service/version.js\"></script><script type=\"text/javascript\">if(curr_ver>installed_ver)document.write(message);else document.write('$admin_lang_pp_newest_ver');</script><p />
+    $admin_lang_pp_forum: <a href='http://forum.pixelpost.org/'>forum.pixelpost.org</a>
     </div>
     <p />
     <div class='jcaption'>$admin_lang_hostinfo</div>
@@ -93,12 +61,10 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	<b>GD-lib</b> $gd_info<p />
 	$admin_lang_fileuploads  ";
 
-		if(ini_get('file_uploads')==0)
-			echo $admin_lang_pp_fileupload_np;
-		else
-			echo $admin_lang_pp_fileupload_p;
+	if(ini_get('file_uploads')==0)	echo $admin_lang_pp_fileupload_np;
+	else	echo $admin_lang_pp_fileupload_p;
 
-		echo "<p />\n	<b>$admin_lang_serversoft</b> ".$_SERVER['SERVER_SOFTWARE']."<p />
+	echo "<p />\n	<b>$admin_lang_serversoft</b> ".$_SERVER['SERVER_SOFTWARE']."<p />
 	";
 
 // exif infomation: exifer
@@ -116,17 +82,11 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']."<p />";
 	 $work_path = eregi_replace("images/","",$cfgrow['imagepath']);
 
- if(!is_writable($work_path."images")) {
- $chmod_message = "<b>$admin_lang_pp_img_chmod1</b><br />$admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
- } else {
- $chmod_message = "$admin_lang_pp_img_chmod4";
- }
+	if(!is_writable($work_path."images"))	$chmod_message = "<b>$admin_lang_pp_img_chmod1</b><br />$admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
+	else	$chmod_message = "$admin_lang_pp_img_chmod4";
 
-  if(!is_writable($work_path."thumbnails")) {
-  $chmod_message = "<b>$admin_lang_pp_img_chmod5</b> $admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
-  } else {
-  $chmod_messagethumb = "$admin_lang_pp_img_chmod4";
-  }
+  if(!is_writable($work_path."thumbnails"))	$chmod_message = "<b>$admin_lang_pp_img_chmod5</b> $admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
+  else	$chmod_messagethumb = "$admin_lang_pp_img_chmod4";
 
 echo "<b>$admin_lang_pp_imgfolder</b> ";
 if(file_exists($work_path."images")) {
