@@ -125,15 +125,15 @@ $cdate = $datetime;				// for future posting, current date+time
 
 $PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
   										'english'=>array('EN','English'),
-  										'french'=>array('FR','Français'),
+  										'french'=>array('FR','FranÃ§ais'),
   										'german'=>array('DE','Deutsch'),
 											'italian'=>array('IT','Italiano'),
 											'norwegian'=>array('NO','Norsk'),
 											'persian'=>array('FA','Farsi'),
 											'polish'=>array('PL','Polskiego'),
-											'portuguese'=>array('PT','Português'),
+											'portuguese'=>array('PT','PortuguÃªs'),
 											'simplified_chinese'=>array('CN','Chinese'),
-											'spanish'=>array('ES','Español'),
+											'spanish'=>array('ES','EspaÃ±ol'),
 											'swedish'=>array('SE','Svenska'),
 											'japanese'=>array('JP','Japanese')
 									);
