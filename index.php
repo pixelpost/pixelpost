@@ -13,6 +13,10 @@ Development Team:
 Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
+IMPORTANT!!!
+Due to the nature of the characterset used in this file it is important to save this
+file with an UTF-8 encoding.
+
 Contact: thecrew@pixelpost.org
 Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
 
