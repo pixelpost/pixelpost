@@ -1193,7 +1193,7 @@ function replace_alt_lang_tags( $tpl, $language_abr, $PP_supp_lang, $cfgrow)
   	  }
   	}
   	$alt_language_link=create_language_url_from_tag( $matches[2][$i],$PP_supp_lang[$language_link_key][1]);
-  	$tpl = str_replace("<LANGUAGE=".strtoupper($matches[2][$i]).">",$alt_language_link,$tpl);
+  	$tpl = str_replace("<LANGUAGE=".$matches[2][$i].">",$alt_language_link,$tpl);
   }
 	// return the template
 	return $tpl;
