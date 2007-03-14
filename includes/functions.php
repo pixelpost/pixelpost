@@ -1135,13 +1135,16 @@ function save_alt_tags_edit($tags_str,$id)
 
 function create_language_url_from_tag( $language_link_abr, $language_link_full)
 {
-	if (($_SERVER['argv'][0]=="") OR (substr($_SERVER['argv'][0],0,5)=="lang="))
+	// changing $_SERVER['argv'] to $_SERVER['QUERY_STRING'], because argv may be not "on"
+	if (($_SERVER['QUERY_STRING'] == "") OR (substr($_SERVER['QUERY_STRING'],0,5)=="lang="))
 	{
 		$language_link="<a href='".$_SERVER['PHP_SELF']."?lang=".strtolower( $language_link_abr)."'>".$language_link_full."</a>";
 	}
 	else
 	{
-		$arguments=str_replace("&","&amp;",$_SERVER['argv'][0]);
+		// removed &lang=XX from query string, otherways it is added which each language change
+		$arguments=preg_replace('/\&lang=\w{2}/', '',$_SERVER['QUERY_STRING']);
+		$arguments=str_replace("&","&amp;", $arguments);
 		$language_link="<a href='".$_SERVER['PHP_SELF']."?".$arguments."&amp;lang=".strtolower( $language_link_abr)."'>".$language_link_full."</a>";
 	}
 	return $language_link;
