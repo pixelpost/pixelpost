@@ -17,7 +17,7 @@ Development Team:
 Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, GeoS
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
-Contact: thecrew@pixelpost.org
+Contact: thecrew (at) pixelpost (dot) org
 Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
 
 License: http://www.gnu.org/copyleft/gpl.html

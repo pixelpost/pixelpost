@@ -17,7 +17,7 @@ Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
-Pixelpost wiki: 	    http://wiki.pixelpost.org/
+Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
 
 Info: if you want to have the admin-section in portuguese language as well,

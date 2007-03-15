@@ -17,7 +17,7 @@ IMPORTANT!!!
 Due to the nature of the characterset used in this file it is important to save this
 file with an UTF-8 encoding.
 
-Contact: thecrew@pixelpost.org
+Contact: thecrew (at) pixelpost (dot) org
 Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
 
 License: http://www.gnu.org/copyleft/gpl.html
