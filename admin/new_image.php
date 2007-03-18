@@ -19,15 +19,15 @@ if($_GET['view'] == "")
 ?>
 
    <form method="post" action="<?php echo $PHP_SELF; ?>?x=save" enctype="multipart/form-data" accept-charset="UTF-8">
-<div id="caption"><b><?=$admin_lang_new_image?></b></div>
+<div id="caption"><b><?php echo $admin_lang_new_image; ?></b></div>
    <div class="jcaption"><?php echo $admin_lang_ni_post_a_new_image; ?></div>
    <div class="content">
 	<?php echo $admin_lang_ni_image ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    <input name="userfile" type="file" size="76" /><p/>
 	<?php echo $admin_lang_ni_image_title; ?>&nbsp;&nbsp;&nbsp;
-   <input type="text" name="headline" style="width:550px;" value="<?if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['headline'];?>" /><p/>
+   <input type="text" name="headline" style="width:550px;" value="<?php if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['headline'];?>" /><p/>
 	<?php echo $admin_lang_ni_tags; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <input type="text" name="tags" style="width:550px;" value="<?if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['tags'];?>" /><br/>
+   <input type="text" name="tags" style="width:550px;" value="<?php if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['tags'];?>" /><br/>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $admin_lang_ni_tags_desc; ?><p/>
   <?php echo $admin_lang_ni_select_cat; ?>
 	<?php
@@ -52,7 +52,7 @@ if($_GET['view'] == "")
     <a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'><?php echo $admin_lang_ni_markdown_syntax; ?></a><?php } ?>
     <p/>
 	<div style="text-align:center;">
-    <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['body'];?></textarea><p/>
+    <textarea name="body" style="width:97%;height:100px;" rows="" cols=""><?php if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['body'];?></textarea><p/>
 	</div>
     </div>
     <div class='jcaption'>
