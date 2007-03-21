@@ -42,14 +42,13 @@ configuration, read the files in the directory: /doc !!!!!!
 
 There you will find all information:
 
-- Readme-File:
-  for installation: ./doc/ReadMe_install.txt
-  for upgrading:    ./doc/ReadMe_upgrade.txt
-- A changelog
-- A list of all PixelPost-Tags
-- An instruction for upgrading from existing versions to Version 1.5
-- in formation how to write admin-addons!
-- the GNU license information
+	Entrance and Overview: 			./doc/index.html
+  Installation: 							./doc/install.html
+  Upgrading:   								./doc/upgrade.html
+	Changelog:      						./doc/changelog.html
+	All PixelPost-Tags: 				./doc/tags.html
+	How to write admin-addons:  ./doc/creating_admin_addons/admin_addons_Instruction.htm
+	GNU license information: 		./docs/license.txt
 
 Do read the ReadMe-Files!!  
 
@@ -86,13 +85,13 @@ informations
 FIRST INSTALL
 -------------------------------------------------------------------------
 
-Please read the file "ReadMe_install.txt" in the directory /doc
+Please read the file "install.html" in the directory /doc
 
 -------------------------------------------------------------------------
 UPGRADE
 -------------------------------------------------------------------------
 
-Please read the file "ReadMe_upgrade.txt" in the directory /doc
+Please read the file "upgrade.html" in the directory /doc
 
 Please note that PixelPost now does not use anymore CSS-classes with "_",
 so check your templates and change "_" to "-"
