@@ -102,7 +102,7 @@ a {
    border-top:1px solid #ccc;
    padding-top:5px;
    padding-bottom:5px;
-   background:url('img/back3.gif') repeat-x;
+   background:#fff;
    color:#666;
    font-weight:bold;
    font-size:10px;
@@ -115,7 +115,7 @@ a {
    }
 
 #submenu a:hover {
-   background:#D2EEF1;
+   background:#f4f4f4;
    color:#666
    }
 
