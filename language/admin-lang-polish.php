@@ -164,8 +164,8 @@ $admin_lang_ni_alt_language				= "Podaj tytył i opis obrazka dla drugiego języ
 $admin_lang_imgedit_edit            = "Edycja";
 $admin_lang_imgedit_title           = "Tytuł:";
 $admin_lang_imgedit_file_name       = "Nazwa pliku:";
-$admin_lang_imgedit_dimensions      = "Rozmiary:";
-$admin_lang_imgedit_tbpublished     = "Opublikowany:";
+$admin_lang_imgedit_dimensions      = "Rozmiar:";
+$admin_lang_imgedit_tbpublished     = "Opublikowano:";
 $admin_lang_imgedit_category_plural = "Kategorie:";
 $admin_lang_imgedit_delete          = "Usuń";
 $admin_lang_imgedit_deleted         = "Usuwanie wpisów / Usuwanie obrazków / Usuwanie miniaturek";
@@ -214,7 +214,7 @@ $admin_lang_imgedit_unpublished_cmnts  = "poprzednio zamaskowanych obrazów.";
 $admin_lang_imgedit_mass_1 = "Masowa edycja kategorii";
 $admin_lang_imgedit_mass_2 = "Przypisz";
 $admin_lang_imgedit_mass_3 = "Wykreśl";
-$admin_lang_imgedit_mass_4 = "Uaktualnij";
+$admin_lang_imgedit_mass_4 = "Aktualizuj";
 $admin_lang_imgedit_mass_5 = "Wybrana kategoria/ie została usunięta dla";
 $admin_lang_imgedit_mass_6 = "obrazków.";
 $admin_lang_imgedit_mass_7 = "Wybrana kategoria/ie została ustawiona dla";
@@ -224,12 +224,12 @@ $admin_lang_imgedit_mass_8 = "obrazków.";
 $admin_lang_cats_add_cat            = "Dodaj kategorię";
 $admin_lang_cats_added              = "Kategoria została dodana.";
 $admin_lang_cats_add_cat_txt        = "Dodaj kategorię, którą możesz przypisać do obrazków.";
-$admin_lang_cats_edit_cat           = "Edytuj kategorie";
+$admin_lang_cats_edit_cat           = "Edytuj kategorię";
 $admin_lang_cats_edit_cat_txt       = "Edytuj kategorię";
 $admin_lang_cats_edit_cat_button    = "Edytuj kategorię";
 $admin_lang_cats_edit_tip           = "Edycja nazwy wskazanej kategorii.<br />Wszystkie obrazki należące do starej kategorii zostaną przepisane do
   nowo wpisanej.";
-$admin_lang_cats_delete_cat         = "Usuń kategorie";
+$admin_lang_cats_delete_cat         = "Usuń kategorię";
 $admin_lang_cats_delete_cat_txt     = "Usuń kategorię";
 $admin_lang_cats_delete_cat2        = "Usunięcie:";
 $admin_lang_cats_delete_cats_button = "Usuń kategorię";
@@ -252,7 +252,7 @@ $admin_lang_cmnt_delete2           = "wybrane komentarze.";
 $admin_lang_cmnt_edit              = "Edytuj";
 $admin_lang_cmnt_edited            = "Komentarz wyedytowano.";
 $admin_lang_cmnt_check_all         = "Wybierz wszystkie";
-$admin_lang_cmnt_clear_all         = "Wyczyść wybrane";
+$admin_lang_cmnt_clear_all         = "Odznacz wybrane";
 $admin_lang_cmnt_invert_checks     = "Odwróć selekcję";
 $admin_lang_cmnt_del_selected      = "Usuń wybrane";
 $admin_lang_cmnt_page              = "komentarzy na stronę.";
@@ -279,29 +279,29 @@ $admin_lang_optn_template   = "SKÓRKI";
 $admin_lang_optn_thumbnails = "MINIATURKI";
 $admin_lang_optn_tip        = "Nie zapomnij o zamykającym sleszu <b>'/'</b> n.p. <i>http://www.pixelpost.org/</i>";
 
-$admin_lang_optn_update = "Uaktualnij";
+$admin_lang_optn_update = "UAKTUALNIJ";
 $admin_lang_optn_yes    = "Tak";
 $admin_lang_optn_no     = "Nie";
 
 $admin_lang_optn_title_url          = "NAZWA WITRYNY I URL";
 $admin_lang_optn_title              = "Tytuł:";
 $admin_lang_optn_url                = "URL:";
-$admin_lang_optn_usr_pss            = "ADMINISTRATOR &amp; HASŁO";
+$admin_lang_optn_usr_pss            = "ADMINISTRATOR I HASŁO";
 $admin_lang_optn_usr_pss_txt        = "Zmienić nazwę użytkownika lub hasło?";
 $admin_lang_optn_usr                = "Użytkownik:";
 $admin_lang_optn_pss                = "Hasło:";
 $admin_lang_optn_pss_re             = "Powtórz hasło:";
 $admin_lang_optn_email              = "EMAIL ADMINISTRATORA";
-$admin_lang_optn_fillit             = "Wypełnij. Będzie to wymagane do odzyskiwania hasła.";
+$admin_lang_optn_fillit             = "Wypełnij. Będzie on wymagany do odzyskiwania hasła.";
 $admin_lang_optn_img_path           = "ŚCIEŻKA DO OBRAZKÓW";
-$admin_lang_optn_tz                 = "Strefa czasowa";
+$admin_lang_optn_tz                 = "STREFA CZASOWA";
 $admin_lang_optn_tz_txt             = "Wybierz strefę czasową dla Twojej lokalizacji.";
 $admin_lang_optn_sendemail          = "POWIADAMIANIE EMAILEM O KOMENTARZACH";
 $admin_lang_optn_sendemail_txt      = "Powiadamiać emailem o nowych komentarzach?";
 $admin_lang_optn_sendemail_html_txt = "Używać powiadamiania emailem w formacie HTML?";
 $admin_lang_optn_comment_setting 		= "GLOBALNE USTAWIENIA KOMENTARZY";
 $admin_lang_optn_comment_setting2		= "Ustawienia komentarza";
-$admin_lang_optn_cmnt_mod_txt       = "Domyślne zachowanie dla komentarzy (wybierane dla każdego nowego publikowanego wpisu - można je zmienić):";
+$admin_lang_optn_cmnt_mod_txt       = "Domyślne zachowanie dla komentarzy (domyślnie ustawiane dla każdego nowego publikowanego wpisu; zawsze można je zmienić przed opublikowaniem wpisu):<br/>";
 $admin_lang_optn_cmnt_mod_txt2      = "Akcja dla komentarzy:";
 $admin_lang_optn_cmnt_mod_allowed		=	"Niezwłoczna publikacja";
 $admin_lang_optn_cmnt_mod_moderation=	"Kolejka moderacji";
@@ -310,10 +310,10 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Deaktywacja komentarzy";
 $admin_lang_optn_switch_template    = "ZMIEŃ SKÓRKĘ";
 $admin_lang_optn_lang_file          = "PLIK Z LOKALIZACJĄ";
 $admin_lang_optn_dateformat         = "FORMAT DATY";
-$admin_lang_optn_dateformat_txt     = "Format daty dla obrazków oraz wyświetlania komentarzy.  Wykorzystana składnia jest identyczna z tą dla
-  funkcji PHP <a href='http://www.php.net/date' target='_blank'>date()</a>. To są przykłady znaczenia najczęściej używanych parametrów: Y:rok
+$admin_lang_optn_dateformat_txt     = "Format daty wyświetlany dla obrazków oraz komentarzy. Dostępna składnia jest identyczna z tą dla
+  funkcji PHP <a href='http://www.php.net/date' target='_blank'>date()</a>. Przykłady znaczenia najczęściej używanych parametrów: Y:rok
   m:miesiąc d:dzień H:godzina i:minuta s:sekunda";
-$admin_lang_optn_gmt                = "<br/>NALEŻY PAMIĘTAĆ, że to nie wspiera przejścia na czas letni/zimowy automatycznie i należy to zmienić
+$admin_lang_optn_gmt                = "<br/>NALEŻY PAMIĘTAĆ, że opcja ta nie wspiera przejścia na czas letni/zimowy automatycznie i należy ją zmienić
   ręcznie.<br />Sprawdź <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx'> aktualny czas GMT </a> jeśli nie masz pewności
   odnośnie przesunięcia Twojego czasu lokalnego względem GMT.<br />";
 $admin_lang_optn_cat_link_format            = "FORMAT LINKÓW KATEGORII";
@@ -326,50 +326,49 @@ $admin_lang_optn_catlinkformat_custom_end   = "Łańcuch końcowy:";
 $admin_lang_optn_calendar_type = "TYP KALENDARZA";
 
 $admin_lang_optn_thumb_row            = "MINIATUREK W WIERSZU";
-$admin_lang_optn_thumb_row_txt        = "Ustala ilość miniaturek dla automatycznie generowanego wiersza.<br/>Liczba ta powinna być nieparzysta dla
-  najlepszego efektu, np. 7 lub 9, nie 6 lub 8.";
+$admin_lang_optn_thumb_row_txt        = "Ustala ilość miniaturek w automatycznie generowanym wierszu (dla taga &lt;IMAGE_THUMBNAIL_ROW> lub &lt;IMAGE_THUMBNAIL_ROW_REV>).<br/>Liczba ta powinna być nieparzysta w celu osiągnięcia najlepszego efektu, np. 7 lub 9 (nie 6 lub 8!!).";
 $admin_lang_optn_crop_thumbs          = "PRZYCINANIE MINIATUREK?";
-$admin_lang_optn_crop_thumbs_txt      = "Jeśli chcesz, żeby miniaturki były przycięte do dokładnego wymiaru: wybierz <b>TAK.</b><br/>\n
+$admin_lang_optn_crop_thumbs_txt      = "Jeśli chcesz, żeby miniaturki były przycięte dokładnie do podanego wymiaru: wybierz <b>TAK.</b><br/>\n
   Jeśli chcesz zachować oryginalne proporcje: wybierz <b>NIE.</b><br/>\n
   Jeśli chcesz przyciąć miniaturkę samodzielnie po wgraniu obrazka na serwer: wybierz <b>12CropImage.</b>";
 $admin_lang_optn_thumb_size           = "ROZMIAR MINIATUREK";
-$admin_lang_optn_thumb_size_txt       = "Ustal rozmiar miniaturek, Szerokość x Wysokość.";
+$admin_lang_optn_thumb_size_txt       = "Ustal rozmiar miniaturek, szerokość x wysokość:";
 $admin_lang_optn_thumb_size_new       = "ustaw nowe wymiary";
 $admin_lang_optn_reg_thumbs_button    = "Wygeneruj miniaturki ponownie";
 $admin_lang_optn_regen_thumbs_txt     = "Opcja ta pozwala wygenerować ponownie miniaturki dla wszystkich wpisanych obrazków. NALEŻY PAMIĘTAĆ, że
   spowoduje to utratę wszystkich ręcznie przycinanych miniaturek na rzecz ich domyślnej postaci. Warto również wiedzieć, że można zmienić
   każdą z  miniaturek samodzielnie korzystając z 12CropImage podczas edycji wpisu.";
 $admin_lang_optn_img_compression      = "KOMPRESJA MINIATUREK";
-$admin_lang_optn_img_compression_txt  = "Określenie stopnia kompresji zdjęć w formacie JPEG? 10 stanowi niską jakość, a 100 najlepszą (brak
-  strat)";
+$admin_lang_optn_img_compression_txt  = "Określenie stopnia kompresji zdjęć w formacie JPEG - 10 stanowi niską jakość, a 100 najlepszą (brak
+  strat i kompresji)";
 $admin_lang_optn_pass_chngd_txt       = "Hasło zostało zmienione.";
 $admin_lang_optn_pass_notchngd_txt    = "Hasło nie zostało zmienione. Wpisz to samo hasło w pole potwierdzenia.";
 $admin_lang_optn_title_url_text       = "Sprawdź lub zmodyfikuj tytuł strony oraz adres URL Twojej instalacji";
 $admin_lang_optn_thumb_updated        = "Miniaturki uaktualnione!";
 $admin_lang_optn_updated              = "miniaturki uaktualnione.";
-$admin_lang_optn_visitorbooking_title = "Zapis odwiedzających";
+$admin_lang_optn_visitorbooking_title = "ZAPIS ODWIEDZAJĄCYCH";
 $admin_lang_optn_visitorbooking_desc  = "Czy Pixelpost powinien zapisywać informacje o każdym odwiedzającym?";
 $admin_lang_optn_upd_done             = "Zaktualizowano dane.";
 $admin_lang_optn_upd_error            = "Błąd aktualizacji.";
 $admin_lang_optn_upd_lang_error			  = "Wybrany język alternatywny jest taki sam jak domyślny.<br />Takie ustawienie nie ma sensu, dlatego wybierz inny język lub deaktywuj alternatywny język.";
-$admin_lang_optn_markdown             = "Dostępność Markdown";
+$admin_lang_optn_markdown             = "DOSTĘPNOŚĆ MARKDOWN";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie obrazka?";
 $admin_lang_optn_exif			            = "EXIF";
 $admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF do pokazania na stronie głównej?";
-$admin_lang_optn_token			          = "Aktywacja tokenów w formularzach";
+$admin_lang_optn_token			          = "AKTYWACJA TOKENÓW W FORMULARZACH";
 $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobieństwo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html lub innego, w którym znajduje się formularz komentarzy) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
 																				 Jeśli zapomnisz tagu <strong>&lt;TOKEN&gt;</strong>, wtedy komentarze nie będą działać, a użytkownik zobaczy komunikat o błędzie.<br /><br/>\n
 																				 Czy to ustawienie powinno być aktywne?";
 $admin_lang_optn_token_time						= "Maksymalny czas (w minutach) pomiędzy otwarciem okna komentarzy i wysłaniem komentarza: ";
-$admin_lang_optn_dsbl_list 						= "Ustwienia Distributed Sender Blackhole List (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list 						= "USTWIENIA DISTRIBUTED SENDER BLACKHOLE LIST (HTTP://WWW.DSBL.ORG)";
 $admin_lang_optn_dsbl_list_desc 			= "<a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> zawiera adresy IP serwerów, które mogą służyć do różnego rodzaju nadużyć (są używane jako tzw. open relay, open proxy lub są podatne na wykorzystanie w inny sposób). Te serwery często są wykorzystywane przez SPAMerów do rozsyłania emaili, ale są również znane jako źródła wysyłania komentarzy.<br /> <br />
 																				 Czy adresy IP powinny być sprawdzane pod kątem znajdowania się na Distributed Sender Blackhole List?";
-$admin_lang_optn_time_between_comments = "Zapobieganie \"powodzi\" SPAMu";
+$admin_lang_optn_time_between_comments = "ZAPOBIEGANIE \"POWODZI\" SPAMU";
 $admin_lang_optn_time_between_comments_desc = "Liczba sekund, po której upłynięciu można dodać kolejny komentarzy (zapobieganie \"powodzi\" komentarzy): ";
 $admin_lang_optn_max_uri_comment			= "MAKSYMALNA LICZBA URI";
 $admin_lang_optn_max_uri_comment_desc = "Liczba URI dozwolonych w jednym komentarzu: ";
-$admin_lang_optn_rss_setting					= "Ustawienia RSS/ATOM";
+$admin_lang_optn_rss_setting					= "USTAWIENIA RSS/ATOM";
 $admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
 $admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe obrazki";
 $admin_lang_optn_rss_thumbs						= "Pokazuj miniaturki";
@@ -388,7 +387,7 @@ $admin_lang_pp_min_php        = "Minimalne wymagania Pixelposta: PHP wersja";
 $admin_lang_pp_min_mysql      = "Minimalne wymagania Pixelposta: MySQL";
 $admin_lang_pp_exif1          = "<b>EXIF</b> Pixelpost używa";
 $admin_lang_pp_exif2          = "dla informacji o EXIF";
-$admin_lang_pp_path           = "Ścieżki";
+$admin_lang_pp_path           = "ŚCIEŻKI";
 $admin_lang_pp_imagepath      = "Domyślna ścieżka:";
 $admin_lang_pp_imagepath_conf = "Skonfigurowana ścieżka:";
 $admin_lang_pp_img_chmod1     = "Katalog obrazków bez praw zapisu!";
@@ -403,18 +402,18 @@ $admin_lang_pp_addfolder      = "Katalog dodatków:";
 $admin_lang_pp_incfolder      = "Katalog bibliotek:";
 $admin_lang_pp_tempfolder     = "Katalog skórek:";
 $admin_lang_pp_folder_missing = "Nie istnieje (powinno być";
-$admin_lang_pp_ref_log_title  = "Referujący z ostatnich siedmiu dni";
-$admin_lang_hostinfo          = "Informacje o serwerze";
+$admin_lang_pp_ref_log_title  = "REFERUJĄCY Z OSTATNICH SIEDMIU DNI";
+$admin_lang_hostinfo          = "INFORMACJE O SERWERZE";
 $admin_lang_fileuploads       = "<b>Wysyłanie plików</b> do PixelPosta jest";
 $admin_lang_serversoft        = "Oprogramowanie serwera";
-$admin_lang_pixelpostinfo     = "Informacje o Pixelpost";
+$admin_lang_pixelpostinfo     = "INFORMACJE O PIXELPOST";
 $admin_lang_pp_currversion    = "Używasz PixelPosta w wersji";
 $admin_lang_pp_check          = "Sprawdź";
 $admin_lang_pp_sess_path      = "Ścieżka zapisu plików sesji";
 $admin_lang_pp_sess_path_emp  = "jest pusta";
 $admin_lang_pp_fileupload_np  = 'niemożliwe! Sprawdź zmienną file_upload w pliku php.ini!';
 $admin_lang_pp_fileupload_p   = 'możliwe.';
-$admin_lang_pp_langs          = 'Tłumaczenia językowe PixelPosta';
+$admin_lang_pp_langs          = 'TŁUMACZENIA JĘZYKOWE PIXELPOSTA';
 $admin_lang_pp_lng_fname      = 'Nazwa pliku';
 $admin_lang_pp_lng_author     = 'Autor';
 $admin_lang_pp_lng_ver        = 'Wersja';
@@ -438,7 +437,7 @@ $admin_lang_pp_up_error_7 = "Plik nie został zapisany na dysku.";
 
 
 // options >> time stamps
-$admin_lang_optn_timestamps_title = "Znacznik czasu";
+$admin_lang_optn_timestamps_title = "ZNACZNIK CZASU";
 $admin_lang_optn_timestamps_desc  = "Dodawanie znacznika czasu do nazw plików zapobiega nadpisywaniu obrazków z tą samą nazwą. <br/>
 																			Użyć znacznika czasu? ";
 
@@ -459,7 +458,7 @@ $admin_lang_spam_err_8     = "Błąd usunięcia odwiedzających, gdy porównywan
 $admin_lang_spam_visit_del = "Odwiedzający ze słowami/adresami IP z listy bad-referer są skasowani.";
 
 // New!
-$admin_lang_spam_ban             = "Lista banów";
+$admin_lang_spam_ban             = "LISTA BANÓW";
 $admin_lang_spam_content         = "Dodaj listy zbanowanych słów/adresów IP/nazw do pól tekstowych poniżej, jedno słowo w linii.<br/>\n
   Każdy komentarz ze słowem, adresem IP lub nazwą na liście moderacji zostanie wysłany do kolejki moderacji.<br/>\n
   Każdy komentarz ze słowem, adresem IP lub nazwą na czarnej liście nie dostanie prawa pojawienia się na liście komentarzy.<br/>

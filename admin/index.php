@@ -317,5 +317,4 @@ eval_addon_admin_workspace_menu('admin_main_menu_contents');
 
 ?>
 </div>
-<br /><br /><br /><br />
 </body></html>

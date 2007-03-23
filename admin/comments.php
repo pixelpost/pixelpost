@@ -175,7 +175,7 @@ if($_GET['view'] == "comments") {
 				$num_cmt_pages = ceil($pixelpost_commentnumb/$_SESSION['numimg_pp']);
 				$num_cmt_pages = ($num_cmt_pages > 0)	? $num_cmt_pages : 1;
 
-				echo "<div class=\"jcaption\">$admin_lang_cmnt_commentlist $admin_lang_cmnt_comments $numimg_pp, $admin_lang_page $currntpg $admin_lang_of $num_cmt_pages<br />
+				echo "<div class=\"jcaption\">$admin_lang_cmnt_commentlist ".$_SESSION['numimg_pp']." $numimg_pp, $admin_lang_page $currntpg $admin_lang_of $num_cmt_pages<br />
 				<span id=\"smaller\">$admin_lang_cmnt_massdelete_text</span></div>
 				<div class=\"content\">
 

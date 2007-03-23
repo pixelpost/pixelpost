@@ -300,14 +300,6 @@ if($_GET['view'] == "images")
 		$photonumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."pixelpost");
 		$pixelpost_photonumb = $photonumb['count'];
 	
-/*
-	if ($_POST['numimg_pp'] == ""){$numimg_pp = $pixelpost_photonumb; }
-	else{
-	$numimg_pp=$_POST['numimg_pp'];
-	if ($pixelpost_photonumb < $numimg_pp)
-		$numimg_pp = $pixelpost_photonumb;
-	};
-*/
 		if($_GET['page'] == "")	$page = "0";
 		else	$page = $_GET['page'];
 
@@ -324,7 +316,7 @@ if($_GET['view'] == "images")
 		$num_img_pages = ceil($pixelpost_photonumb/$_SESSION['numimg_pp']);
 		$num_img_pages = ($num_img_pages > 0)	? $num_img_pages : 1;
 	
-		echo "<div class=\"jcaption\">$admin_lang_imgedit_title1<strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2$numimg_pp$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
+		echo "<div class=\"jcaption\">$admin_lang_imgedit_title1<strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
 			   		 </div>
 	           <div class=\"content\">
 	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"\">
@@ -386,7 +378,7 @@ if($_GET['view'] == "images")
 				<strong>#$id<br/>
 				$admin_lang_imgedit_title</strong> $headline<br/>
 				<strong>$admin_lang_imgedit_file_name</strong> $image<br/>
-				<strong>$admin_lang_imgedit_dimensions</strong> $local_width x $local_height, $fs Kb<br/>
+				<strong>$admin_lang_imgedit_dimensions</strong> $local_width x $local_height, $fs KB<br/>
 				<strong>$admin_lang_imgedit_tbpublished</strong> $datetime<br/>";
 
 			// categories
