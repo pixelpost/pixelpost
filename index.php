@@ -194,10 +194,14 @@ $pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_QUOTES);
 
 
 //  Added ability to use header and footers for templates.  They are not needed but used if included in the template
-if(file_exists("templates/".$cfgrow['template']."/header.html"))
-	$header = file_get_contents("templates/".$cfgrow['template']."/header.html");
-if(file_exists("templates/".$cfgrow['template']."/footer.html"))
-	$footer = file_get_contents("templates/".$cfgrow['template']."/footer.html");
+
+// Don't show header or footer if viewing comments in a popup:
+if(!isset($_GET['popup'])&&$_GET['popup'] != "comment"){
+	if(file_exists("templates/".$cfgrow['template']."/header.html"))
+		$header = file_get_contents("templates/".$cfgrow['template']."/header.html");
+	if(file_exists("templates/".$cfgrow['template']."/footer.html"))
+		$footer = file_get_contents("templates/".$cfgrow['template']."/footer.html");
+}
 
 // You can now add any template you want by just adding the template and a link to it.  For example,
 // ?x=about will load the template about_template.html
@@ -297,6 +301,7 @@ if (isset($_GET['showimage']) && !is_numeric($_GET['showimage'])){
 }
 
 // Added ability to use header and footers for templates.  They are not needed but used if included in the template
+
 if(isset($header))
 	$tpl = $header . $tpl;
 if(isset($footer))
