@@ -6,7 +6,7 @@ admin-lang-english.php : english (default) language file for Pixelpost-Admin-Sec
 Pixelpost version 1.6
 
 SVN file version:
-$Id: admin-lang-english.php 150 2007-03-11 19:41:53Z piotr.galas $
+$Id$
 
 Version 1.5:
 Development Team:
