@@ -139,6 +139,7 @@ $PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
 											'simplified_chinese'=>array('CN','Chinese'),
 											'spanish'=>array('ES','Español'),
 											'swedish'=>array('SE','Svenska'),
+											'danish'=>array('DK','Dansk'),
 											'japanese'=>array('JP','Japanese')
 									);
 // The default language is the language the user has set in the adminpanel

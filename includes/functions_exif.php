@@ -30,7 +30,6 @@ function serialize_exif ($uploaded_file)
 	//$exif_tmp = read_exif_data_raw($_FILES['upload_file']['tmp_name'],0);
 	$exif_tmp = read_exif_data_raw($uploaded_file,0);
 	$flat_exif_tmp=flatten_array($exif_tmp);
-
 	if (in_array("DataDumpMakerNote", $flat_exif_tmp))
 	{
 		// this field is set to empty because it causes trouble
@@ -38,9 +37,7 @@ function serialize_exif ($uploaded_file)
 	}
 
 	foreach ($flat_exif_tmp as $key=>$value)	$flat_exif_tmp[$key]=trim($value);
-
 	$exif_info=serialize($flat_exif_tmp);
-
 	return $exif_info;
 }
 
