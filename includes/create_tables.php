@@ -537,7 +537,7 @@ function UpgradeTo16beta( $prefix, $newversion)
 	or die("Error: ". mysql_error());
 
 	// rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'N') NOT NULL DEFAULT 'T'")
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")
 	or die("Error: ". mysql_error());
 
 	// feeditems

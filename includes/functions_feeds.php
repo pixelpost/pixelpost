@@ -36,7 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 $feeditems = (($cfgrow['feeditems'] > 0) ? $cfgrow['feeditems'] : 10);
-$rsspicdir = (($cfgrow['rsstype'] == 'T') ? 'thumbnails/thumb_' : (($cfgrow['rsstype'] == 'F') ? 'images/' : ''));
+$rsspicdir = (($cfgrow['rsstype'] == 'T' | $cfgrow['rsstype'] == 'O') ? 'thumbnails/thumb_' : (($cfgrow['rsstype'] == 'F') ? 'images/' : ''));
 
 // ##########################################################################################//
 // RSS 2.0 FEED
@@ -90,7 +90,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 ";
 		if($rsspicdir) $output .= "			&lt;img src=&quot;$image&quot;&gt;&lt;br/&gt;
 ";
-		$output .= "			$body
+		if($cfgrow['rsstype'] != 'O') $output .= "			$body";
+		$output .= "
 		</description>
 		<pubDate>$datetime</pubDate>
 		<guid isPermaLink='true'>".$cfgrow['siteurl']."index.php?showimage=$id</guid>
@@ -169,7 +170,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 			<![CDATA[
 ";
 		if($rsspicdir) $atom .= "				<img src='$image' /><br />";
-		$atom .= "$headline<br />$body]]>
+		if($cfgrow['rsstype'] != 'O') $atom .= "$headline<br />$body";
+		$atom .= "]]>
 		</content>
 		<published>$tag_date</published>
 		<updated>$modified_date$tzoner</updated>
