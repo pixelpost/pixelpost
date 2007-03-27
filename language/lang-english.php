@@ -54,8 +54,6 @@ $_lang_file_email             = 'thecrew@pixelpost.org';
 $_lang_file_rev               = '1.6';
 
 // IMAGE NAVIGATION
-$lang_nothing_to_show             = "Coming Soon! Nothing has been posted yet.";
-
 $lang_previous                    = "Previous";
 $lang_next                        = "Next";
 $lang_no_previous                 = "No Previous Image";

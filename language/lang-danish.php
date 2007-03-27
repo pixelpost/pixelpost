@@ -53,8 +53,6 @@ $_lang_file_email             = 'andreas@xerxes.dk';
 $_lang_file_rev               = '1.6';
 
 // IMAGE NAVIGATION
-$lang_nothing_to_show             = "Kommer snart! Der er endnu ikke postet noget her.";
-
 $lang_previous                    = "Forrige";
 $lang_next                        = "N&aelig;ste";
 $lang_no_previous                 = "Intet foreg&aring;ende billede";

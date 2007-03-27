@@ -54,8 +54,6 @@ $_lang_file_email             = 'thecrew@pixelpost.org';
 $_lang_file_rev               = '1.5';
 
 // IMAGE NAVIGATION
-$lang_nothing_to_show             = "Coming Soon! まだ投稿されたイメージはありません。";
-
 $lang_previous                    = "前へ";
 $lang_next                        = "次へ";
 $lang_no_previous                 = "前のイメージはありません。";
