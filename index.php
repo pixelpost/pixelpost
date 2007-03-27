@@ -722,6 +722,11 @@ $tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
 $tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
+if($image_comments_number != 1){
+	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_popup,$tpl);
+}else{
+	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_page_title,$tpl);	
+}
 if ($row['comments'] == 'F')
 {
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);
