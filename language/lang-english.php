@@ -78,6 +78,8 @@ $lang_comment_redirect_error     = "Comment submission error! Please click to be
 $lang_comment_page_title         = "Comment";
 $lang_comment_popup              = "Comments";
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
+$lang_comment_plural						 = "Comments";
+$lang_comment_single						 = "Comment";
 
 // EXIF DATA
 $lang_exposure                   = "Exposure:";
@@ -134,6 +136,7 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 

@@ -85,6 +85,9 @@ $lang_comment_page_title      = "Commentaar";
 $lang_comment_popup           = "Commentaren";
 $lang_message_banned_comment  = "Uw commentaar wordt niet bewaard! Het bevat &eacute;&eacute;n of meerdere verboden woorden/email/ips.";
 $lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
+$lang_comment_plural				  = "Commentaren";
+$lang_comment_single					= "Commentaar";
+
 $lang_tags                    = "Tags:<br/>";
 
 // EXIF DATA
@@ -138,6 +141,7 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 

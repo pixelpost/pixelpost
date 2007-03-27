@@ -77,6 +77,9 @@ $lang_comment_redirect_error     = "Fejl i indsendelsen af kommentar!Comment sub
 $lang_comment_page_title         = "Kommentér";
 $lang_comment_popup              = "Kommentarer";
 $lang_comment_popup_disabled     = "Kommentarer er sl&aring;et fra p&aring; dette billede";
+$lang_comment_plural						 = "Kommentarer";
+$lang_comment_single						 = "Kommentér";
+
 
 // EXIF DATA
 $lang_exposure              	= "Lukkertid:";

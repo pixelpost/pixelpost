@@ -74,6 +74,8 @@ $lang_comment_page_title    = "يادداشت";
 $lang_comment_popup         = "يادداشت‌ها";
 $lang_message_banned_comment     = "Your comment is not saved! It contains one or more banned words/email/ips.";
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
+$lang_comment_plural						 = "Comments";
+$lang_comment_single						 = "Comment";
 $lang_tags                      = "Tags:<br/>";
 
 // EXIF DATA
@@ -132,6 +134,7 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 

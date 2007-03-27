@@ -76,6 +76,9 @@ $lang_comment_redirect_error     = "コメント投稿エラー! リダイレク
 $lang_comment_page_title         = "コメント";
 $lang_comment_popup              = "コメント";
 $lang_comment_popup_disabled     = "この写真に対するコメントは無効にされています。";
+$lang_comment_plural						 = "Comments";
+$lang_comment_single						 = "Comment";
+
 
 // EXIF DATA
 $lang_exposure                   = "露出:";
@@ -133,6 +136,7 @@ $lang_alt_lang_simplified_chinese ="Chinese";
 $lang_alt_lang_spanish            ="Espanol";
 $lang_alt_lang_swedish            ="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 

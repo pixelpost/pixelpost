@@ -84,6 +84,8 @@ $lang_comment_page_title       = "Kommentar";
 $lang_comment_popup            = "Kommentare";
 $lang_message_banned_comment   = "Ihr Kommentar wurde nicht gespeichert, da er Worte, Email-Adressen oder IP-Adressen enth&auml;lt, die in Ban-Listen vorkommen.";
 $lang_comment_popup_disabled   = "Commenting on this picture has been disabled";
+$lang_comment_plural						 = "Comments";
+$lang_comment_single						 = "Comment";
 $lang_tags                     = "Tags:<br/>";
 
 // EXIF DATA
@@ -138,6 +140,7 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 

@@ -79,6 +79,8 @@ $lang_comment_page_title			= "Komentarz";
 $lang_comment_popup						= "Komentarze";
 $lang_message_banned_comment  = "Komentarz nie został zapisany! Zawiera on jedno lub więcej zabronionych słów/emaili/IP.";
 $lang_comment_popup_disabled  = "Komentarze dla tego obrazka zostały wyłączone";
+$lang_comment_plural						 = "Comments";
+$lang_comment_single						 = "Comment";
 $lang_tags                    = "Tagi:<br/>";
 
 // EXIF DATA
@@ -132,6 +134,7 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 

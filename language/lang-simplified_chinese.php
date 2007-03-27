@@ -75,6 +75,9 @@ $lang_comment_redirect           = "如果浏览器没有自动返回，请点�
 $lang_comment_redirect_error     = "评论发送错误！如果浏览器没有自动返回，请点击返回。";
 $lang_comment_page_title         = "评论";
 $lang_comment_popup              = "评论";
+$lang_comment_plural						 = "Comments";
+$lang_comment_single						 = "Comment";
+
 
 // EXIF DATA
 $lang_exposure                   = "快门:";
@@ -132,6 +135,7 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 
