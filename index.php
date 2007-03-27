@@ -723,9 +723,9 @@ $tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
 if($image_comments_number != 1){
-	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_popup,$tpl);
+	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_plural,$tpl);
 }else{
-	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_page_title,$tpl);	
+	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_single,$tpl);	
 }
 if ($row['comments'] == 'F')
 {
