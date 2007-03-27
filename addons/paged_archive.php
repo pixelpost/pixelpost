@@ -165,7 +165,7 @@ $category_Link_List_paged = "<ul id=\"taglist\">";
 $category_Link_List_paged .= "<li><a href='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$count .")</a></li>";
 
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
-while(list($id,$name, $alt_name) = mysql_fetch_row($query))
+while(list($id, $name, $alt_name) = mysql_fetch_row($query))
 {
 	$queryr = "SELECT count(*) AS count,datetime
 	FROM {$pixelpost_db_prefix}catassoc AS t1
@@ -222,6 +222,10 @@ if (isset($_GET['pagenum'])&&$_GET['pagenum'] != "")
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
 		$select_display_date_link=str_replace(" ","%20",$select_display_date);
 		$thedate = pullout($thedate);
+		preg_match('/(\w+),\s/', $select_display_date, $naturalmonth);
+		$natmonth = 'lang_'.strtolower($naturalmonth[1]);
+		$mynatmonth = $$natmonth;
+		$select_display_date=preg_replace('/\w+,(\s\d+)/', "$mynatmonth$1", $select_display_date);
 		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date_link&amp;pagenum=1'>$name (" .$select_display_date .") (" .$count .")</option>";
 		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date_link&amp;pagenum=1'>$name " .$select_display_date ." (" .$count .")</a></li>";
 	};// end while
@@ -492,14 +496,27 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	// selected category name
 	if($cat_id != "")
 	{
+		if ($language_abr == $default_language_abr) {
 		$query = mysql_query("SELECT name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id'");
 		$images_category_or_date = mysql_fetch_array($query);
 		$images_category_or_date = pullout($images_category_or_date['name']);
 	}
+		else {
+			$query = mysql_query("SELECT alt_name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id'");
+			$images_category_or_date = mysql_fetch_array($query);
+			$images_category_or_date = pullout($images_category_or_date['alt_name']);
+		}
+	}
 	else
 	{
 		if (isset($_GET['tag']))	$images_category_or_date = $_GET['tag'];
-		else if (isset($_GET['archivedate']))	$images_category_or_date = $_GET['monthname'];
+		else if (isset($_GET['archivedate']))	{
+			$images_category_or_date = $_GET['monthname'];
+			preg_match('/(\w+),\s/', $images_category_or_date, $naturalmonth);
+			$natmonth = 'lang_'.strtolower($naturalmonth[1]);
+			$mynatmonth = $$natmonth;
+			$images_category_or_date=preg_replace('/\w+,(\s\d+)/', "$mynatmonth$1", $images_category_or_date);
+		}
 		else	$images_category_or_date = $lang_browse_all;
 	}
 } // end if ($_GET['x'] == "browse")
