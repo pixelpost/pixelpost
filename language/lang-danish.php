@@ -5,6 +5,9 @@ lang-danish.php
 ===============
 Pixelpost version 1.6
 
+SVN file version:
+$Id$
+
 Language file: Danish (DK)
 Author:  Andreas M&oslash;gelmose
 Contact: andreas@xerxes.dk
