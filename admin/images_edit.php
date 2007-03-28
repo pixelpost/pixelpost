@@ -214,6 +214,10 @@ if($_GET['view'] == "images")
 				$filstorlek = $_FILES['userfile']['size'];
 				$status = "ok";
 				createthumbnail($oldfilename);
+				//Get the exif data so we can store it.
+				include_once('../includes/functions_exif.php');
+				$exif_info_db = serialize_exif ($uploadfile);
+				$update = sql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$getid'");
 				$file_reupload_str = '<br/>'.$admin_lang_imgedit_file.'<b>' .$oldfilename .'</b> '.$admin_lang_imgedit_file_isuploaded;
 				// NEW WORKSPACE ADDED
         eval_addon_admin_workspace_menu('image_reupload_succesful');

@@ -35,7 +35,6 @@ function serialize_exif ($uploaded_file)
 		// this field is set to empty because it causes trouble
 		$flat_exif_tmp['DataDumpMakerNote']=NULL;
 	}
-
 	foreach ($flat_exif_tmp as $key=>$value)	$flat_exif_tmp[$key]=trim($value);
 	$exif_info=serialize($flat_exif_tmp);
 	return $exif_info;

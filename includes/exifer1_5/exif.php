@@ -398,6 +398,9 @@ function formatData($type,$tag,$intel,$data) {
 		if($intel==1) $data = intel2Moto($data);
 		if($intel==0 && ($type=="USHORT" || $type=="SSHORT")) $data = substr($data,0,4);
 		$data=hexdec($data);
+		// fix for iso value (thanks to hdt from the pixelpost forum)
+		if ($tag == "8827") $data=65535&$data; //mask 2 bytes for ISO rating
+		if ($tag == "9209") $data=65535&$data; //mask 2 bytes for Flash info
 		
 		if($type=="SSHORT" && $data>32767) $data = $data - 65536;	//this makes the number signed instead of unsigned
 		if($type=="SLONG" && $data>2147483647) $data = $data - 4294967296;	//this makes the number signed instead of unsigned
@@ -689,46 +692,50 @@ function read_exif_data_raw($path,$verbose) {
 	//LOOP THROUGH MARKERS TILL YOU GET TO FFE1	(exif marker)
 	while(!feof($in) && $data!="ffe1" && $data!="ffc0" && $data!="ffd9") {
 		if($data=="ffe0") { //JFIF Marker
-			$result['ValidJFIFData'] = 1;
-			$result['JFIF']['Size'] = hexdec($size);
+			// $result lines commented out because it causes trouble in the way Pixelpost handles exif.
+			//$result['ValidJFIFData'] = 1;
+			//$result['JFIF']['Size'] = hexdec($size);
 			
 			if(hexdec($size)-2 > 0) {
 				$data = fread( $in, hexdec($size)-2);
-				$result['JFIF']['Data'] = $data;
+				//$result['JFIF']['Data'] = $data;
 			} 
 			
-			$result['JFIF']['Identifier'] = substr($data,0,5);;
-			$result['JFIF']['ExtensionCode'] =  bin2hex(substr($data,6,1));
+			//$result['JFIF']['Identifier'] = substr($data,0,5);;
+			//$result['JFIF']['ExtensionCode'] =  bin2hex(substr($data,6,1));
 			
 			$globalOffset+=hexdec($size)+2;
 			
 		} else if($data=="ffed") {	//IPTC Marker
-			$result['ValidIPTCData'] = 1;
-			$result['IPTC']['Size'] = hexdec($size);
+			// $result lines commented out because it causes trouble in the way Pixelpost handles exif.
+			//$result['ValidIPTCData'] = 1;
+			//$result['IPTC']['Size'] = hexdec($size);
 			
 			if(hexdec($size)-2 > 0) {
 				$data = fread( $in, hexdec($size)-2);
-				$result['IPTC']['Data'] = $data ;
+				//$result['IPTC']['Data'] = $data ;
 			} 
 			$globalOffset+=hexdec($size)+2;
 			
 		} else if($data=="ffe2") {	//EXIF extension Marker
-			$result['ValidAPP2Data'] = 1;
-			$result['APP2']['Size'] = hexdec($size);
+			// $result lines commented out because it causes trouble in the way Pixelpost handles exif.
+			//$result['ValidAPP2Data'] = 1;
+			//$result['APP2']['Size'] = hexdec($size);
 			
 			if(hexdec($size)-2 > 0) {
 				$data = fread( $in, hexdec($size)-2);
-				$result['APP2']['Data'] = $data ;
+				//$result['APP2']['Data'] = $data ;
 			} 
 			$globalOffset+=hexdec($size)+2;
 			
 		} else if($data=="fffe") {	//COM extension Marker
-			$result['ValidCOMData'] = 1;
-			$result['COM']['Size'] = hexdec($size);
+			// $result lines commented out because it causes trouble in the way Pixelpost handles exif.
+			//$result['ValidCOMData'] = 1;
+			//$result['COM']['Size'] = hexdec($size);
 			
 			if(hexdec($size)-2 > 0) {
 				$data = fread( $in, hexdec($size)-2);
-				$result['COM']['Data'] = $data ;
+				//$result['COM']['Data'] = $data ;
 			} 
 			$globalOffset+=hexdec($size)+2;
 			
