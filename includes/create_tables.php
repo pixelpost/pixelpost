@@ -560,6 +560,14 @@ function UpgradeTo16beta( $prefix, $newversion)
 function UpgradeDevTo16beta( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
+	
+	// ********************************************************************
+	// NOTE: the "rsstype" will need to be placed in the v1.6 Beta upgrade.
+	// ********************************************************************
+	
+	// rsstype field
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")
+	or die("Error: ". mysql_error());
 
 	// update version
 	mysql_query("

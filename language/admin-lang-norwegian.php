@@ -441,6 +441,7 @@ $admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
 $admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Show full size pictures";
 $admin_lang_optn_rss_thumbs						= "Show thumbnails";
+$admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
 $admin_lang_optn_alt_lang             = "Alternative language settings: ";
