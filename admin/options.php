@@ -110,16 +110,7 @@ if ($_GET['optaction']=='updateall')
 
 		// exif
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set exif='".$_POST['exif']."'");
-
-		// token
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set token='".$_POST['token']."', token_time='".$_POST['token_time']."'");
-			
-		// DSBL settings
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_dsbl='".$_POST['comment_dsbl']."'");
-		
-		// SPAM Flood settings
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set comment_timebetween='".$_POST['comment_timebetween']."'");
-			
+					
 		// RSS settings
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feeditems='".(int) $_POST['feeditems']."'");
 		// Refresh the settings
@@ -220,7 +211,16 @@ switch ($_GET['optaction'])
 if($_GET['optaction'] != "")
 {
 	if ($lang_error==0){
-		echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload </a></div><p />\n";
+		echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload";
+		if ($_POST['token_time'] < 1) {
+			// token time < 1 minute is not allowed. Correct it and show error mesage.
+			$_POST['token_time']=1;
+			$admin_lang_fixed_error = $admin_lang_optn_token_error;
+		} else {$admin_lang_fixed_error = null;}
+		if ($admin_lang_fixed_error != null){
+			echo "<br /><br />".$admin_lang_fixed_error;
+		}
+		echo "</a></div><p />\n";
 	} else {
 		echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color=\"red\">$admin_lang_optn_upd_lang_error</font></div><p />\n";
 	}

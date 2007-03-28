@@ -331,6 +331,7 @@ $admin_lang_optn_token_desc           = "トークンを使用することで、
                                          <strong>&lt;TOKEN&gt;</strong> タグを設定しない場合、ユーザにはコメントが投稿できない旨のエラーメッセージが表示されます。<br /><br/>
                                          この設定を有効にしてもよろしいですか?";
 $admin_lang_optn_token_time           = "コメントウィンドウを開いてコメントを送信するまでの最大時間: ";
+$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
 $admin_lang_optn_dsbl_list            = "Distributed Sender Blackhole List設定 (http://www.dsbl.org)";
 $admin_lang_optn_dsbl_list_desc       = "<a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a>には、オープンリレー、オープンプロクシまたはその他の脆弱性があるホストのIPアドレスを含んでいます。これらのサーバは、しばしばスパム送信者からメール送信に悪用されますが、コメントスパムを登録するためのサーバとしても知られています。<br /> <br />
                                          Distributed Sender Blackhole ListでコメントのIPアドレスをチェックしますか?";

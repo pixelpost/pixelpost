@@ -327,6 +327,7 @@ $admin_lang_optn_token_desc		        = "Brug af token vil reducere risikoen for 
 																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
 																				 &Oslash;nsker du at sl&aring; denne funktion til?";
 $admin_lang_optn_token_time						= "Maksimal tid i minutter mellem &aring;bning af kommentarvinduet og indsendelsen af en kommenter: ";
+$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
 $admin_lang_optn_dsbl_list 						= "DISTRIBUTED SENDER BLACKHOLE LIST SETTING (http://www.dsbl.org)";
 $admin_lang_optn_dsbl_list_desc 			= "Listen <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> indeholder IP-adressen p&aring; servere der er s&aring;kaldt &aring;bne relays, &aring;bne proxyer eller har andre sikkerhedsproblemer. Disse servere misbruges ofte af spammere til at sende e-mails men er ogs&aring; kendt for at l&aelig;gge falske kommentarer.<br /> <br />
 																				 Skal kommentar-ip-adressen sammenlignes med denne liste?";
