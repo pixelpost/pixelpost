@@ -155,5 +155,5 @@ $lang_email_notificationplain_pt4 = "\n\n---------------------------------------
 
 // Error message
 $lang_nothing_to_show             	= "Kommer snart! Der er endnu ikke postet noget her.";
-$lang_spamflood						= "Beskyttelse mod masse-oprettelse af kommentarer (spam) er sl&aring;et til. Vent lidt l&aelig;ngere tid f&oslash;r du poster endnu en kommentar.";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 ?>

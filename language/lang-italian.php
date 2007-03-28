@@ -151,7 +151,7 @@ $lang_email_notificationplain_pt4 = "-------------------------------------------
 
 // Error Message
 $lang_nothing_to_show             = "Presto online! Niente da mostrare. Nessuna immagine qu&igrave;!";
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 
 // End of language file
 ?>

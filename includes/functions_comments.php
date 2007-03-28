@@ -21,7 +21,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		{
 			if ((time() - $_SESSION['token_time']) > ($cfgrow['token_time']*60))
 			{
-    		die("You waited more then ".$cfgrow['token_time']." minutes to enter the comment");
+    		die("You waited more then ".$cfgrow['token_time']." minutes to enter the comment<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
     	} else {
     		// token was good, regenerate a new one
     		$_SESSION['token'] = md5($_SERVER["HTTP_USER_AGENT"].$_SERVER["HTTP_ACCEPT_LANGUAGE"].$_SERVER["HTTP_ACCEPT_ENCODING"].$_SERVER["HTTP_ACCEPT_CHARSET"].$_SERVER["HTTP_ACCEPT"].$_SERVER["SERVER_SOFTWARE"].session_id().uniqid(rand(), TRUE));
@@ -41,7 +41,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
 	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
 	{
-  	die($lang_spamflood);
+  	$time_to_wait = floor($cfgrow['comment_timebetween']/60);
+  	$spam_flood_message = str_replace("<TIME_TO_WAIT>", $time_to_wait, $lang_spamflood);
+  	die($spam_flood_message."<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
   }
 
 // $parent_id
@@ -50,14 +52,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){	
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
-   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 02).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
+   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 02).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
 	}
 
 	if (!is_numeric($parent_id)){
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
-   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 03).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
+   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 03).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
 	}
 	
@@ -77,7 +79,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if (count($mk_regex_array[2]) > $cfgrow['max_uri_comments']){
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
-   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
+   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
 	} else {
   	for( $cnt=0; $cnt < count($mk_regex_array[2]); $cnt++ ) {
@@ -101,7 +103,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
     if ($spam_domains_found>0){
   		header("HTTP/1.0 404 Not Found");
 			header("Status: 404 File Not Found!");
-   		echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 05).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
+   		echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 05).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    		exit;
   	}
 	}
@@ -123,7 +125,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if($cmnt_setting == 'F'){	
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
-   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 06).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
+   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 06).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
    }
 	

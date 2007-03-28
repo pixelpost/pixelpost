@@ -172,6 +172,6 @@ $lang_email_notificationplain_pt4 = "
       Email sent by pixelpost
 ";
 
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 
 ?>

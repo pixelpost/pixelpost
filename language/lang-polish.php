@@ -167,5 +167,5 @@ $lang_email_notificationplain_pt4 = "
 
 // Error Message
 $lang_nothing_to_show             = "Już niebawem! Obecnie jeszcze nie ma czego oglądać!";
-$lang_spamflood										= "Zabezpieczenie przed zalewem (floodem) komentarzami jest aktywne. Musisz chwilę odczekać zanim wyślesz kolejny komentarz.";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 ?>

@@ -162,7 +162,7 @@ $lang_email_notificationplain_pt4 = "-------------------------------------------
 
 // Error Message
 $lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei!";
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 
 // Ende der Sprachdatei
 ?>

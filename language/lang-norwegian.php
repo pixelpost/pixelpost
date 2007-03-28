@@ -148,6 +148,6 @@ $lang_email_notificationplain_pt3 = "by";
 $lang_email_notificationplain_pt4 = "\n\n----------------------------------------------------------------------\n\nEmail sent by Pixelpost";
 // Error Message
 $lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait longer before posting another comment.";
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 
 ?>
