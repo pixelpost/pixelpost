@@ -303,7 +303,8 @@ function lookup_tag($tag) {
 		case "9216": $tag = "TIFF/EPStandardID";break;
 		case "a20b": $tag = "FlashEnergy";break;
 		
-		default: $tag = "unknown:".$tag;break;
+		//default: $tag = "unknown:".$tag;break;
+		default: $tag = "unknown";break;
 	}
 	return $tag;
 
@@ -356,7 +357,6 @@ function formatData($type,$tag,$intel,$data) {
 		if($bottom!=0) $data=$top/$bottom;
 		else if($top==0) $data = 0;
 		else $data=$top."/".$bottom;
-		
 		if(($tag=="011a" || $tag=="011b") && $bottom==1) { //XResolution YResolution
 			$data=$top." dots per ResolutionUnit";
 		} else if($tag=="829a") { //Exposure Time
@@ -440,7 +440,8 @@ function formatData($type,$tag,$intel,$data) {
 			else if($data==5) $data = "Multi-Segment";
 			else if($data==6) $data = "Partial";
 			else if($data==255) $data = "Other";
-			else $data = "Unknown: ".$data;
+			//else $data = "Unknown: ".$data;
+			else $data = "Unknown";
 		} else if($tag=="9208") { //LightSource
 			if($data==0) $data = "Unknown or Auto";
 			else if($data==1) $data = "Daylight";
@@ -454,7 +455,8 @@ function formatData($type,$tag,$intel,$data) {
 			else if($data==21) $data = "D65";
 			else if($data==22) $data = "D75";
 			else if($data==255) $data = "Other";
-			else $data = "Unknown: ".$data;
+			//else $data = "Unknown: ".$data;
+			else $data = "Unknown";
 		} else if($tag=="9209") { //Flash
 			if($data==0) $data = "No Flash";
 			else if($data==1) $data = "Flash";
@@ -478,7 +480,8 @@ function formatData($type,$tag,$intel,$data) {
 			else if($data==89) $data = "Red Eye, Auto-Mode";
 			else if($data==93) $data = "Red Eye, Auto-Mode, Return light not detected";
 			else if($data==95) $data = "Red Eye, Auto-Mode, Return light detected";
-			else $data = "Unknown: ".$data;
+			//else $data = "Unknown: ".$data;
+			else $data = "Unknown";
 		} else if($tag=="a001") { //ColorSpace
 			if($data==1) $data = "sRGB";
 			else $data = "Uncalibrated";
@@ -487,7 +490,8 @@ function formatData($type,$tag,$intel,$data) {
 		} else if($tag=="0103") { //Compression
 			if($data==1) $data = "No Compression";
 			else if($data==6) $data = "Jpeg Compression";
-			else $data = "Unknown: ".$data;
+			//else $data = "Unknown: ".$data;
+			else $data = "Unknown";
 		} else if($tag=="a217") { //SensingMethod
 			if($data==1) $data = "Not defined";
 			if($data==2) $data = "One Chip Color Area Sensor";
@@ -496,14 +500,15 @@ function formatData($type,$tag,$intel,$data) {
 			if($data==5) $data = "Color Sequential Area Sensor";
 			if($data==7) $data = "Trilinear Sensor";
 			if($data==8) $data = "Color Sequential Linear Sensor";
-			else $data = "Unknown: ".$data;
+			//else $data = "Unknown: ".$data;
+			else $data = "Unknown";
 		} else if($tag=="0106") { //PhotometricInterpretation
 			if($data==1) $data = "Monochrome";
 			else if($data==2) $data = "RGB";
 			else if($data==6) $data = "YCbCr";
-			else $data = "Unknown: ".$data;
+			//else $data = "Unknown: ".$data;
+			else $data = "Unknown";
 		}
-	
 	} else if($type=="UNDEFINED") {
 		
 		if($tag=="9000" || $tag=="a000" || $tag=="0002") { //ExifVersion,FlashPixVersion,InteroperabilityVersion
@@ -532,8 +537,8 @@ function formatData($type,$tag,$intel,$data) {
 	} else {
 		$data = bin2hex($data);
 		if($intel==1) $data = intel2Moto($data);
+		
 	}
-	
 	return $data;
 }
 
@@ -619,8 +624,12 @@ function read_entry(&$result,$in,$seek,$intel,$ifd_name,$globalOffset) {
 	} else {
 		//Format the data depending on the type and tag
 		$formated_data = formatData($type,$tag,$intel,$data);
-		
-		$result[$ifd_name][$tag_name] = $formated_data;
+		// added by schonhose to remove all unknown tags and possible binary stuff
+		if ($tag_name=="unknown"){
+			$result[$ifd_name][$tag_name] = "unknown";
+		}else{
+			$result[$ifd_name][$tag_name] = $formated_data;
+		}
 		
 		if($result['VerboseOutput']==1) {
 			if($type=="URATIONAL" || $type=="SRATIONAL" || $type=="USHORT" || $type=="SSHORT" || $type=="ULONG" || $type=="SLONG" || $type=="FLOAT" || $type=="DOUBLE") {
