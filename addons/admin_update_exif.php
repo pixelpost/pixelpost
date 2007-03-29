@@ -31,11 +31,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 /*				configuration variables				*/
 /****************************************/
 $addon_name = "Update EXIF";
-$addon_version = "0.1";
+$addon_version = "0.2";
 $addon_description = "Since Pixelpost 1.6 the old behaviour of reading the EXIF files from the images upon loading is replaced by saving the EXIF in the database during the upload of an image.
 	This will speed up loading time and will solve issues reported with the EXIF data. Please note you can turn the EXIF data off, this will effect the way the EXIF tags are replaced. EXIF data will always be saved in the database.
 	<br /><br />
 	This addon provides an easy way to extract the EXIF from the images and save it to the database so the old pictures are compatible with the new EXIF functions.
+	<br /><br />
+	Please note: using the button 'Remove EXIF' will remove all EXIF data for all images from the database. You can use the 'Update EXIF' button to get the EXIF again from the uploaded files.
 	<br /><br />";
 
 /***********************/
@@ -55,15 +57,23 @@ if(isset($_POST['Action']) && ($_POST['Action']=="Update EXIF"))
 		mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$id'");
 	 	$counter=$counter+1;
 	}
-	$Exif_Msg = "<font color=\"blue\">Updated ".$counter." images.</font>";
+	$Exif_Msg = "<font color=\"blue\">Updated exif from ".$counter." images.</font>";
 } 
-  
+
+if(isset($_POST['Action']) && ($_POST['Action']=="Remove EXIF"))
+{
+	// remove EXIF from all images
+	include_once('../includes/functions_exif.php');
+	mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info=NULL");
+	$Exif_Msg = "<font color=\"blue\">Removed exif from ".$counter." images.</font>";
+} 
 /**************************/
 /* ADDON CODE (Show Form) */
 /**************************/
 
 $addon_description.="<form name=\"update_exif_info\" action=\"index.php?view=addons\" method=\"post\" >
  		<input type=\"submit\" name=\"Action\" value=\"Update EXIF\" />
+ 		<input type=\"submit\" name=\"Action\" value=\"Remove EXIF\" />
 </form>";
 
 if ($Exif_Msg!==""){
