@@ -361,7 +361,7 @@ $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobie
 																				 Jeśli zapomnisz tagu <strong>&lt;TOKEN&gt;</strong>, wtedy komentarze nie będą działać, a użytkownik zobaczy komunikat o błędzie.<br /><br/>\n
 																				 Czy to ustawienie powinno być aktywne?";
 $admin_lang_optn_token_time						= "Maksymalny czas (w minutach) pomiędzy otwarciem okna komentarzy i wysłaniem komentarza: ";
-$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
+$admin_lang_optn_token_error					= "Uwaga: wartości mniejsze niż 1 minuta dla czasu Tokenu nie są możliwe. Czas Tokenu został przestawiony na 1 minutę.";
 $admin_lang_optn_dsbl_list 						= "USTWIENIA DISTRIBUTED SENDER BLACKHOLE LIST (HTTP://WWW.DSBL.ORG)";
 $admin_lang_optn_dsbl_list_desc 			= "<a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> zawiera adresy IP serwerów, które mogą służyć do różnego rodzaju nadużyć (są używane jako tzw. open relay, open proxy lub są podatne na wykorzystanie w inny sposób). Te serwery często są wykorzystywane przez SPAMerów do rozsyłania emaili, ale są również znane jako źródła wysyłania komentarzy.<br /> <br />
 																				 Czy adresy IP powinny być sprawdzane pod kątem znajdowania się na Distributed Sender Blackhole List?";
@@ -373,7 +373,7 @@ $admin_lang_optn_rss_setting					= "USTAWIENIA RSS/ATOM";
 $admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
 $admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe obrazki";
 $admin_lang_optn_rss_thumbs						= "Pokazuj miniaturki";
-$admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
+$admin_lang_optn_rss_thumbs_only			= "Pokazuj tylko miniaturki";
 $admin_lang_optn_rss_text							= "Pokazuj tylko tekst";
 $admin_lang_optn_feeditems_desc				= "Liczba publikowanych w RSS/ATOM wiadomości: ";
 $admin_lang_optn_alt_lang             = "Ustawienia alternatywnego języka: ";

@@ -79,8 +79,8 @@ $lang_comment_page_title			= "Komentarz";
 $lang_comment_popup						= "Komentarze";
 $lang_message_banned_comment  = "Komentarz nie został zapisany! Zawiera on jedno lub więcej zabronionych słów/emaili/IP.";
 $lang_comment_popup_disabled  = "Komentarze dla tego obrazka zostały wyłączone";
-$lang_comment_plural						 = "Comments";
-$lang_comment_single						 = "Comment";
+$lang_comment_plural					= "Komentarze";
+$lang_comment_single					= "Komentarz";
 $lang_tags                    = "Tagi:<br/>";
 
 // EXIF DATA
@@ -151,7 +151,7 @@ $lang_email_notification_pt2 = "
 $lang_email_notification_pt3 = "przez";
 $lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
-      Email wysłany przez pixelposta<br>
+      Email wysłany przez Pixelposta<br>
 ";
 $lang_email_notificationplain_pt1 = "
 	  Witaj,
@@ -162,10 +162,10 @@ $lang_email_notificationplain_pt2 = "
 $lang_email_notificationplain_pt3 = "przez";
 $lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
-      Email wysłany przez pixelposta
+      Email wysłany przez Pixelposta
 ";
 
 // Error Message
-$lang_nothing_to_show             = "Już niebawem! Obecnie jeszcze nie ma czego oglądać!";
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
+$lang_nothing_to_show             = "Zapraszamy już niebawem! Obecnie jeszcze nie ma czego oglądać!";
+$lang_spamflood										= "Zabezpieczenie przed zalewem komentarzami jest aktywne. Musisz poczekać <TIME_TO_WAIT> minut przez dodaniem kolejnego komentarza.";
 ?>
