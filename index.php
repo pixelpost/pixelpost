@@ -37,6 +37,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
+// fix proposed by tomyeah on the forum
+header('Content-Type: text/html; charset=utf-8');
 
 error_reporting(0);
 ini_set('arg_separator.output', '&amp;');
