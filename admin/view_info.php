@@ -85,7 +85,7 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	if(!is_writable($work_path."images"))	$chmod_message = "<b>$admin_lang_pp_img_chmod1</b><br />$admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
 	else	$chmod_message = "$admin_lang_pp_img_chmod4";
 
-  if(!is_writable($work_path."thumbnails"))	$chmod_message = "<b>$admin_lang_pp_img_chmod5</b> $admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
+  if(!is_writable($work_path."thumbnails"))	$chmod_messagethumb = "<b>$admin_lang_pp_img_chmod5</b> $admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
   else	$chmod_messagethumb = "$admin_lang_pp_img_chmod4";
 
 echo "<b>$admin_lang_pp_imgfolder</b> ";
