@@ -279,7 +279,7 @@ $admin_lang_optn_template   = "SKÓRKI";
 $admin_lang_optn_thumbnails = "MINIATURKI";
 $admin_lang_optn_tip        = "Nie zapomnij o zamykającym sleszu <b>'/'</b> n.p. <i>http://www.pixelpost.org/</i>";
 
-$admin_lang_optn_update = "UAKTUALNIJ";
+$admin_lang_optn_update = "AKTUALIZUJ";
 $admin_lang_optn_yes    = "Tak";
 $admin_lang_optn_no     = "Nie";
 

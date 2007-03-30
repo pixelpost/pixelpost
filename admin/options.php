@@ -212,13 +212,10 @@ if($_GET['optaction'] != "")
 {
 	if ($lang_error==0){
 		echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload";
-		if ($_POST['token_time'] < 1) {
+		if ($_POST['token_time'] < 1 && $_GET['optionsview'] == 'antispam') {
 			// token time < 1 minute is not allowed. Correct it and show error mesage.
 			$_POST['token_time']=1;
-			$admin_lang_fixed_error = $admin_lang_optn_token_error;
-		} else {$admin_lang_fixed_error = null;}
-		if ($admin_lang_fixed_error != null){
-			echo "<br /><br />".$admin_lang_fixed_error;
+			echo "<br /><br />".$admin_lang_optn_token_error;
 		}
 		echo "</a></div><p />\n";
 	} else {
@@ -271,7 +268,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		$pixelpost_site_title = pullout($cfgrow['sitetitle']);
 		$pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_QUOTES);
 		echo "
-			<form method='post' action='$PHP_SELF?view=options&amp;optaction=updateall' accept-charset='UTF-8'>
+			<form method='post' action='$PHP_SELF?view=options&amp;optaction=updateall&optionsview=general' accept-charset='UTF-8'>
 			<div class='jcaption'>
 			$admin_lang_optn_title_url
 			</div>
@@ -626,7 +623,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatetemplate' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatetemplate&optionsview=template' accept-charset='UTF-8'>
 		<select name='new_template'>
 		<option value='".$cfgrow['template']."'>".$cfgrow['template']."</option>
 		";
@@ -652,7 +649,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatedateformat' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatedateformat&optionsview=template' accept-charset='UTF-8'>
 		$admin_lang_optn_dateformat_txt<p />
 		<input type='text' name='new_dateformat' value='".$cfgrow['dateformat']."' style='width:150px;' />
 		<input type='submit' value='$admin_lang_optn_update' />
@@ -664,7 +661,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form name='catformatform' method='post' action='$PHP_SELF?view=options&amp;optaction=updatecatformat' accept-charset='UTF-8' >
+		<form name='catformatform' method='post' action='$PHP_SELF?view=options&amp;optaction=updatecatformat&optionsview=template' accept-charset='UTF-8' >
 		$admin_lang_optn_cat_link_format_txt<br />
 		<select name='catformat' onchange=\"if (this.selectedIndex=='6') {flip('costumcatformat')};return false;\" >";
 		if($cfgrow['catglueend'] == "")
@@ -704,7 +701,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatecalendar' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatecalendar&optionsview=template' accept-charset='UTF-8'>
 		<select name='cal'>
 		";
 		if($cfgrow['calendar'] == "") { $nice_calendar = "No Calendar"; } else { $nice_calendar = $cfgrow['calendar']; }
@@ -730,7 +727,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatethumbrow' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatethumbrow&optionsview=thumb' accept-charset='UTF-8'>
 		$admin_lang_optn_thumb_row_txt<p />
 		<input type='text' name='thumbnumber' value='".$cfgrow['thumbnumber']."' style='width:50px;' />
 		<input type='submit' value='$admin_lang_optn_update' />
@@ -742,7 +739,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatecrop' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatecrop&optionsview=thumb' accept-charset='UTF-8'>
 		$admin_lang_optn_crop_thumbs_txt<p />
 		<select name='new_crop'>";
 		$cropmethod = $cfgrow['crop'];
@@ -763,14 +760,14 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatethumbsize' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatethumbsize&optionsview=thumb' accept-charset='UTF-8'>
 		$admin_lang_optn_thumb_size_txt<br />
 		<input type='text' name='thumbwidth' value='".$cfgrow['thumbwidth']."' /> x
 		<input type='text' name='thumbheight' value='".$cfgrow['thumbheight']."' />
 		<input type='submit' value='$admin_lang_optn_thumb_size_new' />
 		</form><p />
 
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatethumbnails' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatethumbnails&optionsview=thumb' accept-charset='UTF-8'>
 		<input type='submit' value='$admin_lang_optn_reg_thumbs_button' /><br />$admin_lang_optn_regen_thumbs_txt
 		</form>
 		</div>
@@ -781,7 +778,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 		<div class='content'>
 		$admin_lang_optn_img_compression_txt<p />
-		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatecompression' accept-charset='UTF-8'>
+		<form method='post' action='$PHP_SELF?view=options&amp;optaction=updatecompression&optionsview=thumb' accept-charset='UTF-8'>
 		<input type='text' name='new_compression' value='".$cfgrow['compression']."' style='width:50px;' />
 		<input type='submit' value='$admin_lang_optn_update' />
 		</form>
@@ -805,7 +802,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			} 
     	show_anti_spam();
     	
-    	echo "<form method='post' action='$PHP_SELF?view=options&amp;optionsview=antispam&amp;optaction=updateantispam' accept-charset='UTF-8'>
+    	echo "<form method='post' action='$PHP_SELF?view=options&amp;optionsview=antispam&amp;optaction=updateantispam&optionsview=antispam' accept-charset='UTF-8'>
     		<div class='jcaption'>
 				$admin_lang_optn_token
 				</div>
@@ -927,7 +924,7 @@ global $pixelpost_db_prefix,$admin_lang_spam_ban,$admin_lang_spam_content,$admin
 		</div>
 		<div class='content'>
 		$admin_lang_spam_content
-		<form method='post' action='index.php?view=options&amp;optionsview=antispam'>\n
+		<form method='post' action='index.php?view=options&amp;optionsview=antispam&optionsview=antispam'>\n
 		<input type='hidden' name='banlistupdate' value='1' />
 		<table >\n
 		<tr >
