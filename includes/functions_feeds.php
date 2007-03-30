@@ -36,7 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 $feeditems = (($cfgrow['feeditems'] > 0) ? $cfgrow['feeditems'] : 10);
-$rsspicdir = (($cfgrow['rsstype'] == 'T' | $cfgrow['rsstype'] == 'O') ? 'thumbnails/thumb_' : (($cfgrow['rsstype'] == 'F') ? 'images/' : ''));
+$rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? 'thumbnails/thumb_' : (($cfgrow['rsstype'] == 'F') ? 'images/' : ''));
 
 // ##########################################################################################//
 // RSS 2.0 FEED
