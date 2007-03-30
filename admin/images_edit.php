@@ -136,7 +136,7 @@ if($_GET['view'] == "images")
 			$where .= ' AND (tag IN ("'.$tags_array.'") OR alt_tag IN ("'.$tags_array.'"))';
 			$query .= $where;
 
-			$query  = sql_query($query);
+			if(count($idz) > 0)	$query  = sql_query($query);
 		}
 		else
 		{
