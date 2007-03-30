@@ -150,4 +150,8 @@ $lang_email_notificationplain_pt4 = "\n\n---------------------------------------
 $lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
 $lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 
+
+// RSS & ATOM Feed
+$lang_comment_feed_title        = "Newest comments on";
+$lang_comment_feed_image_title  = "New comment on";
 ?>

@@ -164,5 +164,9 @@ $lang_email_notificationplain_pt4 = "-------------------------------------------
 $lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei!";
 $lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
 
+// RSS & ATOM Feed
+$lang_comment_feed_title        = "Newest comments on";
+$lang_comment_feed_image_title  = "New comment on";
+
 // Ende der Sprachdatei
 ?>

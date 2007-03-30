@@ -168,4 +168,8 @@ $lang_email_notificationplain_pt4 = "
 // Error Message
 $lang_nothing_to_show             = "Zapraszamy już niebawem! Obecnie jeszcze nie ma czego oglądać!";
 $lang_spamflood										= "Zabezpieczenie przed zalewem komentarzami jest aktywne. Musisz poczekać <TIME_TO_WAIT> minut przez dodaniem kolejnego komentarza.";
+
+// RSS & ATOM Feed
+$lang_comment_feed_title        = "Newest comments on";
+$lang_comment_feed_image_title  = "New comment on";
 ?>

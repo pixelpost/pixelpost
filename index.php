@@ -242,7 +242,7 @@ if ($language_full==$cfgrow['langfile'])
     	}
 
 	    // if the x=foo does not exist prompt it! don't show the main page anymore!
-    	if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment')
+    	if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='comment_atom' && $_GET['x']!='rss' && $_GET['x']!='comment_rss' && $_GET['x']!='save_comment')
     	{ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html"))
     			header("HTTP/1.0 404 Not Found");
     			header("Status: 404 File Not Found!");
@@ -271,7 +271,7 @@ if ($language_full==$cfgrow['langfile'])
         exit;
     	}
 			// if the x=foo does not exist prompt it! don't show the main page anymore!
-	    if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='rss' && $_GET['x']!='save_comment'){ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html"))
+	    if (isset($_GET['x'])&& $_GET['x']!='atom' && $_GET['x']!='comment_atom' && $_GET['x']!='rss' && $_GET['x']!='comment_rss' && $_GET['x']!='save_comment'){ // if (isset($_GET['x']) and !file_exists( "templates/".$cfgrow['template']."/".$_GET['x']."_template.html"))
             header("HTTP/1.0 404 Not Found");
             header("Status: 404 File Not Found!");
             // header("Location: index.php");
