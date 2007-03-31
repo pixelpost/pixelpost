@@ -163,7 +163,7 @@ $language_abr = $_COOKIE['lang'];
 if(!isset($language_abr))	$language_abr = $default_language_abr;
 
 // override the language if $_GET['lang'] is set.
-if(isset($_GET['lang']))	$language_abr = $_GET['lang'];
+if(isset($_GET['lang']))	$language_abr = substr($_GET['lang'],0,2);
 
 // convert the two letter $language variable to full name of language file
 // (used in language file switch but not template switch (template uses abbreviation))
