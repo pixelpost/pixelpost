@@ -82,24 +82,24 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']."<p />";
 	 $work_path = eregi_replace("images/","",$cfgrow['imagepath']);
 
-	if(!is_writable($work_path."images"))	$chmod_message = "<b>$admin_lang_pp_img_chmod1</b><br />$admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
-	else	$chmod_message = "$admin_lang_pp_img_chmod4";
+	if(!is_writable($work_path."images"))	$chmod_message = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod1."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
+	else	$chmod_message = "<b><font color=\"green\">OK</font></b> - ".$admin_lang_pp_img_chmod4;
 
-  if(!is_writable($work_path."thumbnails"))	$chmod_messagethumb = "<b>$admin_lang_pp_img_chmod5</b> $admin_lang_pp_img_chmod2 $admin_lang_pp_img_chmod3";
-  else	$chmod_messagethumb = "$admin_lang_pp_img_chmod4";
+  if(!is_writable($work_path."thumbnails"))	$chmod_messagethumb = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod5."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
+  else	$chmod_messagethumb = "<b><font color=\"green\">OK</font></b> - ".$admin_lang_pp_img_chmod4;
 
 echo "<b>$admin_lang_pp_imgfolder</b> ";
 if(file_exists($work_path."images")) {
-	echo "OK - $chmod_message CHMOD: ".substr(sprintf('%o', fileperms($work_path."images")), -4)."<p />";
+	echo $chmod_message." Current CHMOD: ".substr(sprintf('%o', fileperms($work_path."images")), -4)."<p />";
 } else {
-echo "$admin_lang_pp_folder_missing  ".$work_path."images) - $chmod_message<p />";
+echo $admin_lang_pp_folder_missing." ".$work_path."images) - ".$chmod_message."<p />";
 }
 
 echo "<b>$admin_lang_pp_thumbfolder</b> ";
 if(file_exists($work_path."thumbnails")) {
-	echo "OK - $chmod_messagethumb CHMOD: ".substr(sprintf('%o', fileperms($work_path."images")), -4)."<p />";
+	echo $chmod_messagethumb." Current CHMOD: ".substr(sprintf('%o', fileperms($work_path."images")), -4)."<p />";
 } else {
-echo "$admin_lang_pp_folder_missing  ".$work_path."thumbnails) - $chmod_messagethumb<p />";
+echo $admin_lang_pp_folder_missing."  ".$work_path."thumbnails) - ".$chmod_messagethumb."<p />";
 }
 
 echo "<b>$admin_lang_pp_langfolder </b> ";
