@@ -36,6 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 require("../includes/pixelpost.php");
 require('../includes/create_tables.php');
+require('../includes/functions.php');
 
 /* start up mysql */
 mysql_connect($pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass) || die("Error: ". mysql_error());
@@ -167,29 +168,9 @@ switch( $installed_version) {
 
 echo "<b>The tables are all set.</b><p />";
 // new foldercheck routine.
-// ************************************
+
 // Check if directory exists;
 // If it doesn't, attempt to create it.
-// ************************************
-function check_and_set($directory){
-    if(@file_exists($directory)){
-        if(@is_writable($directory)){
-            return true;
-        }else{
-            if(@chmod($directory, 0777)){
-                return true;
-            }else{    
-                return "chmod";
-            }
-        }
-    }else{
-        if(@mkdir($directory)){
-            return check_and_set($directory);
-        }else{
-            return "create";
-        }
-    }    
-}
 
 $images     =    check_and_set('../images/');
 $thumbnails =    check_and_set('../thumbnails/');

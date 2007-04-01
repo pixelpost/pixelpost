@@ -81,56 +81,56 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
      echo $guess_path."images/</b></i><p />
 	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']."<p />";
 	 $work_path = eregi_replace("images/","",$cfgrow['imagepath']);
-
-	if(!is_writable($work_path."images"))	$chmod_message = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod1."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
+	
+	if(!is__writable("../images/"))	$chmod_message = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod1."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
 	else	$chmod_message = "<b><font color=\"green\">OK</font></b> - ".$admin_lang_pp_img_chmod4;
 
-  if(!is_writable($work_path."thumbnails"))	$chmod_messagethumb = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod5."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
+  if(!is__writable("../thumbnails/"))	$chmod_messagethumb = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod5."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
   else	$chmod_messagethumb = "<b><font color=\"green\">OK</font></b> - ".$admin_lang_pp_img_chmod4;
 
 echo "<b>$admin_lang_pp_imgfolder</b> ";
-if(file_exists($work_path."images")) {
-	echo $chmod_message." Current CHMOD: ".substr(sprintf('%o', fileperms($work_path."images")), -4)."<p />";
+if(file_exists("../images/")) {
+	echo $chmod_message." Current CHMOD: ".substr(sprintf('%o', fileperms("../images/")), -4)."<p />";
 } else {
 echo $admin_lang_pp_folder_missing." ".$work_path."images) - ".$chmod_message."<p />";
 }
 
 echo "<b>$admin_lang_pp_thumbfolder</b> ";
-if(file_exists($work_path."thumbnails")) {
-	echo $chmod_messagethumb." Current CHMOD: ".substr(sprintf('%o', fileperms($work_path."images")), -4)."<p />";
+if(file_exists("../thumbnails/")) {
+	echo $chmod_messagethumb." Current CHMOD: ".substr(sprintf('%o', fileperms("../thumbnails/")), -4)."<p />";
 } else {
 echo $admin_lang_pp_folder_missing."  ".$work_path."thumbnails) - ".$chmod_messagethumb."<p />";
 }
 
 echo "<b>$admin_lang_pp_langfolder </b> ";
-if(file_exists($work_path."language")) {
-	echo "OK<p />";
+if(file_exists("../language/")) {
+	echo "<b><font color=\"green\">OK</font></b><p />";
 } else {
-echo "$admin_lang_pp_folder_missing  ".$work_path."language)<p />";
+	echo "<b><font color=\"red\">ERROR - ".$admin_lang_pp_folder_missing. " ../language/)</font></b><p />";
 }
 
 echo "<b>$admin_lang_pp_addfolder</b> ";
-if(file_exists($work_path."addons")) {
-	echo "OK<p />";
+if(file_exists("../addons/")) {
+	echo "<b><font color=\"green\">OK</font></b><p />";
 } else {
-echo "$admin_lang_pp_folder_missing  ".$work_path."addons)<p />";
+echo "<b><font color=\"red\">ERROR - ".$admin_lang_pp_folder_missing. " ../addons/)</font></b><p />";
 }
 
 echo "<b>$admin_lang_pp_incfolder</b> ";
-if(file_exists($work_path."includes")) {
-	echo "OK<p />";
+if(file_exists("../includes/")) {
+	echo "<b><font color=\"green\">OK</font></b><p />";
 } else {
-echo "$admin_lang_pp_folder_missing  ".$work_path."includes)<p />";
+	echo "<b><font color=\"red\">ERROR - ".$admin_lang_pp_folder_missing. " ../includes/)</font></b><p />";
 }
 
 echo "<b>$admin_lang_pp_tempfolder</b> ";
-if(file_exists($work_path."templates")) {
-	echo "OK<p />";
+if(file_exists("../templates/")) {
+	echo "<b><font color=\"green\">OK</font></b><p />";
 } else {
-echo "$admin_lang_pp_folder_missing ".$work_path."templates)<p />";
+echo "<b><font color=\"red\">ERROR - ".$admin_lang_pp_folder_missing. " ../templates/)</font></b><p />";
 }
 echo "</div><p />";
-
+	
 echo "
 	<div class='jcaption'>$admin_lang_pp_langs</div>
 	<div class='content'>";
