@@ -55,7 +55,7 @@ Die SPRACHDATEI-VARIABLEN:
 
 Linke Seite: Nichts aendern!      ||    rechte Seite: aendern, wenn gewuenscht */
 
-$_lang_file_translator        = 'Connie Mller-Gdecke - <a href="http://www.zweiterblick.de/" target="_blank">www.zweiterblick.de</a>';
+$_lang_file_translator        = 'Connie M&uuml;ller-G&ouml;decke - <a href="http://www.zweiterblick.de/" target="_blank">www.zweiterblick.de</a>';
 $_lang_file_email             = 'connie@pixelpost.org';
 $_lang_file_rev               = '1.6';
 
@@ -64,8 +64,8 @@ $lang_previous                    = "zur&uuml;ck";
 $lang_next                        = "weiter";
 $lang_no_previous                 = "keine weiteren Bilder";
 $lang_no_next                     = "keine neueren Bilder";
-$lang_latest									 = "Last";
-$lang_first										 = "First";
+$lang_latest									 = "Letztes";
+$lang_first										 = "Erstes";
 $lang_browse_select_category      = "Kategorie w&auml;hlen";
 $lang_browse_all                  = "alle";
 $lang_permalink			          = "Permalink";
@@ -83,9 +83,9 @@ $lang_comment_redirect_error   = "Kommentar konnte nicht eingetragen werden. Kli
 $lang_comment_page_title       = "Kommentar";
 $lang_comment_popup            = "Kommentare";
 $lang_message_banned_comment   = "Ihr Kommentar wurde nicht gespeichert, da er Worte, Email-Adressen oder IP-Adressen enth&auml;lt, die in Ban-Listen vorkommen.";
-$lang_comment_popup_disabled   = "Commenting on this picture has been disabled";
-$lang_comment_plural						 = "Comments";
-$lang_comment_single						 = "Comment";
+$lang_comment_popup_disabled   = "Die Kommentarfunktion wurde f&uuml;r dieses Bild ausgeschaltet.";
+$lang_comment_plural						 = "Kommentare";
+$lang_comment_single						 = "Kommentar";
 $lang_tags                     = "Tags:<br/>";
 
 // EXIF DATA
@@ -129,15 +129,15 @@ $lang_december            = "Dezember";
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
-$lang_alt_lang_french							="Français";
+$lang_alt_lang_french							="FranÃ§ais";
 $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
 $lang_alt_lang_polish							="Polski";
-$lang_alt_lang_portuguese					="Português";
+$lang_alt_lang_portuguese					="PortuguÃªs";
 $lang_alt_lang_simplified_chinese	="Chinese";
-$lang_alt_lang_spanish						="Español";
+$lang_alt_lang_spanish						="EspaÃ±ol";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
 $lang_alt_lang_danish						="Dansk";
@@ -155,18 +155,18 @@ $lang_email_notification_pt4 = "------------------------------------------------
 // einzubinden. Dazu wird "\n" genutzt.
 // Achten Sie bitte darauf, diese Sonderzeichen beizubehalten
 
-$lang_email_notificationplain_pt1 = "Hallo,\n\nein neuer Kommentar wurde in Ihrem Photoblog zu diesem Eintrag abgegeben";
-$lang_email_notificationplain_pt2 = "Kommentartext:";
+$lang_email_notificationplain_pt1 = "Hallo,\nein neuer Kommentar wurde in Ihrem Photoblog zu diesem Eintrag abgegeben";
+$lang_email_notificationplain_pt2 = "\n\nKommentartext:\n\n----------------------------------------------------------------------";
 $lang_email_notificationplain_pt3 = "abgegeben von";
-$lang_email_notificationplain_pt4 = "---------------------------------------------------------------------- \n\ndies ist eine von Pixelpost automatisch erstellte Benachrichtigung";
+$lang_email_notificationplain_pt4 = "\n\n---------------------------------------------------------------------- \n\ndies ist eine von Pixelpost automatisch erstellte Benachrichtigung";
 
 // Error Message
 $lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei!";
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
+$lang_spamflood										= "Schutz vor Spam-Flut ist aktiviert! Sie m&uuml;ssen <TIME_TO_WAIT> Minuten warten, bis Sie einen neuen Kommentar abgeben k&ouml;nnen.";
 
 // RSS & ATOM Feed
-$lang_comment_feed_title        = "Newest comments on";
-$lang_comment_feed_image_title  = "New comment on";
+$lang_comment_feed_title        = "Neueste Kommentare in";
+$lang_comment_feed_image_title  = "Neuer Kommentar f&uuml;r";
 
 // Ende der Sprachdatei
 ?>
