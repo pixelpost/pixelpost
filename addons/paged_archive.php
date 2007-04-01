@@ -164,7 +164,9 @@ $category_Link_List = " <a href='index.php?x=browse'> $lang_browse_all (" .$coun
 $category_Link_List_paged = "<ul id=\"taglist\">";
 $category_Link_List_paged .= "<li><a href='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$count .")</a></li>";
 
-$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
+if ($language_abr == $default_language_abr)	$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
+else	$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY alt_name");
+
 while(list($id, $name, $alt_name) = mysql_fetch_row($query))
 {
 	$queryr = "SELECT count(*) AS count,datetime

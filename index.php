@@ -74,7 +74,7 @@ if(isset($_POST['vcookie']))
 
 start_mysql();
 
-
+if($_GET['showimage'])	$_GET['showimage'] = (int) $_GET['showimage'];
 
 // get config
 if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
