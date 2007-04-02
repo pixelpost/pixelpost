@@ -35,9 +35,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-// include functions
-require('functions.php');
-
 echo "<ul>";
 
 // Converts the password from the 1.3 base64encoded to MD5 hash

@@ -40,8 +40,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // see http://bugs.php.net/bug.php?id=30931
 
 // Source: <http://www.php.net/is_writable#73596>
-if (!function_exists('is__writable')){
-	function is__writable($path) {
+function is__writable($path) {
     if ($path{strlen($path)-1}=='/') // recursively return a temporary file path
         return is__writable($path.uniqid(mt_rand()).'.tmp');
     else if (is_dir($path))
@@ -55,8 +54,8 @@ if (!function_exists('is__writable')){
     if (!$rm)
         unlink($path);
     return true;
-	}
 }
+
 
 // Check if directory exists;
 // If it doesn't, attempt to create it.
@@ -66,7 +65,7 @@ function check_and_set($directory){
             return true;
         }else{
             if(@chmod($directory, 0777)){
-                return true;
+                return "ok";
             }else{    
                 return "chmod";
             }
