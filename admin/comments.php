@@ -1,5 +1,4 @@
 <?php
-
 /**************************
 SVN file version:
 $Id$
@@ -41,7 +40,7 @@ if($_GET['view'] == "comments") {
  		$query .= $where;
  		$query  = sql_query($query);
  		$c = count($idz);
- 		echo "<div class='jcaption'>$admin_lang_cmnt_delete1  $c $admin_lang_cmnt_delete2</div>";
+ 		echo "<div class='jcaption confirm'>$admin_lang_cmnt_delete1  $c $admin_lang_cmnt_delete2</div>";
 
  		}
 
@@ -148,9 +147,18 @@ if($_GET['view'] == "comments") {
 
          $pagec = 0;
         if($_GET['page'] == "") { $page = "0"; } else { $page = $_GET['page']; }
-
+// added for showing correct page number for masked comments				
+				if ($_GET['show']=='masked') {
+					$mod_where = " WHERE publish='no' ";
+				}
+				if ($_GET['show']=='published'){
+					$mod_where = " WHERE publish='yes' ";
+				}
+// new workspace added! For correct page number with other buttons
+eval_addon_admin_workspace_menu('pages_commentbuttons');
+				
 				// count comments!
-				$commentnumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments");
+				$commentnumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments".$mod_where);
 				$pixelpost_commentnumb = $commentnumb['count'];
 /*
 				if ($_POST['numimg_pp'] == ""){$numcmmnt_pp = $pixelpost_commentnumb;
@@ -175,44 +183,56 @@ if($_GET['view'] == "comments") {
 				$num_cmt_pages = ceil($pixelpost_commentnumb/$_SESSION['numimg_pp']);
 				$num_cmt_pages = ($num_cmt_pages > 0)	? $num_cmt_pages : 1;
 
-				echo "<div class=\"jcaption\">$admin_lang_cmnt_commentlist ".$_SESSION['numimg_pp']." $numimg_pp, $admin_lang_page $currntpg $admin_lang_of $num_cmt_pages<br />
+				// styles for highlighting the actual link
+				$allstyle = ($_GET['show'] == ''?' style="border-color:#ff6d6d;"':'');	
+				$pubstyle = ($_GET['show']=='published'?' style="border-color:#ff6d6d;"':'');
+				$modstyle = ($_GET['show']=='masked'?' style="border-color:#ff6d6d;"':'');
+	
+				echo "<div class=\"jcaption\">$admin_lang_cmnt_commentlist ".$_SESSION['numimg_pp'].", $admin_lang_page $currntpg $admin_lang_of $num_cmt_pages<br />
 				<span id=\"smaller\">$admin_lang_cmnt_massdelete_text</span></div>
 				<div class=\"content\">
 
 				<form method=\"post\" name=\"managecomments\" id=\"managecomments\" action=\"\" accept-charset=\"UTF-8\">
 
 				<!-- Moderation Buttons! -->
+				<!-- all boxes -->
 				<input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
-
+				<!-- clear all boxes -->
 				<input class='cmnt-buttons' type='button' onclick=\"clearAll(document.getElementById('managecomments')); return false; \" value='$admin_lang_cmnt_clear_all' name='clearallbox' />
-
-
-
-				<input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
-
-				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_moderation_que\" onclick=\"
-								document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;show=masked' \" />
-
+				<!-- invert checkbox -->
+				<input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />&nbsp;&nbsp;
+				<!-- show all comments -->
+				<input class=\"cmnt-buttons\" type=\"submit\" name=\"showall\" value=\"$lang_browse_all $lang_comment_plural\" onclick=\"
+								document.getElementById('managecomments').action='$PHP_SELF?view=comments'\" $allstyle />
+				<!-- show published comments -->
+				<input class=\"cmnt-buttons\" type=\"submit\" name=\"showpublish\" value=\"$admin_lang_cmnt_published\" onclick=\"
+							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;show=published'\" $pubstyle />
+				<!-- show moderated comments -->
+				<input class=\"cmnt-buttons\" type=\"submit\" name=\"showunpublish\" value=\"$admin_lang_cmnt_moderation_que\" onclick=\"
+							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;show=masked' \" $modstyle />&nbsp;&nbsp;
+				<!-- publish selected comments -->
 				<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
 							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" />
+				<!-- unpublish selected comments -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />
-
-
+				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />&nbsp;&nbsp;
+				<!-- delete selected -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
 				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massdelete'
 				return confirm('Delete all selected comments? \\n  \'Cancel\' to stop, \'OK\' to delete.')
 				\"/>
-
+				<!-- report as spam -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_rep_spam\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=spamdelete'
+				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=spamdelete' \"/>";
 
-				\"/>
+// New Workspace added! Place for new Buttons on Comment page				
+eval_addon_admin_workspace_menu('show_commentbuttons');				
 
-				<hr/>
+				echo "<hr/>
 				<ul>";
-				if ($_GET['show']=='masked')
-					$moderate_where = " and publish='no' ";
+				if ($_GET['show']=='masked')    $moderate_where = " and publish='no' ";
+				if ($_GET['show']=='published') $moderate_where = " and publish='yes' ";	
+
         $query = "SELECT comments.*, image,headline  FROM ".$pixelpost_db_prefix."comments AS comments, ".$pixelpost_db_prefix."pixelpost AS post WHERE post.id=parent_id $moderate_where  ORDER BY id DESC limit $page,".$_SESSION['numimg_pp'];
         $images = mysql_query($query);
 
@@ -234,7 +254,7 @@ if($_GET['view'] == "comments") {
         	$comment_row_class = "published-comment";
         else
         	$comment_row_class = "unpublished-comment";
-
+eval_addon_admin_workspace_menu('single_comment_list');
 
 				echo "
 				<li class='$comment_row_class' ><a href='../index.php?showimage=".$parent_id."'>
@@ -274,10 +294,10 @@ if($_GET['view'] == "comments") {
 
 				while ($pcntr < $num_cmt_pages)
 				{
-
+// show variable in link, added by austriaka to make it more flexible
 					$pcntr++;
 					if (isset($_GET['show']))
-					$image_page_Links .= "<a href='index.php?view=comments&amp;page=$pagecounter&amp;show=masked'>$pcntr</a>\n";
+					$image_page_Links .= "<a href='index.php?view=comments&amp;page=$pagecounter&amp;show=".$_GET['show']."'>$pcntr</a>\n";
 					else
 					$image_page_Links .= "<a href='index.php?view=comments&amp;page=$pagecounter'>$pcntr</a>\n";
 
@@ -306,13 +326,13 @@ if($_GET['view'] == "comments") {
 	      }
 
 				if (isset($_GET['show']))
-	       	echo '<form method="post" action="'.$PHP_SELF .'?view=comments&page=0&amp;show=masked" accept-charset="UTF-8">';
+	       	echo '<form method="post" action="'.$PHP_SELF .'?view=comments&page=0&amp;show='.$_GET['show'].'" accept-charset="UTF-8">';
 				else
 	       	echo '<form method="post" action="'.$PHP_SELF .'?view=comments&page=0" accept-charset="UTF-8">';
 
 				echo $admin_lang_show.' ';
 				echo '<input type="text" name="numimg_pp" size="3" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_cmnt_page
-				    .'<input class="cmnt-buttons" type="submit" value="'.$admin_lang_go.'"/></form>';
+				    .' <input class="cmnt-buttons" type="submit" value="'.$admin_lang_go.'"/></form>';
 
 		    echo "\n</div><p />\n";
 	    } // end list

@@ -191,6 +191,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 				$cmnt_moderate_permission ='yes';
 			}
 
+//include the Akismet comment filter script *after* Pixelpost's own moderation
+//check if the addon is in place and if it is on
+	$result_aks = mysql_query("SELECT * FROM {$pixelpost_db_prefix}addons WHERE addon_name='admin_akismet_comment' AND status='on'");
+	if (mysql_num_rows($result_aks) > 0) { 	 //It's on!!
+		include('./addons/admin_akismet_comment.php');
+		check_akismet_comment();
+	}	
+	
 			// to the job now
 			if ($cmnt_moderate_permission =='yes')
 				$extra_message = "<b>$lang_message_moderating_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
