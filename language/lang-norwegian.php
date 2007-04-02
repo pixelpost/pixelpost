@@ -143,7 +143,7 @@ $lang_email_notification_pt2 = "<br>The comment is: <br>------------------------
 $lang_email_notification_pt3 = "by";
 $lang_email_notification_pt4 = "\n\n----------------------------------------------------------------------    <br>\n\nEmail sent by Pixelpost<br>";
 $lang_email_notificationplain_pt1 = "Hello,\n\nA new comment has been made at your photoblog.";
-	$lang_email_notificationplain_pt2 = "The comment is:\n\n----------------------------------------------------------------------";
+	$lang_email_notificationplain_pt2 = "\n\nThe comment is:\n\n----------------------------------------------------------------------";
 $lang_email_notificationplain_pt3 = "by";
 $lang_email_notificationplain_pt4 = "\n\n----------------------------------------------------------------------\n\nEmail sent by Pixelpost";
 // Error Message

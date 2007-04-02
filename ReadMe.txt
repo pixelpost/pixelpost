@@ -95,8 +95,8 @@ Please read the file "upgrade.html" in the directory /doc
 
 Please note that PixelPost now does not use anymore CSS-classes with "_",
 so check your templates and change "_" to "-"
-more information on that is found in the ReadMe_upgrade.txt
+more information on that is found in the upgrade.html
 
 Please note as well that PixelPost is fully UTF-compliant, so you might change
 your CSS-codepage-meta information as well.
-More information on that is found in the ReadMe_upgrade.txt
+More information on that is found in the upgrade.html

@@ -9,7 +9,7 @@ SVN file version:
 $Id$
 
 Language file: german (D)
-Author:  Connie Mller-Gdecke
+Author:  Connie Mueller-Goedecke
 Contact: connie@Pixelpost.org
 WWW: http:www.zweiterblick.de + http://www.avantart.com
 

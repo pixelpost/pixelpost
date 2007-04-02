@@ -28,7 +28,7 @@ Die Variablen fr die ADMINISTRATIONS-Oberflche:
 
 Linke Seite: Nichts aendern!  ||    rechte Seite: aendern, wenn gewuenscht */
 
-$_lang_file_translator        = 'Connie Mller-Gdecke - <a href="http://www.zweiterblick.de/" target="_blank">www.zweiterblick.de</a>';
+$_lang_file_translator        = 'Connie M&uuml;ller-G&ouml;decke - <a href="http://www.zweiterblick.de/" target="_blank">www.zweiterblick.de</a>';
 $_lang_file_email             = 'connie@pixelpost.org';
 $_lang_file_rev               = '1.6';
 
@@ -82,7 +82,7 @@ $admin_lang_pw_newpw		= "Ihr neues Passwort:";
 $admin_lang_pw_text_1		= "Pixelpost Passwort-Wiederherstellung";
 $admin_lang_pw_text_2		= "From: Pixelpost Administration";
 $admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthlt Ihren User-Namen und ein neues Passwort. \n<br />
-				   Prfen Sie Ihren Postkorb:  ";
+				   Pr&uuml;fen Sie Ihren Posteingang:  ";
 $admin_lang_pw_text_4 		= "<span style='color:red;'>Fehler! Ein Fehler ist aufgetreten! \n<br />
 				   Die email-Adresse und der User-Name, den Sie eingegeben haben, ist ok, aber es konnte keine Mail verschickt werden. \n<br />
                                    Wenden Sie sich an den Support Ihres Hosters.</span>";
@@ -93,14 +93,14 @@ $admin_lang_pw_text_8           = "\n\nund sich anmelden mit dem neuen Passwort,
 
 
 // Admin Menu
-$admin_lang_new_image         = "NEUES BILD";
-$admin_lang_images            = "BILDER";
-$admin_lang_categories        = "KATEGORIEN";
-$admin_lang_comments          = "KOMMENTARE";
-$admin_lang_options           = "OPTIONEN";
-$admin_lang_general_info      = "GENERAL INFO";
-$admin_lang_addons            = "ADDONS";
-$admin_lang_logout            = "ABMELDEN";
+$admin_lang_new_image         = "Neues Bild";
+$admin_lang_images            = "Bilder";
+$admin_lang_categories        = "Kategorien";
+$admin_lang_comments          = "Kommentare";
+$admin_lang_options           = "Optionen";
+$admin_lang_general_info      = "Allgemeine Info";
+$admin_lang_addons            = "Addons";
+$admin_lang_logout            = "Abmelden";
 
 // New Image
 $admin_lang_ni_post_a_new_image   = "neues Bild posten";
@@ -121,18 +121,18 @@ $admin_lang_ni_day                = "Tag";
 $admin_lang_ni_hour               = "Stunde";
 $admin_lang_ni_min                = "Minute";
 $admin_lang_ni_markdown_text      = "Zum Formatieren im Textfeld k&ouml;nnen Sie MARKDOWN oder HTML benutzen.";
-$admin_lang_ni_markdown_hp        = "Markdown homepage";
+$admin_lang_ni_markdown_hp        = "Markdown Homepage";
 $admin_lang_ni_markdown_element   = "Einf&uuml;hrung";
 $admin_lang_ni_markdown_syntax    = "Syntax Referenz";
 $admin_lang_ni_posted             = "HOCHGELADEN";
-$admin_lang_ni_missing_data       = "Daten fehlen!<br />\nGebenSie zumindest einen Titel und ein Bild an.
+$admin_lang_ni_missing_data       = "Daten fehlen!<br />\nGeben Sie zumindest einen Titel und ein Bild an.
                                      Es wurde noch kein Bild hochgeladen, da die Informationen nicht ausreichten.";
 $admin_lang_ni_crop_nextstep      = "Bearbeiten Sie nun den Thumbnail-Ausschnitt:";
 $admin_lang_ni_crop_background    = "Dies ist der Hintergrund des Bildes, aus dem der Ausschnitt gew&auml;hlt wird.";
 $admin_lang_ni_db_error           = "Es konnte nicht in die Datenbank geschrieben werden.";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
-$admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
+$admin_lang_ni_tags_desc          = "(Komma, Semikolon und Leerzeichen sind Trennzeichen f&uuml;r Tags; Unterstrich und Bindestrich verbinden W&ouml;rter)";
+$admin_lang_ni_alt_language				= "Geben Sie einen Titel und eine Beschreibung in der alternativen Sprache an!";
 
 // Images
 $admin_lang_imgedit_edit            = "Bearbeiten";
@@ -158,8 +158,8 @@ $admin_lang_imgedit_updated         = "Aktualisiertes Bild: ";
 $admin_lang_imgedit_txt_desc        = "Text/Beschreibung:";
 $admin_lang_imgedit_dtime           = "Zeit/Datum:";
 $admin_lang_imgedit_img             = "Bild:";
-$admin_lang_imgedit_fsize           = "Datei-Gr&ouml;&szlig;e:";
-$admin_lang_imgedit_12cropimg       = "CropImage tool:";
+$admin_lang_imgedit_fsize           = "Dateigr&ouml;&szlig;e:";
+$admin_lang_imgedit_12cropimg       = "CropImage Werkzeug:";
 $admin_lang_imgedit_12cropimg_txt   = "Ziehen Sie das Crop-Window mit der Maus &uuml;ber das Bild, um den Bildausschnitt f&uuml;r den Thumbnail zu w&auml;hlen,
                                        oder &auml;ndern Sie die Ma&szlig;e mit den '+'/'-' Buttons:";
 $admin_lang_imgedit_uthmb_button    = "Thumbnail aktualisieren";
@@ -175,14 +175,14 @@ $admin_lang_imgedit_img_page        = "Bilder pro Seite";
 $admin_lang_imgedit_cropbg          = "Hintergrundtext f&uuml;r 12cropimage";
 $admin_lang_imgedit_js_del_im       = "Wollen Sie das Bild wirklich l&ouml;schen?";
 $admin_lang_imgedit_db_error        = "<br />Stellen Sie sicher, dass dieser Permalink noch nicht genutzt wurde!";
-$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
-$admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
-$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
-$admin_lang_imgedit_masstag_set     = "Add tag(s)";
-$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
-$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
-$admin_lang_imgedit_published          = "Published";
-$admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
+$admin_lang_imgedit_tags_edit       = "Tags (Komma, Semikolon und Leerzeichen sind Trennzeichen f&uuml;r Tags; Unterstrich und Bindestrich verbinden W&ouml;rter):";
+$admin_lang_imgedit_alt_language    = "&Auml;ndern von Titel und Beschreibung in der alternativen Sprache";
+$admin_lang_imgedit_masstag         = "Ausgew&auml;hltes Bild: Tags Hinzuf&uuml;gen/Entfernen";
+$admin_lang_imgedit_masstag_set     = "Tag(s) hinzuf&uuml;gen";
+$admin_lang_imgedit_masstag_set2    = "Tag(s) hinzuf&uuml;gen f&uuml;r alternative Sprache";
+$admin_lang_imgedit_masstag_unset   = "Tag(s) entfernen";
+$admin_lang_imgedit_published          = "Ver&ouml;ffentlicht";
+$admin_lang_imgedit_unpublished_cmnts  = "zuvor moderierte Bilder.";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "Kategorien mehrfach editieren";
@@ -238,7 +238,7 @@ $admin_lang_cmnt_publish_sel        = "Selektierte Kommentare freigeben";
 $admin_lang_cmnt_unpublish_sel      = "Auswahl zur&uuml;cksetzen";
 $admin_lang_cmnt_published          = "freigegeben";
 $admin_lang_cmnt_unpublished_cmnts  = "vorher gew&auml;hlte Kommentare.";
-$admin_lang_cmnt_unpublished        = "Masked";
+$admin_lang_cmnt_unpublished        = "Moderiert";
 $admin_lang_cmnt_published_cmnts    = "vorher freigegebene Kommentare.";
 $admin_lang_cmnt_error_blacklist    = "Die Blacklist konnte nicht aktualisiert werden: ";
 $admin_lang_cmnt_error_banlist      = "Die Referer-Block-Liste konnte nicht aktualisiert werden: ";
@@ -249,8 +249,8 @@ $admin_lang_optn_template            = "TEMPLATE";
 $admin_lang_optn_thumbnails          = "THUMBNAILS";
 $admin_lang_optn_tip                 = "Achten Sie darauf, dass der Slash <b>'/'</b> gesetzt ist. Beispiel: <i>http://www.pixelpost.org/</i>";
 $admin_lang_optn_update              = "Aktualisieren";
-$admin_lang_optn_yes                 = "Yes";
-$admin_lang_optn_no                  = "No";
+$admin_lang_optn_yes                 = "Ja";
+$admin_lang_optn_no                  = "Nein";
 
 $admin_lang_optn_title_url          = "Seiten-Titel und URL";
 $admin_lang_optn_title              = "Titel:";
@@ -269,13 +269,13 @@ $admin_lang_optn_tz_txt             = "W&auml;hlen Sie den Zeitversatz Ihrer Zei
 $admin_lang_optn_sendemail          = "BEI KOMMENTAREN EMAIL VERSENDEN";
 $admin_lang_optn_sendemail_txt      = "Benachrichtigen, wenn Kommentare eingetragen wurden?";
 $admin_lang_optn_sendemail_html_txt = "Benachrichtigungs-Mails im HTML-Format?";
-$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
-$admin_lang_optn_comment_setting2		= "Comment setting";
-$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
-$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
-$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
-$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
-$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
+$admin_lang_optn_comment_setting 		= "ALLGEMEINE EINSTELLUNGEN F&Uuml;R KOMMENTARE";
+$admin_lang_optn_comment_setting2		= "Kommentareinstellungen";
+$admin_lang_optn_cmnt_mod_txt       = "Voreingestelltes Kommentarverhalten:";
+$admin_lang_optn_cmnt_mod_txt2      = "Verhalten f&uuml;r Kommentare:";
+$admin_lang_optn_cmnt_mod_allowed		=	"Sofort ver&ouml;ffentlichen";
+$admin_lang_optn_cmnt_mod_moderation=	"Zur Freigabe-Queue";
+$admin_lang_optn_cmnt_mod_forbidden	=	"Kommentare verbieten";
 
 $admin_lang_optn_switch_template     = "TEMPLATE-AUSWAHL";
 $admin_lang_optn_lang_file           = "SPRACHDATEI";
@@ -293,7 +293,7 @@ $admin_lang_optn_catlinkformat_custom_end = "Begrenzungszeichen am Ende: ";
 
 $admin_lang_optn_calendar_type       = "KALENDER-TYP";
 
-$admin_lang_optn_thumb_row       = "THUMBNAILROW";
+$admin_lang_optn_thumb_row       = "THUMBNAIL REIHE";
 $admin_lang_optn_thumb_row_txt   = "Wie viele Thumbnails sollen in einer Reihe angezeigt werden?<br />\nTragen Sie eine ungerade Zahl ein, z.B. 5, 7 oder 9, nicht 6 oder 8.";
 $admin_lang_optn_crop_thumbs     = "THUMBNAILS BESCHNEIDEN?";
 $admin_lang_optn_crop_thumbs_txt = "Wenn Thumbnails eine festgelegte Gr&ouml;&szlig;e erhalten sollen: w&auml;hlen Sie <b>Yes.</b><br/>\n
@@ -344,16 +344,16 @@ $admin_lang_serversoft		     = "Server Software:&nbsp;";
 $admin_lang_Pixelpostinfo	     = "Pixelpost Information";
 $admin_lang_pp_currversion	     = "Es ist folgende Pixelpost Version installiert:";
 $admin_lang_pp_check                 = "Check";
-$admin_lang_pp_sess_path             = "Session save path";
-$admin_lang_pp_sess_path_emp         = "is empty";
-$admin_lang_pp_fileupload_np         = 'NOT possible! Check file_upload variable in php.ini file!';
-$admin_lang_pp_fileupload_p          = 'possible.';
-$admin_lang_pp_langs                 = 'Pixelpost language translations';
-$admin_lang_pp_lng_fname             = 'Filename';
+$admin_lang_pp_sess_path             = "Session Speicherpfad";
+$admin_lang_pp_sess_path_emp         = "ist leer";
+$admin_lang_pp_fileupload_np         = 'NICHT m&ouml;glich! &Uuml;berpr&uuml;fen Sie die Variable file_upload in der php.ini Datei!';
+$admin_lang_pp_fileupload_p          = 'm&ouml;glich.';
+$admin_lang_pp_langs                 = 'Pixelpost Sprach&uuml;bersetzungen';
+$admin_lang_pp_lng_fname             = 'Dateiname';
 $admin_lang_pp_lng_author            = 'Author';
 $admin_lang_pp_lng_ver               = 'Version';
 $admin_lang_pp_lng_email             = 'Email';
-$admin_lang_pp_newest_ver            = 'You have the newest version of Pixelpost!';
+$admin_lang_pp_newest_ver            = 'Sie verwenden die neueste Version von Pixelpost!';
 
 // AddOns
 $admin_lang_addon_title              = "INSTALLIERTE ADDONS";
@@ -367,8 +367,8 @@ $admin_lang_pp_up_error_1           = "Die vom Webserver erlaubte Dateigr&ouml;s
 $admin_lang_pp_up_error_2           = "Maximal m&ouml;gliche Dateigr&ouml;sse wurde &uuml;berschritten.";
 $admin_lang_pp_up_error_3           = "Datei wurde nicht komplett &uuml;bertragen.";
 $admin_lang_pp_up_error_4           = "Es wurde keine Datei hochgeladen.";
-$admin_lang_pp_up_error_6           = "Missing a temporary folder.";
-$admin_lang_pp_up_error_7           = "Failed to write file to disk.";
+$admin_lang_pp_up_error_6           = "Tempor&auml;rer Ordner fehlt.";
+$admin_lang_pp_up_error_7           = "Datei konnte nicht geschrieben werden.";
 
 $admin_lang_cmnt_moderation_que     = "Freigabe-Queue";
 
@@ -414,14 +414,14 @@ $admin_lang_spam_updateblacklist = "alle Sperr-Listen aktualisieren";
 $admin_lang_ni_post_exif_date = "Exif-Datum verwenden";
 
 $admin_lang_optn_upd_done    = "Update durchgef&uuml;hrt.";
-$admin_lang_optn_upd_error            = "Update Error.";
-$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
+$admin_lang_optn_upd_error            = "Update Fehler.";
+$admin_lang_optn_upd_lang_error			  = "Die gew&auml;hlte alternative Sprache ist dieselbe wie die Standardsprache.<br />Das macht keinen Sinn, w&auml;hlen Sie bitte eine andere alternative Sprache oder deaktivieren Sie die alternative Sprachunterst&uuml;tzung.";
 $admin_lang_imgedit_preview  = "Vorschau";
-$admin_lang_optn_markdown             = "Enable Markdown";
-$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
-$admin_lang_optn_exif			            = "Enable Exif";
-$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
-$admin_lang_optn_token			          = "Enable token in forms";
+$admin_lang_optn_markdown             = "Markdown verwenden";
+$admin_lang_optn_markdown_desc        = "Soll Pixelpost die Markdown-Funktion in der Bildbeschreibung verwenden?";
+$admin_lang_optn_exif			            = "Exif verwenden";
+$admin_lang_optn_exif_desc		        = "Soll Pixelpost die Exif-Funktion in der Bildseite verwenden?";
+$admin_lang_optn_token			          = "Token in Formularen aktivieren";
 $admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
 																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n

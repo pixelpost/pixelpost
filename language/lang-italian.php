@@ -144,10 +144,10 @@ $lang_email_notification_pt2 = "<br />Il commento &egrave;: <br />\n------------
 $lang_email_notification_pt3 = "da";
 $lang_email_notification_pt4 = "----------------------------------------------------------------------    <br />
                                Email inviata da Pixelpost<br />";
-$lang_email_notificationplain_pt1 = "Ciao,\n\Il tuo photoblog ha ricevuto un nuovo commento.";
-$lang_email_notificationplain_pt2 = "Il commento &egrave;:\n----------------------------------------------------------------------";
+$lang_email_notificationplain_pt1 = "Ciao,\nIl tuo photoblog ha ricevuto un nuovo commento.";
+$lang_email_notificationplain_pt2 = "\n\nIl commento &egrave;:\n\n----------------------------------------------------------------------";
 $lang_email_notificationplain_pt3 = "da";
-$lang_email_notificationplain_pt4 = "----------------------------------------------------------------------\nEmail inviata da Pixelpost";
+$lang_email_notificationplain_pt4 = "\n\n----------------------------------------------------------------------\n\nEmail inviata da Pixelpost";
 
 // Error Message
 $lang_nothing_to_show             = "Presto online! Niente da mostrare. Nessuna immagine qu&igrave;!";

@@ -142,10 +142,10 @@ $lang_email_notification_pt1       = "Bonjour,\n<br />Un nouveau commentaire est
 $lang_email_notification_pt2       = "<br />Le commentaire est:<br />\n----------------------------------------------------------------------<br />";
 $lang_email_notification_pt3       = "de la part de";
 $lang_email_notification_pt4       = "\n----------------------------------------------------------------------<br />\n\nEmail envoy&eacute; par Pixelpost<br />";
-$lang_email_notificationplain_pt1  = "Bonjour,\n\Un nouveau commentaire est arrive sur votre photoblog.";
-$lang_email_notificationplain_pt2  = "Le commentaire est:\n\n----------------------------------------------------------------------";
+$lang_email_notificationplain_pt1  = "Bonjour,\nUn nouveau commentaire est arrive sur votre photoblog.";
+$lang_email_notificationplain_pt2  = "\n\nLe commentaire est:\n\n----------------------------------------------------------------------";
 $lang_email_notificationplain_pt3  = "de la part de";
-$lang_email_notificationplain_pt4  = "\n ----------------------------------------------------------------------\n\nEmail envoye par Pixelpost";
+$lang_email_notificationplain_pt4  = "\n\n----------------------------------------------------------------------\n\nEmail envoye par Pixelpost";
 
 // Error Message
 $lang_nothing_to_show             = "Revenez bient&ocirc;t, il n'y a pas encore d'image ici !";
