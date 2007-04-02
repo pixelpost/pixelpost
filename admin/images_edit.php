@@ -500,8 +500,9 @@ if($_GET['view'] == "images")
 				<input type='text' name='headline' value='$headline' style='width:300px;' />
 			</div>
 			<div class='jcaption'>$admin_lang_imgedit_tags_edit</div>
-			<div class='content'><input type='text' name='tags' style='width:550px;' value='$tags' />
-			</div>
+			<div class='content'><input type='text' name='tags' style='width:550px;' value='$tags' />";
+			eval_addon_admin_workspace_menu('edit_image_form_def_lang');
+			echo "</div>
 			<div class='jcaption'>$admin_lang_imgedit_txt_desc</div>
 			<div class='content'>";
 
@@ -562,8 +563,9 @@ if($_GET['view'] == "images")
 				echo "
 					<div class='jcaption'>$admin_lang_imgedit_alt_language</div>
 						<div class='content'>$admin_lang_imgedit_title<br/>
-							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />
-						</div>
+							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />";
+							eval_addon_admin_workspace_menu('edit_image_form_alt_lang');
+						echo "</div>
 						<div class='content'>";
 				if($cfgrow['markdown'] == 'T')
 				{
