@@ -21,7 +21,6 @@ function flatten_array($array,$keyname='')
 		else
 			$tmp[$key.$keyname] = $value;
 	}
-
 	return $tmp;
 }
 
@@ -37,11 +36,15 @@ function serialize_exif ($uploaded_file)
 	}
 	foreach ($flat_exif_tmp as $key=>$value)	$flat_exif_tmp[$key]=trim($value);
 	$exif_info=serialize($flat_exif_tmp);
+	// we need to escape the string before saving it to the db
+	$exif_info = addslashes($exif_info);
 	return $exif_info;
 }
 
 function unserialize_exif ($exif_info)
 {
+	// we need to strip the string before getting it from the db
+	$exif_info = stripslashes($exif_info);
 	if (unserialize($exif_info) !== null)
 	{
    	$exif_info=unserialize($exif_info);
