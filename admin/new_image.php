@@ -29,6 +29,7 @@ if($_GET['view'] == "")
 	<?php echo $admin_lang_ni_tags; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    <input type="text" name="tags" style="width:550px;" value="<?php if (isset($_SESSION['upload_status']) && $_SESSION['upload_status']!='ok') echo $_POST['tags'];?>" /><br/>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $admin_lang_ni_tags_desc; ?><p/>
+  <?php	eval_addon_admin_workspace_menu('new_image_form_def_lang'); 	?>
   <?php echo $admin_lang_ni_select_cat; ?>
 	<?php
 	category_list_as_table($_POST['category'], $cfgrow);
@@ -184,7 +185,7 @@ if($_GET['view'] == "")
    			<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
    			<input type='text' name='alt_headline' style='width:550px;' value='".$alt_headline."' /><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    			<input type='text' name='alt_tags' style='width:550px;' value='".$alt_tags."' /><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
-
+				eval_addon_admin_workspace_menu('new_image_form_alt_lang');
 				if($cfgrow['markdown'] == 'T')
 				{
 					echo "
