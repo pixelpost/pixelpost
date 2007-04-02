@@ -164,8 +164,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_rss")
 ";
 		if($rsspicdir) $output .= "			&lt;img src=&quot;$parent_image&quot;&gt;&lt;br/&gt;
 ";
-		if($cfgrow['rsstype'] != 'O') $output .= "			$comment_message";
 		$output .= "
+		$comment_message
 		</description>
 		<pubDate>$comment_datetime</pubDate>
 		<guid isPermaLink='true'>".$cfgrow['siteurl']."index.php?showimage=$parent_id#$comment_id</guid>
@@ -329,8 +329,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom")
 			<![CDATA[
 ";
 		if($rsspicdir) $atom .= "				<img src='$parent_image' /><br />";
-		if($cfgrow['rsstype'] != 'O') $atom .= "$parent_headline<br />$comment_message";
-		$atom .= "]]>
+		$atom .= "
+		$parent_headline<br />$comment_message
+			]]>
 		</content>
 		<published>$tag_date</published>
 		<updated>$modified_date$tzoner</updated>
