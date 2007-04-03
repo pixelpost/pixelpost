@@ -232,7 +232,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$comment_message = clean_comment($_POST['message']);
 		$comment_message = stripslashes($comment_message);
 		$comment_email = clean_comment($_POST['email']);
-		$link_to_comment = $cfgrow['siteurl']."./index.php?showimage=$comment_image_id";
+		$link_to_comment = $cfgrow['siteurl']."index.php?showimage=$comment_image_id";
 		$comment_image_name = clean_comment($_POST['parent_name']);
 		$link_to_img_thumb_cmmnt = "Thumbnail Link:" .$cfgrow['siteurl'] ."thumbnails/thumb_$comment_image_name";
 		$img_thumb_cmmnt = "<img src='" .$cfgrow['siteurl'] ."thumbnails/thumb_$comment_image_name' >";
