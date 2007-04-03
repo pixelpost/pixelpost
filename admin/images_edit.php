@@ -323,7 +323,7 @@ if($_GET['view'] == "images")
 		echo "<div class=\"jcaption\">$admin_lang_imgedit_title1<strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
 			   		 </div>
 	           <div class=\"content\">
-	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"\">
+	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images\">
 	           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
 						 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"clearAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_clear_all\" name=\"clearallbox\" />
 						 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
