@@ -23,7 +23,7 @@ add_admin_functions('get_akismet_style', 'admin_html_head');
 
 function get_akismet_links()
 {
-	global $pixelpost_db_prefix, $moderate_where;
+	global $pixelpost_db_prefix, $moderate_where, $cfgrow;
 	
 // style for hightlight
 	$spamstyle = ($_GET['show']=='spams'?' style="border-color:#ff6d6d;"':'');
@@ -34,7 +34,7 @@ function get_akismet_links()
 		
 	<input class='cmnt-buttons' type='submit' name='showakismet' value='Show Akismet Spam' onclick="
 			document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;show=spams'" $spamstyle />
-    
+
   <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick="
       document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
       return confirm('Report all selected comments as Spam to Akismet?');" />
@@ -45,7 +45,7 @@ function get_akismet_links()
 EOT;
 
 	// Delete comments older than X days and marked as SPAM by Akismet
-	$query = "DELETE FROM {$pixelpost_db_prefix}comments WHERE (TO_DAYS(CURDATE()) - TO_DAYS(`datetime`)) > ".$newakismet_keep." AND publish='spm'";
+	$query = "DELETE FROM {$pixelpost_db_prefix}comments WHERE (TO_DAYS(CURDATE()) - TO_DAYS(`datetime`)) > ".$cfgrow['akismet_keep']." AND publish='spm'";
 	$result = mysql_query($query);
 
 	if ($_GET['show']=='spams') {
