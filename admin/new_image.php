@@ -1,5 +1,4 @@
 <?php
-
 /**************************
 SVN file version:
 $Id$
@@ -293,7 +292,7 @@ if($_GET['view'] == "")
 				$exif_info_db = serialize_exif ($uploadfile);
 				if($postdatefromexif == TRUE)
 				{
-					$exif_result=unserialize($exif_info_db);
+					$exif_result=unserialize_exif($exif_info_db);
 					$exposuredatetime = $exif_result['DateTimeOriginalSubIFD'];
 					if ($exposuredatetime!='')
 					{
