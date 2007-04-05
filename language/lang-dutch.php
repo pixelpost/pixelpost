@@ -9,8 +9,8 @@ SVN file version:
 $Id$
 
 Language file: dutch (NL)
-Author:  Schupvis
-WWW: http://schuppe.be
+Author:  Schonhose
+WWW: http://foto.schonhose.nl
 
 Version 1.5:
 Development Team:
@@ -55,12 +55,12 @@ BEGIN OF LANGUAGE VARIABLES:
 
 Dont edit                     ||       Edit                                    */
 
-$_lang_file_translator        = 'Schupvis - <a href="http://schuppe.be/" target="_blank">schuppe.be</a>';
+$_lang_file_translator        = 'Schonhose - <a href="http://foto.schonhose.nl/" target="_blank">foto.schonhose.nl</a>';
 $_lang_file_email             = 'ramin@pixelpost.org';
 $_lang_file_rev               = '1.0.0';
 
 // IMAGE NAVIGATION
-$lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
+$lang_nothing_to_show          = "Nog niet gereed! Hier zijn nog geen foto's te bekijken!";
 
 $lang_previous                 = "Vorige";
 $lang_next                     = "Volgende";
@@ -74,21 +74,21 @@ $lang_permalink                = "Permalink";
 $lang_paged_archive						 = "Archief";
 
 // COMMENTS
-$lang_message_missing_image   = "Geen foto geselecteerd. Uw commentaar werd niet bewaard.";
-$lang_message_missing_comment = "Geen commentaar ingevoerd. Uw commentaar werd niet bewaard.";
+$lang_message_missing_image   = "Geen foto geselecteerd. Uw reactie werd niet bewaard.";
+$lang_message_missing_comment = "Geen commentaar ingevoerd. Uw reactie werd niet bewaard.";
 $lang_visit_homepage          = "Bezoek de voorpagina";
-$lang_no_comments_yet         = "Nog geen commentaar.";
-$lang_comment_thank_you       = "Bedankt voor je bezoek en om de tijd te nemen om commentaar te geven op een foto.\nThe comment-page will reload automatically after 5 seconds";
+$lang_no_comments_yet         = "Nog geen reacties.";
+$lang_comment_thank_you       = "Bedankt voor je bezoek en om de tijd te nemen om een reactie te geven op een foto.\nDeze pagina wordt automatisch gerefreshed na 5 seconden";
 $lang_comment_redirect        = "Klik hier om terug te keren.";
-$lang_comment_redirect_error  = "Comment submition error! Please click to be transferred back, if redirection doesn't work";
-$lang_comment_page_title      = "Commentaar";
-$lang_comment_popup           = "Commentaren";
-$lang_message_banned_comment  = "Uw commentaar wordt niet bewaard! Het bevat &eacute;&eacute;n of meerdere verboden woorden/email/ips.";
-$lang_comment_popup_disabled  = "Commenting on this picture has been disabled";
-$lang_comment_plural				  = "Commentaren";
-$lang_comment_single					= "Commentaar";
+$lang_comment_redirect_error  = "Fout tijdens het opslaan van de reactie! Klik om terug te keren wanneer u niet automatisch teruggestuurd wordt.";
+$lang_comment_page_title      = "Reactie";
+$lang_comment_popup           = "Reacties";
+$lang_message_banned_comment  = "Uw reactie kan niet bewaard worden! Het bevat &eacute;&eacute;n of meerdere verboden woorden/email/ips.";
+$lang_comment_popup_disabled  = "Reacties op deze foto is uitgeschakeld.";
+$lang_comment_plural				  = "Reacties";
+$lang_comment_single					= "Reactie";
 
-$lang_tags                    = "Tags:<br/>";
+$lang_tags                    = "Label:<br/>";
 
 // EXIF DATA
 $lang_exposure              = "Belichting:";
@@ -141,41 +141,40 @@ $lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
-$lang_alt_lang_danish						="Dansk";
+$lang_alt_lang_danish							="Dansk";
 
 // Email Notification
 
-$lang_email_notification_subject = "New Comment";
+$lang_email_notification_subject = "Nieuwe Reactie";
 $lang_email_notification_pt1 = "
-	  Hello,<br>
-      A new comment has been made at your photoblog.<br><br>
+	  Hallo,<br>
+      Er is een nieuwe reactie geplaatst op uw photoblog.<br><br>
 	  ";
 $lang_email_notification_pt2 = "
       <br>
-      The comment is: <br>
+      De inhoud van de reactie is: <br>
       ----------------------------------------------------------------------<br>
 	  ";
-$lang_email_notification_pt3 = "by";
+$lang_email_notification_pt3 = "door";
 $lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
-      Email sent by pixelpost<br>
+      Email verstuurd door pixelpost<br>
 ";
 $lang_email_notificationplain_pt1 = "
-	  Hello,
-      A new comment has been made at your photoblog.";
+	  Hallo,<br>
+      Er is een nieuwe reactie geplaatst op uw photoblog.";
 $lang_email_notificationplain_pt2 = "
-      The comment is:
+      De inhoud van de reactie is:
       ----------------------------------------------------------------------";
-$lang_email_notificationplain_pt3 = "by";
+$lang_email_notificationplain_pt3 = "door";
 $lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
-      Email sent by pixelpost
+      Email verstuurd door pixelpost
 ";
 
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
-
+$lang_spamflood										= "Reactie flood beveiliging staat aan. U moet <TIME_TO_WAIT> minuten wachten voordat u een nieuwe reactie kunt plaatsen.";
 
 // RSS & ATOM Feed
-$lang_comment_feed_title        = "Newest comments on";
-$lang_comment_feed_image_title  = "New comment on";
+$lang_comment_feed_title        = "Laatste reacties op";
+$lang_comment_feed_image_title  = "Laatste reactie op";
 ?>
