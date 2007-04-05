@@ -127,6 +127,7 @@ $prefix = $pixelpost_db_prefix;
 // This is where the fun starts and the work happens.  Hold on tight...
 switch( $installed_version) {
 	case 0:	// Not installed
+		Show_username_password();
 		Create13Tables( $prefix);
 		Set_Configuration($prefix);
 		// Do not break, fall through to the next case statement

@@ -50,8 +50,18 @@ function ConvertPassword( $prefix)
 	}
 }
 
+function Show_username_password(){
+	// get post data
+	$admin_user = addslashes($_POST['admin_user']);
+	$admin_password = $_POST['admin_password'];
+	echo "<b>Remember your data:</b><br />
+	Username: <b>$admin_user</b><br />
+	Password: <b>$admin_password</b><p />";
+}
+
 function Create13Tables( $prefix)
 {
+	echo "<li style=\"list-style-type:none;\"><strong>Automatic creation of tables</strong></li><p />";
 	// Config table
 	mysql_query("
 	CREATE TABLE IF NOT EXISTS {$prefix}config (
@@ -157,13 +167,7 @@ function Set_Configuration($prefix)
 	(`admin`, `password`, `email`, `commentemail`, `template`, `imagepath`, `siteurl`, `sitetitle`, `langfile`, `calendar`, `crop`, `thumbwidth`, `thumbheight`, `thumbnumber`, `compression`, `dateformat`)
 	VALUES ( '$admin_user', MD5('$admin_password'),'','no', 'simple', '$images_path', '$site_url', 'pixelpost','english','No Calendar','yes','100','75','5','75','Y-m-d H:i:s')
 	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}config populated ...</li>
-	<p />
-
-	<b>Remember your data:</b><br />
-	Username: <b>$admin_user</b><br />
-	Password: <b>$admin_password</b>
-	</u><p />";
+	echo "<li style=\"list-style-type:none;\">Table {$prefix}config populated ...</li>";
 }
 
 // Upgrade the database from the 1.3 schema to the 1.4 schema
@@ -436,7 +440,7 @@ global $pixelpost_db_prefix;
 		mysql_query("
 		INSERT INTO `{$prefix}version` (version) VALUES (".$newversion.")
 		") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5Beta.</li><p />";
+		echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5Beta.</li>";
 	}	// end if
 	
 } // end function UpgradeTo15beta($prefix)
