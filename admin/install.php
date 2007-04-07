@@ -178,7 +178,7 @@ $thumbnails =    check_and_set('../thumbnails/');
 if ($images=="chmod"){
 	$chmod_message = "<b>Images folder not writable!</b><p />You must set correct permissions on this folder by using a FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
 } elseif($images=="create"){
-	$chmod_message = "<b>Images folder doesn't exists!</b><p />You must create an 'images' folder and set correct permissions on this folder by using a FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
+	$chmod_message = "<b>Images folder doesn't exists!</b><p />You must create an 'images' folder and set correct permissions on this folder by using a FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 755 or 777.<p />";
 } else {
 	$chmod_message = "Images folder is writable, which is a good thing.<p />";
 }
@@ -186,7 +186,7 @@ if ($images=="chmod"){
 if ($thumbnails=="chmod"){
 	$chmod_message2 = "<b>Thumbnails folder not writable!</b><p />You must set correct permissions on this folder by using an FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
 } elseif($images=="create"){
-	$chmod_message2 = "<b>Thumbnails folder doesn't exists!</b><p />You must create a 'thumbnails' folder and set correct permissions on this folder by using an FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
+	$chmod_message2 = "<b>Thumbnails folder doesn't exists!</b><p />You must create a 'thumbnails' folder and set correct permissions on this folder by using an FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 755 or 777.<p />";
 } else {
 	$chmod_message2 = "Thumbnails folder is writable, which is a good thing.<p />";
 }
