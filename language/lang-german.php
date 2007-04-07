@@ -162,7 +162,8 @@ $lang_email_notificationplain_pt4 = "\n\n---------------------------------------
 
 // Error Message
 $lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei!";
-$lang_spamflood										= "Schutz vor Spam-Flut ist aktiviert! Sie m&uuml;ssen <TIME_TO_WAIT> Minuten warten, bis Sie einen neuen Kommentar abgeben k&ouml;nnen.";
+// Please do not translate any tags like this one: <TIME_TO_WAIT>
+$lang_spamflood										= "Schutz vor Spam-Flut ist aktiviert! Sie m&uuml;ssen <TIME_TO_WAIT> warten, bis Sie einen neuen Kommentar abgeben k&ouml;nnen.";
 
 // RSS & ATOM Feed
 $lang_comment_feed_title        = "Neueste Kommentare in";

@@ -172,7 +172,8 @@ $lang_email_notificationplain_pt4 = "
       Email verstuurd door pixelpost
 ";
 
-$lang_spamflood										= "Reactie flood beveiliging staat aan. U moet <TIME_TO_WAIT> minuten wachten voordat u een nieuwe reactie kunt plaatsen.";
+// Please do not translate any tags like this one: <TIME_TO_WAIT>
+$lang_spamflood										= "U moet nog <TIME_TO_WAIT> wachten voordat u een nieuwe reactie kunt plaatsen.";
 
 // RSS & ATOM Feed
 $lang_comment_feed_title        = "Laatste reacties op";

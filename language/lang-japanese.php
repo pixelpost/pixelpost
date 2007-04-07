@@ -152,7 +152,9 @@ $lang_email_notificationplain_pt4 = "\n\n---------------------------------------
 
 // Error message
 $lang_nothing_to_show             = "Coming Soon! 表示するイメージはありません!";
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> minutes before posting another comment.";
+// Please do not translate any tags like this one: <TIME_TO_WAIT>
+$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> before posting another comment.";
+
 
 // RSS & ATOM Feed
 $lang_comment_feed_title        = "Newest comments on";

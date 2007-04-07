@@ -41,7 +41,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
 	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
 	{
-  	$time_to_wait = floor($cfgrow['comment_timebetween']/60);
+		if ($cfgrow['comment_timebetween'] > 60)
+  		$time_to_wait = floor($cfgrow['comment_timebetween']/60)." minute(s)";
+  	} else {
+  		$time_to_wait = $cfgrow['comment_timebetween']." seconds";
+  	}
   	$spam_flood_message = str_replace("<TIME_TO_WAIT>", $time_to_wait, $lang_spamflood);
   	die($spam_flood_message."<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
   }
