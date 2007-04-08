@@ -1,10 +1,11 @@
 <?php
+
+// SVN file version:
+// $Id$
+
 /*
 
 Pixelpost version 1.6
-
-SVN file version:
-$Id$
 
 Pixelpost www: http://www.pixelpost.org/
 

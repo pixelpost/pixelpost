@@ -176,7 +176,7 @@ echo "<b>The tables are all set.</b><p />";
 $images     =    check_and_set('../images/');
 $thumbnails =    check_and_set('../thumbnails/');
 if ($images=="chmod"){
-	$chmod_message = "<b>Images folder not writable!</b><p />You must set correct permissions on this folder by using a FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
+	$chmod_message = "<b>Images folder not writable!</b><p />You must set correct permissions on this folder by using a FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 755 or 777.<p />";
 } elseif($images=="create"){
 	$chmod_message = "<b>Images folder doesn't exists!</b><p />You must create an 'images' folder and set correct permissions on this folder by using a FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 755 or 777.<p />";
 } else {
@@ -184,7 +184,7 @@ if ($images=="chmod"){
 }
 
 if ($thumbnails=="chmod"){
-	$chmod_message2 = "<b>Thumbnails folder not writable!</b><p />You must set correct permissions on this folder by using an FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 777.<p />";
+	$chmod_message2 = "<b>Thumbnails folder not writable!</b><p />You must set correct permissions on this folder by using an FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 755 or 777.<p />";
 } elseif($images=="create"){
 	$chmod_message2 = "<b>Thumbnails folder doesn't exists!</b><p />You must create a 'thumbnails' folder and set correct permissions on this folder by using an FTP client or you will not be able to upload any images.<br /> Set the folder to chmod 755 or 777.<p />";
 } else {
@@ -201,7 +201,7 @@ if ($thumbnails=="chmod"){
 &raquo; <?php echo $chmod_message2; ?><p /><p />
 
 Next thing you want to do is <a href="index.php">login to the admin interface</a> and get started posting.<p />
-<i>Pixelpost does not come with any warranties. Let's hope it'll work great for you and give you a worryfree great photoblog.</i>
+<i>Pixelpost does not come with any warranties. Let's hope it'll work great for you and give you a worry-free great photoblog.</i>
 </div>
 
 <?php
@@ -214,7 +214,7 @@ else if($_GET['install'] == "two") {
 <div class="jcaption">Step 2: Done.</div>
 <div class="content">
 It's all set. Upload some images, test it out and make sure it works properly. <b>Take it for a spin.</b><p />
-<b>Be sure to set the correct rights (?) on the "images" folder.</b> If it's not chmod 777 then no images will upload into that folder.<p />
+<b>Be sure to set the correct rights (?) on the "images" folder.</b> If it's not chmod 755 or 777 then no images will upload into that folder.<p />
 
 <i>PIXELPOST is basic and intends to continue being so, but more than anything cater to the photobloggers needs. <br />
 We would like to, but are not able to guarantee you eternal happiness because of using this. Instead we tell you that we cannot be held responsible for any damage this software might do to you, your webserver or your dog.</i>
