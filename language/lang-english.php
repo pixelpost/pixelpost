@@ -58,12 +58,12 @@ $lang_previous                    = "Previous";
 $lang_next                        = "Next";
 $lang_no_previous                 = "No Previous Image";
 $lang_no_next                     = "No Next Image";
-$lang_latest										  = "Last";
-$lang_first		  								  = "First";
+$lang_latest					  = "Last";
+$lang_first		  				  = "First";
 $lang_browse_select_category      = "Select Category";
 $lang_browse_all                  = "All";
 $lang_permalink                   = "Permalink";
-$lang_paged_archive								= "Archive";
+$lang_paged_archive				  = "Archive";
 
 // COMMENTS
 $lang_message_missing_image      = "No image selected. Comment was not saved.";
@@ -78,8 +78,8 @@ $lang_comment_redirect_error     = "Comment submission error! Please click to be
 $lang_comment_page_title         = "Comment";
 $lang_comment_popup              = "Comments";
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
-$lang_comment_plural						 = "Comments";
-$lang_comment_single						 = "Comment";
+$lang_comment_plural			 = "Comments";
+$lang_comment_single			 = "Comment";
 
 // EXIF DATA
 $lang_exposure                   = "Exposure:";
