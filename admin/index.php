@@ -1,17 +1,16 @@
 <?php
 
+// SVN file version:
+// $Id$
+
 /*
 
 Pixelpost version 1.6
-
-SVN file version:
-$Id$
-
 Pixelpost www: http://www.pixelpost.org/
 
-Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, 
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew (at) pixelpost (dot) org

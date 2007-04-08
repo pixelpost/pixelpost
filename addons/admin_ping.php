@@ -1,12 +1,13 @@
 <?php
+
+// SVN file version:
+// $Id$
+
 // Admin-Ping addon for Pixelpost 1.5
 // Version 1.0
 //
-// SVN file version:
-// $Id$
-//
 // Written By Ramin Mehran - 2005/06/22
-//
+
 /*
 ================================================================
 How to write addons like this:
@@ -21,7 +22,6 @@ description:
 	$addon_workspace, in $addon_menu and submenu $addon_admin_submenu. If your function does
 	not need any menu/submenu you can pass empty strings for each.
 
-
 2 - The function should not have any arguments. In next version this should be
 replaced by some function with one array argument filled by necessary info.
 
@@ -32,7 +32,6 @@ admin/index.php.
 4 - If you need variables of the admin files, you can access them as "global" inside
 the custom function of the addon.
 (In later versions, This should be changed by some safer methods)
-
 
 When creating an addon, please always have the $addon_* variables.
 

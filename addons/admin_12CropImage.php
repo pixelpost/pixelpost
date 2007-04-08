@@ -1,13 +1,12 @@
 <?php
 
-/*
+// SVN file version:
+// $Id$
 
+/*
 
 Admin Sample 12CropImage addon 1.0
 Pixelpost 1.5
-
-SVN file version:
-$Id$
 
 ================================================================
 Provided as a basic example.

@@ -1,38 +1,7 @@
 <?php
-/*
 
-Pixelpost version 1.6
-
-SVN file version:
-$Id$
-
-Pixelpost www: http://www.pixelpost.org/
-
-Version 1.5:
-Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
-Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
-
-Contact: thecrew (at) pixelpost (dot) org
-Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
-
-
-License: http://www.gnu.org/copyleft/gpl.html
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-*/
+// SVN file version:
+// $Id$
 
 // Will work in despite of Windows ACLs bug
 // NOTE: use a trailing slash for folders!!!
@@ -40,6 +9,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // see http://bugs.php.net/bug.php?id=30931
 
 // Source: <http://www.php.net/is_writable#73596>
+
 function is__writable($path) {
     if ($path{strlen($path)-1}=='/') // recursively return a temporary file path
         return is__writable($path.uniqid(mt_rand()).'.tmp');
@@ -59,6 +29,7 @@ function is__writable($path) {
 
 // Check if directory exists;
 // If it doesn't, attempt to create it.
+
 function check_and_set($directory){
     if(@file_exists($directory)){
         if(@is__writable($directory)){
@@ -82,6 +53,7 @@ function check_and_set($directory){
 
 // Returns the Pixelpost version by looking at the database.  Returns 0 if not installed.
 // This is used when performing the initial install/upgrade
+
 function Get_Pixelpost_Version( $prefix)
 {
 	// First, check to see if we are 1.4 or better

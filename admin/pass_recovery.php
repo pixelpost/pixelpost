@@ -1,9 +1,7 @@
 <?php
 
-/**************************
-SVN file version:
-$Id$
-**************************/
+// SVN file version:
+// $Id$
 
 // forgot password?
 if($_GET['x']=='passreminder')

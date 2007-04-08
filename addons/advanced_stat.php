@@ -1,6 +1,8 @@
 <?php
+
 // SVN file version:
 // $Id$
+
 // advanced stat addon
 // Admin page
 

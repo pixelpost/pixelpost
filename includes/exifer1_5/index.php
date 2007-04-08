@@ -1,12 +1,12 @@
-<HTML><BODY>
+<html><body>
 <?php
-//This page just shows how you would use my library.  
-//Look in exif.php for more information
-//Enjoy.
-//
+
 // SVN file version:
 // $Id$
 
+//This page just shows how you would use my library.  
+//Look in exif.php for more information
+//Enjoy.
 
 include('exif.php');
 
@@ -19,5 +19,4 @@ print_r($result);
 echo "</PRE>";
 ?>
 
-
-</BODY></HTML>
+</body></html>

@@ -1,10 +1,11 @@
 <?php
+
+// SVN file version:
+// $Id$
+
 /*
 
 Pixelpost version 1.6
-
-SVN file version:
-$Id$
 
 Pixelpost www: http://www.pixelpost.org/
 
@@ -45,8 +46,8 @@ $pixelpost_db_pixelpost = "replace_me"; // database
 
 $pixelpost_db_prefix = "pixelpost_"; // table prefix, leave as is unless you want to install multiple blogs on the same database
 
-// pixelpost version
+// Pixelpost Version
 
-$version = "MS42IEJldGEgKGxpZmUgb24gdGhlIGVkZ2UhKSAtIE1hcmNoIDIwMDc=";
+$version = "MS42LjAgKGluIHRoZSByaWdodCBkaXJlY3Rpb24pIC0gQXByaWwgMjAwNw==";
 
 ?>
