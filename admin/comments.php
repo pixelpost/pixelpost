@@ -53,7 +53,7 @@ if($_GET['view'] == "comments") {
 		}
 		$where = implode(" OR ",$where);
 			$query = "SELECT DISTINCT ip FROM ".$pixelpost_db_prefix."comments WHERE $where";
-			echo $query;
+			// echo $query;
 			$query = mysql_query($query);
 		$row = mysql_fetch_row($query);
 
@@ -194,7 +194,7 @@ eval_addon_admin_workspace_menu('pages_commentbuttons');
 				<span id=\"smaller\">$admin_lang_cmnt_massdelete_text</span></div>
 				<div class=\"content\">
 
-				<form method=\"post\" name=\"managecomments\" id=\"managecomments\" action=\"\" accept-charset=\"UTF-8\">
+				<form method=\"post\" name=\"managecomments\" id=\"managecomments\" action=\"index.php?view=comments\" accept-charset=\"UTF-8\">
 
 				<!-- Moderation Buttons! -->
 				<!-- all boxes -->
