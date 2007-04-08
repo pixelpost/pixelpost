@@ -49,16 +49,17 @@ if($_GET['view'] == "comments") {
 		$idz= $_POST['moderate_commnts_boxes'];
 
 		foreach ($idz as $id){
-			$where .= "id='$id' OR ";
+			$where[] = "id='$id'";
 		}
-		$where .= "0";
-			$query = "SELECT ip FROM ".$pixelpost_db_prefix."comments WHERE $where";
+		$where = implode(" OR ",$where);
+			$query = "SELECT DISTINCT ip FROM ".$pixelpost_db_prefix."comments WHERE $where";
+			echo $query;
 			$query = mysql_query($query);
-		$row = mysql_fetch_array($query);
+		$row = mysql_fetch_row($query);
 
 		// update the blaklist	ips
 		$blacklist = get_blacklist();
-		if (count($blacklist)>2 && $blacklist(count($blacklist)-1)!="n" && $blacklist(count($blacklist)-2)!= "\\");
+		if (count($blacklist)>2 && $blacklist[count($blacklist)-1]!="n" && $blacklist[count($blacklist)-2]!= "\\");
 			$blacklist .= "\n";
 		foreach ($row as $bad_ip){
 			$blacklist .="$bad_ip\n";
@@ -66,6 +67,7 @@ if($_GET['view'] == "comments") {
 
 		$banlist = str_replace( "\r\n", "\n", $blacklist);
 		$banlist = str_replace( "\r", "\n", $banlist);
+		$banlist = str_replace( "\n\n", "\n", $banlist);
 		if(version_compare(phpversion(),"4.3.0")=="-1") {
 			 $banlist = mysql_escape_string($banlist);
 		 } else {
