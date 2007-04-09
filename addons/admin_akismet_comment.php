@@ -286,8 +286,10 @@ function check_akismet_comment() {
 		  $cfgrow['commentemail'] = 'no';
 	    } 
 	    else {
-	      $cmnt_publish_permission = 'yes';
-	      $cmnt_moderate_permission = 'no';
+	    	// Code below commented out to respect the users choice for each picture.
+	    	// If the setting requires the comments are always moderated then akismet approved comments are no exception.
+	      //$cmnt_publish_permission = 'yes';
+	      //$cmnt_moderate_permission = 'no';
 	    }
 	    $akismet_comment_checked = true;
 }
