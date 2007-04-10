@@ -12,11 +12,12 @@ Pixelpost forum: 	http://forum.pixelpost.org
 
 Version 1.6:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Robert Prouse, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas, Dennis Mooibroek
+Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, 
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew (at) pixelpost (dot) org
-Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
+Copyright 2007 Pixelpost.org <http://www.pixelpost.org>
 
 -------------------------------------------------------------------------
 License: http://www.gnu.org/copyleft/gpl.html
@@ -78,8 +79,7 @@ before you start to install:
 - database user password
 - database name
 
-If you don't have these informations, ask your hoster to provide you with these
-informations
+If you don't have this information, contact your web host.
 
 -------------------------------------------------------------------------
 FIRST INSTALL

@@ -33,7 +33,7 @@ Installation
 <?php
 
 // Start of fresh install
-if($_GET['install'] == "" && $installed_version == 0) {
+if(isset($_GET['install']) && $_GET['install'] == "" && $installed_version == 0) {
 ?>
 
 <div id="caption">Welcome to Pixelpost 1.6 installation!</div>
@@ -68,7 +68,7 @@ Table prefix: <?php echo "<b>$pixelpost_db_prefix</b>"; ?><p />
 }	// End of fresh install start page
 
 // Start of Upgrade
-else if($_GET['install'] == "") {
+else if(!isset($_GET['install']) || $_GET['install'] == "") {
 ?>
 <div id="caption">Welcome to Pixelpost 1.6 upgrade!</div>
 <div class="jcaption">STEP 1: Prepare database upgrade</div>
