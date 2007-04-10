@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 -------------------------------------------------------------------------
 INFORMATION
 -------------------------------------------------------------------------
-To find information about PixelPost, the installation and
+To find information about Pixelpost, the installation and
 configuration, read the files in the directory: /doc !!!!!!
 
 There you will find all information:
@@ -47,7 +47,7 @@ There you will find all information:
   Installation: 							./doc/install.html
   Upgrading:   								./doc/upgrade.html
 	Changelog:      						./doc/changelog.html
-	All PixelPost-Tags: 				./doc/tags.html
+	All Pixelpost-Tags: 				./doc/tags.html
 	How to write admin-addons:  ./doc/creating_admin_addons/admin_addons_Instruction.htm
 	GNU license information: 		./docs/license.txt
 
@@ -62,8 +62,8 @@ Pixelpost forum: 	http://forum.pixelpost.org
 PROGRAM REQUIREMENTS
 -------------------------------------------------------------------------
 
-These are the requirements for PixelPost:
-- sufficient Webspace: not for PixelPost (around 400 KB), but for your images ;=)
+These are the requirements for Pixelpost:
+- sufficient Webspace: not for Pixelpost (around 400 KB), but for your images ;=)
 - Apache Webserver or Windows IIS
 - PHP, version 4.3.0 or higher
 - PHP with GD-lib (with JPG-support), required for thumbnailing
@@ -71,7 +71,7 @@ These are the requirements for PixelPost:
 - a MySQL database already working. If you have no MySQL Database running, create
   a database first (or ask your hoster to do it for you)
 
-To install PixelPost, you will need  the following MySQL-database-informations
+To install Pixelpost, you will need  the following MySQL-database-informations
 before you start to install:
 
 - name of the database-host, often "localhost"
@@ -93,10 +93,10 @@ UPGRADE
 
 Please read the file "upgrade.html" in the directory /doc
 
-Please note that PixelPost now does not use anymore CSS-classes with "_",
+Please note that Pixelpost now does not use anymore CSS-classes with "_",
 so check your templates and change "_" to "-"
 more information on that is found in the upgrade.html
 
-Please note as well that PixelPost is fully UTF-compliant, so you might change
+Please note as well that Pixelpost is fully UTF-compliant, so you might change
 your CSS-codepage-meta information as well.
 More information on that is found in the upgrade.html

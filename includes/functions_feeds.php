@@ -179,7 +179,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 	<name>".$pixelpost_site_title."</name>
 	<uri>$url</uri>
 	</author>
-	<generator uri='http://www.pixelpost.org/' version='1.6BETA'>PixelPost</generator>
+	<generator uri='http://www.pixelpost.org/' version='1.6BETA'>Pixelpost</generator>
 	<id>$url</id>
 	<updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>";
 	$tag_url = $_SERVER['HTTP_HOST'];
@@ -257,7 +257,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom")
 	<name>".$pixelpost_site_title."</name>
 	<uri>$url</uri>
 	</author>
-	<generator uri='http://www.pixelpost.org/' version='1.7BETA'>PixelPost</generator>
+	<generator uri='http://www.pixelpost.org/' version='1.7BETA'>Pixelpost</generator>
 	<id>$url</id>
 	<updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>";
 	$tag_url = $_SERVER['HTTP_HOST'];

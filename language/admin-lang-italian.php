@@ -30,7 +30,7 @@ VARIABILI PER L'INTERFACCIA DI AMMINISTRAZIONE IN ITALIANO:
 
 Non modificare                    ||      Modificare                                   */
 
-$_lang_file_translator        = 'The PixelPost Crew';
+$_lang_file_translator        = 'The Pixelpost Crew';
 $_lang_file_email             = 'thecrew@pixelpost.org';
 $_lang_file_rev               = '1.0.0';
 

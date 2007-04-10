@@ -1,7 +1,7 @@
 <?php
 /*
 
-admin-lang-persian.php : persian (default) language file for PixelPost-Admin-Section
+admin-lang-persian.php : persian (default) language file for Pixelpost-Admin-Section
 ===================================================================================
 Pixelpost version 1.6
 

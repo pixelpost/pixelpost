@@ -47,7 +47,7 @@ in other languages.
 
 /* Dont edit                      ||  Edit                                                        */
 
-$_lang_file_translator        = 'The PixelPost Crew';
+$_lang_file_translator        = 'The Pixelpost Crew';
 $_lang_file_email             = 'thecrew@pixelpost.org';
 $_lang_file_rev               = '1.0.0';
 

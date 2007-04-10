@@ -1,7 +1,7 @@
 <?php
 /*
 
-admin-lang-english.php : english (default) language file for PixelPost-Admin-Section
+admin-lang-english.php : english (default) language file for Pixelpost-Admin-Section
 ===================================================================================
 Pixelpost version 1.6
 
@@ -20,7 +20,7 @@ Copyright ?2006 Pixelpost.org <http://www.pixelpost.org>
 
 Attention:
 ============
-This is the english language file for the admin section of PixelPost
+This is the english language file for the admin section of Pixelpost
 It is absolutely necessary that this file is uploaded to the
 Language-folder, as this is the default version as well if no
 admin-language-file for another language exists.
@@ -30,7 +30,7 @@ ADMIN PANEL LANGUAGE VARIABLES:
 
 Dont edit                    ||      Edit                                   */
 
-$_lang_file_translator        = 'The PixelPost Crew';
+$_lang_file_translator        = 'The Pixelpost Crew';
 $_lang_file_email             = 'thecrew@pixelpost.org';
 $_lang_file_rev               = '1.0.0';
 
@@ -55,7 +55,7 @@ $admin_start_userpw           = "用户名或密码不正确。";
 $admin_start_pw_forgot        = "忘记密码？";
 $admin_start_browser_title    = "管理员";
 $admin_start_welcome          = "欢迎来到Pixelpost管理页面 - 您需要登陆。";
-$admin_start_pp_name          = "连接到您的PixelPost网站：";
+$admin_start_pp_name          = "连接到您的Pixelpost网站：";
 $admin_start_pp_tit           = "点击这里进入您的网站";
 $admin_start_cookie           = "登陆设立cookie";
 $admin_start_username         = "用户名";

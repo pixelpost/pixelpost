@@ -1,7 +1,7 @@
 <?php
 /*
 
-admin-lang-polish.php : polish language file for PixelPost-Admin-Section
+admin-lang-polish.php : polish language file for Pixelpost-Admin-Section
 ========================================================================
 Pixelpost version 1.6
 
@@ -75,7 +75,7 @@ $admin_start_userpw        = "Użytkownik lub hasło jest nieprawidłowe.";
 $admin_start_pw_forgot     = "Zapomniałem/am hasła?";
 $admin_start_browser_title = "ADMINISTRATOR";
 $admin_start_welcome       = "Witamy w Panelu Administracyjnym Pixelpost - Musisz się zalogować.";
-$admin_start_pp_name       = "Link do Twojej strony z PixelPostem:";
+$admin_start_pp_name       = "Link do Twojej strony z Pixelpostem:";
 $admin_start_pp_tit        = "kliknij tutaj, aby załadować Twój photoblog";
 $admin_start_cookie        = "Logowanie ustawia cookie";
 $admin_start_username      = "Użytkownik";
@@ -406,10 +406,10 @@ $admin_lang_pp_tempfolder     = "Katalog skórek:";
 $admin_lang_pp_folder_missing = "Nie istnieje (powinno być";
 $admin_lang_pp_ref_log_title  = "REFERUJĄCY Z OSTATNICH SIEDMIU DNI";
 $admin_lang_hostinfo          = "INFORMACJE O SERWERZE";
-$admin_lang_fileuploads       = "<b>Wysyłanie plików</b> do PixelPosta jest";
+$admin_lang_fileuploads       = "<b>Wysyłanie plików</b> do Pixelposta jest";
 $admin_lang_serversoft        = "Oprogramowanie serwera";
 $admin_lang_pixelpostinfo     = "INFORMACJE O PIXELPOST";
-$admin_lang_pp_currversion    = "Używasz PixelPosta w wersji";
+$admin_lang_pp_currversion    = "Używasz Pixelposta w wersji";
 $admin_lang_pp_check          = "Sprawdź";
 $admin_lang_pp_sess_path      = "Ścieżka zapisu plików sesji";
 $admin_lang_pp_sess_path_emp  = "jest pusta";

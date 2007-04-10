@@ -1,7 +1,7 @@
 <?php
 /*
 
-admin-lang-norwegian.php : norwegian language file for PixelPost-Admin-Section
+admin-lang-norwegian.php : norwegian language file for Pixelpost-Admin-Section
 ===================================================================================
 Pixelpost version 1.6
 
@@ -55,7 +55,7 @@ $admin_start_userpw           = "Brukernavn eller passord er feil.";
 $admin_start_pw_forgot        = "Glemt passord?";
 $admin_start_browser_title    = "ADMIN";
 $admin_start_welcome          = "Velkommen til Pixelpost Admin panel - Vennligst logg inn.";
-$admin_start_pp_name          = "Link til din PixelPost side:";
+$admin_start_pp_name          = "Link til din Pixelpost side:";
 $admin_start_pp_tit           = "klikk her for &aring; laste din photoblog";
 $admin_start_cookie           = "Login setter en cookie";
 $admin_start_username         = "Brukernavn";
@@ -82,7 +82,7 @@ $admin_lang_pw_subject		= "Pixelpost Passwort: Neues Passwort wurde angelegt";
 $admin_lang_pw_usertext		= "Ihr User-Name:";
 $admin_lang_pw_mailtext		= "Ihre email-Adresse:";
 $admin_lang_pw_newpw		= "Ihr neues Passwort:";
-$admin_lang_pw_text_1		= "PixelPost Passwort-Wiederherstellung";
+$admin_lang_pw_text_1		= "Pixelpost Passwort-Wiederherstellung";
 $admin_lang_pw_text_2		= "From: PIXELPOST Administration";
 $admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthält Ihren User-Namen und ein neues Passwort. \n<br />
 				   Prüfen Sie Ihren Postkorb:  ";

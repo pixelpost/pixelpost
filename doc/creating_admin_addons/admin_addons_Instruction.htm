@@ -9,7 +9,7 @@ $Id$
   <meta http-equiv="Content-Language" content="en-us">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
 
-  <title>Introducing PixelPost's Admin-AddonsPixelPost</title>
+  <title>Introducing Pixelpost's Admin-AddonsPixelpost</title>
   <style type="text/css">
 body {
         background-color:#FFFFFF;
@@ -43,16 +43,16 @@ body {
 </head>
 
 <body>
-  <h1><a name="top" id="top">Introducing PixelPost's Admin-Addons</a></h1>
+  <h1><a name="top" id="top">Introducing Pixelpost's Admin-Addons</a></h1>
 
   <h2>Developed and documented by Ramin Mehran, last modified: april 2006</h2>
 
-  <p>In version 1.5 of PixelPost, team PixelPost has introduced a new feature, called <b>Admin-Addon,</b> that extends the flexibility and functionality of the PixelPost software. With this new feature people can simply use addons and plugins to add new new function inside the Admin-Panel of PixelPost. Read this article to get a better understanding of this new useful feature.</p>
+  <p>In version 1.5 of Pixelpost, team Pixelpost has introduced a new feature, called <b>Admin-Addon,</b> that extends the flexibility and functionality of the Pixelpost software. With this new feature people can simply use addons and plugins to add new new function inside the Admin-Panel of Pixelpost. Read this article to get a better understanding of this new useful feature.</p>
 
   <ol>
     <li><a href="#A">What are Admin-Addons?</a></li>
 
-    <li><a href="#B">Which version of PixelPost supports Admin-Addons?</a></li>
+    <li><a href="#B">Which version of Pixelpost supports Admin-Addons?</a></li>
 
     <li><a href="#C">What are the new features?</a></li>
 
@@ -60,11 +60,11 @@ body {
 
     <li><a href="#D">How to write Admin-Addons?</a></li>
 
-    <li><a href="#E">Can I add new menu items and tabs to PixelPost Admin-Panel with Admin-Addons? How?</a></li>
+    <li><a href="#E">Can I add new menu items and tabs to Pixelpost Admin-Panel with Admin-Addons? How?</a></li>
 
     <li><a href="#F">Should Admin-Addons have special filename style?</a></li>
 
-    <li><a href="#G">Do Admin-Addons work exclusively on the Admin-Panel or can they add new functions to the browsing side of a PixelPost photoblog?</a></li>
+    <li><a href="#G">Do Admin-Addons work exclusively on the Admin-Panel or can they add new functions to the browsing side of a Pixelpost photoblog?</a></li>
 
     <li><a href="#H">What does the term <b>workspace</b> mean in the Admin-Addons?</a></li>
 
@@ -88,13 +88,13 @@ body {
     <li>
       <a name="A" id="A"><b>What are Admin-Addons?</b></a>
 
-      <p dir="ltr">Basically, PixelPost accepts addons for adding custom functionality to its simple behavior. Before the release of PixelPost 1.5, addons were only able to add new feature to the visitors side of a photoblog. However, since version 1.5, addons can be used to add new functionalities to the Admin-Panel side, where admin user manages the photoblog. This realizes the dreams that the simple PixelPost software could perform complex behaviors with some customizations. People now can use addons in the Admin-Panel to have more options in posting an image, editing previously posted photos, having more options, and even adding new pages to the Admin-Panel. This new type of addons is called <i>Admin-Addon.</i></p>
-    </li><!-- B Which version of PixelPost supports Admin-Addons? -->
+      <p dir="ltr">Basically, Pixelpost accepts addons for adding custom functionality to its simple behavior. Before the release of Pixelpost 1.5, addons were only able to add new feature to the visitors side of a photoblog. However, since version 1.5, addons can be used to add new functionalities to the Admin-Panel side, where admin user manages the photoblog. This realizes the dreams that the simple Pixelpost software could perform complex behaviors with some customizations. People now can use addons in the Admin-Panel to have more options in posting an image, editing previously posted photos, having more options, and even adding new pages to the Admin-Panel. This new type of addons is called <i>Admin-Addon.</i></p>
+    </li><!-- B Which version of Pixelpost supports Admin-Addons? -->
 
     <li>
-      <a name="B" id="B"><b>Which version of PixelPost supports Admin-Addons?</b></a>
+      <a name="B" id="B"><b>Which version of Pixelpost supports Admin-Addons?</b></a>
 
-      <p>Only PixelPost 1.5 or above supports the Admin-Addons feature.</p>
+      <p>Only Pixelpost 1.5 or above supports the Admin-Addons feature.</p>
     </li><!-- C What are the new features -->
 
     <li>
@@ -488,7 +488,7 @@ body {
             function newitem_show_config()<br>
             {<br>
             <span class="green">global</span> $addon_admin_functions;<br>
-            <span class="green">global</span> $PixelPost_db_prefix;<br>
+            <span class="green">global</span> $Pixelpost_db_prefix;<br>
             if ($_GET[<span class="red">'view'</span>]==<span class="red">'newitem'</span>){<br>
             echo <span class="red">"<br>
             &lt;div class='caption'&gt;<br>
@@ -532,7 +532,7 @@ body {
     <li style="list-style: none"><!-- E Can I add new menu items --></li>
 
     <li>
-      <p dir="ltr"><a name="E" id="E"><b>Can I add new menu items and tabs to PixelPost Admin-Panel with Admin-Addons?</b></a><br>
+      <p dir="ltr"><a name="E" id="E"><b>Can I add new menu items and tabs to Pixelpost Admin-Panel with Admin-Addons?</b></a><br>
       yes, read "<a href="#D">How to write Admin-Addons</a>"</p>
     </li>
 
@@ -547,8 +547,8 @@ body {
     <a href="#top">^</a></li>
 
     <li>
-      <a name="G" id="G"><b>Do Admin-Addons work exclusively on the Admin-Panel or can they add new functions to the browsing side of a PixelPost photoblog?</b></a><br>
-      They can add new functionalities to the browsing side of a PixelPost photoblog as well! Every script that is written inside every type of addon will be executed when someone is browsing the photoblog and this is the same for admin addons. BUT the codes for admin new features are encapsulated into separated functions and these function are assigned to specific workspaces. Thus, in the admin addons the functions that are assigned to workspaces will run on admin page but you can always put some code there to add some new tags to the visiting side of photoblog too.<br>
+      <a name="G" id="G"><b>Do Admin-Addons work exclusively on the Admin-Panel or can they add new functions to the browsing side of a Pixelpost photoblog?</b></a><br>
+      They can add new functionalities to the browsing side of a Pixelpost photoblog as well! Every script that is written inside every type of addon will be executed when someone is browsing the photoblog and this is the same for admin addons. BUT the codes for admin new features are encapsulated into separated functions and these function are assigned to specific workspaces. Thus, in the admin addons the functions that are assigned to workspaces will run on admin page but you can always put some code there to add some new tags to the visiting side of photoblog too.<br>
       <br>
       For example: you can add these lines to an Admin-Addon called admin_newitem.php to replace the current date with tag <font color="#FF0000">&lt;NEWITEM_DATE&gt;</font><br>
 
