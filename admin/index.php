@@ -6,11 +6,13 @@
 /*
 
 Pixelpost version 1.6
+
 Pixelpost www: http://www.pixelpost.org/
 
+Version 1.6:
 Development Team:
 Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, 
-Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew (at) pixelpost (dot) org
