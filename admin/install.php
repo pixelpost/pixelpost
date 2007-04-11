@@ -33,7 +33,7 @@ Installation
 <?php
 
 // Start of fresh install
-if(isset($_GET['install']) && $_GET['install'] == "" && $installed_version == 0) {
+if(isset($_GET['install']) && $_GET['install'] == "" && $installed_version == false) {
 ?>
 
 <div id="caption">Welcome to Pixelpost 1.6 installation!</div>
