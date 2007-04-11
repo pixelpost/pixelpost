@@ -33,7 +33,7 @@ function is__writable($path) {
 function check_and_set($directory){
     if(@file_exists($directory)){
         if(@is__writable($directory)){
-            return true;
+            return "ok";
         }else{
             if(@chmod($directory, 0777)){
                 return "ok";

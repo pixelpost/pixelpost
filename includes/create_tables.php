@@ -527,7 +527,7 @@ function UpgradeTo16beta( $prefix, $newversion)
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
 
-function UpgradeDevTo16beta( $prefix, $newversion)
+function UpgradeTo16final( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
 	

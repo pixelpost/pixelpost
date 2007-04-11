@@ -122,18 +122,13 @@ switch( $installed_version) {
 		//UpgradeTo15012($prefix);
 	case 1.4995:
 		UpgradeTo15beta($prefix,'1.49995');
-	//case 1.5:
-	//	UpgradeTo15final($prefix,'1.5');
-	//case 1.6:
-	//	UpgradeTo16($prefix,'1.6');
-	// Changed the above code to:
 	case 1.49995:  //upgrade from beta to final 1.5
 		UpgradeTo15final($prefix,'1.5');
-	case 1.5:  //upgrade from final to SVN 1.6
+	case 1.5:  //upgrade from final to 1.6Beta
 		UpgradeTo16beta($prefix,'1.59');
-	case 1.517:  //upgrade from final to SVN 1.6
-		UpgradeDevTo16beta($prefix,'1.59');
-	// Add the upgrade to 1.6 here later
+	case 1.59:  //upgrade from 1.6Beta to 1.6Final
+		UpgradeTo16final($prefix,'1.6');
+	// Add the upgrade to 1.7 here later
 }
 
 echo "<b>The tables are all set.</b><p />";
