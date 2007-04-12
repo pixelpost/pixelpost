@@ -13,13 +13,11 @@ mysql_select_db($pixelpost_db_pixelpost) || die("Error: ". mysql_error());
 
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version( $pixelpost_db_prefix);
-if( $installed_version == 0)
-{
-	$_GET['install']="";
-}elseif( $installed_version == 1.6) {
+if( $installed_version == 1.6) {
     header("Location: index.php");
     exit;
 }
+
 
 ?>
 
@@ -36,7 +34,7 @@ Installation
 <?php
 
 // Start of fresh install
-if(isset($_GET['install']) && $_GET['install'] == "" && $installed_version == false) {
+if(!isset($_GET['install']) and $installed_version == 0) {
 ?>
 
 <div id="caption">Welcome to Pixelpost 1.6 installation!</div>
@@ -132,6 +130,14 @@ switch( $installed_version) {
 	case 1.59:  //upgrade from 1.6Beta to 1.6Final
 		UpgradeTo16final($prefix,'1.6');
 	// Add the upgrade to 1.7 here later
+	break;
+	default:
+		echo "<b>Due to an error in your database, the installer was unable to continue.</b><br/><br/>
+		Reason: The version table is incorrect.
+		</div>
+		</body></html>";
+		exit();
+	break;
 }
 
 echo "<b>The tables are all set.</b><p />";

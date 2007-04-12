@@ -62,11 +62,7 @@ start_mysql();
 // added to allow upgrades
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version($pixelpost_db_prefix);
-if( $installed_version == false)
-{
-	header("Location: install.php?install");
-	exit;
-}elseif( $installed_version < 1.6)
+if( $installed_version < 1.6 )
 {
 	header("Location: install.php");
 	exit;
