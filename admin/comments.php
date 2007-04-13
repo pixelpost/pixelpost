@@ -240,7 +240,7 @@ eval_addon_admin_workspace_menu('show_commentbuttons');
   while( $row = mysql_fetch_assoc($images)) {
         $message = pullout($row['message']);
 
-       	$name = htmlentities(pullout($row['name']));
+       	$name = pullout($row['name']);
         $url = pullout($row['url']);
         if(strpos($url,'http://')===FALSE)	$url = 'http://' . $url;
 				$image = $row['image'];
