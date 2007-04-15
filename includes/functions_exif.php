@@ -58,13 +58,14 @@ function unserialize_exif ($exif_info)
 
 function replace_exif_tags ($language_full, $image_exif, $tpl)
 {
+	global $cfgrow;
 	// get exif
 	$exif_result=unserialize_exif($image_exif);
 	// get the language stuff
 	require("language/lang-".$language_full.".php");
 	if ($exif_result !== null)
 	{
-		$empty_exif=NULL;
+		$empty_exif="N/A";
     $exposure = $exif_result['ExposureTimeSubIFD']; // exposure time
 
     if(isset($exposure)&&$exposure != "")
@@ -74,7 +75,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     }
 
     $aperture = $exif_result['FNumberSubIFD']; // Aperture
-    $capture_date = $exif_result['DateTimeOriginalSubIFD']; // Date and Time
+    $capture_date = date($cfgrow['dateformat'],strtotime($exif_result['DateTimeOriginalSubIFD'])); // Date and Time
     $flash = $exif_result['FlashSubIFD']; // flash
     $focal = $exif_result['FocalLengthSubIFD']; // focal length
     $info_camera_manu = trim($exif_result['MakeIFD0']); // camera maker
