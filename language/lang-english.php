@@ -90,6 +90,7 @@ $lang_camera_maker               = "Camera Maker:";
 $lang_camera_model               = "Camera Model:";
 $lang_flash_fired                = "Flash: Fired";
 $lang_flash_not_fired            = "Flash: Not Fired";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso                        = "ISO:";
 
 // Category

@@ -92,6 +92,7 @@ $lang_camera_maker          = "Producent aparatu:";
 $lang_camera_model          = "Model aparatu:";
 $lang_flash_fired           = "Flash: Wyzwolony";
 $lang_flash_not_fired       = "Flash: Niewyzwolony";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso										= "ISO:";
 
 // Category

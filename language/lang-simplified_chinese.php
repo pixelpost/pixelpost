@@ -88,6 +88,7 @@ $lang_camera_maker               = "相机生产商:";
 $lang_camera_model               = "相机型号:";
 $lang_flash_fired                = "闪光:有";
 $lang_flash_not_fired            = "闪光:没有";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso                        = "ISO:";
 
 // Category

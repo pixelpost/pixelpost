@@ -95,6 +95,7 @@ $lang_camera_maker          = "Kameram&auml;rke:";
 $lang_camera_model          = "Kameramodell:";
 $lang_flash_fired           = "Blixt: Avfyrad";
 $lang_flash_not_fired       = "Blixt: Ej avfyrad";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso      = "ISO:";
 
 // Category

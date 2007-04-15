@@ -84,7 +84,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
 
     if(isset($flash)&&$flash == "No Flash")	$flash = "$lang_flash_not_fired";
     elseif(isset($flash)&&$flash)	$flash = "$lang_flash_fired";
-    else $flash = "N/A";
+    else $flash = "$lang_flash_not_detected";
 
     if(isset($exposure)&&$exposure != "")
     {
@@ -182,8 +182,8 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
 
     if(isset($flash)&&$flash != "")
     {
-    	$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
     	$flash = "$flash";
+    	$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
     }
     else
     {

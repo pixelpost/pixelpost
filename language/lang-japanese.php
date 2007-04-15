@@ -89,6 +89,7 @@ $lang_camera_maker               = "カメラメーカー:";
 $lang_camera_model               = "カメラモデル:";
 $lang_flash_fired                = "フラッシュ: 使用";
 $lang_flash_not_fired            = "フラッシュ: 未使用";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso                        = "ISO:";
 
 // Category

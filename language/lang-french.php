@@ -91,6 +91,7 @@ $lang_camera_maker                 = "Marque :";
 $lang_camera_model                 = "Mod&egrave;le :";
 $lang_flash_fired                  = "Avec flash";
 $lang_flash_not_fired              = "Sans flash";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso                          = "ISO :";
 
 // Category

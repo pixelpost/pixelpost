@@ -99,6 +99,7 @@ $lang_camera_maker          = "Camerafabrikant:";
 $lang_camera_model          = "Cameramodel:";
 $lang_flash_fired           = "Flitser: Aan:";
 $lang_flash_not_fired       = "Flitser: Uit";
+$lang_flash_not_detected    = "Flitser: Niet Gedetecteerd";
 $lang_iso                   = "ISO:";
 
 // Category

@@ -93,6 +93,7 @@ $lang_camera_maker             = "Marca da c&acirc;mara:";
 $lang_camera_model             = "Modelo da c&acirc;mara:";
 $lang_flash_fired              = "Flash: Disparado";
 $lang_flash_not_fired          = "Flash: N&atilde;o Disparado";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso                      = "ISO:";
 
 // Category

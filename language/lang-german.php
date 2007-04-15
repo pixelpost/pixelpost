@@ -97,6 +97,7 @@ $lang_camera_maker          = "Hersteller:";
 $lang_camera_model          = "Kamera-Modell:";
 $lang_flash_fired           = "Blitz:";
 $lang_flash_not_fired       = "Kein Blitz";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso		            = "ISO:";
 
 // Category

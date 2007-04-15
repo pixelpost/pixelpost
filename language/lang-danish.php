@@ -93,6 +93,7 @@ $lang_camera_maker          	= "Kameraproducent:";
 $lang_camera_model          	= "Kameramodel:";
 $lang_flash_fired           	= "Med flash";
 $lang_flash_not_fired       	= "Uden flash";
+$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso		    			= "ISO:";
 
 // Category
