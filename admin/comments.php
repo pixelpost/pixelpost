@@ -309,7 +309,7 @@ eval_addon_admin_workspace_menu('single_comment_list');
 	      {
 		    	$newpage = $page+$_SESSION['numimg_pp'];
 		      if (isset($_GET['show']))
-		      	$image_page_Links .= "<a href='index.php?view=comments&amp;page=$newpage&amp;show=masked'>$admin_lang_next</a>\n";
+		      	$image_page_Links .= "<a href='index.php?view=comments&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_next</a>\n";
 		      else
 		    		$image_page_Links .= "<a href='index.php?view=comments&amp;page=$newpage'>$admin_lang_next</a>\n";
 		    }
@@ -318,7 +318,7 @@ eval_addon_admin_workspace_menu('single_comment_list');
 	      {
 	      	$newpage = $page - $_SESSION['numimg_pp'];
 	      	if (isset($_GET['show']))
-	        	$image_page_Links  = "<a href='index.php?view=comments&amp;page=$newpage&amp;show=masked'>$admin_lang_prev</a>\n" .$image_page_Links;
+	        	$image_page_Links  = "<a href='index.php?view=comments&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_prev</a>\n" .$image_page_Links;
 	        else
 	          $image_page_Links  = "<a href='index.php?view=comments&amp;page=$newpage'>$admin_lang_prev</a>\n" .$image_page_Links;
 	      }
