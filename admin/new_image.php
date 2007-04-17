@@ -166,9 +166,7 @@ if($_GET['view'] == "")
  				}
 				echo"</select></div>";
 
-    // workspace: new_image_form
-		eval_addon_admin_workspace_menu('new_image_form');
-		// added for language support
+   	// added for language support
 		// Check if the language addon is enabled. If not there is no need to show these fields
 			if ($cfgrow['altlangfile'] != 'Off')
 			{
@@ -202,6 +200,8 @@ if($_GET['view'] == "")
 					</div>
     		</div>";
 			}
+		// workspace: new_image_form
+		eval_addon_admin_workspace_menu('new_image_form');
 		?>
     <div class='jcaption'>
     <?php echo $admin_lang_ni_post_entry; ?></div>
