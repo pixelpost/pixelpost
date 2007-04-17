@@ -291,7 +291,10 @@ if($_GET['view'] == "")
 				$exif_info_db = serialize_exif ($uploadfile);
 				if($postdatefromexif == TRUE)
 				{
-					$exif_result=unserialize_exif($exif_info_db);
+					// since we all ready escaped everything for database commit we have
+					// strip the slashes before we can use the exif again.
+					$exif_info = stripslashes($exif_info_db);
+					$exif_result=unserialize_exif($exif_info);
 					$exposuredatetime = $exif_result['DateTimeOriginalSubIFD'];
 					if ($exposuredatetime!='')
 					{
