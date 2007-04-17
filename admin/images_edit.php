@@ -513,7 +513,7 @@ if($_GET['view'] == "images")
   			<a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
   			&nbsp;&nbsp;&nbsp;
   			<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
-  			<p/>";
+  			</div>";
   		}
 
 			echo"	<textarea name='body' cols='50' rows='5' style='width:95%;'>$body</textarea>
@@ -559,12 +559,15 @@ if($_GET['view'] == "images")
 			if ($cfgrow['altlangfile'] != 'Off')
 			{
 				echo "
-					<div class='jcaption'>$admin_lang_imgedit_alt_language</div>
-						<div class='content'>$admin_lang_imgedit_title<br/>
-							<input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' />";
+					<div class='jcaption' style='text-align:left;color:black;'>$admin_lang_imgedit_alt_language</div><br />
+						<div class='jcaption'>$admin_lang_imgedit_title</div>
+							<div class='content'><input type='text' name='alt_headline' value='$alt_headline' style='width:300px;' /></div>
+						<div class='jcaption'>$admin_lang_imgedit_tags_edit</div>
+							<div class='content'><input type='text' name='alt_tags' style='width:550px;' value='$alt_tags' />";
 							eval_addon_admin_workspace_menu('edit_image_form_alt_lang');
 						echo "</div>
-						<div class='content'>";
+						<div class='jcaption'>$admin_lang_imgedit_txt_desc</div>
+			<div class='content'>";
 				if($cfgrow['markdown'] == 'T')
 				{
 					echo "
@@ -574,16 +577,14 @@ if($_GET['view'] == "images")
     						<a href='http://daringfireball.net/projects/markdown/basics' title='<?php echo $admin_lang_ni_markdown_element; ?>' target='_blank'>".$admin_lang_ni_markdown_element."</a>
     						&nbsp;&nbsp;&nbsp;
     						<a href='http://daringfireball.net/projects/markdown/syntax' title='<?php echo $admin_lang_ni_markdown_syntax; ?>' target='_blank'>".$admin_lang_ni_markdown_syntax."</a>
-    						<p/>";
+    						</div>";
     		}
 
 				echo" $admin_lang_imgedit_txt_desc<br/>
 							<textarea name='alt_body' cols='50' rows='5' style='width:95%;'>$alt_body</textarea>
-						</div>";
+						</div><br />";
 
-				echo "<div class='content'>".$admin_lang_imgedit_tags_edit."<br/>
-							<input type='text' name='alt_tags' style='width:550px;' value='$alt_tags' />
-						</div>";
+				
 			}
 
 			echo "
