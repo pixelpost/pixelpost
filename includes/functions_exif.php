@@ -47,7 +47,7 @@ function serialize_exif ($uploaded_file)
 function unserialize_exif ($exif_info)
 {
 	// we need to strip the string before getting it from the db
-	//$exif_info = stripslashes($exif_info);
+	$exif_info = stripslashes($exif_info);
 	if (unserialize($exif_info) !== null)
 	{
    	$exif_info=unserialize($exif_info);
