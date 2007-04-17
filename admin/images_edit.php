@@ -484,9 +484,6 @@ if($_GET['view'] == "images")
 
 			echo "
 			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=$getid' enctype='multipart/form-data' accept-charset='UTF-8'>";
-
-			eval_addon_admin_workspace_menu("image_edit_form","images");
-
 			echo "
 			<div class='jcaption'>$admin_lang_imgedit_reupimg</div>
 			<div class='content'>
@@ -586,7 +583,7 @@ if($_GET['view'] == "images")
 
 				
 			}
-
+			eval_addon_admin_workspace_menu("image_edit_form","images");
 			echo "
 			<div class='jcaption'>$admin_lang_imgedit_img</div>
 			<div class='content'>
@@ -594,7 +591,7 @@ if($_GET['view'] == "images")
 				<br/>
          <img id='itemimg' src='../thumbnails/thumb_$image' alt='' />
 			</div>
-			<div class='content'>
+      <div class='content'>
 	    	<input type='submit' value='$admin_lang_imgedit_u_post_button' />
 			</div>
       	    </form>
@@ -629,7 +626,6 @@ if($_GET['view'] == "images")
 				//--------------------------------------------------------
 			}
 			else	echo "$admin_lang_imgedit_12crop_opt<p />";
-	
 			echo "<!-- end of content div -->
          <p />";
 		}
