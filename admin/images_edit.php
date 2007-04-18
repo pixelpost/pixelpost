@@ -40,16 +40,21 @@ if($_GET['view'] == "images")
 
  		$query = "DELETE FROM ".$pixelpost_db_prefix."pixelpost ";
  		$where = "WHERE";
+ 		$where2 = $where;
  		for ($i=0; $i < count($idz)-1; $i++)
  		{
  			$where .= " id = '$idz[$i]' or ";
+ 			$where2 .= " img_id = '$idz[$i]' or ";
  		}
  		$lastid = $idz[count($idz)-1];
  		$where .= " id = '$lastid'  ";
+ 		$where2 .= " img_id = '$lastid'  ";
  		$query .= $where;
- 		$query  = sql_query($query);
+ 		sql_query($query);
  		$c = count($idz);
  		echo "<div class='jcaption'>$admin_lang_imgedit_delete1  $c $admin_imgedit_cmnt_delete2</div>";
+		$query2 = "DELETE FROM " . $pixelpost_db_prefix . "tags " . $where2;
+ 		sql_query($query2);
  	}
 
 	// Mass add or delete categories to images
