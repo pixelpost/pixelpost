@@ -360,7 +360,7 @@ if($_GET['view'] == "images")
 			$name =$cat_name[$k];
 			$id = $ids[$k];
 
-			echo "<option value=\"unassign-$id'\">$name</option>\n";
+			echo "<option value='unassign-$id'>$name</option>\n";
 	  }
 	
 		echo "</select> <input type='text' size='40' name='masstag' value='$admin_lang_imgedit_masstag...' onblur=\"if(this.value=='') this.value='$admin_lang_imgedit_masstag...';\" onfocus=\"if(this.value=='$admin_lang_imgedit_masstag...') this.value='';\"> <select name='masstagopt' size='1'><option value=''></option><option value='set'>$admin_lang_imgedit_masstag_set</option><option value='set2'>$admin_lang_imgedit_masstag_set2</option><option value='unset'>$admin_lang_imgedit_masstag_unset</option></select>";
