@@ -52,7 +52,7 @@ if($_GET['view'] == "images")
  		$query .= $where;
  		sql_query($query);
  		$c = count($idz);
- 		echo "<div class='jcaption'>$admin_lang_imgedit_delete1  $c $admin_imgedit_cmnt_delete2</div>";
+ 		echo "<div class='jcaption'>$admin_lang_imgedit_delete1  $c $admin_lang_imgedit_delete2</div>";
 		$query2 = "DELETE FROM " . $pixelpost_db_prefix . "tags " . $where2;
  		sql_query($query2);
  	}

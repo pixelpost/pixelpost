@@ -194,6 +194,10 @@ $admin_lang_imgedit_mass_1          = "批量编辑类别";
 $admin_lang_imgedit_mass_2          = "分配";
 $admin_lang_imgedit_mass_3          = "撤消分配";
 $admin_lang_imgedit_mass_4          = "批量更新";
+$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
+$admin_lang_imgedit_mass_6          = "pictures.";
+$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
+$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories

@@ -186,6 +186,10 @@ $admin_lang_imgedit_mass_1          = "ويرايش عمده طبقه‌بندي
 $admin_lang_imgedit_mass_2          = "افزودن";
 $admin_lang_imgedit_mass_3          = "برداشتن";
 $admin_lang_imgedit_mass_4          = "به طور عمده به‌روز رساني شود";
+$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
+$admin_lang_imgedit_mass_6          = "pictures.";
+$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
+$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories

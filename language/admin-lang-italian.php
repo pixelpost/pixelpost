@@ -196,6 +196,10 @@ $admin_lang_imgedit_mass_1          = "Modifica di massa categoria";
 $admin_lang_imgedit_mass_2          = "Assegna";
 $admin_lang_imgedit_mass_3          = "Revoca";
 $admin_lang_imgedit_mass_4          = "Aggiorna in massa";
+$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
+$admin_lang_imgedit_mass_6          = "pictures.";
+$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
+$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories

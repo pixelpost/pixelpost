@@ -197,6 +197,10 @@ $admin_lang_imgedit_mass_1          = "大量更新するカテゴリ";
 $admin_lang_imgedit_mass_2          = "割り当て済み";
 $admin_lang_imgedit_mass_3          = "未割り当て";
 $admin_lang_imgedit_mass_4          = "大量更新する";
+$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
+$admin_lang_imgedit_mass_6          = "pictures.";
+$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
+$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories

@@ -186,6 +186,11 @@ $admin_lang_imgedit_mass_1          = "Mengde rediger kategori";
 $admin_lang_imgedit_mass_2          = "Tildele";
 $admin_lang_imgedit_mass_3          = "Frasi";
 $admin_lang_imgedit_mass_4          = "Mengde oppdater";
+$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
+$admin_lang_imgedit_mass_6          = "pictures.";
+$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
+$admin_lang_imgedit_mass_8          = "pictures.";
+
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
 $admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
