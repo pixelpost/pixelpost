@@ -611,14 +611,17 @@ while(list($tag)  = mysql_fetch_array($tags))
 {
 	$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
 	$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
+	$tags_keywords .= $tag.', ';
 }
 $tags_img = trim($tags_img);
 $tags_paged_img = trim($tags_paged_img);
+$tags_keywords = str_replace('_',' ',$tags_keywords);
 
 $tpl = str_replace("<TAG_LINKS_AS_LIST>",$tags_output,$tpl); //thumbnails in this page
 $tpl = str_replace("<TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output,$tpl); //thumbnails in this page
 $tpl = str_replace("<TAG_IMG_LIST>",$tags_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_PAGED>",$tags_paged_img,$tpl); // list of tags for showed image
+$tpl = str_replace("<TAG_IMG_LIST_KEYWORDS>",$tags_keywords,$tpl); // list of tags for meta keywords
 
 //----------------- Build the additional new tages
 //-- If you use paged archive

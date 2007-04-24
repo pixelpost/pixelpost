@@ -194,7 +194,7 @@ else
 // Double Quotes in <SITE_TITLE> break HTML Code
 $pixelpost_site_title = $cfgrow['sitetitle'];
 $pixelpost_site_title = pullout($cfgrow['sitetitle']);
-$pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_QUOTES);
+$pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_NOQUOTES);
 
 
 //  Added ability to use header and footers for templates.  They are not needed but used if included in the template
@@ -365,7 +365,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 		if ($row['alt_body']=='') $image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);
 		else $image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['alt_body']);
   }
-	$image_title = htmlspecialchars($image_title,ENT_QUOTES);
+	$image_title = htmlspecialchars($image_title,ENT_NOQUOTES);
 	$image_id           = $row['id'];
 	$image_datetime     = $row['datetime'];
 	$image_datetime_formatted = strtotime($image_datetime);
@@ -622,8 +622,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$tpl = ereg_replace("<IMAGE_NOTES>",$image_notes,$tpl);
 	// image notes without HTML tags and double quotes
 	$image_notes_clean = strip_tags($image_notes);
-        $image_notes_clean = htmlspecialchars($image_notes_clean,ENT_QUOTES);
-     	$tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
+  $image_notes_clean = htmlspecialchars($image_notes_clean,ENT_NOQUOTES);
+  $tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
 	// end image notes without HTML tags
 	$tpl = ereg_replace("<IMAGE_ID>",$image_id,$tpl);
 	$tpl = ereg_replace("<IMAGE_PERMALINK>",$image_permalink,$tpl);
