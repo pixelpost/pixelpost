@@ -190,8 +190,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$headline = pullout($headline);
 		$headline = htmlspecialchars($headline,ENT_QUOTES);
 		$body = pullout($body);
+		$body = stripslashes($body);
+		$body = strip_tags( $body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
-		$body = strip_tags($body);
+		$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$tag_date =substr($datetime,0,10);
 		$id_date = substr($datetime,0,10);
