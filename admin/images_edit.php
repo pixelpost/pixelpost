@@ -77,7 +77,6 @@ if($_GET['view'] == "images")
 
 			$where .= " 0 ";
 			$query .= $where;
-
 			$query  = sql_query($query);
 			$c = count($idz);
 			echo "<div class='jcaption'>$admin_lang_imgedit_mass_5 $c $admin_lang_imgedit_mass_6.</div>";
@@ -303,9 +302,46 @@ if($_GET['view'] == "images")
   // print out a list over images/posts
   if($_GET['id'] == "")
   {
-		// Get number of photos in database
-		$photonumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."pixelpost");
-		$pixelpost_photonumb = $photonumb['count'];
+		// resetting filter entries
+		unset($selectfcat);
+		unset($selectftag);
+		unset($selectfalttag);
+		unset($selectfmon);
+		unset($findfid);
+		if (isset($_POST['filtercat']) && $_POST['selectfcat'] != '') $selectfcat = $_POST['selectfcat'];
+		else if (isset($_GET['selectfcat'])) $selectfcat = $_GET['selectfcat'];
+		if (isset($_POST['filtertag']) && $_POST['selectftag'] != '') $selectftag = $_POST['selectftag'];
+		else if (isset($_GET['selectftag'])) $selectftag = $_GET['selectftag'];
+		if (isset($_POST['filteralttag']) && $_POST['selectfalttag'] != '') $selectfalttag = $_POST['selectfalttag'];
+		else if (isset($_GET['selectfalttag'])) $selectfalttag = $_GET['selectfalttag'];
+		if (isset($_POST['filtermon']) && $_POST['selectfmon'] != '') $selectfmon = $_POST['selectfmon'];
+		else if (isset($_GET['selectfmon'])) $selectfmon = $_GET['selectfmon'];
+		if (isset($_POST['findid']) && $_POST['findfid'] != '') $findfid = $_POST['findfid'];
+		
+		// Get number of photos in database depending on filter
+		
+		if (isset($selectfcat)) {
+			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat;
+		}
+		else if (isset($selectftag)) {
+			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.tag LIKE '".$selectftag."'";
+		}
+		else if (isset($selectfalttag)) {
+			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.alt_tag LIKE '".$selectfalttag."'";
+		}
+		else if (isset($selectfmon)) {
+			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost WHERE datetime LIKE '".$selectfmon."%'";
+		}
+		else if (isset($findfid)) {
+			$query = "SELECT count(*) FROM ".$pixelpost_db_prefix."pixelpost WHERE id = ".$findfid." limit 0,1";
+		}		
+		else {
+			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost";
+		}
+		$photonumb = sql_array($query);
+		if ($photonumb['count']) $pixelpost_photonumb = $photonumb['count'];
+		else $pixelpost_photonumb = "0";
+
 	
 		if($_GET['page'] == "")	$page = "0";
 		else	$page = $_GET['page'];
@@ -323,7 +359,72 @@ if($_GET['view'] == "images")
 		$num_img_pages = ceil($pixelpost_photonumb/$_SESSION['numimg_pp']);
 		$num_img_pages = ($num_img_pages > 0)	? $num_img_pages : 1;
 	
-		echo "<div class=\"jcaption\">$admin_lang_imgedit_title1<strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
+		// Now the queries to show the select options for filtering
+		// the query for the select by category statement
+		$selectfcats = "<option value='' selected=\"selected\">All</option>\n";
+		$query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by name");
+		while(list($id,$name) = mysql_fetch_row($query)) {
+			$selectfcats .= "<option value='$id'".($id==$selectfcat?' selected=\"selected\"':'').">".pullout($name)."</option>\n";
+		}
+		// the query for the select by tag statement
+		$selectftags = "<option value='' selected=\"selected\">All</option>\n";
+		$query = mysql_query("select distinct tag from ".$pixelpost_db_prefix."tags WHERE tag NOT LIKE '' order by tag");
+		while(list($tag) = mysql_fetch_row($query)) {
+			$selectftags .= "<option value='$tag'".($tag==$selectftag?' selected=\"selected\"':'').">".$tag."</option>\n";
+		}
+		// the query for the select by alt_tag statement
+		if ($cfgrow['altlangfile'] != 'Off') {
+			$selectfalttags = "<option value='' selected=\"selected\">All</option>\n";
+			$query = mysql_query("select distinct alt_tag from ".$pixelpost_db_prefix."tags WHERE alt_tag NOT LIKE '' order by alt_tag");
+			while(list($alt_tag) = mysql_fetch_row($query)) {
+				$selectfalttags .= "<option value='$alt_tag'".($alt_tag==$selectfalttag?' selected=\"selected\"':'').">".$alt_tag."</option>\n";
+			}
+		}
+		// the query for the select by month statement
+		$selectfmons = "<option value='' selected=\"selected\">All</option>\n";
+		$query = mysql_query("select distinct DATE_FORMAT(datetime, '%Y-%m') as fmonth from ".$pixelpost_db_prefix."pixelpost order by datetime desc");
+		while(list($fmonth) = mysql_fetch_row($query)) {
+			$selectfmons .= "<option value='$fmonth'".($fmonth==$selectfmon?' selected=\"selected\"':'').">".$fmonth."</option>\n";
+		}
+		$langs = 'lang_alt_lang_'.$cfgrow['langfile'];
+		$langs = ${$langs};
+		if (preg_match('/alt="(.+)"/', $langs, $langsar)) $langs = $langsar[1];
+		$altlangs = 'lang_alt_lang_'.$cfgrow['altlangfile'];
+		$altlangs = ${$altlangs};
+		if (preg_match('/alt="(.+)"/', $altlangs, $altlangsar)) $altlangs = $altlangsar[1];
+		echo "<div class='jcaption'>$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</div>
+		<div class='content'>
+		<table width='400' border='0' cellpadding='2'>
+		<tr><form method='post' name='filter' accept-charset='UTF-8' action='index.php?view=images'>
+		<td align='right'><strong>$admin_lang_show $lang_category_singular&nbsp;</strong></td>
+		<td><select name='selectfcat'>$selectfcats</select></td>
+		<td><input class='cmnt-buttons' type='submit' name='filtercat' value='$admin_lang_go' /></td>
+		</tr>
+		<tr>
+		<td align='right'><strong>$admin_lang_show $admin_lang_ni_tags $langs:&nbsp;</strong></td>
+		<td><select name='selectftag'>$selectftags</select></td>
+		<td><input class='cmnt-buttons' type='submit' name='filtertag' value='$admin_lang_go' /></td>
+		</tr>";
+		if ($cfgrow['altlangfile'] != 'Off') { 
+			echo "<tr>
+			<td align='right'><strong>$admin_lang_show $admin_lang_ni_tags $altlangs:&nbsp;</strong></td>
+			<td><select name='selectfalttag'>$selectfalttags</select></td>
+			<td><input class='cmnt-buttons' type='submit' name='filteralttag' value='$admin_lang_go' /></td>
+			</tr>";
+		}
+		echo "<tr>
+		<td align='right'><strong>$admin_lang_show ".ucfirst($admin_lang_ni_month).":&nbsp;</strong></td>
+		<td><select name='selectfmon'>$selectfmons</select></td>
+		<td><input class='cmnt-buttons' type='submit' name='filtermon' value='$admin_lang_go' /></td>
+		</tr>
+		<tr>
+		<td align='right' height='50'><strong>$admin_lang_show ID:&nbsp;</strong></td>
+		<td><input type='text' size='6' name='findfid' value='$findfid'></td>
+		<td><input class='cmnt-buttons' type='submit' name='findid' value='$admin_lang_go' /></td>
+		</form></tr>
+		</table></div>";
+	
+		echo "<div class=\"jcaption\"><strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
 			   		 </div>
 	           <div class=\"content\">
 	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images\">
@@ -366,19 +467,42 @@ if($_GET['view'] == "images")
 		echo "</select> <input type='text' size='40' name='masstag' value='$admin_lang_imgedit_masstag...' onblur=\"if(this.value=='') this.value='$admin_lang_imgedit_masstag...';\" onfocus=\"if(this.value=='$admin_lang_imgedit_masstag...') this.value='';\"> <select name='masstagopt' size='1'><option value=''></option><option value='set'>$admin_lang_imgedit_masstag_set</option><option value='set2'>$admin_lang_imgedit_masstag_set2</option><option value='unset'>$admin_lang_imgedit_masstag_unset</option></select>";
 		echo " <input type=\"submit\" name=\"submit-mass-catedit\" id=\"submit-mass-catedit\" value=\"".$admin_lang_imgedit_mass_4."\" /><p /> <ul>";
 
+		
+		//cat filter
+		if (isset($selectfcat)) {
+			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat." ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+		}
+		//tag filter
+		else if (isset($selectftag)) {
+			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.tag LIKE '".$selectftag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+		}
+		//alt tag filter
+		else if (isset($selectfalttag)) {
+			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.alt_tag LIKE '".$selectfalttag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+		}
+		//month filter
+		else if (isset($selectfmon)) {
+			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime LIKE '".$selectfmon."%' ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
+		}
+		else if (isset($findfid)) {
+			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE id = ".$findfid." limit 0,1";
+		}
+		else {
+			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
+		}
 		$pagec = 0;
-		$images = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp']);
-
+		$images = mysql_query($query);
+		
 		while(list($id,$datetime,$headline,$body,$image,$category) = mysql_fetch_row($images))
 		{
 			$headline = pullout($headline);
 # 		$headline = htmlentities($headline);
-
+    
 			list($local_width,$local_height,$type,$attr) = getimagesize('../images/'.$image);
-
+    
 			$fs = filesize('../images/'.$image);
 			$fs*=0.001;
-
+    
 			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"../thumbnails/thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
 				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" />
 				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
@@ -401,8 +525,10 @@ if($_GET['view'] == "images")
 			echo "<br/>";
 
 			// tags
-			echo "<strong>$admin_lang_ni_tags:</strong> ";
+			echo "<strong>$admin_lang_ni_tags $langs:</strong> ";
 			echo list_tags_edit($id);
+			echo "<br/><strong>$admin_lang_ni_tags $altlangs:</strong> ";
+			echo list_alt_tags_edit($id);
 			echo "<br/>";
 			// added workspace requested by KArin on the forums
 				eval_addon_admin_workspace_menu('image_list');
@@ -414,8 +540,25 @@ if($_GET['view'] == "images")
 
 		echo "</ul></form>";
 
+	//the filter stuff for showing the correct browse pages
+    	if (isset($selectfcat)) {
+				$getfstring = '&amp;selectfcat='.$selectfcat;
+			}
+			else if (isset($selectftag)) {
+				$getfstring = '&amp;selectftag='.$selectftag;
+			}
+			else if (isset($selectfalttag)) {
+				$getfstring = '&amp;selectfalttag='.$selectfalttag;
+			}
+			else if (isset($selectfmon)) {
+				$getfstring = '&amp;selectfmon='.$selectfmon;
+			}
+			else {
+				$getfstring = '';
+			}
+
     if($pixelpost_photonumb > $_SESSION['numimg_pp'])
-    {
+    {			
     	$pagecounter = 0;
     	$pcntr = 0;
     	$image_page_Links = "";
@@ -423,26 +566,27 @@ if($_GET['view'] == "images")
 			while ($pcntr < $num_img_pages)
 		  {
 				$pcntr++;
-				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter'>$pcntr</a> ";
+				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>$pcntr</a> ";
 				$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
 			}// end while
 
       if ($page < (($num_img_pages-1)*$_SESSION['numimg_pp']))
       {
 	      $newpage = $page+$_SESSION['numimg_pp'];
-	      $image_page_Links .= "<a href='index.php?view=images&amp;page=$newpage'>$admin_lang_next</a>";
+	      $image_page_Links .= "<a href='index.php?view=images&amp;page=$newpage$getfstring'>$admin_lang_next</a>";
       }
 
       if ($page >= $_SESSION['numimg_pp'])
       {
         $newpage = $page - $_SESSION['numimg_pp'];
-        $image_page_Links  = "<a href='index.php?view=images&amp;page=$newpage'>$admin_lang_prev</a> " .$image_page_Links;
+        $image_page_Links  = "<a href='index.php?view=images&amp;page=$newpage$getfstring'>$admin_lang_prev</a> " .$image_page_Links;
       }
+   
       echo $image_page_Links;
 		}
 
     echo '<br/>
-       <form method="post" action="'.$PHP_SELF .'?view=images&page=0" accept-charset="UTF-8">';
+       <form method="post" action="'.$PHP_SELF .'?view=images&page=0'.$getfstring.'" accept-charset="UTF-8">';
  		echo $admin_lang_show.' ';
     echo '<input type="text" name="numimg_pp" size="2" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_imgedit_img_page.'.
 	    <input type="submit" value="'.$admin_lang_go.'" />
