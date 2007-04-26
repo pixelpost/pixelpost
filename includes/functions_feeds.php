@@ -193,7 +193,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$body = stripslashes($body);
 		$body = strip_tags( $body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
-		$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
+		$body = ereg_replace("\n","\n<br />",$body);
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$tag_date =substr($datetime,0,10);
 		$id_date = substr($datetime,0,10);
