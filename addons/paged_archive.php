@@ -483,12 +483,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	if($cat_id != "")
 	{
 		if ($language_abr == $default_language_abr) {
-		$query = mysql_query("SELECT name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id'");
+		$query = mysql_query("SELECT name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY name");
 		$images_category_or_date = mysql_fetch_array($query);
 		$images_category_or_date = pullout($images_category_or_date['name']);
 	}
 		else {
-			$query = mysql_query("SELECT alt_name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id'");
+			$query = mysql_query("SELECT alt_name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY alt_name");
 			$images_category_or_date = mysql_fetch_array($query);
 			$images_category_or_date = pullout($images_category_or_date['alt_name']);
 		}
