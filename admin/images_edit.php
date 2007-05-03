@@ -31,7 +31,7 @@ if($_GET['view'] == "images")
  			$finalquery  = sql_query($finalquery);
  		}
  		$c = count($idz);
- 		echo "<div class='jcaption confirm'>$admin_lang_imgedit_published  $c $admin_lang_imgedit_unpublished_cmnts</div>";
+ 		echo "<div class='jcaption_confirm'>$admin_lang_imgedit_published  $c $admin_lang_imgedit_unpublished_cmnts</div>";
  	}
 
 	if($_GET['action'] == "massdelete")

@@ -39,7 +39,7 @@ if($_GET['view'] == "comments") {
  		$query .= $where;
  		$query  = sql_query($query);
  		$c = count($idz);
- 		echo "<div class='jcaption confirm'>$admin_lang_cmnt_delete1  $c $admin_lang_cmnt_delete2</div>";
+ 		echo "<div class='jcaption_confirm'>$admin_lang_cmnt_delete1  $c $admin_lang_cmnt_delete2</div>";
 
  		}
 
@@ -123,7 +123,7 @@ if($_GET['view'] == "comments") {
 			$query .= $where;
 			$query  = sql_query($query);
 			$c = count($idz);
-			echo "<div class='jcaption confirm'>$admin_lang_cmnt_published  $c $admin_lang_cmnt_unpublished_cmnts</div>";
+			echo "<div class='jcaption_confirm'>$admin_lang_cmnt_published  $c $admin_lang_cmnt_unpublished_cmnts</div>";
 		}
 
 	 // Mass publish comments
@@ -139,7 +139,7 @@ if($_GET['view'] == "comments") {
 			$query .= $where;
 			$query  = sql_query($query);
 			$c = count($idz);
-			echo "<div class='jcaption confirm'>$admin_lang_cmnt_unpublished  $c $admin_lang_cmnt_published_cmnts</div>";
+			echo "<div class='jcaption_confirm'>$admin_lang_cmnt_unpublished  $c $admin_lang_cmnt_published_cmnts</div>";
 	}
 
  echo "<div id='caption'>$admin_lang_$admin_lang_comments</div>";

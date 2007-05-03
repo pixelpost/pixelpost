@@ -239,7 +239,7 @@ function pp_submit_nonspam_comment () {
     }
     return true;
   } else {
-    echo '<div class="jcaption confirm">You must select at least one comment.</div>';
+    echo '<div class="jcaption_confirm">You must select at least one comment.</div>';
     return false;;
   }
 }
@@ -272,7 +272,7 @@ function pp_submit_spam_comment () {
     }
     return true;
   } else {
-    echo '<div class="jcaption confirm">You must select at least one comment.</div>';
+    echo '<div class="jcaption_confirm">You must select at least one comment.</div>';
     return false;
   }
 }
@@ -297,14 +297,14 @@ function check_akismet_comment() {
 //Check whether ADMIN has submitted comment to mark as spam for Akismet
 if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetspam') {
   if (pp_submit_spam_comment()) {
-    echo '<div class="jcaption confirm">Selected comments reported as spam to Akismet</div>';
+    echo '<div class="jcaption_confirm">Selected comments reported as spam to Akismet</div>';
   }
 }
 
 //Check whether ADMIN has submitted comment to mark as spam for Akismet
 if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetnotspam') {
   if (pp_submit_nonspam_comment()) {
-    echo '<div class="jcaption confirm">Selected comments reported as not spam to Akismet</div>';
+    echo '<div class="jcaption_confirm">Selected comments reported as not spam to Akismet</div>';
   }
 }
 ?>
