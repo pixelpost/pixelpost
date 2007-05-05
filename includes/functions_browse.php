@@ -84,7 +84,10 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 		$title = pullout($title);
 		$title = htmlspecialchars($title,ENT_QUOTES);
 		$thumbnail = "thumbnails/thumb_$name";
-		$thumb_output .= "<a href=\"$showprefix$id\"><img src=\"$thumbnail\" alt=\"$title\" title=\"$title\" class=\"thumbnails\" /></a>";
+		$thumbnail_extra = getimagesize($thumbnail);
+		$local_width = $thumbnail_extra['0'];
+		$local_height = $thumbnail_extra['1'];
+		$thumb_output .= "<a href=\"$showprefix$id\"><img src=\"$thumbnail\" alt=\"$title\" title=\"$title\" width=\"$local_width\" height=\"$local_height\" class=\"thumbnails\" /></a>";
 	}
 
   $tpl = ereg_replace("<THUMBNAILS>",$thumb_output,$tpl);
