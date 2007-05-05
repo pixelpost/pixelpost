@@ -28,6 +28,41 @@ function Show_username_password(){
 	Password: <b>$admin_password</b><p />";
 }
 
+function Turn_Addons_off( $prefix ){
+	$result = mysql_query("SELECT count(status) FROM `{$prefix}addons` where status='on'");
+	while ($row = mysql_fetch_assoc($result)) {
+    if ($row[0] > 0){
+    	// create a new field to hold previous settings
+    	mysql_query("ALTER TABLE ".$prefix."addons ADD `status_backup` VARCHAR(3) NOT NULL default 'on'");
+    	// copy previous settings
+    	mysql_query("UPDATE `{$prefix}addons` SET `status_backup` = `status`";
+    	// turn all addons off
+    	mysql_query("UPDATE `{$prefix}addons` SET status='off'");
+    }
+	}
+}
+
+function Turn_Pixelpost_Addons_on( $prefix ){
+	// list of default PP addons:
+	$default_addons = array('admin_12CropImage',
+													'admin_akismet_comment',
+													'admin_ping',
+													'admin_update_exif',
+													'advanced_stat',
+													'calendar',
+													'copy_folder',
+													'current_datetime',
+													'paged_archive',
+													'referer_spam');
+	foreach ($default_addons as $addon_name) {
+    mysql_query("UPDATE `{$prefix}addons` SET `status` = `status_backup` WHERE `addon_name` = {$addon_name}";
+  }
+  // we can get a list of disabled thirdparty addons here:
+  
+  // cleanup temp field
+  mysql_query("ALTER TABLE `{$prefix}addons` DROP `status_backup`"; 
+}
+
 function Create13Tables( $prefix)
 {
 	echo "<li style=\"list-style-type:none;\"><strong>Automatic creation of tables</strong></li><p />";
