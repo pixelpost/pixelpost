@@ -645,7 +645,9 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$tpl = ereg_replace("<IMAGE_FIRST_TITLE>",$first_image_title,$tpl);
 	$tpl = ereg_replace("<IMAGE_FIRST_THUMBNAIL>",$first_image_thumbnail,$tpl);
 
-
+	// Added support for Thumbnail width and height
+	$tpl = str_replace("<THUMBNAIL_WIDTH>",$cfgrow['thumbwidth'],$tpl);
+	$tpl = str_replace("<THUMBNAIL_HEIGHT>",$cfgrow['thumbheight'],$tpl);
 
 	// get number of comments
 	$cnumb_row = sql_array("SELECT count(*) as count FROM ".$pixelpost_db_prefix."comments WHERE parent_id='$image_id' and publish='yes'");

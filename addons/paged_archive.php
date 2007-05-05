@@ -334,7 +334,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		// from the thumbnail row. This could be build by tables too.
 		$title = pullout($title);
 		$thumbnail = "thumbnails/thumb_$name";
-		$thumb_output .= "<a href='$PHP_SELF?showimage=$id'><img src='$thumbnail' alt='$title' title='$title' class='thumbnails' /></a>";
+		$thumbnail_extra = getimagesize($thumbnail);
+		$local_width = $thumbnail_extra['0'];
+		$local_height = $thumbnail_extra['1'];
+		$thumb_output .= "<a href='$PHP_SELF?showimage=$id'><img src='".$thumbnail."' alt='".$title."' title='".$title."' width='".$local_width."' height='".$local_height."' class='thumbnails' /></a>";
 	} //end while
 	// initialize page counter
 	$pagecounter=0;
