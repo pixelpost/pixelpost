@@ -339,6 +339,7 @@ function category_list_as_table($categories, $cfgrow)
   list($firstid,$firstname) = mysql_fetch_row($query);
   $getid = $_GET['id'];
  // begin of category-list as a table
+	$x = 0;
 	$query = mysql_query("select t1.id, name, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.name");
 	while(list($id,$name) = mysql_fetch_row($query))
 	{
@@ -362,18 +363,20 @@ function category_list_as_table($categories, $cfgrow)
 			$inarow = 4;
 			if (($image_id != "" AND $_GET['view']=='images') || in_array($id,$categories))
 			{
-				echo "<td><input type='checkbox' CHECKED name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
+				echo "<td><input type='checkbox' CHECKED name='category[]' value='".$id."' id='cat".$x."'/>&nbsp;<label for='cat".$x."'>".$name.$alt_name."</label></td>";
 			}
 			else
 			{
 				if ($firstid==$id && $_GET['view']!='images') // if it is the first defualt category in the new_image page
-					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
+					echo "<td><input type='checkbox' name='category[]' value='".$id."' id='cat".$x."'/>&nbsp;<label for='cat".$x."'>".$name.$alt_name."</label></td>";
 				else // if it is other categories in the new image page
-					echo "<td><input type='checkbox' name='category[]' value='".$id."' />&nbsp;".$name.$alt_name."</td>";
+					echo "<td><input type='checkbox' name='category[]' value='".$id."' id='cat".$x."'/>&nbsp;<label for='cat".$x."'>".$name.$alt_name."</label></td>";
 			}
 
 			if ($catcounter % $inarow == 0)	echo "\n</tr><tr>\n";
 			else	echo "\n";
+
+			$x++;
 		}
 	}
 
