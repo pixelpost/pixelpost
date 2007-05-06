@@ -35,7 +35,7 @@ function Turn_Addons_off( $prefix ){
     	// create a new field to hold previous settings
     	mysql_query("ALTER TABLE ".$prefix."addons ADD `status_backup` VARCHAR(3) NOT NULL default 'on'");
     	// copy previous settings
-    	mysql_query("UPDATE `{$prefix}addons` SET `status_backup` = `status`";
+    	mysql_query("UPDATE `{$prefix}addons` SET `status_backup` = `status`");
     	// turn all addons off
     	mysql_query("UPDATE `{$prefix}addons` SET status='off'");
     }
@@ -55,12 +55,12 @@ function Turn_Pixelpost_Addons_on( $prefix ){
 													'paged_archive',
 													'referer_spam');
 	foreach ($default_addons as $addon_name) {
-    mysql_query("UPDATE `{$prefix}addons` SET `status` = `status_backup` WHERE `addon_name` = {$addon_name}";
+    mysql_query("UPDATE `{$prefix}addons` SET `status` = `status_backup` WHERE `addon_name` = {$addon_name}");
   }
   // we can get a list of disabled thirdparty addons here:
   
   // cleanup temp field
-  mysql_query("ALTER TABLE `{$prefix}addons` DROP `status_backup`"; 
+  mysql_query("ALTER TABLE `{$prefix}addons` DROP `status_backup`"); 
 }
 
 function Create13Tables( $prefix)
