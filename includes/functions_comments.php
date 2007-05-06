@@ -21,6 +21,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		{
 			if ((time() - $_SESSION['token_time']) > ($cfgrow['token_time']*60))
 			{
+				eval_addon_front_workspace('comment_blocked_waited_too_long');
     		die("You waited more then ".$cfgrow['token_time']." minutes to enter the comment<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
     	} else {
     		// token was good, regenerate a new one
@@ -30,6 +31,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		}		
 		else
 		{
+			eval_addon_front_workspace('comment_blocked_token');
 			header("HTTP/1.0 404 Not Found");
 			header("Status: 404 File Not Found!");
     	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures (ERR: 01).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
@@ -47,13 +49,15 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
   		$time_to_wait = $cfgrow['comment_timebetween']." seconds";
   	}
   	$spam_flood_message = str_replace("<TIME_TO_WAIT>", $time_to_wait, $lang_spamflood);
+  	eval_addon_front_workspace('comment_blocked_flood');
   	die($spam_flood_message."<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
   }
 
 // $parent_id
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 
-	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){	
+	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){
+		eval_addon_front_workspace('comment_blocked_id');	
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 02).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -61,6 +65,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	}
 
 	if (!is_numeric($parent_id)){
+		eval_addon_front_workspace('comment_blocked_intrusion_id');
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 03).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -81,6 +86,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$mk_regex_array = array();
 	preg_match_all($regex_url, $message, $mk_regex_array);
 	if (count($mk_regex_array[2]) > $cfgrow['max_uri_comments']){
+		eval_addon_front_workspace('comment_blocked_maxurl');
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -105,6 +111,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
   		}
   	}
     if ($spam_domains_found>0){
+    	eval_addon_front_workspace('comment_blocked_urllisted');
   		header("HTTP/1.0 404 Not Found");
 			header("Status: 404 File Not Found!");
    		echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 05).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -118,6 +125,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	{
 		list($a, $b, $c, $d) = split('.', $ip);
 		if( gethostbyname("$d.$c.$b.$a.list.dsbl.org") != "$d.$c.$b.$a.list.dsbl.org") {
+			eval_addon_front_workspace('comment_blocked_dsbl');
   		header( "Location: http://dsbl.org/listing?".$ip);
  			return false;
 		}
@@ -126,7 +134,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // check if current image has got enabled comments
 	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
 	$cmnt_setting = pullout($comments_result['comments']);
-	if($cmnt_setting == 'F'){	
+	if($cmnt_setting == 'F'){
+		eval_addon_front_workspace('comment_blocked_disabled');	
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 06).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -209,12 +218,15 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			$query = "INSERT INTO ".$pixelpost_db_prefix."comments(id,parent_id,datetime,ip,message,name,url,email,publish)
 		VALUES(NULL,'$parent_id','$datetime','$ip','$message','$name','$url','$email','$cmnt_publish_permission')";
 			$result = mysql_query($query);
-
+			eval_addon_front_workspace('comment_accepted');
 			// added by GeoS for sure that comment is saved (moved by ramin for bug fixing)
 			if (!mysql_error())
 			$email_flag = 1;
 		} // end if is not in the blacklist
-		else $extra_message = "<b>$lang_message_banned_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+		else { 
+			eval_addon_front_workspace('comment_blocked_banlist');
+			$extra_message = "<b>$lang_message_banned_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+		}
 	}
 }
 

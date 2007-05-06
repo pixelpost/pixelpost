@@ -539,6 +539,16 @@ function add_admin_functions($function_name, $function_workspace,$function_menu 
 	$addon_admin_functions = array_merge($addon_admin_functions, $end);
 }
 
+function add_front_functions($function_name, $function_workspace)
+{
+	global $addon_front_functions;
+	$wrkspc_fcn = array('function_name' => $function_name,
+											'workspace' => $function_workspace);
+	$c = count($addon_front_functions);
+	$end = array($c => $wrkspc_fcn);
+	$addon_front_functions = array_merge($addon_front_functions, $end);
+}
+
 // evaluates the admin functions
 function eval_addon_admin_workspace_menu ($workspace,$menu_name ='')
 {
@@ -582,14 +592,26 @@ function eval_addon_admin_workspace_menu ($workspace,$menu_name ='')
 	}// end foreach
 } // end function
 
+function eval_addon_front_workspace ($workspace)
+{
+	global $addon_front_functions;
+	for ($i = 0 ; $i < count($addon_front_functions) ; $i++)
+	{
+		$funcs = $addon_front_functions[$i];
+		// if action is needed
+		if ($funcs['workspace']== strtolower($workspace))
+		{
+			call_user_func ($funcs['function_name']);
+		} // end if workspace
+	}// end foreach
+} // end function
+
 // create array
 function create_admin_addon_array()
 {
 	global $addon_admin_functions;
 	global $pixelpost_db_prefix;
-	$acounter = 0;
 	$dir = "../addons/";
-
 	if( $_GET['view'] != "addons")
 	{
 		$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='admin'";
@@ -597,14 +619,23 @@ function create_admin_addon_array()
 
 		while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($query_ad_s))
 		{
-			//$addontype = strtolower(current(explode('_', $filename)));
-			$dir = "../addons/";
 			include($dir.$filename.".php");
 		} // end while
 	} // end if not addons
-//return $addon_admin_functions;
 }
 
+function create_front_addon_array()
+{
+	global $addon_front_functions;
+	global $pixelpost_db_prefix;
+	$dir = "addons/";
+	$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='front'";
+	$result = mysql_query($query_ad_s);
+	while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($result))
+	{
+		include($dir.$filename.".php");
+	} // end while
+}
 
 // echos the submenu title
 function echo_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = '')

@@ -280,10 +280,11 @@ function pp_submit_spam_comment () {
 function check_akismet_comment() {
 	global $cmnt_publish_permission, $cmnt_moderate_permission, $cfgrow, $name, $email, $url, $message;
      $params = array('comment_type' => 'comment', 'comment_author' => $name, 'comment_author_email' => $email, 'comment_author_url' => $url, 'comment_content' => $message);
-	      if ('true' == pp_auto_check_comment($params)) {
+	    if ('true' == pp_auto_check_comment($params)) {
+	    	eval_addon_front_workspace('comment_blocked_askimet');
 	      $cmnt_publish_permission = 'spm';
 	      $cmnt_moderate_permission = 'yes';
-		  $cfgrow['commentemail'] = 'no';
+		  	$cfgrow['commentemail'] = 'no';
 	    } 
 	    else {
 	    	// Code below commented out to respect the users choice for each picture.

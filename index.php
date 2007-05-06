@@ -76,6 +76,15 @@ if(isset($_POST['vcookie']))
 
 start_mysql();
 
+//------------- addons in frontpage begins
+// refresh the addons table
+$dir = "addons/";
+refresh_addons_table($dir);
+$addon_front_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
+create_front_addon_array();
+//------------- addons in frontpage ends
+
+
 if($_GET['showimage'])	$_GET['showimage'] = (int) $_GET['showimage'];
 
 // get config
