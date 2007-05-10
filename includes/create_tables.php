@@ -45,7 +45,6 @@ function Turn_Addons_off( $prefix ){
 function Turn_Pixelpost_Addons_on( $prefix ){
 	// list of default PP addons:
 	$default_addons = array('admin_12CropImage',
-													'admin_akismet_comment',
 													'admin_ping',
 													'admin_update_exif',
 													'advanced_stat',
