@@ -10,7 +10,7 @@ $rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? 'thumbn
 // RSS 2.0 FEED
 // ##########################################################################################//
 
-if(isset($_GET['x'])&&$_GET['x'] == "rss")
+if(isset($_GET['x'])&&$_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_GET['tag']) && $_GET['tag'] == '')
 
 {
     $output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -41,6 +41,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 	{
 		$headline = pullout($headline);
 		$headline = htmlspecialchars($headline,ENT_QUOTES);
+		$enclosure = $cfgrow['siteurl']."images/".$image;
+		$filesize = filesize("images/".$image."");
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$datetime = strtotime($datetime);
 		$datetime =date("D, d M Y H:i",$datetime);
@@ -61,6 +63,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 		if($cfgrow['rsstype'] != 'O') $output .= "			$body";
 		$output .= "
 		</description>
+		<enclosure type=\"image/jpeg\" length=\"".$filesize."\" url=\"".$enclosure."\" />
 		<pubDate>$datetime</pubDate>
 		<guid isPermaLink='true'>".$cfgrow['siteurl']."index.php?showimage=$id</guid>
 		</item>";
@@ -73,6 +76,84 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss")
 	echo $output;
 	exit;
 }
+
+// ##########################################################################################//
+// TAG RSS 2.0 FEED
+// ##########################################################################################//
+
+if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag']))
+
+{
+    $output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+	<rss version=\"2.0\">
+	<channel>
+	<title>".$pixelpost_site_title."</title>
+	<link>".$cfgrow['siteurl']."</link>
+	<description>$pixelpost_site_title</description>
+	<docs>http://blogs.law.harvard.edu/tech/rss</docs>
+	<generator>pixelpost</generator>";
+	$tzoner = $cfgrow['timezone'];
+	$tprefix = '+';
+	$tzoner = sprintf ("%01.2f", $tzoner);
+	if (substr($tzoner,0,1)=='-')
+	{
+		$tzoner = (substr($tzoner,1));
+		$tprefix = '-';
+	}
+
+	if ($tzoner < 10)	$tzoner = "0".$tzoner;
+
+	$hh = substr($tzoner,0,2);
+	$mm = substr($tzoner,-2);
+	$tzoner = $tprefix.$hh.$mm;
+	$tag = addslashes($_GET['tag']);
+	$query = mysql_query("SELECT `".$pixelpost_db_prefix."pixelpost`.`id`, `".$pixelpost_db_prefix."pixelpost`.`datetime`, `".$pixelpost_db_prefix."pixelpost`.`headline`, `".$pixelpost_db_prefix."pixelpost`.`body`, `".$pixelpost_db_prefix."pixelpost`.`image`, `".$pixelpost_db_prefix."tags`.`tag`
+	FROM `".$pixelpost_db_prefix."pixelpost`
+		INNER JOIN `".$pixelpost_db_prefix."tags` ON `".$pixelpost_db_prefix."tags`.`img_id` = `".$pixelpost_db_prefix."pixelpost`.`id`
+	WHERE ((`".$pixelpost_db_prefix."tags`.`tag`) = '".$tag."') AND (datetime<='$cdate')
+	ORDER BY datetime DESC
+	LIMIT ".$feeditems);
+
+	while(list($id,$datetime,$headline,$body,$image) = mysql_fetch_row($query))
+	{
+		$headline = pullout($headline);
+		$headline = htmlspecialchars($headline,ENT_QUOTES);
+		$enclosure = $cfgrow['siteurl']."images/".$image;
+		$filesize = filesize("images/".$image."");
+		$image = $cfgrow['siteurl'].$rsspicdir.$image;
+		$datetime = strtotime($datetime);
+		$datetime =date("D, d M Y H:i",$datetime);
+		$datetime .= ' ' .$tzoner;
+		$body = pullout($body);
+		$body = stripslashes($body);
+		$body = strip_tags( $body);
+		$body = htmlspecialchars($body,ENT_QUOTES);
+		$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
+		$output .= "
+		<item>
+		<title>$headline</title>
+		<link>".$cfgrow['siteurl']."index.php?showimage=$id</link>
+		<description>
+";
+		if($rsspicdir) $output .= "			&lt;img src=&quot;$image&quot;&gt;&lt;br/&gt;
+";
+		if($cfgrow['rsstype'] != 'O') $output .= "			$body";
+		$output .= "
+		</description>
+		<enclosure type=\"image/jpeg\" length=\"".$filesize."\" url=\"".$enclosure."\" />
+		<pubDate>$datetime</pubDate>
+		<guid isPermaLink='true'>".$cfgrow['siteurl']."index.php?showimage=$id</guid>
+		</item>";
+	}
+
+ 	$output .= "
+	</channel>
+	</rss>";
+	header("Content-type:application/xml");
+	echo $output;
+	exit;
+}
+
 // ##########################################################################################//
 // COMMENT RSS 2.0 FEED
 // ##########################################################################################//
@@ -147,11 +228,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_rss")
 	echo $output;
 	exit;
 }
+
 // ##########################################################################################//
 // ATOM FEED, Version 1.0
 // ##########################################################################################//
 
-if(isset($_GET['x'])&&$_GET['x'] == "atom")
+if(isset($_GET['x'])&&$_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GET['tag']) && $_GET['tag'] == '')
+
 {
 	header("content-type: application/atom+xml");
 	$tzoner = $cfgrow['timezone'];
@@ -194,6 +277,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		$body = strip_tags( $body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
 		$body = ereg_replace("\n","\n<br />",$body);
+		$enclosure = $cfgrow['siteurl']."images/".$image;
+		$filesize = filesize("images/".$image."");
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$tag_date =substr($datetime,0,10);
 		$id_date = substr($datetime,0,10);
@@ -217,6 +302,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 		if($cfgrow['rsstype'] != 'O') $atom .= "$headline<br />$body";
 		$atom .= "]]>
 		</content>
+		<link rel=\"enclosure\" type=\"image/jpeg\" length=\"".$filesize."\" title=\"".$headline."\" href=\"".$enclosure."\" />
 		<published>$tag_date</published>
 		<updated>$modified_date$tzoner</updated>
 		</entry>";
@@ -227,11 +313,103 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom")
 	echo $atom;
 	exit;
 }
+
+// ##########################################################################################//
+// TAG ATOM FEED, Version 1.0
+// ##########################################################################################//
+
+if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag']))
+
+{
+	header("content-type: application/atom+xml");
+	$tzoner = $cfgrow['timezone'];
+	$tprefix = '+';
+	$tzoner = sprintf ("%01.2f", $tzoner);
+
+	if (substr($tzoner,0,1)=='-')
+	{
+     $tzoner = (substr($tzoner,1));
+     $tprefix = '-';
+	}
+
+	if ($tzoner < 10) $tzoner = "0".$tzoner;
+
+	$hh = substr($tzoner,0,2);
+	$mm = substr($tzoner,-2);
+	$tzoner = $tprefix.$hh.":".$mm;
+	$url = $cfgrow['siteurl'];
+	$tag = addslashes($_GET['tag']);
+	$atom = "<?xml version='1.0' encoding='UTF-8'?>
+	<feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>
+	<title>$pixelpost_site_title photoblog</title>
+	<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />
+	<link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom&amp;tag=$tag' title='".$pixelpost_site_title."' />
+	<author>
+	<name>".$pixelpost_site_title."</name>
+	<uri>$url</uri>
+	</author>
+	<generator uri='http://www.pixelpost.org/' version='1.6BETA'>Pixelpost</generator>
+	<id>$url</id>
+	<updated>".date("Y-m-d\TH:i:s$tzoner")."</updated>";
+	$tag_url = $_SERVER['HTTP_HOST'];
+	$tag = addslashes($tag);
+	$query = mysql_query("SELECT `".$pixelpost_db_prefix."pixelpost`.`id`, `".$pixelpost_db_prefix."pixelpost`.`datetime`, `".$pixelpost_db_prefix."pixelpost`.`headline`, `".$pixelpost_db_prefix."pixelpost`.`body`, `".$pixelpost_db_prefix."pixelpost`.`image`, `".$pixelpost_db_prefix."tags`.`tag`
+	FROM `".$pixelpost_db_prefix."pixelpost`
+		INNER JOIN `".$pixelpost_db_prefix."tags` ON `".$pixelpost_db_prefix."tags`.`img_id` = `".$pixelpost_db_prefix."pixelpost`.`id`
+	WHERE ((`".$pixelpost_db_prefix."tags`.`tag`) = '".$tag."') AND (datetime<='$cdate')
+	ORDER BY datetime DESC
+	LIMIT ".$feeditems);
+
+	while(list($id,$datetime,$headline,$body,$image) = mysql_fetch_row($query))
+	{
+		$headline = pullout($headline);
+		$headline = htmlspecialchars($headline,ENT_QUOTES);
+		$body = pullout($body);
+		$body = htmlspecialchars($body,ENT_QUOTES);
+		$body = strip_tags($body);
+		$enclosure = $cfgrow['siteurl']."images/".$image;
+		$filesize = filesize("images/".$image."");
+		$image = $cfgrow['siteurl'].$rsspicdir.$image;
+		$tag_date =substr($datetime,0,10);
+		$id_date = substr($datetime,0,10);
+		$tag_time = substr($datetime,11,8);
+		$tag_date .=T;
+		$tag_date .=$tag_time;
+		$tag_date .=Z;
+
+		$modified_date =substr($datetime,0,10);
+		$modified_date = $modified_date."T".(substr($datetime,11,8));
+		$datetime = strtotime($datetime);
+		$atom .= "
+		<entry xmlns='http://www.w3.org/2005/Atom'>
+		<title type='html'>$headline</title>
+		<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."index.php?showimage=$id' title='$headline' />
+		<id>tag:$tag_url,$id_date:/$id</id>
+		<content type='html'>
+			<![CDATA[
+";
+		if($rsspicdir) $atom .= "				<img src='$image' /><br />";
+		if($cfgrow['rsstype'] != 'O') $atom .= "$headline<br />$body";
+		$atom .= "]]>
+		</content>
+		<link rel=\"enclosure\" type=\"image/jpeg\" length=\"".$filesize."\" title=\"".$headline."\" href=\"".$enclosure."\" />
+		<published>$tag_date</published>
+		<updated>$modified_date$tzoner</updated>
+		</entry>";
+		}
+
+	$atom .= "
+	</feed>";
+	echo $atom;
+	exit;
+}
+
 // ##########################################################################################//
 // COMMENT ATOM FEED, Version 1.0
 // ##########################################################################################//
 
 if(isset($_GET['x'])&&$_GET['x'] == "comment_atom")
+
 {
 	header("content-type: application/atom+xml");
 	$tzoner = $cfgrow['timezone'];
@@ -313,6 +491,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom")
 	echo $atom;
 	exit;
 }
+
 // ##########################################################################################//
 // RSS + ATOM - tags
 // ##########################################################################################//
