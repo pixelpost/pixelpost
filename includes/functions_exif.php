@@ -40,7 +40,7 @@ function serialize_exif ($uploaded_file)
 	foreach ($flat_exif_tmp as $key=>$value)	$flat_exif_tmp[$key]=trim($value);
 	$exif_info=serialize($flat_exif_tmp);
 	// we need to escape the string before saving it to the db
-	$exif_info = mysql_real_escape_string($exif_info);
+ 	$exif_info = mysql_real_escape_string($exif_info);
 	return $exif_info;
 }
 
@@ -74,7 +74,11 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     }
 
     $aperture = $exif_result['FNumberSubIFD']; // Aperture
-    $capture_date = date($cfgrow['dateformat'],strtotime($exif_result['DateTimeOriginalSubIFD'])); // Date and Time
+    $exif_result['DateTimeOriginalSubIFD'] = trim(str_replace('-',':',$exif_result['DateTimeOriginalSubIFD']));
+    $exif_result['DateTimeOriginalSubIFD'] = str_replace(' ',':',$exif_result['DateTimeOriginalSubIFD']);
+		$ftime = explode(":", $exif_result['DateTimeOriginalSubIFD']);
+		$unxTimestamp = mktime($ftime[3],$ftime[4],$ftime[5],$ftime[1],$ftime[2],$ftime[0]);
+    $capture_date = date($cfgrow['dateformat'],$unxTimestamp);
     $flash = $exif_result['FlashSubIFD']; // flash
     $focal = $exif_result['FocalLengthSubIFD']; // focal length
     $info_camera_manu = trim($exif_result['MakeIFD0']); // camera maker
