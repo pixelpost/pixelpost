@@ -20,7 +20,7 @@ if($_GET['view'] == "comments") {
  			$editid = $_GET['editid'];
  			$message = $_POST['message'.$editid];
  			// added by schonhose to escape characters
- 			$message = clean_comment($message);
+ 			$message = nl2br(clean_comment($message));
  			$query = "update ".$pixelpost_db_prefix."comments set message='$message' where id='$editid'";
  			$query  = sql_query($query);
  			echo "<div class='jcaption'>$admin_lang_cmnt_edited </div>";
@@ -256,7 +256,7 @@ eval_addon_admin_workspace_menu('show_commentbuttons');
         else
         	$comment_row_class = "unpublished-comment";
 eval_addon_admin_workspace_menu('single_comment_list');
-
+				$edit_message= str_replace("<br />", "", $message);
 				echo "
 				<li class='$comment_row_class' ><a href='../index.php?showimage=".$parent_id."'>
 				<img src='../thumbnails/thumb_$image' alt='$image' /></a>
@@ -274,7 +274,7 @@ eval_addon_admin_workspace_menu('single_comment_list');
 				<a href='' onclick=\"flip('editme$id'); return false;\">[$admin_lang_cmnt_edit]</a>
 				<div id='editme$id' class='editcmtarea'>
 				<script language='javascript' type='text/javascript'>flip('editme$id');</script>
-				<textarea name='message$id' rows='4' cols='70' >$message</textarea><br/>
+				<textarea name='message$id' rows='4' cols='70' >$edit_message</textarea><br/>
 				<input type='submit' class='cmnt-buttons' value='$admin_lang_cmnt_save'
 				onclick=\" document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=edit&amp;editid=$id' \"
 				/>
