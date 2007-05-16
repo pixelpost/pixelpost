@@ -77,6 +77,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$message = clean_comment($message);
 	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
 	$message = nl2br($message);
+	
+	// $url
+	$url = isset($_POST['url']) ? $_POST['url'] : "";
+	if(eregi("\r",$url) || eregi("\n",$url))	die("No intrusion! ?? :(");
+	if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
+	$url = clean_comment($url);
 
 	$blacklists = array('multi.surbl.org','multi.uribl.com','sbl-xbl.spamhaus.org','multihop.dsbl.org','dnsbl.sorbs.net','spam.dnsbl.sorbs.net');
 	$spam_domains_found=0;
@@ -92,8 +98,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
 	} else {
-  	for( $cnt=0; $cnt < count($mk_regex_array[2]); $cnt++ ) {
-  		$domain_to_test = rtrim($mk_regex_array[2][$cnt],"\\");
+		// add the url to the $mk_regex_array.
+		preg_match_all($regex_url, $url, $extra_mk_regex_array);
+		$domains_array=array_merge($mk_regex_array[2],$extra_mk_regex_array[2]);
+  	for( $cnt=0; $cnt < count($domains_array); $cnt++ ) {
+  		$domain_to_test = rtrim($domains_array[$cnt],"\\");
   		$domain_to_test = preg_replace($unwanted_chars, "", $domain_to_test);
   		if (strlen($domain_to_test) > 3){
   			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
@@ -158,12 +167,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$name = isset($_POST['name']) ? $_POST['name'] : "";
 	if (eregi("\r",$name) || eregi("\n",$name))	die("No intrusion! ?? :(");
 	$name = clean_comment($name);
-
-// $url
-	$url = isset($_POST['url']) ? $_POST['url'] : "";
-	if(eregi("\r",$url) || eregi("\n",$url))	die("No intrusion! ?? :(");
-	if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
-	$url = clean_comment($url);
 
 // $parent_name
 	$parent_name = isset($_POST['parent_name']) ? $_POST['parent_name'] : "";
