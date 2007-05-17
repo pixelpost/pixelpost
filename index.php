@@ -496,7 +496,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 	else
 	{
-		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE ORDER BY datetime desc limit 0,1");
+		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
 	}
 	$last_image_name = $last_image_row['image'];
 	$last_image_id = $last_image_row['id'];
