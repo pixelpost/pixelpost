@@ -72,6 +72,10 @@ if ($_GET['optaction']=='updateall')
 		}
 		//break;
 
+		//case "updateadminlang"
+		$update = sql_query("update ".$pixelpost_db_prefix."config set admin_langfile='".$_POST['new_admin_lang']."' where admin='".$cfgrow['admin']."'");
+		//break;
+
 		//case "updateemail":
 		if ($_POST['new_email']!='')
 			$update = sql_query("update ".$pixelpost_db_prefix."config set email='".$_POST['new_email']."' where admin='".$cfgrow['admin']."'");
@@ -351,6 +355,37 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			}
 		echo "
 			</select></div>
+			
+		<div class='jcaption'>
+		ADMIN $admin_lang_optn_lang_file
+		</div>
+
+		<div class='content'>
+		<select name='new_admin_lang'>";
+		if (!isset($cfgrow['admin_langfile'])) $cfgrow['admin_langfile'] = $cfgrow['langfile'];
+		echo "<option value='".$cfgrow['admin_langfile']."'>".$cfgrow['admin_langfile']."</option>
+		";
+		// go through template folder
+		$dir = "../language";
+
+		if($handle = opendir($dir)) {
+			while (false !== ($file = readdir($handle))) {
+				$admin_pre = substr("$file",0,6);
+				// only admin-language-files are listed
+				if(is_file('../language/'.$file) && ($file != "index.html") && $admin_pre == "admin-") {
+					$file = ereg_replace("admin-lang-","",$file);
+					$file = ereg_replace(".php","",$file);
+					if ($file !== $cfgrow['admin_langfile']) {
+						echo "<option value='$file'>$file</option>";
+					}
+				}
+			}
+			closedir($handle);
+		}
+			
+		echo "</select></div>
+		
+		
 		<div class='jcaption'>
 		$admin_lang_optn_email
 		</div>

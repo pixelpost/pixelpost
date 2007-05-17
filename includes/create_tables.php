@@ -603,12 +603,18 @@ function UpgradeTo165( $prefix, $newversion)
   //Turn_Addons_off( $prefix );
 	//Turn_Pixelpost_Addons_on( $prefix );
 	// update version
+	
+	// admin_langfile field
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `admin_langfile` VARCHAR( 100)")
+	or die("Error: ". mysql_error());
+	
+	// update version
 	mysql_query("
 	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
 	")
 	or die("Error: ". mysql_error());
 
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";	
 }
 
 ?>

@@ -2,10 +2,10 @@
 
 // SVN file version:
 // $Id$
-
 /*
 
 Pixelpost version 1.6
+
 
 Pixelpost www: http://www.pixelpost.org/
 
@@ -81,9 +81,9 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 /* Special language file for Admin-Section, default is english */
 if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
 {
-	if (file_exists("../language/admin-lang-".$cfgrow['langfile'].".php"))
+	if (file_exists("../language/admin-lang-".$cfgrow['admin_langfile'].".php"))
 	{
-		$admin_lang_file_name = "admin-lang-".$cfgrow['langfile'];
+		$admin_lang_file_name = "admin-lang-".$cfgrow['admin_langfile'];
 	}
 	else
 	{
