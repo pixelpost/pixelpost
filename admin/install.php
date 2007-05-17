@@ -129,6 +129,8 @@ switch( $installed_version) {
 		UpgradeTo16beta($prefix,'1.59');
 	case 1.59:  //upgrade from 1.6Beta to 1.6Final
 		UpgradeTo16final($prefix,'1.6');
+	case 1.6:  //upgrade from 1.6Final to 1.6.5
+		UpgradeTo165($prefix,'1.65');
 	// Add the upgrade to 1.7 here later
 	break;
 	default:

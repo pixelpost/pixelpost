@@ -31,13 +31,13 @@ function Show_username_password(){
 function Turn_Addons_off( $prefix ){
 	$result = mysql_query("SELECT count(status) FROM `{$prefix}addons` where status='on'");
 	while ($row = mysql_fetch_assoc($result)) {
-    if ($row[0] > 0){
+    if ($row['count(status)'] > 0){
     	// create a new field to hold previous settings
     	mysql_query("ALTER TABLE ".$prefix."addons ADD `status_backup` VARCHAR(3) NOT NULL default 'on'");
     	// copy previous settings
-    	mysql_query("UPDATE `{$prefix}addons` SET `status_backup` = `status`");
+    	mysql_query("UPDATE `".$prefix."addons` SET `status_backup` = `status`");
     	// turn all addons off
-    	mysql_query("UPDATE `{$prefix}addons` SET status='off'");
+    	mysql_query("UPDATE `".$prefix."addons` SET status='off'");
     }
 	}
 }
@@ -54,12 +54,24 @@ function Turn_Pixelpost_Addons_on( $prefix ){
 													'paged_archive',
 													'referer_spam');
 	foreach ($default_addons as $addon_name) {
-    mysql_query("UPDATE `{$prefix}addons` SET `status` = `status_backup` WHERE `addon_name` = {$addon_name}");
+    mysql_query("UPDATE `".$prefix."addons` SET `status` = `status_backup` WHERE `addon_name` = '{$addon_name}'");
+    mysql_query("UPDATE `".$prefix."addons` SET `status_backup` = 'res' WHERE `addon_name` = '{$addon_name}'");
   }
   // we can get a list of disabled thirdparty addons here:
-  
+  $result = mysql_query("SELECT `addon_name` FROM `".$prefix."addons` where `status_backup` = 'on'");
+  $num_rows = mysql_num_rows($result);
   // cleanup temp field
   mysql_query("ALTER TABLE `{$prefix}addons` DROP `status_backup`"); 
+  echo "<strong>Upgrading and third-party addons</strong><br />Some addons might not work with this version of Pixelpost. This is why the installer deactivated all third-party addons. This action will ensure that you don't end up with an upgraded-but-broken installation of Pixelpost after the upgrade process.<br /><br />Pixelpost's default addons were activated/deactivated based on your configuration.";
+  if ($num_rows > 0){
+  	echo " The following addons have been disabled:<br /><br />";
+  	while ($row = mysql_fetch_array($result)) {
+			echo "   ".$row['addon_name']."<br />";	
+		}
+		echo "<br />After loging in at the Adminpanel you can turn these third-party Addons on, one by one and check if everything works as expected. If some Addons do not work, deactivate the Addon, then contact the Addon author to encourage him (or her) to upgrade the Addon.<br /><br />";
+	} else {
+		echo " No additional addons have been disabled.<br /><br />";
+	}
 }
 
 function Create13Tables( $prefix)
@@ -584,4 +596,19 @@ function UpgradeTo16final( $prefix, $newversion)
 
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
 }
+
+function UpgradeTo165( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+  //Turn_Addons_off( $prefix );
+	//Turn_Pixelpost_Addons_on( $prefix );
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
+
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+}
+
 ?>
