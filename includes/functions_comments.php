@@ -176,7 +176,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // $email
 	$email = isset($_POST['email']) ? clean_comment($_POST['email']) : "";
 	if (eregi("\r",$email) || eregi("\n",$email))	die("No intrusion! ?? :(");
-
+	// aditional check by schonhose
+	if (!check_email_address($email)){
+		eval_addon_front_workspace('comment_email_not_valid');	
+		header("HTTP/1.0 404 Not Found");
+		header("Status: 404 File Not Found!");
+   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 07).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
+   	exit;
+	}
 
 	// check that only one email-adress entered
 	$onlyone = $email;

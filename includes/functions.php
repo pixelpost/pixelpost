@@ -50,6 +50,42 @@ function check_and_set($directory){
     }    
 }
 
+// checks if it is a valid email adres
+function check_email_address($email)
+{
+	// Check for invalid characters
+	if (preg_match('/[\x00-\x1F\x7F-\xFF]/', $email))
+	return false;
+
+	// Check that there's one @ symbol, and that the lengths are right
+	if (!preg_match('/^[^@]{1,64}@[^@]{1,255}$/', $email))
+	return false;
+
+	// Split it into sections to make life easier
+	$email_array = explode('@', $email);
+
+	// Check local part
+	$local_array = explode('.', $email_array[0]);
+	foreach ($local_array as $local_part)
+	if (!preg_match('/^(([A-Za-z0-9!#$%&\'*+\/=?^_`{|}~-]+)|("[^"]+"))$/', $local_part))
+	return false;
+
+	// Check domain part
+	if (preg_match('/^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}$/', $email_array[1]) || preg_match('/^\[(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}\]$/', $email_array[1]))
+	return true; // If an IP address
+	else
+	{ // If not an IP address
+		$domain_array = explode('.', $email_array[1]);
+		if (sizeof($domain_array) < 2)
+		return false; // Not enough parts to be a valid domain
+
+		foreach ($domain_array as $domain_part)
+		if (!preg_match('/^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]))$/', $domain_part))
+		return false;
+
+		return true;
+	}
+}
 
 // Returns the Pixelpost version by looking at the database.  Returns 0 if not installed.
 // This is used when performing the initial install/upgrade
