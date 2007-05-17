@@ -13,7 +13,7 @@
  * Updated for Pixelpost 1.6 by Karin Uhlig <2@kg3.de>
  */
 
-$addon_name = "Pixelpost Akismet comment filter";
+$addon_name = "Pixelpost Akismet comment filter (Admin Side)";
 $addon_version = '1.3';
 
 $newakismet_key = $cfgrow['akismet_key'];
@@ -23,6 +23,7 @@ add_admin_functions('get_akismet_links', 'show_commentbuttons');
 add_admin_functions('get_akismet_pages', 'pages_commentbuttons');
 add_admin_functions('get_akismet_comments', 'single_comment_list');
 add_admin_functions('get_akismet_style', 'admin_html_head');
+
 
 
 function get_akismet_links()
@@ -109,9 +110,7 @@ if ($fieldexists == 0) {
 // if the akismet_keep field does not exist, create it
 if(!mysql_query("SELECT akismet_keep from ".$pixelpost_db_prefix."config")) mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `akismet_keep` INT DEFAULT '7' NOT NULL ") or die ('<span style="color:red"><b>Error: '. mysql_error());
 
-$query = "SELECT akismet_key FROM {$pixelpost_db_prefix}config";
-$rs = mysql_query($query);
-list($key) = mysql_fetch_row($rs);
+$key = $cfgrow['akismet_key'];
 
 global $pp_api_host, $pp_api_port, $pp_user_agent;
 
@@ -185,28 +184,6 @@ function akismet_verify_key( $key ) {
     return false;
 }
 
-function pp_auto_check_comment( $comment ) {
-  global $pp_api_host, $pp_api_port;
-  global $cfgrow;
-
-  $comment['user_ip']    = $_SERVER['REMOTE_ADDR'];
-  $comment['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-  $comment['referrer']   = $_SERVER['HTTP_REFERER'];
-  $comment['blog']       = $cfgrow['siteurl'];
-
-  $ignore = array( 'HTTP_COOKIE' );
-
-  foreach ( $_SERVER as $key => $value )
-    if ( !in_array( $key, $ignore ) )
-      $comment["$key"] = $value;
-
-  $query_string = '';
-  foreach ( $comment as $key => $data )
-    $query_string .= $key . '=' . urlencode( stripslashes($data) ) . '&';
-  $response = pp_http_post($query_string, $pp_api_host, '/1.1/comment-check', $pp_api_port);
-  return $response[1];
-}
-
 //Function to report the comment is not spam
 function pp_submit_nonspam_comment () {
   global $pp_api_host, $pp_api_port, $cfgrow, $pixelpost_db_prefix;
@@ -277,23 +254,7 @@ function pp_submit_spam_comment () {
   }
 }
 
-function check_akismet_comment() {
-	global $cmnt_publish_permission, $cmnt_moderate_permission, $cfgrow, $name, $email, $url, $message;
-     $params = array('comment_type' => 'comment', 'comment_author' => $name, 'comment_author_email' => $email, 'comment_author_url' => $url, 'comment_content' => $message);
-	    if ('true' == pp_auto_check_comment($params)) {
-	    	eval_addon_front_workspace('comment_blocked_askimet');
-	      $cmnt_publish_permission = 'spm';
-	      $cmnt_moderate_permission = 'yes';
-		  	$cfgrow['commentemail'] = 'no';
-	    } 
-	    else {
-	    	// Code below commented out to respect the users choice for each picture.
-	    	// If the setting requires the comments are always moderated then akismet approved comments are no exception.
-	      //$cmnt_publish_permission = 'yes';
-	      //$cmnt_moderate_permission = 'no';
-	    }
-	    $akismet_comment_checked = true;
-}
+
 
 //Check whether ADMIN has submitted comment to mark as spam for Akismet
 if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetspam') {
