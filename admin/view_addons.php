@@ -44,9 +44,7 @@ if (isset($_GET['turnon'])){
 		while (list($id,$filename,$status)= mysql_fetch_row($query_ad_s))	{
 			if (file_exists($dir.$filename.".php")){
 				include($dir.$filename.".php");
-				echo "<div class='jcaption'>$addon_name
-				<i>($filename - version $addon_version)
-				";
+				echo "<div class='jcaption'>".(isset($addon_name)?$addon_name:'')." <i>($filename - version ".(isset($addon_version)?$addon_version:'?').")";
 				$status = strtoupper($status);
 				if ($status=='ON')
 					$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnoff=$filename' title='$admin_lang_addon_off'>$status</a>";
@@ -55,11 +53,14 @@ if (isset($_GET['turnon'])){
 				echo $toecho_ad_s."
 				</i>
 				</div><div class='content'>\n";
-				if ($status=='ON')
-					echo $addon_description;
+				if ($status=='ON' && isset($addon_description)) echo $addon_description;
+				else echo "This addon provides no further information. Please have a look into the addon file for what it is meant to be and blame the addon author for that.";
 				echo "</div><p />";
-				}
 			}
+			unset($addon_name);
+			unset($addon_description);
+			unset($addon_version);
+		}
 /*
     if($handle = opendir($dir)) {
         while (false !== ($file = readdir($handle))) {
