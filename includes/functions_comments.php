@@ -9,7 +9,6 @@
 
 // variable which says if notofication can be send (SPAM and problem free comment)
 // by default it can't
-
 $email_flag = 0;
 
 if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
@@ -43,7 +42,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
 	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
 	{
-		if ($cfgrow['comment_timebetween'] > 60){
+  	if ($cfgrow['comment_timebetween'] > 60){
   		$time_to_wait = floor($cfgrow['comment_timebetween']/60)." minute(s)";
   	} else {
   		$time_to_wait = $cfgrow['comment_timebetween']." seconds";
@@ -56,7 +55,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // $parent_id
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 
-	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){
+	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){	
 		eval_addon_front_workspace('comment_blocked_id');	
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
@@ -191,7 +190,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 
 	if($parent_id == "")	$extra_message = "<b>$lang_message_missing_image</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-	if($message == "")	$extra_message = "<b>$lang_message_missing_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+	if($message == "" || $message == 'Type your comment here.')	$extra_message = "<b>$lang_message_missing_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 	if($name == "")	$extra_message = "<b>$lang_message_missing_name</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
@@ -207,13 +206,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 				$cmnt_moderate_permission ='yes';
 			}
 
-//include the Akismet comment filter script *after* Pixelpost's own moderation
-//check if the addon is in place and if it is on
-	$result_aks = mysql_query("SELECT * FROM {$pixelpost_db_prefix}addons WHERE addon_name='admin_akismet_comment' AND status='on'");
-	if (mysql_num_rows($result_aks) > 0) { 	 //It's on!!
-		include('./addons/admin_akismet_comment.php');
-		check_akismet_comment();
-	}	
+////include the Akismet comment filter script *after* Pixelpost's own moderation
+////check if the addon is in place and if it is on
+//		$result_aks = mysql_query("SELECT * FROM {$pixelpost_db_prefix}addons WHERE addon_name='admin_akismet_comment' AND status='on'");
+//		if (mysql_num_rows($result_aks) > 0) { 	 //It's on!!
+//			include('./addons/front_akismet_comment.php');
+//			check_akismet_comment();
+//		}
 	
 			// to the job now
 			if ($cmnt_moderate_permission =='yes')
@@ -305,7 +304,7 @@ $lang_email_notification_pt4
 
 	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
 
-	if($_POST['withthankyou'] == 'no')	header('Location: ' . $comment_redirect_url);
+	if($_POST['withthankyou'] == 'no')	header('Location: ' . $comment_redirect_url . '#comments');
 ?>
 
 <!DOCTYPE html
@@ -323,5 +322,11 @@ $lang_email_notification_pt4
   echo "<a href='$_SERVER[HTTP_REFERER]'>$lang_comment_redirect</a><p />";
 	echo "</body></html>";
 } // commentemail yes
+
+//function log_it($stringData) {
+//	$fh = fopen("spamlog/log.txt", 'a') or die("can't open file");
+//	fwrite($fh, $stringData);
+//	fclose($fh);
+//}
 
 ?>
