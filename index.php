@@ -298,7 +298,7 @@ if ($language_full==$cfgrow['langfile'])
 if(isset($_GET['popup'])&&$_GET['popup'] == "comment")
 {
 	// additional language file for comment template
-	if ($language_full==$cfgrow['altlangfile'] && file_exists("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html")) $tpl = file_get_contents("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html");
+	if (file_exists("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html")) $tpl = file_get_contents("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html");
 	// if not existing or no additional language chosen, default template file is called without error
 	else $tpl = file_get_contents("templates/".$cfgrow['template']."/comment_template.html");
 }
