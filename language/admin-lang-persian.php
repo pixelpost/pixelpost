@@ -186,10 +186,6 @@ $admin_lang_imgedit_mass_1          = "ويرايش عمده طبقه‌بندي
 $admin_lang_imgedit_mass_2          = "افزودن";
 $admin_lang_imgedit_mass_3          = "برداشتن";
 $admin_lang_imgedit_mass_4          = "به طور عمده به‌روز رساني شود";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -455,4 +451,19 @@ $admin_lang_cmnt_rep_spam = 'Report Spam';
 
 $admin_lang_optn_visitorbooking_title = 'Book visitors';
 $admin_lang_optn_visitorbooking_desc  = 'Should Pixelpost book information of every visitor?';
+
+$admin_lang_dutch							="Dutch";
+$admin_lang_english						="English";
+$admin_lang_french						="French";
+$admin_lang_german						="German";
+$admin_lang_italian						="Italian";
+$admin_lang_norwegian					="Norwegian";
+$admin_lang_persian						="Persian";
+$admin_lang_polish						="Polish";
+$admin_lang_portuguese				="Portuguese";
+$admin_lang_simplified_chinese="Chinese";
+$admin_lang_spanish						="Spanish";
+$admin_lang_swedish						="Swedish";
+$admin_lang_japanese					="Japanese";
+$admin_lang_danish						="Danish";
 ?>

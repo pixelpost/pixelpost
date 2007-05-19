@@ -193,10 +193,6 @@ $admin_lang_imgedit_mass_1          = "Bulk bewerken categorie";
 $admin_lang_imgedit_mass_2          = "Wijs toe";
 $admin_lang_imgedit_mass_3          = "Verwijder uit";
 $admin_lang_imgedit_mass_4          = "Bulk bijwerken";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -447,6 +443,21 @@ $admin_lang_spam_check_comm  = "Controleer oude reacties";
 $admin_lang_spam_del_bad_comm = "Verwijder Slechte reacties";
 $admin_lang_spam_del_bad_ref = "Verwijder Slechte Referrers";
 $admin_lang_spam_updateblacklist = "Werk All Blocklijsten bij";
+
+$admin_lang_dutch="Nederlands";
+$admin_lang_english="Engels";
+$admin_lang_french="Frans";
+$admin_lang_german="Duits";
+$admin_lang_italian="Italiaans";
+$admin_lang_norwegian= "Noor";
+$admin_lang_persian= "Perzisch";
+$admin_lang_polish= "Pools";
+$admin_lang_portuguese="Portugees";
+$admin_lang_simplified_chinese="Chinese";
+$admin_lang_spanish="Spaans";
+$admin_lang_swedish= "Zweeds";
+$admin_lang_japanese= "Japanner";
+$admin_lang_danish= "Deens";
 
 // End of Admin-Language-File
 ?>

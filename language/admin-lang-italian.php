@@ -196,10 +196,6 @@ $admin_lang_imgedit_mass_1          = "Modifica di massa categoria";
 $admin_lang_imgedit_mass_2          = "Assegna";
 $admin_lang_imgedit_mass_3          = "Revoca";
 $admin_lang_imgedit_mass_4          = "Aggiorna in massa";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -450,4 +446,19 @@ $admin_lang_spam_check_comm  = "Controlla i Commenti Passati";
 $admin_lang_spam_del_bad_comm = "Cancella i Commenti Cattivi";
 $admin_lang_spam_del_bad_ref = "Cancella i Referer Cattivi";
 $admin_lang_spam_updateblacklist = "Aggiorna tutte le Liste di Esclusione";
+
+$admin_lang_dutch = 							"Dutch";
+$admin_lang_english = 						"Inglese";
+$admin_lang_french = 							"Francese";
+$admin_lang_german = 							"Tedesco";
+$admin_lang_italian = 						"Italiano";
+$admin_lang_norwegian = 					"Norvegese";
+$admin_lang_persian = 						"Persiano";
+$admin_lang_polish = 							"Smalto";
+$admin_lang_portuguese = 					"Portoghese";
+$admin_lang_simplified_chinese=		"Cinese";
+$admin_lang_spanish = 						"Spagnolo";
+$admin_lang_swedish = 						"Svedese";
+$admin_lang_japanese = 						"Giapponese";
+$admin_lang_danish = 							"Danese";
 ?>

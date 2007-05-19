@@ -193,10 +193,6 @@ $admin_lang_imgedit_mass_1          = "Rediger kategorier";
 $admin_lang_imgedit_mass_2          = "Tildel";
 $admin_lang_imgedit_mass_3          = "Fjern";
 $admin_lang_imgedit_mass_4          = "Opdater alle afkrydsede billeder";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -338,7 +334,7 @@ $admin_lang_optn_dsbl_list_desc 			= "Listen <a href=\"http://www.dsbl.org\" tar
 $admin_lang_optn_time_between_comments = "FOREBYG SPAM FLOOD";
 $admin_lang_optn_time_between_comments_desc = "Antal sekunder f&oslash;r en ny kommentar kan skrives af samme bruger: ";
 $admin_lang_optn_max_uri_comment			= "MAX ANTAL LINKS I KOMMENTAR";
-$admin_lang_optn_max_uri_comment_desc = "Antal links tilladt i én kommentar: ";
+$admin_lang_optn_max_uri_comment_desc = "Antal links tilladt i Ã©n kommentar: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM FEED INDSTILLINGER";
 $admin_lang_optn_rsstype_desc					= "V&aelig;lg typen af RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Vis billeder i fuld st&oslash;rrelse";
@@ -446,6 +442,21 @@ $admin_lang_spam_check_comm  = "Kontrollere tidligere kommentarer";
 $admin_lang_spam_del_bad_comm = "Slet ikke-tilladte kommentarer";
 $admin_lang_spam_del_bad_ref = "Slet ikke-tilladte referrers";
 $admin_lang_spam_updateblacklist = "Opdater alle lister";
+
+$admin_lang_dutch							="Hollandsk"; 
+$admin_lang_english						="Engelsk";
+$admin_lang_french						="Fransk";
+$admin_lang_german						="Tysk";
+$admin_lang_italian						="Italiensk";
+$admin_lang_norwegian					="Nordmand";
+$admin_lang_persian						="Persisk";
+$admin_lang_polish						="Pli";
+$admin_lang_portuguese				="Portuguese";
+$admin_lang_simplified_chinese="Kinesisk";
+$admin_lang_spanish						="Spansk";
+$admin_lang_swedish						="Svensk";
+$admin_lang_japanese					="Japansk";
+$admin_lang_danish						="Dansk";
 
 // End of Admin-Language-File
 ?>

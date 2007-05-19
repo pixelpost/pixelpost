@@ -475,4 +475,20 @@ $admin_lang_spam_check_comm      = "Sprawdź dotychczasowe komentarze";
 $admin_lang_spam_del_bad_comm    = "Skasuj Złe Komentarze";
 $admin_lang_spam_del_bad_ref     = "Skasuj Złych Referujących";
 $admin_lang_spam_updateblacklist = "Aktualizuj wszystkie listy zbanowanych";
+
+// Alternative language
+$admin_lang_dutch									="holenderski";  
+$admin_lang_english								="angielski";  
+$admin_lang_french								="francuski";  
+$admin_lang_german								="niemiecki";  
+$admin_lang_italian								="w³oski"; 
+$admin_lang_norwegian							="norweski";  
+$admin_lang_persian								="perski";  
+$admin_lang_polish								="polski";  
+$admin_lang_portuguese						="portugalski"; 
+$admin_lang_simplified_chinese		="chiñski";  
+$admin_lang_spanish								="hishpañski";  
+$admin_lang_swedish								="szwedzki";  
+$admin_lang_japanese							="japoñski";  
+$admin_lang_danish								="duñski";
 ?>

@@ -454,4 +454,20 @@ $admin_lang_cmnt_rep_spam = "Spam melden!!";
 $admin_lang_optn_visitorbooking_title = "Seitenbesuche";
 $admin_lang_optn_visitorbooking_desc  = "Soll Pixelpost Seitenbesuche / Informationen in einer Tabelle speichern?";
 
+// Alternative language
+$admin_lang_dutch							="holländisch";
+$admin_lang_english						="englisch";
+$admin_lang_french							="französisch";
+$admin_lang_german							="deutsch";
+$admin_lang_italian						="italienisch";
+$admin_lang_norwegian					="norwegisch";
+$admin_lang_persian						="persisch";
+$admin_lang_polish							="polnisch";
+$admin_lang_portuguese					="portugiesisch";
+$admin_lang_simplified_chinese	="chinesisch";
+$admin_lang_spanish						="spanisch";
+$admin_lang_swedish						="schwedisch";
+$admin_lang_japanese						="japanisch";
+$admin_lang_danish							="dänisch";
+
 ?>

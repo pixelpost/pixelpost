@@ -386,12 +386,12 @@ if($_GET['view'] == "images")
 		while(list($fmonth) = mysql_fetch_row($query)) {
 			$selectfmons .= "<option value='$fmonth'".($fmonth==$selectfmon?' selected=\"selected\"':'').">".$fmonth."</option>\n";
 		}
-		$langs = 'lang_alt_lang_'.$cfgrow['langfile'];
+		$langs = 'admin_lang_'.$cfgrow['langfile'];
 		$langs = ${$langs};
-		if (preg_match('/alt="(.+)"/', $langs, $langsar)) $langs = $langsar[1];
-		$altlangs = 'lang_alt_lang_'.$cfgrow['altlangfile'];
-		$altlangs = ${$altlangs};
-		if (preg_match('/alt="(.+)"/', $altlangs, $altlangsar)) $altlangs = $altlangsar[1];
+		if ($cfgrow['altlangfile'] != 'Off') {
+			$altlangs = 'admin_lang_'.$cfgrow['altlangfile'];
+			$altlangs = ${$altlangs};
+		}
 		echo "<div class='jcaption'>$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</div>
 		<div class='content'>
 		<table width='400' border='0' cellpadding='2'>

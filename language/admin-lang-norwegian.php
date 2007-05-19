@@ -18,7 +18,7 @@ Development Team:
 Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
-Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
+Copyright Â© 2006 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
 Pixelpost wiki: 	http://wiki.pixelpost.org/
@@ -84,15 +84,15 @@ $admin_lang_pw_mailtext		= "Ihre email-Adresse:";
 $admin_lang_pw_newpw		= "Ihr neues Passwort:";
 $admin_lang_pw_text_1		= "Pixelpost Passwort-Wiederherstellung";
 $admin_lang_pw_text_2		= "From: PIXELPOST Administration";
-$admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthält Ihren User-Namen und ein neues Passwort. \n<br />
-				   Prüfen Sie Ihren Postkorb:  ";
+$admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthÃ¤lt Ihren User-Namen und ein neues Passwort. \n<br />
+				   PrÃ¼fen Sie Ihren Postkorb:  ";
 $admin_lang_pw_text_4 		= "<span style='color:red;'>Fehler! Ein Fehler ist aufgetreten! \n<br />
 				   Die email-Adresse und der User-Name, den Sie eingegeben haben, ist ok, aber es konnte keine Mail verschickt werden. \n<br />
                                    Ask your host administrator for help</span>";
 $admin_lang_pw_text_5 		= "Database error:";
 $admin_lang_pw_text_6		= "<br />Updating the new password failed.";
-$admin_lang_pw_text_7           = "Diese Mail wurde automatisch vom Log-In-Bereich Ihres Pixelpost-Photoblogs versandt.\nEs wurde ein neues Passwort für den Verwaltungsbereich angefordert.\n\nSie sollten jetzt Ihren Photoblog aufrufen \n\nauf ";
-$admin_lang_pw_text_8           = "\n\nund sich anmelden mit dem neuen Passwort, um das automatisch generierte Passwort sofort zu überschreiben!\n\nDas ist notwendig, zu Ihrer Sicherheit!";
+$admin_lang_pw_text_7           = "Diese Mail wurde automatisch vom Log-In-Bereich Ihres Pixelpost-Photoblogs versandt.\nEs wurde ein neues Passwort fÃ¼r den Verwaltungsbereich angefordert.\n\nSie sollten jetzt Ihren Photoblog aufrufen \n\nauf ";
+$admin_lang_pw_text_8           = "\n\nund sich anmelden mit dem neuen Passwort, um das automatisch generierte Passwort sofort zu Ã¼berschreiben!\n\nDas ist notwendig, zu Ihrer Sicherheit!";
 
 
 
@@ -186,11 +186,6 @@ $admin_lang_imgedit_mass_1          = "Mengde rediger kategori";
 $admin_lang_imgedit_mass_2          = "Tildele";
 $admin_lang_imgedit_mass_3          = "Frasi";
 $admin_lang_imgedit_mass_4          = "Mengde oppdater";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
-
 $admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
 $admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
 $admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
@@ -461,4 +456,19 @@ $admin_lang_cmnt_rep_spam = 'Rapporter Spam';
 
 $admin_lang_optn_visitorbooking_title = 'Lagre bes&oslash;kende';
 $admin_lang_optn_visitorbooking_desc  = '&Oslash;nsker du at Pixelpost skal lagre informasjon for hver bes&oslash;kende?';
+
+$admin_lang_dutch							="Hollandsk";
+$admin_lang_english						="Engelsk";
+$admin_lang_french						="Fransk";
+$admin_lang_german						="Tysk";
+$admin_lang_italian						="Italiensk";
+$admin_lang_norwegian					="Norsk";
+$admin_lang_persian						="Persisk";
+$admin_lang_polish						="Polsk";
+$admin_lang_portuguese				="Portuguese";
+$admin_lang_simplified_chinese="Kinesisk";
+$admin_lang_spanish						="Spansk";
+$admin_lang_swedish						="Svensk";
+$admin_lang_japanese					="Japansk";
+$admin_lang_danish						="Danish";
 ?>

@@ -197,10 +197,6 @@ $admin_lang_imgedit_mass_1          = "大量更新するカテゴリ";
 $admin_lang_imgedit_mass_2          = "割り当て済み";
 $admin_lang_imgedit_mass_3          = "未割り当て";
 $admin_lang_imgedit_mass_4          = "大量更新する";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -451,5 +447,31 @@ $admin_lang_spam_del_bad_comm = "不正なコメントを削除する";
 $admin_lang_spam_del_bad_ref = "不正なリファラを削除する";
 $admin_lang_spam_updateblacklist = "すべての禁止リストを更新する";
 
+
+$admin_lang_dutch="Dutch";
+$admin_lang_english="English";
+$admin_lang_french="French";
+$admin_lang_german="German";
+$admin_lang_italian="Italian";
+$admin_lang_norwegian="Norwegian";
+$admin_lang_persian="Persian";
+$admin_lang_polish="Polish";
+$admin_lang_portuguese="Portuguese";
+$admin_lang_simplified_chinese="Chinese";
+$admin_lang_spanish="Spanish";
+$admin_lang_swedish="Swedish";
+$admin_lang_japanese="Japanese";
+$admin_lang_danish="Danish";      
 // End of Admin-Language-File
-?>
+?>    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

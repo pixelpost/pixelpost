@@ -194,10 +194,6 @@ $admin_lang_imgedit_mass_1          = "Mass edit category";
 $admin_lang_imgedit_mass_2          = "Assign";
 $admin_lang_imgedit_mass_3          = "Un-Assign";
 $admin_lang_imgedit_mass_4          = "Update in mass";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -448,6 +444,22 @@ $admin_lang_spam_check_comm  = "Check Past Comments";
 $admin_lang_spam_del_bad_comm = "Delete Bad Comments";
 $admin_lang_spam_del_bad_ref = "Delete Bad Referrers";
 $admin_lang_spam_updateblacklist = "Update All Banlists";
+
+// Alternative language
+$admin_lang_dutch							="Dutch";
+$admin_lang_english						="English";
+$admin_lang_french						="French";
+$admin_lang_german						="German";
+$admin_lang_italian						="Italian";
+$admin_lang_norwegian					="Norwegian";
+$admin_lang_persian						="Persian";
+$admin_lang_polish						="Polish";
+$admin_lang_portuguese				="Portuguese";
+$admin_lang_simplified_chinese="Chinese";
+$admin_lang_spanish						="Spanish";
+$admin_lang_swedish						="Swedish";
+$admin_lang_japanese					="Japanese";
+$admin_lang_danish						="Danish";
 
 // End of Admin-Language-File
 ?>

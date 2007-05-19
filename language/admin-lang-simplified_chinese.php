@@ -194,10 +194,6 @@ $admin_lang_imgedit_mass_1          = "批量编辑类别";
 $admin_lang_imgedit_mass_2          = "分配";
 $admin_lang_imgedit_mass_3          = "撤消分配";
 $admin_lang_imgedit_mass_4          = "批量更新";
-$admin_lang_imgedit_mass_5          = "Selected category/ies was/were unassigned for";
-$admin_lang_imgedit_mass_6          = "pictures.";
-$admin_lang_imgedit_mass_7          = "Selected category/ies was/were assigned for";
-$admin_lang_imgedit_mass_8          = "pictures.";
 
 
 // Categories
@@ -449,4 +445,19 @@ $admin_lang_spam_check_comm = "检查过去的评论";
 $admin_lang_spam_del_bad_comm = "删除恶意的评论";
 $admin_lang_spam_del_bad_ref = "删除恶意的Referers";
 $admin_lang_spam_updateblacklist = "更新全部禁止清单";
+
+$admin_lang_dutch							="Dutch";
+$admin_lang_english						="English";
+$admin_lang_french						="French";
+$admin_lang_german						="German";
+$admin_lang_italian						="Italian";
+$admin_lang_norwegian					="Norwegian";
+$admin_lang_persian						="Persian";
+$admin_lang_polish						="Polish";
+$admin_lang_portuguese				="Portuguese";
+$admin_lang_simplified_chinese="Chinese";
+$admin_lang_spanish						="Spanish";
+$admin_lang_swedish						="Swedish";
+$admin_lang_japanese					="Japanese";
+$admin_lang_danish						="Danish";
 ?>
