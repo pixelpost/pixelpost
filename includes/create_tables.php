@@ -498,7 +498,7 @@ function UpgradeTo16beta( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `altlangfile` VARCHAR( 100) DEFAULT 'Off' NOT NULL")
 	or die("Error: ". mysql_error());
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `alt_headline` VARCHAR( 150) DEFAULT '' NOT NULL,
-		ADD `alt_body` TEXT NOT NULL ") or die("Error: ". mysql_error());
+		ADD `alt_body` TEXT ") or die("Error: ". mysql_error());
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100) DEFAULT 'default' NOT NULL")
 	or die("Error: ". mysql_error());
 
