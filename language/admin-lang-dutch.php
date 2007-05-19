@@ -449,14 +449,14 @@ $admin_lang_english="Engels";
 $admin_lang_french="Frans";
 $admin_lang_german="Duits";
 $admin_lang_italian="Italiaans";
-$admin_lang_norwegian= "Noor";
+$admin_lang_norwegian= "Noors";
 $admin_lang_persian= "Perzisch";
 $admin_lang_polish= "Pools";
 $admin_lang_portuguese="Portugees";
 $admin_lang_simplified_chinese="Chinese";
 $admin_lang_spanish="Spaans";
 $admin_lang_swedish= "Zweeds";
-$admin_lang_japanese= "Japanner";
+$admin_lang_japanese= "Japans";
 $admin_lang_danish= "Deens";
 
 // End of Admin-Language-File
