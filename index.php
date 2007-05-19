@@ -39,26 +39,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
-// fix proposed by tomyeah on the forum
-header('Content-Type: text/html; charset=utf-8');
-
-error_reporting(0);
-ini_set('arg_separator.output', '&amp;');
-session_start();
-
-if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
-	error_reporting(E_ALL ^ E_NOTICE);
-	
-}elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"]){
-	error_reporting(E_ALL);
-	
-}
-
 $PHP_SELF = "index.php";
 
 // includes
 require("includes/pixelpost.php");
 require("includes/functions.php");
+
+start_mysql();
+
+//------------- addons in frontpage begins
+// refresh the addons table
+$dir = "addons/";
+refresh_addons_table($dir);
+$addon_front_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
+create_front_addon_array();
+//------------- addons in frontpage ends
+
+// Initialise workspace.
+eval_addon_front_workspace('frontpage_init');
+
+// fix proposed by tomyeah on the forum
+header('Content-Type: text/html; charset=utf-8');
 
 // Set cookie for visitor counter, re-count a person after 60 mins
 setcookie("lastvisit","expires in 60 minutes",time() +60*60);
@@ -73,17 +74,17 @@ if(isset($_POST['vcookie']))
 	setcookie("visitorinfo","$vcookiename%$vcookieurl%$vcookieemail",time() +60*60*24*30); // save cookie 30 days
 }
 
+error_reporting(0);
+ini_set('arg_separator.output', '&amp;');
+session_start();
 
-start_mysql();
-
-//------------- addons in frontpage begins
-// refresh the addons table
-$dir = "addons/";
-refresh_addons_table($dir);
-$addon_front_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
-create_front_addon_array();
-//------------- addons in frontpage ends
-
+if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
+	error_reporting(E_ALL ^ E_NOTICE);
+	
+}elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"]){
+	error_reporting(E_ALL);
+	
+}
 
 if($_GET['showimage'])	$_GET['showimage'] = (int) $_GET['showimage'];
 

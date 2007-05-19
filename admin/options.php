@@ -904,8 +904,9 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				</div>
 				<div class='content'>
 				$admin_lang_optn_max_uri_comment_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='max_uri_comment' value='".$cfgrow['max_uri_comments']."' />
-				</div>
-				<div class='jcaption'>
+				</div>";
+				eval_addon_admin_workspace_menu("additional_spam_measures","");
+				echo "<div class='jcaption'>
 				$admin_lang_optn_update
 				</div>
 
