@@ -422,29 +422,29 @@ $admin_lang_optn_markdown_desc        = "Soll Pixelpost die Markdown-Funktion in
 $admin_lang_optn_exif			            = "Exif verwenden";
 $admin_lang_optn_exif_desc		        = "Soll Pixelpost die Exif-Funktion in der Bildseite verwenden?";
 $admin_lang_optn_token			          = "Token in Formularen aktivieren";
-$admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
-																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
-																				 Should this setting be enabled?";
-$admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
-$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
-$admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
-																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
-$admin_lang_optn_time_between_comments = "Prevent SPAM flood";
-$admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
-$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
-$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
-$admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
-$admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
-$admin_lang_optn_rss_full							= "Show full size pictures";
-$admin_lang_optn_rss_thumbs						= "Show thumbnails";
-$admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
-$admin_lang_optn_rss_text							= "Show text only";
-$admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
-$admin_lang_optn_alt_lang             = "Alternative language settings: ";
-$admin_lang_optn_alt_lang_dis         = "disabled";
-$admin_lang_optn_alt_lang_no          = "disabled";
+$admin_lang_optn_token_desc		        = "Die Verwendung eines Token reduziert die Wahrscheinlichkeit von <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
+																				 Wenn diese Option aktiviert ist, werden Kommentare nur gespeichert, wenn der Token im Formular dem Token in der User-Session entspricht. Um das zu implementieren müssen Sie <strong>&lt;TOKEN&gt;</strong> im Kommentarfeld einfügen (irgendwo zwischen den <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> Tags).
+																				 Wenn Sie das <strong>&lt;TOKEN&gt;</strong> Tag nicht einfügen, wird das Kommentieren nicht mehr funktionieren und der Besucher bekommt eine Fehlermeldung.<br /><br/>\n
+																				 Soll diese Option aktiviert werden?";
+$admin_lang_optn_token_time						= "Maximale Zeit in Minuten zwischen dem Öffnen des Kommentarfensters und dem Absenden eines Kommentars: ";
+$admin_lang_optn_token_error					= "Achtung: Werte kleiner als 1 Minute für Token sind nicht möglich. Token Zeit wurde auf 1 Minute gesetzt.";
+$admin_lang_optn_dsbl_list 						= "Einstellungen für Distributed Sender Blackhole List (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list_desc 			= "Die <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> enthält die IP-Adressen von offenen Servern (Open Relay, Open Proxy oder andere Sicherheitslücken). Solche Server werden oft von Spammern mißbraucht, um e-mails oder Kommentare zu senden.<br /> <br />
+																				Soll die IP-Adresse eines Kommentars in der Distributed Sender Blackhole List geprüft werden?";
+$admin_lang_optn_time_between_comments = "Schutz vor Massen-SPAM";
+$admin_lang_optn_time_between_comments_desc = "Anzahl der Sekunden bevor ein neuer Kommentar gepostet werden kann (automatisierten Massenversand verhindern): ";
+$admin_lang_optn_max_uri_comment			= "Maximale Anzahl von Webadrssen (URI)";
+$admin_lang_optn_max_uri_comment_desc = "Erlaubte Zahl von URIs in einem Kommentar: ";
+$admin_lang_optn_rss_setting					= "RSS/ATOM Feed Einstellungen";
+$admin_lang_optn_rsstype_desc					= "Wählen Sie die Darstellung des RSS/ATOM Feed:";
+$admin_lang_optn_rss_full							= "Bilder in voller Größe zeigen";
+$admin_lang_optn_rss_thumbs						= "Vorschaubilder zeigen";
+$admin_lang_optn_rss_thumbs_only					= "Nur Vorschaubilder zeigen";
+$admin_lang_optn_rss_text							= "Nur Text zeigen";
+$admin_lang_optn_feeditems_desc				= "Anzahl der Einträge in der Feed-Liste: ";
+$admin_lang_optn_alt_lang             = "Zweite Sprache: ";
+$admin_lang_optn_alt_lang_dis         = "nicht ausgewählt";
+$admin_lang_optn_alt_lang_no          = "nicht ausgewählt";
 
 
 
