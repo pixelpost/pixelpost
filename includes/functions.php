@@ -650,7 +650,7 @@ function create_admin_addon_array()
 {
 	global $addon_admin_functions;
 	global $pixelpost_db_prefix;
-	$dir = "../addons/";
+	$addon_dir = "../addons/";
 	if( $_GET['view'] != "addons")
 	{
 		$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='admin'";
@@ -658,7 +658,7 @@ function create_admin_addon_array()
 
 		while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($query_ad_s))
 		{
-			include($dir.$filename.".php");
+			include_once($addon_dir.$filename.".php");
 		} // end while
 	} // end if not addons
 }
@@ -667,12 +667,12 @@ function create_front_addon_array()
 {
 	global $addon_front_functions;
 	global $pixelpost_db_prefix;
-	$dir = "addons/";
+	$addon_dir = "addons/";
 	$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='front'";
 	$result = mysql_query($query_ad_s);
 	while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($result))
 	{
-		include($dir.$filename.".php");
+		include_once($addon_dir.$filename.".php");
 	} // end while
 }
 
