@@ -48,6 +48,11 @@ else
 {
 	$isupdated = "";
 }
+if ($language_abr == $default_language_abr){
+	$headline_selection = 'headline';
+} else  {
+	$headline_selection = 'alt_headline';
+}
 // FIELD_EXISTS
 // Checks whether specified field exists in current or specified table.
 $fieldname = "maxpthumb";
@@ -286,7 +291,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	if (!isset($_GET['archivedate']) && $_GET['category'] != "")
 	{
 	// no archive date
-		$query = "SELECT t1.id,t1.headline,t1.image
+		$query = "SELECT t1.id,t1.{$headline_selection},t1.image
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}catassoc AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
@@ -298,7 +303,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{ // archive date is available
 		$archivedate_start = $_GET['archivedate'] ."-01 00:00:00";
 		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
-		$query = "SELECT id,headline,image FROM ".$pixelpost_db_prefix."pixelpost
+		$query = "SELECT id,{$headline_selection},image FROM ".$pixelpost_db_prefix."pixelpost
 		WHERE (datetime<='$cdate' and datetime >='$archivedate_start' and datetime <= '$archivedate_end')
 		$where ORDER BY datetime DESC" .$limit;
 	}
@@ -307,7 +312,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
   	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
 	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
 
-		$query = "SELECT t1.id,t1.headline,t1.image
+		$query = "SELECT t1.id,t1.{$headline_selection},t1.image
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
@@ -318,7 +323,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else
 	{
-		$query = "SELECT id, headline, image FROM {$pixelpost_db_prefix}pixelpost
+		$query = "SELECT id, {$headline_selection}, image FROM {$pixelpost_db_prefix}pixelpost
 		WHERE (datetime<='$cdate')
 		GROUP BY id
 		ORDER BY datetime DESC" .$limit;

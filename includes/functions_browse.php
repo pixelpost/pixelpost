@@ -7,11 +7,16 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 {
 	$thumb_output = "";
 	$where = "";
+	if ($language_abr == $default_language_abr){
+ 		$headline_selection = 'headline';
+  } else  {
+  	$headline_selection = 'alt_headline';
+ 	}
 
 	if(is_numeric($_GET['category']) && $_GET['category'] != "")
 	{
 		// Modified from Mark Lewin's hack for multiple categories
-		$query = mysql_query("SELECT 1,t2.id,headline,image,datetime
+		$query = mysql_query("SELECT 1,t2.id,{$headline_selection},image,datetime
 													FROM  {$pixelpost_db_prefix}catassoc as t1
 													INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
 													WHERE t1.cat_id = '".$_GET['category']."'
@@ -22,7 +27,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 	elseif(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 	{
 		$where = "AND (DATE_FORMAT(datetime, '%Y-%m')='".$_GET['archivedate']."')"; //DATE_FORMAT(foo, '%Y-%m-%d')
-		$query = mysql_query("SELECT 1,id,headline,image, datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') $where ORDER BY datetime desc");
+		$query = mysql_query("SELECT 1,id,{$headline_selection},image, datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') $where ORDER BY datetime desc");
 		$lookingfor = 1;
 	}
 	elseif(isset($_POST['category']))
@@ -37,7 +42,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 		}
 
 		$where .= " 0)";
-		$querystr = "SELECT COUNT(t1.id), t2.id,headline,image,datetime
+		$querystr = "SELECT COUNT(t1.id), t2.id,{$headline_selection},image,datetime
 									FROM {$pixelpost_db_prefix}catassoc AS t1
 									INNER JOIN {$pixelpost_db_prefix}pixelpost t2 ON t2.id = t1.image_id
 									WHERE (datetime<='$cdate') AND
@@ -60,7 +65,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
   		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
   	}
 
-		$querystr = "SELECT 1, t1.id,t1.headline,t1.image, t1.datetime
+		$querystr = "SELECT 1, t1.id,t1.{$headline_selection},t1.image, t1.datetime
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
 		WHERE (t1.datetime<='$cdate')
 		$where
@@ -73,7 +78,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 	else
 	{
 		$lookingfor = 1;
-		$query = mysql_query("SELECT 1,id,headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc");
+ 		$query = mysql_query("SELECT 1,id,{$headline_selection},image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc");
 	}
 
 
