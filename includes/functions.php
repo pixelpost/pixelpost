@@ -192,7 +192,7 @@ function createthumbnail($file)
   // credit to codewalkers.com - there is 90% a tutorial there
   $max_width = $cfgrow['thumbwidth'];
   $max_height = $cfgrow['thumbheight'];
-  define(IMAGE_BASE, "../images");
+  define(IMAGE_BASE, rtrim($cfgrow['imagepath'],"/"));
   $image_path = IMAGE_BASE . "/$file";
   $img = null;
   $image_path_exp = explode('.', $image_path);

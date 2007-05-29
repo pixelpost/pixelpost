@@ -182,8 +182,8 @@ switch ($_GET['optaction'])
 		if(function_exists('gd_info'))
 		{
 			$thumbnail_counter = 0;
-			$dir = "../images"; // images folder
-
+			//$dir = "../images"; // images folder
+			$dir = rtrim($cfgrow['imagepath'],"/");
 			if($handle = opendir($dir))
 			{
 				while (false !== ($file = readdir($handle)))
@@ -402,8 +402,9 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<input type='text' name='new_image_path' value='".$cfgrow['imagepath']."' style='width:300px;' /> <br />
-		</div>
+		<input type='text' name='new_image_path' value='".$cfgrow['imagepath']."' style='width:300px;' /> <br /><br />";
+		echo str_replace("http://www.pixelpost.org/", "../images/", $admin_lang_optn_tip);
+		echo"</div>
 
 
 		<div class='jcaption'>

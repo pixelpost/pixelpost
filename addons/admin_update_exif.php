@@ -36,7 +36,7 @@ if(isset($_POST['Action']) && ($_POST['Action']=="Update EXIF"))
   $sql = mysql_query($query) or die("db error");
   while($row = mysql_fetch_array($sql))
   {
-  	$exif_info_db = serialize_exif ("../images/".$row['image']);
+  	$exif_info_db = serialize_exif ($cfgrow['imagepath'].$row['image']);
   	$id=$row['id'];
 		mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$id'");
 	 	$counter=$counter+1;

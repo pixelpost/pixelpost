@@ -87,7 +87,7 @@ function setsize_cropdiv ($file)
   // credit to codewalkers.com - there is 90% a tutorial there
   $max_width = $cfgrow['thumbwidth'];
   $max_height = $cfgrow['thumbheight'];
-  define(IMAGE_BASE, "../images");
+  define(IMAGE_BASE, rtrim($cfgrow['imagepath'],"/"));
   $image_path = IMAGE_BASE . "/$file";
   $img = null;
   $ext_exp = explode('.', $image_path);
@@ -140,7 +140,7 @@ function createthumbnail_12crop($w,$h,$dw,$dh,$file)
   $max_width = $cfgrow['thumbwidth'];
   $max_height = $cfgrow['thumbheight'];
   $tmp_img = imagecreatetruecolor($max_width,$max_height);
-  define(IMAGE_BASE, "../images");
+  define(IMAGE_BASE, rtrim($cfgrow['imagepath'],"/"));
   $image_path = IMAGE_BASE . "/$file";
   $img = null;
   $ext_exp = explode('.', $image_path);

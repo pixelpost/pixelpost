@@ -80,15 +80,15 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']."<p />";
 	 $work_path = eregi_replace("images/","",$cfgrow['imagepath']);
 	
-	if(!is__writable("../images/"))	$chmod_message = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod1."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
+	if(!is__writable($cfgrow['imagepath']))	$chmod_message = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod1."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
 	else	$chmod_message = "<b><font color=\"green\">OK</font></b> - ".$admin_lang_pp_img_chmod4;
 
   if(!is__writable("../thumbnails/"))	$chmod_messagethumb = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod5."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;
   else	$chmod_messagethumb = "<b><font color=\"green\">OK</font></b> - ".$admin_lang_pp_img_chmod4;
 
 echo "<b>$admin_lang_pp_imgfolder</b> ";
-if(file_exists("../images/")) {
-	echo $chmod_message." Current CHMOD: ".substr(sprintf('%o', fileperms("../images/")), -4)."<p />";
+if(file_exists($cfgrow['imagepath'])) {
+	echo $chmod_message." Current CHMOD: ".substr(sprintf('%o', fileperms($cfgrow['imagepath'])), -4)."<p />";
 } else {
 echo $admin_lang_pp_folder_missing." ".$work_path."images) - ".$chmod_message."<p />";
 }
