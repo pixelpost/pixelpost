@@ -253,9 +253,9 @@ function createthumbnail($file)
       $img = $tmp_img;
     } // end crop yes
   }
-  touch("../thumbnails/thumb_$file");
-  imagejpeg($img,"../thumbnails/thumb_$file",$cfgrow['compression']);
-  $thumbimage = "../thumbnails/thumb_$file";
+  touch($cfgrow['thumbnailpath']."thumb_$file");
+  imagejpeg($img,$cfgrow['thumbnailpath']."thumb_$file",$cfgrow['compression']);
+  $thumbimage = $cfgrow['thumbnailpath']."thumb_$file";
   chmod($thumbimage,0644);
 }
 

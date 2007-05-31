@@ -179,9 +179,9 @@ function createthumbnail_12crop($w,$h,$dw,$dh,$file)
     imagedestroy($img);
 
 		// now save the thumbnail
-	 	touch("../thumbnails/thumb_$file");
-    imagejpeg($tmp_img, "../thumbnails/thumb_$file",$cfgrow['compression']);
-		$thumbimage = "../thumbnails/thumb_$file";
+	 	touch($cfgrow['thumbnailpath']."thumb_$file");
+    imagejpeg($tmp_img, $cfgrow['thumbnailpath']."thumb_$file",$cfgrow['compression']);
+		$thumbimage = $cfgrow['thumbnailpath']."thumb_$file";
     chmod($thumbimage,0644);
     imagedestroy($tmp_img);
     return true;

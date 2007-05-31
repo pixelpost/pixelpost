@@ -263,7 +263,7 @@ $admin_lang_optn_pss_re             = "Passwort best&auml;tigen:";
 $admin_lang_optn_email              = "ADMIN EMAIL";
 $admin_lang_optn_fillit             = "Tragen Sie die eMail-Adresse unbedingt hier ein. Sie wird f&uuml;r eine
                                       eventuelle Password-Wiederherstellung ben&ouml;tigt.";
-$admin_lang_optn_img_path           = "PFAD ZU DEN BILDERN";
+$admin_lang_optn_img_path          	= "IMAGES & THUMBNAILS PATH";
 $admin_lang_optn_tz                 = "Zeitzone";
 $admin_lang_optn_tz_txt             = "W&auml;hlen Sie den Zeitversatz Ihrer Zeitzone.";
 $admin_lang_optn_sendemail          = "BEI KOMMENTAREN EMAIL VERSENDEN";

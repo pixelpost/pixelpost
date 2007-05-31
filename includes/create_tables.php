@@ -608,6 +608,10 @@ function UpgradeTo165( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `admin_langfile` VARCHAR( 100)")
 	or die("Error: ". mysql_error());
 	
+	// thumbnail path
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `thumbnailpath` VARCHAR( 150 ) NOT NULL DEFAULT '../thumbnails/' AFTER `imagepath`")
+	or die("Error: ". mysql_error());
+	
 	// update version
 	mysql_query("
 	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)

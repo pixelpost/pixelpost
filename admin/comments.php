@@ -259,7 +259,7 @@ eval_addon_admin_workspace_menu('single_comment_list');
 				$edit_message= str_replace("<br />", "", $message);
 				echo "
 				<li class='$comment_row_class' ><a href='../index.php?showimage=".$parent_id."'>
-				<img src='../thumbnails/thumb_$image' alt='$image' /></a>
+				<img src='".$cfgrow['thumbnailpath']."thumb_$image' alt='$image' /></a>
 
 				$admin_lang_cmnt_name <a target=\"_blank\" href=\"$url\">$name</a>
 				$admin_lang_cmnt_email $email <br />$admin_lang_cmnt_comment

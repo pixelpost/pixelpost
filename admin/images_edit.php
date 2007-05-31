@@ -291,7 +291,7 @@ if($_GET['view'] == "images")
 		
 		echo $image_message;
 		
-		$file_to_del = "../thumbnails/thumb_".$imagerow['image'];
+		$file_to_del = $cfgrow['thumbnailpath']."thumb_".$imagerow['image'];
 
 		if(unlink($file_to_del))	$image_message = "&nbsp;$admin_lang_imgedit_deleted3";
 		else	$image_message = "$admin_lang_imgedit_delete_error2<p />";
@@ -503,7 +503,7 @@ if($_GET['view'] == "images")
 			$fs = filesize('../images/'.$image);
 			$fs*=0.001;
     
-			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"../thumbnails/thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
+			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"".$cfgrow['thumbnailpath']."thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
 				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" />
 				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
 				<strong>#$id<br/>
@@ -738,7 +738,7 @@ if($_GET['view'] == "images")
 			<div class='content'>
 	    	<b>$admin_lang_imgedit_file_name</b> $image, <b>$admin_lang_imgedit_fsize</b> $img_width x $img_height; $img_size <b>kb</b>
 				<br/>
-         <img id='itemimg' src='../thumbnails/thumb_$image' alt='' />
+         <img id='itemimg' src='".$cfgrow['thumbnailpath']."thumb_$image' alt='' />
 			</div>
       <div class='content'>
 	    	<input type='submit' value='$admin_lang_imgedit_u_post_button' />

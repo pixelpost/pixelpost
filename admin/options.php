@@ -85,6 +85,10 @@ if ($_GET['optaction']=='updateall')
 		$update = sql_query("update ".$pixelpost_db_prefix."config set imagepath='".$_POST['new_image_path']."' where admin='".$cfgrow['admin']."'");
 		//break;
 
+		//case "updatethumbnailpath": // imagepath
+		$update = sql_query("update ".$pixelpost_db_prefix."config set thumbnailpath='".$_POST['new_thumbnail_path']."' where admin='".$cfgrow['admin']."'");
+		//break;
+		
 		//case "updatetimezone":
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set timezone='".$_POST['timezone']."'");
 		//break;
@@ -402,8 +406,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
-		<input type='text' name='new_image_path' value='".$cfgrow['imagepath']."' style='width:300px;' /> <br /><br />";
-		echo str_replace("http://www.pixelpost.org/", "../images/", $admin_lang_optn_tip);
+		<input type='text' name='new_image_path' value='".$cfgrow['imagepath']."' style='width:300px;' /> <br /><br />
+		<input type='text' name='new_thumbnail_path' value='".$cfgrow['thumbnailpath']."' style='width:300px;' /> <br />
+		<br />";
+		echo str_replace("http://www.pixelpost.org/", "../images/ or ../thumbnails/", $admin_lang_optn_tip);
 		echo"</div>
 
 
