@@ -498,9 +498,9 @@ if($_GET['view'] == "images")
 			$headline = pullout($headline);
 # 		$headline = htmlentities($headline);
     
-			list($local_width,$local_height,$type,$attr) = getimagesize('../images/'.$image);
+			list($local_width,$local_height,$type,$attr) = getimagesize($cfgrow['imagepath'].$image);
     
-			$fs = filesize('../images/'.$image);
+			$fs = filesize($cfgrow['imagepath'].$image);
 			$fs*=0.001;
     
 			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"".$cfgrow['thumbnailpath']."thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
@@ -670,8 +670,8 @@ if($_GET['view'] == "images")
 			category_list_as_table(array(), $cfgrow);
 			echo "</div>";
 
-			list($img_width,$img_height,$type,$attr) = getimagesize('../images/'.$image);
-			$img_size = filesize('../images/'.$image);
+			list($img_width,$img_height,$type,$attr) = getimagesize($cfgrow['imagepath'].$image);
+			$img_size = filesize($cfgrow['imagepath'].$image);
       $img_size = number_format($img_size);
 
    		echo "
@@ -763,7 +763,7 @@ if($_GET['view'] == "images")
 
 				//--------------------------------------------------------
 				$for_echo ="<p/>
-	<img src='../images/$image' id='myimg' />
+	<img src='".$cfgrow['imagepath'].$image."' id='myimg' />
 	<div id='cropdiv'>
 	<table width='100%' height='100%' border='1' cellpadding='0' cellspacing='0' bordercolor='#000000'>
     <tr><td><img src='".$spacer."' /></td>

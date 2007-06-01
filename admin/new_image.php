@@ -384,7 +384,7 @@ if($_GET['view'] == "")
 					if ($cfgrow['crop']!='12c')
 					{
 						if ($show_image_after_upload)
-						echo "<img src='../images/$filnamn'  />";
+						echo "<img src='".$cfgrow['imagepath'].$filnamn."'  />";
 						echo "</div><!-- end of content div -->" ; // close content div
 					}// end if
 					/* else it is '12c' crop and show cropdiv and the cropping frame
@@ -396,7 +396,7 @@ if($_GET['view'] == "")
 					setsize_cropdiv ($filnamn);
 					//--------------------------------------------------------
 						$for_echo ="
-							<img src='../images/$filnamn' id='myimg' />
+							<img src='".$cfgrow['imagepath'].$filnamn."' id='myimg' />
 							<div id='cropdiv'>
 							<table width='100%' height='100%' border='1' cellpadding='0' cellspacing='0' bordercolor='#000000'>
 							<tr>

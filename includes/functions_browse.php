@@ -88,7 +88,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 
 		$title = pullout($title);
 		$title = htmlspecialchars($title,ENT_QUOTES);
-		$thumbnail = "thumbnails/thumb_$name";
+		$thumbnail = ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$name;
 		$thumbnail_extra = getimagesize($thumbnail);
 		$local_width = $thumbnail_extra['0'];
 		$local_height = $thumbnail_extra['1'];

@@ -386,8 +386,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$image_date_year   = substr($row['datetime'],2,2);
 	$image_date_month = substr($row['datetime'],5,2);
 	$image_date_day = substr($row['datetime'],8,2);
-	$thumbnail_extra = getimagesize("thumbnails/thumb_$image_name");
-	$image_extra = getimagesize("images/$image_name");
+	$thumbnail_extra = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name);
+	$image_extra = getimagesize(ltrim($cfgrow['imagepath'], "./").$image_name);
 	$image_width = $image_extra['0'];
 	$image_height = $image_extra['1'];
 	$tpl = str_replace("<IMAGE_WIDTH>",$image_width,$tpl);
@@ -397,10 +397,10 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	$image_exif = $row['exif_info'];
 
 	//$image_title = htmlentities($image_title);
-	$image_thumbnail = "<a href='$showprefix$image_id'><img src='thumbnails/thumb_$image_name' alt='$image_title' title='$image_title' width='$local_width' height='$local_height' /></a>";
+	$image_thumbnail = "<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' width='$local_width' height='$local_height' /></a>";
 
 	// thumnail no link
-	$image_thumbnail_no_link = "<img src='thumbnails/thumb_$image_name' alt='$image_title' title='$image_title' width='$local_width' height='$local_height' />";
+	$image_thumbnail_no_link = "<img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' width='$local_width' height='$local_height' />";
 
 	$image_permalink = "<a href='$showprefix$image_id'>$lang_permalink</a>"; // permalink automated for fancy url/no fancy
 
@@ -422,8 +422,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 	$image_previous_datetime = $previous_row['datetime'];
 	$image_previous_link = "<a href='$showprefix$image_previous_id'>$lang_previous</a>";
-	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_previous_name");
-	$image_previous_thumbnail = "<a href='$showprefix$image_previous_id'><img src='thumbnails/thumb_$image_previous_name' width='$local_width' height='$local_height' alt='$image_previous_title' title='$image_previous_title' /></a>";
+	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name);
+	$image_previous_thumbnail = "<a href='$showprefix$image_previous_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name."' width='$local_width' height='$local_height' alt='$image_previous_title' title='$image_previous_title' /></a>";
 
 	if($image_previous_id == "")
 	{
@@ -451,8 +451,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 	$image_next_datetime = $next_row['datetime'];
 	$image_next_link = "<a href='$showprefix$image_next_id'>$lang_next</a>";
-	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_next_name");
-	$image_next_thumbnail = "<a href='$showprefix$image_next_id'><img src='thumbnails/thumb_$image_next_name' alt='$image_next_title' width='$local_width' height='$local_height' title='$image_next_title' /></a>";
+	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_next_name);
+	$image_next_thumbnail = "<a href='$showprefix$image_next_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_next_name."' alt='$image_next_title' width='$local_width' height='$local_height' title='$image_next_title' /></a>";
 
 	if($image_next_id == "")
 	{
@@ -480,8 +480,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 	$first_image_datetime = $first_image_row['datetime'];
 	$first_image_link = "<a href='$showprefix$first_image_id'>$lang_first</a>";
-	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$first_image_name");
-	$first_image_thumbnail = "<a href='$showprefix$first_image_id'><img src='thumbnails/thumb_$first_image_name' alt='$first_image_title' width='$local_width' height='$local_height' title='$first_image_title' /></a>";
+	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$first_image_name);
+	$first_image_thumbnail = "<a href='$showprefix$first_image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$first_image_name."' alt='$first_image_title' width='$local_width' height='$local_height' title='$first_image_title' /></a>";
 
 	if($first_image_id == $image_id)
 	{
@@ -508,8 +508,8 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 	$last_image_datetime = $last_image_row['datetime'];
 	$last_image_link = "<a href='$showprefix$last_image_id'>$lang_latest</a>";
-	list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$last_image_name");
-	$last_image_thumbnail = "<a href='$showprefix$last_image_id'><img src='thumbnails/thumb_$last_image_name' alt='$last_image_title' width='$local_width' height='$local_height' title='$last_image_title' /></a>";
+	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$last_image_name);
+	$last_image_thumbnail = "<a href='$showprefix$last_image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$last_image_name."' alt='$last_image_title' width='$local_width' height='$local_height' title='$last_image_title' /></a>";
 
 	if($last_image_id == $image_id)
 	{
@@ -558,9 +558,9 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 					$headline = pullout($alt_headline);
 				}
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
-				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image");
-				$ahead_thumbs .= "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
-				$ahead_thumbs_reverse = "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>" .$ahead_thumbs_reverse ;
+				list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image);
+				$ahead_thumbs .= "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
+				$ahead_thumbs_reverse = "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>" .$ahead_thumbs_reverse ;
 				$totalthumbcounter++;
 			}
 
@@ -576,15 +576,15 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 					$headline = pullout($alt_headline);
 				}
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
-				list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image");
-				$behind_thumbs = "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>$behind_thumbs";
-				$behind_thumbs_reverse .= "<a href='$showprefix$id'><img src='thumbnails/thumb_$image' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
+				list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image);
+				$behind_thumbs = "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>$behind_thumbs";
+				$behind_thumbs_reverse .= "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
 				$totalthumbcounter++;
 			}
 
-			list($local_width,$local_height,$type,$attr) = getimagesize("thumbnails/thumb_$image_name");
-			$thumbnail_row = "$behind_thumbs<a href='$showprefix$image_id'><img src='thumbnails/thumb_$image_name' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$ahead_thumbs";
-			$thumbnail_row_reverse = "$ahead_thumbs_reverse<a href='$showprefix$image_id'><img src='thumbnails/thumb_$image_name' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$behind_thumbs_reverse";
+			list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name);
+			$thumbnail_row = "$behind_thumbs<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$ahead_thumbs";
+			$thumbnail_row_reverse = "$ahead_thumbs_reverse<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$behind_thumbs_reverse";
 			$tpl = ereg_replace("<IMAGE_THUMBNAIL_ROW>",$thumbnail_row,$tpl);
 			$tpl = ereg_replace("<IMAGE_THUMBNAIL_ROW_REV>",$thumbnail_row_reverse,$tpl);
 		} // gd_info()

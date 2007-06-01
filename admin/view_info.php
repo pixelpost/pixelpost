@@ -47,6 +47,7 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
     $admin_lang_pp_currversion $version<br />
     $admin_lang_pp_version1 <script type=\"text/javascript\" src=\"http://www.pixelpost.org/service/version.js\"></script><script type=\"text/javascript\">if(curr_ver>installed_ver)document.write(message);else document.write('$admin_lang_pp_newest_ver');</script><p />
     $admin_lang_pp_forum: <a href='http://forum.pixelpost.org/'>forum.pixelpost.org</a>
+    <br /><br /><a href='http://www.pixelpost.org/donate'><img alt='Click here to lend your support to Pixelpost' src='http://www.pixelpost.org/donate/image' border='0' /></a>
     </div>
     <p />
     <div class='jcaption'>$admin_lang_hostinfo</div>
@@ -94,7 +95,7 @@ echo $admin_lang_pp_folder_missing." ".$work_path."images) - ".$chmod_message."<
 }
 
 echo "<b>$admin_lang_pp_thumbfolder</b> ";
-if(file_exists($cfgrow['thumbnailpath'].)) {
+if(file_exists($cfgrow['thumbnailpath'])) {
 	echo $chmod_messagethumb." Current CHMOD: ".substr(sprintf('%o', fileperms($cfgrow['thumbnailpath'])), -4)."<p />";
 } else {
 echo $admin_lang_pp_folder_missing."  ".$work_path."thumbnails) - ".$chmod_messagethumb."<p />";

@@ -4,7 +4,7 @@
 // $Id$
 
 $feeditems = (($cfgrow['feeditems'] > 0) ? $cfgrow['feeditems'] : 10);
-$rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? 'thumbnails/thumb_' : (($cfgrow['rsstype'] == 'F') ? 'images/' : ''));
+$rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? ltrim($cfgrow['thumbnailpath'], "./")."thumb_" : (($cfgrow['rsstype'] == 'F') ? ltrim($cfgrow['imagepath'], "./") : ''));
 
 // ##########################################################################################//
 // RSS 2.0 FEED
@@ -41,8 +41,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_GET
 	{
 		$headline = pullout($headline);
 		$headline = htmlspecialchars($headline,ENT_QUOTES);
-		$enclosure = $cfgrow['siteurl']."images/".$image;
-		$filesize = filesize("images/".$image."");
+		$enclosure = $cfgrow['siteurl'].ltrim($cfgrow['imagepath'], "./").$image;
+		$filesize = filesize(ltrim($cfgrow['imagepath'], "./").$image."");
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$datetime = strtotime($datetime);
 		$datetime =date("D, d M Y H:i",$datetime);
@@ -118,8 +118,8 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag']))
 	{
 		$headline = pullout($headline);
 		$headline = htmlspecialchars($headline,ENT_QUOTES);
-		$enclosure = $cfgrow['siteurl']."images/".$image;
-		$filesize = filesize("images/".$image."");
+		$enclosure = $cfgrow['siteurl'].ltrim($cfgrow['imagepath'], "./").$image;
+		$filesize = filesize(ltrim($cfgrow['imagepath'], "./").$image."");
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$datetime = strtotime($datetime);
 		$datetime =date("D, d M Y H:i",$datetime);
@@ -277,8 +277,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GE
 		$body = strip_tags( $body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
 		$body = ereg_replace("\n","\n<br />",$body);
-		$enclosure = $cfgrow['siteurl']."images/".$image;
-		$filesize = filesize("images/".$image."");
+		$enclosure = $cfgrow['siteurl'].ltrim($cfgrow['imagepath'], "./").$image;
+		$filesize = filesize(ltrim($cfgrow['imagepath'], "./").$image."");
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$tag_date =substr($datetime,0,10);
 		$id_date = substr($datetime,0,10);
@@ -367,8 +367,8 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag']))
 		$body = pullout($body);
 		$body = htmlspecialchars($body,ENT_QUOTES);
 		$body = strip_tags($body);
-		$enclosure = $cfgrow['siteurl']."images/".$image;
-		$filesize = filesize("images/".$image."");
+		$enclosure = $cfgrow['siteurl'].ltrim($cfgrow['imagepath'], "./").$image;
+		$filesize = filesize(ltrim($cfgrow['imagepath'], "./").$image."");
 		$image = $cfgrow['siteurl'].$rsspicdir.$image;
 		$tag_date =substr($datetime,0,10);
 		$id_date = substr($datetime,0,10);
