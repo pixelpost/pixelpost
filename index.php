@@ -206,6 +206,11 @@ $pixelpost_site_title = $cfgrow['sitetitle'];
 $pixelpost_site_title = pullout($cfgrow['sitetitle']);
 $pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_NOQUOTES);
 
+// Double Quotes in <SUB_TITLE> break HTML Code
+$pixelpost_sub_title = $cfgrow['subtitle'];
+$pixelpost_sub_title = pullout($cfgrow['subtitle']);
+$pixelpost_sub_title = htmlspecialchars($pixelpost_sub_title,ENT_NOQUOTES);
+
 
 //  Added ability to use header and footers for templates.  They are not needed but used if included in the template
 
@@ -613,6 +618,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	else	$image_categoryword = "$lang_category_singular ";
 
 	$tpl = ereg_replace("<SITE_TITLE>",$pixelpost_site_title,$tpl);
+	$tpl = ereg_replace("<SUB_TITLE>",$pixelpost_sub_title,$tpl);
 	$tpl = ereg_replace("<SITE_URL>",$cfgrow['siteurl'],$tpl);
 	$tpl = ereg_replace("<IMAGE_CATEGORY>",$image_categoryword." ".$image_category_all,$tpl);
 	// for paged_archive addon
@@ -723,6 +729,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 } // end imageprint
 
 $tpl = ereg_replace("<SITE_TITLE>",$pixelpost_site_title,$tpl);
+$tpl = ereg_replace("<SUB_TITLE>",$pixelpost_sub_title,$tpl);
 
 // ##########################################################################################//
 // BROWSE STUFF

@@ -260,6 +260,7 @@ $admin_lang_optn_no                 = "否";
 
 $admin_lang_optn_title_url         = "网站标题和网址";
 $admin_lang_optn_title             = "标题：";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "网址：";
 $admin_lang_optn_usr_pss           = "管理员用户名和密码";
 $admin_lang_optn_usr_pss_txt       = "更改用户名或密码？";

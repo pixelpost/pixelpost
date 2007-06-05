@@ -259,6 +259,7 @@ $admin_lang_optn_no                 = "Nei";
 
 $admin_lang_optn_title_url         = "SIDENS TITTEL OG URL";
 $admin_lang_optn_title             = "Tittel:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "ADMIN BRUKERNAVN &amp; PASSORD";
 $admin_lang_optn_usr_pss_txt       = "Bytt brukernavn eller passord?";

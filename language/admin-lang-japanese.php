@@ -264,6 +264,7 @@ $admin_lang_optn_no                 = "No";
 
 $admin_lang_optn_title_url         = "サイトタイトルおよびURL";
 $admin_lang_optn_title             = "タイトル:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "管理者およびパスワード";
 $admin_lang_optn_usr_pss_txt       = "ユーザ名またはパスワードを変更しますか?";

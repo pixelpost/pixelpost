@@ -180,7 +180,7 @@ function Set_Configuration($prefix)
 	$query = mysql_query("
 	INSERT INTO {$prefix}config
 	(`admin`, `password`, `email`, `commentemail`, `template`, `imagepath`, `siteurl`, `sitetitle`, `langfile`, `calendar`, `crop`, `thumbwidth`, `thumbheight`, `thumbnumber`, `compression`, `dateformat`)
-	VALUES ( '$admin_user', MD5('$admin_password'),'','no', 'simple', '$images_path', '$site_url', 'pixelpost','english','No Calendar','yes','100','75','5','75','Y-m-d H:i:s')
+	VALUES ( '$admin_user', MD5('$admin_password'),'','no', 'simple', '$images_path', '$site_url', 'Pixelpost','english','No Calendar','yes','100','75','5','75','Y-m-d H:i:s')
 	") or die("Error: ". mysql_error());
 	echo "<li style=\"list-style-type:none;\">Table {$prefix}config populated ...</li>";
 }
@@ -605,11 +605,15 @@ function UpgradeTo165( $prefix, $newversion)
 	// update version
 	
 	// admin_langfile field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `admin_langfile` VARCHAR( 100)")
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `admin_langfile` VARCHAR( 100)")
 	or die("Error: ". mysql_error());
 	
 	// thumbnail path
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `thumbnailpath` VARCHAR( 150 ) NOT NULL DEFAULT '../thumbnails/' AFTER `imagepath`")
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `thumbnailpath` VARCHAR( 150 ) NOT NULL DEFAULT '../thumbnails/' AFTER `imagepath`")
+	or die("Error: ". mysql_error());
+	
+	// sub title
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `subtitle` VARCHAR( 100 ) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `sitetitle`")
 	or die("Error: ". mysql_error());
 	
 	// update version

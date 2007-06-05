@@ -285,6 +285,7 @@ $admin_lang_optn_no     = "Nie";
 
 $admin_lang_optn_title_url          = "NAZWA WITRYNY I URL";
 $admin_lang_optn_title              = "Tytuł:";
+$admin_lang_optn_sub_title          = "Sub Title:";
 $admin_lang_optn_url                = "URL:";
 $admin_lang_optn_usr_pss            = "ADMINISTRATOR I HASŁO";
 $admin_lang_optn_usr_pss_txt        = "Zmienić nazwę użytkownika lub hasło?";

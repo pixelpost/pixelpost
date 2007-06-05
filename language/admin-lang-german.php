@@ -254,6 +254,7 @@ $admin_lang_optn_no                  = "Nein";
 
 $admin_lang_optn_title_url          = "Seiten-Titel und URL";
 $admin_lang_optn_title              = "Titel:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url                = "URL:";
 $admin_lang_optn_usr_pss            = "ADMIN USER &amp; PASSWORT";
 $admin_lang_optn_usr_pss_txt        = "Usernamen oder Password &auml;ndern?";

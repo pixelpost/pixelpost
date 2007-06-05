@@ -260,6 +260,7 @@ $admin_lang_optn_no                 = "Nej";
 
 $admin_lang_optn_title_url         = "SIDE TITEL OG ADRESSE";
 $admin_lang_optn_title             = "Titel:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "Adresse:";
 $admin_lang_optn_usr_pss           = "ADMINISTRATOR &amp; KODEORD";
 $admin_lang_optn_usr_pss_txt       = "Skift brugernavn eller kodeord?";

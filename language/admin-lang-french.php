@@ -257,6 +257,7 @@ $admin_lang_optn_yes                  = "Oui";
 $admin_lang_optn_no                   = "Non";
 $admin_lang_optn_title_url            = "Nom du site et adresse URL";
 $admin_lang_optn_title                = "Titre :";
+$admin_lang_optn_sub_title         	  = "Sub Title:";
 $admin_lang_optn_url                  = "URL :";
 $admin_lang_optn_usr_pss              = "Nom de l'administrateur &amp; mot de passe";
 $admin_lang_optn_usr_pss_txt          = "Changer de nom ou de mot de passe ?";

@@ -262,6 +262,7 @@ $admin_lang_optn_no                 = "No";
 
 $admin_lang_optn_title_url         = "TITOLO DEL SITO E URL";
 $admin_lang_optn_title             = "Titolo:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "UTENTE AMMINISTRATORE &amp; PASSWORD";
 $admin_lang_optn_usr_pss_txt       = "Cambiare username o password?";

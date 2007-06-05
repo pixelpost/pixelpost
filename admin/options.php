@@ -31,6 +31,18 @@ if ($_GET['optaction']=='updateall')
 			$update = sql_query("update ".$pixelpost_db_prefix."config set sitetitle='".($_POST['new_site_title'])."' where admin='".$cfgrow['admin']."'");
 		}
 		//break;
+		
+		//case "updatesubtitle":
+		if(!get_magic_quotes_gpc())
+		{
+			// we need to escape the string before saving it to the db
+			$update = sql_query("update ".$pixelpost_db_prefix."config set subtitle='".addslashes($_POST['new_sub_title'])."' where admin='".$cfgrow['admin']."'");
+		}
+		else
+		{
+			$update = sql_query("update ".$pixelpost_db_prefix."config set subtitle='".($_POST['new_sub_title'])."' where admin='".$cfgrow['admin']."'");
+		}
+		//break;
 
 		//case "updateurl":
 		if(!get_magic_quotes_gpc())
@@ -273,6 +285,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		$pixelpost_site_title = $cfgrow['sitetitle'];
 		$pixelpost_site_title = pullout($cfgrow['sitetitle']);
 		$pixelpost_site_title = htmlspecialchars($pixelpost_site_title,ENT_QUOTES);
+		
+		$pixelpost_sub_title = $cfgrow['subtitle'];
+		$pixelpost_sub_title = pullout($cfgrow['subtitle']);
+		$pixelpost_sub_title = htmlspecialchars($pixelpost_sub_title,ENT_QUOTES);
 		echo "
 			<form method='post' action='$PHP_SELF?view=options&amp;optaction=updateall&optionsview=general' accept-charset='UTF-8'>
 			<div class='jcaption'>
@@ -283,6 +299,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			$admin_lang_optn_title_url_text<p />
 			$admin_lang_optn_title&nbsp;
 			<input type='text' name='new_site_title' value='".$pixelpost_site_title."' class='input' style='width:300px;' />
+			<p />
+			
+			$admin_lang_optn_sub_title&nbsp;
+			<input type='text' name='new_sub_title' value='".$pixelpost_sub_title."' class='input' style='width:300px;' />
 			<p />
 
 		$admin_lang_optn_url&nbsp;

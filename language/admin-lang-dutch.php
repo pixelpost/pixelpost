@@ -260,6 +260,7 @@ $admin_lang_optn_no                 = "Nee";
 
 $admin_lang_optn_title_url         = "SITE TITEL EN URL";
 $admin_lang_optn_title             = "Titel:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "ADMIN GEBRUIKER &amp; WACHTWOORD";
 $admin_lang_optn_usr_pss_txt       = "Verander gebruikersnaam of wachtwoord?";

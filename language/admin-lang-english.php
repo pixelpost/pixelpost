@@ -261,6 +261,7 @@ $admin_lang_optn_no                 = "No";
 
 $admin_lang_optn_title_url         = "SITE TITLE AND URL";
 $admin_lang_optn_title             = "Title:";
+$admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "ADMIN USER &amp; PASSWORD";
 $admin_lang_optn_usr_pss_txt       = "Change username or password?";
@@ -310,7 +311,7 @@ $admin_lang_optn_img_compression     = "THUMBNAIL COMPRESSION";
 $admin_lang_optn_img_compression_txt = "How hard do you want the jpg-compression to be? 10 is low quality and 100 is max quality (no loss)";
 $admin_lang_optn_pass_chngd_txt      = "Password is changed.";
 $admin_lang_optn_pass_notchngd_txt   = "Password is not changed. Type the same password in the reconfirm field.";
-$admin_lang_optn_title_url_text      = "Check or modify the Site title and the URL of your installation";
+$admin_lang_optn_title_url_text      = "Check or modify the Site title, Sub title, and the URL of your installation";
 $admin_lang_optn_thumb_updated       = "Thumbnails updated!";
 $admin_lang_optn_updated             = "thumbnails updated.";
 $admin_lang_optn_visitorbooking_title = 'BOOK VISITORS';
