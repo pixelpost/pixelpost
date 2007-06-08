@@ -582,7 +582,7 @@ function UpgradeTo16final( $prefix, $newversion)
 	// ********************************************************************
 	
 	// Drop rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `rsstype`;");
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `rsstype`");
 	
 	// rsstype field
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")
@@ -614,6 +614,13 @@ function UpgradeTo165( $prefix, $newversion)
 	
 	// sub title
 	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `subtitle` VARCHAR( 100 ) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `sitetitle`")
+	or die("Error: ". mysql_error());
+	
+	// Drop rsstype field
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `rsstype`");
+	
+	// rsstype field
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM('F', 'FO', 'T', 'O', 'N') NOT NULL DEFAULT 'T' AFTER `max_uri_comments`")
 	or die("Error: ". mysql_error());
 	
 	// update version

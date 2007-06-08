@@ -341,6 +341,7 @@ $admin_lang_optn_rsstype_desc					= "Selecteer de style van de RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Laat volledige foto's zien";
 $admin_lang_optn_rss_thumbs						= "Laat thumbnails zien";
 $admin_lang_optn_rss_thumbs_only			= "Laat alleen thumbnails zien";
+$admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Laat alleen tekst zien";
 $admin_lang_optn_feeditems_desc				= "Aantal items in de feedlijst: ";
 $admin_lang_optn_alt_lang             = "Alternatieve taal instellingen: ";

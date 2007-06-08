@@ -441,6 +441,7 @@ $admin_lang_optn_rsstype_desc					= "Wählen Sie die Darstellung des RSS/ATOM Fe
 $admin_lang_optn_rss_full							= "Bilder in voller Größe zeigen";
 $admin_lang_optn_rss_thumbs						= "Vorschaubilder zeigen";
 $admin_lang_optn_rss_thumbs_only					= "Nur Vorschaubilder zeigen";
+$admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Nur Text zeigen";
 $admin_lang_optn_feeditems_desc				= "Anzahl der Einträge in der Feed-Liste: ";
 $admin_lang_optn_alt_lang             = "Zweite Sprache: ";

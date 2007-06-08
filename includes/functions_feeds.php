@@ -4,7 +4,7 @@
 // $Id$
 
 $feeditems = (($cfgrow['feeditems'] > 0) ? $cfgrow['feeditems'] : 10);
-$rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? ltrim($cfgrow['thumbnailpath'], "./")."thumb_" : (($cfgrow['rsstype'] == 'F') ? ltrim($cfgrow['imagepath'], "./") : ''));
+$rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? ltrim($cfgrow['thumbnailpath'], "./")."thumb_" : (($cfgrow['rsstype'] == 'F' || $cfgrow['rsstype'] == 'FO') ? ltrim($cfgrow['imagepath'], "./") : ''));
 
 // ##########################################################################################//
 // RSS 2.0 FEED
@@ -101,7 +101,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_GET
 			$output .= "\t\t&lt;img src=&quot;".$image."&quot;&gt;&lt;br/&gt;\n";
 		}
 		
-		if($cfgrow['rsstype'] != 'O') {
+		if(($cfgrow['rsstype'] != 'O') && $cfgrow['rsstype'] != 'FO') {
 		
 			$output .= "\t\t".$body."\n";
 		}
@@ -223,7 +223,7 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag'])) {
 			$output .= "\t\t&lt;img src=&quot;".$image."&quot;&gt;&lt;br/&gt;\n";
 		}
 		
-		if($cfgrow['rsstype'] != 'O') {
+		if(($cfgrow['rsstype'] != 'O') && $cfgrow['rsstype'] != 'FO') {
 		
 			$output .= "\t\t".$body."\n";
 		}
@@ -413,7 +413,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GE
 			$body = stripslashes($body);
 			$body = strip_tags( $body);
 			$body = htmlspecialchars($body,ENT_QUOTES);
-			$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
+			$body = ereg_replace("\n","\n<br />",$body);
 		
 		} else {
 	
@@ -433,14 +433,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GE
 				$body = stripslashes($body);
 				$body = strip_tags( $body);
 				$body = htmlspecialchars($body,ENT_QUOTES);
-				$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
+				$body = ereg_replace("\n","\n<br />",$body);
 			} else {
 		
 				$body = pullout($alt_body);
 				$body = stripslashes($alt_body);
 				$body = strip_tags( $alt_body);
 				$body = htmlspecialchars($alt_body,ENT_QUOTES);
-				$body = ereg_replace("\n","\n&lt;br /&gt;",$alt_body);
+				$body = ereg_replace("\n","\n<br />",$alt_body);
 			}
   		}
 
@@ -471,7 +471,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GE
 			$atom .= "\t\t<img src='".$image."' /><br />\n";
 		}
 		
-		if($cfgrow['rsstype'] != 'O') {
+		if(($cfgrow['rsstype'] != 'O') && $cfgrow['rsstype'] != 'FO') {
 		
 			$atom .= "\t\t".$headline."<br />".$body."\n";
 		}
@@ -554,7 +554,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
 			$body = stripslashes($body);
 			$body = strip_tags( $body);
 			$body = htmlspecialchars($body,ENT_QUOTES);
-			$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
+			$body = ereg_replace("\n","\n<br />",$body);
 		
 		} else {
 	
@@ -574,14 +574,14 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
 				$body = stripslashes($body);
 				$body = strip_tags( $body);
 				$body = htmlspecialchars($body,ENT_QUOTES);
-				$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
+				$body = ereg_replace("\n","\n<br />",$body);
 			} else {
 		
 				$body = pullout($alt_body);
 				$body = stripslashes($alt_body);
 				$body = strip_tags( $alt_body);
 				$body = htmlspecialchars($alt_body,ENT_QUOTES);
-				$body = ereg_replace("\n","\n&lt;br /&gt;",$alt_body);
+				$body = ereg_replace("\n","\n<br />",$alt_body);
 			}
   		}
   		
@@ -612,7 +612,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
 			$atom .= "\t\t<img src='".$image."' /><br />\n";
 		}
 		
-		if($cfgrow['rsstype'] != 'O') {
+		if(($cfgrow['rsstype'] != 'O') && $cfgrow['rsstype'] != 'FO') {
 		
 			$atom .= "\t\t".$headline."<br />".$body."\n";
 		}
@@ -693,7 +693,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom") {
 			$comment_message = stripslashes($comment_message);
 			$comment_message = strip_tags( $comment_message);
 			$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
-			$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$comment_message);
+			$comment_message = ereg_replace("\n","\n<br />",$comment_message);
 		
 		} else {
 	
@@ -713,14 +713,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom") {
 				$comment_message = stripslashes($comment_message);
 				$comment_message = strip_tags( $comment_message);
 				$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
-				$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$comment_message);
+				$comment_message = ereg_replace("\n","\n<br />",$comment_message);
 			} else {
 		
 				$comment_message = pullout($alt_body);
 				$comment_message = stripslashes($alt_body);
 				$comment_message = strip_tags( $alt_body);
 				$comment_message = htmlspecialchars($alt_body,ENT_QUOTES);
-				$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$alt_body);
+				$comment_message = ereg_replace("\n","\n<br />",$alt_body);
 			}
   		}
   		

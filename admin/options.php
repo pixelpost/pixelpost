@@ -645,19 +645,23 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     			<select name=\"rsstype\">";
     			if ($cfgrow["rsstype"] =='F')
     			{
- 						echo "<option selected=\"selected\" value=\"F\">$admin_lang_optn_rss_full</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
+ 						echo "<option selected=\"selected\" value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
+ 					}
+ 					elseif ($cfgrow["rsstype"] =='FO')
+ 					{
+ 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option selected=\"selected\" value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
  					}
  					elseif ($cfgrow["rsstype"] =='T')
  					{
- 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option selected=\"selected\" value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
+ 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option selected=\"selected\" value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
  					}
  					elseif ($cfgrow["rsstype"] =='O')
  					{
- 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option selected=\"selected\" value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
+ 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option selected=\"selected\" value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
  					}
  					else
  					{
-						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option selected=\"selected\" value=\"N\">$admin_lang_optn_rss_text</option>";
+						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option selected=\"selected\" value=\"N\">$admin_lang_optn_rss_text</option>";
  					}
 			echo"</select><br /><br />
 			$admin_lang_optn_feeditems_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='feeditems' value='".$cfgrow['feeditems']."' />

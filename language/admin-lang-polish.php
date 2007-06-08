@@ -375,6 +375,7 @@ $admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
 $admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe obrazki";
 $admin_lang_optn_rss_thumbs						= "Pokazuj miniaturki";
 $admin_lang_optn_rss_thumbs_only			= "Pokazuj tylko miniaturki";
+$admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Pokazuj tylko tekst";
 $admin_lang_optn_feeditems_desc				= "Liczba publikowanych w RSS/ATOM wiadomości: ";
 $admin_lang_optn_alt_lang             = "Ustawienia alternatywnego języka: ";
