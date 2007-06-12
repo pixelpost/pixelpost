@@ -10,7 +10,7 @@ $rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? ltrim($
 // RSS 2.0 FEED
 // ##########################################################################################//
 
-if(isset($_GET['x'])&&$_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_GET['tag']) && $_GET['tag'] == '') {
+if(isset($_GET['x']) && $_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_GET['tag']) && $_GET['tag'] == '') {
 
     $output  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	$output .= "<rss version=\"2.0\">\n";
@@ -247,7 +247,7 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag'])) {
 // COMMENT RSS 2.0 FEED
 // ##########################################################################################//
 
-if(isset($_GET['x'])&&$_GET['x'] == "comment_rss") {
+if(isset($_GET['x']) && $_GET['x'] == "comment_rss") {
 
     $output  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	$output .= "<rss version=\"2.0\">\n";
@@ -277,25 +277,19 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_rss") {
 	$mm = substr($tzoner,-2);
 	$tzoner = $tprefix.$hh.$mm;
 	
-	$query = mysql_query("SELECT `".$pixelpost_db_prefix."comments`.`id`, `".$pixelpost_db_prefix."comments`.`datetime`, `".$pixelpost_db_prefix."comments`.`message`, `".$pixelpost_db_prefix."comments`.`name`, `".$pixelpost_db_prefix."comments`.`url`, `".$pixelpost_db_prefix."comments`.`parent_id`, `".$pixelpost_db_prefix."pixelpost`.`headline`, `".$pixelpost_db_prefix."pixelpost`.`image`, `".$pixelpost_db_prefix."pixelpost`.`alt_headline`, `".$pixelpost_db_prefix."pixelpost`.`alt_body`
+	$query = mysql_query("SELECT `".$pixelpost_db_prefix."comments`.`id`, `".$pixelpost_db_prefix."comments`.`datetime`, `".$pixelpost_db_prefix."comments`.`message`, `".$pixelpost_db_prefix."comments`.`name`, `".$pixelpost_db_prefix."comments`.`url`, `".$pixelpost_db_prefix."comments`.`parent_id`, `".$pixelpost_db_prefix."pixelpost`.`headline`, `".$pixelpost_db_prefix."pixelpost`.`image`, `".$pixelpost_db_prefix."pixelpost`.`alt_headline`
 	FROM `".$pixelpost_db_prefix."comments`
 		INNER JOIN `".$pixelpost_db_prefix."pixelpost` ON `".$pixelpost_db_prefix."pixelpost`.`id` = `".$pixelpost_db_prefix."comments`.`parent_id`
 	WHERE publish = 'yes'
 	ORDER BY `".$pixelpost_db_prefix."comments`.`id` DESC 
 	LIMIT 0,".$feeditems."");
 
-	while(list($comment_id,$comment_datetime,$comment_message,$comment_name,$comment_url,$parent_id,$parent_headline,$parent_image,$alt_headline,$alt_body) = mysql_fetch_row($query)) {
+	while(list($comment_id,$comment_datetime,$comment_message,$comment_name,$comment_url,$parent_id,$parent_headline,$parent_image,$alt_headline) = mysql_fetch_row($query)) {
 	
 		if ($language_abr == $default_language_abr) {
 	
   			$parent_headline = pullout($parent_headline);
 			$parent_headline = htmlspecialchars($parent_headline,ENT_QUOTES);
-		
-			$comment_message = pullout($comment_message);
-			$comment_message = stripslashes($comment_message);
-			$comment_message = strip_tags( $comment_message);
-			$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
-			$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$comment_message);
 		
 		} else {
 	
@@ -308,25 +302,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_rss") {
   				$parent_headline = pullout($alt_headline);
 				$parent_headline = htmlspecialchars($alt_headline,ENT_QUOTES);
   			}
-  		
-			if ($alt_body == '') {
-		
-				$comment_message = pullout($comment_message);
-				$comment_message = stripslashes($comment_message);
-				$comment_message = strip_tags( $comment_message);
-				$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
-				$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$comment_message);
-			} else {
-		
-				$comment_message = pullout($alt_body);
-				$comment_message = stripslashes($alt_body);
-				$comment_message = strip_tags( $alt_body);
-				$comment_message = htmlspecialchars($alt_body,ENT_QUOTES);
-				$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$alt_body);
-			}
   		}
   		
 		$comment_name = pullout($comment_name);
+		$comment_message = pullout($comment_message);
+		$comment_message = stripslashes($comment_message);
+		$comment_message = strip_tags( $comment_message);
+		$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
+		$comment_message = ereg_replace("\n","\n&lt;br /&gt;",$comment_message);
 		$parent_image = $cfgrow['siteurl'].$rsspicdir.$parent_image;
 		$comment_datetime = strtotime($comment_datetime);
 		$comment_datetime =date("D, d M Y H:i",$comment_datetime);
@@ -361,7 +344,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_rss") {
 // ATOM FEED, Version 1.0
 // ##########################################################################################//
 
-if(isset($_GET['x'])&&$_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GET['tag']) && $_GET['tag'] == '') {
+if(isset($_GET['x']) && $_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_GET['tag']) && $_GET['tag'] == '') {
 
 	header("content-type: application/atom+xml");
 	
@@ -636,7 +619,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
 // COMMENT ATOM FEED, Version 1.0
 // ##########################################################################################//
 
-if(isset($_GET['x'])&&$_GET['x'] == "comment_atom") {
+if(isset($_GET['x']) && $_GET['x'] == "comment_atom") {
 
 	header("content-type: application/atom+xml");
 	
@@ -688,13 +671,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom") {
 	
   			$parent_headline = pullout($parent_headline);
 			$parent_headline = htmlspecialchars($parent_headline,ENT_QUOTES);
-		
-			$comment_message = pullout($comment_message);
-			$comment_message = stripslashes($comment_message);
-			$comment_message = strip_tags( $comment_message);
-			$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
-			$comment_message = ereg_replace("\n","\n<br />",$comment_message);
-		
 		} else {
 	
   			if ($alt_headline == '') {
@@ -706,25 +682,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "comment_atom") {
   				$parent_headline = pullout($alt_headline);
 				$parent_headline = htmlspecialchars($alt_headline,ENT_QUOTES);
   			}
-  		
-			if ($alt_body == '') {
-		
-				$comment_message = pullout($comment_message);
-				$comment_message = stripslashes($comment_message);
-				$comment_message = strip_tags( $comment_message);
-				$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
-				$comment_message = ereg_replace("\n","\n<br />",$comment_message);
-			} else {
-		
-				$comment_message = pullout($alt_body);
-				$comment_message = stripslashes($alt_body);
-				$comment_message = strip_tags( $alt_body);
-				$comment_message = htmlspecialchars($alt_body,ENT_QUOTES);
-				$comment_message = ereg_replace("\n","\n<br />",$alt_body);
-			}
   		}
   		
 		$comment_name = pullout($comment_name);
+		$comment_message = pullout($comment_message);
+		$comment_message = stripslashes($comment_message);
+		$comment_message = strip_tags( $comment_message);
+		$comment_message = htmlspecialchars($comment_message,ENT_QUOTES);
+		$comment_message = ereg_replace("\n","\n<br />",$comment_message);
 		$parent_image = $cfgrow['siteurl'].$rsspicdir.$parent_image;
 		$tag_date =substr($comment_datetime,0,10);
 		$id_date = substr($comment_datetime,0,10);
