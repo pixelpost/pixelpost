@@ -600,12 +600,12 @@ function UpgradeTo16final( $prefix, $newversion)
 function UpgradeTo165( $prefix, $newversion)
 {
 	global $pixelpost_db_prefix;
-  //Turn_Addons_off( $prefix );
+  	//Turn_Addons_off( $prefix );
 	//Turn_Pixelpost_Addons_on( $prefix );
 	// update version
 	
 	// admin_langfile field
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `admin_langfile` VARCHAR( 100)")
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `admin_langfile` VARCHAR( 100 )")
 	or die("Error: ". mysql_error());
 	
 	// thumbnail path
@@ -622,6 +622,36 @@ function UpgradeTo165( $prefix, $newversion)
 	// rsstype field
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM('F', 'FO', 'T', 'O', 'N') NOT NULL DEFAULT 'T' AFTER `max_uri_comments`")
 	or die("Error: ". mysql_error());
+	
+	// feed discovery
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feed_discovery` ENUM('RA', 'R', 'A', 'E', 'N') NOT NULL DEFAULT 'RA' AFTER `rsstype`")
+	or die("Error: ". mysql_error());
+	
+	// feed title
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_title` VARCHAR( 100 ) NOT NULL DEFAULT 'Pixelpost' AFTER `feed_discovery`")
+	or die("Error: ". mysql_error());
+	
+	// feed description
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_description` VARCHAR( 100 ) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `feed_title`")
+	or die("Error: ". mysql_error());
+	
+	// feed copyright
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_copyright` VARCHAR( 100 ) NOT NULL DEFAULT 'Copyright 2007 yoursite.com, All Rights Reserved' AFTER `feed_description`")
+	or die("Error: ". mysql_error());
+	
+	// allow comment feed
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `allow_comment_feed`  ENUM('Y', 'N') NOT NULL DEFAULT 'Y' AFTER `feed_copyright`")
+	or die("Error: ". mysql_error());
+	
+	// external feed
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_external` VARCHAR( 150 ) NOT NULL DEFAULT '' AFTER `allow_comment_feed`")
+	or die("Error: ". mysql_error());
+	
+	// external feed type
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feed_external_type` ENUM('ER', 'EA') NOT NULL DEFAULT 'ER' AFTER `feed_external`")
+	or die("Error: ". mysql_error());
+	
+	
 	
 	// update version
 	mysql_query("

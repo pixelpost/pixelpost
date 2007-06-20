@@ -45,6 +45,7 @@ $admin_lang_prev              = "zur&uuml;ck";
 $admin_lang_show              = "Zeige";
 $admin_lang_go                = "und Los!";
 $admin_lang_done              = "Erledigt:";
+$admin_lang_example			  = "Example";
 
 // Admin Start
 $admin_start_1                = "Das <b>Sprachdateien-Verzeichnis</b> ist nicht vorhanden oder es gibt keine ";
@@ -437,6 +438,18 @@ $admin_lang_optn_time_between_comments_desc = "Anzahl der Sekunden bevor ein neu
 $admin_lang_optn_max_uri_comment			= "Maximale Anzahl von Webadrssen (URI)";
 $admin_lang_optn_max_uri_comment_desc = "Erlaubte Zahl von URIs in einem Kommentar: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM Feed Einstellungen";
+$admin_lang_optn_rss_title  					= "Feed title";
+$admin_lang_optn_rss_desc   					= "Feed description";
+$admin_lang_optn_rss_copyright					= "Feed copyright";
+$admin_lang_optn_rss_discovery					= "Feed discovery";
+$admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
+$admin_lang_optn_rss_opt_rss					= "RSS";
+$admin_lang_optn_rss_opt_atom					= "ATOM";
+$admin_lang_optn_rss_opt_ext					= "External";
+$admin_lang_optn_rss_opt_none					= "None";
+$admin_lang_optn_rss_ext_type					= "External feed type";
+$admin_lang_optn_rss_ext						= "External feed";
+$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
 $admin_lang_optn_rsstype_desc					= "Wählen Sie die Darstellung des RSS/ATOM Feed:";
 $admin_lang_optn_rss_full							= "Bilder in voller Größe zeigen";
 $admin_lang_optn_rss_thumbs						= "Vorschaubilder zeigen";

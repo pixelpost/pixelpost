@@ -46,6 +46,7 @@ $admin_lang_prev              = "Forrige";
 $admin_lang_show              = "Vis";
 $admin_lang_go                = "G&aring;!";
 $admin_lang_done              = "Ferdig:";
+$admin_lang_example			  = "Example";
 
 
 // Admin Start
@@ -440,6 +441,18 @@ $admin_lang_optn_time_between_comments_desc = "Number of seconds before a new co
 $admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
 $admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
+$admin_lang_optn_rss_title  					= "Feed title";
+$admin_lang_optn_rss_desc   					= "Feed description";
+$admin_lang_optn_rss_copyright					= "Feed copyright";
+$admin_lang_optn_rss_discovery					= "Feed discovery";
+$admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
+$admin_lang_optn_rss_opt_rss					= "RSS";
+$admin_lang_optn_rss_opt_atom					= "ATOM";
+$admin_lang_optn_rss_opt_ext					= "External";
+$admin_lang_optn_rss_opt_none					= "None";
+$admin_lang_optn_rss_ext_type					= "External feed type";
+$admin_lang_optn_rss_ext						= "External feed";
+$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
 $admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Show full size pictures";
 $admin_lang_optn_rss_thumbs						= "Show thumbnails";

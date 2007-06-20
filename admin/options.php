@@ -128,9 +128,33 @@ if ($_GET['optaction']=='updateall')
 
 		// exif
 			$upquery = sql_query("update ".$pixelpost_db_prefix."config set exif='".$_POST['exif']."'");
-					
+		
 		// RSS settings
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feeditems='".(int) $_POST['feeditems']."'");
+		if(!get_magic_quotes_gpc())
+		{
+			// we need to escape the string before saving it to the db
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feed_discovery='".$_POST['feed_discovery']."', feeditems='".(int) $_POST['feeditems']."', feed_title='".addslashes($_POST['feed_title'])."', feed_description='".addslashes($_POST['feed_description'])."', feed_copyright='".addslashes($_POST['feed_copyright'])."', allow_comment_feed='".$_POST['allow_comment_feed']."'");
+		}
+		else
+		{
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set rsstype='".$_POST['rsstype']."', feed_discovery='".$_POST['feed_discovery']."', feeditems='".(int) $_POST['feeditems']."', feed_title='".$_POST['feed_title']."', feed_description='".$_POST['feed_description']."', feed_copyright='".$_POST['feed_copyright']."', allow_comment_feed='".$_POST['allow_comment_feed']."'");
+		}
+		
+		// external feed
+		// do not bother to update unless the external feed option is selected and not null
+		if($_POST['feed_discovery'] == 'E' &&  $_POST['feed_external'] != '')
+		{
+			if(!get_magic_quotes_gpc())
+			{
+				// we need to escape the string before saving it to the db
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set feed_external='".addslashes($_POST['feed_external'])."', feed_external_type='".$_POST['feed_external_type']."'");
+			}
+			else
+			{
+				$upquery = sql_query("update ".$pixelpost_db_prefix."config set feed_external='".$_POST['feed_external']."', feed_external_type='".$_POST['feed_external_type']."'");
+			}
+		}
+		
 		// Refresh the settings
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 
@@ -297,16 +321,13 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 			<div class='content'>
 			$admin_lang_optn_title_url_text<p />
-			$admin_lang_optn_title&nbsp;
-			<input type='text' name='new_site_title' value='".$pixelpost_site_title."' class='input' style='width:300px;' />
+			$admin_lang_optn_title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='new_site_title' value='".$pixelpost_site_title."' class='input' style='width:300px;' />
 			<p />
 			
-			$admin_lang_optn_sub_title&nbsp;
-			<input type='text' name='new_sub_title' value='".$pixelpost_sub_title."' class='input' style='width:300px;' />
+			$admin_lang_optn_sub_title&nbsp;&nbsp;<input type='text' name='new_sub_title' value='".$pixelpost_sub_title."' class='input' style='width:300px;' />
 			<p />
 
-		$admin_lang_optn_url&nbsp;
-		<input type='text' name='new_site_url' value='".$cfgrow['siteurl']."' class='input' style='width:300px;' />
+		$admin_lang_optn_url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='new_site_url' value='".$cfgrow['siteurl']."' class='input' style='width:300px;' />
 		<p />
 		$admin_lang_optn_tip
 		</div>
@@ -631,17 +652,108 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 					$optnval = 'F';
 				else
 					$optnval = 'T';
-
+				
 				echo "
 				$admin_lang_optn_exif_desc
 				<select name='exif'><option value='".$cfgrow['exif']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>
 
-				</div>
+				</div>";
+				
+				$feed_title = pullout($cfgrow['feed_title']);
+				$feed_title = htmlspecialchars($feed_title,ENT_QUOTES);
+				
+				$feed_description = pullout($cfgrow['feed_description']);
+				$feed_description = htmlspecialchars($feed_description,ENT_QUOTES);
+				
+				$feed_copyright = pullout($cfgrow['feed_copyright']);
+				$feed_copyright = htmlspecialchars($feed_copyright,ENT_QUOTES);
+				
+				$feed_external = pullout($cfgrow['feed_external']);
+				
+				echo "
 				<!-- RSS feed options -->
 				<div class='jcaption'>$admin_lang_optn_rss_setting</div>
-    		<div class='content'>$admin_lang_optn_rsstype_desc
+    			<div class='content'>
+    			$admin_lang_optn_rss_title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"feed_title\" value=\"".$feed_title."\" style=\"width:300px;\" />
+    			<br /><br />
+    			$admin_lang_optn_rss_desc:&nbsp;&nbsp;<input type=\"text\" name=\"feed_description\" value=\"".$feed_description."\" style=\"width:300px;\" />
+    			<br /><br />
+    			$admin_lang_optn_rss_copyright:&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"feed_copyright\" value=\"".$feed_copyright."\" style=\"width:300px;\" />
+    			<br /><br />
+    			$admin_lang_optn_rss_discovery:
+    			<select name=\"feed_discovery\" onchange=\"if (this.selectedIndex=='3') {flip('external_feed_discovery')};return false;\" >";
+    			if($cfgrow['feed_discovery'] == 'RA')
+    			{
+ 					echo "<option selected=\"selected\" value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
+ 				}
+ 				elseif($cfgrow['feed_discovery'] == 'R')
+ 				{
+ 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option selected=\"selected\" value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
+ 				}
+ 				elseif($cfgrow['feed_discovery'] == 'A')
+ 				{
+ 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option selected=\"selected\" value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
+ 				}
+ 				elseif($cfgrow['feed_discovery'] == 'E')
+ 				{
+ 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option selected=\"selected\" value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
+ 				}
+ 				else
+ 				{
+ 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
+ 				}
+    			echo "
+    			</select>
+    			<br /><br />
+    			<div id=\"external_feed_discovery\">
+    			$admin_lang_optn_rss_ext_type: 
+    			<select name=\"feed_external_type\">";
+    			if($cfgrow['feed_external_type'] == 'ER')
+    			{
+ 					echo "<option selected=\"selected\" value=\"ER\">".$admin_lang_optn_rss_opt_rss."</option><option class=\"EA\" value=\"EA\">".$admin_lang_optn_rss_opt_atom."</option>";
+ 				}
+ 				else
+ 				{
+ 					echo "<option class=\"ER\" value=\"ER\">".$admin_lang_optn_rss_opt_rss."</option><option selected=\"selected\" value=\"EA\">".$admin_lang_optn_rss_opt_atom."</option>";
+ 				}
+        		echo "
+    			</select>
+    			<br /><br />
+    			$admin_lang_optn_rss_ext:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"feed_external\" value=\"".$feed_external."\" style=\"width:300px;\" />
+    			<br />
+    			$admin_lang_example: http://feeds.feedburner.com/YourBurnedBlog
+    			<br /><br />
+    			</div>";
+    			// always show the external feed option if selected
+    			if($cfgrow['feed_discovery'] != 'E')
+    			{
+    				echo "<script type=\"text/javascript\">flip('external_feed_discovery');</script>";
+    			}
+    			if ($cfgrow['allow_comment_feed']=='Y'){
+					$toecho = $admin_lang_optn_yes;
+				}else{
+					$toecho = $admin_lang_optn_no;
+				}
+				if ($cfgrow['allow_comment_feed']=='Y'){
+					$optnecho = $admin_lang_optn_no;
+				}else{
+					$optnecho = $admin_lang_optn_yes;
+				}
+				if ($cfgrow['allow_comment_feed']=='Y'){
+					$optnval = 'N';
+				}else{
+					$optnval = 'Y';
+				}
+				echo "
+				$admin_lang_optn_rss_enable_comment_feed:
+				<select name=\"allow_comment_feed\">
+				<option value=\"".$cfgrow['allow_comment_feed']."\">".$toecho."</option>
+				<option value=\"".$optnval."\">".$optnecho."</option>
+				</select>
+    			<br /><br />
+    			$admin_lang_optn_rsstype_desc 
     			<select name=\"rsstype\">";
     			if ($cfgrow["rsstype"] =='F')
     			{

@@ -65,6 +65,7 @@ $admin_lang_prev   = "Poprzednia";
 $admin_lang_show   = "Pokaż";
 $admin_lang_go     = "Idź!";
 $admin_lang_done   = "Wykonano:";
+$admin_lang_example = "Example";
 
 
 // Admin Start
@@ -371,6 +372,18 @@ $admin_lang_optn_time_between_comments_desc = "Liczba sekund, po której upłyni
 $admin_lang_optn_max_uri_comment			= "MAKSYMALNA LICZBA URI";
 $admin_lang_optn_max_uri_comment_desc = "Liczba URI dozwolonych w jednym komentarzu: ";
 $admin_lang_optn_rss_setting					= "USTAWIENIA RSS/ATOM";
+$admin_lang_optn_rss_title  					= "Feed title";
+$admin_lang_optn_rss_desc   					= "Feed description";
+$admin_lang_optn_rss_copyright					= "Feed copyright";
+$admin_lang_optn_rss_discovery					= "Feed discovery";
+$admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
+$admin_lang_optn_rss_opt_rss					= "RSS";
+$admin_lang_optn_rss_opt_atom					= "ATOM";
+$admin_lang_optn_rss_opt_ext					= "External";
+$admin_lang_optn_rss_opt_none					= "None";
+$admin_lang_optn_rss_ext_type					= "External feed type";
+$admin_lang_optn_rss_ext						= "External feed";
+$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
 $admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
 $admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe obrazki";
 $admin_lang_optn_rss_thumbs						= "Pokazuj miniaturki";
