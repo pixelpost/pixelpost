@@ -56,7 +56,7 @@ BEGIN OF LANGUAGE VARIABLES:
 Dont edit                     ||       Edit                                    */
 
 $_lang_file_translator        = 'Schonhose - <a href="http://foto.schonhose.nl/" target="_blank">foto.schonhose.nl</a>';
-$_lang_file_email             = 'ramin@pixelpost.org';
+$_lang_file_email             = 'schonhose@pixelpost.org';
 $_lang_file_rev               = '1.0.0';
 
 // IMAGE NAVIGATION
@@ -87,7 +87,6 @@ $lang_message_banned_comment  = "Uw reactie kan niet bewaard worden! Het bevat &
 $lang_comment_popup_disabled  = "Reacties op deze foto is uitgeschakeld.";
 $lang_comment_plural				  = "Reacties";
 $lang_comment_single					= "Reactie";
-
 $lang_tags                    = "Label:<br/>";
 
 // EXIF DATA
