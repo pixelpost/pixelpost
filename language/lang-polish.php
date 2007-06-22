@@ -56,8 +56,8 @@ $_lang_file_rev               = '1.6';
 // IMAGE NAVIGATION
 $lang_previous								= "Poprzedni";
 $lang_next										= "Następny";
-$lang_no_previous							= "Brak poprzedniego obrazka";
-$lang_no_next									= "Brak następnego obrazka";
+$lang_no_previous							= "Brak poprzedniego zdjęcia";
+$lang_no_next									= "Brak następnego zdjęcia";
 $lang_latest									 = "Ostatnie";
 $lang_first										 = "Pierwsze";
 $lang_browse_select_category	= "Wybierz kategorię";
@@ -66,7 +66,7 @@ $lang_permalink								= "Permalink";
 $lang_paged_archive						= "Archiwum";
 
 // COMMENTS
-$lang_message_missing_image		= "Nie wybrano obrazka. Komentarz nie został zapisany.";
+$lang_message_missing_image		= "Nie wybrano zdjęcia. Komentarz nie został zapisany.";
 $lang_message_missing_comment	= "Nie wpisano treści. Komentarz nie został zapisany.";
 $lang_message_missing_name    = "Nie wpisano nazwy. Komentarz nie został zapisany.";
 $lang_message_moderating_comment = "Komentarz został zapisany! Zostanie opublikowany po zaakceptowaniu go przez administratora photobloga.";
@@ -78,7 +78,7 @@ $lang_comment_redirect_error	= "Wystąpił błąd dodawania komentarza! Kliknij,
 $lang_comment_page_title			= "Komentarz";
 $lang_comment_popup						= "Komentarze";
 $lang_message_banned_comment  = "Komentarz nie został zapisany! Zawiera on jedno lub więcej zabronionych słów/emaili/IP.";
-$lang_comment_popup_disabled  = "Komentarze dla tego obrazka zostały wyłączone";
+$lang_comment_popup_disabled  = "Komentarze dla tego zdjęcia zostały wyłączone";
 $lang_comment_plural					= "Komentarze";
 $lang_comment_single					= "Komentarz";
 $lang_tags                    = "Tagi:<br/>";
@@ -167,7 +167,7 @@ $lang_email_notificationplain_pt4 = "
 ";
 
 // Error Message
-$lang_nothing_to_show             = "Zapraszamy już niebawem! Obecnie jeszcze nie ma czego oglądać!";
+$lang_nothing_to_show             = "Zapraszamy już niebawem! Obecnie jeszcze nie ma czego oglądać lub zdjęcia są ustawione z przyszłą datą!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
 $lang_spamflood										= "Zabezpieczenie przed zalewem komentarzami jest aktywne. Musisz poczekać <TIME_TO_WAIT> przez dodaniem kolejnego komentarza.";
 

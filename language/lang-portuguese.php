@@ -168,7 +168,7 @@ $lang_email_notificationplain_pt4 = "
       Email sent by pixelpost
 ";
 // Error Message
-$lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
+$lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here or they are set to show in future!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
 $lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> before posting another comment.";
 

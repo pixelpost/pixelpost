@@ -30,7 +30,7 @@ Info: if you want to have the admin-section in spanish language as well,
       - upload the file "admin-lang-spanish.php" to your server
         into the language-directory
 
-Done!
+Done.
 ______________________________________________________________________________
 
 License: http://www.gnu.org/copyleft/gpl.html
@@ -63,39 +63,38 @@ $lang_previous                  = "Anterior";
 $lang_next                      = "Siguiente";
 $lang_no_previous               = "No hay Anterior";
 $lang_no_next                   = "No hay Siguiente";
-$lang_latest									 = "Last";
-$lang_first										 = "First";
+$lang_latest									 = "&Uacute;ltima";
+$lang_first										 = "Primera";
 $lang_browse_select_category    = "Seleccione una Categor&iacute;a";
 $lang_browse_all                = "Todas";
 $lang_permalink                 = "Permalink";
-$lang_paged_archive						= "Archive";
+$lang_paged_archive						= "Archivo";
 
 // COMMENTS
-$lang_message_missing_image     = "Ninguna imagen seleccionada. Opini&oacute;n no guardada.";
-$lang_message_missing_comment   = "No hay mensaje. Opini&oacute;n no guardada.";
+$lang_message_missing_image     = "Ninguna imagen seleccionada. Comentario no guardada.";
+$lang_message_missing_comment   = "No hay mensaje. Comentario no guardado.";
 $lang_visit_homepage            = "Visite La Pagina Web";
-$lang_no_comments_yet           = "No hay Opiniones aun.";
+$lang_no_comments_yet           = "No hay comentarios a&uacute;n.";
 $lang_comment_thank_you         = "Gracias por visitar y dar tu opini&oacute;n sobre esta fotograf&iacute;a.\nLe volver&aacute;n a dirigir en 5 segundos.";
-$lang_comment_redirect          = "Has click para ir hacia tras.";
-$lang_comment_redirect_error    = "&iexcl;Error del submition del comentario! Chasque por favor para ser transferido detr&aacute;s, si el cambio de direcci&oacute;n no trabaja";
-$lang_comment_page_title        = "Opini&oacute;n";
-$lang_comment_popup             = "Opiniones";
-$lang_message_banned_comment    = "&iexcl;Su comentario no se ahorra! Contiene unas o m&aacute;s palabras/email/ips prohibidas.";
-$lang_comment_popup_disabled    = "Commenting on this picture has been disabled";
-$lang_comment_plural						 = "Comments";
-$lang_comment_single						 = "Comment";
-$lang_tags                      = "Tags:<br/>";
+$lang_comment_redirect          = "Haz click para ir hacia atr&aacute;s.";
+$lang_comment_redirect_error    = "&iexcl;Error al enviar el comentario. Haga click en atras si no es redirigido autom&aacute;ticamente";
+$lang_comment_page_title        = "Comentario";
+$lang_comment_popup             = "Comentarios";
+$lang_message_banned_comment    = "&iexcl;Tu comentario no se ha guardado. Contiene unas o m&aacute;s palabras/email/ips prohibidas.";
+$lang_comment_popup_disabled    = "Los comentarios han sido deshabilitados en &eacute;sta imagen.";
+$lang_comment_plural						 = "Comentarios";
+$lang_comment_single						 = "Comentario";
+$lang_tags                      = "Etiquetas:<br/>";
 
 // EXIF DATA
 $lang_exposure                  = "Exposici&oacute;n:";
 $lang_aperture                  = "Apertura:";
-$lang_capture_date              = "Capture Date:";
+$lang_capture_date              = "Fecha de Captura:";
 $lang_focal                     = "Focal:";
 $lang_camera_maker              = "Fabricante:";
 $lang_camera_model              = "Modelo:";
 $lang_flash_fired               = "Flash: Activo";
 $lang_flash_not_fired           = "Flash: No Activo";
-$lang_flash_not_detected         = "Flash: Not Detected";
 $lang_iso                       = "ISO:";
 
 // Category
@@ -127,54 +126,52 @@ $lang_december                  = "Diciembre";
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
-$lang_alt_lang_french							="Français";
+$lang_alt_lang_french							="Franï¿½ais";
 $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
 $lang_alt_lang_polish							="Polski";
-$lang_alt_lang_portuguese					="Português";
+$lang_alt_lang_portuguese					="Portuguï¿½s";
 $lang_alt_lang_simplified_chinese	="Chinese";
-$lang_alt_lang_spanish						="Español";
+$lang_alt_lang_spanish						="Espaï¿½ol";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
 $lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 
-$lang_email_notification_subject = "New Comment";
+$lang_email_notification_subject = "Nuevo comentario";
 $lang_email_notification_pt1 = "
-	  Hello,<br>
-      A new comment has been made at your photoblog.<br><br>
+	  Hola,<br>
+      Hay un nuevo comentario en tu fotolog.<br><br>
 	  ";
 $lang_email_notification_pt2 = "
       <br>
-      The comment is: <br>
       ----------------------------------------------------------------------<br>
 	  ";
-$lang_email_notification_pt3 = "by";
+$lang_email_notification_pt3 = "por";
 $lang_email_notification_pt4 = "
             ----------------------------------------------------------------------    <br>
-      Email sent by pixelpost<br>
+      Email enviado por pixelpost<br>
 ";
 $lang_email_notificationplain_pt1 = "
-	  Hello,
-      A new comment has been made at your photoblog.";
+	  Hola,
+      Hay un nuevo comentario en tu fotolog.";
 $lang_email_notificationplain_pt2 = "
-      The comment is:
       ----------------------------------------------------------------------";
-$lang_email_notificationplain_pt3 = "by";
+$lang_email_notificationplain_pt3 = "por";
 $lang_email_notificationplain_pt4 = "
       ----------------------------------------------------------------------
-      Email sent by pixelpost
+      Email enviado por pixelpost
 ";
 
 // Error Message
-$lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here!";
+$lang_nothing_to_show             = "Todav&iacute;a no hay ninguna imagen. No image to show here or they are set to show in future!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> before posting another comment.";
+$lang_spamflood										= "El sistema anti-spam ha sido activado. Debes esperar <TIME_TO_WAIT> para poder enviar un comentario.";
 
 // RSS & ATOM Feed
-$lang_comment_feed_title        = "Newest comments on";
-$lang_comment_feed_image_title  = "New comment on";
+$lang_comment_feed_title        = "Cometarios recientes en";
+$lang_comment_feed_image_title  = "Nuevo comentario en";
 ?>

@@ -162,7 +162,7 @@ $lang_email_notificationplain_pt3 = "abgegeben von";
 $lang_email_notificationplain_pt4 = "\n\n---------------------------------------------------------------------- \n\ndies ist eine von Pixelpost automatisch erstellte Benachrichtigung";
 
 // Error Message
-$lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei!";
+$lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei or they are set to show in future!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
 $lang_spamflood										= "Schutz vor Spam-Flut ist aktiviert! Sie m&uuml;ssen <TIME_TO_WAIT> warten, bis Sie einen neuen Kommentar abgeben k&ouml;nnen.";
 
