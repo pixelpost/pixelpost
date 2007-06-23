@@ -54,13 +54,13 @@ if( isset( $_GET['view']) && $_GET['view']=='addons')
 	
 			if ("ok"==stat_update_month($pixelpost_db_prefix,$month))
 			{
-			  // update was successfull now start delete
+				// update was successfull now start delete
 				if ("ok"!=delete_month_visitors($month))
 				{
 				// delete Failed!: roll back to previous state!
 					$msg = delete_month_stats($month);
 					echo "delete failed and rollback: ".$msg;
-			  } // end if delete was ok
+				} // end if delete was ok
 			} // end if update was ok
 			// } // end if do month or not currnt month
 		} // end while
@@ -112,12 +112,11 @@ $addon_description .= 'Number of all visitors: '.$pixelpost_visitors ." -- Numbe
 function create_stat_table($pixelpost_db_prefix)
 {
 	global $cfgrow;
-   $tz = $cfgrow['timezone'];
-   $thismonth = gmdate("Y-m",gmdate("U")+(3600 * $tz));
-   //$thismonth .="-00 00:00:00";
+	$tz = $cfgrow['timezone'];
+	$thismonth = gmdate("Y-m",gmdate("U")+(3600 * $tz));
+	//$thismonth .="-00 00:00:00";
 
-
-   $query = "CREATE TABLE {$pixelpost_db_prefix}stats (
+	$query = "CREATE TABLE {$pixelpost_db_prefix}stats (
       id INT(11) NOT NULL auto_increment,
 
       visitors INTEGER NOT NULL DEFAULT 0,
@@ -156,231 +155,230 @@ function create_stat_table($pixelpost_db_prefix)
 
       PRIMARY KEY  (id)
    )";
-   if (!mysql_query( $query))
-      $somestates .= "<br/>Error occured in creating table: ".mysql_error();
 
-   $where = " where DATE_FORMAT(datetime, '%Y-%m') < '$thismonth' ";
-   $insert_query = build_insertquery($pixelpost_db_prefix,$where, $thismonth);
-         if(!mysql_query($insert_query))
-         {
-            echo "failed to insert information up to now!".mysql_error();
-            mysql_query(" drop TABLE '{$pixelpost_db_prefix}stats' ");
-         }
-
-
+	if (!mysql_query( $query))	$somestates .= "<br/>Error occured in creating table: ".mysql_error();
+	
+	$where = " where DATE_FORMAT(datetime, '%Y-%m') < '$thismonth' ";
+	$insert_query = build_insertquery($pixelpost_db_prefix,$where, $thismonth);
+	
+	if(!mysql_query($insert_query))
+	{
+		echo "failed to insert information up to now!".mysql_error();
+		mysql_query(" drop TABLE '{$pixelpost_db_prefix}stats' ");
+	}
 }
 
 
 ///----------------------------------------
 function build_insertquery($pixelpost_db_prefix,$where='',$thismonth)
 {
-      // count all visitors
-      $query = "select count(*) as count from ".$pixelpost_db_prefix."visitors".$where;
+	// count all visitors
+	$query = "select count(*) as count from ".$pixelpost_db_prefix."visitors".$where;
 
-      $countall = mysql_query($query);
-      $countall = mysql_fetch_array($countall);
-      $countall = $countall['count'];
+	$countall = mysql_query($query);
+	$countall = mysql_fetch_array($countall);
+	$countall = $countall['count'];
 
-      $thismonth .= "-00 00:00:00";
-      $insertquery = "INSERT INTO {$pixelpost_db_prefix}stats VALUES ( '', '$countall' , '$thismonth' ";
-
-
-      // top referers
-      $query = "
-      SELECT count( *) AS count, referer, ip
-      FROM ".$pixelpost_db_prefix."visitors
-      ".$where."
-      GROUP BY referer
-      ORDER BY count DESC
-      LIMIT 0 , 5";
+	$thismonth .= "-00 00:00:00";
+	$insertquery = "INSERT INTO {$pixelpost_db_prefix}stats VALUES ( '', '$countall' , '$thismonth' ";
 
 
-      $mostvisitors = mysql_query($query);
-      $m = 0;
+	// top referers
+	$query = "
+		SELECT count( *) AS count, referer, ip
+		FROM ".$pixelpost_db_prefix."visitors
+		".$where."
+		GROUP BY referer
+		ORDER BY count DESC
+		LIMIT 0 , 5";
 
-         while(list($count,$referer,$ip) = mysql_fetch_row($mostvisitors)){
-            $insertquery .= ",'" .$count ."','" .$referer ."','" .$ip ."'";
-            $m++;
-            }
+	$mostvisitors = mysql_query($query);
+	$m = 0;
 
-      for ($k = $m ; $k <5 ;$k++){
-            $insertquery .= ", '', '' , '' ";
+	while(list($count,$referer,$ip) = mysql_fetch_row($mostvisitors))
+	{
+		$insertquery .= ",'" .$count ."','" .$referer ."','" .$ip ."'";
+		$m++;
+	}
+	
+	for ($k = $m ; $k <5 ;$k++)
+	{
+		$insertquery .= ", '', '' , '' ";
+	}// end for
+	
+	// top visitors ip
+	
+	$query = "
+		SELECT count( *) AS count, ip
+		FROM ".$pixelpost_db_prefix."visitors
+		".$where."
+		GROUP BY ip
+		ORDER BY count DESC
+		LIMIT 0 , 5";
+	
+	$mostips = mysql_query($query);
+	$m = 0;
 
-      }// end for
+	while(list($count,$ip) = mysql_fetch_row($mostips))
+	{
+		$insertquery .= ",'" .$count ."','" .$ip ."'";
+		$m++;
+	}
 
-      // top visitors ip
-
-      $query = "
-      SELECT count( *) AS count, ip
-      FROM ".$pixelpost_db_prefix."visitors
-      ".$where."
-      GROUP BY ip
-      ORDER BY count DESC
-      LIMIT 0 , 5";
-
-
-      $mostips = mysql_query($query);
-      $m = 0;
-      while(list($count,$ip) = mysql_fetch_row($mostips)){
-            $insertquery .= ",'" .$count ."','" .$ip ."'";
-            $m++;
-            }
-      for ($k = $m ; $k <5 ;$k++){
-            $insertquery .= ", '', '' ";
-      }// end for
-
-   $insertquery .= ")";
-   return $insertquery;
+	for ($k = $m ; $k <5 ;$k++)
+	{
+		$insertquery .= ", '', '' ";
+	}// end for
+	
+	$insertquery .= ")";
+	return $insertquery;
 }
 
 ///----------------------------------------
 function delete_month_visitors ($month)
 {
-global $pixelpost_db_prefix;
-   $message = 'ok';
-   $query = "delete from {$pixelpost_db_prefix}visitors where DATE_FORMAT(datetime , '%Y-%m')= '$month'";
-
-   if(!mysql_query($query))
-      $message = mysql_error();
-
-   return $message;
+	global $pixelpost_db_prefix;
+	$message = 'ok';
+	$query = "delete from {$pixelpost_db_prefix}visitors where DATE_FORMAT(datetime , '%Y-%m')= '$month'";
+	
+	if(!mysql_query($query))	$message = mysql_error();
+	
+	return $message;
 }
 
 ///----------------------------------------
 function delete_month_stats ($month)
 {
-global $pixelpost_db_prefix;
-   $message = 'ok';
-   $query = "delete from {$pixelpost_db_prefix}stats where DATE_FORMAT(month , '%Y-%m')= '$month'";
+	global $pixelpost_db_prefix;
+	$message = 'ok';
+	$query = "delete from {$pixelpost_db_prefix}stats where DATE_FORMAT(month , '%Y-%m')= '$month'";
 
-   if(!mysql_query($query))
-      $message = mysql_error();
+	if(!mysql_query($query))	$message = mysql_error();
 
-   return $message;
+	return $message;
 }
 
 ///----------------------------------------
 function stat_update_month($pixelpost_db_prefix,$thismonth)
 {
+	$query = "select id as id from ".$pixelpost_db_prefix."stats where month = '$thismonth' LIMIT 0,1";
+	$query = mysql_query($query);
+	$monthexist = mysql_fetch_row($query);
 
-   $query = "select id as id from ".$pixelpost_db_prefix."stats where month = '$thismonth' LIMIT 0,1";
-   $query = mysql_query($query);
-   $monthexist = mysql_fetch_row($query);
-   if ($monthexist['id']){
+	if ($monthexist['id'])
+	{
+		//if this month exist it's an error!
+		/*
+		$row = mysql_fetch_array($query);
+		$updatequery = build_update_query_for_month($thismonth,row['id']);
+		if(mysql_query($updatequery))
+		$message = "ok";//Month ".$thismonth." is updated!";
+		else
+		$message = "Updating Month ".$thismonth." failed!";
+		*/
+	}// end if this month exist
+	else
+	{
+		$where = " where DATE_FORMAT(datetime, '%Y-%m') <= '".$thismonth."'";
+		$insert_query = build_insertquery($pixelpost_db_prefix,$where,$thismonth);
+		if(mysql_query($insert_query))	$message = "ok";//Month ".$thismonth." is added!";
+		else	$message = "Inserting Month ".$thismonth." failed!";
+	}
 
-   //if this month exist it's an error!
-   /*
-      $row = mysql_fetch_array($query);
-      $updatequery = build_update_query_for_month($thismonth,row['id']);
-      if(mysql_query($updatequery))
-         $message = "ok";//Month ".$thismonth." is updated!";
-      else
-         $message = "Updating Month ".$thismonth." failed!";
-   */
-   }// end if this month exist
-   else{
-
-      $where = " where DATE_FORMAT(datetime, '%Y-%m') <= '".$thismonth."'";
-      $insert_query = build_insertquery($pixelpost_db_prefix,$where,$thismonth);
-      if(mysql_query($insert_query))
-         $message = "ok";//Month ".$thismonth." is added!";
-      else
-         $message = "Inserting Month ".$thismonth." failed!";
-   }
-   return $message ;
+	return $message ;
 }
 
 ///----------------------------------------
 function build_update_query_for_month($themonth,$id)
 {
-   $where = " where DATE_FORMAT(datetime, '%Y-%m') <= '".$themonth."'";
-   // count all visitors
-   $query = "select count(*) as count from ".$pixelpost_db_prefix."visitors" .$where;
-   $countall = mysql_query($query);
-   $countall = mysql_fetch_array($countall);
-   $countall = $countall['count'];
-
-   $updatequery = "update {$pixelpost_db_prefix}stats set
-   visitors='$countall' , month='$themonth'";
-
+	$where = " where DATE_FORMAT(datetime, '%Y-%m') <= '".$themonth."'";
+	// count all visitors
+	$query = "select count(*) as count from ".$pixelpost_db_prefix."visitors" .$where;
+	$countall = mysql_query($query);
+	$countall = mysql_fetch_array($countall);
+	$countall = $countall['count'];
+	
+	$updatequery = "update {$pixelpost_db_prefix}stats set
+		visitors='$countall' , month='$themonth'";
 
    // top referers
-   $query = "
-   SELECT count( *) AS count, referer, ip
-   FROM ".$pixelpost_db_prefix."visitors
-   .$where
-   GROUP BY referer
-   ORDER BY count DESC
-   LIMIT 0 , 5";
+	$query = "
+		SELECT count( *) AS count, referer, ip
+		FROM ".$pixelpost_db_prefix."visitors
+		.$where
+		GROUP BY referer
+		ORDER BY count DESC
+		LIMIT 0 , 5";
+
+	$mostvisitors = mysql_query($query);
+	$m = 0;
+	
+	while(list($count,$referer,$ip) = mysql_fetch_row($mostvisitors))
+	{
+		$m++;
+		$updatequery .= ", most_referer_num_".$m."='" .$count ."',most_referer_url_".$m."='" .$referer ."',most_referer_ip_".$m."='" .$ip ."'";
+	}
+	
+	for ($k = $m ; $k <5 ;$k++)
+	{
+		$updatequery .= ", most_referer_num_".$m."='', most_referer_url_".$m."='' , most_referer_ip_".$m."='' ";
+	}// end for
+	
+	// top visitors ip
+
+	$query = "
+		SELECT count( *) AS count, ip
+		FROM ".$pixelpost_db_prefix."visitors
+		.$where
+		GROUP BY ip
+		ORDER BY count DESC
+		LIMIT 0 , 5";
 
 
-
-   $mostvisitors = mysql_query($query);
-   $m = 0;
-
-      while(list($count,$referer,$ip) = mysql_fetch_row($mostvisitors)){
-         $m++;
-         $updatequery .= ", most_referer_num_".$m."='" .$count ."',most_referer_url_".$m."='" .$referer ."',most_referer_ip_".$m."='" .$ip ."'";
-
-         }
-
-   for ($k = $m ; $k <5 ;$k++){
-         $updatequery .= ", most_referer_num_".$m."='', most_referer_url_".$m."='' , most_referer_ip_".$m."='' ";
-
-   }// end for
-
-   // top visitors ip
-
-   $query = "
-   SELECT count( *) AS count, ip
-   FROM ".$pixelpost_db_prefix."visitors
-   .$where
-   GROUP BY ip
-   ORDER BY count DESC
-   LIMIT 0 , 5";
-
-
-   $mostips = mysql_query($query);
-   $m = 0;
-   while(list($count,$ip) = mysql_fetch_row($mostips)){
-         $m++;
-         $updatequery .= ",most_visited_ip_num_".$m."='" .$count ."',most_visited_ip_".$m."='" .$ip ."'";
-
-         }
-   for ($k = $m ; $k <5 ;$k++){
-         $updatequery .= ", most_visited_ip_num_".$m."='', most_visited_ip_".$m."='' ";
-   }// end for
-
-   $updatequery .= "where id='".$id."'";
-
-   return $updatequery;
+	$mostips = mysql_query($query);
+	$m = 0;
+	while(list($count,$ip) = mysql_fetch_row($mostips))
+	{
+		$m++;
+		$updatequery .= ",most_visited_ip_num_".$m."='" .$count ."',most_visited_ip_".$m."='" .$ip ."'";
+	}
+	
+	for($k = $m ; $k <5 ;$k++)
+	{
+		$updatequery .= ", most_visited_ip_num_".$m."='', most_visited_ip_".$m."='' ";
+	}// end for
+	
+	$updatequery .= "where id='".$id."'";
+	
+	return $updatequery;
 }
 
 
 ///----------------------------------------
 function add_current_month($pixelpost_db_prefix)
 {
-   global $cfgrow;
-   $tz = $cfgrow['timezone'];
-   $thismonth = gmdate("Y-m",gmdate("U")+(3600 * $tz));
-   $query = "select * from ".$pixelpost_db_prefix."stats where month = '$thismonth'";
-   if (mysql_query($query))
-   {
-      $row = mysql_fetch_array($query);
-      $updatequery = build_update_query_for_month($thismonth,$row['id']);
+	global $cfgrow;
+	$tz = $cfgrow['timezone'];
+	$thismonth = gmdate("Y-m",gmdate("U")+(3600 * $tz));
+	$query = "select * from ".$pixelpost_db_prefix."stats where month = '$thismonth'";
 
-      if(mysql_query($updatequery))	$message = "Month ".$thismonth." is updated!";
-      else	$message = "Updating Month ".$thismonth." failed!";
-   }// end if this month exist
-   else
-   {
-      $where = " where DATE_FORMAT(datetime, '%Y-%m') <= '".$thismonth."'";
-      $insert_query = build_insertquery($pixelpost_db_prefix,$where,$thismonth);
-
-      if(mysql_query($insert_query))	$message = "Month ".$thismonth." is added!";
-      else	$message = "Inserting Month ".$thismonth." failed!";
-   }
-   return $message ;
+	if (mysql_query($query))
+	{
+		$row = mysql_fetch_array($query);
+		$updatequery = build_update_query_for_month($thismonth,$row['id']);
+		
+		if(mysql_query($updatequery))	$message = "Month ".$thismonth." is updated!";
+		else	$message = "Updating Month ".$thismonth." failed!";
+	}// end if this month exist
+	else
+	{
+		$where = " where DATE_FORMAT(datetime, '%Y-%m') <= '".$thismonth."'";
+		$insert_query = build_insertquery($pixelpost_db_prefix,$where,$thismonth);
+		
+		if(mysql_query($insert_query))	$message = "Month ".$thismonth." is added!";
+		else	$message = "Inserting Month ".$thismonth." failed!";
+	}
+	return $message ;
 }
 
 ?>

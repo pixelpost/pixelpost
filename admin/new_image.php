@@ -329,7 +329,7 @@ if($_GET['view'] == "")
 		$image = $filnamn;
 		if($status == "ok")
 		{
-			$query = "insert into ".$pixelpost_db_prefix."pixelpost(datetime,headline,body,image,alt_headline,alt_body,comments,exif_info)
+			$query = "INSERT INTO ".$pixelpost_db_prefix."pixelpost (datetime,headline,body,image,alt_headline,alt_body,comments,exif_info)
 			VALUES('$datetime','$headline','$body','$image','$alt_headline','$alt_body','$comments_settings','$exif_info_db')";
 			$result = mysql_query($query) || die("Error: ".mysql_error().$admin_lang_ni_db_error);
 
@@ -337,11 +337,15 @@ if($_GET['view'] == "")
 
 			if (isset($_POST['category']))
 			{
+				$query_val = array();
+	
 				foreach($_POST['category'] as $val)
 				{
-					$query  ="INSERT INTO ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'$val','$theid')";
-					$result = mysql_query($query) || die("Error: ".mysql_error());
+					$query_val[] = "(NULL,'$val','$theid')";
 				}
+	
+				$query_st = "INSERT INTO ".$pixelpost_db_prefix."catassoc (id,cat_id,image_id) VALUES ".implode(",", $query_val).";";
+				$result = mysql_query($query_st) || die("Error: ".mysql_error());
 	    }
 	    // done
 

@@ -58,14 +58,12 @@ if( isset( $_GET['view']) && $_GET['view']=='addons')
 	$query = "SELECT id FROM {$pixelpost_db_prefix}ping LIMIT 1";
 	if( !mysql_query( $query))
 	{
-	  $query = "CREATE TABLE {$pixelpost_db_prefix}ping (
+		$query = "CREATE TABLE {$pixelpost_db_prefix}ping (
 		  id INT(11) NOT NULL auto_increment,
 		  pinglist MEDIUMTEXT NOT NULL default '',
 		  PRIMARY KEY  (id)
 		)";
-	  mysql_query( $query);
-	 // $query = "INSERT INTO {$pixelpost_db_prefix}ping VALUES ( NULL, 'http://rpc.pingomatic.com/\nhttp://rpc.blogrolling.com/pinger/\nhttp://ping.blo.gs/')";
-	 // mysql_query( $query);
+		mysql_query( $query);
 	}
 
 	// Update the ban list if the form is called
@@ -73,13 +71,19 @@ if( isset( $_GET['view']) && $_GET['view']=='addons')
 	{
 		$pinglist = str_replace( "\r\n", "\n", $_POST['pinglist']);
 		$pinglist = str_replace( "\r", "\n", $pinglist);
+
 		if(version_compare(phpversion(),"4.3.0")=="-1")	$pinglist = mysql_escape_string($pinglist);
 		else	$pinglist = mysql_real_escape_string($pinglist);
+
 		$query = "SELECT COUNT( * ) FROM {$pixelpost_db_prefix}ping";
 		$row = sql_array($query);
-		if ($row[0]==1){
+
+		if ($row[0]==1)
+		{
 			$query = "UPDATE {$pixelpost_db_prefix}ping SET pinglist='$pinglist' LIMIT 1";
-		} else {
+		}
+		else
+		{
 			$query = "INSERT INTO {$pixelpost_db_prefix}ping VALUES ( NULL, '$pinglist')";
 		}
 		mysql_query($query) or die( mysql_error());
@@ -165,6 +169,7 @@ function do_pings()
 	}
 
 }
+
 // function from wordpress 1.5 functions.php
 function weblog_pings($server = '', $path = '')
 {
@@ -185,8 +190,8 @@ function weblog_pings($server = '', $path = '')
 
 function trailingslashit($string)
 {
-  if ( '/' != substr($string, -1))	$string .= '/';
+	if ( '/' != substr($string, -1))	$string .= '/';
 
-  return $string;
+	return $string;
 }
 ?>

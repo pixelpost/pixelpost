@@ -48,7 +48,7 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 				$counter++;
 			} // end file !"."
 		} // end while
-	  closedir($addon_handle);
+		closedir($addon_handle);
 	} // if addon_handle done
 
 	if ($_POST['sort']=='alphabet')	natcasesort($files);

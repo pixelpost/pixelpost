@@ -92,7 +92,9 @@ if($_GET['view'] == "images")
 			$query = "DELETE FROM ".$pixelpost_db_prefix."catassoc ";
 			$where = "WHERE";
 			for ($i=0; $i < count($idz); $i++)
-			{	$where .= " (cat_id='$cat_id' and image_id='$idz[$i]') or ";	}
+			{
+				$where .= " (cat_id='$cat_id' and image_id='$idz[$i]') or ";
+			}
 
 			$where .= " 0 ";
 			$query .= $where;
@@ -100,13 +102,15 @@ if($_GET['view'] == "images")
 			$query  = sql_query($query);
 
 			// now assign the new values
-			// ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'$val','$getid')";
-			for ($i=0; $i < count($idz); $i++){
+			$query_val = array();
 
-				$query = "insert into ".$pixelpost_db_prefix."catassoc (id,cat_id,image_id) VALUES(NULL,'$cat_id','$idz[$i]')";
-
-				$query  = sql_query($query);
+			for ($i=0; $i < count($idz); $i++)
+			{
+				$query_val[$i] = "(NULL,'$cat_id','$idz[$i]')";
 			}
+
+			$query_st = "INSERT INTO ".$pixelpost_db_prefix."catassoc (id,cat_id,image_id) VALUES ".implode(",", $query_val).";";
+			$query  = sql_query($query_st);
 
 			$c = count($idz);
 			echo "<div class='jcaption'>$admin_lang_imgedit_mass_7 $c $admin_lang_imgedit_mass_8</div>";
@@ -158,20 +162,24 @@ if($_GET['view'] == "images")
 			if($_POST['masstagopt'] == 'set')
 			{
 				for($x = 0; $x < count($idz); $x++)
+				{
 					for($y = 0; $y < count($tags_arr); $y++)
 					{
 						$values[1] = '('.$idz[$x].', "'.$tags_arr[$y].'", "")';
 						$values[0] = implode(', ', $values);
 					}
+				}
 			}
 			elseif($_POST['masstagopt'] == 'set2')
 			{
 				for($x = 0; $x < count($idz); $x++)
+				{
 					for($y = 0; $y < count($tags_arr); $y++)
 					{
 						$values[1] = '('.$idz[$x].', "", "'.$tags_arr[$y].'")';
 						$values[0] = implode(', ', $values);
 					}
+				}
 			}
 
 			$query .= $values[0];
@@ -246,12 +254,16 @@ if($_GET['view'] == "images")
 //------------
 		if (isset($_POST['category']))
 		{
+			$query_val = array();
+
 			foreach($_POST['category'] as $val)
 			{
 				$category = $val;
-				$query  ="insert into ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'$val','$getid')";
-				$result = mysql_query($query) || die("Error: ".mysql_error());
+				$query_val[] = "(NULL,'$val','$getid')";
 			}
+
+			$query_st = "INSERT INTO ".$pixelpost_db_prefix."catassoc (id,cat_id,image_id) VALUES ".implode(",", $query_val).";";
+			$result = mysql_query($query_st) || die("Error: ".mysql_error());
 		}
 
 		$query = "update ".$pixelpost_db_prefix."pixelpost set datetime='$newdatetime', headline='$headline', body='$body', category='$category', alt_headline='$alt_headline', alt_body='$alt_body', comments='$comments_settings' where id='$getid'";
