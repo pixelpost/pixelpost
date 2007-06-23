@@ -451,7 +451,7 @@ $admin_lang_pp_up_error_3 = "Plik nie został przesłany w całości.";
 $admin_lang_pp_up_error_4 = "Żaden plik nie został przesłany.";
 $admin_lang_pp_up_error_6 = "Brak katalogu tymczasowego.";
 $admin_lang_pp_up_error_7 = "Plik nie został zapisany na dysku.";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title = "ZNACZNIK CZASU";

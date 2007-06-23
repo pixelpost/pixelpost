@@ -421,7 +421,7 @@ $admin_lang_pp_up_error_3            = "文件没有完全上传。";
 $admin_lang_pp_up_error_4            = "没有上传到文件。";
 $admin_lang_pp_up_error_6            = "Missing a temporary folder.";
 $admin_lang_pp_up_error_7            = "Failed to write file to disk.";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "时间标签";

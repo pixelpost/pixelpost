@@ -371,7 +371,7 @@ $admin_lang_pp_up_error_3           = "Datei wurde nicht komplett &uuml;bertrage
 $admin_lang_pp_up_error_4           = "Es wurde keine Datei hochgeladen.";
 $admin_lang_pp_up_error_6           = "Tempor&auml;rer Ordner fehlt.";
 $admin_lang_pp_up_error_7           = "Datei konnte nicht geschrieben werden.";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 $admin_lang_cmnt_moderation_que     = "Freigabe-Queue";
 
 

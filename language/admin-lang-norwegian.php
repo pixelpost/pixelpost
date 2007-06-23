@@ -374,7 +374,7 @@ $admin_lang_pp_up_error_3            = "Filen ble ikke fullstendig opplastet.";
 $admin_lang_pp_up_error_4            = "Ingen fil ble lastet opp.";
 $admin_lang_pp_up_error_6            = "Missing a temporary folder.";
 $admin_lang_pp_up_error_7            = "Failed to write file to disk.";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 // newly added ones
 $admin_lang_cmnt_moderation_que    = "Moderasjons k&oslash;";
 

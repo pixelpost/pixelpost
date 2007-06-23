@@ -417,6 +417,7 @@ $admin_lang_pp_up_error_3      = "Le fichier n'a pas &eacute;t&eacute; t&eacute;
 $admin_lang_pp_up_error_4      = "Aucun fichier n'a &eacute;t&eacute; t&eacute;l&eacute;charg&eacute;.";
 $admin_lang_pp_up_error_6      = "Missing a temporary folder.";
 $admin_lang_pp_up_error_7      = "Failed to write file to disk.";
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 // newly added ones
 $admin_lang_cmnt_moderation_que   = "File d&lsquo;attente de validation";

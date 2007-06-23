@@ -421,7 +421,7 @@ $admin_lang_pp_up_error_3            = "ファイルは完全にアップロー�
 $admin_lang_pp_up_error_4            = "アップロードされているファイルはありません。";
 $admin_lang_pp_up_error_6            = "テンポラリフォルダがありません。";
 $admin_lang_pp_up_error_7            = "ファイルのディスク書込みに失敗しました。";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "タイムスタンプ";

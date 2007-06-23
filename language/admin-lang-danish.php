@@ -418,7 +418,7 @@ $admin_lang_pp_up_error_3            = "Filen blev ikke fuldt uploadet.";
 $admin_lang_pp_up_error_4            = "Der blev ikke uploadet nogen fil.";
 $admin_lang_pp_up_error_6            = "Mangler en midlertidig mappe (temp).";
 $admin_lang_pp_up_error_7            = "Kunne ikke skrive til disken.";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "TIDSSTEMPLER";

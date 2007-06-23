@@ -418,7 +418,7 @@ $admin_lang_pp_up_error_3            = "Het bestand is niet volledig geplaatst."
 $admin_lang_pp_up_error_4            = "Er is geen bestand geplaatst.";
 $admin_lang_pp_up_error_6            = "Er ontbreekt een tijdelijke folder.";
 $admin_lang_pp_up_error_7            = "Niet instaat bestand weg te schrijven op de schijf.";
-
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "TIJDSTEMPEL";
