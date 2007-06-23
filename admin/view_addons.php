@@ -67,7 +67,7 @@ if (isset($_GET['turnon'])){
 				echo "<div class='addon_on'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
 				$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnoff=".$addon_details['filename']."' title='$admin_lang_addon_off'>".$addon_details['status']."</a>";
 			}else{
-				echo "<div class='jcaption'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
+				echo "<div class='addon_off'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
 				$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnon=".$addon_details['filename']."' title='$admin_lang_addon_on'>".$addon_details['status']."</a>";
 			}
 			echo $toecho_ad_s."
