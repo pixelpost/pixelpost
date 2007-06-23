@@ -403,6 +403,7 @@ $admin_lang_pp_up_error_3            = "El archivo no se carg&oacute; completame
 $admin_lang_pp_up_error_4            = "No se subi&oacute; ning&uacute;n archivo.";
 $admin_lang_pp_up_error_6            = "No se encuentra una carpeta temporal.";
 $admin_lang_pp_up_error_7            = "Fallo al escribir el archivo en disco.";
+$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
 
 
 // options >> time stamps
