@@ -62,15 +62,18 @@ if (isset($_GET['turnon'])){
 		elseif (isset($addon_off)) $addon_list = $addon_off;
 		foreach ($addon_list as $addon_name => $addon_details)
 		{
-			echo "<div class='jcaption'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
-			if ($addon_details['status']=='ON')
+			
+			if ($addon_details['status']=='ON'){
+				echo "<div class='addon_on'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
 				$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnoff=".$addon_details['filename']."' title='$admin_lang_addon_off'>".$addon_details['status']."</a>";
-			else
+			}else{
+				echo "<div class='jcaption'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
 				$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnon=".$addon_details['filename']."' title='$admin_lang_addon_on'>".$addon_details['status']."</a>";
+			}
 			echo $toecho_ad_s."
 			</i></div>";
 			if ($addon_details['status']=='ON'){
-				echo "<div class='content on'>\n";
+				echo "<div class='content'>\n";
 				echo $addon_details['addon_description'];
 				echo "</div><p />";
 			}else{

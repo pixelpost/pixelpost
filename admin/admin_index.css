@@ -136,7 +136,7 @@ a {
    background:url('img/back2.gif') repeat-x;
    }
 
-.jcaption {
+.jcaption, .addon_on {
    border-top:1px solid #ccc;
    border-bottom:1px solid #ccc;
    margin:0px 0px;
@@ -150,6 +150,14 @@ a {
    letter-spacing:1px;
    color:#666;
    background:url('img/back1.gif') repeat-x;
+   }
+
+.jcaption {
+   background:url('img/back1.gif') repeat-x;
+   }
+
+.addon_on {
+   background:url('img/back_addon_on.gif') repeat-x;
    }
 
 /* .............................. */
@@ -303,7 +311,3 @@ hr {
 input {
    background:#E4E4E4;
    }
-   
-.on {
-	 background:#DFFFD6;
-	 }
