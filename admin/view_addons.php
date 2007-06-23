@@ -31,50 +31,52 @@ if (isset($_GET['turnon'])){
 	if (mysql_error())
 		echo '$admin_lang_failed_addonstatus' .$addon_name;
 }
-
-
     echo "<div id='caption'>
     $admin_lang_addon_title
     </div>";
     $dir = "../addons/";
-    $query_ad_s = "select id,addon_name,status from {$pixelpost_db_prefix}addons ";
-
+    $query_ad_s = "select id,addon_name,status from {$pixelpost_db_prefix}addons ORDER BY `status` DESC ";
 		$query_ad_s = mysql_query($query_ad_s);
-
 		while (list($id,$filename,$status)= mysql_fetch_row($query_ad_s))	{
 			if (file_exists($dir.$filename.".php")){
 				include($dir.$filename.".php");
-				echo "<div class='jcaption'>".(isset($addon_name)?$addon_name:'')." <i>($filename - version ".(isset($addon_version)?$addon_version:'?').")";
+				//build the addon_on & addon_off arrays
+				if (!isset($addon_description)) $addon_description="This addon provides no further information. Please have a look into the addon file for what it is meant to be and blame the addon author for that.";
+				if (!isset($addon_version)) $addon_version="?";
+				if (!isset($addon_name)) $addon_name="no name specified";
 				$status = strtoupper($status);
-				if ($status=='ON')
-					$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnoff=$filename' title='$admin_lang_addon_off'>$status</a>";
-				else
-					$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnon=$filename' title='$admin_lang_addon_on'>$status</a>";
-				echo $toecho_ad_s."
-				</i>
-				</div><div class='content'>\n";
-				if ($status=='ON' && isset($addon_description)) echo $addon_description;
-				else echo "This addon provides no further information. Please have a look into the addon file for what it is meant to be and blame the addon author for that.";
-				echo "</div><p />";
+				if ($status=='ON'){
+					$addon_on[$addon_name] = array("status" => $status, "addon_description" => $addon_description, "addon_version" => $addon_version, "filename" => $filename);
+				}else{
+					$addon_off[$addon_name] = array("status" => $status, "addon_description" => $addon_description, "addon_version" => $addon_version, "filename" => $filename);
+				}
 			}
 			unset($addon_name);
 			unset($addon_description);
 			unset($addon_version);
 		}
-/*
-    if($handle = opendir($dir)) {
-        while (false !== ($file = readdir($handle))) {
-            if($file != "." && $file != "..") {
-                $ftype = strtolower(end(explode('.', $file)));
-                if($ftype == "php") {
-                    include("../addons/$file");
-
-                    }
-                }
-            }
-        closedir($handle);
-        }
- */
+		if (isset($addon_on)) ksort($addon_on);
+		if (isset($addon_off)) ksort($addon_off);
+		if ((isset($addon_on)) && (isset($addon_off))) $addon_list = array_merge($addon_on, $addon_off);
+		elseif (isset($addon_on)) $addon_list = $addon_on;
+		elseif (isset($addon_off)) $addon_list = $addon_off;
+		foreach ($addon_list as $addon_name => $addon_details)
+		{
+			echo "<div class='jcaption'>".$addon_name." <i>(".$addon_details['filename']." - version ".$addon_details['addon_version'].")";
+			if ($addon_details['status']=='ON')
+				$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnoff=".$addon_details['filename']."' title='$admin_lang_addon_off'>".$addon_details['status']."</a>";
+			else
+				$toecho_ad_s = " - status: <a href='index.php?view=addons&amp;turnon=".$addon_details['filename']."' title='$admin_lang_addon_on'>".$addon_details['status']."</a>";
+			echo $toecho_ad_s."
+			</i></div>";
+			if ($addon_details['status']=='ON'){
+				echo "<div class='content on'>\n";
+				echo $addon_details['addon_description'];
+				echo "</div><p />";
+			}else{
+				echo "<br />";
+			}
+	  }
     // done
-    } // end addons
+	} // end addons
 ?>
