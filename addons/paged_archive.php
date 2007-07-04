@@ -603,11 +603,11 @@ $tags_paged_output .= '</div>';
 
 if ($language_abr == $default_language_abr)	$queryr = "SELECT tag
 		FROM {$pixelpost_db_prefix}tags
-		WHERE img_id = " . $image_id . "
+		WHERE img_id = " . $image_id . " AND tag != ''
 		ORDER BY tag";
 else	$queryr = "SELECT alt_tag
 		FROM {$pixelpost_db_prefix}tags
-		WHERE img_id = " . $image_id . "
+		WHERE img_id = " . $image_id . " AND alt_tag != ''
 		ORDER BY alt_tag";
 
 $tags = mysql_query($queryr);
