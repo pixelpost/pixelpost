@@ -360,6 +360,10 @@ $admin_lang_optn_feeditems_desc				= "Antal indl&aelig;g i listen: ";
 $admin_lang_optn_alt_lang             = "Indstillinger for alternative sprog: ";
 $admin_lang_optn_alt_lang_dis         = "sl&aring;et fra";
 $admin_lang_optn_alt_lang_no          = "sl&aring;et fra";
+$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
+$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
+$admin_lang_optn_img_display_default		="newest image (default)";
+$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
 
 
 // Info

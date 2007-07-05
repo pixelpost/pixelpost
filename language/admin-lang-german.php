@@ -314,6 +314,10 @@ $admin_lang_optn_pass_chngd_txt      = "Passwort wurde ge&auml;ndert.";
 $admin_lang_optn_pass_notchngd_txt   = "Passwort wurde nicht ge&auml;ndert.Geben Sie dass Passwort zur Best&auml;tigung erneut im 2. Feld ein.";
 $admin_lang_optn_thumb_updated       = "Thumbnails aktualisiert!";
 $admin_lang_optn_updated             = "thumbnails aktualisiert.";
+$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
+$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
+$admin_lang_optn_img_display_default		="newest image (default)";
+$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
 
 // Info
 $admin_lang_info_gd                  = "Die GD-LIB ist nicht installiert, bitten Sie Ihren Hoster, sie f&uuml;r Sie zu installieren!";

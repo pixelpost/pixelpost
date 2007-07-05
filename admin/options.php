@@ -155,6 +155,9 @@ if ($_GET['optaction']=='updateall')
 			}
 		}
 		
+		// displayorder
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set display_order='".$_POST['exif']."'");
+		
 		// Refresh the settings
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
 
@@ -778,6 +781,34 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			echo"</select><br /><br />
 			$admin_lang_optn_feeditems_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='feeditems' value='".$cfgrow['feeditems']."' />
 			</div>
+			<div class='jcaption'>
+				$admin_lang_optn_img_display
+				</div>
+
+				<div class='content'>
+						";
+				if ($cfgrow['display_order']=='default')
+					$toecho = $admin_lang_optn_img_display_default;
+				else
+					$toecho = $admin_lang_optn_img_display_reversed;
+
+				if ($cfgrow['display_order']=='default')
+					$optnecho = $admin_lang_optn_img_display_reversed;
+				else
+					$optnecho = $admin_lang_optn_img_display_default;
+
+				if ($cfgrow['display_order']=='default')
+					$optnval = 'reversed';
+				else
+					$optnval = 'default';
+				
+				echo "
+				$admin_lang_optn_img_display_desc
+				<select name='exif'><option value='".$cfgrow['display_order']."'>".$toecho."</option>
+				<option value='$optnval'>$optnecho</option>
+				</select>
+
+				</div>
 		<div class='jcaption'>
 				$admin_lang_optn_update
 				</div>

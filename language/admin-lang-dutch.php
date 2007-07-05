@@ -360,6 +360,10 @@ $admin_lang_optn_feeditems_desc				= "Aantal items in de feedlijst: ";
 $admin_lang_optn_alt_lang             = "Alternatieve taal instellingen: ";
 $admin_lang_optn_alt_lang_dis         = "uitgeschakeld";
 $admin_lang_optn_alt_lang_no          = "uitgeschakeld";
+$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
+$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
+$admin_lang_optn_img_display_default		="newest image (default)";
+$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
 
 
 // Info

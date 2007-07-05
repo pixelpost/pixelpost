@@ -312,6 +312,10 @@ $admin_lang_optn_title_url_text      = "Check or modify the Site title and the U
 // NEW!
 $admin_lang_optn_thumb_updated       = "Thumbnails updated!";
 $admin_lang_optn_updated             = "thumbnails updated.";
+$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
+$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
+$admin_lang_optn_img_display_default		="newest image (default)";
+$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
 
 // Info
 $admin_lang_info_gd                  = "Not installed, ask your hoster to install it for you!";

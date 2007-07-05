@@ -394,6 +394,10 @@ $admin_lang_optn_feeditems_desc				= "Liczba publikowanych w RSS/ATOM wiadomośc
 $admin_lang_optn_alt_lang             = "Ustawienia alternatywnego języka: ";
 $admin_lang_optn_alt_lang_dis         = "niedostępne";
 $admin_lang_optn_alt_lang_no          = "nieaktywowany";
+$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
+$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
+$admin_lang_optn_img_display_default		="newest image (default)";
+$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
 
 // Info
 $admin_lang_info_gd           = "Nie zainstalowane, poproś swojego dostawcę o zainstalowanie!";

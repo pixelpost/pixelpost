@@ -337,6 +337,12 @@ $pixelpost_photonumb = $photonumb['count'];
 // added for temp to create banlist table if it is not there TODO: THIS WILL GO INTO THE CREATE_TABLES
 create_banlist();
 
+if ($cfgrow['display_order']=='default'){
+	$image_sorting = 'DESC';
+} else {
+	$image_sorting = 'ASC';
+}
+
 // images/main site
 if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 {
@@ -345,7 +351,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	{
 		if(!isset($_GET['showimage']) /*$_GET['showimage'] == ""*/)
 		{
-			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$cdate' ORDER BY datetime DESC limit 0,1");
+			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$cdate' ORDER BY datetime ".$image_sorting." limit 0,1");
 		}
 		else
 		{
@@ -356,7 +362,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	{
 		if($_GET['showimage'] == "")
 		{
-			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit 0,1");
+			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime ".$image_sorting." limit 0,1");
 		}
 		else
 		{

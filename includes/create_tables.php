@@ -651,7 +651,9 @@ function UpgradeTo165( $prefix, $newversion)
 	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feed_external_type` ENUM('ER', 'EA') NOT NULL DEFAULT 'ER' AFTER `feed_external`")
 	or die("Error: ". mysql_error());
 	
-	
+	// display order
+	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `display_order` ENUM( 'default', 'reversed' ) NOT NULL DEFAULT 'default'")
+	or die("Error: ". mysql_error());
 	
 	// update version
 	mysql_query("
