@@ -268,8 +268,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			$headers = "Content-type: text/plain; charset=UTF-8\n";
 			$headers .= "Content-Transfer-Encoding: 8bit\n";
 
-			if ($comment_email!="")	$headers .= "From: $comment_name<$comment_email>\n";
-			else $headers .= "From: PIXELPOST <$admin_email>\n";
+			if ($comment_email!="")     
+                {$headers .= "From: $comment_name  <$admin_email>\n";  
+                 $headers .= "Reply-To: $comment_name <$comment_email>\n"; } 
+            else $headers .= "From: PIXELPOST <$admin_email>\n";
 
 			$recipient_email = "admin <$admin_email>";
 		}
