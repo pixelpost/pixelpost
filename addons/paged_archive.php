@@ -39,6 +39,11 @@ $addon_name = "Page-By-Page-Archive for category and month (for PP v1.4)";
 $addon_version = "1.0";
 
 $maxpthumb = $cfgrow['maxpthumb'];
+if ($cfgrow['display_order']=='default'){
+	$image_sorting = 'DESC';
+} else {
+	$image_sorting = 'ASC';
+}
 
 if (isset($_GET['updatedflagp'])&&$_GET['updatedflagp']=="1")
 {
@@ -272,7 +277,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	$where = "";
 	$limit = "";
 	$pagenum = ($_GET['pagenum']!='') ? (int)$_GET['pagenum'] : 1;
-
 	// did user select a category?
 
 	if($_GET['category'] != "")
@@ -297,7 +301,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$where
 		AND (t1.id = t2.image_id)
 		GROUP BY t1.id
-		ORDER BY t1.datetime DESC" .$limit;
+		ORDER BY t1.datetime ".$image_sorting.$limit;
 	} // if ($_GET['archivedate']=="")
 	else if(eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 	{ // archive date is available
@@ -305,7 +309,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
 		$query = "SELECT id,{$headline_selection},image FROM ".$pixelpost_db_prefix."pixelpost
 		WHERE (datetime<='$cdate' and datetime >='$archivedate_start' and datetime <= '$archivedate_end')
-		$where ORDER BY datetime DESC" .$limit;
+		$where ORDER BY datetime ".$image_sorting.$limit;
 	}
 	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
 	{
@@ -319,14 +323,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		AND (t1.id = t2.img_id)
 		$tag_selection
 		GROUP BY t1.id
-		ORDER BY t1.datetime DESC" .$limit;
+		ORDER BY t1.datetime ".$image_sorting.$limit;
 	}
 	else
 	{
 		$query = "SELECT id, {$headline_selection}, image FROM {$pixelpost_db_prefix}pixelpost
 		WHERE (datetime<='$cdate')
 		GROUP BY id
-		ORDER BY datetime DESC" .$limit;
+		ORDER BY datetime ".$image_sorting.$limit;
 	}
 
 	$query = mysql_query($query);
