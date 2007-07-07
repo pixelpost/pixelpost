@@ -53,19 +53,19 @@ $_lang_file_translator        = 'Piotr "GeoS" Galas - <a href="http://www.piotrg
 $_lang_file_email             = 'geos@pixelpost.org';
 $_lang_file_rev               = '1.6';
 
-$admin_lang_isrtl  = "no"; // yes for right-to-left languages and no for left-to-right languages
-$admin_lang_update = "Aktualizacja";
-$admin_lang_reload = "<br/> Musisz przeładować stronę, aby zobaczyć zmiany.";
-$admin_lang_error  = "Błąd";
-$admin_lang_post   = "wpisów";
-$admin_lang_page   = "strona";
-$admin_lang_of     = "z";
-$admin_lang_next   = "Następna";
-$admin_lang_prev   = "Poprzednia";
-$admin_lang_show   = "Pokaż";
-$admin_lang_go     = "Idź!";
-$admin_lang_done   = "Wykonano:";
-$admin_lang_example = "Example";
+$admin_lang_isrtl   = "no"; // yes for right-to-left languages and no for left-to-right languages
+$admin_lang_update  = "Aktualizacja";
+$admin_lang_reload  = "<br/> Musisz przeładować stronę, aby zobaczyć zmiany.";
+$admin_lang_error   = "Błąd";
+$admin_lang_post    = "wpisów";
+$admin_lang_page    = "strona";
+$admin_lang_of      = "z";
+$admin_lang_next    = "Następna";
+$admin_lang_prev    = "Poprzednia";
+$admin_lang_show    = "Pokaż";
+$admin_lang_go      = "Idź!";
+$admin_lang_done    = "Wykonano:";
+$admin_lang_example = "Przykład";
 
 
 // Admin Start
@@ -159,7 +159,7 @@ $admin_lang_ni_post_exif_date     = "Użyj daty z EXIFa";
 $admin_lang_ni_db_error           = "<br />Problem aktualizacji danych w bazie!";
 $admin_lang_ni_tags               = "Tagi";
 $admin_lang_ni_tags_desc          = "(do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia i myślnika)";
-$admin_lang_ni_alt_language				= "Podaj tytył i opis zdjęcia dla drugiego języka";
+$admin_lang_ni_alt_language       = "Podaj tytył i opis zdjęcia dla drugiego języka";
 
 // Images
 $admin_lang_imgedit_edit            = "Edycja";
@@ -203,11 +203,11 @@ $admin_lang_imgedit_js_del_im       = "Czy napewno chcesz skasować ten obrazek?
 $admin_lang_imgedit_preview         = "Podgląd";
 $admin_lang_imgedit_db_error        = "<br />Problem aktualizacji danych w bazie!";
 $admin_lang_imgedit_tags_edit       = "Tagi (do rozdzielania tagów są używane: przecinek, średnik i spacja; słowa łączy się używając znaku podkreślenia):";
-$admin_lang_imgedit_alt_language  	= "Zmiana tytułu i opisu zdjęcia dla drugiego języka";
-$admin_lang_imgedit_masstag  	      = "Dodaj/usuń tagi z wybranych zdjęć";
-$admin_lang_imgedit_masstag_set     = "Dodaj tag(i)";
-$admin_lang_imgedit_masstag_set2    = "Dodaj tag(i) dla alternatywnego języka";
-$admin_lang_imgedit_masstag_unset   = "Usuń tag(i)";
+$admin_lang_imgedit_alt_language       = "Zmiana tytułu i opisu zdjęcia dla drugiego języka";
+$admin_lang_imgedit_masstag            = "Dodaj/usuń tagi z wybranych zdjęć";
+$admin_lang_imgedit_masstag_set        = "Dodaj tag(i)";
+$admin_lang_imgedit_masstag_set2       = "Dodaj tag(i) dla alternatywnego języka";
+$admin_lang_imgedit_masstag_unset      = "Usuń tag(i)";
 $admin_lang_imgedit_published          = "Opublikowano";
 $admin_lang_imgedit_unpublished_cmnts  = "poprzednio zamaskowanych obrazów.";
 
@@ -286,7 +286,7 @@ $admin_lang_optn_no     = "Nie";
 
 $admin_lang_optn_title_url          = "NAZWA WITRYNY I URL";
 $admin_lang_optn_title              = "Tytuł:";
-$admin_lang_optn_sub_title          = "Sub Title:";
+$admin_lang_optn_sub_title          = "Podtytuł:";
 $admin_lang_optn_url                = "URL:";
 $admin_lang_optn_usr_pss            = "ADMINISTRATOR I HASŁO";
 $admin_lang_optn_usr_pss_txt        = "Zmienić nazwę użytkownika lub hasło?";
@@ -295,7 +295,7 @@ $admin_lang_optn_pss                = "Hasło:";
 $admin_lang_optn_pss_re             = "Powtórz hasło:";
 $admin_lang_optn_email              = "EMAIL ADMINISTRATORA";
 $admin_lang_optn_fillit             = "Wypełnij. Będzie on wymagany do odzyskiwania hasła.";
-$admin_lang_optn_img_path          	= "IMAGES & THUMBNAILS PATH";
+$admin_lang_optn_img_path          	= "ŚCIEŻKA DO ZDJĘĆ I MINIATUREK";
 $admin_lang_optn_tz                 = "STREFA CZASOWA";
 $admin_lang_optn_tz_txt             = "Wybierz strefę czasową dla Twojej lokalizacji.";
 $admin_lang_optn_sendemail          = "POWIADAMIANIE EMAILEM O KOMENTARZACH";
@@ -311,6 +311,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Deaktywacja komentarzy";
 
 $admin_lang_optn_switch_template    = "ZMIEŃ SKÓRKĘ";
 $admin_lang_optn_lang_file          = "PLIK Z LOKALIZACJĄ";
+$admin_lang_optn_lang_file_admin    = "PLIK Z LOKALIZACJĄ PANELU ADMINISTARCJI";
 $admin_lang_optn_dateformat         = "FORMAT DATY";
 $admin_lang_optn_dateformat_txt     = "Format daty wyświetlany dla zdjęć oraz komentarzy. Dostępna składnia jest identyczna z tą dla
   funkcji PHP <a href='http://www.php.net/date' target='_blank'>date()</a>. Przykłady znaczenia najczęściej używanych parametrów: Y:rok
@@ -369,35 +370,36 @@ $admin_lang_optn_dsbl_list_desc 			= "<a href=\"http://www.dsbl.org\" target=\"_
 																				 Czy adresy IP powinny być sprawdzane pod kątem znajdowania się na Distributed Sender Blackhole List?";
 $admin_lang_optn_time_between_comments = "ZAPOBIEGANIE \"POWODZI\" SPAMU";
 $admin_lang_optn_time_between_comments_desc = "Liczba sekund, po której upłynięciu można dodać kolejny komentarzy (zapobieganie \"powodzi\" komentarzy): ";
-$admin_lang_optn_max_uri_comment			= "MAKSYMALNA LICZBA URI";
-$admin_lang_optn_max_uri_comment_desc = "Liczba URI dozwolonych w jednym komentarzu: ";
-$admin_lang_optn_rss_setting					= "USTAWIENIA RSS/ATOM";
-$admin_lang_optn_rss_title  					= "Feed title";
-$admin_lang_optn_rss_desc   					= "Feed description";
-$admin_lang_optn_rss_copyright					= "Feed copyright";
-$admin_lang_optn_rss_discovery					= "Feed discovery";
-$admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
-$admin_lang_optn_rss_opt_rss					= "RSS";
-$admin_lang_optn_rss_opt_atom					= "ATOM";
-$admin_lang_optn_rss_opt_ext					= "External";
-$admin_lang_optn_rss_opt_none					= "None";
-$admin_lang_optn_rss_ext_type					= "External feed type";
-$admin_lang_optn_rss_ext						= "External feed";
-$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
-$admin_lang_optn_rsstype_desc					= "Wybierz formę RSS/ATOM:";
-$admin_lang_optn_rss_full							= "Pokazuj pełnowymiarowe zdjęcia";
-$admin_lang_optn_rss_thumbs						= "Pokazuj miniaturki";
-$admin_lang_optn_rss_thumbs_only			= "Pokazuj tylko miniaturki";
-$admin_lang_optn_rss_full_only						= "Show full size pictures only";
-$admin_lang_optn_rss_text							= "Pokazuj tylko tekst";
-$admin_lang_optn_feeditems_desc				= "Liczba publikowanych w RSS/ATOM wiadomości: ";
-$admin_lang_optn_alt_lang             = "Ustawienia alternatywnego języka: ";
-$admin_lang_optn_alt_lang_dis         = "niedostępne";
-$admin_lang_optn_alt_lang_no          = "nieaktywowany";
-$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
-$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
-$admin_lang_optn_img_display_default		="newest image (default)";
-$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
+$admin_lang_optn_max_uri_comment       = "MAKSYMALNA LICZBA URI";
+$admin_lang_optn_max_uri_comment_desc  = "Liczba URI dozwolonych w jednym komentarzu: ";
+$admin_lang_optn_rss_setting           = "USTAWIENIA RSS/ATOM";
+$admin_lang_optn_rss_title             = "Tytuł kanału";
+$admin_lang_optn_rss_desc              = "Opis kanału";
+$admin_lang_optn_rss_copyright         = "Prawa autorskie kanału";
+$admin_lang_optn_rss_discovery         = "Publikowane kanały";
+$admin_lang_optn_rss_opt_both          = "RSS &amp; ATOM";
+$admin_lang_optn_rss_opt_rss           = "RSS";
+$admin_lang_optn_rss_opt_atom          = "ATOM";
+$admin_lang_optn_rss_opt_ext           = "Zewnętrzny";
+$admin_lang_optn_rss_opt_none          = "Żaden";
+$admin_lang_optn_rss_ext_type          = "Rodzaj kanału zewnętrznego";
+$admin_lang_optn_rss_ext               = "Kanał zewnętrzny";
+$admin_lang_optn_rss_enable_comment_feed    = "Aktywuj kanał z komentarzami";
+$admin_lang_optn_rsstype_desc          = "Wybierz format kanału RSS/ATOM:";
+$admin_lang_optn_rss_full              = "Pokazuj pełnowymiarowe zdjęcia i opisy";
+$admin_lang_optn_rss_thumbs            = "Pokazuj miniaturki i opisy";
+$admin_lang_optn_rss_thumbs_only       = "Pokazuj tylko miniaturki";
+$admin_lang_optn_rss_full_only         = "Pokazuj tylko zdjęcia (pełnowymiarowe)";
+$admin_lang_optn_rss_text              = "Pokazuj tylko tekst";
+$admin_lang_optn_feeditems_desc        = "Liczba publikowanych w RSS/ATOM wiadomości: ";
+$admin_lang_optn_lang                  = "Ustawienia podstawowego języka: ";
+$admin_lang_optn_alt_lang              = "Ustawienia alternatywnego języka: ";
+$admin_lang_optn_alt_lang_dis          = "niedostępne";
+$admin_lang_optn_alt_lang_no           = "nieaktywowany";
+$admin_lang_optn_img_display           = "PORZĄDEK WYŚWIETLANIA ZDJĘĆ";
+$admin_lang_optn_img_display_desc      = "Wybierz porządek, w którym powinny być wyświetlane zdjęcia. Zacznij z: ";
+$admin_lang_optn_img_display_default   = "najnowszym zdjęciem (domyślnie)";
+$admin_lang_optn_img_display_reversed  = "najstarszym zdjęciem (odwrotnie)";
 
 // Info
 $admin_lang_info_gd           = "Nie zainstalowane, poproś swojego dostawcę o zainstalowanie!";
@@ -448,14 +450,14 @@ $admin_lang_addon_off          = "Kliknij żeby wyłączyć!";
 $admin_lang_addon_on           = "Kliknij żeby włączyć!";
 
 // Error Messages
-$admin_lang_pp_up_error_0 = "Wysyłanie przebiegło bez problemów.";
-$admin_lang_pp_up_error_1 = "Osiągnięto maksymalny rozmiar pliku jaki może obsłużyć serwer.";
-$admin_lang_pp_up_error_2 = "Osiągnięto maksymalny rozmiar pliku.";
-$admin_lang_pp_up_error_3 = "Plik nie został przesłany w całości.";
-$admin_lang_pp_up_error_4 = "Żaden plik nie został przesłany.";
-$admin_lang_pp_up_error_6 = "Brak katalogu tymczasowego.";
-$admin_lang_pp_up_error_7 = "Plik nie został zapisany na dysku.";
-$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
+$admin_lang_pp_up_error_0  = "Wysyłanie przebiegło bez problemów.";
+$admin_lang_pp_up_error_1  = "Osiągnięto maksymalny rozmiar pliku jaki może obsłużyć serwer.";
+$admin_lang_pp_up_error_2  = "Osiągnięto maksymalny rozmiar pliku.";
+$admin_lang_pp_up_error_3  = "Plik nie został przesłany w całości.";
+$admin_lang_pp_up_error_4  = "Żaden plik nie został przesłany.";
+$admin_lang_pp_up_error_6  = "Brak katalogu tymczasowego.";
+$admin_lang_pp_up_error_7  = "Plik nie został zapisany na dysku.";
+$admin_lang_pp_addon_error = "Pixelpost nie może odczytać pliku z dodatkiem. Proszę sprawdzić ustawienia CHMOD i zmienić je w razie potrzeby na 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title = "ZNACZNIK CZASU";

@@ -286,6 +286,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Sl&aring; kommentarer fra";
 
 $admin_lang_optn_switch_template    = "SKIFT UDSEENDE";
 $admin_lang_optn_lang_file           = "SPROG";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "DATO FORMAT";
 $admin_lang_optn_dateformat_txt      = "Datoformatet for billeder og kommentarer. Det bruges en syntax magen til PHP's <a href='http://www.php.net/date' target='_blank'>date()</a> funktion. Eksempler p&aring; hvad der erstatter de mest almindelig parametre: Y: &Aring;r, m: M&aring;ned, d: Dag, H: Time, i: Minut, s: Sekund.";
 $admin_lang_optn_gmt                 = "Bem&aelig;rk at dette ikke automatisk underst&oslash;tter sommertid og du derfor manuelt skal &aelig;ndre det. <br />Kig p&aring; <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> hvis du er i tvivl om din tidsforskel fra GMT.<br />";
@@ -357,6 +358,7 @@ $admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
 $admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Vis kun tekst";
 $admin_lang_optn_feeditems_desc				= "Antal indl&aelig;g i listen: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Indstillinger for alternative sprog: ";
 $admin_lang_optn_alt_lang_dis         = "sl&aring;et fra";
 $admin_lang_optn_alt_lang_no          = "sl&aring;et fra";

@@ -284,6 +284,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Deshabilitar comentarios";
 
 $admin_lang_optn_switch_template    = "CAMBIAR PLANTILLA";
 $admin_lang_optn_lang_file           = "ARCHIVO DE LENGUAJE";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "FORMATO DE FECHA";
 $admin_lang_optn_dateformat_txt      = "El formato de fecha para mostrar en las im&aacute;genes y comentarios. La sintaxis utilizada es id&eacute;ntica que para la funci&oacute;n <a href='http://www.php.net/date' target='_blank'>date()</a> en PHP. &Eacute;stos son algunos ejemplos: Y:a&ntilde;o m:mes d:d&iacute;a H:hora i:minuto s:segundo";
 $admin_lang_optn_gmt                 = "Ten en cuenta que el horario de verano no se gestiona autom&aacute;ticamente y tendras que ajustarlo manualmente.<br />Consulta <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> la hora actual GMT </a> si no est&aacute;s seguro de tu zona horaria.<br />";
@@ -342,6 +343,7 @@ $admin_lang_optn_rss_thumbs						= "Mostrar miniaturas";
 $admin_lang_optn_rss_thumbs_only					= "Mostrar s&oacute;lo miniaturas";
 $admin_lang_optn_rss_text							= "Mostrar texto s&oacute;lo";
 $admin_lang_optn_feeditems_desc				= "N&uacute;mero de elementos en el 'feed': ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Ajustes de idioma alternativo: ";
 $admin_lang_optn_alt_lang_dis         = "deshabilitado";
 $admin_lang_optn_alt_lang_no          = "deshabilitado";

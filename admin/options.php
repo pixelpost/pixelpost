@@ -352,6 +352,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 
 		<div class='content'>
+		$admin_lang_optn_lang<br/>
 		<select name='new_lang'>
 		<option value='".$cfgrow['langfile']."'>".$cfgrow['langfile']."</option>
 		";
@@ -405,7 +406,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			</select></div>
 			
 		<div class='jcaption'>
-		ADMIN $admin_lang_optn_lang_file
+		$admin_lang_optn_lang_file_admin
 		</div>
 
 		<div class='content'>

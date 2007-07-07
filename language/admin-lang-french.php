@@ -275,6 +275,7 @@ $admin_lang_optn_sendemail_txt        = "Envoyer un email pour avertir d'un comm
 $admin_lang_optn_sendemail_html_txt   = "Utiliser l'HTML dans les emails ?";
 $admin_lang_optn_switch_template      = "Changer de mod&egrave;le (templates)";
 $admin_lang_optn_lang_file            = "Langue";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat           = "Format de date";
 $admin_lang_optn_dateformat_txt       = "Format de date pour les images et les commentaires.<br />Voici  les param&egrave;tres principaux : Y:ann&eacute;e m:mois d:jour H:heure i:minute s:seconde.<br />Cette syntaxe est celle de la fonction PHP <a href='http://www.php.net/date' target='_blank'>date()</a>.";
 $admin_lang_optn_gmt                  = "<br />Les changements d'heure saisonniers ne sont pas pris en compte automatiquement, il faut la mettre &agrave; jour ici.<br />Voir <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> l'heure GMT actuelle </a> si vous ne connaissez pas votre d&eacute;calage local.<br />";
@@ -355,6 +356,7 @@ $admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
 $admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         = "disabled";
 $admin_lang_optn_alt_lang_no          = "disabled";

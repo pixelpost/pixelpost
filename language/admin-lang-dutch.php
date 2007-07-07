@@ -286,6 +286,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Schakel reacties uit";
 
 $admin_lang_optn_switch_template    = "SWITCH TEMPLATE";
 $admin_lang_optn_lang_file           = "TAAL BESTAND";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "DATUM FORMAAT";
 $admin_lang_optn_dateformat_txt      = "Het datum formaat voor fotos en reacties. De syntax is gelijk aan die van PHP <a href='http://www.php.net/date' target='_blank'>date()</a> functie. Dit zijn voorbeelden van vervangbare items: Y:year m:month d:day H:hour i:minute s:second";
 $admin_lang_optn_gmt                 = "Dit ondersteund de zomer/wintertijd niet.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Huidige tijd </a> als u niet weet wat het verschil is met uw tijdzone.<br />";
@@ -357,6 +358,7 @@ $admin_lang_optn_rss_thumbs_only			= "Laat alleen thumbnails zien";
 $admin_lang_optn_rss_full_only				= "Laat alleen de volledige foto zien";
 $admin_lang_optn_rss_text							= "Laat alleen tekst zien";
 $admin_lang_optn_feeditems_desc				= "Aantal items in de feedlijst: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Alternatieve taal instellingen: ";
 $admin_lang_optn_alt_lang_dis         = "uitgeschakeld";
 $admin_lang_optn_alt_lang_no          = "uitgeschakeld";

@@ -287,6 +287,7 @@ $admin_lang_optn_cmnt_mod_forbidden				= "Disable commenting";
 
 $admin_lang_optn_switch_template    			= "SWITCH TEMPLATE";
 $admin_lang_optn_lang_file           			= "LANGUAGE FILE";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          			= "DATE FORMAT";
 $admin_lang_optn_dateformat_txt      			= "The dateformat for images and comments display. This syntax used is identical for the PHP <a href='http://www.php.net/date' target='_blank'>date()</a> function. These are examples of what would replace some common parameters: Y:year m:month d:day H:hour i:minute s:second";
 $admin_lang_optn_gmt                 			= "Note that this does not support daylight saving automatically and you should change it manually.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> if you are not sure about your local time offset form GMT.<br />";
@@ -359,6 +360,7 @@ $admin_lang_optn_rss_thumbs_only				= "Show thumbnails only";
 $admin_lang_optn_rss_full_only					= "Show full size pictures only";
 $admin_lang_optn_rss_text						= "Show text only";
 $admin_lang_optn_feeditems_desc					= "Number of items in the feedlist: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             			= "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         			= "disabled";
 $admin_lang_optn_alt_lang_no          			= "disabled";

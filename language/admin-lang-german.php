@@ -281,6 +281,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Kommentare verbieten";
 
 $admin_lang_optn_switch_template     = "TEMPLATE-AUSWAHL";
 $admin_lang_optn_lang_file           = "SPRACHDATEI";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "DATUMSFORMAT";
 $admin_lang_optn_dateformat_txt      = "Datumsformat f&uuml;r die Anzeige der Bilder und der Kommentare.<br />
                                         Die Syntax stimmt mit der PHP <a href='http://www.php.net/date' target='_blank'>date()</a> Funktion &uuml;berein.<br />\n
@@ -461,6 +462,7 @@ $admin_lang_optn_rss_thumbs_only					= "Nur Vorschaubilder zeigen";
 $admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Nur Text zeigen";
 $admin_lang_optn_feeditems_desc				= "Anzahl der Einträge in der Feed-Liste: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Zweite Sprache: ";
 $admin_lang_optn_alt_lang_dis         = "nicht ausgewählt";
 $admin_lang_optn_alt_lang_no          = "nicht ausgewählt";

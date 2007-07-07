@@ -194,6 +194,14 @@ if($cfgrow['crop']=="12c" && isset($_SESSION["pixelpost_admin"]))
 }
 //------------- addons in admin panel ends
 
+
+// anti "image autodelete" security solution (i.e. after image update there is ?view=images&x=update&imageid=302 in URL;
+// when you hit this adres directly image will be erased)
+if($_GET['x'] == "update" && !isset($_POST['comments_settings']))
+{
+		header("Location: index.php?view=images");
+		die();
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

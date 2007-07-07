@@ -286,6 +286,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
 
 $admin_lang_optn_switch_template    = "切换模板";
 $admin_lang_optn_lang_file           = "语言文件";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "日期格式";
 $admin_lang_optn_dateformat_txt      = "图片和评论的日期显示格式。这个使用的语法与PHP的<a href='http://www.php.net/date' target='_blank'>date()</a>函数一样。这是一些可替换的参数：Y:年 m:月 d:日 H:时 i:分 s:秒";
 $admin_lang_optn_gmt                 = "注意这个不会自动支持夏令时，您可以自己更改。<br />如果您不确定您所在的GMT时区，请查找<a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'>GMT现在的时间。</a><br />";
@@ -357,6 +358,7 @@ $admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
 $admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         = "disabled";
 $admin_lang_optn_alt_lang_no          = "disabled";

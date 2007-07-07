@@ -1107,7 +1107,7 @@ function clean_comment($string)
 
 //=============================== TAGS SECTION BEGINS ===========================
 
-function save_tags_new($tags_str,$theid)
+function save_tags_new($tags_str,$theid,$alt="")
 {
 	global $pixelpost_db_prefix;
 
@@ -1115,28 +1115,32 @@ function save_tags_new($tags_str,$theid)
 	{
 		$strtr_arr = array(',' => ' ', ';' => ' ');
 		$tags = strtr($tags_str, $strtr_arr);
-		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
+		$pat1 = '/([^a-zA-Z 0-9_-\pL]+)/u';
 		$tags = preg_replace( $pat1, '_', $tags);
 		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/','/ - /', '/ -/', '/(-){2,}/');
 		$rep2 = array('', '', '_', '', '', '-');
 		$tags = preg_replace( $pat2, $rep2, $tags);
 		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
 
-		for($i = 0; $i < count($tags_arr); $i++)
+		$query_val = array();
+
+		foreach($tags_arr as $val)
 		{
-			$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags (img_id, tag) VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
-			//$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
-			mysql_query($sql_tag);
+			$query_val[] = "( " . $theid . ",'" . addslashes($val) . "')";
 		}
+
+		$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags (img_id, ".$alt."tag) VALUES ".implode(",", $query_val).";";
+
+		mysql_query($sql_tag);
 	}
 }
 
-function list_tags_edit($id)
+function list_tags_edit($id,$alt="")
 {
 	global $pixelpost_db_prefix;
 	$tags = '';
 
-	$sql_tag = "SELECT tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND alt_tag LIKE '' ORDER BY tag ASC";
+	$sql_tag = "SELECT ".$alt."tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND ".$alt."tag NOT LIKE '' ORDER BY ".$alt."tag ASC";
 	$query = mysql_query($sql_tag);
 
 	while(list($tag) = mysql_fetch_row($query))	$tags .= ' '.$tag;
@@ -1144,82 +1148,25 @@ function list_tags_edit($id)
 	return trim($tags);
 }
 
-function del_tags_edit($id)
+function del_tags_edit($id,$alt="")
 {
 	global $pixelpost_db_prefix;
 
-	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND tag NOT LIKE ''" ;
+	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND ".$alt."tag NOT LIKE ''" ;
 	mysql_query($sql_tag);
 }
 
-function save_tags_edit($tags_str,$id)
+function save_tags_edit($tags_str,$id,$alt="")
 {
 	global $pixelpost_db_prefix;
-	del_tags_edit($id);
-	save_tags_new($tags_str,$id);
+	del_tags_edit($id, $alt);
+	save_tags_new($tags_str, $id, $alt);
 }
 
 //
 //=============================== TAGS SECTION ENDS =============================
 
 //============================= LANGUAGE SECTION BEGINS =========================
-
-// alt_tag functions
-
-function save_alt_tags_new($tags_str,$theid)
-{
-	global $pixelpost_db_prefix;
-
-	if(strlen($tags_str) > 0)
-	{
-		$strtr_arr = array(',' => ' ', ';' => ' ');
-		$tags = strtr($tags_str, $strtr_arr);
-		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
-		$tags = preg_replace( $pat1, '_', $tags);
-		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/','/ - /', '/ -/', '/(-){2,}/');
-		$rep2 = array('', '', '_', '', '', '-');
-		$tags = preg_replace( $pat2, $rep2, $tags);
-		$tags_arr = preg_split('/[ ]{1,}/',$tags,-1,PREG_SPLIT_NO_EMPTY);
-
-		for($i = 0; $i < count($tags_arr); $i++)
-		{
-			$sql_tag = "INSERT INTO " . $pixelpost_db_prefix. "tags (img_id, alt_tag) VALUES ( " . $theid . ",'" . addslashes($tags_arr[$i]) . "');";
-			mysql_query($sql_tag);
-		}
-	}
-}
-
-function list_alt_tags_edit($id)
-{
-	global $pixelpost_db_prefix;
-	$tags = '';
-
-	$sql_tag = "SELECT alt_tag FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND tag LIKE '' ORDER BY tag ASC";
-	$query = mysql_query($sql_tag);
-
-	while(list($alt_tag) = mysql_fetch_row($query))
-	{
-		$tags .= ' '.$alt_tag;
-	}
-	return trim($tags);
-}
-
-function del_alt_tags_edit($id)
-{
-	global $pixelpost_db_prefix;
-
-	$sql_tag = "DELETE FROM " . $pixelpost_db_prefix . "tags WHERE img_id = " . $id . " AND alt_tag NOT LIKE ''" ;
-	mysql_query($sql_tag);
-}
-
-
-function save_alt_tags_edit($tags_str,$id)
-{
-	global $pixelpost_db_prefix;
-	del_alt_tags_edit($id);
-	save_alt_tags_new($tags_str,$id);
-}
-//
 
 function create_language_url_from_tag( $language_link_abr, $language_link_full)
 {

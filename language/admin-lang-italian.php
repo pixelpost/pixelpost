@@ -280,6 +280,7 @@ $admin_lang_optn_sendemail_txt     = "Desideri la notifica via email dei comment
 $admin_lang_optn_sendemail_html_txt = "utilizzare HTML nella email di notifica?";
 $admin_lang_optn_switch_template       = "CAMBIA TEMPLATE";
 $admin_lang_optn_lang_file             = "FILE DEL LINGUAGGIO";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat            = "FORMATO DELLA DATA";
 $admin_lang_optn_dateformat_txt        = "Il formato di visualizzazione per immagini e commenti. La sintassi usata &egrave; identica a quella della funzione <a href='http://www.php.net/date' target='_blank'>date()</a> di PHP. <br \>Ecco alcuni esempi di cosa sostituisce alcuni comuni parametri: Y:anno m:mese d:giorno H:ora i:minuti s:secondi";
 $admin_lang_optn_gmt                   = "Il supporto all'ora legale non &egrave; automatico, devi agire manualmente.<br />Controlla su <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> se non conosci il tuo fuso orario rispetto al GMT.<br />";
@@ -360,6 +361,7 @@ $admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
 $admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         = "disabled";
 $admin_lang_optn_alt_lang_no          = "disabled";

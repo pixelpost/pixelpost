@@ -423,7 +423,7 @@ if($_GET['view'] == "")
 			save_tags_new($_POST['tags'],$theid);
 			// save the alt_tags to if the variable is set
 			if ($cfgrow['altlangfile'] != 'Off'){
-				save_alt_tags_new($_POST['alt_tags'],$theid);
+				save_tags_new($_POST['alt_tags'],$theid,"alt_");
 			}
 			$_SESSION['upload_status']=$status;
 			// workspace: image_uploaded

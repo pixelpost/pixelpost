@@ -200,7 +200,7 @@ if($_GET['view'] == "images")
 		$newdatetime = $_POST['newdatetime'];
 		save_tags_edit($_POST['tags'],$getid);
 
-		if ($cfgrow['altlangfile'] != 'Off')	save_alt_tags_edit($_POST['alt_tags'],$getid);
+		if ($cfgrow['altlangfile'] != 'Off')	save_tags_edit($_POST['alt_tags'],$getid,"alt_");
 
 		$query = "delete from ".$pixelpost_db_prefix."catassoc where image_id='$getid'";
 		$result = mysql_query($query) ||("Error: ".mysql_error());
@@ -540,7 +540,7 @@ if($_GET['view'] == "images")
 			echo "<strong>$admin_lang_ni_tags $langs:</strong> ";
 			echo list_tags_edit($id);
 			echo "<br/><strong>$admin_lang_ni_tags $altlangs:</strong> ";
-			echo list_alt_tags_edit($id);
+			echo list_tags_edit($id, "alt_");
 			echo "<br/>";
 			// added workspace requested by KArin on the forums
 				eval_addon_admin_workspace_menu('image_list');
@@ -641,7 +641,7 @@ if($_GET['view'] == "images")
 		{
 			$tags = list_tags_edit($_GET['id']);
 
-			if ($cfgrow['altlangfile'] != 'Off')	$alt_tags = list_alt_tags_edit($_GET['id']);
+			if ($cfgrow['altlangfile'] != 'Off')	$alt_tags = list_tags_edit($_GET['id'], "alt_");
 
 			echo "
 			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=$getid' enctype='multipart/form-data' accept-charset='UTF-8'>";

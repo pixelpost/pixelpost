@@ -290,6 +290,7 @@ $admin_lang_optn_cmnt_mod_forbidden	=	"コメント機能を無効にする";
 
 $admin_lang_optn_switch_template    = "テンプレートを変更する";
 $admin_lang_optn_lang_file           = "言語ファイル";
+$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "日付表示形式";
 $admin_lang_optn_dateformat_txt      = "イメージおよびコメント表示の日付フォーマットです。このシンタックスでは、PHP <a href='http://www.php.net/date' target='_blank'>date() </a>関数と同じものを使用します。一般的なパラメータの例: Y:年 m:月 d:日 H:時 i:分 s:秒";
 $admin_lang_optn_gmt                 = "ここでは自動的な夏時間調整をサポートしませんので注意してください。手動で夏時間に変更してください。<br />あなたのローカル時間とGMTとの差が分からない場合、<a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'>GMT現在時刻</a>を参考にしてください。<br />";
@@ -361,6 +362,7 @@ $admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
 $admin_lang_optn_rss_full_only						= "Show full size pictures only";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
+$admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         = "disabled";
 $admin_lang_optn_alt_lang_no          = "disabled";

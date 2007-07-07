@@ -149,6 +149,8 @@ $row = mysql_fetch_array($photonumb);
 // number of photos in the database
 $pixelpost_all_photonumb = $row['count'] ;
 
+($_GET['tag']) ? $_GET['tag'] = urldecode($_GET['tag']) : '';
+
 //-------------------------------- Category Browse Menu (paged and original)
 /*---------------------------------**********************---------------------------------------*/
 
@@ -311,7 +313,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		WHERE (datetime<='$cdate' and datetime >='$archivedate_start' and datetime <= '$archivedate_end')
 		$where ORDER BY datetime ".$image_sorting.$limit;
 	}
-	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
+	else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
 	{
   	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
 	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
@@ -366,7 +368,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		WHERE (t1.cat_id = '".(int)$_GET['category']."' AND datetime<='$datetime')";
 		$queryr .= " GROUP BY t1.cat_id ";
 	}// end if
-	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
+	else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
 	{
   	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
 	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
@@ -412,7 +414,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{
 		$temp =$pagenum-1;
 		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_previous</a> ";
-		else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
+		else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
 		{
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_previous</a> ";
 		}
@@ -435,7 +437,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$pagecounter'>$pagecounter</a> ";
 		}// end while
 	}// end if
-	else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
+	else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
 	{
 		$pagecounter = 0;
 
@@ -478,7 +480,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{
 		$temp = $pagenum+1;
 		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_next</a>";
-		else if(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
+		else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
 		{
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_next</a>";
 		}
@@ -494,12 +496,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	// selected category name
 	if($cat_id != "")
 	{
-		if ($language_abr == $default_language_abr) {
-		$query = mysql_query("SELECT name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY name");
-		$images_category_or_date = mysql_fetch_array($query);
-		$images_category_or_date = pullout($images_category_or_date['name']);
-	}
-		else {
+		if ($language_abr == $default_language_abr)
+		{
+			$query = mysql_query("SELECT name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY name");
+			$images_category_or_date = mysql_fetch_array($query);
+			$images_category_or_date = pullout($images_category_or_date['name']);
+		}
+		else
+		{
 			$query = mysql_query("SELECT alt_name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY alt_name");
 			$images_category_or_date = mysql_fetch_array($query);
 			$images_category_or_date = pullout($images_category_or_date['alt_name']);

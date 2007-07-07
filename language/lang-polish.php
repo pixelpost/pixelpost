@@ -167,7 +167,7 @@ $lang_email_notificationplain_pt4 = "
 ";
 
 // Error Message
-$lang_nothing_to_show             = "Zapraszamy już niebawem! Obecnie jeszcze nie ma czego oglądać lub zdjęcia są ustawione z przyszłą datą!";
+$lang_nothing_to_show             = "Zapraszamy już niebawem! Obecnie jeszcze nie ma czego oglądać lub zdjęcia są ustawione z datą w przyszłości!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
 $lang_spamflood										= "Zabezpieczenie przed zalewem komentarzami jest aktywne. Musisz poczekać <TIME_TO_WAIT> przez dodaniem kolejnego komentarza.";
 
