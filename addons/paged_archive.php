@@ -203,7 +203,7 @@ if (isset($_GET['pagenum'])&&$_GET['pagenum'] != "")
 	$thismonth = gmdate("Y-m",gmdate("U")+(3600 * $tz));
 	$select_display_thismonth=date("F, Y",strtotime($thismonth."-01"));
 
-	$archive_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
+	$archive_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 	$archive_select_links = "<ul id=\"monthlist\">
                             <li><a href='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</a></li>";
 	$query = "SELECT distinct DATE_FORMAT(datetime, '%Y-%m') FROM ".$pixelpost_db_prefix."pixelpost
@@ -239,12 +239,12 @@ else
 
 	if (isset($thedate))
 	{
-		$archive_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;archivedate=$thedate&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
+		$archive_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;archivedate=$thedate&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 		$archive_select_links = "<ul id='monthlist'><li><a href='index.php?x=browse&amp;archivedate=$thedate&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</a></li>";
 	}
 	else
 	{
-		$archive_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
+		$archive_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>Monthly archive</option><option value='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 		$archive_select_links = "<ul id='monthlist'><li><a href='index.php?x=browse&amp;pagenum=1'>$lang_browse_all (" .$pixelpost_all_photonumb .")</a></li>";
 	}
 
@@ -532,11 +532,11 @@ $browse_select = "";
 // do you use links with page number?
 if ($maxpthumb>0)
 {
-	$browse_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category=&amp;pagenum=$temppagenum'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
+	$browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category=&amp;pagenum=$temppagenum'>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 }
 else
 {
-	$browse_select = "<select name='browse' onChange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
+	$browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all (" .$pixelpost_all_photonumb .")</option>";
 }
 
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
