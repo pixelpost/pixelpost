@@ -136,7 +136,7 @@ function print_comments($imageid)
 		{
 	  	if( preg_match( '/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}'.'((:[0-9]{1,5})?\/.*)?$/i' ,$comment_url))
 			{
-  			$comment_name = "<a href=\"$comment_url\" title=\"$lang_visit_homepage\" target=\"new\" rel=\"nofollow\">$comment_name</a>";
+  			$comment_name = "<a href=\"$comment_url\" title=\"$lang_visit_homepage\" target=\"_blank\" rel=\"nofollow\">$comment_name</a>";
 			}
 			else
 			{
