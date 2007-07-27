@@ -156,7 +156,7 @@ if ($_GET['optaction']=='updateall')
 		}
 		
 		// displayorder
-			$upquery = sql_query("update ".$pixelpost_db_prefix."config set display_order='".$_POST['exif']."'");
+			$upquery = sql_query("update ".$pixelpost_db_prefix."config set display_order='".$_POST['display_order']."'");
 		
 		// Refresh the settings
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
@@ -805,7 +805,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				
 				echo "
 				$admin_lang_optn_img_display_desc
-				<select name='exif'><option value='".$cfgrow['display_order']."'>".$toecho."</option>
+				<select name='display_order'><option value='".$cfgrow['display_order']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>
 
