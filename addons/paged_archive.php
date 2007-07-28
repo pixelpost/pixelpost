@@ -620,8 +620,8 @@ else	$queryr = "SELECT alt_tag
 
 $tags = mysql_query($queryr);
 
-$tags_img = $lang_tags;
-$tags_paged_img = $tags_img;
+$tags_img = "";
+$tags_paged_img = "";
 
 while(list($tag)  = mysql_fetch_array($tags))
 {
