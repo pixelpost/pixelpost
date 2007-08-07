@@ -202,6 +202,9 @@ if($_GET['x'] == "update" && !isset($_POST['comments_settings']))
 		header("Location: index.php?view=images");
 		die();
 }
+
+// Prevent misuse of HTML in the title
+$cfgrow['sitetitle'] = htmlspecialchars($cfgrow['sitetitle'],ENT_NOQUOTES);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

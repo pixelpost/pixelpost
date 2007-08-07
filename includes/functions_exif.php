@@ -37,6 +37,14 @@ function serialize_exif ($uploaded_file)
 		// this field is set to empty because it causes trouble
 		$flat_exif_tmp['DataDumpMakerNote']=NULL;
 	}
+	//search for all "unknown:*" fields because like the MakerNote it causes trouble.
+	// Thanks to erdbeerbaum for pointing this out.
+  foreach ($flat_exif_tmp as $key=>$value) {
+    $pos = strpos($key, "unknown:");
+    if ($pos === 0) {
+      $flat_exif_tmp[$key]=NULL;  
+    }
+  }  
 	foreach ($flat_exif_tmp as $key=>$value)	$flat_exif_tmp[$key]=trim($value);
 	$exif_info=serialize($flat_exif_tmp);
 	// we need to escape the string before saving it to the db
