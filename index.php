@@ -645,6 +645,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	// image notes without HTML tags and double quotes
 	$image_notes_clean = strip_tags($image_notes);
   $image_notes_clean = htmlspecialchars($image_notes_clean,ENT_NOQUOTES);
+	$image_notes_clean = str_replace('"',"'",$image_notes_clean);
   $tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
 	// end image notes without HTML tags
 	$tpl = ereg_replace("<IMAGE_ID>",$image_id,$tpl);
