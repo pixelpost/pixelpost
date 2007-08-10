@@ -357,9 +357,9 @@ if($_GET['view'] == "images")
 	
 		if($_GET['page'] == "")	$page = "0";
 		else	$page = $_GET['page'];
-
+ 		$_SESSION['page_pp'] = (int) $page;
 		$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
-
+    
 		if ($_SESSION['numimg_pp'] == 0)	$_SESSION['numimg_pp'] = 10;
 		elseif (isset($_POST['numimg_pp']) && $_POST['numimg_pp'] > 0)
 		{
@@ -644,7 +644,7 @@ if($_GET['view'] == "images")
 			if ($cfgrow['altlangfile'] != 'Off')	$alt_tags = list_tags_edit($_GET['id'], "alt_");
 
 			echo "
-			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=$getid' enctype='multipart/form-data' accept-charset='UTF-8'>";
+			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=".$getid."&amp;page=".$_SESSION['page_pp']."' enctype='multipart/form-data' accept-charset='UTF-8'>";
 			echo "
 			<div class='jcaption'>$admin_lang_imgedit_reupimg</div>
 			<div class='content'>
