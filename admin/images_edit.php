@@ -41,20 +41,26 @@ if($_GET['view'] == "images")
  		$query = "DELETE FROM ".$pixelpost_db_prefix."pixelpost ";
  		$where = "WHERE";
  		$where2 = $where;
+    $where3 = $where;
  		for ($i=0; $i < count($idz)-1; $i++)
  		{
  			$where .= " id = '$idz[$i]' or ";
  			$where2 .= " img_id = '$idz[$i]' or ";
+      $where3 .= " parent_id = '$idz[$i]' or ";
  		}
  		$lastid = $idz[count($idz)-1];
  		$where .= " id = '$lastid'  ";
  		$where2 .= " img_id = '$lastid'  ";
+ 		$where3 .= " parent_id = '$lastid'  ";
  		$query .= $where;
- 		sql_query($query);
+ 		mysql_query($query) or die(mysql_error());
  		$c = count($idz);
  		echo "<div class='jcaption'>$admin_lang_imgedit_delete1  $c $admin_lang_imgedit_delete2</div>";
 		$query2 = "DELETE FROM " . $pixelpost_db_prefix . "tags " . $where2;
- 		sql_query($query2);
+ 		mysql_query($query2) or die(mysql_error());
+		// delete the comments as well
+		$query3 = "DELETE FROM " . $pixelpost_db_prefix . "comments " . $where3;
+ 		mysql_query($query3) or die(mysql_error());
  	}
 
 	// Mass add or delete categories to images
