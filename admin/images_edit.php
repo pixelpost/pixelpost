@@ -488,32 +488,33 @@ if($_GET['view'] == "images")
 		
 		//cat filter
 		if (isset($selectfcat)) {
-			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat." ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat." ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//tag filter
 		else if (isset($selectftag)) {
-			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.tag LIKE '".$selectftag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.tag LIKE '".$selectftag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//alt tag filter
 		else if (isset($selectfalttag)) {
-			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.alt_tag LIKE '".$selectfalttag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.alt_tag LIKE '".$selectfalttag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//month filter
 		else if (isset($selectfmon)) {
-			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime LIKE '".$selectfmon."%' ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
+			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime LIKE '".$selectfmon."%' ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		else if (isset($findfid)) {
-			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE id = ".$findfid." limit 0,1";
+			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost WHERE id = ".$findfid." limit 0,1";
 		}
 		else {
-			$query = "SELECT * FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
+			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		$pagec = 0;
 		$images = mysql_query($query);
 		
-		while(list($id,$datetime,$headline,$body,$image,$category) = mysql_fetch_row($images))
+		while(list($id,$datetime,$headline,$body,$image,$category, $alt_headline) = mysql_fetch_row($images))
 		{
 			$headline = pullout($headline);
+			$alt_headline = pullout($alt_headline);			
 # 		$headline = htmlentities($headline);
     
 			list($local_width,$local_height,$type,$attr) = getimagesize($cfgrow['imagepath'].$image);
@@ -526,6 +527,7 @@ if($_GET['view'] == "images")
 				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
 				<strong>#$id<br/>
 				$admin_lang_imgedit_title</strong> $headline<br/>
+				<strong>$admin_lang_imgedit_alttitle</strong> $alt_headline<br/>								
 				<strong>$admin_lang_imgedit_file_name</strong> $image<br/>
 				<strong>$admin_lang_imgedit_dimensions</strong> $local_width x $local_height, $fs KB<br/>
 				<strong>$admin_lang_imgedit_tbpublished</strong> $datetime<br/>";

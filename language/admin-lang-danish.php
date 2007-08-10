@@ -140,6 +140,7 @@ $admin_lang_ni_alt_language				= "Skriv en titel og beskrivelse i det alternativ
 // Images
 $admin_lang_imgedit_edit           = "Rediger";
 $admin_lang_imgedit_title          = "Titel:";
+$admin_lang_imgedit_alttitle     		= "Alt. Title:";
 $admin_lang_imgedit_file_name      = "Filnavn:";
 $admin_lang_imgedit_dimensions     = "St&oslash;rrelse:";
 $admin_lang_imgedit_tbpublished    = "Offentligg&oslash;res:";

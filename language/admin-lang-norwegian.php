@@ -145,6 +145,7 @@ $admin_lang_ni_alt_language				= "Provide an image title and description in the 
 // Images
 $admin_lang_imgedit_edit           = "Rediger";
 $admin_lang_imgedit_title          = "Tittel:";
+$admin_lang_imgedit_alttitle          		= "Alt. Title:";
 $admin_lang_imgedit_file_name      = "Filnavn:";
 $admin_lang_imgedit_dimensions     = "Dimmensjon:";
 $admin_lang_imgedit_tbpublished    = "Publiseres:";

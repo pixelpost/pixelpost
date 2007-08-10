@@ -139,6 +139,7 @@ $admin_lang_ni_alt_language	  = "Introduce un t&iacute;tulo y una descripci&oacu
 // Images
 $admin_lang_imgedit_edit           = "Editar";
 $admin_lang_imgedit_title          = "T&iacute;tulo:";
+$admin_lang_imgedit_alttitle          		= "Alt. Title:";
 $admin_lang_imgedit_file_name      = "Nombre de archivo:";
 $admin_lang_imgedit_dimensions     = "Dimensiones:";
 $admin_lang_imgedit_tbpublished    = "Publicada:";

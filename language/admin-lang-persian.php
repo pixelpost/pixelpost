@@ -137,6 +137,7 @@ $admin_lang_ni_alt_language				= "Provide an image title and description in the 
 // Images
 $admin_lang_imgedit_edit           = "ويرايش";
 $admin_lang_imgedit_title          = "عنوان:";
+$admin_lang_imgedit_alttitle          		= "Alt. Title:";
 $admin_lang_imgedit_file_name      = "";
 $admin_lang_imgedit_dimensions     = "";
 $admin_lang_imgedit_tbpublished    = "تاريخ انتشار:";

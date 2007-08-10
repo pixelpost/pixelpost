@@ -144,6 +144,7 @@ $admin_lang_ni_alt_language				= "Provide an image title and description in the 
 // Images
 $admin_lang_imgedit_edit           = "编辑";
 $admin_lang_imgedit_title          = "标题：";
+$admin_lang_imgedit_alttitle          		= "Alt. Title:";
 $admin_lang_imgedit_file_name      = "文件名：";
 $admin_lang_imgedit_dimensions     = "尺寸：";
 $admin_lang_imgedit_tbpublished    = "发表时间：";

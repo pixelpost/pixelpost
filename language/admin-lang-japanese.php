@@ -144,6 +144,7 @@ $admin_lang_ni_alt_language       = "イメージタイトルおよび説明の�
 // Images
 $admin_lang_imgedit_edit           = "編集";
 $admin_lang_imgedit_title          = "タイトル:";
+$admin_lang_imgedit_alttitle          		= "Alt. Title:";
 $admin_lang_imgedit_file_name      = "ファイル名:";
 $admin_lang_imgedit_dimensions     = "サイズ:";
 $admin_lang_imgedit_tbpublished    = "投稿日時:";

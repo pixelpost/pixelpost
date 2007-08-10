@@ -140,6 +140,7 @@ $admin_lang_ni_alt_language				= "Geef een foto titel en omschrijving in de alte
 // Images
 $admin_lang_imgedit_edit           = "Bewerken";
 $admin_lang_imgedit_title          = "Titel:";
+$admin_lang_imgedit_alttitle      = "Alt. Fototitel:";
 $admin_lang_imgedit_file_name      = "Bestandsnaam:";
 $admin_lang_imgedit_dimensions     = "Afmetingen:";
 $admin_lang_imgedit_tbpublished    = "Publicatie op:";

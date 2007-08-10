@@ -138,6 +138,7 @@ $admin_lang_ni_alt_language				= "Geben Sie einen Titel und eine Beschreibung in
 // Images
 $admin_lang_imgedit_edit            = "Bearbeiten";
 $admin_lang_imgedit_title           = "Titel:";
+$admin_lang_imgedit_alttitle          		= "Alt. Title:";
 $admin_lang_imgedit_file_name       = "Datei-Name:";
 $admin_lang_imgedit_dimensions      = "Abmessungen:";
 $admin_lang_imgedit_tbpublished     = "Ver&ouml;ffentlichungsdatum:";
