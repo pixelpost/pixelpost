@@ -568,6 +568,9 @@ $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse me
 /* TAGS support */
 $tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">'.$lang_tags.'</div>';
 $tags_paged_output = $tags_output;
+$tags_output_reversed = $tags_output;
+$tags_paged_output_reversed = $tags_output;
+
 
 $default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
 
@@ -601,13 +604,23 @@ else	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as 
 
 $tags = mysql_query($queryr);
 
-while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
-{
+while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags)){
 	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
 	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
+	$rank_reversed = $rank;
+	if ($rank[0]==1){
+		$rank_reversed[0]=0; //give the most important tag the lessest weight
+	} else {
+		$rank_reversed[2]=10-$rank[2];
+	}
+	$tags_output_reversed .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank_reversed[0].$rank_reversed[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
+	$tags_paged_output_reversed .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank_reversed[0].$rank_reversed[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
 }
+
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
+$tags_output_reversed .= '</div>';
+$tags_paged_output_reversed .= '</div>';
 
 if ($language_abr == $default_language_abr)	$queryr = "SELECT tag
 		FROM {$pixelpost_db_prefix}tags
@@ -628,6 +641,7 @@ while(list($tag)  = mysql_fetch_array($tags))
 	$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
 	$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
 	$tags_keywords .= $tag.', ';
+
 }
 $tags_img = trim($tags_img);
 $tags_paged_img = trim($tags_paged_img);
@@ -635,6 +649,8 @@ $tags_keywords = str_replace('_',' ',$tags_keywords);
 
 $tpl = str_replace("<TAG_LINKS_AS_LIST>",$tags_output,$tpl); //thumbnails in this page
 $tpl = str_replace("<TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output,$tpl); //thumbnails in this page
+$tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST>",$tags_output_reversed,$tpl); //thumbnails in this page
+$tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output_reversed,$tpl); //thumbnails in this page
 $tpl = str_replace("<TAG_IMG_LIST>",$tags_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_PAGED>",$tags_paged_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_KEYWORDS>",$tags_keywords,$tpl); // list of tags for meta keywords
