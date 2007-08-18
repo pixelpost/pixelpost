@@ -63,7 +63,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 // Set cookie for visitor counter, re-count a person after 60 mins
 setcookie("lastvisit","expires in 60 minutes",time() +60*60);
-
+// cleanup $_GET['x']
+if(isset($_GET['x'])){$_GET['x'] = eregi_replace('[^a-z0-9_-]', '', $_GET['x']);}
 // save user info if requested
 if(isset($_POST['vcookie']))
 {
