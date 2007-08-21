@@ -55,12 +55,12 @@ function lookup_Canon_tag($tag) {
 //=================
 // Formats Data for the data type
 //====================================================================
-function formatCanonData($type,$tag,$intel,$data,&$result) {
+function formatCanonData($type,$tag,$intel,$data,$exif,&$result) {
 	$place = 0;
 	
 	
 	if($type=="ASCII") {
-		$result = $data;		
+		$result = $data = str_replace("\0", "", $data);
 	} else if($type=="URATIONAL" || $type=="SRATIONAL") {
 		$data = bin2hex($data);
 		if($intel==1) $data = intel2Moto($data);
@@ -81,124 +81,193 @@ function formatCanonData($type,$tag,$intel,$data,&$result) {
 	
 		if($tag=="0001") { //first chunk
 			$result['Bytes']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//0
+			if ($result['Bytes'] != strlen($data) / 2) return $result; //Bad chunk
 			$result['Macro']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//1
-				if($result['Macro']==1) $result['Macro'] = "Macro";
-				if($result['Macro']==2) $result['Macro'] = "Normal";
+			switch($result['Macro']) {
+				case 1: $result['Macro'] = "Macro"; break;
+				case 2: $result['Macro'] = "Normal"; break;
+				default: $result['Macro'] = "Unknown";
+			}
 			$result['SelfTimer']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//2
-				if($result['SelfTimer']==0) $result['SelfTimer'] = "Off";
+			switch($result['SelfTimer']) {
+				case 0: $result['SelfTimer'] = "Off"; break;
+				default: $result['SelfTimer'] .= "/10s";
+			}
 			$result['Quality']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//3
-				if($result['Quality']==2) $result['Quality'] = "Normal";
-				if($result['Quality']==3) $result['Quality'] = "Fine";
-				if($result['Quality']==5) $result['Quality'] = "Superfine";
+			switch($result['Quality']) {
+				case 2: $result['Quality'] = "Normal"; break;
+				case 3: $result['Quality'] = "Fine"; break;
+				case 5: $result['Quality'] = "Superfine"; break;
+				default: $result['Quality'] = "Unknown";
+			}
 			$result['Flash']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//4
-				if($result['Flash']==0) $result['Flash'] = "Off";
-				if($result['Flash']==1) $result['Flash'] = "Auto";
-				if($result['Flash']==2) $result['Flash'] = "On";
-				if($result['Flash']==3) $result['Flash'] = "Red Eye Reduction";
-				if($result['Flash']==4) $result['Flash'] = "Slow Synchro";
-				if($result['Flash']==5) $result['Flash'] = "Auto + Red Eye Reduction";
-				if($result['Flash']==6) $result['Flash'] = "On + Red Eye Reduction";
-				if($result['Flash']==16) $result['Flash'] = "External Flash";
+			switch($result['Flash']) {
+				case 0: $result['Flash'] = "Off"; break;
+				case 1: $result['Flash'] = "Auto"; break;
+				case 2: $result['Flash'] = "On"; break;
+				case 3: $result['Flash'] = "Red Eye Reduction"; break;
+				case 4: $result['Flash'] = "Slow Synchro"; break;
+				case 5: $result['Flash'] = "Auto + Red Eye Reduction"; break;
+				case 6: $result['Flash'] = "On + Red Eye Reduction"; break;
+				case 16: $result['Flash'] = "External Flash"; break;
+				default: $result['Flash'] = "Unknown";
+			}
 			$result['DriveMode']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//5
-				if($result['DriveMode']==0) $result['DriveMode'] = "Single/Timer";
-				if($result['DriveMode']==1) $result['DriveMode'] = "Continuous";
+			switch($result['DriveMode']) {
+				case 0: $result['DriveMode'] = "Single/Timer"; break;
+				case 1: $result['DriveMode'] = "Continuous"; break;
+				default: $result['DriveMode'] = "Unknown";
+			}
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//6
 			$result['FocusMode']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//7
-				if($result['FocusMode']==0) $result['FocusMode'] = "One-Shot";
-				if($result['FocusMode']==1) $result['FocusMode'] = "AI Servo";
-				if($result['FocusMode']==2) $result['FocusMode'] = "AI Focus";
-				if($result['FocusMode']==3) $result['FocusMode'] = "Manual Focus";
-				if($result['FocusMode']==4) $result['FocusMode'] = "Single";
-				if($result['FocusMode']==5) $result['FocusMode'] = "Continuous";
-				if($result['FocusMode']==6) $result['FocusMode'] = "Manual Focus";
+			switch($result['FocusMode']) {
+				case 0: $result['FocusMode'] = "One-Shot"; break;
+				case 1: $result['FocusMode'] = "AI Servo"; break;
+				case 2: $result['FocusMode'] = "AI Focus"; break;
+				case 3: $result['FocusMode'] = "Manual Focus"; break;
+				case 4: $result['FocusMode'] = "Single"; break;
+				case 5: $result['FocusMode'] = "Continuous"; break;
+				case 6: $result['FocusMode'] = "Manual Focus"; break;
+				default: $result['FocusMode'] = "Unknown";
+			}
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//8
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//9
 			$result['ImageSize']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//10
-				if($result['ImageSize']==0) $result['ImageSize'] = "Large";
-				if($result['ImageSize']==1) $result['ImageSize'] = "Medium";
-				if($result['ImageSize']==2) $result['ImageSize'] = "Small";
+			switch($result['ImageSize']) {
+				case 0: $result['ImageSize'] = "Large"; break;
+				case 1: $result['ImageSize'] = "Medium"; break;
+				case 2: $result['ImageSize'] = "Small"; break;
+				default: $result['ImageSize'] = "Unknown";
+			}
 			$result['EasyShooting']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//11
-				if($result['EasyShooting']==0) $result['EasyShooting'] = "Full Auto";
-				if($result['EasyShooting']==1) $result['EasyShooting'] = "Manual";
-				if($result['EasyShooting']==2) $result['EasyShooting'] = "Landscape";
-				if($result['EasyShooting']==3) $result['EasyShooting'] = "Fast Shutter";
-				if($result['EasyShooting']==4) $result['EasyShooting'] = "Slow Shutter";
-				if($result['EasyShooting']==5) $result['EasyShooting'] = "Night";
-				if($result['EasyShooting']==6) $result['EasyShooting'] = "Black & White";
-				if($result['EasyShooting']==7) $result['EasyShooting'] = "Sepia";
-				if($result['EasyShooting']==8) $result['EasyShooting'] = "Portrait";
-				if($result['EasyShooting']==9) $result['EasyShooting'] = "Sport";
-				if($result['EasyShooting']==10) $result['EasyShooting'] = "Macro/Close-Up";
-				if($result['EasyShooting']==11) $result['EasyShooting'] = "Pan Focus";
+			switch($result['EasyShooting']) {
+				case 0: $result['EasyShooting'] = "Full Auto"; break;
+				case 1: $result['EasyShooting'] = "Manual"; break;
+				case 2: $result['EasyShooting'] = "Landscape"; break;
+				case 3: $result['EasyShooting'] = "Fast Shutter"; break;
+				case 4: $result['EasyShooting'] = "Slow Shutter"; break;
+				case 5: $result['EasyShooting'] = "Night"; break;
+				case 6: $result['EasyShooting'] = "Black & White"; break;
+				case 7: $result['EasyShooting'] = "Sepia"; break;
+				case 8: $result['EasyShooting'] = "Portrait"; break;
+				case 9: $result['EasyShooting'] = "Sport"; break;
+				case 10: $result['EasyShooting'] = "Macro/Close-Up"; break;
+				case 11: $result['EasyShooting'] = "Pan Focus"; break;
+				default: $result['EasyShooting'] = "Unknown";
+			}
 			$result['DigitalZoom']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//12
-				if($result['DigitalZoom']==0) $result['DigitalZoom'] = "No Digital Zoom";
-        		if($result['DigitalZoom']==1) $result['DigitalZoom'] = "2x";
-        		if($result['DigitalZoom']==2) $result['DigitalZoom'] = "4x";
-				if($result['DigitalZoom']==65535) $result['DigitalZoom'] = "No Digital Zoom";
+			switch($result['DigitalZoom']) {
+				case 0:
+				case 65535: $result['DigitalZoom'] = "None"; break;
+				case 1: $result['DigitalZoom'] = "2x"; break;
+				case 2: $result['DigitalZoom'] = "4x"; break;
+				default: $result['DigitalZoom'] = "Unknown";
+			}
 			$result['Contrast']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//13
-				if($result['Contrast']==0) $result['Contrast'] = "Normal";
-				if($result['Contrast']==1) $result['Contrast'] = "High";
-				if($result['Contrast']==65535) $result['Contrast'] = "Low";
+			switch($result['Contrast']) {
+				case 0: $result['Contrast'] = "Normal"; break;
+				case 1: $result['Contrast'] = "High"; break;
+				case 65535: $result['Contrast'] = "Low"; break;
+				default: $result['Contrast'] = "Unknown";
+			}
 			$result['Saturation']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//14
-				if($result['Saturation']==0) $result['Saturation'] = "Normal";
-				if($result['Saturation']==1) $result['Saturation'] = "High";
-				if($result['Saturation']==65535) $result['Saturation'] = "Low";
+			switch($result['Saturation']) {
+				case 0: $result['Saturation'] = "Normal"; break;
+				case 1: $result['Saturation'] = "High"; break;
+				case 65535: $result['Saturation'] = "Low"; break;
+				default: $result['Saturation'] = "Unknown";
+			}
 			$result['Sharpness']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//15
-				if($result['Sharpness']==0) $result['Sharpness'] = "Normal";
-				if($result['Sharpness']==1) $result['Sharpness'] = "High";
-				if($result['Sharpness']==65535) $result['Sharpness'] = "Low";
+			switch($result['Sharpness']) {
+				case 0: $result['Sharpness'] = "Normal"; break;
+				case 1: $result['Sharpness'] = "High"; break;
+				case 65535: $result['Sharpness'] = "Low"; break;
+				default: $result['Sharpness'] = "Unknown";
+			}
 			$result['ISO']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//16
-				if($result['ISO']==15) $result['ISO'] = "Auto";
-				if($result['ISO']==16) $result['ISO'] = "50";
-				if($result['ISO']==17) $result['ISO'] = "100";
-				if($result['ISO']==18) $result['ISO'] = "200";
-				if($result['ISO']==19) $result['ISO'] = "400";
+			switch($result['ISO']) {
+				case 32767:
+				case 0: $result['ISO'] = isset($exif['SubIFD']['ISOSpeedRatings'])
+					? $exif['SubIFD']['ISOSpeedRatings'] : 'Unknown'; break;
+				case 15: $result['ISO'] = "Auto"; break;
+				case 16: $result['ISO'] = "50"; break;
+				case 17: $result['ISO'] = "100"; break;
+				case 18: $result['ISO'] = "200"; break;
+				case 19: $result['ISO'] = "400"; break;
+				default: $result['ISO'] = "Unknown";
+			}
 			$result['MeteringMode']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//17
-				if($result['MeteringMode']==3) $result['MeteringMode'] = "Evaluative";
-				if($result['MeteringMode']==4) $result['MeteringMode'] = "Partial";
-				if($result['MeteringMode']==5) $result['MeteringMode'] = "Center-weighted";
+			switch($result['MeteringMode']) {
+				case 3: $result['MeteringMode'] = "Evaluative"; break;
+				case 4: $result['MeteringMode'] = "Partial"; break;
+				case 5: $result['MeteringMode'] = "Center-weighted"; break;
+				default: $result['MeteringMode'] = "Unknown";
+			}
 			$result['FocusType']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//18
-				if($result['FocusType']==0) $result['FocusType'] = "Manual";
-				if($result['FocusType']==1) $result['FocusType'] = "Auto";
-				if($result['FocusType']==3) $result['FocusType'] = "Close-up (Macro)";
-				if($result['FocusType']==8) $result['FocusType'] = "Locked (Pan Mode)";
+			switch($result['FocusType']) {
+				case 0: $result['FocusType'] = "Manual"; break;
+				case 1: $result['FocusType'] = "Auto"; break;
+				case 3: $result['FocusType'] = "Close-up (Macro)"; break;
+				case 8: $result['FocusType'] = "Locked (Pan Mode)"; break;
+				default: $result['FocusType'] = "Unknown";
+			}
 			$result['AFPointSelected']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//19
-				if($result['AFPointSelected']==12288) $result['AFPointSelected'] = "Manual Focus";
-				if($result['AFPointSelected']==12289) $result['AFPointSelected'] = "Auto Selected";
-				if($result['AFPointSelected']==12290) $result['AFPointSelected'] = "Right";
-				if($result['AFPointSelected']==12291) $result['AFPointSelected'] = "Center";
-				if($result['AFPointSelected']==12292) $result['AFPointSelected'] = "Left";
+			switch($result['AFPointSelected']) {
+				case 12288: $result['AFPointSelected'] = "Manual Focus"; break;
+				case 12289: $result['AFPointSelected'] = "Auto Selected"; break;
+				case 12290: $result['AFPointSelected'] = "Right"; break;
+				case 12291: $result['AFPointSelected'] = "Center"; break;
+				case 12292: $result['AFPointSelected'] = "Left"; break;
+				default: $result['AFPointSelected'] = "Unknown";
+			}
 			$result['ExposureMode']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//20
-				if($result['ExposureMode']==0) $result['ExposureMode'] = "EasyShoot";
-				if($result['ExposureMode']==1) $result['ExposureMode'] = "Program";
-				if($result['ExposureMode']==2) $result['ExposureMode'] = "Tv";
-				if($result['ExposureMode']==3) $result['ExposureMode'] = "Av";
-				if($result['ExposureMode']==4) $result['ExposureMode'] = "Manual";
-				if($result['ExposureMode']==5) $result['ExposureMode'] = "Auto-DEP";
+			switch($result['ExposureMode']) {
+				case 0: $result['ExposureMode'] = "EasyShoot"; break;
+				case 1: $result['ExposureMode'] = "Program"; break;
+				case 2: $result['ExposureMode'] = "Tv"; break;
+				case 3: $result['ExposureMode'] = "Av"; break;
+				case 4: $result['ExposureMode'] = "Manual"; break;
+				case 5: $result['ExposureMode'] = "Auto-DEP"; break;
+				default: $result['ExposureMode'] = "Unknown";
+			}
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//21
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//22
 			$result['LongFocalLength']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//23
+				$result['LongFocalLength'] .= " focal units";
 			$result['ShortFocalLength']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//24
+				$result['ShortFocalLength'] .= " focal units";
 			$result['FocalUnits']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//25
+				$result['FocalUnits'] .= " per mm";
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//26
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//27
 			$result['FlashActivity']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//28
-				if($result['FlashActivity']==0) $result['FlashActivity'] = "Flash Did Not Fire";
-				if($result['FlashActivity']==1) $result['FlashActivity'] = "Flash Fired";
+			switch($result['FlashActivity']) {
+				case 0: $result['FlashActivity'] = "Flash Did Not Fire"; break;
+				case 1: $result['FlashActivity'] = "Flash Fired"; break;
+				default: $result['FlashActivity'] = "Unknown";
+			}
 			$result['FlashDetails']=str_pad(base_convert(intel2Moto(substr($data,$place,4)), 16, 2), 16, "0", STR_PAD_LEFT);$place+=4;//29
 				$flashDetails = array();
 				if (substr($result['FlashDetails'], 1, 1) == 1) { $flashDetails[] = 'External E-TTL'; }
 				if (substr($result['FlashDetails'], 2, 1) == 1) { $flashDetails[] = 'Internal Flash'; }
 				if (substr($result['FlashDetails'], 4, 1) == 1) { $flashDetails[] = 'FP sync used'; }
-				if (substr($result['FlashDetails'], 8, 1) == 1) { $flashDetails[] = '2nd("rear")-curtin sync used'; }
-				if (substr($result['FlashDetails'], 12, 1) == 1) { $flashDetails[] = '1st curtin sync'; }
+				if (substr($result['FlashDetails'], 8, 1) == 1) { $flashDetails[] = '2nd(rear)-curtain sync used'; }
+				if (substr($result['FlashDetails'], 12, 1) == 1) { $flashDetails[] = '1st curtain sync'; }
 				$result['FlashDetails']=implode(",", $flashDetails);
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//30
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//31
-			$result['FocusMode']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//32
+			$anotherFocusMode=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//32
+			if(strpos(strtoupper($exif['IFD0']['Model']), "G1") !== false) {
+				switch($anotherFocusMode) {
+					case 0: $result['FocusMode'] = "Single"; break;
+					case 1: $result['FocusMode'] = "Continuous"; break;
+					default: $result['FocusMode'] = "Unknown";
+				}
+			}
 			
 		} else if($tag=="0004") { //second chunk
 			$result['Bytes']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//0
+			if ($result['Bytes'] != strlen($data) / 2) return $result; //Bad chunk
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//1
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//2
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//3
@@ -206,13 +275,16 @@ function formatCanonData($type,$tag,$intel,$data,&$result) {
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//5
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//6
 			$result['WhiteBalance']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//7
-				if($result['WhiteBalance']==0) $result['WhiteBalance'] = "Auto";
-				if($result['WhiteBalance']==1) $result['WhiteBalance'] = "Sunny";
-				if($result['WhiteBalance']==2) $result['WhiteBalance'] = "Cloudy";
-				if($result['WhiteBalance']==3) $result['WhiteBalance'] = "Tungsten";
-				if($result['WhiteBalance']==4) $result['WhiteBalance'] = "Flourescent";
-				if($result['WhiteBalance']==5) $result['WhiteBalance'] = "Flash";
-				if($result['WhiteBalance']==6) $result['WhiteBalance'] = "Custom";
+			switch($result['WhiteBalance']) {
+				case 0: $result['WhiteBalance'] = "Auto"; break;
+				case 1: $result['WhiteBalance'] = "Sunny"; break;
+				case 2: $result['WhiteBalance'] = "Cloudy"; break;
+				case 3: $result['WhiteBalance'] = "Tungsten"; break;
+				case 4: $result['WhiteBalance'] = "Fluorescent"; break;
+				case 5: $result['WhiteBalance'] = "Flash"; break;
+				case 6: $result['WhiteBalance'] = "Custom"; break;
+				default: $result['WhiteBalance'] = "Unknown";
+			}
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//8
 			$result['SequenceNumber']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//9
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//10
@@ -220,17 +292,46 @@ function formatCanonData($type,$tag,$intel,$data,&$result) {
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//12
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//13
 			$result['AFPointUsed']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//14
-			$result['FlashBias']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//15
-				$result['FlashBias'].="EV";//15
+				$afPointUsed = array();
+				if ($result['AFPointUsed'] & 0x0001) $afPointUsed[] = "Right"; //bit 0
+				if ($result['AFPointUsed'] & 0x0002) $afPointUsed[] = "Center"; //bit 1
+				if ($result['AFPointUsed'] & 0x0004) $afPointUsed[] = "Left"; //bit 2
+				if ($result['AFPointUsed'] & 0x0800) $afPointUsed[] = "12"; //bit 12
+				if ($result['AFPointUsed'] & 0x1000) $afPointUsed[] = "13"; //bit 13
+				if ($result['AFPointUsed'] & 0x2000) $afPointUsed[] = "14"; //bit 14
+				if ($result['AFPointUsed'] & 0x4000) $afPointUsed[] = "15"; //bit 15
+				$result['AFPointUsed'] = implode(",", $afPointUsed);
+			$result['FlashBias']=intel2Moto(substr($data,$place,4));$place+=4;//15
+			switch($result['FlashBias']) {
+				case 'ffc0': $result['FlashBias'] = "-2 EV"; break;
+				case 'ffcc': $result['FlashBias'] = "-1.67 EV"; break;
+				case 'ffd0': $result['FlashBias'] = "-1.5 EV"; break;
+				case 'ffd4': $result['FlashBias'] = "-1.33 EV"; break;
+				case 'ffe0': $result['FlashBias'] = "-1 EV"; break;
+				case 'ffec': $result['FlashBias'] = "-0.67 EV"; break;
+				case 'fff0': $result['FlashBias'] = "-0.5 EV"; break;
+				case 'fff4': $result['FlashBias'] = "-0.33 EV"; break;
+				case '0000': $result['FlashBias'] = "0 EV"; break;
+				case '000c': $result['FlashBias'] = "0.33 EV"; break;
+				case '0010': $result['FlashBias'] = "0.5 EV"; break;
+				case '0014': $result['FlashBias'] = "0.67 EV"; break;
+				case '0020': $result['FlashBias'] = "1 EV"; break;
+				case '002c': $result['FlashBias'] = "1.33 EV"; break;
+				case '0030': $result['FlashBias'] = "1.5 EV"; break;
+				case '0034': $result['FlashBias'] = "1.67 EV"; break;
+				case '0040': $result['FlashBias'] = "2 EV"; break;
+				default: $result['FlashBias'] = "Unknown";
+			}
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//16
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//17
 			$result['Unknown']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//18
 			$result['SubjectDistance']=hexdec(intel2Moto(substr($data,$place,4)));$place+=4;//19
+				$result['SubjectDistance'] .= "/100 m";
 			
 		} else if($tag=="0008") { //image number
 			if($intel==1) $data = intel2Moto($data);
 			$data=hexdec($data);
-			$result = round($data/1000)."-".$data%1000;			
+			$result = round($data/10000)."-".$data%10000;
 		} else if($tag=="000c") { //camera serial number
 			if($intel==1) $data = intel2Moto($data);
 			$data=hexdec($data);
@@ -301,13 +402,13 @@ function parseCanon($block,&$result,$seek, $globalOffset) {
 			$value = bin2hex($value);
 			if($intel==1) $value = intel2Moto($value);
 			$v = fseek($seek,$globalOffset+hexdec($value));  //offsets are from TIFF header which is 12 bytes from the start of the file
-			if($v==0) {
+			if($v==0 && $bytesofdata < $GLOBALS['exiferFileSize']) {
 				$data = fread($seek, $bytesofdata);
 			} else if($v==-1) {
 				$result['Errors'] = $result['Errors']++;
 			}
 		}
-		$formated_data = formatCanonData($type,$tag,$intel,$data,$result['SubIFD']['MakerNote'][$tag_name]);
+		$formated_data = formatCanonData($type,$tag,$intel,$data,$result,$result['SubIFD']['MakerNote'][$tag_name]);
 		
 		if($result['VerboseOutput']==1) {
 			//$result['SubIFD']['MakerNote'][$tag_name] = $formated_data;

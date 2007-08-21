@@ -155,9 +155,9 @@ function parseOlympus($block,&$result,$seek, $globalOffset) {
 			$value = bin2hex($value);
 			if($intel==1) $value = intel2Moto($value);
 			$v = fseek($seek,$globalOffset+hexdec($value));  //offsets are from TIFF header which is 12 bytes from the start of the file
-			if($v==0) {
+			if($v==0 && $bytesofdata < $GLOBALS['exiferFileSize']) {
 				$data = fread($seek, $bytesofdata);
-			} else if($v==-1) {
+			} else {
 				$result['Errors'] = $result['Errors']++;
 			}
 		}
