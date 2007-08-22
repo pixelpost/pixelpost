@@ -3,7 +3,7 @@
 
 lang-french.php
 ===============
-Pixelpost version 1.6
+Pixelpost version 1.7
 
 SVN file version:
 $Id$
@@ -13,7 +13,7 @@ Translated by Philippe Durand <http://www.photofloue.net>
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
+Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 Copyright &copy; 2006 Pixelpost.org <http://www.pixelpost.org>
 

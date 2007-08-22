@@ -5,7 +5,7 @@
 
 /*
 
-Pixelpost version 1.6
+Pixelpost version 1.7
 Datetime addon version 1.1
 
 ================================================================

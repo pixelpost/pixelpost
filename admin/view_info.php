@@ -78,7 +78,11 @@ if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
 	 $guess_path = $guess_path['dirname'];
 	 $guess_path = eregi_replace("admin","",$guess_path);
      echo $guess_path."images/</b></i><p />
-	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']."<p />";
+	 <b>$admin_lang_pp_imagepath_conf </b> ".$cfgrow['imagepath']." <p />
+	
+	<i><b>$admin_lang_pp_thumbnailpath  {$guess_path}thumbnails/</b></i><p />
+	<b>$admin_lang_pp_thumbnailpath_conf</b> ".$cfgrow['thumbnailpath']."<p />";
+	
 	 $work_path = eregi_replace("images/","",$cfgrow['imagepath']);
 	
 	if(!is__writable($cfgrow['imagepath']))	$chmod_message = "<b><font color=\"red\">ERROR - ".$admin_lang_pp_img_chmod1."</font></b><br />".$admin_lang_pp_img_chmod2." ".$admin_lang_pp_img_chmod3;

@@ -3,7 +3,7 @@
 
 lang-danish.php
 ===============
-Pixelpost version 1.6
+Pixelpost version 1.7
 
 SVN file version:
 $Id$
@@ -15,7 +15,7 @@ WWW: http://fotoblog.xerxes.dk
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
+Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew (at) pixelpost (dot) org

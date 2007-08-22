@@ -5,7 +5,7 @@
 
 /*
 
-Pixelpost version 1.6
+Pixelpost version 1.7
 Copy Folder Addon version 1.0
 
 */

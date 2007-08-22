@@ -3,14 +3,14 @@
 
 admin-lang-english.php : english (default) language file for Pixelpost-Admin-Section
 ===================================================================================
-Pixelpost version 1.6
+Pixelpost version 1.7
 
 SVN file version:
 $Id: admin-lang-english.php 239 2007-04-10 15:21:09Z d3designs $
 
 Version 1.5:
 Development Team:
-Ramin Mehran, Connie Mueller-Goedecke, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
+Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Copyright  2006 Pixelpost.org <http://www.pixelpost.org>

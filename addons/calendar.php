@@ -5,7 +5,7 @@
 
 /*
 
-Pixelpost version 1.6
+Pixelpost version 1.7
 Calendar addon version 1.1.5
 Modified by jdleung 2006.10.2
 Contact: jdleung@yahoo.com
