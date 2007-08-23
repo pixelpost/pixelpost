@@ -410,6 +410,8 @@ $admin_lang_pp_lng_author            = 'Forfatter';
 $admin_lang_pp_lng_ver               = 'Version';
 $admin_lang_pp_lng_email             = 'E-mail';
 $admin_lang_pp_newest_ver            = 'Du har den nyeste version af Pixelpost!';
+$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
+$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
 
 // AddOns
 $admin_lang_addon_title              = "Installerede tilf&oslash;jelse";

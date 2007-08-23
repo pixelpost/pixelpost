@@ -77,7 +77,13 @@ if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
 	header("Location: install.php");
 	exit;
 }
-
+// always include the default language file (English) if it exists. That way if we forget to update the variables in the alternative language files
+// the English ones are shown.
+if (file_exists("../language/admin-lang-english.php"))
+{
+	require("../language/admin-lang-english.php");
+}
+// now replace the contents of the variables with the selected language.
 /* Special language file for Admin-Section, default is english */
 if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
 {

@@ -191,6 +191,14 @@ foreach ($PP_supp_lang as $key => $row)
 // ##########################################################################################//
 // GET LANGUAGE FILE BASED ON LANGUAGE SELECTION
 // ##########################################################################################//
+// always include the default language file (English) if it exists. That way if we forget to update the variables in the alternative language files
+// the English ones are shown.
+if (file_exists("language/lang-english.php"))
+{
+	if ( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom"))
+      require("language/lang-english.php");
+}
+// now replace the contents of the variables with the selected language.
 if (file_exists("language/lang-".$language_full.".php"))
 {
 	if ( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom"))

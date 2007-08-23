@@ -443,6 +443,8 @@ $admin_lang_pp_lng_author     = 'Autor';
 $admin_lang_pp_lng_ver        = 'Wersja';
 $admin_lang_pp_lng_email      = 'Email';
 $admin_lang_pp_newest_ver     = 'Masz najnowszą wersję Pixelposta!';
+$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
+$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
 
 // AddOns
 $admin_lang_addon_title        = "ZAINSTALOWANE DODATKI";

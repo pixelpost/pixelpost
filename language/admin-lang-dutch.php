@@ -410,6 +410,8 @@ $admin_lang_pp_lng_author            = 'Auteur';
 $admin_lang_pp_lng_ver               = 'Versie';
 $admin_lang_pp_lng_email             = 'Email';
 $admin_lang_pp_newest_ver            = 'U heeft de laatste versie van Pixelpost!';
+$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
+$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
 
 // AddOns
 $admin_lang_addon_title              = "Geïnstalleerde Addons";

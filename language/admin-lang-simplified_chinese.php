@@ -409,6 +409,8 @@ $admin_lang_pp_lng_author            = 'Author';
 $admin_lang_pp_lng_ver               = 'Version';
 $admin_lang_pp_lng_email             = 'Email';
 $admin_lang_pp_newest_ver            = 'You have the newest version of Pixelpost!';
+$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
+$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
 
 // AddOns
 $admin_lang_addon_title              = "安装插件";

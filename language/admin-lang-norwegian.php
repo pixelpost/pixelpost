@@ -13,7 +13,7 @@ Author:  John Christian Olsen
 Contact: me@jcolsen.com
 WWW: http://jcolsen.com
 
-Version 1.5:
+Version 1.6:
 Development Team:
 Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
@@ -365,6 +365,8 @@ $admin_lang_pp_lng_author            = 'Author';
 $admin_lang_pp_lng_ver               = 'Version';
 $admin_lang_pp_lng_email             = 'Email';
 $admin_lang_pp_newest_ver            = 'You have the newest version of Pixelpost!';
+$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
+$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
 
 // AddOns
 $admin_lang_addon_title              = "INSTALLERTE TILLEGG";
