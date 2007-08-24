@@ -4,16 +4,20 @@
 // $Id$
 
 /*
+Pixelpost version 1.7
 
-Requires Pixelpost version 1.4 or newer
-Page-By-Page-Archive
-ADDON-Version 1.1
+Pixelpost www: http://www.pixelpost.org/
 
-Version 1.1: Fixed regex issue
+Version 1.7:
+Development Team:
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
 
-Written by: Ramin Mehran
-Contact: raminia@yahoo.com
+Former members of the Development Team:
+Connie Mueller-Goedecke
+Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
+Originally written by: Ramin Mehran
 ============================================================================
 
 NEW TAGS:

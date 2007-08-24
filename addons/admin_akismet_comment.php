@@ -4,13 +4,13 @@
 // $Id: admin_akismet_comment.php 78 2006-12-24 02:23:47Z piotr.galas $
 
 /**
- * Akismet comment filter addon for Pixelpost 1.6
+ * Akismet comment filter addon for Pixelpost 1.7
  * Version 1.3
  *
  * @copyright Aditya Mooley <adityamooley@sanisoft.com>, Dr. Tarique Sani <tarique@sanisoft.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU General Public License version 2 of the License, or
  * any later version.
- * Updated for Pixelpost 1.6 by Karin Uhlig <2@kg3.de>
+ * Updated for Pixelpost 1.6 & 1.7 by Karin Uhlig <2@kg3.de>
  */
 
 $addon_name = "Pixelpost Akismet comment filter (Admin Side)";

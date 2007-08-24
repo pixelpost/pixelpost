@@ -4,13 +4,19 @@
 // $Id$
 
 /*
-Requires Pixelpost version 1.5 or newer
-Update EXIF ADDON-Version 0.1
+Pixelpost version 1.7
 
-Written by: Schonhose
-@:			schonhose@pixelpost.org
-WWW:		http://foto.schonhose.nl/
+Pixelpost www: http://www.pixelpost.org/
 
+Version 1.7:
+Development Team:
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
+Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
+*/
 /****************************************************/
 /*				configuration variables				*/
 /****************************************************/

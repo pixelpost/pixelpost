@@ -6,9 +6,17 @@
 /*
 
 Pixelpost version 1.7
-Calendar addon version 1.1.5
-Modified by jdleung 2006.10.2
-Contact: jdleung@yahoo.com
+
+Pixelpost www: http://www.pixelpost.org/
+
+Version 1.7:
+Development Team:
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
+Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 */
 

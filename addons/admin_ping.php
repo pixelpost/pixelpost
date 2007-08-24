@@ -3,12 +3,21 @@
 // SVN file version:
 // $Id$
 
-// Admin-Ping addon for Pixelpost 1.5
-// Version 1.0
-//
-// Written By Ramin Mehran - 2005/06/22
-
+// Admin-Ping addon for Pixelpost 1.7
 /*
+Pixelpost version 1.7
+
+Pixelpost www: http://www.pixelpost.org/
+
+Version 1.7:
+Development Team:
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
+Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
+
 ================================================================
 How to write addons like this:
 1 - To create such an addon you should fill $addon_* variables properly.

@@ -8,19 +8,24 @@ Pixelpost version 1.7
 SVN file version:
 $Id$
 
-Version 1.5:
+Version 1.7:
 Development Team:
-Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
-Translated by Ramin Mehran
-
-Copyright © 2006 Pixelpost.org <http://www.pixelpost.org>
+Contact: thecrew (at) pixelpost (dot) org
+Copyright 2007 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
 Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
-_____________________________________________________________________
+_____________________________________________________________________________
+Translated by Ramin Mehran
+____________________________________________________________________
 
 ADMIN PANEL LANGUAGE VARIABLES:
 

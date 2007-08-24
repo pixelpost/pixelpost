@@ -1,29 +1,26 @@
 <?php
 /*
-
-admin-lang-dutch.php : english (default) language file for Pixelpost-Admin-Section
-===================================================================================
 Pixelpost version 1.7
 
 SVN file version:
 $Id: admin-lang-dutch.php 190 2007-03-28 08:15:27Z schonhose $
 
-Version 1.5:
+Version 1.7:
 Development Team:
-Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
-Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
+Contact: thecrew (at) pixelpost (dot) org
+Copyright 2007 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
 Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
-Attention:
-============
-This is the Dutch language file for the admin section of Pixelpost
-Please note I translated this in like 1 hour, so there are something wich might
-be changed.
-______________________________________________________________________________
+_____________________________________________________________________________
 
 ADMIN PANEL LANGUAGE VARIABLES:
 

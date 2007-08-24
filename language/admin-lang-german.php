@@ -1,28 +1,30 @@
 <?php
 /*
-
-admin-lang-german.php : german language file for Pixelpost-Admin-Section
-========================================================================
 Pixelpost version 1.7
 
 SVN file version:
 $Id$
 
-Language file: german (D)
-Author:  Connie Mueller-Goedecke
-Contact: connie@Pixelpost.org
-WWW: http:www.zweiterblick.de + http://www.avantart.com
-
-Version 1.5:
+Version 1.7:
 Development Team:
-Ramin Mehran, Will Duncan, Joseph Spurling, Piotr "GeoS" Galas
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
-Copyright  2006 Pixelpost.org <http://www.pixelpost.org>
+Contact: thecrew (at) pixelpost (dot) org
+Copyright 2007 Pixelpost.org <http://www.pixelpost.org>
 
 Pixelpost www:  	http://www.pixelpost.org/
 Pixelpost wiki: 	http://wiki.pixelpost.org/
 Pixelpost forum: 	http://forum.pixelpost.org
+_____________________________________________________________________________
+Language file: german (D)
+Author:  Connie Mueller-Goedecke
+Contact: connie@Pixelpost.org
+WWW: http:www.zweiterblick.de + http://www.avantart.com
 ______________________________________________________________________________
 Die Variablen fr die ADMINISTRATIONS-Oberflche:
 

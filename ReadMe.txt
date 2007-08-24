@@ -12,8 +12,11 @@ Pixelpost forum: 	http://forum.pixelpost.org
 
 Version 1.7:
 Development Team:
-Ramin Mehran, Will Duncan, Joseph Spurling, 
-Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams
+Ramin Mehran, Will Duncan, Joseph Spurling,
+Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
 Contact: thecrew (at) pixelpost (dot) org

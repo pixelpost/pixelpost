@@ -13,14 +13,18 @@ Version 1.7:
 Development Team:
 Ramin Mehran, Will Duncan, Joseph Spurling,
 Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
+
+Former members of the Development Team:
+Connie Mueller-Goedecke
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
+
 
 IMPORTANT!!!
 Due to the nature of the characterset used in this file it is important to save this
 file with an UTF-8 encoding.
 
 Contact: thecrew (at) pixelpost (dot) org
-Copyright 2006 Pixelpost.org <http://www.pixelpost.org>
+Copyright 2007 Pixelpost.org <http://www.pixelpost.org>
 
 License: http://www.gnu.org/copyleft/gpl.html
 
