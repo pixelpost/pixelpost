@@ -43,25 +43,16 @@ $addon_name = "Page-By-Page-Archive for category and month (for PP v1.4)";
 $addon_version = "1.0";
 
 $maxpthumb = $cfgrow['maxpthumb'];
-if ($cfgrow['display_order']=='default'){
-	$image_sorting = 'DESC';
-} else {
-	$image_sorting = 'ASC';
-}
 
-if (isset($_GET['updatedflagp'])&&$_GET['updatedflagp']=="1")
-{
-	$isupdated = "<font color='#FF0000'>Updated!</font>";
-}
-else
-{
-	$isupdated = "";
-}
-if ($language_abr == $default_language_abr){
-	$headline_selection = 'headline';
-} else  {
-	$headline_selection = 'alt_headline';
-}
+if ($cfgrow['display_order']=='default')	$image_sorting = 'DESC';
+else	$image_sorting = 'ASC';
+
+if (isset($_GET['updatedflagp'])&&$_GET['updatedflagp']=="1")	$isupdated = "<font color='#FF0000'>Updated!</font>";
+else	$isupdated = "";
+
+if ($language_abr == $default_language_abr)	$headline_selection = 'headline';
+else	$headline_selection = 'alt_headline';
+
 // FIELD_EXISTS
 // Checks whether specified field exists in current or specified table.
 $fieldname = "maxpthumb";
@@ -154,6 +145,13 @@ $row = mysql_fetch_array($photonumb);
 $pixelpost_all_photonumb = $row['count'] ;
 
 ($_GET['tag']) ? $_GET['tag'] = urldecode($_GET['tag']) : '';
+
+if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))	$paged_arch_tag_flag = 1;
+else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-]+)/",$_GET['tag']))	$paged_arch_tag_flag = 2;
+else	$paged_arch_tag_flag = 0;
+
+if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))	$paged_arch_archdate_flag = 1;
+else	$paged_arch_archdate_flag = 0;
 
 //-------------------------------- Category Browse Menu (paged and original)
 /*---------------------------------**********************---------------------------------------*/
@@ -296,7 +294,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	if ($_GET['pagenum'] != "")
 	{
 		$start = $maxnumber_thumbs*((int)$_GET['pagenum']-1);// calculate start and end of the thumbs in the selected page
-		$limit = " limit $start , $maxnumber_thumbs "; // create the limit command (in MS-SQL this should be TOP)
+		$limit = " LIMIT $start , $maxnumber_thumbs "; // create the limit command (in MS-SQL this should be TOP)
 	}// end if ($_GET['pagenum'] != "")
 
 	// build query
@@ -311,7 +309,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		GROUP BY t1.id
 		ORDER BY t1.datetime ".$image_sorting.$limit;
 	} // if ($_GET['archivedate']=="")
-	else if(eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
+	else if($paged_arch_archdate_flag > 0)
 	{ // archive date is available
 		$archivedate_start = $_GET['archivedate'] ."-01 00:00:00";
 		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
@@ -319,7 +317,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		WHERE (datetime<='$cdate' and datetime >='$archivedate_start' and datetime <= '$archivedate_end')
 		$where ORDER BY datetime ".$image_sorting.$limit;
 	}
-	else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
+	else if($paged_arch_tag_flag > 0)
 	{
   	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
 	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
@@ -374,7 +372,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		WHERE (t1.cat_id = '".(int)$_GET['category']."' AND datetime<='$datetime')";
 		$queryr .= " GROUP BY t1.cat_id ";
 	}// end if
-	else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
+	else if($paged_arch_tag_flag > 0)
 	{
   	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
 	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
@@ -385,7 +383,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		AND (t1.id = t2.img_id)
 		$tag_selection";
 	}
-	else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
+	else if($paged_arch_archdate_flag > 0)
 	{
 		$archivedate_start = $_GET['archivedate'] ."-01 00:00:00";
 		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
@@ -420,11 +418,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{
 		$temp =$pagenum-1;
 		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_previous</a> ";
-		else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
+		else if($paged_arch_tag_flag > 0)
 		{
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_previous</a> ";
 		}
-		else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
+		else if($paged_arch_archdate_flag > 0)
 		{
 			$monthname=str_replace(" ","%20",$monthname);
 			$archivedate=$_GET['archivedate'];
@@ -443,7 +441,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$pagecounter'>$pagecounter</a> ";
 		}// end while
 	}// end if
-	else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
+	else if($paged_arch_tag_flag > 0)
 	{
 		$pagecounter = 0;
 
@@ -453,7 +451,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$pagecounter'>$pagecounter</a> ";
 		}
 	}
-	else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
+	else if($paged_arch_archdate_flag > 0)
 	{
 		$pagecounter = 0;
 
@@ -474,9 +472,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$pagecounter++;
 			// added support for bold page number
 			if ($pagecounter != $pagenum){
-				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
 			}else{
-				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a href='index.php?x=browse&amp;category=&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a href='index.php?x=browse&amp;&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
 			}
 		}// end while
 	}// end else
@@ -486,11 +484,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{
 		$temp = $pagenum+1;
 		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_next</a>";
-		else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))
+		else if($paged_arch_tag_flag > 0)
 		{
 			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_next</a>";
 		}
-		else if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
+		else if($paged_arch_archdate_flag > 0)
 		{
 			$monthname=str_replace(" ","%20",$monthname);
 			$archivedate=$_GET['archivedate'];
