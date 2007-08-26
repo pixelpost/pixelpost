@@ -146,7 +146,7 @@ $admin_lang_ni_alt_language       = "Podaj tytył i opis zdjęcia dla drugiego j
 // Images
 $admin_lang_imgedit_edit            = "Edycja";
 $admin_lang_imgedit_title           = "Tytuł:";
-$admin_lang_imgedit_alttitle          		= "Alt. Title:";
+$admin_lang_imgedit_alttitle        = "Alternatywny tytuł:";
 $admin_lang_imgedit_file_name       = "Nazwa pliku:";
 $admin_lang_imgedit_dimensions      = "Rozmiar:";
 $admin_lang_imgedit_tbpublished     = "Opublikowano:";
