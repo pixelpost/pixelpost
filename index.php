@@ -350,11 +350,8 @@ $pixelpost_photonumb = $photonumb['count'];
 // added for temp to create banlist table if it is not there TODO: THIS WILL GO INTO THE CREATE_TABLES
 create_banlist();
 
-if ($cfgrow['display_order']=='default'){
-	$image_sorting = 'DESC';
-} else {
-	$image_sorting = 'ASC';
-}
+if ($cfgrow['display_order']=='default')	$image_sorting = 'DESC';
+else	$image_sorting = 'ASC';
 
 // images/main site
 if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
@@ -390,15 +387,20 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 
 	$image_name         = $row['image'];
-	if ($language_abr == $default_language_abr) {
+	if ($language_abr == $default_language_abr)
+	{
   	$image_title        = pullout($row['headline']);
 		$image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);
-	} else {
+	}
+	else
+	{
   	if ($row['alt_headline']=='') $image_title        = pullout($row['headline']);
   	else $image_title        = pullout($row['alt_headline']);
+
 		if ($row['alt_body']=='') $image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body']))	: pullout($row['body']);
 		else $image_notes        = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body']))	: pullout($row['alt_body']);
   }
+
 	$image_title = htmlspecialchars($image_title,ENT_NOQUOTES);
 	$image_id           = $row['id'];
 	$image_datetime     = $row['datetime'];
@@ -437,16 +439,18 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	{
 		$previous_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime')  ORDER BY datetime desc limit 0,1");
 	}
+
 	$image_previous_name = $previous_row['image'];
 	$image_previous_id = $previous_row['id'];
-	if ($language_abr == $default_language_abr) {
-		$image_previous_title = pullout($previous_row['headline']);
-	} else {
-		$image_previous_title = pullout($previous_row['alt_headline']);
-	}
+
+	if ($language_abr == $default_language_abr)	$image_previous_title = pullout($previous_row['headline']);
+	else	$image_previous_title = pullout($previous_row['alt_headline']);
+
 	$image_previous_datetime = $previous_row['datetime'];
 	$image_previous_link = "<a href='$showprefix$image_previous_id'>$lang_previous</a>";
+
 	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name);
+
 	$image_previous_thumbnail = "<a href='$showprefix$image_previous_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name."' width='$local_width' height='$local_height' alt='$image_previous_title' title='$image_previous_title' /></a>";
 
 	if($image_previous_id == "")
@@ -466,16 +470,18 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	{
 		$next_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') ORDER BY datetime asc limit 0,1");
 	}
+
 	$image_next_name = $next_row['image'];
 	$image_next_id = $next_row['id'];
-	if ($language_abr == $default_language_abr) {
-		$image_next_title = pullout($next_row['headline']);
-	} else {
-		$image_next_title = pullout($next_row['alt_headline']);
-	}
+
+	if ($language_abr == $default_language_abr)	$image_next_title = pullout($next_row['headline']);
+	else	$image_next_title = pullout($next_row['alt_headline']);
+
 	$image_next_datetime = $next_row['datetime'];
 	$image_next_link = "<a href='$showprefix$image_next_id'>$lang_next</a>";
+
 	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_next_name);
+
 	$image_next_thumbnail = "<a href='$showprefix$image_next_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_next_name."' alt='$image_next_title' width='$local_width' height='$local_height' title='$image_next_title' /></a>";
 
 	if($image_next_id == "")
@@ -495,16 +501,18 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	{
 		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE ORDER BY datetime asc limit 0,1");
 	}
+
 	$first_image_name = $first_image_row['image'];
 	$first_image_id = $first_image_row['id'];
-	if ($language_abr == $default_language_abr) {
-		$first_image_title = pullout($first_image_row['headline']);
-	} else {
-		$first_image_title = pullout($first_image_row['alt_headline']);
-	}
+
+	if ($language_abr == $default_language_abr)	$first_image_title = pullout($first_image_row['headline']);
+	else	$first_image_title = pullout($first_image_row['alt_headline']);
+
 	$first_image_datetime = $first_image_row['datetime'];
 	$first_image_link = "<a href='$showprefix$first_image_id'>$lang_first</a>";
+
 	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$first_image_name);
+
 	$first_image_thumbnail = "<a href='$showprefix$first_image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$first_image_name."' alt='$first_image_title' width='$local_width' height='$local_height' title='$first_image_title' /></a>";
 
 	if($first_image_id == $image_id)
@@ -523,16 +531,18 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	{
 		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
 	}
+
 	$last_image_name = $last_image_row['image'];
 	$last_image_id = $last_image_row['id'];
-	if ($language_abr == $default_language_abr) {
-		$last_image_title = pullout($last_image_row['headline']);
-	} else {
-		$last_image_title = pullout($last_image_row['alt_headline']);
-	}
+
+	if ($language_abr == $default_language_abr)	$last_image_title = pullout($last_image_row['headline']);
+	else	$last_image_title = pullout($last_image_row['alt_headline']);
+
 	$last_image_datetime = $last_image_row['datetime'];
 	$last_image_link = "<a href='$showprefix$last_image_id'>$lang_latest</a>";
+
 	list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$last_image_name);
+
 	$last_image_thumbnail = "<a href='$showprefix$last_image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$last_image_name."' alt='$last_image_title' width='$local_width' height='$local_height' title='$last_image_title' /></a>";
 
 	if($last_image_id == $image_id)
@@ -541,7 +551,6 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 		$last_image_link = null;
 		$last_image_thumbnail = null;
 	}
-	
 	
 	if(function_exists('gd_info'))
 	{
@@ -594,19 +603,20 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 
 			while(list($id,$headline,$alt_headline,$image) = mysql_fetch_row($thumbs_behind))
 			{
-				if ($language_abr == $default_language_abr) {
-					$headline = pullout($headline);
-				} else {
-					$headline = pullout($alt_headline);
-				}
+				if ($language_abr == $default_language_abr)	$headline = pullout($headline);
+				else	$headline = pullout($alt_headline);
+
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
+
 				list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image);
+
 				$behind_thumbs = "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>$behind_thumbs";
 				$behind_thumbs_reverse .= "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
 				$totalthumbcounter++;
 			}
 
 			list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name);
+
 			$thumbnail_row = "$behind_thumbs<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$ahead_thumbs";
 			$thumbnail_row_reverse = "$ahead_thumbs_reverse<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$behind_thumbs_reverse";
 			$tpl = ereg_replace("<IMAGE_THUMBNAIL_ROW>",$thumbnail_row,$tpl);
@@ -621,13 +631,12 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 
 	$image_category_all ="";
 	$image_category_all_paged = "";
+
 	while(list($cat_id,$name,$alt_name) = mysql_fetch_row($query))
 	{
-		if ($language_abr == $default_language_abr) {
-			$name = pullout($name);
-		} else {
-			$name = pullout($alt_name);
-		}
+		if ($language_abr == $default_language_abr)	$name = pullout($name);
+		else	$name = pullout($alt_name);
+
 		$image_category_all .= "<a href='$PHP_SELF?x=browse&amp;category=$cat_id'>" .$cfgrow['catgluestart'] .$name .$cfgrow['catglueend']."</a> &nbsp;";
 		$image_category_all_paged .= "<a href='$PHP_SELF?x=browse&amp;category=$cat_id&amp;pagenum=1'>" .$cfgrow['catgluestart'] .$name .$cfgrow['catglueend']."</a> &nbsp;";
 		$image_category_number = $image_category_number +1;
@@ -698,14 +707,15 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	// ##########################################################################################//
 	// EXIF STUFF
 	// ##########################################################################################//
-	if ($cfgrow['exif']=='T'){
+	if ($cfgrow['exif']=='T')
+	{
 		include_once('includes/functions_exif.php');
-		if ($image_exif!==null){
-			$tpl = replace_exif_tags ($language_full, $image_exif, $tpl);
-		} else {
-			$tpl = replace_exif_tags_null($tpl);
-		}
-	} else {
+		if ($image_exif!==null)	$tpl = replace_exif_tags ($language_full, $image_exif, $tpl);
+		else	$tpl = replace_exif_tags_null($tpl);
+
+	}
+	else
+	{
 		include_once('includes/functions_exif.php');
 		$tpl = replace_exif_tags_null($tpl);
 	}
@@ -723,16 +733,16 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
  	$vinfo_name = "";
  	$vinfo_url = "";
  	$vinfo_email = "";
+
  	if(isset($_COOKIE['visitorinfo']))	list($vinfo_name,$vinfo_url,$vinfo_email) = split("%",$_COOKIE['visitorinfo']);
 
  	$tpl = ereg_replace("<VINFO_NAME>",$vinfo_name,$tpl);
  	$tpl = ereg_replace("<VINFO_URL>",$vinfo_url,$tpl);
  	$tpl = ereg_replace("<VINFO_EMAIL>",$vinfo_email,$tpl);
- 	if ($cfgrow['token'] == 'T'){
- 		$tpl = ereg_replace("<TOKEN>","<input type='hidden' name='token' value='".$_SESSION['token']."' />",$tpl);
- 	} else {
- 		$tpl = ereg_replace("<TOKEN>",null,$tpl);
- 	}
+
+ 	if ($cfgrow['token'] == 'T')	$tpl = ereg_replace("<TOKEN>","<input type='hidden' name='token' value='".$_SESSION['token']."' />",$tpl);
+ 	else	$tpl = ereg_replace("<TOKEN>",null,$tpl);
+
 	if($_GET['showimage'] == "")	$imageid = $image_id;
 	else	$imageid = $_GET['showimage'];
 
@@ -772,11 +782,10 @@ $tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
 $tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
 $tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
-if($image_comments_number != 1){
-	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_plural,$tpl);
-}else{
-	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_single,$tpl);	
-}
+
+if($image_comments_number != 1)	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_plural,$tpl);
+else	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_single,$tpl);	
+
 if ($row['comments'] == 'F')
 {
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);
@@ -785,6 +794,7 @@ else
 {
 	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
 }
+
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
 
