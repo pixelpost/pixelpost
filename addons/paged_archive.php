@@ -222,14 +222,15 @@ if (isset($_GET['pagenum'])&&$_GET['pagenum'] != "")
 		$count = mysql_fetch_array($count);
 		$count= $count['count'];
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
+		$select_display_date2 = ucfirst(${"lang_".strtolower(date("F",strtotime($thedate."-01")))}) . date(", Y",strtotime($thedate."-01"));
 		$select_display_date_link=str_replace(" ","%20",$select_display_date);
 		$thedate = pullout($thedate);
 		preg_match('/(\w+),\s/', $select_display_date, $naturalmonth);
 		$natmonth = 'lang_'.strtolower($naturalmonth[1]);
 		$mynatmonth = $$natmonth;
 		$select_display_date=preg_replace('/\w+,(\s\d+)/', "$mynatmonth$1", $select_display_date);
-		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date_link&amp;pagenum=1'>$name (" .$select_display_date .") (" .$count .")</option>";
-		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date_link&amp;pagenum=1'>$name " .$select_display_date ." (" .$count .")</a></li>";
+		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date_link&amp;pagenum=1'>$name (" .$select_display_date2 .") (" .$count .")</option>";
+		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate&amp;monthname=$select_display_date_link&amp;pagenum=1'>$name " .$select_display_date2 ." (" .$count .")</a></li>";
 	};// end while
 	$archive_select .= "</select>";
 	$archive_select_links .= "</ul>";
@@ -262,9 +263,10 @@ else
 		$count= $count['count'];
 
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
+		$select_display_date2 = ucfirst(${"lang_".strtolower(date("F",strtotime($thedate."-01")))}) . date(", Y",strtotime($thedate."-01"));
 		$thedate = pullout($thedate);
-		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate'>$name (" .$select_display_date .") (" .$count .")</option>";
-		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate'>$name " .$select_display_date ." (" .$count .")</a></li>";
+		$archive_select .= "<option value='index.php?x=browse&amp;archivedate=$thedate'>$name (" .$select_display_date2 .") (" .$count .")</option>";
+		$archive_select_links .= "<li><a href='index.php?x=browse&amp;archivedate=$thedate'>$name " .$select_display_date2 ." (" .$count .")</a></li>";
 	}; // end while
 
 	$archive_select .= "</select>";
