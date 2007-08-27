@@ -8,7 +8,7 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 	die ("Try another day!!");
 }
 
-require("../includes/exifer1_5/exif.php");
+//require("../includes/exifer1_5/exif.php");
 
 // if no page is specified return a new post / image upload thing
 if($_GET['view'] == "")
