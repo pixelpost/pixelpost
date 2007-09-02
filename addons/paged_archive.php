@@ -348,6 +348,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{
 		// from the thumbnail row. This could be build by tables too.
 		$title = pullout($title);
+		$title = htmlspecialchars($title,ENT_QUOTES);
 		$thumbnail = ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$name;
 		$thumbnail_extra = getimagesize($thumbnail);
 		$local_width = $thumbnail_extra['0'];
