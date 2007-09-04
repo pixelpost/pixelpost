@@ -1116,10 +1116,10 @@ function save_tags_new($tags_str,$theid,$alt="")
 		$strtr_arr = array(',' => ' ', ';' => ' ');
 		$tags = strtr($tags_str, $strtr_arr);
 
-		$ver = explode( '.', phpversion());
-		$ver_num = $ver[0] . "." . $ver[1] . $ver[2];
-		if($ver_num < 5.10 && $ver_num < 4.40)		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
+		$ver = phpversion();
+		if( version_compare(phpversion(),"5.10") == -1 && version_compare(phpversion(),"4.40") == -1)		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
 		else	$pat1 = '/([^a-zA-Z 0-9_-\pL]+)/u';
+
 		$tags = preg_replace( $pat1, '_', $tags);
 		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/','/ - /', '/ -/', '/(-){2,}/');
 		$rep2 = array('', '', '_', '', '', '-');
