@@ -1117,7 +1117,7 @@ function save_tags_new($tags_str,$theid,$alt="")
 		$tags = strtr($tags_str, $strtr_arr);
 
 		$ver = phpversion();
-		if( version_compare(phpversion(),"5.10") == -1 && version_compare(phpversion(),"4.40") == -1)		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
+		if( version_compare( $ver, "5.10") == -1 && version_compare( $ver, "4.40") == -1)		$pat1 = '/([^a-zA-Z 0-9_-]+)/';
 		else	$pat1 = '/([^a-zA-Z 0-9_-\pL]+)/u';
 
 		$tags = preg_replace( $pat1, '_', $tags);
