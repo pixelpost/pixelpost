@@ -60,6 +60,7 @@ $lang_comment_popup_disabled    = "Los comentarios han sido deshabilitados en &e
 $lang_comment_plural						 = "Comentarios";
 $lang_comment_single						 = "Comentario";
 $lang_tags                      = "Etiquetas:<br/>";
+$lang_none                       = "none";
 
 // EXIF DATA
 $lang_exposure                  = "Exposici&oacute;n:";

@@ -102,6 +102,7 @@ $lang_december                  = "12";
 // newly added
 $lang_message_banned_comment     = "あなたのコメントは保存されませんでした! 1つまたはそれ以上の使用禁止用語/メールアドレス/IPアドレスを含んでいます。";
 $lang_tags                       = "タグ:<br/>";
+$lang_none                       = "none";
 
 // Alternative language
 $lang_alt_lang_dutch              ="Nederlands";

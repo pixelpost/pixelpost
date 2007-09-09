@@ -102,6 +102,7 @@ $lang_december                  = "December";
 // newly added
 $lang_message_banned_comment     = "Your comment hasn't been saved! It contains one or more banned words/email/IPs.";
 $lang_tags                       = "Tags:<br/>";
+$lang_none                       = "none";
 
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";

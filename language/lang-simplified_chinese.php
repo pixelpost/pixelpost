@@ -103,6 +103,7 @@ $lang_december                  = "十二月";
 $lang_message_banned_comment     = "您的评论没有保存！因里面含有禁止使用的语句或电子邮件。";
 $lang_comment_popup_disabled     = "Commenting on this picture has been disabled";
 $lang_tags                       = "Tags:<br/>";
+$lang_none                       = "none";
 
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";

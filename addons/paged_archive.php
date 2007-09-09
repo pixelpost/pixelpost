@@ -647,8 +647,14 @@ while(list($tag)  = mysql_fetch_array($tags))
 	$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
 	$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
 	$tags_keywords .= $tag.', ';
-
 }
+
+if($tags_img == '')
+{
+	$tags_img = $lang_none;
+	$tags_paged_img = $lang_none;
+}
+
 $tags_img = trim($tags_img);
 $tags_paged_img = trim($tags_paged_img);
 $tags_keywords = str_replace('_',' ',$tags_keywords);

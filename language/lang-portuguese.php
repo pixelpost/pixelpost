@@ -61,6 +61,7 @@ $lang_comment_popup_disabled   = "Commenting on this picture has been disabled";
 $lang_comment_plural						 = "Comments";
 $lang_comment_single						 = "Comment";
 $lang_tags                      = "Tags:<br/>";
+$lang_none                       = "none";
 
 // EXIF DATA
 $lang_exposure                 = "Exposi&ccedil;&atilde;o:";

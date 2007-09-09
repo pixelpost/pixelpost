@@ -67,6 +67,7 @@ $lang_comment_popup_disabled  = "Reacties op deze foto is uitgeschakeld.";
 $lang_comment_plural				  = "Reacties";
 $lang_comment_single					= "Reactie";
 $lang_tags                    = "Label:<br/>";
+$lang_none                       = "none";
 
 // EXIF DATA
 $lang_exposure              = "Belichting:";

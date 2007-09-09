@@ -107,6 +107,7 @@ $lang_december            		= "december";
 // newly added
 $lang_message_banned_comment     = "Din kommentar er ikke blevet gemt! Den indeholder et eller flere ord/e-mails/IP'er, der ikke er tilladt.";
 $lang_tags                       = "N&oslash;gleord:<br/>";
+$lang_none                       = "none";
 
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";

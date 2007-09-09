@@ -63,6 +63,7 @@ $lang_comment_popup_disabled  = "Komentarze dla tego zdjęcia zostały wyłączo
 $lang_comment_plural					= "Komentarze";
 $lang_comment_single					= "Komentarz";
 $lang_tags                    = "Tagi:<br/>";
+$lang_none                    = "brak";
 
 // EXIF DATA
 $lang_exposure              = "Ekspozycja:";

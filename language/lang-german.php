@@ -62,6 +62,7 @@ $lang_comment_popup_disabled   = "Die Kommentarfunktion wurde f&uuml;r dieses Bi
 $lang_comment_plural						 = "Kommentare";
 $lang_comment_single						 = "Kommentar";
 $lang_tags                     = "Tags:<br/>";
+$lang_none                       = "none";
 
 // EXIF DATA
 $lang_exposure              = "Verschlusszeit:";
