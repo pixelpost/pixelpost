@@ -755,7 +755,6 @@ function create_banlist()
 function update_banlist()
 {
 	global $pixelpost_db_prefix;
-
 	if( isset( $_POST['banlistupdate']))
 	{
 		// moderation list
@@ -819,6 +818,24 @@ function update_banlist()
 	return $result;
 }
 
+function clean_banlists ($p_value) {
+  if (is_array ($p_value)) {
+    if ( count ($p_value) == 0) {
+      $p_value = null;
+    } else {
+      foreach ($p_value as $m_key => $m_value) {
+				$p_value[$m_key] = clean_banlists ($m_value);
+				if (empty ($p_value[$m_key])) unset ($p_value[$m_key]);
+			}
+    }
+	} else {
+    if (empty ($p_value)) {
+      $p_value = null;
+    }
+  }
+  return $p_value;
+}
+		
 // Get the moderation_list
 function get_moderation_banlist()
 {
@@ -827,7 +844,18 @@ function get_moderation_banlist()
 	$result = mysql_query($query) or die( mysql_error());
 
 	if( $row = mysql_fetch_row($result))	$banlist = $row[0];
-
+	$moderation_ban_list_array = split("[\n|\r]", $banlist);
+	$unique_moderation_ban_list_array = array_keys(array_flip($moderation_ban_list_array));
+	$cleaned_moderation_ban_list_array = clean_banlists ($unique_moderation_ban_list_array);
+	$banlist = implode("\n", $cleaned_moderation_ban_list_array);
+	if (count($moderation_ban_list_array) > count($cleaned_moderation_ban_list_array)){
+		//the list needs to be updated in the db.;
+		$_POST['banlistupdate'] = true;
+		$_POST['moderation_list'] = $banlist;
+		update_banlist();
+		unset($_POST['banlistupdate']);
+		unset($_POST['moderation_list']);
+	}
 	return $banlist;
 }
 
@@ -838,7 +866,18 @@ function get_blacklist()
 	$query = "SELECT blacklist FROM {$pixelpost_db_prefix}banlist LIMIT 1";
 	$result = mysql_query($query) or die( mysql_error());
 	if( $row = mysql_fetch_row($result))	$banlist = $row[0];
-
+	$blacklist_array = split("[\n|\r]", $banlist);
+	$unique_blacklist_array = array_keys(array_flip($blacklist_array));
+	$cleaned_blacklist_array = clean_banlists ($unique_blacklist_array);
+	$banlist = implode("\n", $cleaned_blacklist_array);
+	if (count($blacklist_array) > count($cleaned_blacklist_array)){
+		//the list needs to be updated in the db.;
+		$_POST['banlistupdate'] = true;
+		$_POST['blacklist'] = $banlist;
+		update_banlist();
+		unset($_POST['banlistupdate']);
+		unset($_POST['blacklist']);
+	}
 	return $banlist;
 }
 
@@ -850,6 +889,18 @@ function get_ref_ban_list()
 	$result = mysql_query($query) or die( mysql_error());
 	if( $row = mysql_fetch_row($result))	$banlist = $row[0];
 
+	$ref_ban_list_array = split("[\n|\r]", $banlist);
+	$unique_ref_ban_list_array = array_keys(array_flip($ref_ban_list_array));
+	$cleaned_ref_ban_list_array = clean_banlists ($unique_ref_ban_list_array);
+	$banlist = implode("\n", $cleaned_ref_ban_list_array);
+	if (count($ref_ban_list_array) > count($cleaned_ref_ban_list_array)){
+		//the list needs to be updated in the db.;
+		$_POST['banlistupdate'] = true;
+		$_POST['ref_ban_list'] = $banlist;
+		update_banlist();
+		unset($_POST['banlistupdate']);
+		unset($_POST['ref_ban_list']);
+	}
 	return $banlist;
 }
 
