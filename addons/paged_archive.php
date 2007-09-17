@@ -572,7 +572,7 @@ $browse_select .= "</select>";
 $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
 /* TAGS support */
-$tags_output = '<div id="tag_cloud"><div id="tag_cloud_header">'.$lang_tags.'</div>';
+$tags_output = '<div id="tag_cloud">';
 $tags_paged_output = $tags_output;
 $tags_output_reversed = $tags_output;
 $tags_paged_output_reversed = $tags_output;
