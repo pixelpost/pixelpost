@@ -449,17 +449,55 @@ function add_new_addons_2table($dir)
 			while (false !== ($file = readdir($handle)))
 			{
 				if($file != "." && $file != "..")
-				{
-					$farry = explode('.', $file);
-					reset($farry);
-					$filename = current($farry);
-					$filename_exp = explode('_', $filename);
-
-					if (is_array($filename_exp))	$filename_crnt = current($filename_exp);
-
-					$addontype = strtolower($filename_crnt);
-					$farry_end = end($farry);
-					$ftype = strtolower($farry_end);
+				{ 
+				  if (is_dir( $dir."/".$file )){
+					  $sub_dir = $file;
+ 				    if ((substr ($sub_dir, 0, 1)=="+") && (substr ($sub_dir, strlen($sub_dir)-1, strlen($sub_dir))=="+")){
+					    // only suck in files from folders starting and ending with a +
+						  // read trough the files in this folder (only one level deep)
+  						if($handle_subdir = opendir($dir."/".$sub_dir)){
+								while (false !== ($file_subdir = readdir($handle_subdir))){
+									if($file_subdir != "." && $file_subdir != ".."){ 
+										$farry = explode('.', $file_subdir);
+										reset($farry);
+										$filename = current($farry);
+										$filename_exp = explode('_', $filename);
+										if (is_array($filename_exp))$filename_crnt = current($filename_exp);
+										$addontype = strtolower($filename_crnt);
+										$farry_end = end($farry);
+										$ftype = strtolower($farry_end);
+										$filename = $sub_dir."/".$filename;
+									} //end if
+									if($ftype == "php" AND !check_addon_exists($filename,$pixelpost_db_prefix))
+									{
+										switch (strtolower($addontype)){
+											case "admin":
+												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+												break;	
+											case "front":
+												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+												break;	
+											default:
+												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal')";
+												break; 	
+										}
+										mysql_query( $query);
+										if (mysql_error())	echo 'Failed to insert addon: ' .$filename .'.php';
+									} //	end if
+								} //end while
+								closedir($handle_subdir);
+							}// end check for +
+						} // end if
+					} else {
+						$farry = explode('.', $file);
+						reset($farry);
+						$filename = current($farry);
+						$filename_exp = explode('_', $filename);
+						if (is_array($filename_exp))	$filename_crnt = current($filename_exp);
+						$addontype = strtolower($filename_crnt);
+						$farry_end = end($farry);
+						$ftype = strtolower($farry_end);
+					}
 					if($ftype == "php" AND !check_addon_exists($filename,$pixelpost_db_prefix))
 					{
 						switch (strtolower($addontype)){
@@ -476,11 +514,10 @@ function add_new_addons_2table($dir)
 						mysql_query( $query);
 						if (mysql_error())	echo 'Failed to insert addon: ' .$filename .'.php';
 					}//end if
-				}//end if
+				}// end if
 			}// end while
-
 			closedir($handle);
-		}// end if
+		}//end if
 	} // end if addon table exist
 }
 
