@@ -452,8 +452,8 @@ function add_new_addons_2table($dir)
 				{ 
 				  if (is_dir( $dir."/".$file )){
 					  $sub_dir = $file;
- 				    if ((substr ($sub_dir, 0, 1)=="+") && (substr ($sub_dir, strlen($sub_dir)-1, strlen($sub_dir))=="+")){
-					    // only suck in files from folders starting and ending with a +
+ 				    if (substr ($sub_dir, 0, 1)=="_"){
+					    // only suck in files from folders starting with a _
 						  // read trough the files in this folder (only one level deep)
   						if($handle_subdir = opendir($dir."/".$sub_dir)){
 								while (false !== ($file_subdir = readdir($handle_subdir))){
