@@ -203,14 +203,19 @@ if (file_exists("language/lang-english.php"))
       require("language/lang-english.php");
 }
 // now replace the contents of the variables with the selected language.
-if (file_exists("language/lang-".$language_full.".php"))
-{
-	if ( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom"))
+if (!empty($language_full)) {
+	if (file_exists("language/lang-".$language_full.".php"))
+	{
+		if ( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom"))
       require("language/lang-".$language_full.".php");
-}
-else
-{
-	echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-' .$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+	}
+	else
+	{
+		echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-' .$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+		exit;
+	}
+} else {
+	echo '<b>Error:</b><br />Pixelpost has problem selecting a default language.<br />Make sure that you have chosen a default language in the adminpanel.';
 	exit;
 }
 
