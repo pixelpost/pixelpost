@@ -447,7 +447,6 @@ if($_GET['view'] == "images")
 	           <div class=\"content\">
 	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images\">
 	           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
-						 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"clearAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_clear_all\" name=\"clearallbox\" />
 						 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
 		 				 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
 						   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=massdelete'

@@ -226,8 +226,7 @@ $admin_lang_cmnt_delete1            = "Cancellato";
 $admin_lang_cmnt_delete2            = "commento(i) selezionato(i).";
 $admin_lang_cmnt_edit               = "Modifica";
 $admin_lang_cmnt_edited             = "Modificato un commento.";
-$admin_lang_cmnt_check_all          = "Seleziona tutto";
-$admin_lang_cmnt_clear_all          = "Annulla selezioni";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "Inverti selezioni";
 $admin_lang_cmnt_del_selected       = "Cancella selezionati";
 $admin_lang_cmnt_page               = "commenti per pagina.";
@@ -246,6 +245,8 @@ $admin_lang_cmnt_error_blacklist    = "Errore di aggiornamento della blacklist: 
 $admin_lang_cmnt_error_banlist      = "Errore di aggiornamento della ban list dei referer: ";
 $admin_lang_cmnt_moderation_que     = "Coda di moderazione";
 $admin_lang_cmnt_rep_spam 	        = 'Segnala Spam';
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 
 // Option

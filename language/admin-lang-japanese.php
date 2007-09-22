@@ -228,8 +228,7 @@ $admin_lang_cmnt_delete1            = "選択したコメントが";
 $admin_lang_cmnt_delete2            = "削除されました。";
 $admin_lang_cmnt_edit               = "編集";
 $admin_lang_cmnt_edited             = "コメントが編集されました。";
-$admin_lang_cmnt_check_all          = "すべてを選択する";
-$admin_lang_cmnt_clear_all          = "選択を解除する";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "選択を反転する";
 $admin_lang_cmnt_del_selected       = "選択した投稿を削除する";
 $admin_lang_cmnt_page               = "ページあたりのコメント数";
@@ -248,6 +247,8 @@ $admin_lang_cmnt_error_blacklist    = "ブラックリストの更新中にエ�
 $admin_lang_cmnt_error_banlist      = "リファラ禁止リストの更新中にエラーが発生しました: ";
 $admin_lang_cmnt_moderation_que     = "モデレーションキュー";
 $admin_lang_cmnt_rep_spam           = 'スパム報告';
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 
 // Option

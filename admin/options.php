@@ -278,19 +278,19 @@ echo "<a href='index.php?view=options&amp;optionsview=general' class='".$submenu
 
 if (isset($_GET['optionsview']) && $_GET['optionsview']=='template')	$submenucssclass = 'selectedsubmenu';
 
-echo "<a href='index.php?view=options&amp;optionsview=template' class='".$submenucssclass."'>$admin_lang_optn_template</a>\n";
+echo "|<a href='index.php?view=options&amp;optionsview=template' class='".$submenucssclass."'>$admin_lang_optn_template</a>\n";
 			$submenucssclass = 'notselected';
 
 
 if (isset($_GET['optionsview']) && $_GET['optionsview']=='thumb')	$submenucssclass = 'selectedsubmenu';
 
-echo "<a href='?view=options&amp;optionsview=thumb' class='".$submenucssclass."'>$admin_lang_optn_thumbnails</a>\n";
+echo "|<a href='?view=options&amp;optionsview=thumb' class='".$submenucssclass."'>$admin_lang_optn_thumbnails</a>\n";
 			$submenucssclass = 'notselected';
 
 
 if (isset($_GET['optionsview']) && $_GET['optionsview']=='antispam')	$submenucssclass = 'selectedsubmenu';
 
-echo "<a href='?view=options&amp;optionsview=antispam' class='".$submenucssclass."'>$admin_lang_spam</a>\n";
+echo "|<a href='?view=options&amp;optionsview=antispam' class='".$submenucssclass."'>$admin_lang_spam</a>\n";
 
 echo_addon_admin_menus($addon_admin_functions,"options");
 echo "</div>\n";

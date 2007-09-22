@@ -224,8 +224,7 @@ $admin_lang_cmnt_delete1            = "Slettet";
 $admin_lang_cmnt_delete2            = "valgt(e) kommentar(er).";
 $admin_lang_cmnt_edit               = "Rediger";
 $admin_lang_cmnt_edited             = "Kommentar redigeret.";
-$admin_lang_cmnt_check_all          = "V&aelig;lg alle";
-$admin_lang_cmnt_clear_all          = "Ryd markering";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "V&aelig;lg modsatte";
 $admin_lang_cmnt_del_selected       = "Fjern valgte";
 $admin_lang_cmnt_page               = "kommentarer pr. side.";
@@ -244,6 +243,8 @@ $admin_lang_cmnt_error_blacklist    = "Fejl ved opdatering af blacklist: ";
 $admin_lang_cmnt_error_banlist      = "Fejl ved opdatering af referrer-ban-listen: ";
 $admin_lang_cmnt_moderation_que     = "Godkendelses-k&oslash;";
 $admin_lang_cmnt_rep_spam           = 'Rapporter spam';
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 
 // Option

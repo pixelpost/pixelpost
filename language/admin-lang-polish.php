@@ -235,8 +235,7 @@ $admin_lang_cmnt_delete1           = "Usunięto";
 $admin_lang_cmnt_delete2           = "wybrane komentarze.";
 $admin_lang_cmnt_edit              = "Edytuj";
 $admin_lang_cmnt_edited            = "Komentarz wyedytowano.";
-$admin_lang_cmnt_check_all         = "Wybierz wszystkie";
-$admin_lang_cmnt_clear_all         = "Odznacz wybrane";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks     = "Odwróć selekcję";
 $admin_lang_cmnt_del_selected      = "Usuń wybrane";
 $admin_lang_cmnt_page              = "komentarzy na stronę.";
@@ -255,6 +254,8 @@ $admin_lang_cmnt_error_blacklist   = "Błąd uaktualnienia czarnej listy: ";
 $admin_lang_cmnt_error_banlist     = "Błąd uaktualnienia listy zbanowanych referujących: ";
 $admin_lang_cmnt_moderation_que    = "Kolejka moderacji";
 $admin_lang_cmnt_rep_spam          = 'Zgłoś Spam';
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 
 // Option

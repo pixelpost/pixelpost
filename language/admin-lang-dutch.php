@@ -225,8 +225,7 @@ $admin_lang_cmnt_delete1            = "Verwijderd";
 $admin_lang_cmnt_delete2            = "geselecteerde reactie(s).";
 $admin_lang_cmnt_edit               = "Bewerk";
 $admin_lang_cmnt_edited             = "Bewerk een reactie.";
-$admin_lang_cmnt_check_all          = "Selecteer alles";
-$admin_lang_cmnt_clear_all          = "Verwijder selectie";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "Keer selectie om";
 $admin_lang_cmnt_del_selected       = "Verwijder geselecteerde";
 $admin_lang_cmnt_page               = "reacties per pagina.";
@@ -245,6 +244,8 @@ $admin_lang_cmnt_error_blacklist    = "Fout in het bijwerken van de zwarte lijst
 $admin_lang_cmnt_error_banlist      = "Fout in het bijwerken van de zwarte lijst met referrers: ";
 $admin_lang_cmnt_moderation_que     = "Moderation rij";
 $admin_lang_cmnt_rep_spam           = 'Meld als Spam';
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 
 // Option

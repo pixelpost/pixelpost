@@ -224,8 +224,7 @@ $admin_lang_cmnt_delete1             = "Supprim&eacute;";
 $admin_lang_cmnt_delete2             = "commentaire(s) s&eacute;lectionn&eacute;(s).";
 $admin_lang_cmnt_edit                = "Modifier";
 $admin_lang_cmnt_edited              = "Commentaire modifi&eacute;.";
-$admin_lang_cmnt_check_all           = "Tout s&eacute;lectionner";
-$admin_lang_cmnt_clear_all           = "Abandonner la s&eacute;lection";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks       = "Intervertir la s&eacute;lection";
 $admin_lang_cmnt_del_selected        = "Supprimer la s&eacute;lection";
 $admin_lang_cmnt_page                = "commentaires par page.";
@@ -243,6 +242,8 @@ $admin_lang_cmnt_published_cmnts     = "commentaire(s) publi&eacute;(s) pr&eacut
 $admin_lang_cmnt_error_blacklist     = "Erreur dans la mise &agrave; jour de la liste noire : ";
 $admin_lang_cmnt_error_banlist       = "Erreur dans la mise &agrave; jour de la liste des referers interdits :  ";
 $admin_lang_cmnt_rep_spam            = "Marquer comme Spam";
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 // Option
 $admin_lang_optn_general              = "GENERAL";

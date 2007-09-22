@@ -228,8 +228,7 @@ $admin_lang_cmnt_delete1            = "Slettet";
 $admin_lang_cmnt_delete2            = "velg kommentar(er).";
 $admin_lang_cmnt_edit               = "Rediger";
 $admin_lang_cmnt_edited             = "Kommentar redigert.";
-$admin_lang_cmnt_check_all          = "Velg alle";
-$admin_lang_cmnt_clear_all          = "Fjern markeringer";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "Marker omvendt";
 $admin_lang_cmnt_del_selected       = "Slett valgte";
 $admin_lang_cmnt_page               = "kommentarer per side.";
@@ -244,6 +243,8 @@ $admin_lang_cmnt_published          = "Publisert";
 $admin_lang_cmnt_unpublished_cmnts  = "tidligere maskert kommentar(er).";
 $admin_lang_cmnt_unpublished        = "Maskerte";
 $admin_lang_cmnt_published_cmnts    = "tidligere publiserte kommentar(er).";
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 // New in comment:
 $admin_lang_cmnt_error_blacklist    = "Error in updating the blacklist: ";

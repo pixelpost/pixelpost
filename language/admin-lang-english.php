@@ -225,8 +225,7 @@ $admin_lang_cmnt_delete1            			= "Deleted";
 $admin_lang_cmnt_delete2            			= "selected comment(s).";
 $admin_lang_cmnt_edit               			= "Edit";
 $admin_lang_cmnt_edited             			= "Edited a comment.";
-$admin_lang_cmnt_check_all          			= "Select all";
-$admin_lang_cmnt_clear_all          			= "Clear selections";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      			= "Invert selections";
 $admin_lang_cmnt_del_selected       			= "Delete selected";
 $admin_lang_cmnt_page               			= "comments per page.";
@@ -245,7 +244,8 @@ $admin_lang_cmnt_error_blacklist    			= "Error in updating the blacklist: ";
 $admin_lang_cmnt_error_banlist      			= "Error in updating the referrer ban list: ";
 $admin_lang_cmnt_moderation_que     			= "Moderation queue";
 $admin_lang_cmnt_rep_spam           			= 'Report Spam';
-
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 // Option
 $admin_lang_optn_general            			= "GENERAL";

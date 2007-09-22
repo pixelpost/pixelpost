@@ -227,8 +227,7 @@ $admin_lang_cmnt_delete1            = "Es wurde(n)";
 $admin_lang_cmnt_delete2            = "ausgew&auml;hlte Kommentar(e) gel&ouml;scht.";
 $admin_lang_cmnt_edit               = "Bearbeiten";
 $admin_lang_cmnt_edited             = "Kommentar wurde ge&auml;ndert.";
-$admin_lang_cmnt_check_all          = "Alle ausw&auml;hlen";
-$admin_lang_cmnt_clear_all          = "Auswahl l&ouml;schen";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "Auswahl umkehren";
 $admin_lang_cmnt_del_selected       = "Ausgew&auml;hlte Kommentare l&ouml;schen";
 $admin_lang_cmnt_page               = "Kommentare pro Seite";
@@ -246,6 +245,8 @@ $admin_lang_cmnt_unpublished        = "Moderiert";
 $admin_lang_cmnt_published_cmnts    = "vorher freigegebene Kommentare.";
 $admin_lang_cmnt_error_blacklist    = "Die Blacklist konnte nicht aktualisiert werden: ";
 $admin_lang_cmnt_error_banlist      = "Die Referer-Block-Liste konnte nicht aktualisiert werden: ";
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 // Option
 $admin_lang_optn_general             = "ALLGEMEIN";

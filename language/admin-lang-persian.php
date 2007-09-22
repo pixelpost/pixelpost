@@ -224,8 +224,7 @@ $admin_lang_cmnt_delete1            = "Deleted";
 $admin_lang_cmnt_delete2            = "selected comment(s).";
 $admin_lang_cmnt_edit               = "Edit";
 $admin_lang_cmnt_edited             = "Edited a comment.";
-$admin_lang_cmnt_check_all          = "Select all";
-$admin_lang_cmnt_clear_all          = "Clear selections";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "Invert selections";
 $admin_lang_cmnt_del_selected       = "Delete selected";
 $admin_lang_cmnt_page               = "comments per page.";
@@ -240,6 +239,8 @@ $admin_lang_cmnt_published          = "Published";
 $admin_lang_cmnt_unpublished_cmnts  = "previously masked comment(s).";
 $admin_lang_cmnt_unpublished        = "Masked";
 $admin_lang_cmnt_published_cmnts    = "previously published comment(s).";
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 // New in comment:
 $admin_lang_cmnt_error_blacklist    = "Error in updating the blacklist: ";

@@ -731,7 +731,7 @@ function echo_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = '')
 			$selecteclass = '';
 			if (isset($_GET[$menuitem]) && ($_GET[$menuitem] == $submenuitem))
 				$selecteclass='selectedsubmenu';
-				$toecho ="<a class='".$selecteclass."' href='?view=".strtolower($menu_name) ."&amp;".$menuitem ."=".$submenuitem.$additional."' id='".$menu_name.$submenu_name."'>" .strtoupper($submenu_name) ."</a>";
+				$toecho ="|<a class='".$selecteclass."' href='?view=".strtolower($menu_name) ."&amp;".$menuitem ."=".$submenuitem.$additional."' id='".$menu_name.$submenu_name."'>" .strtoupper($submenu_name) ."</a>";
 			echo $toecho;
 		}
 	}

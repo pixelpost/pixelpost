@@ -143,31 +143,47 @@ if($_GET['view'] == "comments") {
 	}
 
  echo "<div id='caption'>$admin_lang_$admin_lang_comments</div>";
+ 
  // list of comments
     if($_GET['id'] == "") {
-
          $pagec = 0;
         if($_GET['page'] == "") { $page = "0"; } else { $page = $_GET['page']; }
 // added for showing correct page number for masked comments				
-				if ($_GET['show']=='masked') {
-					$mod_where = " WHERE publish='no' ";
+				// default setting
+				$moderate_where = " and publish='yes' ";
+				$moderate_where2 = " WHERE publish='yes' ";	
+				if ($_GET['show']=='masked') {   
+				 	$moderate_where = " and publish='no' ";
+				 	$moderate_where2 = " WHERE publish='no' ";
 				}
-				if ($_GET['show']=='published'){
-					$mod_where = " WHERE publish='yes' ";
+				if ($_GET['show']=='published') {
+					$moderate_where = " and publish='yes' ";	
+					$moderate_where2 = " WHERE publish='yes' ";	
 				}
-// new workspace added! For correct page number with other buttons
-eval_addon_admin_workspace_menu('pages_commentbuttons');
+
+				// new workspace added! For correct page number with other buttons
+				eval_addon_admin_workspace_menu('pages_commentbuttons');
 				
 				// count comments!
-				$commentnumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments".$mod_where);
+				$commentnumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments".$moderate_where2);
 				$pixelpost_commentnumb = $commentnumb['count'];
-/*
-				if ($_POST['numimg_pp'] == ""){$numcmmnt_pp = $pixelpost_commentnumb;
-				} else {
-					$numcmmnt_pp=$_POST['numimg_pp'];
-						if ($pixelpost_commentnumb<$numcmmnt_pp) $numcmmnt_pp = $pixelpost_commentnumb;
-				};
-*/
+
+				// get the number of comments in moderation
+ 				$commentnumb_moderation = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='no' ");
+
+				// display submenu
+				echo "<div id='submenu'>";
+				$submenucssclass = 'notselected';
+				if (!isset($_GET['show']) || $_GET['show']=='published')	$submenucssclass = 'selectedsubmenu';
+				if (isset($_GET['commentsview'])) $submenucssclass = 'notselected';
+				echo "<a href='index.php?view=comments&show=published' class='".$submenucssclass."'>".$admin_lang_cmnt_submenu1."</a>\n";
+				$submenucssclass = 'notselected';
+				echo "|";
+				if (isset($_GET['show']) && $_GET['show']=='masked')	$submenucssclass = 'selectedsubmenu';
+				echo "<a href='index.php?view=comments&show=masked' class='".$submenucssclass."'>".$admin_lang_cmnt_submenu2." (".$commentnumb_moderation['count'].")</a>\n";
+				$submenucssclass = 'notselected';
+				echo_addon_admin_menus($addon_admin_functions,"comments");
+				echo"</div>";
 				$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
 
 				if ($_SESSION['numimg_pp'] == 0)
@@ -198,25 +214,8 @@ eval_addon_admin_workspace_menu('pages_commentbuttons');
 				<!-- Moderation Buttons! -->
 				<!-- all boxes -->
 				<input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
-				<!-- clear all boxes -->
-				<input class='cmnt-buttons' type='button' onclick=\"clearAll(document.getElementById('managecomments')); return false; \" value='$admin_lang_cmnt_clear_all' name='clearallbox' />
 				<!-- invert checkbox -->
-				<input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />&nbsp;&nbsp;
-				<!-- show all comments -->
-				<input class=\"cmnt-buttons\" type=\"submit\" name=\"showall\" value=\"$lang_browse_all $lang_comment_plural\" onclick=\"
-								document.getElementById('managecomments').action='$PHP_SELF?view=comments'\" $allstyle />
-				<!-- show published comments -->
-				<input class=\"cmnt-buttons\" type=\"submit\" name=\"showpublish\" value=\"$admin_lang_cmnt_published\" onclick=\"
-							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;show=published'\" $pubstyle />
-				<!-- show moderated comments -->
-				<input class=\"cmnt-buttons\" type=\"submit\" name=\"showunpublish\" value=\"$admin_lang_cmnt_moderation_que\" onclick=\"
-							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;show=masked' \" $modstyle />&nbsp;&nbsp;
-				<!-- publish selected comments -->
-				<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
-							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" />
-				<!-- unpublish selected comments -->
-				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />&nbsp;&nbsp;
+        <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
 				<!-- delete selected -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
 				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massdelete'
@@ -225,14 +224,24 @@ eval_addon_admin_workspace_menu('pages_commentbuttons');
 				<!-- report as spam -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_rep_spam\" onclick=\"
 				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=spamdelete' \"/>";
+				
+			  if ($_GET['show']=='masked'){ 
+				echo "<br /><br /><!-- publish selected comments -->
+				<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
+							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" />";
+				}
+				if ($moderate_where == " and publish='yes' "){
+				echo "<br /><br /><!-- unpublish selected comments -->
+				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
+				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />&nbsp;&nbsp;";
+				}
+				
 
-// New Workspace added! Place for new Buttons on Comment page				
-eval_addon_admin_workspace_menu('show_commentbuttons');				
+				// New Workspace added! Place for new Buttons on Comment page				
+				eval_addon_admin_workspace_menu('show_commentbuttons_top');				
 
 				echo "<hr/>
 				<ul>";
-				if ($_GET['show']=='masked')    $moderate_where = " and publish='no' ";
-				if ($_GET['show']=='published') $moderate_where = " and publish='yes' ";	
 
         $query = "SELECT comments.*, image,headline  FROM ".$pixelpost_db_prefix."comments AS comments, ".$pixelpost_db_prefix."pixelpost AS post WHERE post.id=parent_id $moderate_where  ORDER BY id DESC limit $page,".$_SESSION['numimg_pp'];
         $images = mysql_query($query);
@@ -255,7 +264,7 @@ eval_addon_admin_workspace_menu('show_commentbuttons');
         	$comment_row_class = "published-comment";
         else
         	$comment_row_class = "unpublished-comment";
-eval_addon_admin_workspace_menu('single_comment_list');
+				eval_addon_admin_workspace_menu('single_comment_list');
 				$edit_message= str_replace("<br />", "", $message);
 				echo "
 				<li class='$comment_row_class' ><a href='../index.php?showimage=".$parent_id."'>
@@ -284,6 +293,19 @@ eval_addon_admin_workspace_menu('single_comment_list');
 	    }
         echo "</ul>";
    	    echo "</form>\n\n";
+   	    
+   	  // logical place for the buttons.
+ 			  if ($_GET['show']=='masked'){ 
+					echo "<!-- publish selected comments -->
+					<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
+								document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" /><br /><br />";
+				}
+				if ($moderate_where == " and publish='yes' "){
+				echo "<!-- unpublish selected comments -->
+				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
+				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" /><br /><br />";
+				}
+				eval_addon_admin_workspace_menu('show_commentbuttons_bottom');
 
 
 	  // to show page number and link to next and previous pages

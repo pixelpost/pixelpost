@@ -224,8 +224,7 @@ $admin_lang_cmnt_delete1            = "删除成功";
 $admin_lang_cmnt_delete2            = "已选 择评论。";
 $admin_lang_cmnt_edit               = "编辑";
 $admin_lang_cmnt_edited             = "编辑评论。";
-$admin_lang_cmnt_check_all          = "全部选择";
-$admin_lang_cmnt_clear_all          = "清除选择";
+$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
 $admin_lang_cmnt_invert_checks      = "反向选择";
 $admin_lang_cmnt_del_selected       = "删除已选";
 $admin_lang_cmnt_page               = "个评论/页。";
@@ -244,6 +243,8 @@ $admin_lang_cmnt_error_blacklist    = "更新黑名单有误：";
 $admin_lang_cmnt_error_banlist      = "更新referer禁止列表有误：";
 $admin_lang_cmnt_moderation_que     = "待审批队列";
 $admin_lang_cmnt_rep_spam 			= '报告垃圾广告';
+$admin_lang_cmnt_submenu1									= "COMMENTS";
+$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 
 
 // Option
