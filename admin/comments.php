@@ -233,7 +233,7 @@ if($_GET['view'] == "comments") {
 				if ($moderate_where == " and publish='yes' "){
 				echo "<br /><br /><!-- unpublish selected comments -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />&nbsp;&nbsp;";
+				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />";
 				}
 				
 
@@ -297,16 +297,15 @@ if($_GET['view'] == "comments") {
  			  if ($_GET['show']=='masked'){ 
 					echo "<!-- publish selected comments -->
 					<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
-								document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" /><br /><br />";
+								document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" />";
 				}
 				if ($moderate_where == " and publish='yes' "){
 				echo "<!-- unpublish selected comments -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" /><br /><br />";
+				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />";
 				}
 				eval_addon_admin_workspace_menu('show_commentbuttons_bottom');
-
-   	    echo "</form>\n\n";
+   	    echo "</form><br />";
    	    
 	  // to show page number and link to next and previous pages
     if($pixelpost_commentnumb > $_SESSION['numimg_pp'])

@@ -46,36 +46,32 @@ function get_akismet_links()
 {
 	global $pixelpost_db_prefix, $moderate_where, $cfgrow;
 // Echo the links
-  if (isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
-	  echo <<<EOT
-	  <br /><br />
-	  <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick="
-      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
-      return confirm('Report all selected comments as Spam to Akismet?');" />
-
-  	<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as HAM To Akismet' onclick="
+    if (isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
+     echo "<br /><br />";
+     echo "<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as HAM To Akismet' onclick=\"
       document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetnotspam'
-      return confirm('Report all selected comments as Not Spam to Akismet?');" />
-EOT;
-	}
+      return confirm('Report all selected comments as Not Spam to Akismet?');\" />";
+      echo "&nbsp;";
+    } 
+		 
+     echo " <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick=\"
+	      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
+    	  return confirm('Report all selected comments as Spam to Akismet?');\" />";
 }
 
 function get_akismet_links2()
 {
 	global $pixelpost_db_prefix, $moderate_where, $cfgrow;
 // Echo the links
-  if (isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
-	  echo <<<EOT
-	  <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick="
-      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
-      return confirm('Report all selected comments as Spam to Akismet?');" />
-
-  	<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as HAM To Akismet' onclick="
+    if (isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
+     echo "<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as HAM To Akismet' onclick=\"
       document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetnotspam'
-      return confirm('Report all selected comments as Not Spam to Akismet?');" /><br /><br />
-EOT;
-	}
-
+      return confirm('Report all selected comments as Not Spam to Akismet?');\" />";
+ 		 echo "&nbsp;";
+    }
+     echo " <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick=\"
+	      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
+    	  return confirm('Report all selected comments as Spam to Akismet?');\" />";
 	// Delete comments older than X days and marked as SPAM by Akismet
 	$query = "DELETE FROM {$pixelpost_db_prefix}comments WHERE (TO_DAYS(CURDATE()) - TO_DAYS(`datetime`)) > ".$cfgrow['akismet_keep']." AND publish='spm'";
 	$result = mysql_query($query);
