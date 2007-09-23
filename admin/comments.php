@@ -292,8 +292,7 @@ if($_GET['view'] == "comments") {
 				$pagec++;
 	    }
         echo "</ul>";
-   	    echo "</form>\n\n";
-   	    
+  	    
    	  // logical place for the buttons.
  			  if ($_GET['show']=='masked'){ 
 					echo "<!-- publish selected comments -->
@@ -307,7 +306,8 @@ if($_GET['view'] == "comments") {
 				}
 				eval_addon_admin_workspace_menu('show_commentbuttons_bottom');
 
-
+   	    echo "</form>\n\n";
+   	    
 	  // to show page number and link to next and previous pages
     if($pixelpost_commentnumb > $_SESSION['numimg_pp'])
     {

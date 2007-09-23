@@ -376,7 +376,6 @@ if($_GET['view'] == "images")
 	  // calculate the number of pages
 		$num_img_pages = ceil($pixelpost_photonumb/$_SESSION['numimg_pp']);
 		$num_img_pages = ($num_img_pages > 0)	? $num_img_pages : 1;
-	
 		// Now the queries to show the select options for filtering
 		// the query for the select by category statement
 		$selectfcats = "<option value='' selected=\"selected\">All</option>\n";
@@ -410,10 +409,13 @@ if($_GET['view'] == "images")
 			$altlangs = 'admin_lang_'.$cfgrow['altlangfile'];
 			$altlangs = ${$altlangs};
 		}
-		echo "<div class='jcaption'>$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</div>
+		echo "<div class='jcaption'><a href='' onclick=\"flip('additionalSelects'); return false;\">$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</a></div>
+	  <div id=\"additionalSelects\">
+	  <script language='javascript' type='text/javascript'>flip('additionalSelects');</script>
 		<div class='content'>
+		<form method='post' name='filter' accept-charset='UTF-8' action='index.php?view=images'>
 		<table width='400' border='0' cellpadding='2'>
-		<tr><form method='post' name='filter' accept-charset='UTF-8' action='index.php?view=images'>
+		<tr>
 		<td align='right'><strong>$admin_lang_show $lang_category_singular&nbsp;</strong></td>
 		<td><select name='selectfcat'>$selectfcats</select></td>
 		<td><input class='cmnt-buttons' type='submit' name='filtercat' value='$admin_lang_go' /></td>
@@ -437,10 +439,10 @@ if($_GET['view'] == "images")
 		</tr>
 		<tr>
 		<td align='right' height='50'><strong>$admin_lang_show ID:&nbsp;</strong></td>
-		<td><input type='text' size='6' name='findfid' value='$findfid'></td>
+		<td><input type='text' size='6' name='findfid' value='$findfid' /></td>
 		<td><input class='cmnt-buttons' type='submit' name='findid' value='$admin_lang_go' /></td>
-		</form></tr>
-		</table></div>";
+		</tr>
+		</table></form></div></div>";
 	
 		echo "<div class=\"jcaption\"><strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
 			   		 </div>
@@ -481,7 +483,7 @@ if($_GET['view'] == "images")
 			echo "<option value='unassign-$id'>$name</option>\n";
 	  }
 	
-		echo "</select> <input type='text' size='40' name='masstag' value='$admin_lang_imgedit_masstag...' onblur=\"if(this.value=='') this.value='$admin_lang_imgedit_masstag...';\" onfocus=\"if(this.value=='$admin_lang_imgedit_masstag...') this.value='';\"> <select name='masstagopt' size='1'><option value=''></option><option value='set'>$admin_lang_imgedit_masstag_set</option><option value='set2'>$admin_lang_imgedit_masstag_set2</option><option value='unset'>$admin_lang_imgedit_masstag_unset</option></select>";
+		echo "</select> <input type='text' size='40' name='masstag' value='$admin_lang_imgedit_masstag...' onblur=\"if(this.value=='') this.value='$admin_lang_imgedit_masstag...';\" onfocus=\"if(this.value=='$admin_lang_imgedit_masstag...') this.value='';\" /> <select name='masstagopt' size='1'><option value=''></option><option value='set'>$admin_lang_imgedit_masstag_set</option><option value='set2'>$admin_lang_imgedit_masstag_set2</option><option value='unset'>$admin_lang_imgedit_masstag_unset</option></select>";
 		echo " <input type=\"submit\" name=\"submit-mass-catedit\" id=\"submit-mass-catedit\" value=\"".$admin_lang_imgedit_mass_4."\" /><p /> <ul>";
 
 		
@@ -605,7 +607,7 @@ if($_GET['view'] == "images")
 		}
 
     echo '<br/>
-       <form method="post" action="'.$PHP_SELF .'?view=images&page=0'.$getfstring.'" accept-charset="UTF-8">';
+       <form method="post" action="'.$PHP_SELF .'?view=images&amp;page=0'.$getfstring.'" accept-charset="UTF-8">';
  		echo $admin_lang_show.' ';
     echo '<input type="text" name="numimg_pp" size="2" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_imgedit_img_page.'.
 	    <input type="submit" value="'.$admin_lang_go.'" />
