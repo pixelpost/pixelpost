@@ -3,7 +3,7 @@
 Pixelpost version 1.7
 
 SVN file version:
-$Id: admin-lang-dutch.php 190 2007-03-28 08:15:27Z schonhose $
+$Id$
 
 Version 1.7:
 Development Team:

@@ -3,7 +3,7 @@
 Pixelpost version 1.7
 
 SVN file version:
-$Id: admin-lang-english.php 239 2007-04-10 15:21:09Z d3designs $
+$Id$
 
 Version 1.7:
 Development Team:
