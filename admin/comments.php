@@ -160,7 +160,8 @@ if($_GET['view'] == "comments") {
 					$moderate_where = " and publish='yes' ";	
 					$moderate_where2 = " WHERE publish='yes' ";	
 				}
-
+				$order_by = " ORDER BY id DESC ";
+				// the $moderate_where and $order_by statements can now be overridden by using an addon and the following workspace:
 				// new workspace added! For correct page number with other buttons
 				eval_addon_admin_workspace_menu('pages_commentbuttons');
 				
@@ -243,7 +244,7 @@ if($_GET['view'] == "comments") {
 				echo "<hr/>
 				<ul>";
 
-        $query = "SELECT comments.*, image,headline  FROM ".$pixelpost_db_prefix."comments AS comments, ".$pixelpost_db_prefix."pixelpost AS post WHERE post.id=parent_id $moderate_where  ORDER BY id DESC limit $page,".$_SESSION['numimg_pp'];
+        $query = "SELECT comments.*, image,headline  FROM ".$pixelpost_db_prefix."comments AS comments, ".$pixelpost_db_prefix."pixelpost AS post WHERE post.id=parent_id ".$moderate_where.$order_by." limit ".$page.",".$_SESSION['numimg_pp'];
         $images = mysql_query($query);
 
   while( $row = mysql_fetch_assoc($images)) {
