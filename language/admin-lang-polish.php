@@ -328,6 +328,13 @@ $admin_lang_optn_regen_thumbs_txt     = "Opcja ta pozwala wygenerować ponownie 
 $admin_lang_optn_img_compression      = "KOMPRESJA MINIATUREK";
 $admin_lang_optn_img_compression_txt  = "Określenie stopnia kompresji zdjęć w formacie JPEG - 10 stanowi niską jakość, a 100 najlepszą (brak
   strat i kompresji)";
+$admin_lang_optn_thumb_sharp          = "OSTROŚĆ MINIATUREK";
+$admin_lang_optn_thumb_sharp_txt      = "Określenie stopnia poprawy ostrości miniaturek";
+$admin_lang_optn_thumb_sharp0         = 'Brak wyostrzania';
+$admin_lang_optn_thumb_sharp1         = 'Lekkie';
+$admin_lang_optn_thumb_sharp2         = 'Średnie';
+$admin_lang_optn_thumb_sharp3         = 'Mocne';
+$admin_lang_optn_thumb_sharp4         = 'Ultra mocne';
 $admin_lang_optn_pass_chngd_txt       = "Hasło zostało zmienione.";
 $admin_lang_optn_pass_notchngd_txt    = "Hasło nie zostało zmienione. Wpisz to samo hasło w pole potwierdzenia.";
 $admin_lang_optn_title_url_text       = "Sprawdź lub zmodyfikuj tytuł strony oraz adres URL Twojej instalacji";

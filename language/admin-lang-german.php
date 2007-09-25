@@ -315,6 +315,13 @@ $admin_lang_optn_regen_thumbs_txt   = "Alle Thumbnails aller vorhandenen Photos 
                                       Sie k&ouml;nnen Sie aber erneut mit 12CropImage erstellen..";
 $admin_lang_optn_img_compression     = "THUMBNAIL KOMPRIMIERUNG";
 $admin_lang_optn_img_compression_txt = "Wie stark soll die JPG-Komprimierung sein? 10 = niedrige Qualit&auml;t, 100 = maximale Qualit&auml;t (kein Verlust)";
+$admin_lang_optn_thumb_sharp              = "THUMBNAIL SHARPENING";
+$admin_lang_optn_thumb_sharp_txt          = "How sharp do you want the thumbnails to be?";
+$admin_lang_optn_thumb_sharp0             = 'No Sharpening';
+$admin_lang_optn_thumb_sharp1             = 'Light';
+$admin_lang_optn_thumb_sharp2             = 'Medium';
+$admin_lang_optn_thumb_sharp3             = 'High';
+$admin_lang_optn_thumb_sharp4             = 'Ultra-High';
 $admin_lang_optn_pass_chngd_txt      = "Passwort wurde ge&auml;ndert.";
 $admin_lang_optn_pass_notchngd_txt   = "Passwort wurde nicht ge&auml;ndert.Geben Sie dass Passwort zur Best&auml;tigung erneut im 2. Feld ein.";
 $admin_lang_optn_thumb_updated       = "Thumbnails aktualisiert!";
