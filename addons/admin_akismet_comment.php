@@ -48,7 +48,7 @@ function get_akismet_links()
 // Echo the links
     if (isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
      echo "<br /><br />";
-     echo "<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as HAM To Akismet' onclick=\"
+     echo "<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as NOT Spam To Akismet' onclick=\"
       document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetnotspam'
       return confirm('Report all selected comments as Not Spam to Akismet?');\" />";
       echo "&nbsp;";
@@ -65,7 +65,7 @@ function get_akismet_links2()
 	global $pixelpost_db_prefix, $moderate_where, $cfgrow;
 // Echo the links
     if (isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
-     echo "<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as HAM To Akismet' onclick=\"
+     echo "<input class='cmnt-buttons' type='submit' name='akismetnotspam' value='Report as NOT Spam To Akismet' onclick=\"
       document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetnotspam'
       return confirm('Report all selected comments as Not Spam to Akismet?');\" />";
  		 echo "&nbsp;";
@@ -167,7 +167,7 @@ If you have already signed up at Wordpress.com, copy your API key from your prof
 Otherwise sign up for a free Wordpress account here: <a href='http://wordpress.com/signup/' target='_blank'>SIGN UP</a>.<br /><br />
 Enter your API key from Wordpress: <input type='text' name='newakismet_key' value='".$newakismet_key ."' style='width:100px'><br /><br />
 Days to keep comments marked as spam by Akismet: <input type='text' name='newakismet_keep' value='".$newakismet_keep ."' style='width:20px'><br /><br />
-";
+</div>";
 }
 
 // Returns array with headers in $response[0] and entity in $response[1]
