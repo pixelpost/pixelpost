@@ -284,23 +284,23 @@ function PixelpostUnsharpMask($img, $sharpeningsetting)    {
 
     switch ($sharpeningsetting) {
     case 1: //light
-        $amount= 80; //typically 50 - 200
-				$radius= 0.5; //typically 0.5 - 1
-				$threshold= 3; //typically 0 - 5
+        $amount= 15; //typically 50 - 200
+				$radius= 0.3; //typically 0.5 - 1
+				$threshold= 2; //typically 0 - 5
         break;
     case 2: //medium
-        $amount= 80; //typically 50 - 200
-				$radius= 0.5; //typically 0.5 - 1
-				$threshold= 3; //typically 0 - 5
+        $amount= 30; //typically 50 - 200
+				$radius= 0.3; //typically 0.5 - 1
+				$threshold= 1; //typically 0 - 5
         break;
     case 3: //high
-        $amount= 80; //typically 50 - 200
-				$radius= 0.5; //typically 0.5 - 1
+        $amount= 50; //typically 50 - 200
+				$radius= 0.3; //typically 0.5 - 1
 				$threshold= 3; //typically 0 - 5
         break;
     case 4: //ultra-high
-        $amount= 80; //typically 50 - 200
-				$radius= 0.5; //typically 0.5 - 1
+        $amount= 70; //typically 50 - 200
+				$radius= 0.3; //typically 0.5 - 1
 				$threshold= 3; //typically 0 - 5
         break;
 		}
