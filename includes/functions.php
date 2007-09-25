@@ -235,7 +235,7 @@ function createthumbnail($file)
 
 	    imagedestroy($img);
       if ($cfgrow['thumb_sharpening']!=0){
-			 $tmp_img = PixelpostUnsharpMask($tmp_img, $cfgrow['thumb_sharpening']); 
+			 $tmp_img = unsharp_mask($tmp_img, $cfgrow['thumb_sharpening']); 
 			}
 	    $img = $tmp_img;
     }
@@ -254,7 +254,7 @@ function createthumbnail($file)
       }
       imagedestroy($img);
       if ($cfgrow['thumb_sharpening']!=0){
-			 $tmp_img = PixelpostUnsharpMask($tmp_img, $cfgrow['thumb_sharpening']); 
+			 $tmp_img = unsharp_mask($tmp_img, $cfgrow['thumb_sharpening']); 
 			}
       $img = $tmp_img;
     } // end crop yes
@@ -265,7 +265,7 @@ function createthumbnail($file)
   chmod($thumbimage,0644);
 }
 
-function PixelpostUnsharpMask($img, $sharpeningsetting)    { 
+function unsharp_mask($img, $sharpeningsetting)    { 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////  
 ////  
