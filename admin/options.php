@@ -1042,7 +1042,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			} 
     	show_anti_spam();
     	
-    	echo "<form method='post' action='$PHP_SELF?view=options&amp;optionsview=antispam&amp;optaction=updateantispam&optionsview=antispam' accept-charset='UTF-8'>
+    	echo "<form method='post' action='$PHP_SELF?view=options&amp;optionsview=antispam&amp;optaction=updateantispam&' accept-charset='UTF-8'>
     		<div class='jcaption'>
 				$admin_lang_optn_token
 				</div>

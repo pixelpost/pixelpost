@@ -274,9 +274,16 @@ if($_GET['view'] == "comments") {
 				$admin_lang_cmnt_name <a target=\"_blank\" href=\"$url\">$name</a>
 				$admin_lang_cmnt_email $email <br />$admin_lang_cmnt_comment
 				<b>$message</b><br />
-				$admin_lang_cmnt_image: \"$imagename\"<br />
-				<i>$admin_lang_cmnt_commenter $datetime. $admin_lang_cmnt_ip  $ip.<br /></i>
-				<input type='checkbox' name='moderate_commnts_boxes[]' value='$id' />
+				$admin_lang_cmnt_image: \"$imagename\"<br />";
+		    if (isset($comment_meta_information)){
+		     // this variable can be used to overide display of the meta information for a comment
+		     // is used for the defensio addon.
+				 echo $comment_meta_information;
+				} else {
+				 //show default
+				 echo "<i>$admin_lang_cmnt_commenter $datetime. $admin_lang_cmnt_ip  $ip.<br /></i>";
+				}				
+				echo"<input type='checkbox' name='moderate_commnts_boxes[]' value='$id' />
 				<a onclick=\"return  confirmDeleteComment()\" href=\"$PHP_SELF?view=comments&amp;action=delete&amp;delid=$id\">
 				[$admin_lang_cmnt_delete]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
