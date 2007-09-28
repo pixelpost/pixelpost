@@ -158,7 +158,7 @@ if ($_GET['optaction']=='updateall')
 		}
 		
 		// displayorder
-			$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET display_order='".$_POST['display_order']."'");
+			$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET display_sort_by='".$_POST['display_sort_by']."', display_order='".$_POST['display_order']."'");
 		
 		// Refresh the settings
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
@@ -790,9 +790,28 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 			<div class='jcaption'>
 				$admin_lang_optn_img_display
 				</div>
+				<div class='content'>$admin_lang_optn_img_display_desc";
+				echo "<select name=\"display_sort_by\">";
+    			if ($cfgrow["display_sort_by"] =='datetime')
+    			{
+ 						echo "<option selected=\"selected\" value=\"datetime\">$admin_lang_ni_datetime</option><option value=\"headline\">$admin_lang_ni_image_title</option><option value=\"body\">$admin_lang_ni_description</option>";
+ 					}
+ 					elseif ($cfgrow["display_sort_by"] =='headline')
+ 					{
+ 						echo "<option value=\"datetime\">$admin_lang_ni_datetime</option><option selected=\"selected\" value=\"headline\">$admin_lang_ni_image_title</option><option value=\"body\">$admin_lang_ni_description</option>";
+ 					}
+ 					elseif ($cfgrow["display_sort_by"] =='body')
+ 					{
+ 						echo "<option value=\"datetime\">$admin_lang_ni_datetime</option><option value=\"headline\">$admin_lang_ni_image_title</option><option selected=\"selected\" value=\"body\">$admin_lang_ni_description</option>";
 
-				<div class='content'>
-						";
+ 					}
+ 					else
+ 					{
+ 						echo "<option selected=\"selected\" value=\"datetime\">Date/Time</option><option value=\"headline\">$admin_lang_ni_image_title</option><option value=\"body\">Body</option>";
+ 					}
+			echo"</select>";
+				
+
 				if ($cfgrow['display_order']=='default')
 					$toecho = $admin_lang_optn_img_display_default;
 				else
@@ -809,7 +828,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 					$optnval = 'default';
 				
 				echo "
-				$admin_lang_optn_img_display_desc
 				<select name='display_order'><option value='".$cfgrow['display_order']."'>".$toecho."</option>
 				<option value='$optnval'>$optnecho</option>
 				</select>

@@ -13,7 +13,7 @@ mysql_select_db($pixelpost_db_pixelpost) || die("Error: ". mysql_error());
 
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version( $pixelpost_db_prefix);
-if( $installed_version == 1.651) {
+if( $installed_version == 1.652) {
     header("Location: index.php");
     exit;
 }
@@ -134,6 +134,8 @@ switch( $installed_version) {
 	break;
 	case 1.65:
 		UpgradeTo1651($prefix,'1.651');
+	case 1.651:
+		UpgradeTo1652($prefix,'1.652');	
 	break;
 	// Add the upgrade to 1.7 here later
 	default:

@@ -388,9 +388,10 @@ $admin_lang_optn_alt_lang              = "Ustawienia alternatywnego języka: ";
 $admin_lang_optn_alt_lang_dis          = "niedostępne";
 $admin_lang_optn_alt_lang_no           = "nieaktywowany";
 $admin_lang_optn_img_display           = "PORZĄDEK WYŚWIETLANIA ZDJĘĆ";
-$admin_lang_optn_img_display_desc      = "Wybierz porządek, w którym powinny być wyświetlane zdjęcia. Zacznij z: ";
-$admin_lang_optn_img_display_default   = "najnowszym zdjęciem (domyślnie)";
-$admin_lang_optn_img_display_reversed  = "najstarszym zdjęciem (odwrotnie)";
+$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
+$admin_lang_optn_img_display_default		="descending order";
+$admin_lang_optn_img_display_reversed		="ascending order";
+
 
 // Info
 $admin_lang_info_gd           = "Nie zainstalowane, poproś swojego dostawcę o zainstalowanie!";

@@ -12,11 +12,9 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
   } else  {
   	$headline_selection = 'alt_headline';
  	}
-	if ($cfgrow['display_order']=='default'){
-		$image_sorting = 'DESC';
-	} else {
-		$image_sorting = 'ASC';
-	}
+	if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
+	else	$display_order = 'ASC';
+
 	if(is_numeric($_GET['category']) && $_GET['category'] != "")
 	{
 		// Modified from Mark Lewin's hack for multiple categories
@@ -25,13 +23,13 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 													INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
 													WHERE t1.cat_id = '".$_GET['category']."'
 													AND (datetime<='$cdate')
-													ORDER BY datetime ".$image_sorting);
+													ORDER BY ".$cfgrow['display_sort_by']." ".$display_order);
 		$lookingfor = 1;
 	}
 	elseif(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 	{
 		$where = "AND (DATE_FORMAT(datetime, '%Y-%m')='".$_GET['archivedate']."')"; //DATE_FORMAT(foo, '%Y-%m-%d')
-		$query = mysql_query("SELECT 1,id,{$headline_selection},image, datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') $where ORDER BY datetime ".$image_sorting);
+		$query = mysql_query("SELECT 1,id,{$headline_selection},image, datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') $where ORDER BY ".$cfgrow['display_sort_by']." ".$display_order);
 		$lookingfor = 1;
 	}
 	elseif(isset($_POST['category']))
@@ -52,7 +50,8 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 									WHERE (datetime<='$cdate') AND
 									$where
 									GROUP BY t2.id
-									ORDER BY datetime, t2.id ".$image_sorting;
+									ORDER BY ".$cfgrow['display_sort_by']." ".$display_order;
+									//ORDER BY datetime, t2.id ".$image_sorting;
 		$query = mysql_query($querystr);
 	}
 	elseif(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
@@ -76,13 +75,13 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 		AND (t1.id = t2.img_id)
 		$tag_selection
 		GROUP BY t1.id
-		ORDER BY t1.datetime ".$image_sorting;
+		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order;
 		$query = mysql_query($querystr);
 	}
 	else
 	{
 		$lookingfor = 1;
- 		$query = mysql_query("SELECT 1,id,{$headline_selection},image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime ".$image_sorting);
+ 		$query = mysql_query("SELECT 1,id,{$headline_selection},image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY ".$cfgrow['display_sort_by']." ".$display_order);
 	}
 
 

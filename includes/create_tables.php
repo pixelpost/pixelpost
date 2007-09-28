@@ -684,4 +684,19 @@ function UpgradeTo1651( $prefix, $newversion)
 	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";	
 }
 
+function UpgradeTo1652( $prefix, $newversion)
+{
+	global $pixelpost_db_prefix;
+	// admin_langfile field
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `display_sort_by` VARCHAR( 150 ) NOT NULL DEFAULT 'datetime' AFTER `display_order`")
+	or die("Error: ". mysql_error());
+	
+	// update version
+	mysql_query("
+	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
+	")
+	or die("Error: ". mysql_error());
+
+	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";	
+}
 ?>

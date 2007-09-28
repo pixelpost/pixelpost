@@ -44,8 +44,8 @@ $addon_version = "1.0";
 
 $maxpthumb = $cfgrow['maxpthumb'];
 
-if ($cfgrow['display_order']=='default')	$image_sorting = 'DESC';
-else	$image_sorting = 'ASC';
+if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
+else	$display_order = 'ASC';
 
 if (isset($_GET['updatedflagp'])&&$_GET['updatedflagp']=="1")	$isupdated = "<font color='#FF0000'>Updated!</font>";
 else	$isupdated = "";
@@ -308,7 +308,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$where
 		AND (t1.id = t2.image_id)
 		GROUP BY t1.id
-		ORDER BY t1.datetime ".$image_sorting.$limit;
+		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order;
 	} // if ($_GET['archivedate']=="")
 	else if($paged_arch_archdate_flag > 0)
 	{ // archive date is available
@@ -316,7 +316,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
 		$query = "SELECT id,{$headline_selection},image FROM ".$pixelpost_db_prefix."pixelpost
 		WHERE (datetime<='$cdate' and datetime >='$archivedate_start' and datetime <= '$archivedate_end')
-		$where ORDER BY datetime ".$image_sorting.$limit;
+		$where ORDER BY ".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	}
 	else if($paged_arch_tag_flag > 0)
 	{
@@ -330,14 +330,14 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		AND (t1.id = t2.img_id)
 		$tag_selection
 		GROUP BY t1.id
-		ORDER BY t1.datetime ".$image_sorting.$limit;
+		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	}
 	else
 	{
 		$query = "SELECT id, {$headline_selection}, image FROM {$pixelpost_db_prefix}pixelpost
 		WHERE (datetime<='$cdate')
 		GROUP BY id
-		ORDER BY datetime ".$image_sorting.$limit;
+		ORDER BY ".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	}
 
 	$query = mysql_query($query);

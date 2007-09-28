@@ -365,9 +365,9 @@ $admin_lang_optn_alt_lang             = "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         = "disabled";
 $admin_lang_optn_alt_lang_no          = "disabled";
 $admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
-$admin_lang_optn_img_display_desc				="Select the order in which images should be displayed. Start with: ";
-$admin_lang_optn_img_display_default		="newest image (default)";
-$admin_lang_optn_img_display_reversed		="oldest image (reversed)";
+$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
+$admin_lang_optn_img_display_default		="descending order";
+$admin_lang_optn_img_display_reversed		="ascending order";
 
 
 
