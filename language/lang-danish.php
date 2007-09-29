@@ -35,7 +35,7 @@ _____________________________________________________________________________*/
 
 $_lang_file_translator        = 'Andreas M&oslash;gelmose';
 $_lang_file_email             = 'andreas@xerxes.dk';
-$_lang_file_rev               = '1.6';
+$_lang_file_rev               = '1.7';
 
 // IMAGE NAVIGATION
 $lang_previous                    = "Forrige";
@@ -75,7 +75,7 @@ $lang_camera_maker          	= "Kameraproducent:";
 $lang_camera_model          	= "Kameramodel:";
 $lang_flash_fired           	= "Med flash";
 $lang_flash_not_fired       	= "Uden flash";
-$lang_flash_not_detected         = "Flash: Not Detected";
+$lang_flash_not_detected         = "Flash: Ukendt";
 $lang_iso		    			= "ISO:";
 
 // Category
@@ -140,10 +140,10 @@ $lang_email_notificationplain_pt4 = "\n\n---------------------------------------
 // Error message
 $lang_nothing_to_show             	= "Kommer snart! Der er endnu ikke postet noget her or they are set to show in future.";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> before posting another comment.";
+$lang_spamflood										= "Kommentarspam-bestyttelse er slaring;et til. Vent <TIME_TO_WAIT> foslash;r du sender naelig;ste kommentar.";
 
 
 // RSS & ATOM Feed
-$lang_comment_feed_title        = "Newest comments on";
-$lang_comment_feed_image_title  = "New comment on";
+$lang_comment_feed_title        = "Nyeste kommentarer paring;";
+$lang_comment_feed_image_title  = "Ny kommentar paring;";
 ?>

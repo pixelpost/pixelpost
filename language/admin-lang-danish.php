@@ -28,7 +28,7 @@ Dont edit                    ||      Edit                                   */
 
 $_lang_file_translator        = 'Andreas M&oslash;gelmose';
 $_lang_file_email             = 'andreas@xerxes.dk';
-$_lang_file_rev               = '1.6';
+$_lang_file_rev               = '1.7';
 
 $admin_lang_isrtl             = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update            = "Opdater";
@@ -224,7 +224,7 @@ $admin_lang_cmnt_delete1            = "Slettet";
 $admin_lang_cmnt_delete2            = "valgt(e) kommentar(er).";
 $admin_lang_cmnt_edit               = "Rediger";
 $admin_lang_cmnt_edited             = "Kommentar redigeret.";
-$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
+$admin_lang_cmnt_check_all          			= "Vaelig;lg/fravaelig;lg alle";
 $admin_lang_cmnt_invert_checks      = "V&aelig;lg modsatte";
 $admin_lang_cmnt_del_selected       = "Fjern valgte";
 $admin_lang_cmnt_page               = "kommentarer pr. side.";
@@ -243,8 +243,8 @@ $admin_lang_cmnt_error_blacklist    = "Fejl ved opdatering af blacklist: ";
 $admin_lang_cmnt_error_banlist      = "Fejl ved opdatering af referrer-ban-listen: ";
 $admin_lang_cmnt_moderation_que     = "Godkendelses-k&oslash;";
 $admin_lang_cmnt_rep_spam           = 'Rapporter spam';
-$admin_lang_cmnt_submenu1									= "COMMENTS";
-$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_submenu1									= "KOMMENTARER";
+$admin_lang_cmnt_submenu2									= "AFVENTER GODKENDELSE";
 
 
 // Option
@@ -332,11 +332,11 @@ $admin_lang_optn_exif_desc		        = "Skal Pixelpost sl&aring; Exif-information
 $admin_lang_optn_token			          = "BRUG TOKEN VED KOMMENTARER";
 $admin_lang_optn_token_desc		        = "Brug af token vil reducere risikoen for s&aring;kaldte<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Hvis denne funktion er sl&aring;et til vil kommentarer kun bliver gemt, hvis kommentarfeltets token passer med den der er gemt i brugerens session. For at implementere dette skal du tilf&oslash;je <strong>&lt;TOKEN&gt;</strong> til kommentar-skabelonen et sted mellem <strong><i>&lt;form&gt; og &lt;/form&gt;</i></strong>.
-																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
+																				 Hvis du glemmer <strong>&lt;TOKEN&gt;</strong> kommandoen vil kommentarer ikke fungere og brugeren vil se en fejlmeddelse.<br /><br/>\n
 																				 &Oslash;nsker du at sl&aring; denne funktion til?";
 $admin_lang_optn_token_time						= "Maksimal tid i minutter mellem &aring;bning af kommentarvinduet og indsendelsen af en kommenter: ";
-$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
-$admin_lang_optn_dsbl_list 						= "DISTRIBUTED SENDER BLACKHOLE LIST SETTING (http://www.dsbl.org)";
+$admin_lang_optn_token_error					= "Bemaelig;rk: Vaelig;rdier for token-tiden under 1 minut er ikke mulige. Token-tiden er nulstillet til 1 minut.";
+$admin_lang_optn_dsbl_list 						= "DISTRIBUTED SENDER BLACKHOLE LIST INDSTILLINGER (http://www.dsbl.org)";
 $admin_lang_optn_dsbl_list_desc 			= "Listen <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> indeholder IP-adressen p&aring; servere der er s&aring;kaldt &aring;bne relays, &aring;bne proxyer eller har andre sikkerhedsproblemer. Disse servere misbruges ofte af spammere til at sende e-mails men er ogs&aring; kendt for at l&aelig;gge falske kommentarer.<br /> <br />
 																				 Skal kommentar-ip-adressen sammenlignes med denne liste?";
 $admin_lang_optn_time_between_comments = "FOREBYG SPAM FLOOD";
@@ -344,33 +344,33 @@ $admin_lang_optn_time_between_comments_desc = "Antal sekunder f&oslash;r en ny k
 $admin_lang_optn_max_uri_comment			= "MAX ANTAL LINKS I KOMMENTAR";
 $admin_lang_optn_max_uri_comment_desc = "Antal links tilladt i én kommentar: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM FEED INDSTILLINGER";
-$admin_lang_optn_rss_title  					= "Feed title";
-$admin_lang_optn_rss_desc   					= "Feed description";
+$admin_lang_optn_rss_title  					= "Feed titel";
+$admin_lang_optn_rss_desc   					= "Feed beskrivelse";
 $admin_lang_optn_rss_copyright					= "Feed copyright";
-$admin_lang_optn_rss_discovery					= "Feed discovery";
+$admin_lang_optn_rss_discovery					= "Automatisk detektering af feed";
 $admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
 $admin_lang_optn_rss_opt_rss					= "RSS";
 $admin_lang_optn_rss_opt_atom					= "ATOM";
-$admin_lang_optn_rss_opt_ext					= "External";
-$admin_lang_optn_rss_opt_none					= "None";
-$admin_lang_optn_rss_ext_type					= "External feed type";
-$admin_lang_optn_rss_ext						= "External feed";
-$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
+$admin_lang_optn_rss_opt_ext					= "Ekstern";
+$admin_lang_optn_rss_opt_none					= "Ingen";
+$admin_lang_optn_rss_ext_type					= "Ekstern feed type";
+$admin_lang_optn_rss_ext						= "Ekstern feed";
+$admin_lang_optn_rss_enable_comment_feed		= "Slaring; kommentar-feeds til";
 $admin_lang_optn_rsstype_desc					= "V&aelig;lg typen af RSS/ATOM feed:";
 $admin_lang_optn_rss_full							= "Vis billeder i fuld st&oslash;rrelse";
 $admin_lang_optn_rss_thumbs						= "Vis thumbnails";
-$admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
-$admin_lang_optn_rss_full_only						= "Show full size pictures only";
+$admin_lang_optn_rss_thumbs_only					= "Vis kun thumbnails";
+$admin_lang_optn_rss_full_only						= "Vis kun billedet i fuld stoslash;rrelse";
 $admin_lang_optn_rss_text							= "Vis kun tekst";
 $admin_lang_optn_feeditems_desc				= "Antal indl&aelig;g i listen: ";
-$admin_lang_optn_lang                  = "Base language settings: ";
+$admin_lang_optn_lang                  = "Grundlaelig;ggende sprogindstillinger: ";
 $admin_lang_optn_alt_lang             = "Indstillinger for alternative sprog: ";
 $admin_lang_optn_alt_lang_dis         = "sl&aring;et fra";
 $admin_lang_optn_alt_lang_no          = "sl&aring;et fra";
-$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
-$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
-$admin_lang_optn_img_display_default		="descending order";
-$admin_lang_optn_img_display_reversed		="ascending order";
+$admin_lang_optn_img_display						="BILLEDRaelig;KKEFoslash;LGE";
+$admin_lang_optn_img_display_desc				="Vaelig;lg hvordan billederne skal sorteres ved visning. Sorter efter: ";
+$admin_lang_optn_img_display_default		="faldende raelig;kkefoslash;lge";
+$admin_lang_optn_img_display_reversed		="stigende raelig;kkefoslash;lge";
 
 
 // Info
@@ -414,8 +414,8 @@ $admin_lang_pp_lng_author            = 'Forfatter';
 $admin_lang_pp_lng_ver               = 'Version';
 $admin_lang_pp_lng_email             = 'E-mail';
 $admin_lang_pp_newest_ver            = 'Du har den nyeste version af Pixelpost!';
-$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
-$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
+$admin_lang_pp_thumbnailpath 				 = "Gaelig;ttet sti til thumbnails";
+$admin_lang_pp_thumbnailpath_conf 	 = "Indstillet sti til thumbnails";
 
 // AddOns
 $admin_lang_addon_title              = "Installerede tilf&oslash;jelse";
@@ -431,7 +431,7 @@ $admin_lang_pp_up_error_3            = "Filen blev ikke fuldt uploadet.";
 $admin_lang_pp_up_error_4            = "Der blev ikke uploadet nogen fil.";
 $admin_lang_pp_up_error_6            = "Mangler en midlertidig mappe (temp).";
 $admin_lang_pp_up_error_7            = "Kunne ikke skrive til disken.";
-$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
+$admin_lang_pp_addon_error								= "Pixelpost er ikke i stand til at laelig;se add-on-filen. Kontroller chmod indstillingerne og saelig;t dem til 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "TIDSSTEMPLER";
@@ -456,7 +456,7 @@ $admin_lang_spam_err_8      = "Fejl ved sletning af bes&oslash;gende ved sammenl
 $admin_lang_spam_visit_del  = "Udf&oslash;rt: Kommentarer med ord/IP'er fra bad-referrer-listen er slettet.";
 
 // Spam
-$admin_lang_spam_ban        = "Opdater Ban Lists";
+$admin_lang_spam_ban        = "Opdater banlister";
 $admin_lang_spam_content    = "Tilf&oslash;j lister med ikke tilladte ord/IP'er/navne i tekst-felterne herunder, et ord pr. linie.<br/>\n
                                Kommentarer med ord, IP'er eller navne der optr&aelig;der i godkendelseslisten bliver sat i k&oslash; til godkendelse.<br/>\n
                                Kommentarer med ord, IP'er eller navne der optr&aelig;der i blacklisten bliver f&aring;r slet ikke lov at blive sendt.<br/>

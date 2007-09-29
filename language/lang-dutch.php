@@ -36,15 +36,15 @@ Dont edit                     ||       Edit                                    *
 
 $_lang_file_translator        = 'Schonhose - <a href="http://foto.schonhose.nl/" target="_blank">foto.schonhose.nl</a>';
 $_lang_file_email             = 'schonhose@pixelpost.org';
-$_lang_file_rev               = '1.0.0';
+$_lang_file_rev               = '1.7';
 
 // IMAGE NAVIGATION
-$lang_nothing_to_show          = "Nog niet gereed! Hier zijn nog geen foto's te bekijken!";
+$lang_nothing_to_show          = "Nog niet gereed! Hier zijn nog geen afbeeldingen te bekijken!";
 
 $lang_previous                 = "Vorige";
 $lang_next                     = "Volgende";
-$lang_no_previous              = "Geen vorige foto";
-$lang_no_next                  = "Geen volgende foto";
+$lang_no_previous              = "Geen vorige afbeelding";
+$lang_no_next                  = "Geen volgende afbeelding";
 $lang_latest									 = "Laatste";
 $lang_first										 = "Eerste";
 $lang_browse_select_category   = "Kies categorie";
@@ -53,17 +53,17 @@ $lang_permalink                = "Permalink";
 $lang_paged_archive						 = "Archief";
 
 // COMMENTS
-$lang_message_missing_image   = "Geen foto geselecteerd. Uw reactie werd niet bewaard.";
+$lang_message_missing_image   = "Geen afbeelding geselecteerd. Uw reactie werd niet bewaard.";
 $lang_message_missing_comment = "Geen commentaar ingevoerd. Uw reactie werd niet bewaard.";
 $lang_visit_homepage          = "Bezoek de voorpagina";
 $lang_no_comments_yet         = "Nog geen reacties.";
-$lang_comment_thank_you       = "Bedankt voor je bezoek en om de tijd te nemen om een reactie te geven op een foto.\nDeze pagina wordt automatisch gerefreshed na 5 seconden";
+$lang_comment_thank_you       = "Bedankt voor je bezoek en om de tijd te nemen om een reactie te geven op een afbeelding.\nDeze pagina wordt automatisch ververst na 5 seconden";
 $lang_comment_redirect        = "Klik hier om terug te keren.";
 $lang_comment_redirect_error  = "Fout tijdens het opslaan van de reactie! Klik om terug te keren wanneer u niet automatisch teruggestuurd wordt.";
 $lang_comment_page_title      = "Reactie";
 $lang_comment_popup           = "Reacties";
 $lang_message_banned_comment  = "Uw reactie kan niet bewaard worden! Het bevat &eacute;&eacute;n of meerdere verboden woorden/email/ips.";
-$lang_comment_popup_disabled  = "Reacties op deze foto is uitgeschakeld.";
+$lang_comment_popup_disabled  = "Reacties geven op deze afbeelding is uitgeschakeld.";
 $lang_comment_plural				  = "Reacties";
 $lang_comment_single					= "Reactie";
 $lang_tags                    = "Label:<br/>";

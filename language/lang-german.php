@@ -30,9 +30,9 @@ Die SPRACHDATEI-VARIABLEN:
 
 Linke Seite: Nichts aendern!      ||    rechte Seite: aendern, wenn gewuenscht */
 
-$_lang_file_translator        = 'Connie M&uuml;ller-G&ouml;decke - <a href="http://www.zweiterblick.de/" target="_blank">www.zweiterblick.de</a>';
-$_lang_file_email             = 'connie@pixelpost.org';
-$_lang_file_rev               = '1.6';
+$_lang_file_translator        = 'Marek Nierychlo - <a href="http://lichtlauschen.mareknierychlo.de/" target="_blank">lichtlauschen</a>';
+$_lang_file_email             = 'mareknierychlo@gmail.com';
+$_lang_file_rev               = '1.7';
 
 // IMAGE NAVIGATION
 $lang_previous                    = "zur&uuml;ck";
@@ -57,12 +57,12 @@ $lang_comment_redirect         = "Klicken Sie hier um zur&uuml;ckzukehren";
 $lang_comment_redirect_error   = "Kommentar konnte nicht eingetragen werden. Klicken Sie hier, um zur&uuml;ck zur Eingabe zu kommen, falls die automatische Umleitung nicht funktioniert.";
 $lang_comment_page_title       = "Kommentar";
 $lang_comment_popup            = "Kommentare";
-$lang_message_banned_comment   = "Ihr Kommentar wurde nicht gespeichert, da er Worte, Email-Adressen oder IP-Adressen enth&auml;lt, die in Ban-Listen vorkommen.";
+$lang_message_banned_comment   = "Ihr Kommentar wurde nicht gespeichert, da er Worte, E-Mmail-Adressen oder IP-Adressen enth&auml;lt, die in Ban-Listen vorkommen.";
 $lang_comment_popup_disabled   = "Die Kommentarfunktion wurde f&uuml;r dieses Bild ausgeschaltet.";
 $lang_comment_plural						 = "Kommentare";
 $lang_comment_single						 = "Kommentar";
 $lang_tags                     = "Tags:<br/>";
-$lang_none                       = "none";
+$lang_none                       = "keine";
 
 // EXIF DATA
 $lang_exposure              = "Verschlusszeit:";
@@ -73,7 +73,7 @@ $lang_camera_maker          = "Hersteller:";
 $lang_camera_model          = "Kamera-Modell:";
 $lang_flash_fired           = "Blitz:";
 $lang_flash_not_fired       = "Kein Blitz";
-$lang_flash_not_detected         = "Flash: Not Detected";
+$lang_flash_not_detected         = "Blitz: Keine Blitz erkannt";
 $lang_iso		            = "ISO:";
 
 // Category
@@ -122,7 +122,7 @@ $lang_alt_lang_danish						="Dansk";
 // Email Notification
 
 $lang_email_notification_subject = "Neuer Kommentar";
-$lang_email_notification_pt1 = "Hallo,<br>ein neuer Kommentar wurde in Ihrem Photoblog eingetragen.<br><br>";
+$lang_email_notification_pt1 = "Hallo,<br>ein neuer Kommentar wurde in Ihrem Fotoblog eingetragen.<br><br>";
 $lang_email_notification_pt2 = "<br>Kommentartext<br>----------------------------------------------------------------------<br>";
 $lang_email_notification_pt3 = "abgegeben von";
 $lang_email_notification_pt4 = "----------------------------------------------------------------------<br>diese Mail wurde von Pixelpost automatisch versandt<br>";
@@ -138,7 +138,7 @@ $lang_email_notificationplain_pt3 = "abgegeben von";
 $lang_email_notificationplain_pt4 = "\n\n---------------------------------------------------------------------- \n\ndies ist eine von Pixelpost automatisch erstellte Benachrichtigung";
 
 // Error Message
-$lang_nothing_to_show             = "Das Photoblog enth&auml;lt noch keine Bilder. Erst am Anfang! Kommen Sie sp&auml;ter nochmal vorbei or they are set to show in future!";
+$lang_nothing_to_show             = "Das Fotoblog enth&auml;lt noch keine Bilder. Kommen Sie sp&auml;ter noch Mal vorbei!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
 $lang_spamflood										= "Schutz vor Spam-Flut ist aktiviert! Sie m&uuml;ssen <TIME_TO_WAIT> warten, bis Sie einen neuen Kommentar abgeben k&ouml;nnen.";
 
