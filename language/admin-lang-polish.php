@@ -388,9 +388,9 @@ $admin_lang_optn_alt_lang              = "Ustawienia alternatywnego języka: ";
 $admin_lang_optn_alt_lang_dis          = "niedostępne";
 $admin_lang_optn_alt_lang_no           = "nieaktywowany";
 $admin_lang_optn_img_display           = "PORZĄDEK WYŚWIETLANIA ZDJĘĆ";
-$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
-$admin_lang_optn_img_display_default		="descending order";
-$admin_lang_optn_img_display_reversed		="ascending order";
+$admin_lang_optn_img_display_desc				="Wybierz sposób sortowania wyświetlanych obrazków. Sortuj stosując: ";
+$admin_lang_optn_img_display_default		="porządek malejący";
+$admin_lang_optn_img_display_reversed		="porządek rosnący";
 
 
 // Info
