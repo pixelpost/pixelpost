@@ -31,6 +31,8 @@ Copy calendar.php to addons directory.<br />
 <b>&lt;SITE_CALENDAR&gt;</b> - insert this tag in image_template.html.<br />
 ";
 
+global $image_id;
+
 $sunday_first = 1;  //set to "1" if you want sunday displayed first in the week in vertical type.
 $use_lang_var = 1; // set it to "1" if you want to use the language-variables from the active language file
 
@@ -63,7 +65,7 @@ if(!$curr_day) { $curr_day = date("j"); }
 
 if(!isset($_GET['showimage'])){ $showimage = $image_id; }else{$showimage = $_GET['showimage'];}
 
-if (isset($_GET['showimage']) && $_GET['showimage'] !="" && $_GET['curr_month'] ==""){
+if (isset($_GET['showimage']) && $_GET['showimage'] !="" && $curr_month == ""){
   $showimage = $_GET['showimage'];
 	$query2 = mysql_query("select * from ".$pixelpost_db_prefix."pixelpost where (id='$showimage') and (datetime<='$cdate')");
 	while(list($img_id,$img_datetime) = mysql_fetch_row($query2)) {
