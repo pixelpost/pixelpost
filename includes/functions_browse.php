@@ -14,14 +14,16 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
  	}
 	if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
 	else	$display_order = 'ASC';
-
-	if(is_numeric($_GET['category']) && $_GET['category'] != "")
+	
+	if(isset($_GET['category'])) { $pp_cat = $_GET['category']; }else{ $pp_cat = 0; }
+	
+	if(is_numeric($pp_cat) && $pp_cat != "")
 	{
 		// Modified from Mark Lewin's hack for multiple categories
 		$query = mysql_query("SELECT 1,t2.id,{$headline_selection},image,datetime
 													FROM  {$pixelpost_db_prefix}catassoc as t1
 													INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
-													WHERE t1.cat_id = '".$_GET['category']."'
+													WHERE t1.cat_id = '".$pp_cat."'
 													AND (datetime<='$cdate')
 													ORDER BY ".$cfgrow['display_sort_by']." ".$display_order);
 		$lookingfor = 1;
