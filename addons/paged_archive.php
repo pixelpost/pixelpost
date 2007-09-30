@@ -576,13 +576,14 @@ $browse_select .= "</select>";
 $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
 /* TAGS support */
-$tags_output = '<div id="tag_cloud">';
-$tags_paged_output = $tags_output;
-$tags_output_reversed = $tags_output;
-$tags_paged_output_reversed = $tags_output;
+if(!isset($_GET['x']) || $_GET['x']!='browse'){
+// only do this when we're not on the browse page.
+	$tags_output = '<div id="tag_cloud">';
+	$tags_paged_output = $tags_output;
+	$tags_output_reversed = $tags_output;
+	$tags_paged_output_reversed = $tags_output;
 
-
-$default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
+	$default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
 
 if($language_abr == $default_language_abr)	$queryr = "SELECT COUNT(*) AS max
 		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t
@@ -641,17 +642,24 @@ else	$queryr = "SELECT alt_tag
 		WHERE img_id = " . $image_id . " AND alt_tag != ''
 		ORDER BY alt_tag";
 
+die($queryr);
 $tags = mysql_query($queryr);
 
 $tags_img = "";
 $tags_paged_img = "";
 $tags_keywords ="";
 
-while(list($tag)  = mysql_fetch_array($tags))
-{
-	$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
-	$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
-	$tags_keywords .= $tag.', ';
+if (mysql_num_rows($tags)>0){
+	while(list($tag)  = mysql_fetch_array($tags))
+	{
+		$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
+		$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
+		$tags_keywords .= $tag.', ';
+	}
+} else {
+	$tags_img =NULL;
+	$tags_paged_img =NULL;
+	$tags_keywords = NULL;
 }
 
 if($tags_img == '')
@@ -671,7 +679,7 @@ $tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output_reversed
 $tpl = str_replace("<TAG_IMG_LIST>",$tags_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_PAGED>",$tags_paged_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_KEYWORDS>",$tags_keywords,$tpl); // list of tags for meta keywords
-
+} // end do this not on the browse page
 //----------------- Build the additional new tages
 //-- If you use paged archive
 if (isset($pagenum))
