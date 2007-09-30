@@ -168,7 +168,6 @@ if($_GET['view'] == "comments") {
 				// count comments!
 				$commentnumb = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments".$moderate_where2);
 				$pixelpost_commentnumb = $commentnumb['count'];
-
 				// get the number of comments in moderation
  				$commentnumb_moderation = sql_array("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='no' ");
 
@@ -200,7 +199,7 @@ if($_GET['view'] == "comments") {
        	// calculate the number of pages
 				$num_cmt_pages = ceil($pixelpost_commentnumb/$_SESSION['numimg_pp']);
 				$num_cmt_pages = ($num_cmt_pages > 0)	? $num_cmt_pages : 1;
-
+				
 				// styles for highlighting the actual link
 				$allstyle = ($_GET['show'] == ''?' style="border-color:#ff6d6d;"':'');	
 				$pubstyle = ($_GET['show']=='published'?' style="border-color:#ff6d6d;"':'');
@@ -210,7 +209,7 @@ if($_GET['view'] == "comments") {
 				<span id=\"smaller\">$admin_lang_cmnt_massdelete_text</span></div>
 				<div class=\"content\">
 
-				<form method=\"post\" name=\"managecomments\" id=\"managecomments\" action=\"index.php?view=comments\" accept-charset=\"UTF-8\">
+				<form method=\"post\" name=\"managecomments\" id=\"managecomments\" action=\"".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."\" accept-charset=\"UTF-8\">
 
 				<!-- Moderation Buttons! -->
 				<!-- all boxes -->
@@ -219,22 +218,22 @@ if($_GET['view'] == "comments") {
         <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('managecomments')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
 				<!-- delete selected -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massdelete'
+				document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=massdelete'
 				return confirm('Delete all selected comments? \\n  \'Cancel\' to stop, \'OK\' to delete.')
 				\"/>
 				<!-- report as spam -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_rep_spam\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=spamdelete' \"/>";
+				document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=spamdelete' \"/>";
 				
 			  if ($_GET['show']=='masked'){ 
 				echo "<br /><br /><!-- publish selected comments -->
 				<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
-							document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" />";
+							document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=masspublish' \" />";
 				}
 				if ($moderate_where == " and publish='yes' "){
 				echo "<br /><br /><!-- unpublish selected comments -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />";
+				document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=massunpublish' \" />";
 				}
 				
 
@@ -284,7 +283,7 @@ if($_GET['view'] == "comments") {
 				 echo "<i>$admin_lang_cmnt_commenter $datetime. $admin_lang_cmnt_ip  $ip.<br /></i>";
 				}				
 				echo"<input type='checkbox' name='moderate_commnts_boxes[]' value='$id' />
-				<a onclick=\"return  confirmDeleteComment()\" href=\"$PHP_SELF?view=comments&amp;action=delete&amp;delid=$id\">
+				<a onclick=\"return  confirmDeleteComment()\" href=\"".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=delete&amp;delid=$id\">
 				[$admin_lang_cmnt_delete]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<!-- To add edit ability to admin/comments page -->
@@ -293,7 +292,7 @@ if($_GET['view'] == "comments") {
 				<script language='javascript' type='text/javascript'>flip('editme$id');</script>
 				<textarea name='message$id' rows='4' cols='70' >$edit_message</textarea><br/>
 				<input type='submit' class='cmnt-buttons' value='$admin_lang_cmnt_save'
-				onclick=\" document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=edit&amp;editid=$id' \"
+				onclick=\" document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=edit&amp;editid=$id' \"
 				/>
 				<!-- </form> -->
 				</div></li>";
@@ -305,12 +304,12 @@ if($_GET['view'] == "comments") {
  			  if ($_GET['show']=='masked'){ 
 					echo "<!-- publish selected comments -->
 					<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
-								document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=masspublish' \" />";
+								document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=masspublish' \" />";
 				}
 				if ($moderate_where == " and publish='yes' "){
 				echo "<!-- unpublish selected comments -->
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitunpublish\" value=\"$admin_lang_cmnt_unpublish_sel\" onclick=\"
-				document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=massunpublish' \" />";
+				document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=massunpublish' \" />";
 				}
 				eval_addon_admin_workspace_menu('show_commentbuttons_bottom');
    	    echo "</form><br />";
@@ -356,9 +355,9 @@ if($_GET['view'] == "comments") {
 	      }
 
 				if (isset($_GET['show']))
-	       	echo '<form method="post" action="'.$PHP_SELF .'?view=comments&page=0&amp;show='.$_GET['show'].'" accept-charset="UTF-8">';
+	       	echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'].'&page=0&amp;show='.$_GET['show'].'" accept-charset="UTF-8">';
 				else
-	       	echo '<form method="post" action="'.$PHP_SELF .'?view=comments&page=0" accept-charset="UTF-8">';
+	       	echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'].'&page=0" accept-charset="UTF-8">';
 
 				echo $admin_lang_show.' ';
 				echo '<input type="text" name="numimg_pp" size="3" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_cmnt_page

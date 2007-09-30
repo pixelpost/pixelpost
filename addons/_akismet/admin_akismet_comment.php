@@ -40,7 +40,22 @@ add_admin_functions('get_akismet_pages', 'pages_commentbuttons');
 add_admin_functions('get_akismet_pages', 'single_comment_list');
 add_admin_functions('get_akismet_style', 'admin_html_head');
 
+//global declaration
+GLOBAL $akismet_result_message;
 
+//Check whether ADMIN has submitted comment to mark as spam for Akismet
+if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetspam') {
+  if (pp_submit_spam_comment()) {
+    $GLOBALS['akismet_result_message'] = '<div class="jcaption confirm">Selected comments reported as spam to Akismet</div>';
+  }
+}
+
+//Check whether ADMIN has submitted comment to mark as spam for Akismet
+if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetnotspam') {
+  if (pp_submit_nonspam_comment()) {
+    $GLOBALS['akismet_result_message'] = '<div class="jcaption confirm">Selected comments reported as not spam to Akismet</div>';
+  }
+}
 
 function get_akismet_links()
 {
@@ -58,6 +73,9 @@ function get_akismet_links()
 	      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
     	  return confirm('Report all selected comments as Spam to Akismet?');\" />";
     }
+    if ((isset($GLOBALS['akismet_result_message'])) && ($GLOBALS['akismet_result_message']!="")){
+	 		echo "<br /><br />".$GLOBALS['akismet_result_message'];
+		}
 }
 
 function get_akismet_links2()
@@ -97,7 +115,7 @@ function get_akismet_style() {
 	$count = mysql_fetch_array($query);
 	echo '<style  type="text/css">
 	.akismet-spam-comment {background-color:#eca189;color:#666;}
-	</style><script type="text/javascript" src="../addons/_defensio/libraries/domFunction.js"></script>
+	</style><script type="text/javascript" src="../addons/_akismet/libraries/domFunction.js"></script>
 	<script type="text/javascript" charset="utf-8">
 	var ElementReady;
 		
@@ -290,7 +308,7 @@ function pp_submit_nonspam_comment () {
     }
     return true;
   } else {
-    echo '<div class="jcaption confirm">You must select at least one comment.</div>';
+    $GLOBALS['akismet_result_message'] = '<div class="jcaption confirm">You must select at least one comment.</div>';
     return false;;
   }
 }
@@ -323,24 +341,8 @@ function pp_submit_spam_comment () {
     }
     return true;
   } else {
-    echo '<div class="jcaption confirm">You must select at least one comment.</div>';
+    $GLOBALS['akismet_result_message'] = '<div class="jcaption confirm">You must select at least one comment.</div>';
     return false;
-  }
-}
-
-
-
-//Check whether ADMIN has submitted comment to mark as spam for Akismet
-if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetspam') {
-  if (pp_submit_spam_comment()) {
-    echo '<div class="jcaption confirm">Selected comments reported as spam to Akismet</div>';
-  }
-}
-
-//Check whether ADMIN has submitted comment to mark as spam for Akismet
-if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetnotspam') {
-  if (pp_submit_nonspam_comment()) {
-    echo '<div class="jcaption confirm">Selected comments reported as not spam to Akismet</div>';
   }
 }
 ?>
