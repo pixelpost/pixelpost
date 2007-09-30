@@ -913,26 +913,31 @@ require("includes/functions_feeds.php");
 
 $tpl = ereg_replace("<SITE_BROWSELINK>","./index.php?x=browse",$tpl);
 $tpl = ereg_replace("<SITE_BROWSELINK_PAGED>","./index.php?x=browse&amp;pagenum=1",$tpl);
-$tpl = ereg_replace("<SITE_PHOTONUMBER>",$pixelpost_photonumb,$tpl);
-$tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
-$tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
-$tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
-$tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
 
-if($image_comments_number != 1) {
 
-	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_plural,$tpl);
-}else{
+if(!isset($_GET['x']) || isset($_GET['showimage'])){
 
-	$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_single,$tpl);
-}
+	$tpl = ereg_replace("<SITE_PHOTONUMBER>",$pixelpost_photonumb,$tpl);
+	$tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
+	$tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
+	$tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
+	$tpl = ereg_replace("<LATEST_COMMENT_NAME>",$latest_comment_name,$tpl);
 
-if ($row['comments'] == 'F'){
+	if($image_comments_number != 1) {
 
-	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);
-}else{
+		$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_plural,$tpl);
+	}else{
 
-	$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
+		$tpl = ereg_replace("<IMAGE_COMMENT_TEXT>",$lang_comment_single,$tpl);
+	}
+
+	if ($row['comments'] == 'F'){
+
+		$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"alert('$lang_comment_popup_disabled');\">$lang_comment_popup</a>",$tpl);
+	}else{
+
+		$tpl = ereg_replace("<COMMENT_POPUP>","<a href='index.php?showimage=$image_id' onclick=\"window.open('index.php?popup=comment&amp;showimage=$image_id','Comments','width=480,height=540,scrollbars=yes,resizable=yes');\">$lang_comment_popup</a>",$tpl);
+	}
 }
 
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
