@@ -458,14 +458,16 @@ function book_visitor($str)
 	// book a visitor
 	$datetime = gmdate("Y-m-d H:i:s",gmdate("U")+(3600 * $cfgrow['timezone']));
 	$host = $_SERVER['HTTP_HOST'];
-	$referer = addslashes($_SERVER['HTTP_REFERER']);
-
-	// don't book a referer from self
-	$refererhost = parse_url($referer);
-	$refererhost = $refererhost['host'];
-	if($refererhost == $host)
-	{
-   	$referer = "";
+	if(isset($_SERVER['HTTP_REFERER'])){
+		$referer = addslashes($_SERVER['HTTP_REFERER']);
+		// don't book a referer from self
+		$refererhost = parse_url($referer);
+		$refererhost = $refererhost['host'];
+		if($refererhost == $host){
+		   	$referer = "";
+		}
+	} else {
+		$referer="";
 	}
 	$ua = addslashes($_SERVER['HTTP_USER_AGENT']);
 	$ip = $_SERVER['REMOTE_ADDR'];
@@ -481,7 +483,7 @@ function book_visitor($str)
 
 function sql_array($str)
 {
-	$query = mysql_query($str);
+	$query = mysql_query($str) or die( mysql_error());
 	$row = mysql_fetch_array($query);
 	return $row;
 }

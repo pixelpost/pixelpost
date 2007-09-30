@@ -56,6 +56,7 @@ start_mysql();
 $dir = "addons/";
 refresh_addons_table($dir);
 $addon_front_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
+$addon_admin_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
 create_front_addon_array();
 //------------- addons in frontpage ends
 
@@ -506,7 +507,7 @@ if(!isset($_GET['x']) /*$_GET['x'] == ""*/)
 	}
 	else
 	{
-		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE ORDER BY datetime asc limit 0,1");
+		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost  ORDER BY datetime asc limit 0,1");
 	}
 
 	$first_image_name = $first_image_row['image'];
