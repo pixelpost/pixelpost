@@ -43,7 +43,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
-error_reporting(E_ALL);
+error_reporting(0);
 
 $PHP_SELF = "index.php";
 
