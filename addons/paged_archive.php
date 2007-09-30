@@ -290,20 +290,20 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	$pagenum = ($_GET['pagenum']!='') ? (int)$_GET['pagenum'] : 1;
 	// did user select a category?
 
-	if($_GET['category'] != "")
+	if(isset($_GET['category']) && $_GET['category'] != "")
 	{
 		$where = "and (t2.cat_id ='".(int)$_GET['category']."')";
 	}
 
 	// do you use links with page number?
-	if ($_GET['pagenum'] != "")
+	if (isset($_GET['pagenum']) && $_GET['pagenum'] != "")
 	{
 		$start = $maxnumber_thumbs*((int)$_GET['pagenum']-1);// calculate start and end of the thumbs in the selected page
 		$limit = " LIMIT $start , $maxnumber_thumbs "; // create the limit command (in MS-SQL this should be TOP)
 	}// end if ($_GET['pagenum'] != "")
 
 	// build query
-	if (!isset($_GET['archivedate']) && $_GET['category'] != "")
+	if (!isset($_GET['archivedate']) && isset($_GET['category']) && $_GET['category'] != "")
 	{
 	// no archive date
 		$query = "SELECT t1.id,t1.{$headline_selection},t1.image
@@ -415,7 +415,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	// initialize archive links
 	$Archive_pages_Links = "";
 	// selected category id
-	$cat_id = $_GET['category'];
+	if (isset($_GET['category'])){
+		$cat_id = $_GET['category'];
+	} else {
+		$cat_id = null;
+	}
 
 	//-------- Make page number to archive as links (for the selected category)
 
@@ -642,7 +646,6 @@ else	$queryr = "SELECT alt_tag
 		WHERE img_id = " . $image_id . " AND alt_tag != ''
 		ORDER BY alt_tag";
 
-die($queryr);
 $tags = mysql_query($queryr);
 
 $tags_img = "";
