@@ -71,10 +71,7 @@ a {
 
 #navigation {
    clear:right;
-   margin-top:0px;
-   margin-left:0px;
-   margin-right:0px;
-   margin-bottom:0px;
+   margin:0px;
    background:#ffffff;
    color:#993333;
    font-size:12px;
@@ -89,7 +86,7 @@ a {
 #navigation a {
    color:#993333;
    text-decoration:none;
-   padding:9px;
+   padding:8px;
    }
 
 #navigation a:hover {
