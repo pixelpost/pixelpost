@@ -616,7 +616,8 @@ function add_new_addons_2table($dir)
 			while (false !== ($file = readdir($handle)))
 			{
 				if($file != "." && $file != "..")
-				{ 
+				{
+				  $ftype=""; 
 				  if (is_dir( $dir."/".$file )){
 					  $sub_dir = $file;
  				    if (substr ($sub_dir, 0, 1)=="_"){
