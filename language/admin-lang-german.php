@@ -330,7 +330,7 @@ $admin_lang_optn_pass_notchngd_txt   = "Passwort wurde nicht ge&auml;ndert.Geben
 $admin_lang_optn_thumb_updated       = "Miniaturbilder aktualisiert!";
 $admin_lang_optn_updated             = "Miniaturbilder aktualisiert.";
 $admin_lang_optn_img_display						="Anordnung der Bilderausgabe";
-$admin_lang_optn_img_display_desc				="Wählen Sie die Art und Weise aus, wie die Bilder bei der Ausgabe sortiert werden sollen. Sortieren: ";
+$admin_lang_optn_img_display_desc				="WÃ¤hlen Sie die Art und Weise aus, wie die Bilder bei der Ausgabe sortiert werden sollen. Sortieren: ";
 $admin_lang_optn_img_display_default		="absteigender Reihenfolge";
 $admin_lang_optn_img_display_reversed		="aufsteigender Reihenfolge";
 
@@ -392,7 +392,7 @@ $admin_lang_pp_up_error_3           = "Datei wurde nicht komplett &uuml;bertrage
 $admin_lang_pp_up_error_4           = "Es wurde keine Datei hochgeladen.";
 $admin_lang_pp_up_error_6           = "Tempor&auml;rer Ordner fehlt.";
 $admin_lang_pp_up_error_7           = "Datei konnte nicht geschrieben werden.";
-$admin_lang_pp_addon_error								= "Pixelpost ist nicht in der Lage die Erweiterungsdatei zu lesen. Bitte überprüfen Sie die chmod-Einstellungen und ändern Sie diese zu 755";
+$admin_lang_pp_addon_error								= "Pixelpost ist nicht in der Lage die Erweiterungsdatei zu lesen. Bitte Ã¼berprÃ¼fen Sie die chmod-Einstellungen und Ã¤ndern Sie diese zu 755";
 $admin_lang_cmnt_moderation_que     = "Freigabe-Queue";
 
 
@@ -446,13 +446,13 @@ $admin_lang_optn_exif			            = "Exif verwenden";
 $admin_lang_optn_exif_desc		        = "Soll Pixelpost die Exif-Funktion in der Bildseite verwenden?";
 $admin_lang_optn_token			          = "Token in Formularen aktivieren";
 $admin_lang_optn_token_desc		        = "Die Verwendung eines Token reduziert die Wahrscheinlichkeit von <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-																				 Wenn diese Option aktiviert ist, werden Kommentare nur gespeichert, wenn der Token im Formular dem Token in der Benutzer-Session entspricht. Um das zu implementieren müssen Sie <strong>&lt;TOKEN&gt;</strong> im Kommentarfeld einfügen (irgendwo zwischen den <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> Tags).
-																				 Wenn Sie das <strong>&lt;TOKEN&gt;</strong> Tag nicht einfügen, wird das Kommentieren nicht mehr funktionieren und der Besucher bekommt eine Fehlermeldung.<br /><br/>\n
+																				 Wenn diese Option aktiviert ist, werden Kommentare nur gespeichert, wenn der Token im Formular dem Token in der Benutzer-Session entspricht. Um das zu implementieren mÃ¼ssen Sie <strong>&lt;TOKEN&gt;</strong> im Kommentarfeld einfÃ¼gen (irgendwo zwischen den <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> Tags).
+																				 Wenn Sie das <strong>&lt;TOKEN&gt;</strong> Tag nicht einfÃ¼gen, wird das Kommentieren nicht mehr funktionieren und der Besucher bekommt eine Fehlermeldung.<br /><br/>\n
 																				 Soll diese Option aktiviert werden?";
 $admin_lang_optn_token_time						= "Maximale Zeit in Minuten zwischen dem &Ouml;ffnen des Kommentarfensters und dem Absenden eines Kommentars: ";
-$admin_lang_optn_token_error					= "Achtung: Werte kleiner als 1 Minute für Token sind nicht m&ouml;glich. Token Zeit wurde auf 1 Minute gesetzt.";
-$admin_lang_optn_dsbl_list 						= "Einstellungen für Distributed Sender Blackhole List (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc 			= "Die <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> enthält die IP-Adressen von offenen Servern (Open Relay, Open Proxy oder andere Sicherheitslücken). Solche Server werden oft von Spammern mißbraucht, um E-Mails oder Kommentare zu senden.<br /> <br />
+$admin_lang_optn_token_error					= "Achtung: Werte kleiner als 1 Minute fÃ¼r Token sind nicht m&ouml;glich. Token Zeit wurde auf 1 Minute gesetzt.";
+$admin_lang_optn_dsbl_list 						= "Einstellungen fÃ¼r Distributed Sender Blackhole List (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list_desc 			= "Die <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> enthÃ¤lt die IP-Adressen von offenen Servern (Open Relay, Open Proxy oder andere SicherheitslÃ¼cken). Solche Server werden oft von Spammern miÃŸbraucht, um E-Mails oder Kommentare zu senden.<br /> <br />
 																				Soll die IP-Adresse eines Kommentars in der Distributed Sender Blackhole List gepr&uuml;ft werden?";
 $admin_lang_optn_time_between_comments = "Schutz vor Massen-SPAM";
 $admin_lang_optn_time_between_comments_desc = "Anzahl der Sekunden bevor ein neuer Kommentar gepostet werden kann (automatisierten Massenversand verhindern): ";
@@ -471,7 +471,7 @@ $admin_lang_optn_rss_opt_none					= "Keine";
 $admin_lang_optn_rss_ext_type					= "Externer Feedtyp";
 $admin_lang_optn_rss_ext						= "Externer Feed";
 $admin_lang_optn_rss_enable_comment_feed		= "Aktivere Kommentar-Feed";
-$admin_lang_optn_rsstype_desc					= "Wählen Sie die Darstellung des RSS/ATOM Feed:";
+$admin_lang_optn_rsstype_desc					= "WÃ¤hlen Sie die Darstellung des RSS/ATOM Feed:";
 $admin_lang_optn_rss_full							= "Bilder in voller Gr&ouml;&szlig;e zeigen";
 $admin_lang_optn_rss_thumbs						= "Vorschaubilder zeigen";
 $admin_lang_optn_rss_thumbs_only					= "Nur Vorschaubilder zeigen";
@@ -480,8 +480,8 @@ $admin_lang_optn_rss_text							= "Nur Text zeigen";
 $admin_lang_optn_feeditems_desc				= "Anzahl der Eintr&auml;ge in der Feed-Liste: ";
 $admin_lang_optn_lang                  = "Einstellungen f&uuml;r die Hauptsprache: ";
 $admin_lang_optn_alt_lang             = "Zweite Sprache: ";
-$admin_lang_optn_alt_lang_dis         = "nicht ausgewählt";
-$admin_lang_optn_alt_lang_no          = "nicht ausgewählt";
+$admin_lang_optn_alt_lang_dis         = "nicht ausgewÃ¤hlt";
+$admin_lang_optn_alt_lang_no          = "nicht ausgewÃ¤hlt";
 
 
 

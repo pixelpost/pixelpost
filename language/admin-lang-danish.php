@@ -342,7 +342,7 @@ $admin_lang_optn_dsbl_list_desc 			= "Listen <a href=\"http://www.dsbl.org\" tar
 $admin_lang_optn_time_between_comments = "FOREBYG SPAM FLOOD";
 $admin_lang_optn_time_between_comments_desc = "Antal sekunder f&oslash;r en ny kommentar kan skrives af samme bruger: ";
 $admin_lang_optn_max_uri_comment			= "MAX ANTAL LINKS I KOMMENTAR";
-$admin_lang_optn_max_uri_comment_desc = "Antal links tilladt i én kommentar: ";
+$admin_lang_optn_max_uri_comment_desc = "Antal links tilladt i Ã©n kommentar: ";
 $admin_lang_optn_rss_setting					= "RSS/ATOM FEED INDSTILLINGER";
 $admin_lang_optn_rss_title  					= "Feed titel";
 $admin_lang_optn_rss_desc   					= "Feed beskrivelse";
