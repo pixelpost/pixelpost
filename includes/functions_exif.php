@@ -74,7 +74,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
 	{
 		$empty_exif="N/A";
 		if (array_key_exists("ExposureTimeSubIFD", $exif_result)) {
-			$exposure = = $exif_result['ExposureTimeSubIFD']; // exposure time
+			$exposure = $exif_result['ExposureTimeSubIFD']; // exposure time
 		} else {
 			$exposure = $empty_exif;
 		}
@@ -84,16 +84,19 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     	$exposure = "$exposure sec";
     }
 		if (array_key_exists("FNumberSubIFD", $exif_result)) {
-			$aperture = = = $exif_result['FNumberSubIFD']; // Aperture
+			$aperture =  $exif_result['FNumberSubIFD']; // Aperture
 		} else {
 			$aperture = $empty_exif;
 		}
-
-    $exif_result['DateTimeOriginalSubIFD'] = trim(str_replace('-',':',$exif_result['DateTimeOriginalSubIFD']));
-    $exif_result['DateTimeOriginalSubIFD'] = str_replace(' ',':',$exif_result['DateTimeOriginalSubIFD']);
-		$ftime = explode(":", $exif_result['DateTimeOriginalSubIFD']);
-		$unxTimestamp = mktime($ftime[3],$ftime[4],$ftime[5],$ftime[1],$ftime[2],$ftime[0]);
-    $capture_date = date($cfgrow['dateformat'],$unxTimestamp);
+		if (array_key_exists("DateTimeOriginalSubIFD", $exif_result)) {
+			$exif_result['DateTimeOriginalSubIFD'] = trim(str_replace('-',':',$exif_result['DateTimeOriginalSubIFD']));
+			$exif_result['DateTimeOriginalSubIFD'] = str_replace(' ',':',$exif_result['DateTimeOriginalSubIFD']);
+			$ftime = explode(":", $exif_result['DateTimeOriginalSubIFD']);
+			$unxTimestamp = mktime($ftime[3],$ftime[4],$ftime[5],$ftime[1],$ftime[2],$ftime[0]);
+			$capture_date = date($cfgrow['dateformat'],$unxTimestamp);
+		} else {
+			$capture_date = $empty_exif;
+		}	
     if (array_key_exists("FlashSubIFD", $exif_result)) {
 			$flash = $exif_result['FlashSubIFD']; // flash
 		} else {
@@ -119,8 +122,6 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
 		} else {
 			$iso = $empty_exif;
 		}
-    
-    
 
     if(isset($flash)&&$flash == "No Flash")	$flash = "$lang_flash_not_fired";
     elseif(isset($flash)&&$flash)	$flash = "$lang_flash_fired";
@@ -182,7 +183,6 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
 
     if(isset($info_camera_manu)&&$info_camera_manu != "")
     {
-    	$langcamera_manu = "$lang_camera_maker $info_camera_manu";
     	$tpl = ereg_replace("<EXIF_CAMERA_MAKE>",$info_camera_manu,$tpl);
     }
     else
@@ -190,12 +190,11 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     	$info_camera_manu = "$empty_exif";
     	$tpl = ereg_replace("<EXIF_CAMERA_MAKE>",$info_camera_manu,$tpl);
     }
-
-    $tpl = ereg_replace("<LANG_CAMERA_MAKE>",$lang_camera_maker,$tpl);
+		$langcamera_manu = "$lang_camera_maker $info_camera_manu";
+    $tpl = ereg_replace("<LANG_CAMERA_MAKE>",$langcamera_manu,$tpl);
 
     if(isset($info_camera_model)&&$info_camera_model != "")
     {
-    	$langcamera_model = "$lang_camera_model $info_camera_model";
     	$tpl = ereg_replace("<EXIF_CAMERA_MODEL>",$info_camera_model,$tpl);
     }
     else
@@ -203,8 +202,8 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     	$info_camera_model = "$empty_exif";
     	$tpl = ereg_replace("<EXIF_CAMERA_MODEL>",$info_camera_model,$tpl);
     }
-
-    $tpl = ereg_replace("<LANG_CAMERA_MODEL>",$lang_camera_model,$tpl);
+		$langcamera_model = "$lang_camera_model $info_camera_model";
+    $tpl = ereg_replace("<LANG_CAMERA_MODEL>",$langcamera_model,$tpl);
 
     if(isset($iso)&&$iso != "")
     {
