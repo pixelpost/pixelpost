@@ -1,4 +1,4 @@
-<?php
+∆<?php
 
 // SVN file version:
 // $Id$
@@ -797,7 +797,7 @@ if(isset($_GET['x']) && $_GET['x'] == "comment_atom") {
 // ##########################################################################################//
 
 // ATOM Tags
-$atom_url = "http://".$HTTP_HOST.$REQUEST_URI."&amp;x=atom";
+$atom_url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."&amp;x=atom";
 $tpl = str_replace("<ATOM_AUTODETECT>",$atom_url,$tpl); // keeping this "old" tag because it is used in user's template maybe
 $atom_auto = "<link rel=\"service.feed\" type=\"application/x.atom+xml\" title=\"".$feed_title." - ATOM Feed\" href=\"".$cfgrow["siteurl"]."index.php?x=atom\" />";
 $tpl = ereg_replace("<ATOM_AUTODETECT_LINK>",$atom_auto,$tpl);
