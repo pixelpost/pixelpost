@@ -52,7 +52,7 @@ $addon_version
 and the others are used for utility of the addon in the admin panel.
 
 */
-
+$pinglist = "";
 // includes library only in picture save mode
 if( isset($_GET['x']) && $_GET['x']=='save')
 {
