@@ -692,7 +692,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     			$admin_lang_optn_rss_copyright:&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"feed_copyright\" value=\"".$feed_copyright."\" style=\"width:300px;\" />
     			<br /><br />
     			$admin_lang_optn_rss_discovery:
-    			<select name=\"feed_discovery\" onchange=\"if (this.selectedIndex=='3') {flip('external_feed_discovery')};return false;\" >";
+    			<select name=\"feed_discovery\" onchange=\"if (this.selectedIndex=='3') { flip('external_feed_discovery'); }else{ hide('external_feed_discovery'); }return false;\" >";
     			if($cfgrow['feed_discovery'] == 'RA')
     			{
  					echo "<option selected=\"selected\" value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
@@ -894,7 +894,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<div class='content'>
 		<form name='catformatform' method='post' action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;optaction=updatecatformat' accept-charset='UTF-8' >
 		$admin_lang_optn_cat_link_format_txt<br />
-		<select name='catformat' onchange=\"if (this.selectedIndex=='6') {flip('costumcatformat')};return false;\" >";
+		<select name='catformat' onchange=\"if (this.selectedIndex=='6') { flip('costumcatformat'); }else{ hide('costumcatformat'); } return false;\" >";
 		if($cfgrow['catglueend'] == "")
 		{
       $catglue = "Select Category Links Format";

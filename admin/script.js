@@ -7,6 +7,11 @@ function flip(rid)
     document.getElementById(rid).style.display = current;
 }
 
+function hide(rid)
+{
+    document.getElementById(rid).style.display = 'none';
+}
+
 function ondatechange()
 {
 	var a=document.getElementById("specificdate");
@@ -37,4 +42,3 @@ function checkAll(form)
 		}
 	}
 }
-
