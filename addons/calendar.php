@@ -53,15 +53,17 @@ if($cfgrow['calendar'] == "No Calendar") {
 $tz = $cfgrow['timezone'];
 $cdate = gmdate("Y-m-d H:i:s",gmdate("U")+(3600 * $tz));
 
-$curr_month = $_GET['curr_month'];
-$curr_year = $_GET['curr_year'];
+if (isset($_GET['curr_month'])){$curr_month = $_GET['curr_month'];}else{$curr_month=NULL;}
+if (isset($_GET['curr_year'])){$curr_year = $_GET['curr_year'];}else{$curr_year=NULL;}
+if (isset($_GET['curr_day'])){$curr_day = $_GET['curr_day'];}else{$curr_day=NULL;}
 if(!$curr_year) { $curr_year = date("Y"); }
 if(!$curr_month) { $curr_month = date("n"); }
 if(!$curr_day) { $curr_day = date("j"); }
-$showimage = $_GET['showimage'];
-if(!$_GET['showimage']){ $showimage = $image_id; }
 
-if ( $_GET['showimage'] !="" && $_GET['curr_month'] ==""){
+
+if(!isset($_GET['showimage'])){ $showimage = $image_id; }else{$showimage = $_GET['showimage'];}
+
+if (isset($_GET['showimage']) && $_GET['showimage'] !="" && $_GET['curr_month'] ==""){
   $showimage = $_GET['showimage'];
 	$query2 = mysql_query("select * from ".$pixelpost_db_prefix."pixelpost where (id='$showimage') and (datetime<='$cdate')");
 	while(list($img_id,$img_datetime) = mysql_fetch_row($query2)) {

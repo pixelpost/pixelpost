@@ -144,8 +144,12 @@ $row = mysql_fetch_array($photonumb);
 // number of photos in the database
 $pixelpost_all_photonumb = $row['count'] ;
 
-$_GET['tag'] = ($_GET['tag']) ? urldecode($_GET['tag']) : '';
-$_GET['category'] = (isset($_GET['category']) && $_GET['category'] > 0) ? (int)$_GET['category'] : "";
+if (isset($_GET['tag'])){
+	$_GET['tag'] = ($_GET['tag']) ? urldecode($_GET['tag']) : '';
+}
+if (isset($_GET['category'])){
+	$_GET['category'] = (isset($_GET['category']) && $_GET['category'] > 0) ? (int)$_GET['category'] : "";
+}
 
 if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))	$paged_arch_tag_flag = 1;
 else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-]+)/",$_GET['tag']))	$paged_arch_tag_flag = 2;
@@ -641,6 +645,7 @@ $tags = mysql_query($queryr);
 
 $tags_img = "";
 $tags_paged_img = "";
+$tags_keywords ="";
 
 while(list($tag)  = mysql_fetch_array($tags))
 {

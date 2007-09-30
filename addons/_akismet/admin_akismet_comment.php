@@ -44,14 +44,14 @@ add_admin_functions('get_akismet_style', 'admin_html_head');
 GLOBAL $akismet_result_message;
 
 //Check whether ADMIN has submitted comment to mark as spam for Akismet
-if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetspam') {
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'akismetspam') {
   if (pp_submit_spam_comment()) {
     $GLOBALS['akismet_result_message'] = '<div class="jcaption confirm">Selected comments reported as spam to Akismet</div>';
   }
 }
 
 //Check whether ADMIN has submitted comment to mark as spam for Akismet
-if ($_GET['view'] == 'comments' && $_GET['action'] == 'akismetnotspam') {
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'akismetnotspam') {
   if (pp_submit_nonspam_comment()) {
     $GLOBALS['akismet_result_message'] = '<div class="jcaption confirm">Selected comments reported as not spam to Akismet</div>';
   }

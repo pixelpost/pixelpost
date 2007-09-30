@@ -73,25 +73,54 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
 	if ($exif_result !== null)
 	{
 		$empty_exif="N/A";
-    $exposure = $exif_result['ExposureTimeSubIFD']; // exposure time
-
+		if (array_key_exists("ExposureTimeSubIFD", $exif_result)) {
+			$exposure = = $exif_result['ExposureTimeSubIFD']; // exposure time
+		} else {
+			$exposure = $empty_exif;
+		}
     if(isset($exposure)&&$exposure != "")
     {
     	$exposure = reduceExif($exposure);
     	$exposure = "$exposure sec";
     }
+		if (array_key_exists("FNumberSubIFD", $exif_result)) {
+			$aperture = = = $exif_result['FNumberSubIFD']; // Aperture
+		} else {
+			$aperture = $empty_exif;
+		}
 
-    $aperture = $exif_result['FNumberSubIFD']; // Aperture
     $exif_result['DateTimeOriginalSubIFD'] = trim(str_replace('-',':',$exif_result['DateTimeOriginalSubIFD']));
     $exif_result['DateTimeOriginalSubIFD'] = str_replace(' ',':',$exif_result['DateTimeOriginalSubIFD']);
 		$ftime = explode(":", $exif_result['DateTimeOriginalSubIFD']);
 		$unxTimestamp = mktime($ftime[3],$ftime[4],$ftime[5],$ftime[1],$ftime[2],$ftime[0]);
     $capture_date = date($cfgrow['dateformat'],$unxTimestamp);
-    $flash = $exif_result['FlashSubIFD']; // flash
-    $focal = $exif_result['FocalLengthSubIFD']; // focal length
-    $info_camera_manu = trim($exif_result['MakeIFD0']); // camera maker
-    $info_camera_model = trim($exif_result['ModelIFD0']); // camera model
-    $iso = trim($exif_result['ISOSpeedRatingsSubIFD']); //
+    if (array_key_exists("FlashSubIFD", $exif_result)) {
+			$flash = $exif_result['FlashSubIFD']; // flash
+		} else {
+			$flash = $empty_exif;
+		}
+		if (array_key_exists("FocalLengthSubIFD", $exif_result)) {
+			$focal = $exif_result['FocalLengthSubIFD']; // focal length
+		} else {
+			$focal = $empty_exif;
+		}
+		if (array_key_exists("MakeIFD0", $exif_result)) {
+			$info_camera_manu = trim($exif_result['MakeIFD0']); // camera maker
+		} else {
+			$info_camera_manu = $empty_exif;
+		}
+		if (array_key_exists("ModelIFD0", $exif_result)) {
+			$info_camera_model = trim($exif_result['ModelIFD0']); // camera model
+		} else {
+			$info_camera_model = $empty_exif;
+		}
+    if (array_key_exists("ISOSpeedRatingsSubIFD", $exif_result)) {
+			$iso = trim($exif_result['ISOSpeedRatingsSubIFD']); //
+		} else {
+			$iso = $empty_exif;
+		}
+    
+    
 
     if(isset($flash)&&$flash == "No Flash")	$flash = "$lang_flash_not_fired";
     elseif(isset($flash)&&$flash)	$flash = "$lang_flash_fired";
@@ -162,7 +191,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     	$tpl = ereg_replace("<EXIF_CAMERA_MAKE>",$info_camera_manu,$tpl);
     }
 
-    $tpl = ereg_replace("<LANG_CAMERA_MAKE>",$langcamera_manu,$tpl);
+    $tpl = ereg_replace("<LANG_CAMERA_MAKE>",$lang_camera_maker,$tpl);
 
     if(isset($info_camera_model)&&$info_camera_model != "")
     {
@@ -175,7 +204,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     	$tpl = ereg_replace("<EXIF_CAMERA_MODEL>",$info_camera_model,$tpl);
     }
 
-    $tpl = ereg_replace("<LANG_CAMERA_MODEL>",$langcamera_model,$tpl);
+    $tpl = ereg_replace("<LANG_CAMERA_MODEL>",$lang_camera_model,$tpl);
 
     if(isset($iso)&&$iso != "")
     {
