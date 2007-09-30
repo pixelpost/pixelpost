@@ -286,7 +286,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	$thumb_output = "";
 	$where = "";
 	$limit = "";
-	$pagenum = (isset($_GET['pagenum']) ? (int)$_GET['pagenum'] : 1;
+	$pagenum = (isset($_GET['pagenum'])) ? (int)$_GET['pagenum'] : 1;
 	
 	// did user select a category?
 
