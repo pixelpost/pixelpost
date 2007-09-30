@@ -271,7 +271,7 @@ function unsharp_mask($img, $sharpeningsetting)    {
 ////  
 ////                  Unsharp Mask for PHP - version 2.1.1  
 ////  
-////    Unsharp mask algorithm by Torstein Hønsi 2003-07.  
+////    Unsharp mask algorithm by Torstein HÂ¯nsi 2003-07.  
 ////             thoensi_at_netcom_dot_no.  
 ////               Please leave this notice.  
 ////  
@@ -741,7 +741,7 @@ function is_table_created($table_name)
 // check if a field exist inside a table
 function is_field_exists ($fieldname,$table)
 {
-	global $pixelpost_db_prefix, $pixelpost_db_pixelpost;
+	global $pixelpost_db_prefix, $pixelpost_db_pixelpost, $table_name;
 	// FIELD_EXISTS
 	// Checks whether specified field exists in current or specified table.
 	//$fieldname = "maxpthumb";
