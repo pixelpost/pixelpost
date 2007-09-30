@@ -1,4 +1,4 @@
-∆<?php
+<?php
 
 // SVN file version:
 // $Id$
