@@ -66,7 +66,7 @@ $addon_description.="<form name=\"update_exif_info\" action=\"index.php?view=add
  		<input type=\"submit\" name=\"Action\" value=\"Remove EXIF\" />
 </form>";
 
-if ($Exif_Msg!==""){
+if (isset($Exif_Msg) && $Exif_Msg!==""){
 	$addon_description.="<br /><strong>".$Exif_Msg."</strong>";
 }
 ?>
