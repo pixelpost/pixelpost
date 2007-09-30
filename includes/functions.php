@@ -271,7 +271,7 @@ function unsharp_mask($img, $sharpeningsetting)    {
 ////  
 ////                  Unsharp Mask for PHP - version 2.1.1  
 ////  
-////    Unsharp mask algorithm by Torstein H¯nsi 2003-07.  
+////    Unsharp mask algorithm by Torstein H¬Ønsi 2003-07.  
 ////             thoensi_at_netcom_dot_no.  
 ////               Please leave this notice.  
 ////  
