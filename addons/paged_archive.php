@@ -43,6 +43,7 @@ $addon_name = "Page-By-Page-Archive for category and month (for PP v1.4)";
 $addon_version = "1.0";
 
 $maxpthumb = $cfgrow['maxpthumb'];
+global $image_id;
 
 if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
 else	$display_order = 'ASC';
@@ -147,9 +148,7 @@ $pixelpost_all_photonumb = $row['count'] ;
 if (isset($_GET['tag'])){
 	$_GET['tag'] = ($_GET['tag']) ? urldecode($_GET['tag']) : '';
 }
-if (isset($_GET['category'])){
-	$_GET['category'] = (isset($_GET['category']) && $_GET['category'] > 0) ? (int)$_GET['category'] : "";
-}
+$_GET['category'] = (isset($_GET['category']) && $_GET['category'] > 0) ? (int)$_GET['category'] : "";
 
 if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-\pL]+)/u",$_GET['tag']))	$paged_arch_tag_flag = 1;
 else if(isset($_GET['tag']) && preg_match("/([a-zA-Z 0-9_-]+)/",$_GET['tag']))	$paged_arch_tag_flag = 2;
@@ -287,7 +286,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	$thumb_output = "";
 	$where = "";
 	$limit = "";
-	$pagenum = ($_GET['pagenum']!='') ? (int)$_GET['pagenum'] : 1;
+	$pagenum = (isset($_GET['pagenum']) ? (int)$_GET['pagenum'] : 1;
+	
 	// did user select a category?
 
 	if(isset($_GET['category']) && $_GET['category'] != "")
