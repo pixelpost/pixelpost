@@ -326,9 +326,9 @@ if($_GET['view'] == "comments") {
 // show variable in link, added by austriaka to make it more flexible
 					$pcntr++;
 					if (isset($_GET['show']))
-					$image_page_Links .= "<a href='index.php?view=comments&amp;page=$pagecounter&amp;show=".$_GET['show']."'>$pcntr</a>\n";
+					$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$pagecounter&amp;show=".$_GET['show']."'>$pcntr</a>\n";
 					else
-					$image_page_Links .= "<a href='index.php?view=comments&amp;page=$pagecounter'>$pcntr</a>\n";
+					$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$pagecounter'>$pcntr</a>\n";
 
 					$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
 					}// end while
@@ -337,18 +337,18 @@ if($_GET['view'] == "comments") {
 	      {
 		    	$newpage = $page+$_SESSION['numimg_pp'];
 		      if (isset($_GET['show']))
-		      	$image_page_Links .= "<a href='index.php?view=comments&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_next</a>\n";
+		      	$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_next</a>\n";
 		      else
-		    		$image_page_Links .= "<a href='index.php?view=comments&amp;page=$newpage'>$admin_lang_next</a>\n";
+		    		$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage'>$admin_lang_next</a>\n";
 		    }
 
 				if ($page >= $_SESSION['numimg_pp'])
 	      {
 	      	$newpage = $page - $_SESSION['numimg_pp'];
 	      	if (isset($_GET['show']))
-	        	$image_page_Links  = "<a href='index.php?view=comments&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_prev</a>\n" .$image_page_Links;
+	        	$image_page_Links  = "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_prev</a>\n" .$image_page_Links;
 	        else
-	          $image_page_Links  = "<a href='index.php?view=comments&amp;page=$newpage'>$admin_lang_prev</a>\n" .$image_page_Links;
+	          $image_page_Links  = "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage'>$admin_lang_prev</a>\n" .$image_page_Links;
 	      }
 	       echo "\n".$image_page_Links."<br/>";
 

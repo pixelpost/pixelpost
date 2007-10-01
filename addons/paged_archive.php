@@ -43,7 +43,6 @@ $addon_name = "Page-By-Page-Archive for category and month (for PP v1.4)";
 $addon_version = "1.0";
 
 $maxpthumb = $cfgrow['maxpthumb'];
-global $image_id;
 
 if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
 else	$display_order = 'ASC';
@@ -580,7 +579,7 @@ $browse_select .= "</select>";
 $tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
 /* TAGS support */
-if(!isset($_GET['x']) || $_GET['x']!='browse'){
+if(!isset($_GET['x']) || ($_GET['x']!='browse' && $_GET['x']!='about')){
 // only do this when we're not on the browse page.
 	$tags_output = '<div id="tag_cloud">';
 	$tags_paged_output = $tags_output;
