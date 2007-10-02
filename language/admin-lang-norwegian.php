@@ -73,31 +73,25 @@ $admin_start_admin_2          = "for";
 
 
 // Password Recovery
-$admin_lang_pw_title            = "Pixelpost Password Recovery";
-$admin_lang_pw_wronguser	= "Der eingegebene Username ist nicht der Username des Pixelpost-Administrators.";
-$admin_lang_pw_back             =  "Zur&uuml;ck zur Verwaltungs-Seite";
-$admin_lang_pw_noemail          = "Sie haben noch keine email-Adresse eingegeben! Ein neues Passwort kann Ihnen nicht zugesandt werden! \n<br />
-				   Wenn Sie sich gar nicht mehr an Ihr Passwort erinnern k&ouml;nnen und nicht weiterkommen, schreiben Sie eine Nachricht im <a href='http://www.pixelpost.org/forum'>Pixelpost Forum</a>
-				   for help.\n<br />";
-$admin_lang_pw_notsent          = "Nichts gesendet! \n<br /> Die eingegebene email-Adresse entspricht nicht der eMail-Adresse, die Sie im Verwaltungssystem eingetragen haben!<br />";
-$admin_lang_pw_subject		= "Pixelpost Passwort: Neues Passwort wurde angelegt";
-$admin_lang_pw_usertext		= "Ihr User-Name:";
-$admin_lang_pw_mailtext		= "Ihre email-Adresse:";
-$admin_lang_pw_newpw		= "Ihr neues Passwort:";
-$admin_lang_pw_text_1		= "Pixelpost Passwort-Wiederherstellung";
-$admin_lang_pw_text_2		= "From: PIXELPOST Administration";
-$admin_lang_pw_text_3		= "Eine eMail wurde an Ihre email-Adresse geschickt. Diese enthält Ihren User-Namen und ein neues Passwort. \n<br />
-				   Prüfen Sie Ihren Postkorb:  ";
-$admin_lang_pw_text_4 		= "<span style='color:red;'>Fehler! Ein Fehler ist aufgetreten! \n<br />
-				   Die email-Adresse und der User-Name, den Sie eingegeben haben, ist ok, aber es konnte keine Mail verschickt werden. \n<br />
-                                   Ask your host administrator for help</span>";
-$admin_lang_pw_text_5 		= "Database error:";
-$admin_lang_pw_text_6		= "<br />Updating the new password failed.";
-$admin_lang_pw_text_7           = "Diese Mail wurde automatisch vom Log-In-Bereich Ihres Pixelpost-Photoblogs versandt.\nEs wurde ein neues Passwort für den Verwaltungsbereich angefordert.\n\nSie sollten jetzt Ihren Photoblog aufrufen \n\nauf ";
-$admin_lang_pw_text_8           = "\n\nund sich anmelden mit dem neuen Passwort, um das automatisch generierte Passwort sofort zu überschreiben!\n\nDas ist notwendig, zu Ihrer Sicherheit!";
+$admin_lang_pw_title            				= "Pixelpost Password Recovery";
 
-
-
+$admin_lang_pw_wronguser        				= "The username you have mentioned is not the same as the admin user of Pixelpost.";
+$admin_lang_pw_back             				=  "Back to admin page";
+$admin_lang_pw_noemail          				= "You did not mention email address at all! \n<br />
+                                   				If you have no clue about your password, leave a message in <a href='http://forum.pixelpost.org/'>Pixelpost forum</a> for help.\n<br />";
+$admin_lang_pw_notsent          				= "Nothing send! \n<br /> The email address you have entered is not the email address you have set in the admin panel.<br />";
+$admin_lang_pw_subject          				= "Pixelpost Password Recovery Message";
+$admin_lang_pw_usertext         				= "Your User-Name:";
+$admin_lang_pw_mailtext         				= "Your Email Address:";
+$admin_lang_pw_newpw            				= "Your new password:";
+$admin_lang_pw_text_1           				= "This the password recovery of Pixelpost";
+$admin_lang_pw_text_2           				= "From: Pixelpost Admin Section";
+$admin_lang_pw_text_3           				= "An email is sent to your email address with your username and a new password. \n<br />  Check your email address at ";
+$admin_lang_pw_text_4           				= "<span style='color:red;'>Error! Something happened! \n<br />The email address and username you have provided is OK but no email could be sent! \n<br />Ask your host administrator for help</span>";
+$admin_lang_pw_text_5           				= "Database error:";
+$admin_lang_pw_text_6           				= "<br />Updating the new password failed.";
+$admin_lang_pw_text_7           				= "This email is sent automatically from the LogIn of your Photoblog.\nSomebody requested a new password for the Admin Section.\n\nYou should log in to your Photoblog\n\nat ";
+$admin_lang_pw_text_8           				= "\n\nand login with that new password to reset this automatically generated password\n\nimmediately!";
 
 // Admin Menu
 $admin_lang_new_image          = "NYTT BILDE";
