@@ -7,7 +7,9 @@
 // NEW EXIF STUFF
 // ##########################################################################################//
 
-require_once("../includes/exifer1_5/exif.php");
+if (isset($admin_panel) && $admin_panel == 1){
+	require_once("../includes/exifer1_5/exif.php");
+}
 
 function flatten_array($array,$keyname='')
 {
