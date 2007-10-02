@@ -7,10 +7,7 @@
 // NEW EXIF STUFF
 // ##########################################################################################//
 
-if (isset($uploadfile))
-{
-	require_once("../includes/exifer1_5/exif.php");
-}
+require_once("../includes/exifer1_5/exif.php");
 
 function flatten_array($array,$keyname='')
 {
