@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id: pixelpost.php 241 2007-04-11 07:02:35Z david.kozikowski $
+// $Id$
 
 /*
 

@@ -18,7 +18,7 @@ Former members of the Development Team:
 Connie Mueller-Goedecke
 Version 1.1 to Version 1.3: Linus <http://www.shapestyle.se>
 
-Copy Folder Addon version 1.0
+Copy Folder Addon version 1.1
 
 */
 
@@ -99,7 +99,6 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 		if(copy($file,$newpath))
 		{
 			$filenumber++;
-
 			// insert post in mysql - supports new multi-category table in ver 1.4
 			$query = "insert into ".$pixelpost_db_prefix."pixelpost(id,datetime,headline,body,image,category)
 			VALUES(NULL,'$datetime','$oldfile','','$newfile','$category')";
@@ -127,7 +126,15 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 
 				} // end foreach
 			}// end if isset
-
+			// update the exif in the database
+			include_once('../includes/functions_exif.php');
+			$exif_info_db = serialize_exif ($cfgrow['imagepath'].$newfile);
+			mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$theid'");
+			if (mysql_error())
+			{
+				$Errors .= "Insert EXIF information to db error: ".mysql_error() ."<br/>";
+				$errored = TRUE;
+			}
 			// create thumbnail  too
 			createthumbnail($newfile);
 
@@ -169,7 +176,7 @@ Categories:
 $cats_table
 <input type='submit' value='Copy Folder'>
 </form> $message";
-$addon_version = "1.0";
+$addon_version = "1.1";
 
 
 

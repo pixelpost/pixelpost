@@ -118,6 +118,8 @@ $lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
 $lang_alt_lang_danish						="Dansk";
+$lang_alt_lang_romanian 					="Romana";
+$lang_alt_lang_hungarian					="Magyar";
 
 // Email Notification
 

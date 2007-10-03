@@ -167,7 +167,9 @@ $PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
 					  'spanish'=>array('ES','Español'),
 					  'swedish'=>array('SE','Svenska'),
 					  'danish'=>array('DK','Dansk'),
-					  'japanese'=>array('JP','Japanese')
+					  'japanese'=>array('JP','Japanese'),
+					  'hungarian'=>array('HU','Magyar'),
+					  'romanian'=>array('RO','Romana')
 					 );
 					 
 /**
