@@ -3,700 +3,563 @@
 // SVN file version:
 // $Id$
 
-echo "<ul>";
+if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 
-// Converts the password from the 1.3 base64encoded to MD5 hash
-// Do not do this unless we are upgrading
+$prefix = $pixelpost_db_prefix;
 
-function ConvertPassword( $prefix)
-{
-	$result = mysql_query("SELECT password FROM {$prefix}config LIMIT 1") or die("Error: ". mysql_error());
-	if( $row = mysql_fetch_array( $result))
-	{
-		$adm_pass = base64_decode($row[0]);
-		mysql_query("UPDATE {$prefix}config SET password=MD5('$adm_pass') LIMIT 1") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Password updated from 1.3 to 1.4 hash ...</li>";
-	}
-}
+function Create13Tables($prefix) {
 
-function Show_username_password(){
-	// get post data
-	$admin_user = addslashes($_POST['admin_user']);
-	$admin_password = $_POST['admin_password'];
-	echo "<b>Remember your data:</b><br />
-	Username: <b>$admin_user</b><br />
-	Password: <b>$admin_password</b><p />";
-}
+	global $lang_created, $lang_create_config, $lang_create_cat, $lang_create_pixelpost;
+	global $lang_create_comments, $lang_create_visitors;
 
-function Turn_Addons_off( $prefix ){
-	$result = mysql_query("SELECT count(status) FROM `{$prefix}addons` where status='on'");
-	while ($row = mysql_fetch_assoc($result)) {
-    if ($row['count(status)'] > 0){
-    	// create a new field to hold previous settings
-    	mysql_query("ALTER TABLE ".$prefix."addons ADD `status_backup` VARCHAR(3) NOT NULL default 'on'");
-    	// copy previous settings
-    	mysql_query("UPDATE `".$prefix."addons` SET `status_backup` = `status`");
-    	// turn all addons off
-    	mysql_query("UPDATE `".$prefix."addons` SET status='off'");
-    }
-	}
-}
-
-function Turn_Pixelpost_Addons_on( $prefix ){
-	// list of default PP addons:
-	$default_addons = array('admin_12CropImage',
-													'admin_ping',
-													'admin_update_exif',
-													'advanced_stat',
-													'calendar',
-													'copy_folder',
-													'current_datetime',
-													'paged_archive',
-													'referer_spam');
-	foreach ($default_addons as $addon_name) {
-    mysql_query("UPDATE `".$prefix."addons` SET `status` = `status_backup` WHERE `addon_name` = '{$addon_name}'");
-    mysql_query("UPDATE `".$prefix."addons` SET `status_backup` = 'res' WHERE `addon_name` = '{$addon_name}'");
-  }
-  // we can get a list of disabled thirdparty addons here:
-  $result = mysql_query("SELECT `addon_name` FROM `".$prefix."addons` where `status_backup` = 'on'");
-  $num_rows = mysql_num_rows($result);
-  // cleanup temp field
-  mysql_query("ALTER TABLE `{$prefix}addons` DROP `status_backup`"); 
-  echo "<strong>Upgrading and third-party addons</strong><br />Some addons might not work with this version of Pixelpost. This is why the installer deactivated all third-party addons. This action will ensure that you don't end up with an upgraded-but-broken installation of Pixelpost after the upgrade process.<br /><br />Pixelpost's default addons were activated/deactivated based on your configuration.";
-  if ($num_rows > 0){
-  	echo " The following addons have been disabled:<br /><br />";
-  	while ($row = mysql_fetch_array($result)) {
-			echo "   ".$row['addon_name']."<br />";	
-		}
-		echo "<br />After loging in at the Adminpanel you can turn these third-party Addons on, one by one and check if everything works as expected. If some Addons do not work, deactivate the Addon, then contact the Addon author to encourage him (or her) to upgrade the Addon.<br /><br />";
-	} else {
-		echo " No additional addons have been disabled.<br /><br />";
-	}
-}
-
-function Create13Tables( $prefix)
-{
-	echo "<li style=\"list-style-type:none;\"><strong>Automatic creation of tables</strong></li><p />";
 	// Config table
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}config (
-		admin varchar(20) NOT NULL default '',
-		password varchar(90) NOT NULL default '',
-		email varchar(90) NOT NULL default '',
-		commentemail varchar(3) NOT NULL default '',
-		template varchar(150) NOT NULL default '',
-		imagepath varchar(150) NOT NULL default '',
-		siteurl varchar(100) NOT NULL default '',
-		sitetitle varchar(100) NOT NULL default '',
-		langfile varchar(100) NOT NULL default '',
-		calendar varchar(30) NOT NULL default '',
-		crop varchar(3) NOT NULL default '',
-		thumbwidth int(11) NOT NULL,
-		thumbheight int(11) NOT NULL,
-		thumbnumber int(11) NOT NULL,
-		compression int(11) NOT NULL,
-		dateformat varchar(30) NOT NULL default ''
-	)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}config created ...</li>";
+	mysql_query("CREATE TABLE IF NOT EXISTS `{$prefix}config` (
+				 `admin` VARCHAR(20) NOT NULL DEFAULT '',
+				 `password` VARCHAR(90) NOT NULL DEFAULT '',
+				 `email` VARCHAR(90) NOT NULL DEFAULT '',
+				 `commentemail` VARCHAR(3) NOT NULL DEFAULT '',
+				 `template` VARCHAR(150) NOT NULL DEFAULT '',
+				 `imagepath` VARCHAR(150) NOT NULL DEFAULT '',
+				 `siteurl` VARCHAR(100) NOT NULL DEFAULT '',
+				 `sitetitle` VARCHAR(100) NOT NULL DEFAULT '',
+				 `langfile` VARCHAR(100) NOT NULL DEFAULT '',
+				 `calendar` VARCHAR(30) NOT NULL DEFAULT '',
+				 `crop` VARCHAR(3) NOT NULL DEFAULT '',
+				 `thumbwidth` INT(11) NOT NULL,
+				 `thumbheight` INT(11) NOT NULL,
+				 `thumbnumber` INT(11) NOT NULL,
+				 `compression` INT(11) NOT NULL,
+				 `dateformat` VARCHAR(30) NOT NULL DEFAULT '')")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_config] = $lang_created;
 
 	// Categories Table
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}categories (
-		id int(11) NOT NULL auto_increment,
-		name varchar(100) NOT NULL default '',
-		KEY id (id)
-	)
-	") or die("Error: ". mysql_error());
+	mysql_query("CREATE TABLE IF NOT EXISTS `{$prefix}categories` (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `name` VARCHAR(100) NOT NULL DEFAULT '',
+				 KEY id (`id`))")or die("MySQL Error: ". mysql_error());
 
-	mysql_query("
-	INSERT INTO {$prefix}categories VALUES (0, 'default')
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}categories created ...</li>";
+	mysql_query("INSERT INTO `{$prefix}categories` VALUES (0, 'default')")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_cat] = $lang_created;
 
 	// Pixelpost table
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}pixelpost (
-		id int(11) NOT NULL auto_increment,
-		datetime datetime NOT NULL default '0000-00-00 00:00:00',
-		headline varchar(150) NOT NULL default '',
-		body text NOT NULL,
-		image text NOT NULL,
-		category varchar(150) NOT NULL default '',
-		KEY id (id)
-	)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}pixelpost created ...</li>";
+	mysql_query("CREATE TABLE IF NOT EXISTS `{$prefix}pixelpost` (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `datetime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+				 `headline` VARCHAR(150) NOT NULL DEFAULT '',
+				 `body` TEXT NOT NULL,
+				 `image` TEXT NOT NULL,
+				 `category` VARCHAR(150) NOT NULL DEFAULT '',
+				 KEY id (`id`))")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_pixelpost] = $lang_created;
 
 	// Comments table
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}comments (
-		id int(11) NOT NULL auto_increment,
-		parent_id int(11) NOT NULL default '0',
-		datetime datetime NOT NULL default '0000-00-00 00:00:00',
-		ip varchar(20) NOT NULL default '',
-		message text NOT NULL,
-		name varchar(20) NOT NULL default '',
-		url varchar(40) NOT NULL default '',
-		KEY id (id)
-	)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}comments created ...</li>";
+	mysql_query("CREATE TABLE IF NOT EXISTS {$prefix}comments (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `parent_id` INT(11) NOT NULL DEFAULT '0',
+				 `datetime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+				 `ip` VARCHAR(20) NOT NULL DEFAULT '',
+				 `message` TEXT NOT NULL,
+				 `name` VARCHAR(20) NOT NULL DEFAULT '',
+				 `url` VARCHAR(40) NOT NULL DEFAULT '',
+				 KEY id (`id`))")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_comments] = $lang_created;
 
 	// Visitors table
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}visitors (
-		id int(11) NOT NULL auto_increment,
-		datetime datetime NOT NULL default '0000-00-00 00:00:00',
-		host varchar(100) NOT NULL default '',
-		referer varchar(255) NOT NULL default '',
-		ua varchar(255) NOT NULL default '',
-		ip varchar(255) NOT NULL default '',
-		ruri varchar(150) NOT NULL default '',
-		PRIMARY KEY  (id)
-	)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}visitors created ...</li>";
+	mysql_query("CREATE TABLE IF NOT EXISTS {$prefix}visitors (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `datetime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+				 `host` VARCHAR(100) NOT NULL DEFAULT '',
+				 `referer` VARCHAR(255) NOT NULL DEFAULT '',
+				 `ua` VARCHAR(255) NOT NULL DEFAULT '',
+				 `ip` VARCHAR(255) NOT NULL DEFAULT '',
+				 `ruri` VARCHAR(150) NOT NULL DEFAULT '',
+				 PRIMARY KEY (`id`))")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_visitors] = $lang_created;
+	
+	return $create_status;
 }
 
-// This is 1.3 version of the config except the password is now MD5
-function Set_Configuration($prefix)
-{
-	// guess environment
-	$site_url = $_SERVER['SERVER_NAME'];
-	$site_url .= $_SERVER['PHP_SELF'];
-	$site_url = pathinfo($site_url);
-	$site_url = $site_url['dirname'];
-	$site_url = str_replace("admin","",$site_url);
-	$site_url = "http://$site_url";
-	$images_path = str_replace("admin","images/",$images_path);
+/**
+ * This is v1.3 of the config except the password is now MD5
+ *
+ */
+function Set_Configuration($prefix) {	
 
-	$images_path  = "../images/";
-
-	// get post data
-	$admin_user = addslashes($_POST['admin_user']);
-	$admin_password = $_POST['admin_password'];
-
-	$query = mysql_query("
-	INSERT INTO {$prefix}config
-	(`admin`, `password`, `email`, `commentemail`, `template`, `imagepath`, `siteurl`, `sitetitle`, `langfile`, `calendar`, `crop`, `thumbwidth`, `thumbheight`, `thumbnumber`, `compression`, `dateformat`)
-	VALUES ( '$admin_user', MD5('$admin_password'),'','no', 'simple', '$images_path', '$site_url', 'Pixelpost','english','No Calendar','yes','100','75','5','75','Y-m-d H:i:s')
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table {$prefix}config populated ...</li>";
+	global $data, $lang_populated, $lang_create_populate;
+	
+	$site_url    = get_env('/');
+	
+	$images_path = "../images/";
+	
+	$admin     = addslashes($data['admin_username']);
+	$password  = addslashes(decode($data['admin_password1']));
+	
+	$query = mysql_query("INSERT INTO `{$prefix}config`
+	
+	(`admin` , `password`       ,  `email`  , `commentemail`  , `template`  ,  `imagepath`    ,   `siteurl`   ,  `sitetitle`  ,  `langfile`  ,   `calendar`    ,  `crop`  ,  `thumbwidth`  ,  `thumbheight`  ,  `thumbnumber`  ,  `compression`  ,    `dateformat`   )VALUES
+	('$admin', MD5('$password') ,    ''     ,      'no'       , 'simple'    , '$images_path'  ,  '$site_url'  ,  'Pixelpost'  ,   'english'  ,  'No Calendar'  ,  'yes'   ,     '100'      ,      '75'       ,       '5'       ,      '75'       ,    'Y-m-d H:i:s'  )
+	
+	")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_populate] = $lang_populated;
+	
+	return $create_status;
 }
 
-// Upgrade the database from the 1.3 schema to the 1.4 schema
-function UpgradeTo14( $prefix)
-{
+/**
+ * Upgrade the database from 1.3 schema to the 1.4 schema
+ *
+ */
+function UpgradeTo14($prefix) {
+
+	global $lang_created, $lang_create_version, $lang_create_catassoc;
+
 	// Version 1.4
 	// Make future upgrade scripts easier by adding a version table
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}version (
-		`id` int(10) unsigned NOT NULL auto_increment,
-		`upgrade_date` timestamp(14) NOT NULL,
-		`version` float NOT NULL default '0',
-		PRIMARY KEY  (`id`),
-		KEY `version` (`version`)
-	)
-	") or die("Error: ". mysql_error());
+	mysql_query("CREATE TABLE IF NOT EXISTS `{$prefix}version` (
+				 `id` INT(10) unsigned NOT NULL auto_increment,
+				 `upgrade_date` TIMESTAMP(14) NOT NULL,
+				 `version` FLOAT NOT NULL DEFAULT '0',
+				 PRIMARY KEY  (`id`),
+				 KEY `version` (`version`))")or die("MySQL Error: ". mysql_error());
 
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES (1.4)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version created ...</li>";
+	mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('1.4')")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_version] = $lang_created;
 
 	// Multiple Categories support
-	mysql_query("
-	CREATE TABLE IF NOT EXISTS {$prefix}catassoc (
-		id int(11) NOT NULL auto_increment,
-		cat_id int(11) NOT NULL default '0',
-		image_id int(11) NOT NULL default '0',
-		PRIMARY KEY  (id),
-		KEY cat_id (cat_id),
-		KEY image_id (image_id)
-	)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."catassoc created ...</li>";
-
-	// Timezone support, the 0 will be included automatically, so no need to insert
-	$tz = date("Z")/3600; // set the default timezone value equal to the server timezone
-	mysql_query("
-	ALTER TABLE `{$prefix}config` ADD `timezone` FLOAT DEFAULT '".$tz."' NOT NULL
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Added timezone support ...</li>";
-
-	// Customizable category links
-	mysql_query("
-	ALTER TABLE `{$prefix}config` ADD `catgluestart` varchar(5) DEFAULT '[' NOT NULL
-	") or die("Error: ". mysql_error());
-	mysql_query("
-	ALTER TABLE `{$prefix}config` ADD `catglueend` varchar(5) DEFAULT ']' NOT NULL
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Added customizable category links support ...</li>";
-
-
-	mysql_query("
-	ALTER TABLE `{$prefix}config` ADD `htmlemailnote` CHAR(3) DEFAULT 'yes'
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Added HTML notification email support ...</li>";
-
-
-	if(!mysql_query("
-	ALTER TABLE `{$prefix}comments` ADD `email` varchar(100)
-	")) echo("comments.email already exists: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Added email in comments support ...</li>";
-
-
-	mysql_query("
-	ALTER TABLE `{$prefix}comments` MODIFY  `name` varchar(30)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Longer name field in comments support ...</li>";
-
-
-	mysql_query("
-	ALTER TABLE `{$prefix}comments` MODIFY  `url` varchar(70)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Longer url field in comments support ...</li>";
-
-
-	mysql_query("
-	ALTER TABLE `{$prefix}config` ADD `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Added indexes to {$prefix}config ...</li>";
-
-	// Indexes
-	mysql_query("
-	ALTER TABLE `{$prefix}categories` DROP INDEX `id`, ADD PRIMARY KEY ( `id`)
-	");
-	echo "<li style=\"list-style-type:none;\">Added indexes to {$prefix}categories ...</li>";
-	mysql_query("
-	ALTER TABLE `{$prefix}comments` DROP INDEX `id`, ADD PRIMARY KEY ( `id`), ADD INDEX ( `parent_id`)
-	");
-	echo "<li style=\"list-style-type:none;\">Added indexes to {$prefix}comments ...</li>";
-	mysql_query("
-	ALTER TABLE `{$prefix}pixelpost` DROP INDEX `id`, ADD PRIMARY KEY ( `id`), ADD INDEX ( `datetime`)
-	");
-	echo "<li style=\"list-style-type:none;\">Added indexes to {$prefix}pixelpost ...</li>";
-	mysql_query("
-	ALTER TABLE `{$prefix}visitors` ADD INDEX ( `datetime`), ADD INDEX ( `referer`), ADD INDEX ( `ip`)
-	");
-	echo "<li style=\"list-style-type:none;\">Added indexes to {$prefix}visitors ...</li>";
-
-	// Move any existing categories into the new category association table
-	$result = mysql_query("SELECT id, category FROM {$prefix}pixelpost") or die("Error: ". mysql_error());
-	while( $row = mysql_fetch_array( $result))
-	{
-		mysql_query("INSERT INTO {$prefix}catassoc VALUES ( 0, '{$row[1]}', '{$row[0]}')") or die("Error: ". mysql_error());
-	}
-}
-
-// Upgrade the version table from the 1.4 to the 141
-function UpgradeTo141( $prefix)
-{
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES (1.41)
-	") or die("Error: ". mysql_error());
-	//echo "table ".$prefix."version updated to 1.4.1 ...<p />";
-}
-
-
-
-// Upgrade the version table to 1.499 (means 1.5alpha)
-function UpgradeTo1501( $prefix)
-{
-global $pixelpost_db_prefix;
-	if (!is_field_exists ('moderate_comments','config'))
-	{
-		// add moterate_comments field to config table
-		$table = $prefix."config";
-		mysql_query("ALTER TABLE $table ADD `moderate_comments` VARCHAR( 3) DEFAULT 'no' NOT NULL ")
-			or die("Error: ". mysql_error());
-
-		// add publish field to comments table
-		$table = $prefix ."comments";
-		mysql_query("ALTER TABLE $table ADD `publish` VARCHAR( 3) DEFAULT 'yes' NOT NULL ")
-			or die("Error: ". mysql_error());
-
-		echo "<li style=\"list-style-type:none;\">Comment moderation feature is added ...</li>";
-	}
-
-	// create addons table
-	$query = "CREATE TABLE {$pixelpost_db_prefix}addons (
-		id INT(11) NOT NULL auto_increment,
-		addon_name VARCHAR(66) NOT NULL default '',
-		status VARCHAR(3) NOT NULL default 'on',
-		type VARCHAR(15) NOT NULL default 'normal',
-		PRIMARY KEY  (id)
-	)";
-	mysql_query( $query) or die("Error: ". mysql_error());;
-
-	// populate the addons table
-	$dir = "../addons/";
-	refresh_addons_table($dir);
-	echo "<li style=\"list-style-type:none;\">Addon ON/OFF switchs are added.</li>";
-
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES (1.49931)
-	") or die("Error: ". mysql_error());
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5alpha_a03 ...</li>";
-}
-
-function UpgradeTo15011( $prefix)
-{
-	global $pixelpost_db_prefix;
-
-	if (is_field_exists ('clean_url','config'))
-	{
-		// del clean_url field from config table
-		$table = $prefix."config";
-		mysql_query("ALTER TABLE $table DROP `clean_url` ")
-			or die("Error: ". mysql_error());
-
-		// del clean_url field from pixelpost table
-		$table = $prefix."pixelpost";
-		mysql_query("ALTER TABLE $table DROP `clean_url` ")
-			or die("Error: ". mysql_error());
-
-		// update version
-		mysql_query("
-		INSERT INTO `{$prefix}version` (version) VALUES (1.4995)
-		") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5alpha_a04 ...</li>";
-	}
-}
-
-function UpgradeTo15012($prefix)
-{
-	global $pixelpost_db_prefix;
-	if (!is_field_exists ('timestamp','config'))
-	{
-		// add clean_url field to config table
-		$table = $prefix."config";
-		mysql_query("ALTER TABLE $table ADD `timestamp` VARCHAR( 4) DEFAULT 'yes' NOT NULL ")
-			or die("Error: ". mysql_error());
-
-		echo "<li style=\"list-style-type:none;\">Switch ON/OFF for time stamps is added ...</li>";
-
-		// update version
-		mysql_query("
-		INSERT INTO `{$prefix}version` (version) VALUES (1.4995)
-		") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5alpha_a04_1.</li><p />";
-	}
-}
-
-
-
-
-// upgrade to 1.5Beta
-function UpgradeTo15beta($prefix,$newversion)
-{
-global $pixelpost_db_prefix;
-
-// add comment moderation
-	if (!is_field_exists ('moderate_comments','config'))
-	{
-		// add moterate_comments field to config table
-		$table = $prefix."config";
-		mysql_query("ALTER TABLE $table ADD `moderate_comments` VARCHAR( 3) DEFAULT 'no' NOT NULL ")
-			or die("Error: ". mysql_error());
-
-		// add publish field to comments table
-		$table = $prefix ."comments";
-		mysql_query("ALTER TABLE $table ADD `publish` VARCHAR( 3) DEFAULT 'yes' NOT NULL ")
-			or die("Error: ". mysql_error());
-
-		echo "<li style=\"list-style-type:none;\">Comment moderation feature is added ...</li>";
-	} // end if
-
-// create addons table if necessary
-	if(!is_table_created('addons'))
-	{
-		// create addons table
-		$query = "CREATE TABLE {$pixelpost_db_prefix}addons (
-			id INT(11) NOT NULL auto_increment,
-			addon_name VARCHAR(66) NOT NULL default '',		
-			status VARCHAR(3) NOT NULL default 'on',		
-			type VARCHAR(15) NOT NULL default 'normal',
-			PRIMARY KEY  (id)
-		)";
-		mysql_query( $query) or die("Error: ". mysql_error());;
-
-		// populate the addons table
-		$dir = "../addons/";
-		refresh_addons_table($dir);
-		echo "<li style=\"list-style-type:none;\">Addon ON/OFF switchs are added ...</li>";
-	}
-
-// timestamp
-	if (!is_field_exists ('timestamp','config'))
-	{
-			// add clean_url field to config table
-			$table = $prefix."config";
-			mysql_query("ALTER TABLE $table ADD `timestamp` VARCHAR( 4) DEFAULT 'yes' NOT NULL ")
-				or die("Error: ". mysql_error());
-
-			echo "<li style=\"list-style-type:none;\">Switch ON/OFF for time stamps is added ...</li>";
-
-	}	// end if
-
-// visitor booking ON/OFF switch
-	if (!is_field_exists ('visitorbooking','config'))
-	{
-		// add clean_url field to config table
-		$table = $prefix."config";
-		mysql_query("ALTER TABLE $table ADD `visitorbooking` VARCHAR( 4) DEFAULT 'yes' NOT NULL ")
-			or die("Error: ". mysql_error());
-
-		echo "<li style=\"list-style-type:none;\">Switch ON/OFF for visitor booking is added ...</li>";
-
-		// update version
-		mysql_query("
-		INSERT INTO `{$prefix}version` (version) VALUES (".$newversion.")
-		") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5Beta.</li>";
-	}	// end if
+	mysql_query("CREATE TABLE IF NOT EXISTS `{$prefix}catassoc` (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `cat_id` INT(11) NOT NULL DEFAULT '0',
+				 `image_id` INT(11) NOT NULL DEFAULT '0',
+				 PRIMARY KEY  (id),
+				 KEY cat_id (`cat_id`),
+				 KEY image_id (`image_id`))")or die("MySQL Error: ". mysql_error());
 	
-} // end function UpgradeTo15beta($prefix)
+	$create_status[$lang_create_catassoc] = $lang_created;
 
-function UpgradeTo15final( $prefix,$newversion)
-{
-	global $pixelpost_db_prefix;
-	if (is_field_exists ('clean_url','config'))
-	{
-		// del clean_url field from config table
-		$table = $prefix."config";
-		mysql_query("ALTER TABLE $table DROP `clean_url` ")
-			or die("Error: ". mysql_error());
 
-		// del clean_url field from pixelpost table
-		$table = $prefix."pixelpost";
-		mysql_query("ALTER TABLE $table DROP `clean_url` ")
-			or die("Error: ". mysql_error());
-
-		// update version
-		mysql_query("
-		INSERT INTO `{$prefix}version` (version) VALUES (1.5)
-		") or die("Error: ". mysql_error());
-		echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to 1.5 Final ...</li>";
+	$tz = date("Z")/3600; // set the default timezone value equal to the server timezone
+	
+	// Timezone support added
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `timezone` FLOAT DEFAULT '".$tz."' NOT NULL")or die("MySQL Error: ". mysql_error());
+	
+	// Custom category added
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `catgluestart` VARCHAR(5) DEFAULT '[' NOT NULL")or die("MySQL Error: ". mysql_error());
+	
+	// Custom category added
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `catglueend` VARCHAR(5) DEFAULT ']' NOT NULL")or die("MySQL Error: ". mysql_error());
+	
+	// HTML comment email notification added
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `htmlemailnote` CHAR(3) DEFAULT 'yes'")or die("MySQL Error: ". mysql_error());
+	
+	// Email VARCHAR extended
+	mysql_query("ALTER TABLE `{$prefix}comments` ADD `email` VARCHAR(100)")or die("MySQL Error: ". mysql_error());
+	
+	// Name VARCHAR extended
+	mysql_query("ALTER TABLE `{$prefix}comments` MODIFY  `name` VARCHAR(30)")or die("MySQL Error: ". mysql_error());
+	
+	// URL VARCHAR extended
+	mysql_query("ALTER TABLE `{$prefix}comments` MODIFY  `url` VARCHAR(70)")or die("MySQL Error: ". mysql_error());
+	
+	// ID table added
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST")or die("MySQL Error: ". mysql_error());
+	
+	// Add index
+	mysql_query("ALTER TABLE `{$prefix}categories` DROP INDEX `id`, ADD PRIMARY KEY (`id`)");
+	
+	// Add index
+	mysql_query("ALTER TABLE `{$prefix}comments` DROP INDEX `id`, ADD PRIMARY KEY (`id`), ADD INDEX (`parent_id`)");
+	
+	// Add index
+	mysql_query("ALTER TABLE `{$prefix}pixelpost` DROP INDEX `id`, ADD PRIMARY KEY (`id`), ADD INDEX (`datetime`)");
+	
+	// Add index
+	mysql_query("ALTER TABLE `{$prefix}visitors` ADD INDEX (`datetime`), ADD INDEX (`referer`), ADD INDEX (`ip`)");
+	
+	// Move any existing categories into the new category association table
+	$result    = mysql_query("SELECT `id`, `category` FROM {$prefix}pixelpost")or die("MySQL Error: ". mysql_error());
+	while($row = mysql_fetch_array($result)){
+	
+		mysql_query("INSERT INTO `{$prefix}catassoc` VALUES (0, '{$row[1]}', '{$row[0]}')")or die("MySQL Error: ". mysql_error());
 	}
+	
+	return $create_status;
 }
 
-function UpgradeTo16beta( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
+/**
+ * Upgrade the version table from the 1.4 to the 1.41
+ *
+ */
+function UpgradeTo141($prefix) {
 
-	$table = $prefix."tags";
-	mysql_query("CREATE TABLE `$table` (
-		`img_id` INT NOT NULL ,
-		`tag` TINYTEXT NOT NULL,
-		`alt_tag` TINYTEXT NOT NULL
-		);")or die("Error: ". mysql_error());
+	global $lang_updated, $lang_create_update_to;
+	
+	mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('1.41')")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_update_to." 1.41"] = $lang_updated;
+	
+	return $create_status;
+}
 
-	// Language stuff
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `altlangfile` VARCHAR( 100) DEFAULT 'Off' NOT NULL")
-	or die("Error: ". mysql_error());
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `alt_headline` VARCHAR( 150) DEFAULT '' NOT NULL,
-		ADD `alt_body` TEXT ") or die("Error: ". mysql_error());
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."categories ADD `alt_name` VARCHAR( 100) DEFAULT 'default' NOT NULL")
-	or die("Error: ". mysql_error());
+/**
+ * Upgrade the version table to 1.499 (means 1.5alpha)
+ *
+ */
+function UpgradeTo1501($prefix) {
 
-	// new field used to disable Markdown
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `markdown` VARCHAR(1) DEFAULT 'f' NOT NULL")
-	or die("Error: ". mysql_error());
+	global $lang_created, $lang_create_addons;
+	
+	if(!is_field_exists('moderate_comments','config')) {
+	
+		// Add moterate_comments
+		mysql_query("ALTER TABLE `{$prefix}config` ADD `moderate_comments` VARCHAR(3) DEFAULT 'no' NOT NULL ")or die("MySQL Error: ". mysql_error());
 
-	// creation of primary key on tags table
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."tags ADD PRIMARY KEY ( `img_id` , `tag` ( 128), `alt_tag` (128)) ")
-	or die("Error: ". mysql_error());
+		// Add publish
+		mysql_query("ALTER TABLE `{$prefix}comments` ADD `publish` VARCHAR(3) DEFAULT 'yes' NOT NULL ")or die("MySQL Error: ". mysql_error());
+	}
 
-	// Drop field moderate comments
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `moderate_comments`;");
+	// Create addons table
+	mysql_query("CREATE TABLE `{$prefix}addons` (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `addon_name` VARCHAR(66) NOT NULL DEFAULT '',
+				 `status` VARCHAR(3) NOT NULL DEFAULT 'on',
+				 `type` VARCHAR(15) NOT NULL DEFAULT 'normal',
+				 PRIMARY KEY (`id`))")or die("MySQL Error: ". mysql_error());
+				 
+	$create_status[$lang_create_addons] = $lang_created;
 
-// global settings disabling comments (default for new picture)
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `global_comments` ENUM( 'A', 'M', 'F') NOT NULL DEFAULT 'A'")
-	or die("Error: ". mysql_error());
-	// picture based disabling comments
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `comments` ENUM( 'A', 'M', 'F') NOT NULL DEFAULT 'A'")
-	or die("Error: ". mysql_error());
+	// Populate the addons table
+	refresh_addons_table('../addons');
+	
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('1.49931')")or die("MySQL Error: ". mysql_error());
+	
+	return $create_status;
+}
 
-	// Drop field markdown by GeoS
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `markdown`;")
-	or die("Error: ". mysql_error());
+function UpgradeTo15011($prefix) {
 
-	// new markdown field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `markdown` ENUM( 'F', 'T') NOT NULL DEFAULT 'F'")
-	or die("Error: ". mysql_error());
+	global $lang_updated, $lang_create_update_to;
 
-	// new exif
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `exif` ENUM( 'F', 'T') NOT NULL DEFAULT 'T'")
-	or die("Error: ". mysql_error());
+	$create_status[null] = null;
 
-	// picture based exif
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."pixelpost ADD `exif_info` TEXT NULL DEFAULT NULL")
-	or die("Error: ". mysql_error());
+	if(is_field_exists ('clean_url','config')) {
+	
+		// del clean_url field from config table
+		mysql_query("ALTER TABLE `{$prefix}config` DROP `clean_url`")or die("MySQL Error: ". mysql_error());
 
-	// token field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `token` ENUM( 'F', 'T') NOT NULL DEFAULT 'F'")
-	or die("Error: ". mysql_error());
+		// del clean_url field from pixelpost table
+		mysql_query("ALTER TABLE `{$prefix}pixelpost` DROP `clean_url`")or die("MySQL Error: ". mysql_error());
 
-	// token_time
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `token_time` VARCHAR( 2) NOT NULL DEFAULT '5'")
-	or die("Error: ". mysql_error());
+		// update version
+		mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('1.4995')")or die("MySQL Error: ". mysql_error());
+		
+		$create_status[$lang_create_update_to." 1.5 &alpha;"] = $lang_updated;
+	}
+	
+	return $create_status;
+}
 
-	// comment field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `comment_dsbl` ENUM( 'F', 'T') NOT NULL DEFAULT 'F'")
-	or die("Error: ". mysql_error());
+function UpgradeTo15012($prefix) {
 
-	// comment_timebetween
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `comment_timebetween` VARCHAR( 3) NOT NULL DEFAULT '30'")
-	or die("Error: ". mysql_error());
+	global $lang_updated, $lang_create_update_to;
 
-	// rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")
-	or die("Error: ". mysql_error());
+	$create_status[null] = null;
 
-	// feeditems
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feeditems` VARCHAR( 3) NOT NULL DEFAULT '10'")
-	or die("Error: ". mysql_error());
+	if(!is_field_exists('timestamp','config')) {
+	
+		// add timestamp
+		mysql_query("ALTER TABLE `{$prefix}config` ADD `timestamp` VARCHAR(4) DEFAULT 'yes' NOT NULL ")or die("MySQL Error: ". mysql_error());
+
+		// update version
+		mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('1.4995')")or die("MySQL Error: ". mysql_error());
+		
+		$create_status[$lang_create_update_to." 1.5 &alpha;"] = $lang_updated;
+	}
+	
+	return $create_status;
+}
+
+/**
+ * Upgrade the version table to 1.5beta
+ *
+ */
+function UpgradeTo15beta($prefix,$newversion) {
+	
+	global $lang_created, $lang_updated, $lang_create_update_to, $lang_create_addons;
+
+	$create_status[null] = null;
+
+	if(!is_field_exists('moderate_comments','config')) {
+	
+		// add moterate_comments field to config table
+		mysql_query("ALTER TABLE `{$prefix}config` ADD `moderate_comments` VARCHAR(3) DEFAULT 'no' NOT NULL ")or die("MySQL Error: ". mysql_error());
+
+		// add publish field to comments table
+		mysql_query("ALTER TABLE {$prefix}comments ADD `publish` VARCHAR(3) DEFAULT 'yes' NOT NULL")or die("MySQL Error: ". mysql_error());
+	}
+
+	// Create addons table if necessary
+	if(!is_table_created('addons')) {
+	
+		mysql_query("CREATE TABLE `{$prefix}addons` (
+					 `id` INT(11) NOT NULL auto_increment,
+					 `addon_name` VARCHAR(66) NOT NULL DEFAULT '',		
+					 `status` VARCHAR(3) NOT NULL DEFAULT 'on',		
+					 `type` VARCHAR(15) NOT NULL DEFAULT 'normal',
+					 PRIMARY KEY (`id`))")or die("MySQL Error: ". mysql_error());
+		
+		refresh_addons_table('../addons/');
+		
+		$create_status[$lang_create_addons] = $lang_created;
+		
+	}
+
+	if(!is_field_exists('timestamp','config')) {
+	
+		// Timestamp
+		mysql_query("ALTER TABLE `{$prefix}config` ADD `timestamp` VARCHAR(4) DEFAULT 'yes' NOT NULL")or die("MySQL Error: ". mysql_error());
+	}
+	
+	if(!is_field_exists('visitorbooking','config')) {
+	
+		// Visitor booking ON/OFF switch
+		mysql_query("ALTER TABLE `{$prefix}config` ADD `visitorbooking` VARCHAR(4) DEFAULT 'yes' NOT NULL")or die("MySQL Error: ". mysql_error());
+
+		// Update version
+		mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES (".$newversion.")")or die("MySQL Error: ". mysql_error());
+		
+		$create_status[$lang_create_update_to."&nbsp;".$newversion." &beta;"] = $lang_updated;
+	}
+	
+	return $create_status;
+}
+
+function UpgradeTo15final($prefix,$newversion) {
+
+	global $lang_updated, $lang_create_update_to;
+	
+	$create_status[null] = null;
+	
+	if(is_field_exists('clean_url','config')) {
+	
+		// Delete clean_url field from config table
+		mysql_query("ALTER TABLE `{$prefix}config` DROP `clean_url`")or die("MySQL Error: ". mysql_error());
+
+		// Delete clean_url field from pixelpost table
+		mysql_query("ALTER TABLE `{$prefix}pixelpost` DROP `clean_url`")or die("MySQL Error: ". mysql_error());
+
+		// Update version
+		mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('1.5')")or die("MySQL Error: ". mysql_error());
+		
+		$create_status[$lang_create_update_to."&nbsp;".$newversion." final"] = $lang_updated;
+	}
+	
+	return $create_status;
+}
+
+function UpgradeTo16beta($prefix, $newversion) {
+	
+	global $lang_updated, $lang_create_update_to;
+
+	mysql_query("CREATE TABLE `{$prefix}tags` (
+				 `img_id` INT NOT NULL ,
+				 `tag` TINYTEXT NOT NULL,
+				 `alt_tag` TINYTEXT NOT NULL)")or die("MySQL Error: ". mysql_error());
+
+	// Add alternative language
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `altlangfile` VARCHAR(100) DEFAULT 'Off' NOT NULL")or die("MySQL Error: ". mysql_error());
+	
+	mysql_query("ALTER TABLE `{$prefix}pixelpost` ADD `alt_headline` VARCHAR(150) DEFAULT '' NOT NULL,ADD `alt_body` TEXT")or die("MySQL Error: ". mysql_error());
+	
+	mysql_query("ALTER TABLE {$prefix}categories ADD `alt_name` VARCHAR(100) DEFAULT 'DEFAULT' NOT NULL")or die("MySQL Error: ". mysql_error());
+
+	// Add markdown
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `markdown` VARCHAR(1) DEFAULT 'f' NOT NULL")or die("MySQL Error: ". mysql_error());
+
+	// Add creation of primary key for tags table
+	mysql_query("ALTER TABLE {$prefix}tags ADD PRIMARY KEY (`img_id` , `tag` (128), `alt_tag` (128)) ")or die("MySQL Error: ". mysql_error());
+
+	// Drop moderate comments
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `moderate_comments`")or die("MySQL Error: ". mysql_error());
+
+	// Add global comment settings
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `global_comments` ENUM('A', 'M', 'F') NOT NULL DEFAULT 'A'")or die("MySQL Error: ". mysql_error());
+	
+	// Add picture based comment disable
+	mysql_query("ALTER TABLE `{$prefix}pixelpost` ADD `comments` ENUM('A', 'M', 'F') NOT NULL DEFAULT 'A'")or die("MySQL Error: ". mysql_error());
+
+	// Drop markdown field
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `markdown`;")or die("MySQL Error: ". mysql_error());
+
+	// Add markdown field
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `markdown` ENUM('F', 'T') NOT NULL DEFAULT 'F'")or die("MySQL Error: ". mysql_error());
+
+	// Add exif
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `exif` ENUM('F', 'T') NOT NULL DEFAULT 'T'")or die("MySQL Error: ". mysql_error());
+
+	// Add picture based exif
+	mysql_query("ALTER TABLE `{$prefix}pixelpost` ADD `exif_info` TEXT NULL DEFAULT NULL")or die("MySQL Error: ". mysql_error());
+
+	// Add token field
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `token` ENUM('F', 'T') NOT NULL DEFAULT 'F'")or die("MySQL Error: ". mysql_error());
+
+	// Add token time
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `token_time` VARCHAR(2) NOT NULL DEFAULT '5'")or die("MySQL Error: ". mysql_error());
+
+	// Add comment dsbl
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `comment_dsbl` ENUM('F', 'T') NOT NULL DEFAULT 'F'")or die("MySQL Error: ". mysql_error());
+
+	// Add comment time between
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `comment_timebetween` VARCHAR(3) NOT NULL DEFAULT '30'")or die("MySQL Error: ". mysql_error());
+
+	// Add rss type
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `rsstype` ENUM('F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")or die("MySQL Error: ". mysql_error());
+
+	// Add feed items
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feeditems` VARCHAR(3) NOT NULL DEFAULT '10'")or die("MySQL Error: ". mysql_error());
 
 	// no_uri_comments
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `max_uri_comments` VARCHAR( 3) NOT NULL DEFAULT '5'")
-	or die("Error: ". mysql_error());
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `max_uri_comments` VARCHAR(3) NOT NULL DEFAULT '5'")or die("MySQL Error: ". mysql_error());
 
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('".$newversion."')")or die("MySQL Error: ". mysql_error());
 
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+	$create_status[$lang_create_update_to."&nbsp;".$newversion." &beta;"] = $lang_updated;
+	
+	return $create_status;
 }
 
-function UpgradeTo16final( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-	
-	// ********************************************************************
-	// NOTE: the "rsstype" will need to be placed in the v1.6 Beta upgrade.
-	// ********************************************************************
-	
-	// Drop rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `rsstype`");
-	
-	// rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM( 'F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")
-	or die("Error: ". mysql_error());
+function UpgradeTo16final($prefix, $newversion) {
 
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
+	global $lang_updated, $lang_create_update_to;
+	
+	// Drop rss type
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `rsstype`");
+	
+	// Add rsst ype field
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `rsstype` ENUM('F', 'T', 'O' ,'N') NOT NULL DEFAULT 'T'")or die("MySQL Error: ". mysql_error());
 
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (version) VALUES ($newversion)")or die("MySQL Error: ". mysql_error());
+
+	$create_status[$lang_create_update_to."&nbsp;".$newversion." final"] = $lang_updated;
+	
+	return $create_status;
 }
 
-function UpgradeTo165( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-  	//Turn_Addons_off( $prefix );
-	//Turn_Pixelpost_Addons_on( $prefix );
-	// update version
-	
-	// admin_langfile field
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `admin_langfile` VARCHAR( 100 )")
-	or die("Error: ". mysql_error());
-	
-	// thumbnail path
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `thumbnailpath` VARCHAR( 150 ) NOT NULL DEFAULT '../thumbnails/' AFTER `imagepath`")
-	or die("Error: ". mysql_error());
-	
-	// sub title
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `subtitle` VARCHAR( 100 ) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `sitetitle`")
-	or die("Error: ". mysql_error());
-	
-	// Drop rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config DROP `rsstype`");
-	
-	// rsstype field
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `rsstype` ENUM('F', 'FO', 'T', 'O', 'N') NOT NULL DEFAULT 'T' AFTER `max_uri_comments`")
-	or die("Error: ". mysql_error());
-	
-	// feed discovery
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feed_discovery` ENUM('RA', 'R', 'A', 'E', 'N') NOT NULL DEFAULT 'RA' AFTER `rsstype`")
-	or die("Error: ". mysql_error());
-	
-	// feed title
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_title` VARCHAR( 100 ) NOT NULL DEFAULT 'Pixelpost' AFTER `feed_discovery`")
-	or die("Error: ". mysql_error());
-	
-	// feed description
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_description` VARCHAR( 100 ) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `feed_title`")
-	or die("Error: ". mysql_error());
-	
-	// feed copyright
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_copyright` VARCHAR( 100 ) NOT NULL DEFAULT 'Copyright 2007 yoursite.com, All Rights Reserved' AFTER `feed_description`")
-	or die("Error: ". mysql_error());
-	
-	// allow comment feed
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `allow_comment_feed`  ENUM('Y', 'N') NOT NULL DEFAULT 'Y' AFTER `feed_copyright`")
-	or die("Error: ". mysql_error());
-	
-	// external feed
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_external` VARCHAR( 150 ) NOT NULL DEFAULT '' AFTER `allow_comment_feed`")
-	or die("Error: ". mysql_error());
-	
-	// external feed type
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `feed_external_type` ENUM('ER', 'EA') NOT NULL DEFAULT 'ER' AFTER `feed_external`")
-	or die("Error: ". mysql_error());
-	
-	// display order
-	mysql_query("ALTER TABLE ".$pixelpost_db_prefix."config ADD `display_order` ENUM( 'default', 'reversed' ) NOT NULL DEFAULT 'default'")
-	or die("Error: ". mysql_error());
-	
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
+function UpgradeTo165($prefix, $newversion) {
 
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";	
+	global $lang_updated, $lang_create_update_to;
+
+  	deactivateAddons($prefix);
+	activatePxlpstAddons($prefix);
+		
+	// Add admin langfile
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `admin_langfile` VARCHAR(100)")or die("MySQL Error: ". mysql_error());
+	
+	// Add thumbnail path
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `thumbnailpath` VARCHAR(150) NOT NULL DEFAULT '../thumbnails/' AFTER `imagepath`")or die("MySQL Error: ". mysql_error());
+	
+	// Add sub title
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `subtitle` VARCHAR(100) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `sitetitle`")or die("MySQL Error: ". mysql_error());
+	
+	// Drop rss type field
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `rsstype`");
+	
+	// Add rss type field
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `rsstype` ENUM('F', 'FO', 'T', 'O', 'N') NOT NULL DEFAULT 'T' AFTER `max_uri_comments`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed discovery
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_discovery` ENUM('RA', 'R', 'A', 'E', 'N') NOT NULL DEFAULT 'RA' AFTER `rsstype`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed title
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_title` VARCHAR(100) NOT NULL DEFAULT 'Pixelpost' AFTER `feed_discovery`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed description
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_description` VARCHAR(100) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `feed_title`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed copyright
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_copyright` VARCHAR(100) NOT NULL DEFAULT 'Copyright 2007 yoursite.com, All Rights Reserved' AFTER `feed_description`")or die("MySQL Error: ". mysql_error());
+	
+	// Add allow comment feed
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `allow_comment_feed`  ENUM('Y', 'N') NOT NULL DEFAULT 'Y' AFTER `feed_copyright`")or die("MySQL Error: ". mysql_error());
+	
+	// Add external feed
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_external` VARCHAR(150) NOT NULL DEFAULT '' AFTER `allow_comment_feed`")or die("MySQL Error: ". mysql_error());
+	
+	// Add external feed type
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_external_type` ENUM('ER', 'EA') NOT NULL DEFAULT 'ER' AFTER `feed_external`")or die("MySQL Error: ". mysql_error());
+	
+	// Add display order
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `display_order` ENUM('default', 'reversed') NOT NULL DEFAULT 'default'")or die("MySQL Error: ". mysql_error());
+	
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (version) VALUES ($newversion)")or die("MySQL Error: ". mysql_error());
+
+	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	return $create_status;
 }
 
-function UpgradeTo1651( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-  	//Turn_Addons_off( $prefix );
-	//Turn_Pixelpost_Addons_on( $prefix );
-	// update version
-	
-	// admin_langfile field
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `thumb_sharpening` VARCHAR( 1 ) DEFAULT '0'")
-	or die("Error: ". mysql_error());
-	
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
+function UpgradeTo1651($prefix, $newversion) {
 
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";	
+	global $lang_updated, $lang_create_update_to;
+
+  	//deactivateAddons($prefix);
+	//activatePxlpstAddons($prefix);
+		
+	// Add admin thumb sharpening
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `thumb_sharpening` VARCHAR(1) DEFAULT '0'")or die("MySQL Error: ". mysql_error());
+	
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (`version`) VALUES ('".$newversion."')")or die("MySQL Error: ". mysql_error());
+
+	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	return $create_status;
 }
 
-function UpgradeTo1652( $prefix, $newversion)
-{
-	global $pixelpost_db_prefix;
-	// admin_langfile field
-	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `display_sort_by` VARCHAR( 150 ) NOT NULL DEFAULT 'datetime' AFTER `display_order`")
-	or die("Error: ". mysql_error());
-	
-	// update version
-	mysql_query("
-	INSERT INTO `{$prefix}version` (version) VALUES ($newversion)
-	")
-	or die("Error: ". mysql_error());
+function UpgradeTo1652($prefix, $newversion) {
 
-	echo "<li style=\"list-style-type:none;\">Table ".$prefix."version updated to $newversion ...</li>";	
+	global $lang_updated, $lang_create_update_to;
+
+	// Add display sort by
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `display_sort_by` VARCHAR(150) NOT NULL DEFAULT 'datetime' AFTER `display_order`")or die("MySQL Error: ". mysql_error());
+	
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (version) VALUES ($newversion)")or die("MySQL Error: ". mysql_error());
+
+	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	return $create_status;
 }
+/*
+
+// Upgrade to 1.7 example
+function UpgradeTo1.7($prefix, $newversion) {
+
+	// Do NOT edit global variables
+	global $lang_updated, $lang_create_update_to;
+	
+	
+	
+	// Add MYSQL queries here
+	
+	
+	
+	// Do NOT edit bellow this line!
+	// Example Output: Update to 1.7: Updated
+	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	return $create_status;
+}
+
+*/
 ?>

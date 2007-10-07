@@ -47,11 +47,11 @@ error_reporting(0);
 
 $PHP_SELF = "index.php";
 
-// includes
-require("includes/pixelpost.php");
+
+if(file_exists("includes/pixelpost.php")) { require("includes/pixelpost.php"); }
 require("includes/functions.php");
 
-start_mysql();
+start_mysql('includes/pixelpost.php','front');
 
 
 // Frontpage addons begin

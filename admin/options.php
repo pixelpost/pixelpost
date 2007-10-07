@@ -468,7 +468,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		</div>
 		<div class='content'>
 		$admin_lang_optn_tz_txt <br />
-		<select name='timezone'>";
+		<select name='timezone'>
+			".timezone_select()."
+		</select>";
+		/*
 		if ($cfgrow['timezone']=='0')
 		echo "<option selected='selected' value='0'>GMT</option>";
 		else {
@@ -478,8 +481,41 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		echo "<option selected='selected' value='".$cfgrow['timezone']."'>GMT ".$timezonevalue." hours</option>";
 			}
 		echo "
-			<option value='-12'>GMT - 12 Hours</option><option value='-11'>GMT - 11 Hours</option><option value='-10'>GMT - 10 Hours</option><option value='-9'>GMT - 9 Hours</option><option value='-8'>GMT - 8 Hours</option><option value='-7'>GMT - 7 Hours</option><option value='-6'>GMT - 6 Hours</option><option value='-5'>GMT - 5 Hours</option><option value='-4'>GMT - 4 Hours</option><option value='-3.5'>GMT - 3.5 Hours</option><option value='-3'>GMT - 3 Hours</option><option value='-2'>GMT - 2 Hours</option><option value='-1'>GMT - 1 Hours</option><option value='0' >GMT</option><option value='1'>GMT + 1 Hour</option><option value='2'>GMT + 2 Hours</option><option value='3'>GMT + 3 Hours</option><option value='3.5'>GMT + 3.5 Hours</option><option value='4'>GMT + 4 Hours</option><option value='4.5'>GMT + 4.5 Hours</option><option value='5'>GMT + 5 Hours</option><option value='5.5'>GMT + 5.5 Hours</option><option value='6'>GMT + 6 Hours</option><option value='6.5'>GMT + 6.5 Hours</option><option value='7'>GMT + 7 Hours</option><option value='8'>GMT + 8 Hours</option><option value='9'>GMT + 9 Hours</option><option value='9.5'>GMT + 9.5 Hours</option><option value='10'>GMT + 10 Hours</option><option value='11'>GMT + 11 Hours</option><option value='12'>GMT + 12 Hours</option><option value='13'>GMT + 13 Hours</option>
-		</select>
+			<option value='-12'>GMT - 12 Hours</option>
+			<option value='-11'>GMT - 11 Hours</option>
+			<option value='-10'>GMT - 10 Hours</option>
+			<option value='-9'>GMT - 9 Hours</option>
+			<option value='-8'>GMT - 8 Hours</option>
+			<option value='-7'>GMT - 7 Hours</option>
+			<option value='-6'>GMT - 6 Hours</option>
+			<option value='-5'>GMT - 5 Hours</option>
+			<option value='-4'>GMT - 4 Hours</option>
+			<option value='-3.5'>GMT - 3.5 Hours</option>
+			<option value='-3'>GMT - 3 Hours</option>
+			<option value='-2'>GMT - 2 Hours</option>
+			<option value='-1'>GMT - 1 Hours</option>
+			<option value='0' >GMT</option>
+			<option value='1'>GMT + 1 Hour</option>
+			<option value='2'>GMT + 2 Hours</option>
+			<option value='3'>GMT + 3 Hours</option>
+			<option value='3.5'>GMT + 3.5 Hours</option>
+			<option value='4'>GMT + 4 Hours</option>
+			<option value='4.5'>GMT + 4.5 Hours</option>
+			<option value='5'>GMT + 5 Hours</option>
+			<option value='5.5'>GMT + 5.5 Hours</option>
+			<option value='6'>GMT + 6 Hours</option>
+			<option value='6.5'>GMT + 6.5 Hours</option>
+			<option value='7'>GMT + 7 Hours</option>
+			<option value='8'>GMT + 8 Hours</option>
+			<option value='9'>GMT + 9 Hours</option>
+			<option value='9.5'>GMT + 9.5 Hours</option>
+			<option value='10'>GMT + 10 Hours</option>
+			<option value='11'>GMT + 11 Hours</option>
+			<option value='12'>GMT + 12 Hours</option>
+			<option value='13'>GMT + 13 Hours</option>
+			</select>
+		*/
+		echo "
 		$admin_lang_optn_gmt<p />
 		</div>
 		<!-- Allow commenting on pictures -->

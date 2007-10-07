@@ -488,18 +488,34 @@ function sql_array($str)
 	return $row;
 }
 
-function start_mysql()
+function start_mysql($config_file,$request_uri)
 {
 	global $pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass, $pixelpost_db_pixelpost;
 	$dir = 'templates';
 	if (!file_exists($dir ."/splash_page.html"))
 		$dir = '../templates';
+	
+	if(!file_exists($config_file)) {
+		show_splash("Connect DB Error: ". mysql_error()." Cause #1",$dir);
+	}
+		
+	if(!mysql_connect($pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass)) {
+		if($request_uri == 'admin') {
+			header("Location: install.php?view=db_fix");
+			exit;
+		}else{
+			show_splash("Connect DB Error: ". mysql_error()." Cause #2",$dir);
+		}
+	}
 
-	if(!mysql_connect($pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass))
-		show_splash("Connect DB Error: ". mysql_error()." Cause #2",$dir);
-
-	if(!mysql_select_db($pixelpost_db_pixelpost))
-		show_splash("Select DB Error: ". mysql_error()." Cause #2",$dir);
+	if(!mysql_select_db($pixelpost_db_pixelpost)) {
+		if($request_uri == 'admin') {
+			header("Location: install.php?view=db_fix");
+			exit;
+		}else{
+			show_splash("Select DB Error: ". mysql_error()." Cause #2",$dir);
+		}
+	}
 }
 
 // function show_splash
@@ -920,6 +936,75 @@ function count_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = ''
 	}
 	return $menu_items;
 }
+
+//============================= TIMEZONE SECTION BEGINS ========================
+
+/**
+ * Creates dropdown menu options of available timezones
+ *
+ */
+function timezone_select() {
+
+	global $tz_array, $cfgrow;
+	
+	$default = ($cfgrow['timezone'] == '0') ? '0' : $cfgrow['timezone'];
+	
+	$tz_select = '';
+	foreach ($tz_array as $offset => $zone) {
+	
+		if(is_numeric($offset)) {
+		
+			$selected   = ($offset == $default) ? ' selected="selected"' : '';
+			$tz_select .= "<option value=\"$offset\"$selected>$zone</option>\n";
+		}
+	}
+	
+	return $tz_select;
+}
+$tz_array = array('-12'   => '[UTC - 12]',
+				  '-11'   => '[UTC - 11]',
+				  '-10'   => '[UTC - 10]',
+				  '-9.5'  => '[UTC - 9:30]',
+				  '-9'    => '[UTC - 9]',
+				  '-8'    => '[UTC - 8]',
+				  '-7'    => '[UTC - 7]',
+				  '-6'    => '[UTC - 6]',
+				  '-5'    => '[UTC - 5]',
+				  '-4'    => '[UTC - 4]',
+				  '-3.5'  => '[UTC - 3:30]',
+				  '-3'    => '[UTC - 3]',
+				  '-2'    => '[UTC - 2]',
+				  '-1'    => '[UTC - 1]',
+				  '0'     => '[UTC]',
+				  '1'     => '[UTC + 1]',
+				  '2'     => '[UTC + 2]',
+				  '3'     => '[UTC + 3]',
+				  '3.5'   => '[UTC + 3:30]',
+				  '4'     => '[UTC + 4]',
+				  '4.5'   => '[UTC + 4:30]',
+				  '5'     => '[UTC + 5]',
+				  '5.5'   => '[UTC + 5:30]',
+				  '5.75'  => '[UTC + 5:45]',
+				  '6'     => '[UTC + 6]',
+				  '6.5'   => '[UTC + 6:30]',
+				  '7'     => '[UTC + 7]',
+				  '8'     => '[UTC + 8]',
+				  '8.75'  => '[UTC + 8:45]',
+				  '9'     => '[UTC + 9]',
+				  '9.5'   => '[UTC + 9:30]',
+				  '10'	  => '[UTC + 10]',
+				  '10.5'  => '[UTC + 10:30]',
+				  '11'	  => '[UTC + 11]',
+				  '11.5'  => '[UTC + 11:30]',
+				  '12'    => '[UTC + 12]',
+				  '12.75' => '[UTC + 12:45]',
+				  '13'    => '[UTC + 13]',
+				  '14'    => '[UTC + 14]'
+				);
+		   
+//============================= TIMEZONE SECTION ENDS ========================
+
+
 //============================= CONTROL SPAM SECTION BEGINS ========================
 
 function banlist_exist()

@@ -39,13 +39,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
+error_reporting(0);
+
+if(!file_exists('../includes/pixelpost.php')) {
+	header("Location: install.php");
+	exit;
+}
 // variable clean up
 if(isset($_GET["loginmessage"]) || isset($_POST["loginmessage"]))	$loginmessage = "";
 
 // variable saying we are inside admin panel (i.e. to use in addons)
 $admin_panel = 1;
 
-error_reporting(0);
 session_start();
 
 if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
@@ -60,7 +65,7 @@ require("../includes/pixelpost.php");
 require("../includes/functions.php");
 
 $pixelpost_prefix_used = $pixelpost_db_prefix;
-start_mysql();
+start_mysql('../includes/pixelpost.php','admin');
 
 // added to allow upgrades
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
