@@ -26,9 +26,9 @@ ADMIN PANEL LANGUAGE VARIABLES:
 
 Dont edit                    ||      Edit                                   */
 
-$_lang_file_translator        = 'The Pixelpost Crew';
-$_lang_file_email             = 'thecrew@pixelpost.org';
-$_lang_file_rev               = '1.0.0';
+$_lang_file_translator        = 'jdleungs.com';
+$_lang_file_email             = 'jdleungs@gmail.com';
+$_lang_file_rev               = '1.7';
 
 $admin_lang_isrtl             = "是"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update            = "更新";
@@ -42,7 +42,7 @@ $admin_lang_prev              = "上一页";
 $admin_lang_show              = "显示";
 $admin_lang_go                = "执行";
 $admin_lang_done              = "完成：";
-$admin_lang_example			  = "Example";
+$admin_lang_example			  = "样本";
 
 
 // Admin Start
@@ -133,14 +133,14 @@ $admin_lang_ni_crop_nextstep      = "现在您应该选择缩略图窗口：";
 $admin_lang_ni_crop_background    = "这是准备裁剪图的背景";
 $admin_lang_ni_post_exif_date     = "使用exif日期";
 $admin_lang_ni_db_error           =  "写入数据库时有误";
-$admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
-$admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
+$admin_lang_ni_tags               = "标签";
+$admin_lang_ni_tags_desc          = "(使用逗号、分号和空格来分隔标签；连接词用下划线和连线符)";
+$admin_lang_ni_alt_language				= "为交替的语言提供一个图片标题和说明";
 
 // Images
 $admin_lang_imgedit_edit           = "编辑";
 $admin_lang_imgedit_title          = "标题：";
-$admin_lang_imgedit_alttitle          		= "Alt. Title:";
+$admin_lang_imgedit_alttitle          		= "Alt. 标题：";
 $admin_lang_imgedit_file_name      = "文件名：";
 $admin_lang_imgedit_dimensions     = "尺寸：";
 $admin_lang_imgedit_tbpublished    = "发表时间：";
@@ -178,14 +178,14 @@ $admin_lang_imgedit_cropbg          = "这是12cropimage背景文本";
 $admin_lang_imgedit_js_del_im       = "确定删除这张图片吗？";
 $admin_lang_imgedit_preview         = "预览";
 $admin_lang_imgedit_db_error        = "<br />检查目前是否没用永久连接！";
-$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
-$admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
-$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
-$admin_lang_imgedit_masstag_set     = "Add tag(s)";
-$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
-$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
-$admin_lang_imgedit_published          = "Published";
-$admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
+$admin_lang_imgedit_tags_edit       = "标签(使用逗号、分号和空格来分隔标签；连接词用下划线和连线符)：";
+$admin_lang_imgedit_alt_language    = "更改交替语言的图片标题和说明";
+$admin_lang_imgedit_masstag         = "增加/删除选定图片的标签";
+$admin_lang_imgedit_masstag_set     = "增加标签";
+$admin_lang_imgedit_masstag_set2    = "为另一种语言增加标签";
+$admin_lang_imgedit_masstag_unset   = "删除标签";
+$admin_lang_imgedit_published          = "发布";
+$admin_lang_imgedit_unpublished_cmnts  = "之前标记的图片。";
 
 // Mass-Edit Categories
 $admin_lang_imgedit_mass_1          = "批量编辑类别";
@@ -224,7 +224,7 @@ $admin_lang_cmnt_delete1            = "删除成功";
 $admin_lang_cmnt_delete2            = "已选 择评论。";
 $admin_lang_cmnt_edit               = "编辑";
 $admin_lang_cmnt_edited             = "编辑评论。";
-$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
+$admin_lang_cmnt_check_all          = "批量选择/取消选择";
 $admin_lang_cmnt_invert_checks      = "反向选择";
 $admin_lang_cmnt_del_selected       = "删除已选";
 $admin_lang_cmnt_page               = "个评论/页。";
@@ -243,8 +243,8 @@ $admin_lang_cmnt_error_blacklist    = "更新黑名单有误：";
 $admin_lang_cmnt_error_banlist      = "更新referer禁止列表有误：";
 $admin_lang_cmnt_moderation_que     = "待审批队列";
 $admin_lang_cmnt_rep_spam 			= '报告垃圾广告';
-$admin_lang_cmnt_submenu1									= "COMMENTS";
-$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_submenu1									= "评论";
+$admin_lang_cmnt_submenu2									= "等待审查";
 
 
 // Option
@@ -259,7 +259,7 @@ $admin_lang_optn_no                 = "否";
 
 $admin_lang_optn_title_url         = "网站标题和网址";
 $admin_lang_optn_title             = "标题：";
-$admin_lang_optn_sub_title         = "Sub Title:";
+$admin_lang_optn_sub_title         = "副标题：";
 $admin_lang_optn_url               = "网址：";
 $admin_lang_optn_usr_pss           = "管理员用户名和密码";
 $admin_lang_optn_usr_pss_txt       = "更改用户名或密码？";
@@ -268,23 +268,23 @@ $admin_lang_optn_pss               = "密码：";
 $admin_lang_optn_pss_re            = "再次确认密码：";
 $admin_lang_optn_email             = "管理员电子邮件";
 $admin_lang_optn_fillit            = "请填写。这对您密码恢复有用处。";
-$admin_lang_optn_img_path          = "IMAGES & THUMBNAILS PATH";
+$admin_lang_optn_img_path          = "图片和缩略图路径";
 $admin_lang_optn_tz                = "时区";
 $admin_lang_optn_tz_txt            = "选择您所在的时区。";
 $admin_lang_optn_sendemail         = "为每个评论发送电子邮件";
 $admin_lang_optn_sendemail_txt     = "为每个评论发送电子邮件通知？";
 $admin_lang_optn_sendemail_html_txt = "使用HTML格式的电子邮件通知函？";
-$admin_lang_optn_comment_setting 		= "GLOBAL COMMENT SETTINGS";
-$admin_lang_optn_comment_setting2		= "Comment setting";
-$admin_lang_optn_cmnt_mod_txt       = "Default action for comments:";
-$admin_lang_optn_cmnt_mod_txt2      = "Action for comments:";
-$admin_lang_optn_cmnt_mod_allowed		=	"Publish instantly";
-$admin_lang_optn_cmnt_mod_moderation=	"To moderation queue";
-$admin_lang_optn_cmnt_mod_forbidden	=	"Disable commenting";
+$admin_lang_optn_comment_setting 		= "全局评论设置";
+$admin_lang_optn_comment_setting2		= "评论设置";
+$admin_lang_optn_cmnt_mod_txt       = "评论的缺省操作：";
+$admin_lang_optn_cmnt_mod_txt2      = "评论的操作：";
+$admin_lang_optn_cmnt_mod_allowed		=	"立即发布";
+$admin_lang_optn_cmnt_mod_moderation=	"到审查列队";
+$admin_lang_optn_cmnt_mod_forbidden	=	"禁止评论";
 
 $admin_lang_optn_switch_template    = "切换模板";
 $admin_lang_optn_lang_file           = "语言文件";
-$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
+$admin_lang_optn_lang_file_admin          = "控制面板语言文件";
 $admin_lang_optn_dateformat          = "日期格式";
 $admin_lang_optn_dateformat_txt      = "图片和评论的日期显示格式。这个使用的语法与PHP的<a href='http://www.php.net/date' target='_blank'>date()</a>函数一样。这是一些可替换的参数：Y:年 m:月 d:日 H:时 i:分 s:秒";
 $admin_lang_optn_gmt                 = "注意这个不会自动支持夏令时，您可以自己更改。<br />如果您不确定您所在的GMT时区，请查找<a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'>GMT现在的时间。</a><br />";
@@ -308,13 +308,13 @@ $admin_lang_optn_reg_thumbs_button   = "重新产生缩略图";
 $admin_lang_optn_regen_thumbs_txt    = "这会为所有已发布的图片产生新的缩略图。所有手动裁剪的图片将会以设置的缩略图代替。然而，编辑图片的时候您可以使用12CropImage更改缩略图。";
 $admin_lang_optn_img_compression     = "缩略图压缩比率";
 $admin_lang_optn_img_compression_txt = "您想jpg压缩到哪个程度呢？10是最低质量，100是最好质量(无损)";
-$admin_lang_optn_thumb_sharp              = "THUMBNAIL SHARPENING";
-$admin_lang_optn_thumb_sharp_txt          = "How sharp do you want the thumbnails to be?";
-$admin_lang_optn_thumb_sharp0             = 'No Sharpening';
-$admin_lang_optn_thumb_sharp1             = 'Light';
-$admin_lang_optn_thumb_sharp2             = 'Medium';
-$admin_lang_optn_thumb_sharp3             = 'High';
-$admin_lang_optn_thumb_sharp4             = 'Ultra-High';
+$admin_lang_optn_thumb_sharp              = "缩略图锐化";
+$admin_lang_optn_thumb_sharp_txt          = "您想缩略图锐化到什么程度？";
+$admin_lang_optn_thumb_sharp0             = '不锐化';
+$admin_lang_optn_thumb_sharp1             = '轻微';
+$admin_lang_optn_thumb_sharp2             = '中等';
+$admin_lang_optn_thumb_sharp3             = '高度';
+$admin_lang_optn_thumb_sharp4             = '超高度';
 $admin_lang_optn_pass_chngd_txt      = "密码更改成功";
 $admin_lang_optn_pass_notchngd_txt   = "密码没有更改。请在确认栏输入一样的的密码。";
 $admin_lang_optn_title_url_text      = "检查或修改您安装的网站标题和网址";
@@ -323,54 +323,54 @@ $admin_lang_optn_updated             = "缩略图更新成功！";
 $admin_lang_optn_visitorbooking_title = '登记来访者';
 $admin_lang_optn_visitorbooking_desc  = '要Pixelpost登记每个来访者的信息吗？';
 $admin_lang_optn_upd_done     = "更新成功！";
-$admin_lang_optn_upd_error            = "Update Error.";
-$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
-$admin_lang_optn_markdown             = "Enable Markdown";
-$admin_lang_optn_markdown_desc        = "Should Pixelpost enable Markdown feature in Image description?";
-$admin_lang_optn_exif			            = "Enable Exif";
-$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
-$admin_lang_optn_token			          = "Enable token in forms";
-$admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
-																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
-																				 Should this setting be enabled?";
-$admin_lang_optn_token_time						= "Maximum time between opening the comment window and submit a comment: ";
-$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute are not possible. The Token time has been reset to 1 minute.";
-$admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
-																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
-$admin_lang_optn_time_between_comments = "Prevent SPAM flood";
-$admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
-$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
-$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
-$admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
-$admin_lang_optn_rss_title  					= "Feed title";
-$admin_lang_optn_rss_desc   					= "Feed description";
-$admin_lang_optn_rss_copyright					= "Feed copyright";
-$admin_lang_optn_rss_discovery					= "Feed discovery";
+$admin_lang_optn_upd_error            = "更新失败。";
+$admin_lang_optn_upd_lang_error			  = "被选定的另一种语言与缺省语言一样。<br />这样没有意义，要么选择另一种不同的语言或禁止使用另一种语言。";
+$admin_lang_optn_markdown             = "使用Markdown";
+$admin_lang_optn_markdown_desc        = "在图片说明使用Markdown功能吗？";
+$admin_lang_optn_exif			            = "使用Exif";
+$admin_lang_optn_exif_desc		        = "在首页使用Exif功能吗？";
+$admin_lang_optn_token			          = "在表单中使用记号";
+$admin_lang_optn_token_desc		        = "使用记号会有效降低<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">跨网站的虚假请求</a>。<br/><br/>\n
+																				 如果这个设置用在评论上，只有表单的记号与用户的session一致才保存。实施的话需要加入<strong>&lt;TOKEN&gt;</strong>到评论的模板文件中的<strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>标签。
+																				 如果您忘记了<strong>&lt;TOKEN&gt;</strong> 标签，评论不会再运作而且用户会收到错误的信息。<br /><br/>\n
+																				 允许这设置吗？";
+$admin_lang_optn_token_time						= "打开评论到发表评论之间所需最大时间：";
+$admin_lang_optn_token_error					= "注意：少于一分钟的值是不允许的。记号时间已被复位到一分钟。";
+$admin_lang_optn_dsbl_list 						= "分发的发送者黑名单设置(http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list_desc 			= "<a href=\"http://www.dsbl.org\" target=\"_blank\">分发的发送者黑名单</a>包含公开的中继、代理或其他容易遭到攻击的服务器的ip地址。 这些服务器被垃圾广告公开滥用作为发送邮件，也用来发表评论。<br /> <br />
+																				 要从名单中检查评论者的ip地址吗？";
+$admin_lang_optn_time_between_comments = "防止垃圾广告的攻击";
+$admin_lang_optn_time_between_comments_desc = "写一个新评论之前所需要的秒数(防止攻击)： ";
+$admin_lang_optn_max_uri_comment			= "最多的URI";
+$admin_lang_optn_max_uri_comment_desc = "一条评论允许最多的URI数目：";
+$admin_lang_optn_rss_setting					= "RSS/ATOM feed设置";
+$admin_lang_optn_rss_title  					= "Feed标题";
+$admin_lang_optn_rss_desc   					= "Feed说明";
+$admin_lang_optn_rss_copyright					= "Feed版权";
+$admin_lang_optn_rss_discovery					= "Feed发现";
 $admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
 $admin_lang_optn_rss_opt_rss					= "RSS";
 $admin_lang_optn_rss_opt_atom					= "ATOM";
-$admin_lang_optn_rss_opt_ext					= "External";
-$admin_lang_optn_rss_opt_none					= "None";
-$admin_lang_optn_rss_ext_type					= "External feed type";
-$admin_lang_optn_rss_ext						= "External feed";
-$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
-$admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
-$admin_lang_optn_rss_full							= "Show full size pictures";
-$admin_lang_optn_rss_thumbs						= "Show thumbnails";
-$admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
-$admin_lang_optn_rss_full_only						= "Show full size pictures only";
+$admin_lang_optn_rss_opt_ext					= "外部的";
+$admin_lang_optn_rss_opt_none					= "没有";
+$admin_lang_optn_rss_ext_type					= "外部的feed类型";
+$admin_lang_optn_rss_ext						= "外部的feed";
+$admin_lang_optn_rss_enable_comment_feed		= "允许评论feeds";
+$admin_lang_optn_rsstype_desc					= "选择RSS/ATOM feed的样式：";
+$admin_lang_optn_rss_full							= "显示全图";
+$admin_lang_optn_rss_thumbs						= "显示缩略图";
+$admin_lang_optn_rss_thumbs_only					= "只显示缩略图";
+$admin_lang_optn_rss_full_only						= "只显示全图";
 $admin_lang_optn_rss_text							= "Show text only";
-$admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
-$admin_lang_optn_lang                  = "Base language settings: ";
-$admin_lang_optn_alt_lang             = "Alternative language settings: ";
-$admin_lang_optn_alt_lang_dis         = "disabled";
-$admin_lang_optn_alt_lang_no          = "disabled";
-$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
-$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
-$admin_lang_optn_img_display_default		="descending order";
-$admin_lang_optn_img_display_reversed		="ascending order";
+$admin_lang_optn_feeditems_desc				= "feed清单中的条数";
+$admin_lang_optn_lang                  = "其本语言设置：";
+$admin_lang_optn_alt_lang             = "另一种语言设置：";
+$admin_lang_optn_alt_lang_dis         = "不允许";
+$admin_lang_optn_alt_lang_no          = "不允许";
+$admin_lang_optn_img_display						="图片显示顺序";
+$admin_lang_optn_img_display_desc				="选择图片显示的方式。排列：";
+$admin_lang_optn_img_display_default		="倒序";
+$admin_lang_optn_img_display_reversed		="顺序";
 
 // Info
 $admin_lang_info_gd                  = "没有安装，请咨询您的主机管理员为您安装！";
@@ -402,19 +402,19 @@ $admin_lang_fileuploads				 = "<b>上传文件</b>到pixelpost";
 $admin_lang_serversoft				 = "服务器软件";
 $admin_lang_pixelpostinfo			 = "Pixelpost信息";
 $admin_lang_pp_currversion			 = "您正在使用的Pixelpost版本";
-$admin_lang_pp_check                 = "Check";
-$admin_lang_pp_sess_path             = "Session save path";
-$admin_lang_pp_sess_path_emp         = "is empty";
-$admin_lang_pp_fileupload_np         = 'NOT possible! Check file_upload variable in php.ini file!';
-$admin_lang_pp_fileupload_p          = 'possible.';
-$admin_lang_pp_langs                 = 'Pixelpost language translations';
-$admin_lang_pp_lng_fname             = 'Filename';
-$admin_lang_pp_lng_author            = 'Author';
-$admin_lang_pp_lng_ver               = 'Version';
-$admin_lang_pp_lng_email             = 'Email';
-$admin_lang_pp_newest_ver            = 'You have the newest version of Pixelpost!';
-$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
-$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
+$admin_lang_pp_check                 = "检查";
+$admin_lang_pp_sess_path             = "Session存储路径";
+$admin_lang_pp_sess_path_emp         = "是空的";
+$admin_lang_pp_fileupload_np         = '不允许！在php.ini文件中检查file_upload变量！';
+$admin_lang_pp_fileupload_p          = '允许';
+$admin_lang_pp_langs                 = 'Pixelpost语言翻译';
+$admin_lang_pp_lng_fname             = '文件名';
+$admin_lang_pp_lng_author            = '作者';
+$admin_lang_pp_lng_ver               = '版本';
+$admin_lang_pp_lng_email             = '电子邮箱';
+$admin_lang_pp_newest_ver            = '您使用的是最新版本的Pixelpost!';
+$admin_lang_pp_thumbnailpath 				 = "推测的缩略图路径";
+$admin_lang_pp_thumbnailpath_conf 	 = "设置的缩略图路径"; 
 
 // AddOns
 $admin_lang_addon_title              = "安装插件";
@@ -428,9 +428,9 @@ $admin_lang_pp_up_error_1            = "超过服务器能够处理的最大文�
 $admin_lang_pp_up_error_2            = "超过最大的文件大小。";
 $admin_lang_pp_up_error_3            = "文件没有完全上传。";
 $admin_lang_pp_up_error_4            = "没有上传到文件。";
-$admin_lang_pp_up_error_6            = "Missing a temporary folder.";
-$admin_lang_pp_up_error_7            = "Failed to write file to disk.";
-$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
+$admin_lang_pp_up_error_6            = "没有临时目录。";
+$admin_lang_pp_up_error_7            = "写入文件失败。";
+$admin_lang_pp_addon_error								= "Pixelpost不能读入插件文件。请检查属性并更改他们为755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "时间标签";
@@ -479,7 +479,7 @@ $admin_lang_norwegian					="Norwegian";
 $admin_lang_persian						="Persian";
 $admin_lang_polish						="Polish";
 $admin_lang_portuguese				="Portuguese";
-$admin_lang_simplified_chinese="Chinese";
+$admin_lang_simplified_chinese="简体中文";
 $admin_lang_spanish						="Spanish";
 $admin_lang_swedish						="Swedish";
 $admin_lang_japanese					="Japanese";
