@@ -94,7 +94,7 @@ function Get_Pixelpost_Version( $prefix)
 {
 	// First, check to see if we are 1.4 or better
 	$querystr = "SELECT version FROM {$prefix}version ORDER BY version DESC LIMIT 1";
-	$query = mysql_query($querystr);
+	$query = @mysql_query($querystr);
 	if($query)
 	{
 		if( $row = mysql_fetch_array( $query))
@@ -104,7 +104,7 @@ function Get_Pixelpost_Version( $prefix)
 	}
 
 	// Are we even installed?
-	$query = mysql_query("SELECT COUNT(admin) FROM {$prefix}config");
+	$query = @mysql_query("SELECT COUNT(admin) FROM {$prefix}config");
 	if($query)
 	{
 		if( $row = mysql_fetch_array( $query))
@@ -492,8 +492,9 @@ function start_mysql($config_file,$request_uri)
 {
 	global $pixelpost_db_host, $pixelpost_db_user, $pixelpost_db_pass, $pixelpost_db_pixelpost;
 	$dir = 'templates';
-	if (!file_exists($dir ."/splash_page.html"))
+	if (!file_exists($dir ."/splash_page.html")) {
 		$dir = '../templates';
+	}
 	
 	if(!file_exists($config_file)) {
 		show_splash("Connect DB Error: ". mysql_error()." Cause #1",$dir);
