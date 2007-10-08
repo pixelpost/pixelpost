@@ -46,9 +46,4 @@ $pixelpost_db_pass      = "replace_me"; // database user password
 $pixelpost_db_pixelpost = "replace_me"; // database
 
 $pixelpost_db_prefix = "pixelpost_"; // table prefix, leave as is unless you want to install multiple blogs on the same database
-
-// Pixelpost Version
-
-$version = "2007MS43LjAgKFJlZmluaW5nIHRoZSBCZWFzdCkgLSBTZXB0ZW1iZXIgMjAwNw==";
-
 ?>
