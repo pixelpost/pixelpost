@@ -68,7 +68,7 @@ switch($installed_version) {
 
 	/* Add the upgrade to 1.7 here
 	
-	IMPORTANT !!! - Remember to define the new pixelpost version on line 12 of /admin/install.php
+	IMPORTANT !!! - Remember to define the new pixelpost version on line 13 of /admin/install.php
 	
 	case 1.7:
 		 $ins_data[] = UpgradeTo1.7($prefix,'1.7');
