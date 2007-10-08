@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id:$
+// $Id$
 
 if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 
@@ -1142,10 +1142,6 @@ function create_config_file($config_dir,$config_path) {
 	$config_data .= "\$pixelpost_db_pixelpost = \"{$data['db_name']}\";  // database\n\n";
 	
 	$config_data .= "\$pixelpost_db_prefix = \"{$data['tbl_prefix']}\";  // table prefix, leave as is unless you want to install multiple blogs on the same database\n\n";
-	
-	$config_data .= "// Pixelpost Version\n\n";
-	
-	$config_data .= "\$version = \"2007MS43LjAgKFJlZmluaW5nIHRoZSBCZWFzdCkgLSBTZXB0ZW1iZXIgMjAwNw==\";\n\n";
 	
 	$config_data .= '?' . '>';
 	
