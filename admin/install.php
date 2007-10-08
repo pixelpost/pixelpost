@@ -385,7 +385,7 @@ if(isset($_POST['db_check'])) { ?>
 	<div><?php echo $result['connect_test']; ?></div>
 </div>
 
-<?php }else{ ?>
+<?php }elseif(isset($_GET['view']) && $_GET['view'] == 'db_fix'){ ?>
 
 <div class='statusmsg messageBox' >
 	<div><?php echo $lang_db_fix_msg; ?></div>

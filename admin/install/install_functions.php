@@ -770,7 +770,7 @@ function createStatusMsg($status, $cssClass) {
 ////////////////////////////////////////////////////////////////////////////////////
 function tz_select($default = '-5', $truncate = false, $chars = '80') {
 
-	global $tz;
+	global $tz, $data;
 
 	$tz_select = '';
 	foreach ($tz as $offset => $zone) {
@@ -785,7 +785,7 @@ function tz_select($default = '-5', $truncate = false, $chars = '80') {
 
 		if(is_numeric($offset)) {
 		
-			$selected   = ($offset == $default) ? ' selected="selected"' : '';
+			$selected   = ($offset == $data['pp_timezone']) ? ' selected="selected"' : '';
 			$tz_select .= "<option value=\"$offset\"$selected>$zone</option>\n";
 		}
 	}
