@@ -285,25 +285,25 @@ function unsharp_mask($img, $sharpeningsetting)    {
     switch ($sharpeningsetting) {
     case 1: //light
         $amount= 15; //typically 50 - 200
-				$radius= 0.3; //typically 0.5 - 1
-				$threshold= 2; //typically 0 - 5
+		$radius= 0.3; //typically 0.5 - 1
+		$threshold= 2; //typically 0 - 5
         break;
     case 2: //medium
         $amount= 30; //typically 50 - 200
-				$radius= 0.3; //typically 0.5 - 1
-				$threshold= 1; //typically 0 - 5
+		$radius= 0.3; //typically 0.5 - 1
+		$threshold= 1; //typically 0 - 5
         break;
     case 3: //high
         $amount= 50; //typically 50 - 200
-				$radius= 0.3; //typically 0.5 - 1
-				$threshold= 3; //typically 0 - 5
+		$radius= 0.3; //typically 0.5 - 1
+		$threshold= 3; //typically 0 - 5
         break;
     case 4: //ultra-high
         $amount= 70; //typically 50 - 200
-				$radius= 0.3; //typically 0.5 - 1
-				$threshold= 3; //typically 0 - 5
+		$radius= 0.3; //typically 0.5 - 1
+		$threshold= 3; //typically 0 - 5
         break;
-		}
+	}
 
     
     // Attempt to calibrate the parameters to Photoshop: 
@@ -422,10 +422,9 @@ function unsharp_mask($img, $sharpeningsetting)    {
     } 
     imagedestroy($imgCanvas); 
     imagedestroy($imgBlur); 
-     
-    return $img; 
-
+   return $img; 
 } 
+
 function sql_query($str)
 {
 	$query = "$str";

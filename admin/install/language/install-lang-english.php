@@ -1,4 +1,8 @@
 <?php
+
+// SVN file version:
+// $Id:$
+
 /*
 Pixelpost version 1.7
 

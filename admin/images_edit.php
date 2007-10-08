@@ -637,7 +637,7 @@ if($_GET['view'] == "images")
 
 		if (!isset($_GET["imagesview"])) $selecteclass = 'selectedsubmenu';
 
-		echo "class='".$selecteclass."'>$admin_lang_imgedit_edit_post</a>";
+		echo "class='".$selectedclass."'>$admin_lang_imgedit_edit_post</a>";
         	echo_addon_admin_menus($addon_admin_functions,"images","&amp;id=".$getid);
 
 		echo "</div>";

@@ -1,4 +1,8 @@
 <?php
+
+// SVN file version:
+// $Id:$
+
 if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 
 switch($installed_version) {
