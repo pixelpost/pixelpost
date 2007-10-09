@@ -527,9 +527,11 @@ if($_GET['view'] == "images")
 				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" />
 				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
 				<strong>#$id<br/>
-				$admin_lang_imgedit_title</strong> $headline<br/>
-				<strong>$admin_lang_imgedit_alttitle</strong> $alt_headline<br/>								
-				<strong>$admin_lang_imgedit_file_name</strong> $image<br/>
+				$langs $admin_lang_imgedit_title</strong> $headline<br/>";
+				if ($cfgrow['altlangfile'] != 'Off') { 
+					echo "<strong>$altlangs $admin_lang_imgedit_alttitle</strong> $alt_headline<br/>";
+				}
+				echo"<strong>$admin_lang_imgedit_file_name</strong> $image<br/>
 				<strong>$admin_lang_imgedit_dimensions</strong> $local_width x $local_height, $fs KB<br/>
 				<strong>$admin_lang_imgedit_tbpublished</strong> $datetime<br/>";
 
@@ -546,10 +548,12 @@ if($_GET['view'] == "images")
 			echo "<br/>";
 
 			// tags
-			echo "<strong>$admin_lang_ni_tags $langs:</strong> ";
+			echo "<strong>$langs $admin_lang_ni_tags:</strong> ";
 			echo list_tags_edit($id);
-			echo "<br/><strong>$admin_lang_ni_tags $altlangs:</strong> ";
-			echo list_tags_edit($id, "alt_");
+			if ($cfgrow['altlangfile'] != 'Off') { 
+				echo "<br/><strong>$altlangs $admin_lang_ni_tags:</strong> ";
+				echo list_tags_edit($id, "alt_");
+			}
 			echo "<br/>";
 			// added workspace requested by KArin on the forums
 				eval_addon_admin_workspace_menu('image_list');
