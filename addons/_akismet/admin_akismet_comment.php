@@ -74,8 +74,13 @@ function get_akismet_links()
     	  return confirm('Report all selected comments as Spam to Akismet?');\" />";
     }
     if ((isset($GLOBALS['akismet_result_message'])) && ($GLOBALS['akismet_result_message']!="")){
-	 		echo "<br /><br />".$GLOBALS['akismet_result_message'];
-		}
+		echo "<br /><br />".$GLOBALS['akismet_result_message'];
+	}
+	$query = mysql_query("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='spm' ");
+	$akismet_count = mysql_fetch_array($query);
+	if ($akismet_count['count'] < 1 && isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
+		echo "<div class=\"content\">Your quarantine is empty.</div> ";
+	}
 }
 
 function get_akismet_links2()
@@ -112,7 +117,7 @@ function get_akismet_pages() {
 function get_akismet_style() {
  	global $pixelpost_db_prefix;
  	$query = mysql_query("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='spm' ");
-	$count = mysql_fetch_array($query);
+	$akismet_count = mysql_fetch_array($query);
 	echo '<style  type="text/css">
 	.akismet-spam-comment {background-color:#eca189;color:#666;}
 	</style><script type="text/javascript" src="../addons/_akismet/libraries/domFunction.js"></script>
@@ -157,7 +162,7 @@ function get_akismet_style() {
 	}	
 	// The actual code the makes it work:
 		var akismet = document.getElementById(\'commentsAkismet\');
-		var akismet_total = \''.$count['count'].'\';
+		var akismet_total = \''.$akismet_count['count'].'\';
 		if(akismet){
 			akismet.innerHTML = akismet.innerHTML + \' (\' + akismet_total + \')\';
 		}
