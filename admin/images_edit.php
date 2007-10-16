@@ -509,6 +509,32 @@ if($_GET['view'] == "images")
 		else {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
+		
+		// construct the pagelinks
+		if($pixelpost_photonumb > $_SESSION['numimg_pp'])
+    	{			
+    		$pagecounter = 0;
+    		$pcntr = 0;
+    		$image_page_Links = "";
+			while ($pcntr < $num_img_pages)
+		  	{
+				$pcntr++;
+				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>$pcntr</a> ";
+				$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
+			}// end while
+			if ($page < (($num_img_pages-1)*$_SESSION['numimg_pp']))
+      		{
+	      		$newpage = $page+$_SESSION['numimg_pp'];
+	      		$image_page_Links .= "<a href='index.php?view=images&amp;page=$newpage$getfstring'>$admin_lang_next</a>";
+      		}
+			if ($page >= $_SESSION['numimg_pp'])
+      		{
+        		$newpage = $page - $_SESSION['numimg_pp'];
+        		$image_page_Links  = "<a href='index.php?view=images&amp;page=$newpage$getfstring'>$admin_lang_prev</a> " .$image_page_Links;
+      		}
+      		echo $image_page_Links."<hr />";
+      	}
+		
 		$pagec = 0;
 		$images = mysql_query($query);
 		
@@ -582,33 +608,11 @@ if($_GET['view'] == "images")
 				$getfstring = '';
 			}
 
-    if($pixelpost_photonumb > $_SESSION['numimg_pp'])
-    {			
-    	$pagecounter = 0;
-    	$pcntr = 0;
-    	$image_page_Links = "";
+		if($pixelpost_photonumb > $_SESSION['numimg_pp'])
+    	{
+         	echo $image_page_Links;
+        }
 
-			while ($pcntr < $num_img_pages)
-		  {
-				$pcntr++;
-				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>$pcntr</a> ";
-				$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
-			}// end while
-
-      if ($page < (($num_img_pages-1)*$_SESSION['numimg_pp']))
-      {
-	      $newpage = $page+$_SESSION['numimg_pp'];
-	      $image_page_Links .= "<a href='index.php?view=images&amp;page=$newpage$getfstring'>$admin_lang_next</a>";
-      }
-
-      if ($page >= $_SESSION['numimg_pp'])
-      {
-        $newpage = $page - $_SESSION['numimg_pp'];
-        $image_page_Links  = "<a href='index.php?view=images&amp;page=$newpage$getfstring'>$admin_lang_prev</a> " .$image_page_Links;
-      }
-   
-      echo $image_page_Links;
-		}
 
     echo '<br/>
        <form method="post" action="'.$PHP_SELF .'?view=images&amp;page=0'.$getfstring.'" accept-charset="UTF-8">';
