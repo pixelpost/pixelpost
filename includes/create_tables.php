@@ -540,6 +540,21 @@ function UpgradeTo1652($prefix, $newversion) {
 	
 	return $create_status;
 }
+
+function UpgradeTo1653($prefix, $newversion) {
+
+	global $lang_updated, $lang_create_update_to;
+
+	// Add display sort by
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `comment_dsbl`")or die("MySQL Error: ". mysql_error());
+	
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (version) VALUES ($newversion)")or die("MySQL Error: ". mysql_error());
+
+	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	return $create_status;
+}
 /*
 
 // Upgrade to 1.7 example

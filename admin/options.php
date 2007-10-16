@@ -1087,7 +1087,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 					SET
 						token='".$_POST['token']."',
 						token_time='".(int) $_POST['token_time']."',
-						comment_dsbl='".$_POST['comment_dsbl']."',
 						comment_timebetween='".(int) $_POST['comment_timebetween']."',
 						max_uri_comments='".(int) $_POST['max_uri_comment']."'
 						");
@@ -1124,34 +1123,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				<option value='$optnval'>$optnecho</option>
 				</select><br />
 				$admin_lang_optn_token_time <input type='text' style=\"text-align: right;\" size=\"1\" name='token_time' value='".$cfgrow['token_time']."' />
-				</div>
-				
-				<div class='jcaption'>
-				$admin_lang_optn_dsbl_list
-				</div>
-
-				<div class='content'>
-						";
-				if ($cfgrow['comment_dsbl']=='T')
-					$toecho = $admin_lang_optn_yes;
-				else
-					$toecho = $admin_lang_optn_no;
-
-				if ($cfgrow['comment_dsbl']=='T')
-					$optnecho = $admin_lang_optn_no;
-				else
-					$optnecho = $admin_lang_optn_yes;
-
-				if ($cfgrow['comment_dsbl']=='T')
-					$optnval = 'F';
-				else
-					$optnval = 'T';
-
-				echo "
-				$admin_lang_optn_dsbl_list_desc
-				<select name='comment_dsbl'><option value='".$cfgrow['comment_dsbl']."'>".$toecho."</option>
-				<option value='$optnval'>$optnecho</option>
-				</select>
 				</div>
 				
 				<div class='jcaption'>

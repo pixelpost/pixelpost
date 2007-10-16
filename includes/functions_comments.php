@@ -94,49 +94,37 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		eval_addon_front_workspace('comment_blocked_maxurl');
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
-   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
-   	exit;
+   		echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
+   		exit;
 	} else {
 		// add the url to the $mk_regex_array.
 		preg_match_all($regex_url, $url, $extra_mk_regex_array);
 		$domains_array=array_merge($mk_regex_array[2],$extra_mk_regex_array[2]);
-  	for( $cnt=0; $cnt < count($domains_array); $cnt++ ) {
-  		$domain_to_test = rtrim($domains_array[$cnt],"\\");
-  		$domain_to_test = preg_replace($unwanted_chars, "", $domain_to_test);
-  		if (strlen($domain_to_test) > 3){
-  			for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
-  				$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
-  				if (gethostbyname("completebogus")=="completebogus"){
+  		for( $cnt=0; $cnt < count($domains_array); $cnt++ ) {
+  			$domain_to_test = rtrim($domains_array[$cnt],"\\");
+  			$domain_to_test = preg_replace($unwanted_chars, "", $domain_to_test);
+  			if (strlen($domain_to_test) > 3){
+  				for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
+  					$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
+  					if (gethostbyname("completebogus")=="completebogus"){
 						$domain_check = $spam_domain_to_test;
 					}else {
 						$domain_check = gethostbyname("completebogus");
 					}
-  				if( !strstr(gethostbyname($spam_domain_to_test),$domain_check)) {
-  					$spam_domains_found++;
+  					if( !strstr(gethostbyname($spam_domain_to_test),$domain_check)) {
+  						$spam_domains_found++;
+  					}
+  					$spam_domain_to_test=null;
   				}
-  				$spam_domain_to_test=null;
   			}
   		}
-  	}
-    if ($spam_domains_found>0){
-    	eval_addon_front_workspace('comment_blocked_urllisted');
-  		header("HTTP/1.0 404 Not Found");
+    	if ($spam_domains_found>0){
+    		eval_addon_front_workspace('comment_blocked_urllisted');
+  			header("HTTP/1.0 404 Not Found");
 			header("Status: 404 File Not Found!");
-   		echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 05).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
-   		exit;
-  	}
-	}
-
-//Check the used IP adress against the Distributed Sender Blackhole List @ http://www.dsbl.org
-	$ip = $_SERVER['REMOTE_ADDR'];
-	if ($cfgrow['comments_dsbl'] == 'T')
-	{
-		list($a, $b, $c, $d) = split('.', $ip);
-		if( gethostbyname("$d.$c.$b.$a.list.dsbl.org") != "$d.$c.$b.$a.list.dsbl.org") {
-			eval_addon_front_workspace('comment_blocked_dsbl');
-  		header( "Location: http://dsbl.org/listing?".$ip);
- 			return false;
-		}
+   			echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 05).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
+   			exit;
+  		}
 	}
 
 // check if current image has got enabled comments
@@ -282,13 +270,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		{
 			// HTML note email
 			$body = "$lang_email_notification_pt1
-      <a href='$link_to_comment'>$link_to_comment</a><br>
-      $img_thumb_cmmnt<br>
-$lang_email_notification_pt2
-      $comment_message<br>
-      $lang_email_notification_pt3 <a href='$comment_url' >$comment_name</a>  - $comment_email <br>
-$lang_email_notification_pt4
-      ";
+      			<a href='$link_to_comment'>$link_to_comment</a><br>
+      			$img_thumb_cmmnt<br>
+				$lang_email_notification_pt2
+      			$comment_message<br>
+      			$lang_email_notification_pt3 <a href='$comment_url' >$comment_name</a>  - $comment_email <br>
+				$lang_email_notification_pt4";
 
 			////////////
 			$headers  = 'MIME-Version: 1.0' . "\n";
@@ -323,7 +310,7 @@ $lang_email_notification_pt4
 	<body>
 	<?php
 	echo "<p />$lang_comment_thank_you<p />$extra_message<br />";
-  echo "<a href='$_SERVER[HTTP_REFERER]'>$lang_comment_redirect</a><p />";
+  	echo "<a href='$_SERVER[HTTP_REFERER]'>$lang_comment_redirect</a><p />";
 	echo "</body></html>";
 } // commentemail yes
 
