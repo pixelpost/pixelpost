@@ -106,7 +106,7 @@ if(isset($_POST['dlconfig'])) {
 
 <div id="wrapper">
 
-<div id="header">PIXELPOST 1.6</div>
+<div id="header">PIXELPOST 1.7</div>
  
 <?php /* Start of fresh install */ if($installed_version == 0) { ?>
 
