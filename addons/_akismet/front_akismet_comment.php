@@ -12,12 +12,14 @@ function check_akismet_comment() {
 	// query for testing if the function is performed anyway
 		 $params = array('comment_type' => 'comment', 'comment_author' => $name, 'comment_author_email' => $email, 'comment_author_url' => $url, 'comment_content' => $message);
 	   if ('true' == pp_auto_check_comment($params)) {
-	    	eval_addon_front_workspace('comment_blocked_askimet');
 	      $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'spm' WHERE id = last_insert_id()";
       	mysql_query($query);
 		 		$cfgrow['commentemail'] = 'no';
+		    	eval_addon_front_workspace('comment_blocked_askimet');
 		 		$extra_message = '<b>Your comment is marked as SPAM by Akismet Spam Checker and now in moderation queue until the Administrator has reviewed it.</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	    }
+        else eval_addon_front_workspace('comment_passed_askimet'); 
+
 	    $akismet_comment_checked = true;
 }
 
