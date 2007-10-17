@@ -10,6 +10,8 @@
 
 // Source: <http://www.php.net/is_writable#73596>
 
+$phpver = phpversion();
+
 function is__writable($path) {
     if ($path{strlen($path)-1}=='/') // recursively return a temporary file path
         return is__writable($path.uniqid(mt_rand()).'.tmp');
@@ -1046,7 +1048,7 @@ function create_banlist()
 // Update the ban list if the form is called
 function update_banlist()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $phpver;
 	if( isset( $_POST['banlistupdate']))
 	{
 		// moderation list
@@ -1054,7 +1056,7 @@ function update_banlist()
 		{
 			$banlist = str_replace( "\r\n", "\n", $_POST['moderation_list']);
 			$banlist = str_replace( "\r", "\n", $banlist);
-			if (version_compare(phpversion(),"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
+			if (version_compare($phpver,"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
 			else	$banlist = mysql_real_escape_string($banlist);
 
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET moderation_list='$banlist' LIMIT 1";
@@ -1068,7 +1070,7 @@ function update_banlist()
 		{
 			$banlist = str_replace( "\r\n", "\n", $_POST['blacklist']);
 			$banlist = str_replace( "\r", "\n", $banlist);
-			if (version_compare(phpversion(),"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
+			if (version_compare($phpver,"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
 			else	$banlist = mysql_real_escape_string($banlist);
 
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET blacklist='$banlist' LIMIT 1";
@@ -1083,7 +1085,7 @@ function update_banlist()
 			$banlist = str_replace( "\r\n", "\n", $_POST['ref_ban_list']);
 			$banlist = str_replace( "\r", "\n", $banlist);
 
-			if(version_compare(phpversion(),"4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
+			if(version_compare($phpver, "4.3.0")=="-1")	$banlist = mysql_escape_string($banlist);
 			else	$banlist = mysql_real_escape_string($banlist);
 
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET ref_ban_list='$banlist' LIMIT 1";
@@ -1459,11 +1461,12 @@ function save_tags_new($tags_str,$theid,$alt="")
 		$strtr_arr = array(',' => ' ', ';' => ' ');
 		$tags = strtr($tags_str, $strtr_arr);
 
-		$ver = phpversion();
-		if( version_compare( $ver, "5.0.5") == 1 || version_compare( $ver, "4.3.11") == 1)		$pat1 = '/([^a-zA-Z 0-9_-\pL]+)/u';
-		else	$pat1 = '/([^a-zA-Z 0-9_-]+)/';
+		$pat1 = '/([^a-zA-Z 0-9_-\pL]+)/u';
+		$pat2 = '/([^a-zA-Z 0-9_-]+)/';
+		$tags_org = $tags;
 
-		$tags = preg_replace( $pat1, '_', $tags);
+		if (($tags = @preg_replace( $pat1, '_', $tags))===NULL) $tags = preg_replace( $pat2, '_', $tags_org);
+
 		$pat2 = array('/ _ /', '/ _/', '/(_){2,}/','/ - /', '/ -/', '/(-){2,}/');
 		$rep2 = array('', '', '_', '', '', '-');
 		$tags = preg_replace( $pat2, $rep2, $tags);
