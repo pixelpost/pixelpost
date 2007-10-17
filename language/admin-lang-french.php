@@ -198,7 +198,7 @@ $admin_lang_imgedit_mass_4           = "Modifier en nombre";
 $admin_lang_cats_add_cat             = "Ajouter un mot-cl&eacute;";
 $admin_lang_cats_added               = "Mot-cl&eacute; ajout&eacute;.";
 $admin_lang_cats_add_cat_txt         = "Ajouter un mot-cl&eacute; pour l'attribuer &agrave; des images.";
-$admin_lang_cats_add_cat_txt_altlang = "Donnez la traduction du mot-cl&eacute; ci-dessus.";
+$admin_lang_cats_add_cat_txt _altlang = "Donnez la traduction du mot-cl&eacute; ci-dessus.";
 $admin_lang_cats_edit_cat            = "Modifier un mot-cl&eacute;";
 $admin_lang_cats_edit_cat_txt        = "Modifier le mot-cl&eacute;";
 $admin_lang_cats_edit_cat_button     = "Modifier";
@@ -331,9 +331,9 @@ $admin_lang_optn_exif			      = "Activer Exif";
 $admin_lang_optn_exif_desc		      = "Pixelpost doit-il activer l'affichage des donn&eacute;es Exif sur la page principale ?";
 $admin_lang_optn_token			      = "Autoriser les jetons dans les formulaires";
 $admin_lang_optn_token_desc		      = "Autoriser l'usage d'un jeton (token) r&eacute;duira la possibilit&eacute; d'un piratage (<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>).<br/><br/>\n
-								Si cette option est activ&eacute;e, les commentaires ne seront enregistr&eacute;s que si le jeton correspond au cookie du visiteur. Pour que cela fonctionne, il vous faut ajouter <strong>&lt;TOKEN&gt;</strong> au fichier comments de votre mod&egrave;le, quelque part entre les ligne marqu&eacute;es <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
-								Si cette option est activ&eacute;e et que vous n'int&eacute;grez pas ce code <strong>&lt;TOKEN&gt;</strong> les commentaires ne fonctionneront plus et le visiteur aura un message d'erreur.<br /><br/>\n
-								Voulez-vous activer cette option ?";
+								Si cette option est activ&eacute;e, les commentaires ne seront enregistr&eacute;s que si le jeton du formulaire correspond &agrave; la session du visiteur. Pour mettre en oeuvre cette fonctionnalit&eacute;, il vous faut ajouter <strong>&lt;TOKEN&gt;</strong> au fichier comments de votre mod&egrave;le, quelque part entre les balises  <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
+								Si vous oubliez d'inclure la balise <strong>&lt;TOKEN&gt;</strong>, la saisie de commentaires n'est pas possible et le visiteur voit s'afficher un message d'erreur.<br /><br/>\n
+								Souhaitez-vous activer cette option ?";
 $admin_lang_optn_token_time		= "Temps maximum (en minutes) entre l'ouverture de la fenêtre de commentaires et l'envoi d'un commentaire : ";
 $admin_lang_optn_token_error	= "Attention: pas moins d'une minute. La dur&eacute;e a &eacute;t&eacute; fix&eacute;e &agrave; 1 minute.";
 $admin_lang_optn_dsbl_list 		= "R&eacute;glages antispam [Distributed Sender Blackhole List (http://www.dsbl.org)]";
