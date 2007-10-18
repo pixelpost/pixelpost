@@ -68,7 +68,7 @@ function get_akismet_links()
       return confirm('Report all selected comments as Not Spam to Akismet?');\" />";
       echo "&nbsp;";
     } 
-		if (isset($_GET['show']) || !isset($_GET['commentsview']) || $_GET['commentsview']=='akismet'){ 
+		if (isset($_GET['show']) || !isset($_GET['commentsview'])){ 
      echo " <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick=\"
 	      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
     	  return confirm('Report all selected comments as Spam to Akismet?');\" />";
@@ -93,7 +93,7 @@ function get_akismet_links2()
       return confirm('Report all selected comments as Not Spam to Akismet?');\" />";
  		 echo "&nbsp;";
     }
-	  if (isset($_GET['show']) || !isset($_GET['commentsview']) || $_GET['commentsview']=='akismet'){ 
+	  if (isset($_GET['show']) || !isset($_GET['commentsview'])){ 
      echo " <input class='cmnt-buttons' type='submit' name='akismetspam' value='Report as Spam To Akismet' onclick=\"
 	      document.getElementById('managecomments').action='$PHP_SELF?view=comments&amp;action=akismetspam'
     	  return confirm('Report all selected comments as Spam to Akismet?');\" />";
