@@ -150,6 +150,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$cmnt_publish_permission ='no';
 	}
 
+// ipaddress
+	$ip = $_SERVER['REMOTE_ADDR'];
+
+
 // $name
 	$name = isset($_POST['name']) ? $_POST['name'] : "";
 	if (eregi("\r",$name) || eregi("\n",$name))	die("No intrusion! ?? :(");
