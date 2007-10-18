@@ -300,7 +300,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$start = $maxnumber_thumbs*((int)$_GET['pagenum']-1);// calculate start and end of the thumbs in the selected page
 		$limit = " LIMIT $start , $maxnumber_thumbs "; // create the limit command (in MS-SQL this should be TOP)
 	}// end if ($_GET['pagenum'] != "")
-
 	// build query
 	if (!isset($_GET['archivedate']) && isset($_GET['category']) && $_GET['category'] != "")
 	{
@@ -311,7 +310,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$where
 		AND (t1.id = t2.image_id)
 		GROUP BY t1.id
-		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order;
+		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	} // if ($_GET['archivedate']=="")
 	else if($paged_arch_archdate_flag > 0)
 	{ // archive date is available
