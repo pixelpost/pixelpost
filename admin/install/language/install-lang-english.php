@@ -135,7 +135,7 @@ $lang_overview_intro_1 = "Pixelpost is an open-source, standards-compliant, mult
 $lang_overview_intro_2 = "Please read our";
 $lang_overview_intro_3 = "installation guide";
 $lang_overview_intro_4 = "for a more manual approach to installing Pixelpost.";
-$lang_overview_intro_5 = "This installation system will guide you through the process of installing Pixelpost. For more information on each option, select it from the menu above.";
+$lang_overview_intro_5 = "This installation system will guide you through the process of installing Pixelpost.";
 						 
 						 
 ////////////////////////////////////////////////////////////////////////////////////

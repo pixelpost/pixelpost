@@ -135,7 +135,7 @@ $lang_overview_intro_1 = "Pixelpost ist eine freie, standardkonforme, mehrsprach
 $lang_overview_intro_2 = "Bitte lies unsere";
 $lang_overview_intro_3 = "Installationsanleitung";
 $lang_overview_intro_4 = "für die manuelle Installation von Pixelpost.";
-$lang_overview_intro_5 = "Dieser Installationsassistent führt dich durch den Installationsprozess von Pixelpost. Für ausführliche Informationen zu jeder Option klicke oben ins Menü.";
+$lang_overview_intro_5 = "Dieser Installationsassistent führt dich durch den Installationsprozess von Pixelpost.";
 						 
 						 
 ////////////////////////////////////////////////////////////////////////////////////
