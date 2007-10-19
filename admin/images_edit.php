@@ -418,14 +418,14 @@ if($_GET['view'] == "images")
 			$altlangs = 'admin_lang_'.$cfgrow['altlangfile'];
 			$altlangs = ${$altlangs};
 		}
-		echo "<div class='jcaption'><a href='' onclick=\"flip('additionalSelects'); return false;\">$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</a></div>
+		echo "<div class='jcaption'><a href='' onclick=\"flip('additionalSelects'); return false;\" title=\"$admin_lang_show $admin_lang_options\">$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</a></div>
 	  <div id=\"additionalSelects\">
 	  <script language='javascript' type='text/javascript'>flip('additionalSelects');</script>
 		<div class='content'>
 		<form method='post' name='filter' accept-charset='UTF-8' action='index.php?view=images'>
 		<table width='400' border='0' cellpadding='2'>
 		<tr>
-		<td align='right'><strong>$admin_lang_show $lang_category_singular&nbsp;</strong></td>
+		<td align='right'><strong>$admin_lang_show $admin_lang_imgedit_category_plural:&nbsp;</strong></td>
 		<td><select name='selectfcat'>$selectfcats</select></td>
 		<td><input class='cmnt-buttons' type='submit' name='filtercat' value='$admin_lang_go' /></td>
 		</tr>
