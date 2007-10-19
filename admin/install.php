@@ -205,7 +205,7 @@ if(isset($_POST['dlconfig'])) {
  */
 if(isset($_GET['view']) && $_GET['view'] == "overview" && isset($_GET['cat']) && $_GET['cat'] == "introduction" || !isset($_GET['view'])) {
 
-	echo '<h1>'.$lang_overview.'</h1>'.$lang_overview_intro_1.'<p />'.$lang_overview_intro_2.'&nbsp;<a href="http://www.pixelpost.org/docs/GettingStarted/Install">'.$lang_overview_intro_3.'</a>&nbsp;'.$lang_overview_intro_4.'<p />'.$lang_overview_intro_5.'<p /><button class="button" type="submit" id="submit" name="submit" value="'.$lang_start_btn.'" onclick="parent.location=\'./install.php?view=install&amp;cat=introduction\'">'.$lang_start_btn.' &raquo;</button>';
+	echo '<h1>'.$lang_overview.'</h1>'.$lang_overview_intro_1.'<p />'.$lang_overview_intro_5.'<p />'.$lang_overview_intro_2.'&nbsp;<a href="http://www.pixelpost.org/docs/GettingStarted/Install">'.$lang_overview_intro_3.'</a>&nbsp;'.$lang_overview_intro_4.'<p /><button class="button" type="submit" id="submit" name="submit" value="'.$lang_start_btn.'" onclick="parent.location=\'./install.php?view=install&amp;cat=introduction\'">'.$lang_start_btn.' &raquo;</button>';
 }
 if(isset($_GET['view']) && $_GET['view'] == "overview" && isset($_GET['cat']) && $_GET['cat'] == "license") {
 

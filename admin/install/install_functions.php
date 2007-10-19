@@ -1025,9 +1025,9 @@ function ConvertPassword($prefix) {
 	
 	if($row = mysql_fetch_array($result)) {
 	
-		//$adm_pass = base64_decode($row['password']);
+		$adm_pass = base64_decode($row['password']);
 		
-		//mysql_query("UPDATE `{$prefix}config` SET `password` = MD5('$adm_pass') LIMIT 1")or die("MySQL Error: ". mysql_error());
+		mysql_query("UPDATE `{$prefix}config` SET `password` = MD5('$adm_pass') LIMIT 1")or die("MySQL Error: ". mysql_error());
 		
 		$create_status['convert_psw_success'] = "$lang_convert_psw<br />$lang_convert_psw_suc";
 		$cssClass = "success";
