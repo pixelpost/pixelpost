@@ -57,7 +57,7 @@ $lang_comment_redirect             = "Ou cliquez ici pour revenir.";
 $lang_comment_redirect_error       = "Il y a eu un probl&egrave;me en envoyant votre commentaire. Cliquez ici pour revenir si cela ne se fait pas automatiquement.";
 $lang_comment_page_title           = "Commentaire";
 $lang_comment_popup                = "Commentaires";
-$lang_comment_popup_disabled       = "Les commentaires pour cette image ne sont pas autorisés";
+$lang_comment_popup_disabled       = "Les commentaires pour cette image ne sont pas autoris≈Ωs";
 $lang_comment_plural			   = "Commentaires";
 $lang_comment_single			   = "Commentaire";
 $lang_message_banned_comment       = "Votre commentaire n'a pas pu &ecirc;tre enregistr&eacute; ! Il contient au moins un mot, adresse mail ou IP sur la liste des interdits.";
@@ -103,20 +103,22 @@ $lang_november                     = "novembre";
 $lang_december                     = "d&eacute;cembre";
 
 // Alternative language
-$lang_alt_lang_dutch						="Nederlands";
+$lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
-$lang_alt_lang_french						="Fran&ccedil;ais";
-$lang_alt_lang_german						="Deutsch";
+$lang_alt_lang_french							="Fran&ccedil;ais";
+$lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
-$lang_alt_lang_polish						="Polski";
+$lang_alt_lang_polish							="Polski";
 $lang_alt_lang_portuguese					="Portugu&egrave;s";
-$lang_alt_lang_simplified_chinese			="Chinese";
+$lang_alt_lang_simplified_chinese	="Chinese";
 $lang_alt_lang_spanish						="Espa&ntilde;ol";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
-$lang_alt_lang_danish						="Dansk";
+$lang_alt_lang_danish							="Dansk";
+$lang_alt_lang_romanian 					="Romana";
+$lang_alt_lang_hungarian					="Magyar";
 
 
 

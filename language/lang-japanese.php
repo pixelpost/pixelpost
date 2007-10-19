@@ -105,22 +105,22 @@ $lang_tags                                      = "タグ:<br/>";
 $lang_none                                      = "なし";
 
 // Alternative language
-$lang_alt_lang_dutch                            = "Nederlands";
-$lang_alt_lang_english                          = "English";
-$lang_alt_lang_french                           = "Francais";
-$lang_alt_lang_german                           = "Deutsch";
-$lang_alt_lang_italian                          = "Italiano";
-$lang_alt_lang_norwegian                        = "Norsk";
-$lang_alt_lang_persian                          = "Farsi";
-$lang_alt_lang_polish                           = "Polski";
-$lang_alt_lang_portuguese                       = "Portugues";
-$lang_alt_lang_simplified_chinese               = "Chinese";
-$lang_alt_lang_spanish                          = "Espanol";
-$lang_alt_lang_swedish                          = "Svenska";
-$lang_alt_lang_japanese                         = "Japanese";
-$lang_alt_lang_danish                           = "Dansk";
-$lang_alt_lang_romanian 						= "Romana";
-$lang_alt_lang_hungarian						= "Magyar";
+$lang_alt_lang_dutch							="Nederlands";
+$lang_alt_lang_english						="English";
+$lang_alt_lang_french							="Fran&ccedil;ais";
+$lang_alt_lang_german							="Deutsch";
+$lang_alt_lang_italian						="Italiano";
+$lang_alt_lang_norwegian					="Norsk";
+$lang_alt_lang_persian						="Farsi";
+$lang_alt_lang_polish							="Polski";
+$lang_alt_lang_portuguese					="Portugu&egrave;s";
+$lang_alt_lang_simplified_chinese	="Chinese";
+$lang_alt_lang_spanish						="Espa&ntilde;ol";
+$lang_alt_lang_swedish						="Svenska";
+$lang_alt_lang_japanese						="Japanese";
+$lang_alt_lang_danish							="Dansk";
+$lang_alt_lang_romanian 					="Romana";
+$lang_alt_lang_hungarian					="Magyar";
 
 // Email Notification
 

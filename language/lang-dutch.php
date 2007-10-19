@@ -83,7 +83,7 @@ $lang_iso                   = "ISO:";
 
 // Category
 $lang_category_singular      = "Categorie:";
-$lang_category_plural        = "Categorieën:";
+$lang_category_plural        = "Categorie&euml;n:";
 
 // Month and Day
 $lang_monday              = "maandag";
@@ -110,15 +110,15 @@ $lang_december            = "december";
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
-$lang_alt_lang_french							="Français";
+$lang_alt_lang_french							="Fran&ccedil;ais";
 $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
 $lang_alt_lang_polish							="Polski";
-$lang_alt_lang_portuguese					="Português";
+$lang_alt_lang_portuguese					="Portugu&egrave;s";
 $lang_alt_lang_simplified_chinese	="Chinese";
-$lang_alt_lang_spanish						="Español";
+$lang_alt_lang_spanish						="Espa&ntilde;ol";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
 $lang_alt_lang_danish							="Dansk";

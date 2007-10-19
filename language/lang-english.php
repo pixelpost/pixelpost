@@ -31,7 +31,7 @@ _____________________________________________________________________________
 
 $_lang_file_translator        = 'The Pixelpost Crew';
 $_lang_file_email             = 'thecrew@pixelpost.org';
-$_lang_file_rev               = '1.6';
+$_lang_file_rev               = '1.7';
 
 // IMAGE NAVIGATION
 $lang_previous                    = "Previous";
@@ -107,18 +107,18 @@ $lang_none                       = "none";
 // Alternative language
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
-$lang_alt_lang_french							="Français";
+$lang_alt_lang_french							="Fran&ccedil;ais";
 $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
 $lang_alt_lang_polish							="Polski";
-$lang_alt_lang_portuguese					="Português";
+$lang_alt_lang_portuguese					="Portugu&egrave;s";
 $lang_alt_lang_simplified_chinese	="Chinese";
-$lang_alt_lang_spanish						="Español";
+$lang_alt_lang_spanish						="Espa&ntilde;ol";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
-$lang_alt_lang_danish						="Dansk";
+$lang_alt_lang_danish							="Dansk";
 $lang_alt_lang_romanian 					="Romana";
 $lang_alt_lang_hungarian					="Magyar";
 

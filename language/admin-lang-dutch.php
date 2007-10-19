@@ -94,7 +94,7 @@ $admin_lang_pw_text_8           = "\n\nom deze automatisch gegenereerde wachtwoo
 // Admin Menu
 $admin_lang_new_image          = "Nieuwe Afbeelding";
 $admin_lang_images             = "Afbeeldingen";
-$admin_lang_categories         = "Categorieën";
+$admin_lang_categories         = "Categorie&euml;n";
 $admin_lang_comments           = "Reacties";
 $admin_lang_options            = "Opties";
 $admin_lang_general_info       = "Algemene Info";
@@ -105,7 +105,7 @@ $admin_lang_logout             = "Uitloggen";
 $admin_lang_ni_post_a_new_image   = "Plaats een nieuwe Afbeelding";
 $admin_lang_ni_image              = "Afbeelding";
 $admin_lang_ni_image_title        = "Afbeeldingstitel";
-$admin_lang_ni_select_cat         = "Selecteer Categorieën / Labels";
+$admin_lang_ni_select_cat         = "Selecteer Categorie&euml;n / Labels";
 $admin_lang_ni_description        = "Afbeeldingsomschrijving / tekst";
 $admin_lang_ni_datetime           = "Datum en Tijd voor de afbeelding";
 $admin_lang_ni_post_now           = "Plaats nu";
@@ -140,7 +140,7 @@ $admin_lang_imgedit_alttitle      = "Alt. Afbeeldingstitel:";
 $admin_lang_imgedit_file_name      = "Bestandsnaam:";
 $admin_lang_imgedit_dimensions     = "Afmetingen:";
 $admin_lang_imgedit_tbpublished    = "Publicatie op:";
-$admin_lang_imgedit_category_plural = "Categorieën:";
+$admin_lang_imgedit_category_plural = "Categorie&euml;n:";
 $admin_lang_imgedit_delete          = "Verwijder";
 $admin_lang_imgedit_delete1         = "Verwijderd";
 $admin_lang_imgedit_delete2         = "geselecteerde Afbeelding(en).";
@@ -198,11 +198,11 @@ $admin_lang_cats_add_cat            = "Voeg categorie toe";
 $admin_lang_cats_added              = "Categorie toegevoegd.";
 $admin_lang_cats_add_cat_txt        = "Voeg een categorie toe die toegewezen kan worden aan afbeeldingen.";
 $admin_lang_cats_add_cat_txt_altlang= "Geef de vertaling van bovengenoemde categorie.";
-$admin_lang_cats_edit_cat           = "Bewerk categorieën";
+$admin_lang_cats_edit_cat           = "Bewerk categorie&euml;n";
 $admin_lang_cats_edit_cat_txt       = "Bewerk een categorie";
 $admin_lang_cats_edit_cat_button    = "Bewerk categorie";
 $admin_lang_cats_edit_tip           = "Bewerk de naam van deze categorie voor beide talen<br />Alle afbeeldingen die zijn toegewezen aan de oude categorie zullen automatisch aan de nieuwe categorie toegewezen worden.";
-$admin_lang_cats_delete_cat         = "Verwijder categorieën";
+$admin_lang_cats_delete_cat         = "Verwijder categorie&euml;n";
 $admin_lang_cats_delete_cat_txt     = "Verwijder een categorie";
 $admin_lang_cats_delete_cat2        = "Verwijderd:";
 $admin_lang_cats_delete_cats_button = "Verwijder categorie";
@@ -290,7 +290,7 @@ $admin_lang_optn_dateformat_txt      = "Het datum formaat voor afbeeldingen en r
 $admin_lang_optn_gmt                 = "Dit ondersteund de zomer/wintertijd niet.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT huidige tijd </a> als u niet weet wat het verschil is met uw tijdzone.<br />";
 $admin_lang_optn_cat_link_format     = "FORMAT CATEGORIE LINK";
 $admin_lang_optn_catlinkformat_select = "Selecteer categorie Link Format";
-$admin_lang_optn_cat_link_format_txt  = "Het format om links weer te geven naar categorieën in de template.";
+$admin_lang_optn_cat_link_format_txt  = "Het format om links weer te geven naar categorie&euml;n in de template.";
 $admin_lang_optn_catlinkformat_custom = "Op maat gemaakte categorie format";
 $admin_lang_optn_catlinkformat_custom_start = "Begin string:";
 $admin_lang_optn_catlinkformat_custom_end = "Einde string:";
@@ -374,7 +374,7 @@ $admin_lang_optn_img_display_reversed		="oplopend/(Z-A)";
 
 
 // Info
-$admin_lang_info_gd                  = "Niet geïnstalleerd! Vraag uw hoster om dit te installeren.";
+$admin_lang_info_gd                  = "Niet geÃ¯nstalleerd! Vraag uw hoster om dit te installeren.";
 $admin_lang_info_gd_jpg              = "met JPEG ondersteuning";
 $admin_lang_pp_version1              = "Laatste Pixelpost versie:";
 $admin_lang_pp_forum                 = "Als u hulp nodig heeft of feedback wilt geven ga dan naar het Pixelpost Forum.";
@@ -418,7 +418,7 @@ $admin_lang_pp_thumbnailpath 				 = "Geraden miniaturenpad";
 $admin_lang_pp_thumbnailpath_conf 	 = "Geconfigureerde miniaturenpad"; 
 
 // AddOns
-$admin_lang_addon_title              = "Geïnstalleerde toevoegingen";
+$admin_lang_addon_title              = "GeÃ¯nstalleerde toevoegingen";
 $admin_lang_failed_addonstatus       = "De status bijwerken van een toevoeging is mislukt: ";
 $admin_lang_addon_off                = "Klik om UIT te zetten";
 $admin_lang_addon_on                 = "Klik om AAN te zetten";
