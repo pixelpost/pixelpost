@@ -694,7 +694,7 @@ $msgBoxCSS = (!isset($result['error']) || $result['verifed'] == true) ? 'success
 
 </form>
 
-<?php $lang_config_message = "$lang_download_msg_1<br />&nbsp;$lang_download_msg_2<br /><br />&nbsp;$lang_download_msg_3"; ?>
+<?php $lang_config_message = "$lang_download_msg_1<br />&nbsp;$lang_download_msg_2<br />&nbsp;$lang_download_msg_2_2<br /><br />&nbsp;$lang_download_msg_3"; ?>
 
 <?php } ?>
 
@@ -705,6 +705,29 @@ $msgBoxCSS = (!isset($result['error']) || $result['verifed'] == true) ? 'success
 <div class='<?php echo $msgBoxCSS; ?> messageBox' >
 	<div><?php echo "&nbsp;".$lang_config_message; ?></div>
 </div>
+
+<table border='0' cellspacing='0' cellpadding='0' style='width:100%;' class='tableBorder' summary='Pixelpost Folder Requirements'>
+	<tr>
+		<td class='tableHeading'>
+			<?php echo $lang_files_folders; ?>
+		</td>
+		<td class='tableHeading value'>
+			<?php echo $lang_value; ?>
+		</td>
+	</tr>
+	<tr>
+		<td class='cellTwo'>
+			<span class='defaultBold'>includes/:</span>
+			<div class="explain"><?php echo $lang_req_unwritable; ?><br /><?php echo $lang_req_unwritable_2; ?></div>
+		</td>
+		<td class='cellTwo'>
+			<div class="<?php echo $result['css_writable']; ?>">
+				<?php echo $result['writable']; ?>
+			</div>
+		</td>
+	</tr>
+</table>
+
 <table border='0' cellspacing='0' cellpadding='0' style='width:100%;' class='tableBorder'>
 	<tr>
 		<td class='tableHeading'>

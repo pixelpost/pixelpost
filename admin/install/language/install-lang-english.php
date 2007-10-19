@@ -223,6 +223,7 @@ $lang_req_required_2   = "In order to function correctly, Pixelpost needs to be 
 
 $lang_req_not_found    = "If you see 'Not Found' you need to create the relevant directory.";
 $lang_req_unwritable   = "If you see 'Unwritable' you need to change the permissions on the file or directory to allow Pixelpost to write to it. (755 or 777)";
+$lang_req_unwritable_2 = "Remember to revert back to the folders original file permissions when installation has been completed.";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -286,7 +287,8 @@ $lang_config_exist_msg = "Checks if configuration file has been saved.";
 $lang_config_conn_msg  = "Attempts to connect to the database using the new configuration file.";
 
 $lang_download_msg_1   = "Something has gone awry while attempting to create, store, and connect with your Pixelpost configuration file!";
-$lang_download_msg_2   = "Set the folder permission of 'include' folder to 777 in FTP and reload this confguration page. Set it back to 755 as soon as you are done!<br />If this failes too, please use the download button above to save your configuration file and proceed to manually upload it to your includes/ folder via FTP once you have verified its contents.";
+$lang_download_msg_2   = "Have a look bellow to see if any suggestions have been offered to correct the problem.";
+$lang_download_msg_2_2 = "If all else fails, please use the download button above to save your configuration file and proceed to manually upload it to your includes/ folder via FTP once you have verified its contents.";
 $lang_download_msg_3   = "Once you have done this, please continue with the installation by re-testing your connection.";
 
 $lang_config_message   = "Your configuration has been successfully created and saved. All tests have passed!";
@@ -341,7 +343,7 @@ $lang_set_timezone     = "Timezone:";
 $lang_set_timezone_msg = "Select the timezone that closely resembles your own. See <a href='http://www.timeanddate.com/' target='_blank'>Timeanddate.com</a> for more information.";
 
 $lang_set_tz_dst       = "DST:";
-$lang_set_tz_dst_msg   = "Are you currently observing daylight savings time? (Don\'t forget to change that as the year passes!)";
+$lang_set_tz_dst_msg   = "Are you currently observing daylight savings time? (Don't forget to change that as the year passes!)";
 
 $lang_set_title_long   = "The title / sub-title you entered is too long. The maximum length is 100 characters.";
 $lang_set_eos          = "Your URL must contain a trailing slash (/).";
@@ -407,5 +409,5 @@ $lang_upgrade_msg_2    = "Press the Upgrade button to continue.";
 ////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-$lang_db_fix_msg       = "Your configuration file can no longer establish a database connection. Either your hosting provider or yourself has changed your database connection information. Please enter the correct information bellow.";
+$lang_db_fix_msg       = "Your configuration file can no longer establish a database connection. Either your hosting provider or yourself has changed your database connection information. Please enter the correct information below.";
 ?>
