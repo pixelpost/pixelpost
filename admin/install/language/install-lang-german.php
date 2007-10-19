@@ -131,7 +131,7 @@ $lang_email_signature  = "Team Pixelpost";
 ////////////////////////////////////////////////////////////////////////////////////
 $lang_overview         = "Willkommmen bei Pixelpost!";
 
-$lang_overview_intro_1 = "Pixelpost ist eine freie, standardkonforme, mehrsprachige, voll erweiterbare Photoblog-Anwendung für das Web.";
+$lang_overview_intro_1 = "Pixelpost ist eine freie, standardkonforme, mehrsprachige und voll erweiterbare Photoblog-Anwendung für das Web.";
 $lang_overview_intro_2 = "Bitte lies unsere";
 $lang_overview_intro_3 = "Installationsanleitung";
 $lang_overview_intro_4 = "für die manuelle Installation von Pixelpost.";
@@ -223,7 +223,7 @@ $lang_req_required_2   = "Um korrekt zu laufen muss Pixelpost auf einige Dateien
 
 $lang_req_not_found    = "Wenn du 'Nicht gefunden' siehst, mußt du das entsprechende Verzeichnis anlegen.";
 $lang_req_unwritable   = "Wenn du 'Nicht beschreibbar' siehst, mußt du die Berechtigung (CHMOD) des Verzeichnisses bzw. der Datei ändern, um Pixelpost Schreibrechte zu geben. (755 or 777)";
-$lang_req_unwritable_2 = "Remember to revert back to the folders original file permissions when installation has been completed.";
+$lang_req_unwritable_2 = "Vergiss nicht, die Schreibberechtigung des Verzeichnisses wieder auf den ursprünglichen Wert zu setzen, sobald die Installation beendet ist!";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -251,7 +251,7 @@ $lang_db_pass          = "Datenbank Passwort:";
 $lang_db_pass_msg      = "Das Passwort, mit dem die Datenbankverbindung hergestellt wird.";
 
 $lang_db_prefix        = "Datenbank Prefix:";
-$lang_db_prefix_msg    = "Der Prefix wird den Tabellenname in der Datenbank vorangestellt. Damit können mehrere Pixelpost-Installationen mit der gleichen Datenbank betrieben werden.";
+$lang_db_prefix_msg    = "Der Prefix wird den Tabellennamen in der Datenbank vorangestellt. Damit können mehrere Pixelpost-Installationen mit der gleichen Datenbank betrieben werden.";
 
 
 $lang_db_name_error    = "Kein Datenbankname angegeben.";
@@ -286,7 +286,7 @@ $lang_config_exist_msg = "Überprüft, ob die Konfigurationsdatei gespeichert wurd
 
 $lang_config_conn_msg  = "Versucht eine Datenbankverbindung unter Verwendung der neuen Konfigurationsdatei herzustellen.";
 
-$lang_download_msg_1   = "Etwas ist schiefgegangen beim Versuch, die Konfigurationsdatei zu erstellen, zu speichern oder darauf zuzugreifen!";
+$lang_download_msg_1   = "Etwas ist schiefgegangen beim Versuch, die Konfigurationsdatei zu erstellen, zu speichern oder darauf zuzugreifen.";
 $lang_download_msg_2   = "Sieh unten nach Vorschlägen um das Problem zu korrigieren!";
 $lang_download_msg_2_2 = "Wenn das auch nicht klappt, benutze bitte den Download-Link oben um deine Konfigurationsdatei herunterzuladen. Lade sie mit FTP in das Verzeichnis 'include' hoch, nachdem du die Zugangsdaten überprüft bzw. eingetragen hast.";
 $lang_download_msg_3   = "Wenn du das getan hast, setzte die Installation bitte fort indem du Verbindung nochmals testest.";
