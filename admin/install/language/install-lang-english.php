@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id:$
+// $Id$
 
 /*
 Pixelpost version 1.7
@@ -116,7 +116,7 @@ $lang_email_cred_msg   = "By choosing this option, your database and administrat
 
 $lang_email_subject    = "Welcome to Pixelpost!";
 $lang_email_message_0  = "Thank you for choosing Pixelpost!";
-$lang_email_message_1  = "You will find your administration login credentials bellow as well as your database connection information.";
+$lang_email_message_1  = "You will find your administration login credentials below as well as your database connection information.";
 $lang_email_message_2  = "You may login to your administration panel by visiting:";
 $lang_email_footer     = "Remember to keep these details in a safe place.";
 $lang_email_signature  = "Team Pixelpost";
@@ -176,7 +176,7 @@ $lang_install          = "Welcome to Installation";
 $lang_install_intro_1  = "In order to proceed, you will need your database settings.";
 $lang_install_intro_2  = "If you do not know this information, you may ask your hosting provider's support department to aid you with obtaining it.";
 $lang_install_intro_3  = "You will need the following:";
-$lang_install_intro_4  = "The Database server hostname or DSN - the address of the database server.";
+$lang_install_intro_4  = "The Database server hostname or DSN - the address of the database server (often localhost).";
 $lang_install_intro_5  = "The Database name - the name of the database on the server.";
 $lang_install_intro_6  = "The Database username and Database password - the login data to access the database.";
 						 
@@ -286,7 +286,7 @@ $lang_config_exist_msg = "Checks if configuration file has been saved.";
 $lang_config_conn_msg  = "Attempts to connect to the database using the new configuration file.";
 
 $lang_download_msg_1   = "Something has gone awry while attempting to create, store, and connect with your Pixelpost configuration file!";
-$lang_download_msg_2   = "Please use the download button above to save your configuration file and proceed to manually upload it to your includes/ folder via FTP once you have verified its contents.";
+$lang_download_msg_2   = "Set the folder permission of 'include' folder to 777 in FTP and reload this confguration page. Set it back to 755 as soon as you are done!<br />If this failes too, please use the download button above to save your configuration file and proceed to manually upload it to your includes/ folder via FTP once you have verified its contents.";
 $lang_download_msg_3   = "Once you have done this, please continue with the installation by re-testing your connection.";
 
 $lang_config_message   = "Your configuration has been successfully created and saved. All tests have passed!";
@@ -338,10 +338,10 @@ $lang_set_sub_title    = "Sub title:";
 $lang_set_path         = "URL:";
 
 $lang_set_timezone     = "Timezone:";
-$lang_set_timezone_msg = "Select the timezone that closely resembles your own.";
+$lang_set_timezone_msg = "Select the timezone that closely resembles your own. See <a href='http://www.timeanddate.com/' target='_blank'>Timeanddate.com</a> for more information.";
 
 $lang_set_tz_dst       = "DST:";
-$lang_set_tz_dst_msg   = "Are you currently observing daylight savings time?";
+$lang_set_tz_dst_msg   = "Are you currently observing daylight savings time? (Don\'t forget to change that as the year passes!)";
 
 $lang_set_title_long   = "The title / sub-title you entered is too long. The maximum length is 100 characters.";
 $lang_set_eos          = "Your URL must contain a trailing slash (/).";
@@ -356,7 +356,7 @@ $lang_set_eos          = "Your URL must contain a trailing slash (/).";
 ////////////////////////////////////////////////////////////////////////////////////					 
 $lang_menu_pop_db      = "Populate Database";
 $lang_dsb_addon_00_01  = "By default, Pixelpost will attempt to disable all found 3rd party addons:";				 
-$lang_dsb_addon_01     = "Some 3rd party addons have been disable:";
+$lang_dsb_addon_01     = "Some 3rd party addons have been disabled:";
 $lang_dsb_addon_02     = "Some 3rd party addons may fail to properly function with this version of Pixelpost.";
 $lang_dsb_addon_02_1   = "This action will ensure that you don't end up with an upgraded-but-broken installation of Pixelpost.";
 $lang_dsb_addon_02_2   = "Pixelpost's default addons remain activated/deactivated based on your configuration.";
