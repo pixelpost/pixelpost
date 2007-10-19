@@ -37,7 +37,16 @@ if($_GET['view'] == "images")
 	if($_GET['action'] == "massdelete")
 	{
  		$idz= $_POST['moderate_image_boxes'];
-
+		// delete all the images:
+		for ($i=0; $i < count($idz); $i++)
+ 		{
+ 			$imagerow = sql_array("SELECT image FROM ".$pixelpost_db_prefix."pixelpost where id='$idz[$i]'");
+			$image = $imagerow['image'];
+ 			$file_to_del = $cfgrow['imagepath'].$imagerow['image'];
+			unlink($file_to_del);
+			$file_to_del = $cfgrow['thumbnailpath']."thumb_".$imagerow['image'];
+			unlink($file_to_del);
+ 		}
  		$query = "DELETE FROM ".$pixelpost_db_prefix."pixelpost ";
  		$where = "WHERE";
  		$where2 = $where;
