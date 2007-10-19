@@ -26,9 +26,9 @@ VARIABILI PER L'INTERFACCIA DI AMMINISTRAZIONE IN ITALIANO:
 
 Non modificare                    ||      Modificare                                   */
 
-$_lang_file_translator        = 'The Pixelpost Crew';
-$_lang_file_email             = 'thecrew@pixelpost.org';
-$_lang_file_rev               = '1.0.0';
+$_lang_file_translator        = 'Cristiano Gazzi (kroom) - <a href="http://www.roomk.it/" target="_blank">www.roomk.it</a>';
+$_lang_file_email             = 'unknown';
+$_lang_file_rev               = '1.7';
 
 $admin_lang_isrtl             = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update            = "Aggiorna";
@@ -42,14 +42,14 @@ $admin_lang_prev              = "Precedente";
 $admin_lang_show              = "Mostra";
 $admin_lang_go                = "Vai!";
 $admin_lang_done              = "Fatto:";
-$admin_lang_example			  = "Example";
+$admin_lang_example			  = "Esempio";
 
 
 // Admin Start
 $admin_start_1                = "Non esiste la cartella <b>language</b> oppure il file";
 $admin_start_2                = "&egrave; assente in quella cartella.\n<br />Assicurati di aver caricato tutti i file necessari, nominati esattamente come indicato.";
 $admin_start_userpw           = "Username o Password errati.";
-$admin_start_pw_forgot        = "Dimenticato la password?";
+$admin_start_pw_forgot        = "Hai dimenticato la password?";
 $admin_start_browser_title    = "ADMIN";
 $admin_start_welcome          = "Benvenuto in Pixelpost Admin - Devi fare login.";
 $admin_start_pp_name          = "Link al tuo sito Pixelpost:";
@@ -60,7 +60,7 @@ $admin_start_pw               = "Password";
 $admin_start_pw_button        = "Spediscimi la nuova password";
 $admin_start_pw_recover       = "Purtroppo <span style='color:red;'><b>non esiste modo di recuperare la tua vecchia password</b></span> ma Pixelpost &egrave; in grado
                                  di creare una nuova password casuale per te.\n
-                                 <br />Perfavore inserisci l'indirizzo email che hai indicato nel pannello di amministrazione.
+                                 <br />Inserisci l'indirizzo email che hai indicato nel pannello di amministrazione.
                                  <br />Riceverai immediatamente una nuova password via email.";
 $admin_start_email            = "Indirizzo Email:";
 $admin_start_email_button     = "Inserisci il tuo indirizzo email";
@@ -132,17 +132,17 @@ $admin_lang_ni_missing_data       = "Dati insufficienti<br />\n
                                      Tieni presente che nessuna immagine &egrave; stata caricata\n
                                      a causa di una informazione mancante!";
 $admin_lang_ni_crop_nextstep      = "Ora devi scegliere il riquadro di ritaglio della miniatura:";
-$admin_lang_ni_crop_background    = "Questo  lo sfondo dell'immagine da ritagliare";
+$admin_lang_ni_crop_background    = "Questo &egrave; lo sfondo dell'immagine da ritagliare";
 $admin_lang_ni_post_exif_date     = "Usa la data exif";
 $admin_lang_ni_db_error           = "si &egrave; verificato un errore durante la scrittura nel database";
 $admin_lang_ni_tags               = "Tags";
-$admin_lang_ni_tags_desc          = "(comma, semicolon and space are used to seperate tags; join words using underline and dash)";
-$admin_lang_ni_alt_language				= "Provide an image title and description in the alternative language";
+$admin_lang_ni_tags_desc          = "(usare virgola, punto e virgola o spazio per separare i tag; utilizzare il trattino o il trattino basso per tenere unite le parole)";
+$admin_lang_ni_alt_language				= "Inserire titolo immagine e descrizione nella lingua alternativa";
 
 // Images
 $admin_lang_imgedit_edit           = "Modifica";
 $admin_lang_imgedit_title          = "Titolo:";
-$admin_lang_imgedit_alttitle          		= "Alt. Title:";
+$admin_lang_imgedit_alttitle          		= "Titolo Alt.:";
 $admin_lang_imgedit_file_name      = "Nome file:";
 $admin_lang_imgedit_dimensions     = "Dimensioni:";
 $admin_lang_imgedit_tbpublished    = "Da pubblicare:";
@@ -152,10 +152,10 @@ $admin_lang_imgedit_deleted         = "Rimozione post&nbsp;/&nbsp;cancellazione 
 $admin_lang_imgedit_deleted1        = "Post cancellato.";
 $admin_lang_imgedit_deleted2        = "Immagine cancellata.";
 $admin_lang_imgedit_delete_error    = "Impossibile cancellare l'immagine.\n
-                                       Devi farlo in altro modo, forse con un programma FTP.";
+                                       Devi farlo in altro modo, ad esempio con un programma FTP.";
 $admin_lang_imgedit_deleted3        = "Miniatura cancellata.";
 $admin_lang_imgedit_delete_error2   = "Impossibile cancellare la miniatura.\n
-                                       Devi farlo in altro modo, forse con un programma FTP.";
+                                       Devi farlo in altro modo, ad esempio con un programma FTP.";
 $admin_lang_imgedit_reupimg         = "Ricarica Immagine:";
 $admin_lang_imgedit_file            = "Il file: ";
 $admin_lang_imgedit_file_isuploaded = "&egrave; stato ricaricato!";
@@ -165,7 +165,7 @@ $admin_lang_imgedit_txt_desc        = "Testo/descrizione:";
 $admin_lang_imgedit_dtime           = "Data e ora:";
 $admin_lang_imgedit_img             = "Immmagine:";
 $admin_lang_imgedit_fsize           = "Dimensione file:";
-$admin_lang_imgedit_12cropimg       = "CropImage tool:";
+$admin_lang_imgedit_12cropimg       = "Strumento CropImage:";
 $admin_lang_imgedit_12cropimg_txt   = "Per modificare la miniatura di questa immagine, trascina il riquadro di ritaglio con il mouse o espandilo/restringilo con i pulsanti '+'/'-'";
 $admin_lang_imgedit_uthmb_button    = "Aggiorna Miniatura";
 $admin_lang_imgedit_u_post_button   = "Aggiorna Post";
@@ -180,17 +180,17 @@ $admin_lang_imgedit_cropbg          = "Questo &egrave; il testo di sfondo di 12C
 $admin_lang_imgedit_js_del_im       = "Sicuro di voler cancellare l'immagine?";
 $admin_lang_imgedit_preview         = "Preview";
 $admin_lang_imgedit_db_error        = "<br />Verifica che la stringa del permalink non sia attualmente in uso!";
-$admin_lang_imgedit_tags_edit       = "Tags (comma, semicolon and space are used to seperate tags; join words using underline):";
-$admin_lang_imgedit_alt_language    = "Change the alternative language image title and description";
-$admin_lang_imgedit_masstag         = "Add/remove tags from selected images";
-$admin_lang_imgedit_masstag_set     = "Add tag(s)";
-$admin_lang_imgedit_masstag_set2    = "Add tag(s) for alternative language";
-$admin_lang_imgedit_masstag_unset   = "Remove tag(s)";
-$admin_lang_imgedit_published          = "Published";
-$admin_lang_imgedit_unpublished_cmnts  = "previously masked image(s).";
+$admin_lang_imgedit_tags_edit       = "Tag (usare virgola, punto e virgola o spazio per separare i tag; utilizzare il trattino o il trattino basso per tenere unite le parole):";
+$admin_lang_imgedit_alt_language    = "Cambia titolo immagine e descrizione per la lingua alternativa";
+$admin_lang_imgedit_masstag         = "Aggiungi/rimuovi tag alle immagini selezionate";
+$admin_lang_imgedit_masstag_set     = "Aggiungi uno o pi&ugrave; tag";
+$admin_lang_imgedit_masstag_set2    = "Aggiungi uno o pi&ugrave; tag per la lingua alternativa";
+$admin_lang_imgedit_masstag_unset   = "Rimuovi tag";
+$admin_lang_imgedit_published          = "Pubblicato";
+$admin_lang_imgedit_unpublished_cmnts  = "immagini precedentemente nascoste.";
 
 // Mass-Edit Categories
-$admin_lang_imgedit_mass_1          = "Modifica di massa categoria";
+$admin_lang_imgedit_mass_1          = "Modifica in massa categoria";
 $admin_lang_imgedit_mass_2          = "Assegna";
 $admin_lang_imgedit_mass_3          = "Revoca";
 $admin_lang_imgedit_mass_4          = "Aggiorna in massa";
@@ -226,12 +226,12 @@ $admin_lang_cmnt_delete1            = "Cancellato";
 $admin_lang_cmnt_delete2            = "commento(i) selezionato(i).";
 $admin_lang_cmnt_edit               = "Modifica";
 $admin_lang_cmnt_edited             = "Modificato un commento.";
-$admin_lang_cmnt_check_all          			= "Mass Select/Deselect";
+$admin_lang_cmnt_check_all          			= "Seleziona/Deseleziona in Massa";
 $admin_lang_cmnt_invert_checks      = "Inverti selezioni";
 $admin_lang_cmnt_del_selected       = "Cancella selezionati";
 $admin_lang_cmnt_page               = "commenti per pagina.";
 $admin_lang_cmnt_commenter          = "Commento fatto:";
-$admin_lang_cmnt_ip                 = "Indirizzo ip:";
+$admin_lang_cmnt_ip                 = "Indirizzo IP:";
 $admin_lang_cmnt_save               = "Salva";
 $admin_lang_cmnt_massdelete_text    = "Seleziona tutti i commenti che vuoi cancellare in una volta sola";
 $admin_lang_cmnt_js_del_comm        = "Sei sicuro di voler cancellare quel commento?";
@@ -245,8 +245,8 @@ $admin_lang_cmnt_error_blacklist    = "Errore di aggiornamento della blacklist: 
 $admin_lang_cmnt_error_banlist      = "Errore di aggiornamento della ban list dei referer: ";
 $admin_lang_cmnt_moderation_que     = "Coda di moderazione";
 $admin_lang_cmnt_rep_spam 	        = 'Segnala Spam';
-$admin_lang_cmnt_submenu1									= "COMMENTS";
-$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_submenu1									= "COMMENTI";
+$admin_lang_cmnt_submenu2									= "IN ATTESA DI MODERAZIONE";
 
 
 // Option
@@ -261,7 +261,7 @@ $admin_lang_optn_no                 = "No";
 
 $admin_lang_optn_title_url         = "TITOLO DEL SITO E URL";
 $admin_lang_optn_title             = "Titolo:";
-$admin_lang_optn_sub_title         = "Sub Title:";
+$admin_lang_optn_sub_title         = "Sottotitolo:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "UTENTE AMMINISTRATORE &amp; PASSWORD";
 $admin_lang_optn_usr_pss_txt       = "Cambiare username o password?";
@@ -269,16 +269,16 @@ $admin_lang_optn_usr               = "User:";
 $admin_lang_optn_pss               = "Password:";
 $admin_lang_optn_pss_re            = "Conferma Password:";
 $admin_lang_optn_email             = "EMAIL AMMINISTRATORE";
-$admin_lang_optn_fillit            = "Riempilo. Servir&agrave; per il recupero password.";
-$admin_lang_optn_img_path          = "IMAGES & THUMBNAILS PATH";
+$admin_lang_optn_fillit            = "Compilalo. Servir&agrave; per il recupero password.";
+$admin_lang_optn_img_path          = "PERCORSO IMMAGINI & MINIATURE";
 $admin_lang_optn_tz                = "FUSO ORARIO";
 $admin_lang_optn_tz_txt            = "Seleziona il fuso orario della tua localit&agrave;.";
 $admin_lang_optn_sendemail         = "NOTIFICA EMAIL DEI COMMENTI";
 $admin_lang_optn_sendemail_txt     = "Desideri la notifica via email dei commenti?";
 $admin_lang_optn_sendemail_html_txt = "utilizzare HTML nella email di notifica?";
 $admin_lang_optn_switch_template       = "CAMBIA TEMPLATE";
-$admin_lang_optn_lang_file             = "FILE DEL LINGUAGGIO";
-$admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
+$admin_lang_optn_lang_file             = "FILE DELLA LINGUA";
+$admin_lang_optn_lang_file_admin          = "FILE DELLA LINGUA PER IL PANNELLO DI AMMINISTRAZIONE";
 $admin_lang_optn_dateformat            = "FORMATO DELLA DATA";
 $admin_lang_optn_dateformat_txt        = "Il formato di visualizzazione per immagini e commenti. La sintassi usata &egrave; identica a quella della funzione <a href='http://www.php.net/date' target='_blank'>date()</a> di PHP. <br \>Ecco alcuni esempi di cosa sostituisce alcuni comuni parametri: Y:anno m:mese d:giorno H:ora i:minuti s:secondi";
 $admin_lang_optn_gmt                   = "Il supporto all'ora legale non &egrave; automatico, devi agire manualmente.<br />Controlla su <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> se non conosci il tuo fuso orario rispetto al GMT.<br />";
@@ -302,13 +302,13 @@ $admin_lang_optn_reg_thumbs_button     = "Rigenera miniature";
 $admin_lang_optn_regen_thumbs_txt      = "Questo genera nuove miniature per tutte le immagini pubblicate.<br />Tutte le miniature ritagliate manualmente saranno riportate ai valori predefiniti.<br />Naturalmente, puoi cambiare le miniature una per una utilizzando 12CropImage durante la modifica di una immagine.";
 $admin_lang_optn_img_compression       = "COMPRESSIONE MINIATURE";
 $admin_lang_optn_img_compression_txt   = "Quanto forte vuoi che sia la compressione jpg?<br />10 significa bassa qualit&agrave; e 100 alta qualit&agrave; (nessun artefatto visibile).";
-$admin_lang_optn_thumb_sharp              = "THUMBNAIL SHARPENING";
-$admin_lang_optn_thumb_sharp_txt          = "How sharp do you want the thumbnails to be?";
-$admin_lang_optn_thumb_sharp0             = 'No Sharpening';
-$admin_lang_optn_thumb_sharp1             = 'Light';
-$admin_lang_optn_thumb_sharp2             = 'Medium';
-$admin_lang_optn_thumb_sharp3             = 'High';
-$admin_lang_optn_thumb_sharp4             = 'Ultra-High';
+$admin_lang_optn_thumb_sharp              = "NITIDEZZA MINIATURE";
+$admin_lang_optn_thumb_sharp_txt          = "Che livello di nitidezza desideri per le miniature?";
+$admin_lang_optn_thumb_sharp0             = 'Nessun intervento';
+$admin_lang_optn_thumb_sharp1             = 'Leggero';
+$admin_lang_optn_thumb_sharp2             = 'Medio';
+$admin_lang_optn_thumb_sharp3             = 'Alto';
+$admin_lang_optn_thumb_sharp4             = 'Ultra-Alto';
 $admin_lang_optn_pass_chngd_txt        = "La password &egrave; cambiata.";
 $admin_lang_optn_pass_notchngd_txt     = "La password non &egrave; cambiata. Digita la stessa password nel campo di conferma.";
 $admin_lang_optn_title_url_text        = "Controlla o modifica il titolo del Sito e la URL della tua installazione";
@@ -317,70 +317,70 @@ $admin_lang_optn_updated               = "miniature aggiornate.";
 $admin_lang_optn_visitorbooking_title  = 'Registra visitatori';
 $admin_lang_optn_visitorbooking_desc   = 'Vuoi che Pixelpost memorizzi informazioni per ogni visitatore?';
 $admin_lang_optn_upd_done              = "Aggiornamento eseguito.";
-$admin_lang_optn_upd_error            = "Update Error.";
-$admin_lang_optn_upd_lang_error			  = "The selected alternative language is the same as the default language.<br />This makes no sense so either choose a different alternative language or disable the alternative language.";
-$admin_lang_optn_markdown              = "Enable Markdown";
-$admin_lang_optn_markdown_desc         = "Should Pixelpost enable Markdown feature in Image description?";
-$admin_lang_optn_exif			            = "Enable Exif";
-$admin_lang_optn_exif_desc		        = "Should Pixelpost enable Exif feature on the frontpage?";
-$admin_lang_optn_token			          = "Enable token in forms";
-$admin_lang_optn_token_desc		        = "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-																				 If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
+$admin_lang_optn_upd_error            = "Errore durante Aggiornamento.";
+$admin_lang_optn_upd_lang_error			  = "La lingua alternativa selezionata &egrave; uguale a quella di default.<br />La cosa non ha senso, quindi scegli una diversa lingua alternativa o disabilita la lingua alternativa.";
+$admin_lang_optn_markdown              = "Abilita Markdown";
+$admin_lang_optn_markdown_desc         = "Vuoi che Pixelpost abiliti Markdown feature nella descrizione immagine?";
+$admin_lang_optn_exif			            = "Abilita Exif";
+$admin_lang_optn_exif_desc		        = "Vuoi che Pixelpost abiliti le funzioni Exif sulla pagina principale?";
+$admin_lang_optn_token			          = "Abilita i token nei form";
+$admin_lang_optn_token_desc		        = "L'utilizzo dei token riduce la possibilità di attacco di tipo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
+																				 Attivando questa impostazione i commenti sono salvati solo quando il token del form corrisponde a quello nella sessione utente. Per implementare questa funzione devi aggiungere <strong>&lt;TOKEN&gt;</strong> al template dei commenti da qualche parte tra i tag <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
 																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
-																				 Should this setting be enabled?";
-$admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
-$admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
-$admin_lang_optn_dsbl_list 						= "Distributed Sender Blackhole List setting (http://www.dsbl.org)";
-$admin_lang_optn_dsbl_list_desc 			= "The <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> contains the IP addresses of servers who are an open relay, an open proxy or have other vulnerabilities. These servers are often misused by SPAMMERS to send e-mails but are also know for posting comments.<br /> <br />
+																				 Abilitare questa impostazione?";
+$admin_lang_optn_token_time						= "Intervallo massimo in minuti tra l'apertura della finestra per i commenti e la possibilit&agrave; di inviare commenti: ";
+$admin_lang_optn_token_error					= "Attenzione: valori inferiori ad 1 minuto per la durata del Token non sono possibili. La durata del Token &egrave; stata impostata ad 1 minuto.";
+$admin_lang_optn_dsbl_list 						= "Impostazione per la lista Distributed Sender Blackhole List (http://www.dsbl.org)";
+$admin_lang_optn_dsbl_list_desc 			= "La lista <a href=\"http://www.dsbl.org\" target=\"_blank\">Distributed Sender Blackhole List</a> contiene gli indirizzi IP dei server che sono in open relay, open proxy o presentano altre vulnerabilit&agrave;. Questi server sono spesso sfruttati dagli SPAMMERS per l'invio di e-mail ma sono anche utilizzati per l'invio di commenti.<br /> <br />
 																				 Should the comment IP address be checked against the Distributed Sender Blackhole List?";
-$admin_lang_optn_time_between_comments = "Prevent SPAM flood";
-$admin_lang_optn_time_between_comments_desc = "Number of seconds before a new comment can be posted (to prevent floods): ";
-$admin_lang_optn_max_uri_comment			= "MAXIMUM NUMBER OF URI";
-$admin_lang_optn_max_uri_comment_desc = "Number of URI allowed in one comment: ";
+$admin_lang_optn_time_between_comments = "Prevenzione degli SPAM flood";
+$admin_lang_optn_time_between_comments_desc = "Numero di secondi prima di poter inviare un nuovo commento (prevenzione flood): ";
+$admin_lang_optn_max_uri_comment			= "MASSIMO NUMERO DI URI";
+$admin_lang_optn_max_uri_comment_desc = "Numero di URI consentite in ciascun commento: ";
 
 
-$admin_lang_optn_comment_setting 		   = "GLOBAL COMMENT SETTINGS";
-$admin_lang_optn_comment_setting2			 = "Comment setting";
-$admin_lang_optn_cmnt_mod_txt          = "Default action for comments: ";
-$admin_lang_optn_cmnt_mod_txt2         = "Action for comments:";
-$admin_lang_optn_cmnt_mod_allowed		   =	"Publish instantly";
-$admin_lang_optn_cmnt_mod_moderation   =	"To moderation queue";
-$admin_lang_optn_cmnt_mod_forbidden	   =	"Disable commenting";
-$admin_lang_optn_rss_setting					= "RSS/ATOM feed settings";
-$admin_lang_optn_rss_title  					= "Feed title";
-$admin_lang_optn_rss_desc   					= "Feed description";
-$admin_lang_optn_rss_copyright					= "Feed copyright";
-$admin_lang_optn_rss_discovery					= "Feed discovery";
+$admin_lang_optn_comment_setting 		   = "IMPOSTAZIONI GLOBALI PER I COMMENTI";
+$admin_lang_optn_comment_setting2			 = "Impostazione commenti";
+$admin_lang_optn_cmnt_mod_txt          = "Azione predefinita per i commenti: ";
+$admin_lang_optn_cmnt_mod_txt2         = "Azione per i commenti:";
+$admin_lang_optn_cmnt_mod_allowed		   =	"Pubblica subito";
+$admin_lang_optn_cmnt_mod_moderation   =	"Invia alla coda di moderazione";
+$admin_lang_optn_cmnt_mod_forbidden	   =	"Disabilita i commenti";
+$admin_lang_optn_rss_setting					= "Impostazioni per i feed RSS/ATOM";
+$admin_lang_optn_rss_title  					= "Titolo feed";
+$admin_lang_optn_rss_desc   					= "Descrizione feed";
+$admin_lang_optn_rss_copyright					= "Copyright feed";
+$admin_lang_optn_rss_discovery					= "Ricerca feed";
 $admin_lang_optn_rss_opt_both					= "RSS &amp; ATOM";
 $admin_lang_optn_rss_opt_rss					= "RSS";
 $admin_lang_optn_rss_opt_atom					= "ATOM";
-$admin_lang_optn_rss_opt_ext					= "External";
-$admin_lang_optn_rss_opt_none					= "None";
-$admin_lang_optn_rss_ext_type					= "External feed type";
-$admin_lang_optn_rss_ext						= "External feed";
-$admin_lang_optn_rss_enable_comment_feed		= "Enable comment feeds";
-$admin_lang_optn_rsstype_desc					= "Select the style of the RSS/ATOM feed:";
-$admin_lang_optn_rss_full							= "Show full size pictures";
-$admin_lang_optn_rss_thumbs						= "Show thumbnails";
-$admin_lang_optn_rss_thumbs_only					= "Show thumbnails only";
-$admin_lang_optn_rss_full_only						= "Show full size pictures only";
-$admin_lang_optn_rss_text							= "Show text only";
-$admin_lang_optn_feeditems_desc				= "Number of items in the feedlist: ";
-$admin_lang_optn_lang                  = "Base language settings: ";
-$admin_lang_optn_alt_lang             = "Alternative language settings: ";
-$admin_lang_optn_alt_lang_dis         = "disabled";
-$admin_lang_optn_alt_lang_no          = "disabled";
-$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
-$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
-$admin_lang_optn_img_display_default		="descending order";
-$admin_lang_optn_img_display_reversed		="ascending order";
+$admin_lang_optn_rss_opt_ext					= "Esterno";
+$admin_lang_optn_rss_opt_none					= "Nessuno";
+$admin_lang_optn_rss_ext_type					= "Tipo di feed esterno";
+$admin_lang_optn_rss_ext						= "Feed esterno";
+$admin_lang_optn_rss_enable_comment_feed		= "Abilita i comment feed";
+$admin_lang_optn_rsstype_desc					= "Sleziona lo stile del feed RSS/ATOM:";
+$admin_lang_optn_rss_full							= "Mostra immagini a grandezza piena";
+$admin_lang_optn_rss_thumbs						= "Mostra miniature";
+$admin_lang_optn_rss_thumbs_only					= "Mostra solo miniature";
+$admin_lang_optn_rss_full_only						= "Mostra solo immagini a grandezza piena";
+$admin_lang_optn_rss_text							= "Mostra solo testo";
+$admin_lang_optn_feeditems_desc				= "Numero di voci nella feedlist: ";
+$admin_lang_optn_lang                  = "Impostazioni lingua base: ";
+$admin_lang_optn_alt_lang             = "Impostazioni lingua alternativa: ";
+$admin_lang_optn_alt_lang_dis         = "disabilitato";
+$admin_lang_optn_alt_lang_no          = "disabilitato";
+$admin_lang_optn_img_display						="ORDINE VISUALIZZAZIONE IMMAGINI";
+$admin_lang_optn_img_display_desc				="Seleziona il tipo diordinamento per la visualizzazione. Ordina secondo: ";
+$admin_lang_optn_img_display_default		="ordine discendente";
+$admin_lang_optn_img_display_reversed		="ordine ascendente";
 
 
 // Info
 $admin_lang_info_gd                   = "Non installato, chiedi all'Amministratore del tuo host di installarlo!";
 $admin_lang_info_gd_jpg               = "con supporto JPEG";
 $admin_lang_pp_version1               = "Ultima versione di Pixelpost:";
-$admin_lang_pp_forum                  = "Se cerchi aiuto o vuoi esprimere opinioni, vai al forum di Pixelpost";
+$admin_lang_pp_forum                  = "Se cerchi aiuto o vuoi esprimere opinioni, vai sul forum di Pixelpost";
 $admin_lang_pp_min_php                = "Requisiti minimi di Pixelpost: versione PHP";
 $admin_lang_pp_min_mysql              = "Requisiti minimi di Pixelpost: MySQL";
 $admin_lang_pp_exif1                  = "<b>EXIF</b> Pixelpost usa";
@@ -405,20 +405,20 @@ $admin_lang_hostinfo		          = "Informazioni Host";
 $admin_lang_fileuploads		          = "Gli <b>Upload</b> al sito Pixelpost sono";
 $admin_lang_serversoft		          = "Server Software";
 $admin_lang_Pixelpostinfo	          = "Informazioni Pixelpost";
-$admin_lang_pp_currversion	          = "Stai utilizzando Pixelpost versione :";
-$admin_lang_pp_check                 = "Check";
-$admin_lang_pp_sess_path             = "Session save path";
-$admin_lang_pp_sess_path_emp         = "is empty";
-$admin_lang_pp_fileupload_np         = 'NOT possible! Check file_upload variable in php.ini file!';
-$admin_lang_pp_fileupload_p          = 'possible.';
-$admin_lang_pp_langs                 = 'Pixelpost language translations';
-$admin_lang_pp_lng_fname             = 'Filename';
-$admin_lang_pp_lng_author            = 'Author';
-$admin_lang_pp_lng_ver               = 'Version';
+$admin_lang_pp_currversion	          = "Stai utilizzando Pixelpost versione:";
+$admin_lang_pp_check                 = "Verifica";
+$admin_lang_pp_sess_path             = "Percorso per il salvataggio della sessione";
+$admin_lang_pp_sess_path_emp         = "&egrave; vuoto";
+$admin_lang_pp_fileupload_np         = 'NON possibile! Controlla la variabile file_upload nel file php.ini!';
+$admin_lang_pp_fileupload_p          = 'possibile.';
+$admin_lang_pp_langs                 = 'Traduzioni di Pixelpost';
+$admin_lang_pp_lng_fname             = 'Nome file';
+$admin_lang_pp_lng_author            = 'Autore';
+$admin_lang_pp_lng_ver               = 'Versione';
 $admin_lang_pp_lng_email             = 'Email';
-$admin_lang_pp_newest_ver            = 'You have the newest version of Pixelpost!';
-$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
-$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
+$admin_lang_pp_newest_ver            = 'Hai la versione pi&ugrave; recente di Pixelpost!';
+$admin_lang_pp_thumbnailpath 				 = "Percorso miniature stimato";
+$admin_lang_pp_thumbnailpath_conf 	 = "Percorso miniature configurato"; 
 
 // AddOns
 $admin_lang_addon_title              = "Addon Installati";
@@ -432,9 +432,9 @@ $admin_lang_pp_up_error_1            = "Superata la dimensione massima del file 
 $admin_lang_pp_up_error_2            = "Superata la dimensione massima del file.";
 $admin_lang_pp_up_error_3            = "Il file non &egrave; stato caricato completamente.";
 $admin_lang_pp_up_error_4            = "Nessun file &egrave; stato caricato.";
-$admin_lang_pp_up_error_6            = "Missing a temporary folder.";
-$admin_lang_pp_up_error_7            = "Failed to write file to disk.";
-$admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
+$admin_lang_pp_up_error_6            = "Manca una cartella temporanea.";
+$admin_lang_pp_up_error_7            = "Non sono riuscito a scrivere il file su disco.";
+$admin_lang_pp_addon_error								= "Pixelpost non &egrave; in grado di leggere il file dell'addon. Controllare i permessi chmod e cambiarli in 755";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "Codici data/ora";
@@ -475,18 +475,22 @@ $admin_lang_spam_del_bad_comm = "Cancella i Commenti Cattivi";
 $admin_lang_spam_del_bad_ref = "Cancella i Referer Cattivi";
 $admin_lang_spam_updateblacklist = "Aggiorna tutte le Liste di Esclusione";
 
-$admin_lang_dutch = 							"Dutch";
-$admin_lang_english = 						"Inglese";
-$admin_lang_french = 							"Francese";
-$admin_lang_german = 							"Tedesco";
-$admin_lang_italian = 						"Italiano";
-$admin_lang_norwegian = 					"Norvegese";
-$admin_lang_persian = 						"Persiano";
-$admin_lang_polish = 							"Smalto";
-$admin_lang_portuguese = 					"Portoghese";
-$admin_lang_simplified_chinese=		"Cinese";
-$admin_lang_spanish = 						"Spagnolo";
-$admin_lang_swedish = 						"Svedese";
-$admin_lang_japanese = 						"Giapponese";
-$admin_lang_danish = 							"Danese";
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
+$admin_lang_dutch								="Nederlands";
+$admin_lang_english								="English";
+$admin_lang_french								="Fran&ccedil;ais";
+$admin_lang_german								="Deutsch";
+$admin_lang_italian								="Italiano";
+$admin_lang_norwegian							="Norsk";
+$admin_lang_persian								="Farsi";
+$admin_lang_polish								="Polski";
+$admin_lang_portuguese							="Portugu&egrave;s";
+$admin_lang_simplified_chinese					="Chinese";
+$admin_lang_spanish								="Espa&ntilde;ol";
+$admin_lang_swedish								="Swedish";
+$admin_lang_japanese							="Japanese";
+$admin_lang_danish								="Dansk";
+$admin_lang_romanian 							="Romana";
+$admin_lang_hungarian							="Magyar";
+
 ?>

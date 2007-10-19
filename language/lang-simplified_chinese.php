@@ -105,8 +105,7 @@ $lang_comment_popup_disabled     = "这幅图已被禁止评论";
 $lang_tags                       = "标签:<br/>";
 $lang_none                       = "没有";
 
-// Alternative language
-// Alternative language
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
 $lang_alt_lang_french							="Fran&ccedil;ais";

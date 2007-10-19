@@ -471,22 +471,24 @@ $admin_lang_spam_del_bad_comm 				= "Rosszindulatú megjegyzések törlése";
 $admin_lang_spam_del_bad_ref 				= "Rosszindulatú referrerek törlése";
 $admin_lang_spam_updateblacklist 			= "Tiltólisták frissítése";
 
-// Alternative language
-$admin_lang_dutch					="Dutch";
-$admin_lang_english					="English";
-$admin_lang_french					="French";
-$admin_lang_german					="German";
-$admin_lang_italian					="Italian";
-$admin_lang_norwegian					="Norwegian";
-$admin_lang_persian					="Persian";
-$admin_lang_polish					="Polish";
-$admin_lang_portuguese					="Portuguese";
-$admin_lang_simplified_chinese				="Chinese";
-$admin_lang_spanish					="Spanish";
-$admin_lang_swedish					="Swedish";
-$admin_lang_japanese					="Japanese";
-$admin_lang_danish					="Danish";
-$admin_lang_hungarian					="Hungarian";
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
+$admin_lang_dutch								="Nederlands";
+$admin_lang_english								="English";
+$admin_lang_french								="Fran&ccedil;ais";
+$admin_lang_german								="Deutsch";
+$admin_lang_italian								="Italiano";
+$admin_lang_norwegian							="Norsk";
+$admin_lang_persian								="Farsi";
+$admin_lang_polish								="Polski";
+$admin_lang_portuguese							="Portugu&egrave;s";
+$admin_lang_simplified_chinese					="Chinese";
+$admin_lang_spanish								="Espa&ntilde;ol";
+$admin_lang_swedish								="Swedish";
+$admin_lang_japanese							="Japanese";
+$admin_lang_danish								="Dansk";
+$admin_lang_romanian 							="Romana";
+$admin_lang_hungarian							="Magyar";
+
 
 // End of Admin-Language-File
 ?>

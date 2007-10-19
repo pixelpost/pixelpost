@@ -103,7 +103,7 @@ $lang_october             = "październik";
 $lang_november            = "listopad";
 $lang_december            = "grudzień";
 
-// Alternative language
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
 $lang_alt_lang_french							="Fran&ccedil;ais";

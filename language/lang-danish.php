@@ -109,7 +109,7 @@ $lang_message_banned_comment     = "Din kommentar er ikke blevet gemt! Den indeh
 $lang_tags                       = "N&oslash;gleord:<br/>";
 $lang_none                       = "none";
 
-// Alternative language
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
 $lang_alt_lang_french							="Fran&ccedil;ais";

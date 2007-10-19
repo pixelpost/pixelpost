@@ -491,20 +491,23 @@ $admin_lang_cmnt_rep_spam = "Spam melden!!";
 $admin_lang_optn_visitorbooking_title = "Seitenbesuche";
 $admin_lang_optn_visitorbooking_desc  = "Soll Pixelpost Seitenbesuche / Informationen in einer Tabelle speichern?";
 
-// Alternative language
-$admin_lang_dutch							="holl&auml;ndisch";
-$admin_lang_english						="englisch";
-$admin_lang_french							="franz&ouml;sisch";
-$admin_lang_german							="deutsch";
-$admin_lang_italian						="italienisch";
-$admin_lang_norwegian					="norwegisch";
-$admin_lang_persian						="persisch";
-$admin_lang_polish							="polnisch";
-$admin_lang_portuguese					="portugiesisch";
-$admin_lang_simplified_chinese	="chinesisch";
-$admin_lang_spanish						="spanisch";
-$admin_lang_swedish						="schwedisch";
-$admin_lang_japanese						="japanisch";
-$admin_lang_danish							="d&auml;nisch";
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
+$admin_lang_dutch								="Nederlands";
+$admin_lang_english								="English";
+$admin_lang_french								="Fran&ccedil;ais";
+$admin_lang_german								="Deutsch";
+$admin_lang_italian								="Italiano";
+$admin_lang_norwegian							="Norsk";
+$admin_lang_persian								="Farsi";
+$admin_lang_polish								="Polski";
+$admin_lang_portuguese							="Portugu&egrave;s";
+$admin_lang_simplified_chinese					="Chinese";
+$admin_lang_spanish								="Espa&ntilde;ol";
+$admin_lang_swedish								="Swedish";
+$admin_lang_japanese							="Japanese";
+$admin_lang_danish								="Dansk";
+$admin_lang_romanian 							="Romana";
+$admin_lang_hungarian							="Magyar";
+
 
 ?>

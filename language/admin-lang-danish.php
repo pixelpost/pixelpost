@@ -472,20 +472,23 @@ $admin_lang_spam_del_bad_comm = "Slet ikke-tilladte kommentarer";
 $admin_lang_spam_del_bad_ref = "Slet ikke-tilladte referrers";
 $admin_lang_spam_updateblacklist = "Opdater alle lister";
 
-$admin_lang_dutch							="Hollandsk"; 
-$admin_lang_english						="Engelsk";
-$admin_lang_french						="Fransk";
-$admin_lang_german						="Tysk";
-$admin_lang_italian						="Italiensk";
-$admin_lang_norwegian					="Nordmand";
-$admin_lang_persian						="Persisk";
-$admin_lang_polish						="Pli";
-$admin_lang_portuguese				="Portuguese";
-$admin_lang_simplified_chinese="Kinesisk";
-$admin_lang_spanish						="Spansk";
-$admin_lang_swedish						="Svensk";
-$admin_lang_japanese					="Japansk";
-$admin_lang_danish						="Dansk";
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
+$admin_lang_dutch								="Nederlands";
+$admin_lang_english								="English";
+$admin_lang_french								="Fran&ccedil;ais";
+$admin_lang_german								="Deutsch";
+$admin_lang_italian								="Italiano";
+$admin_lang_norwegian							="Norsk";
+$admin_lang_persian								="Farsi";
+$admin_lang_polish								="Polski";
+$admin_lang_portuguese							="Portugu&egrave;s";
+$admin_lang_simplified_chinese					="Chinese";
+$admin_lang_spanish								="Espa&ntilde;ol";
+$admin_lang_swedish								="Swedish";
+$admin_lang_japanese							="Japanese";
+$admin_lang_danish								="Dansk";
+$admin_lang_romanian 							="Romana";
+$admin_lang_hungarian							="Magyar";
 
 // End of Admin-Language-File
 ?>

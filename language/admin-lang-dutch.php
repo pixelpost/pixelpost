@@ -472,20 +472,23 @@ $admin_lang_spam_del_bad_comm = "Verwijder slechte reacties";
 $admin_lang_spam_del_bad_ref = "Verwijder slechte referrers";
 $admin_lang_spam_updateblacklist = "Werk alle Blocklijsten bij";
 
-$admin_lang_dutch="Nederlands";
-$admin_lang_english="Engels";
-$admin_lang_french="Frans";
-$admin_lang_german="Duits";
-$admin_lang_italian="Italiaans";
-$admin_lang_norwegian= "Noors";
-$admin_lang_persian= "Perzisch";
-$admin_lang_polish= "Pools";
-$admin_lang_portuguese="Portugees";
-$admin_lang_simplified_chinese="Chinese";
-$admin_lang_spanish="Spaans";
-$admin_lang_swedish= "Zweeds";
-$admin_lang_japanese= "Japans";
-$admin_lang_danish= "Deens";
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
+$admin_lang_dutch								="Nederlands";
+$admin_lang_english								="English";
+$admin_lang_french								="Fran&ccedil;ais";
+$admin_lang_german								="Deutsch";
+$admin_lang_italian								="Italiano";
+$admin_lang_norwegian							="Norsk";
+$admin_lang_persian								="Farsi";
+$admin_lang_polish								="Polski";
+$admin_lang_portuguese							="Portugu&egrave;s";
+$admin_lang_simplified_chinese					="Chinese";
+$admin_lang_spanish								="Espa&ntilde;ol";
+$admin_lang_swedish								="Swedish";
+$admin_lang_japanese							="Japanese";
+$admin_lang_danish								="Dansk";
+$admin_lang_romanian 							="Romana";
+$admin_lang_hungarian							="Magyar";
 
 // End of Admin-Language-File
 ?>

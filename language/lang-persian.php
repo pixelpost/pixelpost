@@ -107,7 +107,7 @@ $lang_december            = "دسامبر";
 
 $lang_isunicode           = "yes";
 
-// Alternative language
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
 $lang_alt_lang_french							="Fran&ccedil;ais";

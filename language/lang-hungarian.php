@@ -104,7 +104,7 @@ $lang_message_banned_comment    = "A megjegyzésedet nem mentettük, mert tiltot
 $lang_tags                      = "Tag-ek:<br/>";
 $lang_none                      = "nincs";
 
-// Alternative language
+// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
 $lang_alt_lang_dutch				="Nederlands";
 $lang_alt_lang_english				="English";
 $lang_alt_lang_french				="Fran&ccedil;ais";
