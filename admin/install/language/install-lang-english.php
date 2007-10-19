@@ -287,7 +287,7 @@ $lang_config_exist_msg = "Checks if configuration file has been saved.";
 $lang_config_conn_msg  = "Attempts to connect to the database using the new configuration file.";
 
 $lang_download_msg_1   = "Something has gone awry while attempting to create, store, and connect with your Pixelpost configuration file!";
-$lang_download_msg_2   = "Have a look bellow to see if any suggestions have been offered to correct the problem.";
+$lang_download_msg_2   = "Have a look below to see if any suggestions have been offered to correct the problem.";
 $lang_download_msg_2_2 = "If all else fails, please use the download button above to save your configuration file and proceed to manually upload it to your includes/ folder via FTP once you have verified its contents.";
 $lang_download_msg_3   = "Once you have done this, please continue with the installation by re-testing your connection.";
 

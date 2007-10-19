@@ -287,9 +287,8 @@ $lang_config_exist_msg = "Überprüft, ob die Konfigurationsdatei gespeichert wurd
 $lang_config_conn_msg  = "Versucht eine Datenbankverbindung unter Verwendung der neuen Konfigurationsdatei herzustellen.";
 
 $lang_download_msg_1   = "Etwas ist schiefgegangen beim Versuch, die Konfigurationsdatei zu erstellen, zu speichern oder darauf zuzugreifen!";
-//$lang_download_msg_2   = "Setze die Verzeichnisrechte (CHMOD) des 'include' Verzeichnisses auf 777 und aktualisiere diese Konfigurationsseite. Setze sie auf 755 zurück, sobald du fertig bist!<br />Wenn das auch nicht klappt, benutze bitte den Download-Link oben um deine Konfigurationsdatei herunterzuladen. Lade sie mit FTP in das Verzeichnis 'include' hoch, nachdem du die Zugangsdaten überprüft bzw. eingetragen hast.";
-$lang_download_msg_2   = "Have a look bellow to see if any suggestions have been offered to correct the problem.";
-$lang_download_msg_2_2 = "If all else fails, please use the download button above to save your configuration file and proceed to manually upload it to your includes/ folder via FTP once you have verified its contents.";
+$lang_download_msg_2   = "Sieh unten nach Vorschlägen um das Problem zu korrigieren!";
+$lang_download_msg_2_2 = "Wenn das auch nicht klappt, benutze bitte den Download-Link oben um deine Konfigurationsdatei herunterzuladen. Lade sie mit FTP in das Verzeichnis 'include' hoch, nachdem du die Zugangsdaten überprüft bzw. eingetragen hast.";
 $lang_download_msg_3   = "Wenn du das getan hast, setzte die Installation bitte fort indem du Verbindung nochmals testest.";
 
 $lang_config_message   = "Deine Konfiguration wurde erfolgreich erstellt und gesichert. Alle Tests wurden bestanden!";
