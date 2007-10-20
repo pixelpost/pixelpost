@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id:$
+// $Id$
 
 if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 
@@ -59,9 +59,7 @@ switch($installed_version) {
 
 	case 1.6:		//upgrade from 1.6Final to 1.6.5
 		 $ins_data[] = UpgradeTo165($prefix,'1.65');
-		
-	break;
-
+		 
 	case 1.65:
 		 $ins_data[] = UpgradeTo1651($prefix,'1.651');
 	
