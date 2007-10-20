@@ -798,7 +798,7 @@ function tz_select($default = '-5', $truncate = false, $chars = '80') {
 }
 function tz_offset($timezone, $offset) {
 
-	$timezone = $timezone-$offset;
+	$timezone = $timezone+$offset;
 	
 	return $timezone;
 }
@@ -870,7 +870,7 @@ function store_vars($prefix) {
 	
 	if($data['pp_timezone_dst'] == "1") {
 	
-		$time_zone  = addslashes(tz_offset($data['pp_timezone'], '-1'));
+		$time_zone  = addslashes(tz_offset($data['pp_timezone'], '1'));
 	}else{
 	
 		$time_zone  = addslashes($data['pp_timezone']);
