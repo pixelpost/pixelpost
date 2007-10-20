@@ -419,9 +419,9 @@ if($_GET['view'] == "images")
 			$altlangs = ${$altlangs};
 		}
 		echo "<div class='jcaption'><a href='' onclick=\"flip('additionalSelects'); return false;\" title=\"$admin_lang_show $admin_lang_options\">$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</a></div>
-	  <div id=\"additionalSelects\">
-	  <script language='javascript' type='text/javascript'>flip('additionalSelects');</script>
-		<div class='content'>
+	  <div id=\"additionalSelects\">";
+	  if (!isset($selectfcat) &! isset($selectftag) &! isset($selectfalttag) &! isset($selectfmon)) echo "<script language='javascript' type='text/javascript'>flip('additionalSelects');</script>";
+		echo "<div class='content'>
 		<form method='post' name='filter' accept-charset='UTF-8' action='index.php?view=images'>
 		<table width='400' border='0' cellpadding='2'>
 		<tr>
@@ -498,7 +498,7 @@ if($_GET['view'] == "images")
 		
 		//cat filter
 		if (isset($selectfcat)) {
-			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat." ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
+			$query = "SELECT a.id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat." ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//tag filter
 		else if (isset($selectftag)) {
