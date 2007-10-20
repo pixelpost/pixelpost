@@ -51,7 +51,7 @@ if($_GET['view'] == "")
 		}
 		else if( $_POST['autodate'] == 2)
 		{
-			$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
+			$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone']));
 		}
 		else if($_POST['autodate'] == 3)// exifdate
 		{
