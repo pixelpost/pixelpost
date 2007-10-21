@@ -878,7 +878,7 @@ function create_admin_addon_array()
 	$addon_dir = "../addons/";
 	if( $_GET['view'] != "addons")
 	{
-		$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='admin' ORDER BY id DESC";  
+		$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='admin' ORDER BY id ASC";  
 		$query_ad_s = mysql_query($query_ad_s);
 
 		while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($query_ad_s))
