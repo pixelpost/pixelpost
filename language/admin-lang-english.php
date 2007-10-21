@@ -251,7 +251,7 @@ $admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
 $admin_lang_optn_general            			= "GENERAL";
 $admin_lang_optn_template           			= "TEMPLATE";
 $admin_lang_optn_thumbnails         			= "THUMBNAILS";
-$admin_lang_optn_tip                			= "Don't forget the tailing slash <b>'/'</b> e.g. <i>http://www.pixelpost.org/</i>";
+$admin_lang_optn_tip                			= "Don't forget the trailing slash <b>'/'</b> e.g. <i>http://www.pixelpost.org/</i>";
 
 $admin_lang_optn_update             			= "UPDATE";
 $admin_lang_optn_yes                			= "Yes";

@@ -248,7 +248,7 @@ $admin_lang_cmnt_error_banlist      = "Error in updating the referer ban list: "
 $admin_lang_optn_general            = "GENERELT";
 $admin_lang_optn_template           = "STILMAL";
 $admin_lang_optn_thumbnails         = "MINIATYRBILDER";
-$admin_lang_optn_tip                = "Glem ikke tailing slash <b>'/'</b> eks. <i>http://www.pixelpost.org/</i>";
+$admin_lang_optn_tip                = "Glem ikke trailing slash <b>'/'</b> eks. <i>http://www.pixelpost.org/</i>";
 
 $admin_lang_optn_update             = "Oppdater";
 $admin_lang_optn_yes                = "Ja";
