@@ -453,13 +453,13 @@ function UpgradeTo16final($prefix, $newversion) {
 	
 	return $create_status;
 }
-
+/*
 function UpgradeTo165($prefix, $newversion) {
 
 	global $lang_updated, $lang_create_update_to;
 
-  	deactivateAddons($prefix);
-	activatePxlpstAddons($prefix);
+  	//deactivateAddons($prefix);
+	//activatePxlpstAddons($prefix);
 		
 	// Add admin langfile
 	mysql_query("ALTER TABLE `{$prefix}config` ADD `admin_langfile` VARCHAR(100)")or die("MySQL Error: ". mysql_error());
@@ -555,26 +555,73 @@ function UpgradeTo1653($prefix, $newversion) {
 	
 	return $create_status;
 }
-/*
+*/ 
+function UpgradeTo17($prefix, $newversion) {
 
-// Upgrade to 1.7 example
-function UpgradeTo1.7($prefix, $newversion) {
-
-	// Do NOT edit global variables
 	global $lang_updated, $lang_create_update_to;
 	
+	deactivateAddons($prefix);
+	activatePxlpstAddons($prefix);
 	
+	$create_status[null] = null;
 	
-	// Add MYSQL queries here
+	if(!is_field_exists('thumbnailpath','config')) {
 	
+	// Add admin langfile
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `admin_langfile` VARCHAR(100) NOT NULL DEFAULT 'english'")or die("MySQL Error: ". mysql_error());
 	
+	// Add thumbnail path
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `thumbnailpath` VARCHAR(150) NOT NULL DEFAULT '../thumbnails/' AFTER `imagepath`")or die("MySQL Error: ". mysql_error());
 	
-	// Do NOT edit bellow this line!
-	// Example Output: Update to 1.7: Updated
+	// Add sub title
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `subtitle` VARCHAR(100) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `sitetitle`")or die("MySQL Error: ". mysql_error());
+	
+	// Drop rss type field
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `rsstype`");
+	
+	// Add rss type field
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `rsstype` ENUM('F', 'FO', 'T', 'O', 'N') NOT NULL DEFAULT 'T' AFTER `max_uri_comments`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed discovery
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_discovery` ENUM('RA', 'R', 'A', 'E', 'N') NOT NULL DEFAULT 'RA' AFTER `rsstype`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed title
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_title` VARCHAR(100) NOT NULL DEFAULT 'Pixelpost' AFTER `feed_discovery`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed description
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_description` VARCHAR(100) NOT NULL DEFAULT 'Authentic photoblog flavour' AFTER `feed_title`")or die("MySQL Error: ". mysql_error());
+	
+	// Add feed copyright
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_copyright` VARCHAR(100) NOT NULL DEFAULT 'Copyright 2007 yoursite.com, All Rights Reserved' AFTER `feed_description`")or die("MySQL Error: ". mysql_error());
+	
+	// Add allow comment feed
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `allow_comment_feed`  ENUM('Y', 'N') NOT NULL DEFAULT 'Y' AFTER `feed_copyright`")or die("MySQL Error: ". mysql_error());
+	
+	// Add external feed
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_external` VARCHAR(150) NOT NULL DEFAULT '' AFTER `allow_comment_feed`")or die("MySQL Error: ". mysql_error());
+	
+	// Add external feed type
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `feed_external_type` ENUM('ER', 'EA') NOT NULL DEFAULT 'ER' AFTER `feed_external`")or die("MySQL Error: ". mysql_error());
+	
+	// Add display order
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `display_order` ENUM('default', 'reversed') NOT NULL DEFAULT 'default'")or die("MySQL Error: ". mysql_error());
+		
+	// Add admin thumb sharpening
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `thumb_sharpening` VARCHAR(1) DEFAULT '0'")or die("MySQL Error: ". mysql_error());
+	
+	// Add display sort by
+	mysql_query("ALTER TABLE `{$prefix}config` ADD `display_sort_by` VARCHAR(150) NOT NULL DEFAULT 'datetime' AFTER `display_order`")or die("MySQL Error: ". mysql_error());
+		
+	// Dorop comment_dsbl
+	mysql_query("ALTER TABLE `{$prefix}config` DROP `comment_dsbl`")or die("MySQL Error: ". mysql_error());
+	
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (version) VALUES ($newversion)")or die("MySQL Error: ". mysql_error());
+	
 	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	}
 	
 	return $create_status;
 }
-
-*/
 ?>

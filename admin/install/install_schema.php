@@ -58,23 +58,18 @@ switch($installed_version) {
 
 
 	case 1.6:		//upgrade from 1.6Final to 1.6.5
-		 $ins_data[] = UpgradeTo165($prefix,'1.65');
+		 //$ins_data[] = UpgradeTo165($prefix,'1.65');
 		 
-	case 1.65:
-		 $ins_data[] = UpgradeTo1651($prefix,'1.651');
+	//case 1.65:
+		 //$ins_data[] = UpgradeTo1651($prefix,'1.651');
 	
-	case 1.651:
-		 $ins_data[] = UpgradeTo1652($prefix,'1.652');	
+	//case 1.651:
+		 //$ins_data[] = UpgradeTo1652($prefix,'1.652');
+		 
+		 $ins_data[] = UpgradeTo17($prefix,'1.7');
 
 	break;
-
-	/* Add the upgrade to 1.7 here
 	
-	IMPORTANT !!! - Remember to define the new pixelpost version on line 13 of /admin/install.php
-	
-	case 1.7:
-		 $ins_data[] = UpgradeTo1.7($prefix,'1.7');
-	*/
 	default:
  		 echo "<b>$lang_database_error</b><br/><br/>$lang_version_error</div>
 		 </body>
