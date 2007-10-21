@@ -77,8 +77,8 @@ if(isset($_POST['dlconfig'])) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Pixelpost Installation</title>
-	
 <link rel="stylesheet" href="admin_index.css" type="text/css" />
 <link rel="stylesheet" href="install/install.css" type="text/css" />
 

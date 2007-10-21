@@ -202,7 +202,7 @@ $lang_req_globals_1    = "PHP setting";
 $lang_req_globals_2    = "register_globals";
 $lang_req_globals_3    = "is disabled:";
 
-$lang_req_globals_msg  = "Pixelpost will still run if this setting is enabled, but if possible, it is recommended that register_globalsis disabled on your PHP install for security reasons.";
+$lang_req_globals_msg  = "Pixelpost will still run if this setting is enabled, but if possible, it is recommended that register_globals is disabled on your PHP install for security reasons.";
 						  
 $lang_req_imagesize_1  = "PHP function";
 $lang_req_imagesize_2  = "getimagesize()";
@@ -222,7 +222,7 @@ $lang_req_required_1   = "You must be running at least version 4.3.3 of PHP in o
 $lang_req_required_2   = "In order to function correctly, Pixelpost needs to be able to access or write to certain files or directories.";
 
 $lang_req_not_found    = "If you see 'Not Found' you need to create the relevant directory.";
-$lang_req_unwritable   = "If you see 'Unwritable' you need to change the permissions on the file or directory to allow Pixelpost to write to it. (755 or 777)";
+$lang_req_unwritable   = "If you see 'Unwritable' you need to change the permissions on the file or directory to allow Pixelpost to write to it. (CHMOD 755 or 777)";
 $lang_req_unwritable_2 = "Remember to revert back to the folders original file permissions when installation has been completed.";
 
 
@@ -278,7 +278,7 @@ $lang_config_write_msg = "Writes contents to configuration file.";
 
 
 $lang_config_chmod     = "CHMOD file:";
-$lang_config_chmod_msg = "Sets the configuration file permissions (644). If this step fails, do not worry. You can manually change the permissions at a later date.";
+$lang_config_chmod_msg = "Sets the configuration file permissions (CHMOD 644). If this step fails, do not worry. You can manually change the permissions at a later date.";
 
 
 $lang_config_exist     = "Configuration exists:";
