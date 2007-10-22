@@ -301,8 +301,8 @@ $admin_lang_optn_dateformat_txt     = "Format daty wyświetlany dla zdjęć oraz
   funkcji PHP <a href='http://www.php.net/date' target='_blank'>date()</a>. Przykłady znaczenia najczęściej używanych parametrów: Y:rok
   m:miesiąc d:dzień H:godzina i:minuta s:sekunda";
 $admin_lang_optn_gmt                = "<br/>NALEŻY PAMIĘTAĆ, że opcja ta nie wspiera przejścia na czas letni/zimowy automatycznie i należy ją zmienić
-  ręcznie.<br />Sprawdź <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx'> aktualny czas GMT </a> jeśli nie masz pewności
-  odnośnie przesunięcia Twojego czasu lokalnego względem GMT.<br />";
+  ręcznie.<br />Sprawdź <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx'> aktualny czas UTC </a> jeśli nie masz pewności
+  odnośnie przesunięcia Twojego czasu lokalnego względem UTC.<br />";
 $admin_lang_optn_cat_link_format            = "FORMAT LINKÓW KATEGORII";
 $admin_lang_optn_catlinkformat_select       = "Wybierz format linków kategorii";
 $admin_lang_optn_cat_link_format_txt        = "Format wyświetlania linków kategorii w skórce.";

@@ -286,7 +286,7 @@ $admin_lang_optn_lang_file           = "Velg spr&aring;k";
 $admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "Dato format";
 $admin_lang_optn_dateformat_txt      = "Dato formatet for visning av bilder og kommentarer. Denne syntaxen brukt er identisk med PHP <a href='http://www.php.net/date' target='_blank'>dato()</a> funksjonen. Dette er eksempler for hva som vil erstatte noen vanlige paramenterer: Y:&aring;r m:m&aring;ned d:dag H:time i:minutt s:sekund";
-$admin_lang_optn_gmt                 = "Vennligst noter at dette ikke st&oslash;tter sommer/vinter tid automatisk og at du m&aring; forandre dette manuelt.<br />Sjekk <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> om du er usikker p&aring; ditt land/bys lokale tids avvik fra GMT.<br />";
+$admin_lang_optn_gmt                 = "Vennligst noter at dette ikke st&oslash;tter sommer/vinter tid automatisk og at du m&aring; forandre dette manuelt.<br />Sjekk <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> UTC Current time </a> om du er usikker p&aring; ditt land/bys lokale tids avvik fra UTC.<br />";
 $admin_lang_optn_cat_link_format     = "Kategori format linker";
 $admin_lang_optn_cat_link_format_txt = "Formatet for visning av linker til kategoriene i stilmalen.";
 

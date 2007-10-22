@@ -288,7 +288,7 @@ $admin_lang_optn_lang_file           			= "SPR&Aring;KFIL";
 $admin_lang_optn_lang_file_admin          		= "SPR&Aring;KFIL F&Ouml;R ADMINPANELEN";
 $admin_lang_optn_dateformat          			= "DATUMFORMAT";
 $admin_lang_optn_dateformat_txt      			= "Datumformat vid visnings av bilder och kommentarer. Syntaxen som anv&auml;nds &auml;r densamma som f&ouml;r PHP <a href='http://www.php.net/date' target='_blank'>date()</a> function. Detta &auml;r n&aring;gra exempel p&aring; vad som skulle kunna ers&auml;tta n&aring;gra vanliga inst&auml;llningar: Y:&aring;r m:m&aring;nad d:dag H:timme i:minut s:sekund";
-$admin_lang_optn_gmt                 			= "Observera att sommar/vintertid inte st&ouml;ds automatiskt och du m&aring;ste d&auml;rf&ouml;r &auml;ndra till det manuellt.<br />Kontrollera p&aring; <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> om du &auml;r os&auml;ker p&aring; din tidzon.<br />";
+$admin_lang_optn_gmt                 			= "Observera att sommar/vintertid inte st&ouml;ds automatiskt och du m&aring;ste d&auml;rf&ouml;r &auml;ndra till det manuellt.<br />Kontrollera p&aring; <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> UTC Current time </a> om du &auml;r os&auml;ker p&aring; din tidzon.<br />";
 $admin_lang_optn_cat_link_format     			= "FORMAT F&Ouml;R KATEGORIEL&Auml;NKAR";
 $admin_lang_optn_catlinkformat_select 			= "V&auml;lj format f&ouml;r kategoril&auml;nkar";
 $admin_lang_optn_cat_link_format_txt  			= "Format f&ouml;r l&auml;nkar till kategorier som visas i sidmallen.";

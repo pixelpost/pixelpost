@@ -286,7 +286,7 @@ $admin_lang_optn_lang_file           			= "NYELV";
 $admin_lang_optn_lang_file_admin          		= "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          			= "DÁTUMFORMÁTUM";
 $admin_lang_optn_dateformat_txt      			= "A képek és megjegyzések dátumának formátumát állíthatod itt be. A használt szintaxis 							megegyezik a PHP <a href='http://www.php.net/date' target='_blank'>date()</a> függvényéével. 							Íme néhány példa a használt kódok jelentéséből: Y:év, m:hónap, d:nap, H:óra, i:perc, 								s:másodperc.";
-$admin_lang_optn_gmt                 			= "A téli és nyári időszámítások közti váltást ez a beállítás nem kezeli automatikusan, ezt 							kézzel kell elvégezned.<br />Innen (<a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'>GMT idő, most</a>) megtudhatod, hogy most mennyi a GMT-hez képesti 							időeltolódásod.<br />";
+$admin_lang_optn_gmt                 			= "A téli és nyári időszámítások közti váltást ez a beállítás nem kezeli automatikusan, ezt 							kézzel kell elvégezned.<br />Innen (<a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'>UTC idő, most</a>) megtudhatod, hogy most mennyi a UTC-hez képesti 							időeltolódásod.<br />";
 $admin_lang_optn_cat_link_format     			= "KATEGÓRIA LINK FORMÁTUMA";
 $admin_lang_optn_catlinkformat_select 			= "Add meg a kategórialinkek formátumát";
 $admin_lang_optn_cat_link_format_txt  			= "A kategória linkek formátuma ilyen lesz:";

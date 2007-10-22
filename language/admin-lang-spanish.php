@@ -286,7 +286,7 @@ $admin_lang_optn_lang_file           			= "ARCHIVO DE LENGUAJE";
 $admin_lang_optn_lang_file_admin          = "ARCHIVO DE LENGUAJE DEL PANEL DE CONTROL";
 $admin_lang_optn_dateformat          			= "FORMATO DE FECHA";
 $admin_lang_optn_dateformat_txt      			= "El formato de fecha para mostrar en las im&aacute;genes y comentarios. La sintaxis utilizada es id&eacute;ntica que para la funci&oacute;n <a href='http://www.php.net/date' target='_blank'>date()</a> en PHP. &Eacute;stos son algunos ejemplos: Y:a&ntilde;o m:mes d:d&iacute;a H:hora i:minuto s:segundo";
-$admin_lang_optn_gmt                 			= "El horario de verano debe ser cambiado de forma manual.<br />Consulta <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> hora actual GMT </a> si no conoces tu zona horaria.<br />";
+$admin_lang_optn_gmt                 			= "El horario de verano debe ser cambiado de forma manual.<br />Consulta <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> hora actual UTC </a> si no conoces tu zona horaria.<br />";
 $admin_lang_optn_cat_link_format     			= "FORMATO PARA ENLACES A CATEGOR&Iacute;AS";
 $admin_lang_optn_catlinkformat_select 			= "Selecciona un formato para los enlaces a categor&iacute;as";
 $admin_lang_optn_cat_link_format_txt  			= "El formato en que se muestran los enlaces a categor&iacute;as en la plantilla.";

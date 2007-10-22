@@ -287,7 +287,7 @@ $admin_lang_optn_lang_file            = "Langue";
 $admin_lang_optn_lang_file_admin      = "Langue de la console d'administration";
 $admin_lang_optn_dateformat           = "Format de date";
 $admin_lang_optn_dateformat_txt       = "Format de date pour les images et les commentaires.<br />Voici  les param&egrave;tres principaux : Y:ann&eacute;e m:mois d:jour H:heure i:minute s:seconde.<br />Cette syntaxe est celle de la fonction PHP <a href='http://www.php.net/date' target='_blank'>date()</a>.";
-$admin_lang_optn_gmt                  = "<br />Les changements d'heure saisonniers ne sont pas pris en compte automatiquement, il faut la mettre &agrave; jour ici.<br />Voir <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> l'heure GMT actuelle </a> si vous ne connaissez pas votre d&eacute;calage local.<br />";
+$admin_lang_optn_gmt                  = "<br />Les changements d'heure saisonniers ne sont pas pris en compte automatiquement, il faut la mettre &agrave; jour ici.<br />Voir <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> l'heure UTC actuelle </a> si vous ne connaissez pas votre d&eacute;calage local.<br />";
 $admin_lang_optn_cat_link_format      = "Pr&eacute;sentation des mots-cl&eacute;s";
 $admin_lang_optn_catlinkformat_select = "Selectionnez le format de la lsite de mots-cl&eacute;s";
 $admin_lang_optn_cat_link_format_txt  = "S&eacute;lection du format de la liste des mots-cl&eacute;s.";

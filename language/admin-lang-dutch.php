@@ -287,7 +287,7 @@ $admin_lang_optn_lang_file           = "TAAL BESTAND";
 $admin_lang_optn_lang_file_admin     = "TAAL VOOR ADMINISTRATIE PANEEL";
 $admin_lang_optn_dateformat          = "DATUM FORMAAT";
 $admin_lang_optn_dateformat_txt      = "Het datum formaat voor afbeeldingen en reacties. De syntax is gelijk aan die van PHP <a href='http://www.php.net/date' target='_blank'>date()</a> functie. Dit zijn voorbeelden van vervangbare items: Y:year m:month d:day H:hour i:minute s:second";
-$admin_lang_optn_gmt                 = "Dit ondersteund de zomer/wintertijd niet.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT huidige tijd </a> als u niet weet wat het verschil is met uw tijdzone.<br />";
+$admin_lang_optn_gmt                 = "Dit ondersteund de zomer/wintertijd niet.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> UTC huidige tijd </a> als u niet weet wat het verschil is met uw tijdzone.<br />";
 $admin_lang_optn_cat_link_format     = "FORMAT CATEGORIE LINK";
 $admin_lang_optn_catlinkformat_select = "Selecteer categorie Link Format";
 $admin_lang_optn_cat_link_format_txt  = "Het format om links weer te geven naar categorie&euml;n in de template.";

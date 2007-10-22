@@ -287,7 +287,7 @@ $admin_lang_optn_lang_file           = "SPROG";
 $admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          = "DATO FORMAT";
 $admin_lang_optn_dateformat_txt      = "Datoformatet for billeder og kommentarer. Det bruges en syntax magen til PHP's <a href='http://www.php.net/date' target='_blank'>date()</a> funktion. Eksempler p&aring; hvad der erstatter de mest almindelig parametre: Y: &Aring;r, m: M&aring;ned, d: Dag, H: Time, i: Minut, s: Sekund.";
-$admin_lang_optn_gmt                 = "Bem&aelig;rk at dette ikke automatisk underst&oslash;tter sommertid og du derfor manuelt skal &aelig;ndre det. <br />Kig p&aring; <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> hvis du er i tvivl om din tidsforskel fra GMT.<br />";
+$admin_lang_optn_gmt                 = "Bem&aelig;rk at dette ikke automatisk underst&oslash;tter sommertid og du derfor manuelt skal &aelig;ndre det. <br />Kig p&aring; <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> UTC Current time </a> hvis du er i tvivl om din tidsforskel fra UTC.<br />";
 $admin_lang_optn_cat_link_format     = "FORMATERING AF KATEGORI-LINKS";
 $admin_lang_optn_catlinkformat_select = "V&aelig;lg formatering af kategori-links";
 $admin_lang_optn_cat_link_format_txt  = "Formatering for visning af kategori-links i skabelonen.";

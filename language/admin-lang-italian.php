@@ -281,7 +281,7 @@ $admin_lang_optn_lang_file             = "FILE DELLA LINGUA";
 $admin_lang_optn_lang_file_admin          = "FILE DELLA LINGUA PER IL PANNELLO DI AMMINISTRAZIONE";
 $admin_lang_optn_dateformat            = "FORMATO DELLA DATA";
 $admin_lang_optn_dateformat_txt        = "Il formato di visualizzazione per immagini e commenti. La sintassi usata &egrave; identica a quella della funzione <a href='http://www.php.net/date' target='_blank'>date()</a> di PHP. <br \>Ecco alcuni esempi di cosa sostituisce alcuni comuni parametri: Y:anno m:mese d:giorno H:ora i:minuti s:secondi";
-$admin_lang_optn_gmt                   = "Il supporto all'ora legale non &egrave; automatico, devi agire manualmente.<br />Controlla su <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> GMT Current time </a> se non conosci il tuo fuso orario rispetto al GMT.<br />";
+$admin_lang_optn_gmt                   = "Il supporto all'ora legale non &egrave; automatico, devi agire manualmente.<br />Controlla su <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> UTC Current time </a> se non conosci il tuo fuso orario rispetto al UTC.<br />";
 $admin_lang_optn_cat_link_format       = "FORMATO LINK CATEGORIE";
 $admin_lang_optn_catlinkformat_select  = "Seleziona Formato Link Categorie";
 $admin_lang_optn_cat_link_format_txt   = "Il formato di visualizzazione dei link alle categorie nel template.";

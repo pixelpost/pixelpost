@@ -293,7 +293,7 @@ $admin_lang_optn_dateformat          = "DATUMSFORMAT";
 $admin_lang_optn_dateformat_txt      = "Datumsformat f&uuml;r die Anzeige der Bilder und der Kommentare.<br />
                                         Die Syntax stimmt mit der PHP <a href='http://www.php.net/date' target='_blank'>date()</a> Funktion &uuml;berein.<br />\n
                                         Ein paar Beispiele f&uuml;r &uuml;bliche Ersetzungen: Y:Jahr m:Monat d:Tag H:Stunde i:Minute s:Sekunde";
-$admin_lang_optn_gmt                 = "Beachten Sie, dass Sommerzeit-&Auml;nderungen nicht ber&uuml;cksichtigt werden.\nDas m&uuml;ssen Sie manuell &auml;ndern.<br />Pr&uuml;fen Sie die <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='_blank'> aktuelle GMT-Zeit,</a> wenn Sie nicht sicher sind, welchen Wert Sie hier als Differenz zur GMT-ZEit eintragen m&uuml;ssen.<br />";
+$admin_lang_optn_gmt                 = "Beachten Sie, dass Sommerzeit-&Auml;nderungen nicht ber&uuml;cksichtigt werden.\nDas m&uuml;ssen Sie manuell &auml;ndern.<br />Pr&uuml;fen Sie die <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='_blank'> aktuelle UTC-Zeit,</a> wenn Sie nicht sicher sind, welchen Wert Sie hier als Differenz zur UTC-ZEit eintragen m&uuml;ssen.<br />";
 $admin_lang_optn_cat_link_format     = "FORMAT DER KATEGORIE-LINKS";
 $admin_lang_optn_catlinkformat_select = "Format der Links ausw&auml;hlen";
 $admin_lang_optn_cat_link_format_txt = "Das Format der Links zu allen Eintr&auml;gen einer Kategorie im Template.";
