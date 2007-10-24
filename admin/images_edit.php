@@ -344,9 +344,8 @@ if($_GET['view'] == "images")
 		if (isset($_POST['filtermon']) && $_POST['selectfmon'] != '') $selectfmon = $_POST['selectfmon'];
 		else if (isset($_GET['selectfmon'])) $selectfmon = $_GET['selectfmon'];
 		if (isset($_POST['findid']) && $_POST['findfid'] != '') $findfid = $_POST['findfid'];
-		
-		// Get number of photos in database depending on filter
-		
+
+		// Get number of photos in database depending on filter		
 		if (isset($selectfcat)) {
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat;
 		}
@@ -518,6 +517,23 @@ if($_GET['view'] == "images")
 		else {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
+
+	//the filter stuff for showing the correct browse pages
+    if (isset($selectfcat)) {
+			$getfstring = '&amp;selectfcat='.$selectfcat;
+		}
+		else if (isset($selectftag)) {
+			$getfstring = '&amp;selectftag='.$selectftag;
+		}
+		else if (isset($selectfalttag)) {
+			$getfstring = '&amp;selectfalttag='.$selectfalttag;
+		}
+		else if (isset($selectfmon)) {
+			$getfstring = '&amp;selectfmon='.$selectfmon;
+		}
+		else {
+			$getfstring = '';
+		}
 		
 		// construct the pagelinks
 		if($pixelpost_photonumb > $_SESSION['numimg_pp'])
@@ -528,7 +544,7 @@ if($_GET['view'] == "images")
 			while ($pcntr < $num_img_pages)
 		  	{
 				$pcntr++;
-				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>$pcntr</a> ";
+				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>".($_GET['page']==$pagecounter?'<b>'.$pcntr.'</b>':$pcntr)."</a> ";
 				$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
 			}// end while
 			if ($page < (($num_img_pages-1)*$_SESSION['numimg_pp']))
@@ -600,23 +616,6 @@ if($_GET['view'] == "images")
 
 		echo "</ul></form>";
 
-	//the filter stuff for showing the correct browse pages
-    	if (isset($selectfcat)) {
-				$getfstring = '&amp;selectfcat='.$selectfcat;
-			}
-			else if (isset($selectftag)) {
-				$getfstring = '&amp;selectftag='.$selectftag;
-			}
-			else if (isset($selectfalttag)) {
-				$getfstring = '&amp;selectfalttag='.$selectfalttag;
-			}
-			else if (isset($selectfmon)) {
-				$getfstring = '&amp;selectfmon='.$selectfmon;
-			}
-			else {
-				$getfstring = '';
-			}
-
 		if($pixelpost_photonumb > $_SESSION['numimg_pp'])
     	{
          	echo $image_page_Links;
@@ -624,7 +623,7 @@ if($_GET['view'] == "images")
 
 
     echo '<br/>
-       <form method="post" action="'.$PHP_SELF .'?view=images&amp;page=0'.$getfstring.'" accept-charset="UTF-8">';
+       <form method="post" action="'.$PHP_SELF .'?view=images&amp;page='.$_GET['page'].$getfstring.'" accept-charset="UTF-8">';
  		echo $admin_lang_show.' ';
     echo '<input type="text" name="numimg_pp" size="2" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_imgedit_img_page.'.
 	    <input type="submit" value="'.$admin_lang_go.'" />

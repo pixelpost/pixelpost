@@ -323,41 +323,28 @@ if($_GET['view'] == "comments") {
 
 				while ($pcntr < $num_cmt_pages)
 				{
-// show variable in link, added by austriaka to make it more flexible
 					$pcntr++;
-					if (isset($_GET['show']))
-					$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$pagecounter&amp;show=".$_GET['show']."'>$pcntr</a>\n";
-					else
-					$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$pagecounter'>$pcntr</a>\n";
+					$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".pagenumber($pagecounter)."'>".($_GET['page']==$pagecounter?'<b>'.$pcntr.'</b>':$pcntr)."</a>\n";
 
 					$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
-					}// end while
+				}// end while
 
 	      if ($page < (($num_cmt_pages-1)*$_SESSION['numimg_pp']))
 	      {
 		    	$newpage = $page+$_SESSION['numimg_pp'];
-		      if (isset($_GET['show']))
-		      	$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_next</a>\n";
-		      else
-		    		$image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage'>$admin_lang_next</a>\n";
+		      $image_page_Links .= "<a href='".$_SERVER['PHP_SELF']."?".pagenumber($newpage)."'>$admin_lang_next</a>\n";
 		    }
 
 				if ($page >= $_SESSION['numimg_pp'])
 	      {
 	      	$newpage = $page - $_SESSION['numimg_pp'];
-	      	if (isset($_GET['show']))
-	        	$image_page_Links  = "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage&amp;show=".$_GET['show']."'>$admin_lang_prev</a>\n" .$image_page_Links;
-	        else
-	          $image_page_Links  = "<a href='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;page=$newpage'>$admin_lang_prev</a>\n" .$image_page_Links;
+	      	$image_page_Links  = "<a href='".$_SERVER['PHP_SELF']."?".pagenumber($newpage)."'>$admin_lang_prev</a>\n" .$image_page_Links;
 	      }
 	       echo "\n".$image_page_Links."<br/>";
 
 	      }
 
-				if (isset($_GET['show']))
-	       	echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'].'&page=0&amp;show='.$_GET['show'].'" accept-charset="UTF-8">';
-				else
-	       	echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'].'&page=0" accept-charset="UTF-8">';
+				echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.pagenumber($_GET['page']).'" accept-charset="UTF-8">';
 
 				echo $admin_lang_show.' ';
 				echo '<input type="text" name="numimg_pp" size="3" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_cmnt_page
@@ -367,4 +354,11 @@ if($_GET['view'] == "comments") {
 	    } // end list
 }
 
+function pagenumber($num) {
+	if (isset($_GET['page']) && $_GET['page'] != '') {
+		$qstring = preg_replace('/page=\d+/', 'page='.$num, $_SERVER['QUERY_STRING']);
+	}
+	else $qstring = $_SERVER['QUERY_STRING'].'&amp;page='.$num;
+	return $qstring;
+}
 ?>
