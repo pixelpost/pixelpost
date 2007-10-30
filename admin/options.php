@@ -1146,7 +1146,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<input type='submit' value='$admin_lang_optn_update'  />
 		</div>
 		</form>";
-		echo options_refererlog_html();
 		}
 
 } // end if view options    }
