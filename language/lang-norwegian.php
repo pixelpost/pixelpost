@@ -30,20 +30,20 @@ _____________________________________________________________________________
 
 /* Dont edit                   ||  Edit                                                        */
 
-$_lang_file_translator        = 'Torkel Guttormsen';
-$_lang_file_email             = 'thecrew@pixelpost.org';
-$_lang_file_rev               = '1.4.3';
+$_lang_file_translator        = 'John Christian Olsen - <a href="http://jcolsen.com/" target="_blank">jcolsen.com</a>';
+$_lang_file_email             = 'info@jcolsen.com';
+$_lang_file_rev               = '1.7';
 
 // IMAGE NAVIGATION
 $lang_previous                   = "Forrige";
 $lang_next                      = "Neste";
 $lang_no_previous               = "Ingen tidligere bilder";
 $lang_no_next                   = "Ingen flere bilder";
-$lang_latest									 = "Last";
-$lang_first										 = "First";
+$lang_latest									 = "Siste";
+$lang_first										 = "F&oslash;rste";
 $lang_browse_select_category    = "Velg kategori";
 $lang_browse_all                = "Alle";
-$lang_paged_archive							= "Archive";
+$lang_paged_archive							= "Arkiv";
 
 // COMMENTS
 $lang_message_missing_image     = "Inget bilde var valgt, kommentaren ble ikke lagret.";
@@ -52,16 +52,16 @@ $lang_visit_homepage            = "Bes&oslash;k hjemmeside";
 $lang_no_comments_yet           = "Ingen kommentarer forel&oslash;pig.";
 $lang_comment_thank_you         = "Takk for kommentaren.";
 $lang_comment_redirect          = "Klikk for &aring; g&aring; tilbake.";
-$lang_message_moderating_comment = "Your comment is received! It will become public after authorizing by photoblog admin.";
-$lang_comment_redirect_error    = "Comment submition error! Please click to be transferred back, if redirection doesn't work";
+$lang_message_moderating_comment = "Din kommentar er mottatt! Den vil bli synlig etter godkjennelse fra fotobloggens administrator.";
+$lang_comment_redirect_error    = "Kommentar ble ikke postet p&aring; grunn av en feil! Vennligst klikk for &aring; komme tilbake, hvis videref&oslash;relse ikke virker";
 $lang_comment_page_title        = "Kommentar";
 $lang_comment_popup             = "Kommentarer";
-$lang_message_banned_comment    = "Your comment is not saved! It contains one or more banned words/email/ips.";
-$lang_comment_popup_disabled    = "Commenting on this picture has been disabled";
-$lang_comment_plural						= "Comments";
-$lang_comment_single						= "Comment";
+$lang_message_banned_comment    = "Din kommentar er ikke lagret! Det inneholder ett eller flere ikke godkjente ord/e-post(er)/ip adresse(r).";
+$lang_comment_popup_disabled    = "Kommentarer p&aring; dette bildet er deaktivert";
+$lang_comment_plural						= "Kommentarer";
+$lang_comment_single						= "Kommentar";
 $lang_tags                      = "Tags:<br/>";
-$lang_none                       = "none";
+$lang_none                       = "ingen";
 
 // EXIF DATA
 $lang_exposure              = "Lukkertid:";
@@ -72,7 +72,7 @@ $lang_camera_maker          = "Kameraprodusent:";
 $lang_camera_model          = "Kameramodell:";
 $lang_flash_fired           = "Blitz: Ja";
 $lang_flash_not_fired       = "Blitz: Nei";
-$lang_flash_not_detected         = "Flash: Not Detected";
+$lang_flash_not_detected         = "Flash: Ikke oppdaget";
 $lang_iso                   = "ISO:";
 
 // Category
@@ -101,43 +101,41 @@ $lang_october             = "oktober";
 $lang_november            = "november";
 $lang_december            = "desember";
 
-// Alternative language (PLEASE DO NOT TRANSLATE THESE!!!)
+// Alternative language
 $lang_alt_lang_dutch							="Nederlands";
 $lang_alt_lang_english						="English";
-$lang_alt_lang_french							="Fran&ccedil;ais";
+$lang_alt_lang_french							="Français";
 $lang_alt_lang_german							="Deutsch";
 $lang_alt_lang_italian						="Italiano";
 $lang_alt_lang_norwegian					="Norsk";
 $lang_alt_lang_persian						="Farsi";
 $lang_alt_lang_polish							="Polski";
-$lang_alt_lang_portuguese					="Portugu&egrave;s";
+$lang_alt_lang_portuguese					="Português";
 $lang_alt_lang_simplified_chinese	="Chinese";
-$lang_alt_lang_spanish						="Espa&ntilde;ol";
+$lang_alt_lang_spanish						="Español";
 $lang_alt_lang_swedish						="Svenska";
 $lang_alt_lang_japanese						="Japanese";
-$lang_alt_lang_danish							="Dansk";
-$lang_alt_lang_romanian 					="Romana";
-$lang_alt_lang_hungarian					="Magyar";
+$lang_alt_lang_danish						="Dansk";
 
 // Email Notification
 
-$lang_email_notification_subject = "New Comment";
-$lang_email_notification_pt1 = "Hello,<br>A new comment has been made at your photoblog.<br><br>";
-$lang_email_notification_pt2 = "<br>The comment is: <br>----------------------------------------------------------------------<br>";
-$lang_email_notification_pt3 = "by";
-$lang_email_notification_pt4 = "\n\n----------------------------------------------------------------------    <br>\n\nEmail sent by Pixelpost<br>";
-$lang_email_notificationplain_pt1 = "Hello,\n\nA new comment has been made at your photoblog.";
-	$lang_email_notificationplain_pt2 = "\n\nThe comment is:\n\n----------------------------------------------------------------------";
-$lang_email_notificationplain_pt3 = "by";
-$lang_email_notificationplain_pt4 = "\n\n----------------------------------------------------------------------\n\nEmail sent by Pixelpost";
+$lang_email_notification_subject = "Ny kommentar";
+$lang_email_notification_pt1 = "Hei,<br>En ny kommentar er blitt postet p&aring; din fotoblog.<br><br>";
+$lang_email_notification_pt2 = "<br>Kommentaren er: <br>----------------------------------------------------------------------<br>";
+$lang_email_notification_pt3 = "av";
+$lang_email_notification_pt4 = "\n\n----------------------------------------------------------------------    <br>\n\nE-post sent av Pixelpost<br>";
+$lang_email_notificationplain_pt1 = "Hei,\n\nEn ny kommentar er blitt postet p&aring; din fotoblog.";
+	$lang_email_notificationplain_pt2 = "\n\nKommentaren er:\n\n----------------------------------------------------------------------";
+$lang_email_notificationplain_pt3 = "av";
+$lang_email_notificationplain_pt4 = "\n\n----------------------------------------------------------------------\n\nE-post sent av Pixelpost";
 // Error Message
-$lang_nothing_to_show             = "Coming Soon! Nothing to show. No image to show here or they are set to show in future!";
+$lang_nothing_to_show             = "Kommer snart! Ingenting &aring; vise for &oslash;yeblikket. Enten er det ingen bilder i bloggen, eller s&aring; er dem satt til &aring; vise i senere fremtid!";
 // Please do not translate any tags like this one: <TIME_TO_WAIT>
-$lang_spamflood										= "Comment flood protection is enabled. You need to wait <TIME_TO_WAIT> before posting another comment.";
+$lang_spamflood										= "Multikommentar beskyttelse er p&aring;sl&aring;tt. Du m&aring; vente <TIME_TO_WAIT> f&oslash;r du kan poste en ny kommentar.";
 
 
 
 // RSS & ATOM Feed
-$lang_comment_feed_title        = "Newest comments on";
-$lang_comment_feed_image_title  = "New comment on";
+$lang_comment_feed_title        = "Nyeste kommentar p&aring;";
+$lang_comment_feed_image_title  = "Ny kommentar p&aring;";
 ?>
