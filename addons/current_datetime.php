@@ -42,7 +42,8 @@ $tpl holds the current template (image_template.html or comments_template.html e
 $addon_name = "Pixelpost Current DateTime";
 $addon_description = "Displays current date and time as reported by the server.<br />
 Format is the same as you have set in admin panel >> options <br />
- An example of how to create addons.";
+ An example of how to create addons.<br /><br />
+ <b>Tag: </b>&lt;CURRENT_DATE_TIME&gt;";
 $addon_version = "1.1";
 $tz = $cfgrow["timezone"];
 
