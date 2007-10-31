@@ -83,7 +83,7 @@ if(isset($_POST['vcookie'])) {
 	$vcookiename  = addslashes($_POST['name']);
 	$vcookieurl   = addslashes($_POST['url']);
 	$vcookieemail = clean($_POST['email']);
-	
+
 	setcookie("visitorinfo","$vcookiename%$vcookieurl%$vcookieemail",time() +60*60*24*30); // save cookie 30 days
 }
 
@@ -94,7 +94,7 @@ session_start();
 if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
 
 	error_reporting(E_ALL ^ E_NOTICE);
-	
+
 }elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"]){
 
 	error_reporting(E_ALL);
@@ -171,7 +171,7 @@ $PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
 					  'hungarian'=>array('HU','Magyar'),
 					  'romanian'=>array('RO','Romana')
 					 );
-					 
+
 /**
  * The default language is the language the user has set in the adminpanel
  * We have to find the abbreviation
@@ -230,7 +230,7 @@ foreach ($PP_supp_lang as $key => $row) {
  * That way if we forget to update the variables in the alternative language files the English ones are shown.
  *
  */
- 
+
 if(file_exists("language/lang-english.php")){
 	if(!isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom")) {
 		require("language/lang-english.php");
@@ -240,7 +240,7 @@ if(file_exists("language/lang-english.php")){
 // now replace the contents of the variables with the selected language.
 if(!empty($language_full)) {
 	if(file_exists("language/lang-".$language_full.".php")) {
-	
+
 		if( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom")) {
 			require("language/lang-".$language_full.".php");
 		}
@@ -299,77 +299,77 @@ if(isset($_GET['x'])&&$_GET['x'] == "referer") {
 if($language_full==$cfgrow['langfile']) {
 
 	// we have our default language from the PP installation, so we use our default templates
-	
+
     if(isset($_GET['x']) && file_exists("templates/".$cfgrow['template']."/".$_GET['x']."_template.html")) {
-    
+
     	if(eregi("[.]",$_GET['x'])) { die("Come on! forget about it..."); }
 
     	$tpl = file_get_contents("templates/".$cfgrow['template']."/".$_GET['x']."_template.html");
-    	
+
     }else{
-    
+
     	if (!file_exists("templates/".$cfgrow['template']."/image_template.html")) {
-    		
+
     		echo '<b>Error:</b><br />No template folder exists by the name of <b>"' .$cfgrow['template'] .'"</b> or the file <b>image_template.html</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
     		exit;
     	}
 
 	    // if the x=foo does not exist prompt it! don't show the main page anymore!
-	    
+
     	if(isset($_GET['x']) && $_GET['x'] != 'atom' && $_GET['x'] != 'comment_atom' && $_GET['x'] != 'rss' && $_GET['x'] != 'comment_rss' && $_GET['x'] != 'save_comment') {
-    		
+
 			header("HTTP/1.0 404 Not Found");
 			header("Status: 404 File Not Found!");
 			echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe requested URL /index.php was not found on this server.<P>\n<P>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
 			exit;
 		}
-		
+
     	$tpl = file_get_contents("templates/".$cfgrow['template']."/image_template.html");
     }
-    
+
 }else{
 
 	// we use our special designed language templates.
 	if(isset($_GET['x']) && file_exists("templates/".$cfgrow['template']."/".$_GET['x']."_".$language_abr."_template.html")) {
 
 		if (eregi("[.]",$_GET['x'])) { die("Come on! forget about it..."); }
-		
+
 		$tpl = file_get_contents("templates/".$cfgrow['template']."/".$_GET['x']."_".$language_abr."_template.html");
-		
+
 	}else{
-	
+
 		if (!file_exists("templates/".$cfgrow['template']."/image_".$language_abr."_template.html")) {
-		
+
 			echo '<b>Error:</b><br />No template folder exists by the name of <b>"' .$cfgrow['template'] .'"</b> or the file <b>image_'.$language_abr .'_template.html</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.<br /><br /><a href="index.php?lang='.$default_language_abr.'" alt="return to default language">Click here to return to the default language.</a>';
 			exit;
 		}
-		
+
 		// if the x=foo does not exist prompt it! don't show the main page anymore!
 
 		if(isset($_GET['x']) && $_GET['x'] != 'atom' && $_GET['x'] != 'comment_atom' && $_GET['x'] != 'rss' && $_GET['x'] != 'comment_rss' && $_GET['x'] != 'save_comment'){
-		
+
             header("HTTP/1.0 404 Not Found");
             header("Status: 404 File Not Found!");
             echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe requested URL /index.php was not found on this server.<P>\n<P>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
             exit;
 		}
-		
+
     	$tpl = file_get_contents("templates/".$cfgrow['template']."/image_".$language_abr."_template.html");
 	}
 
-	if($cfgrow['display_sort_by'] == 'headline') { $cfgrow['display_sort_by'] = 'alt_headline'; } 
-	if($cfgrow['display_sort_by'] == 'body') {     $cfgrow['display_sort_by'] = 'alt_body'; } 
+	if($cfgrow['display_sort_by'] == 'headline') { $cfgrow['display_sort_by'] = 'alt_headline'; }
+	if($cfgrow['display_sort_by'] == 'body') {     $cfgrow['display_sort_by'] = 'alt_body'; }
 }
 
 if(isset($_GET['popup'])&&$_GET['popup'] == "comment") {
 
 	// additional language file for comment template
 	if(file_exists("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html")) {
-	
+
 		$tpl = file_get_contents("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html");
-		
+
 	}else{
-	
+
 		// if not existing or no additional language chosen, default template file is called without error
 		$tpl = file_get_contents("templates/".$cfgrow['template']."/comment_template.html");
 	}
@@ -413,24 +413,24 @@ if(!isset($_GET['x'])) {
 
 	// Get Current Image.
 	if(!isset($_SESSION["pixelpost_admin"])) {
-	
+
 		if(!isset($_GET['showimage']) || $_GET['showimage'] == "") {
-		
+
 			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$cdate' ORDER BY ".$cfgrow['display_sort_by']." ".$display_order." limit 0,1");
-		
+
 		}else{
-		
+
 			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE (id='".$_GET['showimage']."') AND datetime<='$cdate'");
 		}
-		
+
 	}else{
-	
+
 		if(!isset($_GET['showimage']) || $_GET['showimage'] == "") {
-		
+
 			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost ORDER BY ".$cfgrow['display_sort_by']." ".$display_order." limit 0,1");
-		
+
 		}else{
-		
+
 			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE (id='".$_GET['showimage']."')");
 		}
 	}
@@ -441,23 +441,23 @@ if(!isset($_GET['x'])) {
 	}
 
 	$image_name = $row['image'];
-	
+
 	if($language_abr == $default_language_abr) {
-	
+
 		$image_title  = pullout($row['headline']);
 		$image_notes  = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body'])) : pullout($row['body']);
-	
+
 	}else{
-	
+
   		//if($row['alt_headline']=='') { $image_title = pullout($row['headline']); }else{ $image_title = pullout($row['alt_headline']); }
-  		
+
   		$image_title  = ($row['alt_headline']=='') ? pullout($row['headline']) : pullout($row['alt_headline']);
 
 		if($row['alt_body']=='') {
-		
+
 			$image_notes  = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['body'])) : pullout($row['body']);
 		}else{
-		
+
 			$image_notes  = ($cfgrow['markdown'] == 'T') ? markdown(pullout($row['alt_body'])) : pullout($row['alt_body']);
 		}
 	}
@@ -477,10 +477,10 @@ if(!isset($_GET['x'])) {
 	$image_extra              =   getimagesize(ltrim($cfgrow['imagepath'], "./").$image_name);
 	$image_width              =   $image_extra['0'];
 	$image_height             =   $image_extra['1'];
-	
+
 	$tpl                      =   str_replace("<IMAGE_WIDTH>",$image_width,$tpl);
 	$tpl                      =   str_replace("<IMAGE_HEIGHT>",$image_height,$tpl);
-	
+
 	$local_width              =   $thumbnail_extra['0'];
 	$local_height             =   $thumbnail_extra['1'];
 	$image_exif               =   $row['exif_info'];
@@ -494,11 +494,11 @@ if(!isset($_GET['x'])) {
 
 	// get previous image id and name
 	if(!isset($_SESSION["pixelpost_admin"])) {
-	
+
 		//public
 		$previous_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
 	}else{
-	
+
 		//admin
 		$previous_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime')  ORDER BY datetime desc limit 0,1");
 	}
@@ -507,10 +507,10 @@ if(!isset($_GET['x'])) {
 	$image_previous_id   =  $previous_row['id'];
 
 	if($language_abr == $default_language_abr) {
-	
+
 		$image_previous_title = pullout($previous_row['headline']);
-	}else{ 
-	
+	}else{
+
 		$image_previous_title = pullout($previous_row['alt_headline']);
 	}
 
@@ -518,7 +518,7 @@ if(!isset($_GET['x'])) {
 	$image_previous_link     =   "<a href='$showprefix$image_previous_id'>$lang_previous</a>";
 
 	if(!empty($image_previous_name)) { list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name); }
-	
+
 	//TEST echo ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name;
 
 	$image_previous_thumbnail = "<a href='$showprefix$image_previous_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_previous_name."' width='$local_width' height='$local_height' alt='$image_previous_title' title='$image_previous_title' /></a>";
@@ -532,11 +532,11 @@ if(!isset($_GET['x'])) {
 
 	// get next image id and name
 	if(!isset($_SESSION["pixelpost_admin"])) {
-	
+
 		//public
 		$next_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate') ORDER BY datetime asc limit 0,1");
 	}else{
-	
+
 		//admin
 		$next_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') ORDER BY datetime asc limit 0,1");
 	}
@@ -545,10 +545,10 @@ if(!isset($_GET['x'])) {
 	$image_next_id   =  $next_row['id'];
 
 	if($language_abr == $default_language_abr) {
-	
+
 		$image_next_title = pullout($next_row['headline']);
 	}else{
-	
+
 		$image_next_title = pullout($next_row['alt_headline']);
 	}
 
@@ -565,14 +565,14 @@ if(!isset($_GET['x'])) {
 		$image_next_link = "";
 		$image_next_thumbnail = "";
 	}
-	
+
 	// get first image
 	if(!isset($_SESSION["pixelpost_admin"])) {
-	
+
 		//public
 		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime asc limit 0,1");
 	}else{
-		
+
 		//admin
 		$first_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost  ORDER BY datetime asc limit 0,1");
 	}
@@ -581,10 +581,10 @@ if(!isset($_GET['x'])) {
 	$first_image_id   =  $first_image_row['id'];
 
 	if($language_abr == $default_language_abr) {
-	
+
 		$first_image_title = pullout($first_image_row['headline']);
 	}else{
-	
+
 		$first_image_title = pullout($first_image_row['alt_headline']);
 	}
 
@@ -600,14 +600,14 @@ if(!isset($_GET['x'])) {
 		$first_image_link = null;
 		$first_image_thumbnail = null;
 	}
-	
+
 	// get latest image
 	if(!isset($_SESSION["pixelpost_admin"])) {
-	
+
 		//public
 		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
 	}else{
-	
+
 		//admin
 		$last_image_row = sql_array("SELECT id,headline,alt_headline,image,datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') ORDER BY datetime desc limit 0,1");
 	}
@@ -616,10 +616,10 @@ if(!isset($_GET['x'])) {
 	$last_image_id   =  $last_image_row['id'];
 
 	if($language_abr == $default_language_abr) {
-	
+
 		$last_image_title = pullout($last_image_row['headline']);
 	}else{
-		
+
 		$last_image_title = pullout($last_image_row['alt_headline']);
 	}
 
@@ -635,20 +635,20 @@ if(!isset($_GET['x'])) {
 		$last_image_link = null;
 		$last_image_thumbnail = null;
 	}
-	
+
 	if(function_exists('gd_info')) {
-	
+
 		$gd_info = gd_info();
 
 		if($gd_info != ""){
-		
+
 			// check that gd is here before this
 			$aheadnumb   =  sql_array("SELECT count(*) as count FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate')");
 			$aheadnumb   =  $aheadnumb['count'];
-			
+
 			$behindnumb  =  sql_array("SELECT count(*) as count FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate')");
 			$behindnumb  =  $behindnumb['count'];
-			
+
 			$aheadlimit  =  round(($cfgrow['thumbnumber']-1)/2);
 			$behindlimit =  round(($cfgrow['thumbnumber']-1)/2);
 
@@ -665,41 +665,41 @@ if(!isset($_GET['x'])) {
 			$totalthumbcounter    =   1;
 			$ahead_thumbs         =  "";
 			$ahead_thumbs_reverse =  "";
-			
+
 			$thumbs_ahead = mysql_query("SELECT id,headline,alt_headline,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime > '$image_datetime') and (datetime<='$cdate') ORDER BY datetime asc limit 0,$aheadlimit");
 
 			while(list($id,$headline,$alt_headline,$image) = mysql_fetch_row($thumbs_ahead)) {
-			
+
 				if($language_abr == $default_language_abr) {
-				
+
 					$headline = pullout($headline);
 				}else{
-				
+
 					$headline = pullout($alt_headline);
 				}
-				
+
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
-				
+
 				if(!empty($image)) { list($local_width,$local_height,$type,$attr) = getimagesize(ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image); }
-				
+
 				$ahead_thumbs         .=  "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
 				$ahead_thumbs_reverse  =  "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>" .$ahead_thumbs_reverse ;
-				
+
 				$totalthumbcounter++;
 			}
 
 			$behind_thumbs         =  "";
 			$behind_thumbs_reverse =  "";
-			
+
 			$thumbs_behind = mysql_query("SELECT id,headline,alt_headline,image FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime < '$image_datetime') and (datetime<='$cdate') ORDER BY datetime desc limit 0,$behindlimit");
 
 			while(list($id,$headline,$alt_headline,$image) = mysql_fetch_row($thumbs_behind)) {
-			
+
 				if($language_abr == $default_language_abr) {
-				
+
 					$headline = pullout($headline);
 				}else{
-				
+
 					$headline = pullout($alt_headline);
 				}
 
@@ -709,7 +709,7 @@ if(!isset($_GET['x'])) {
 
 				$behind_thumbs          = "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>$behind_thumbs";
 				$behind_thumbs_reverse .= "<a href='$showprefix$id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image."' alt='$headline' title='$headline' class='thumbnails' width='$local_width' height='$local_height' /></a>";
-				
+
 				$totalthumbcounter++;
 			}
 
@@ -717,10 +717,10 @@ if(!isset($_GET['x'])) {
 
 			$thumbnail_row         =  "$behind_thumbs<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$ahead_thumbs";
 			$thumbnail_row_reverse =  "$ahead_thumbs_reverse<a href='$showprefix$image_id'><img src='".ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$image_name."' alt='$image_title' title='$image_title' class='current-thumbnail' width='$local_width' height='$local_height' /></a>$behind_thumbs_reverse";
-			
+
 			$tpl  =  ereg_replace("<IMAGE_THUMBNAIL_ROW>",$thumbnail_row,$tpl);
 			$tpl  =  ereg_replace("<IMAGE_THUMBNAIL_ROW_REV>",$thumbnail_row_reverse,$tpl);
-			
+
 		}
 	}
 
@@ -733,26 +733,26 @@ if(!isset($_GET['x'])) {
 	$image_category_all_paged = "";
 
 	while(list($cat_id,$name,$alt_name) = mysql_fetch_row($query)) {
-	
+
 		if($language_abr == $default_language_abr) {
-			
+
 			$name = pullout($name);
 		}else{
-		
+
 			$name = pullout($alt_name);
 		}
 
 		$image_category_all       .= "<a href='$PHP_SELF?x=browse&amp;category=$cat_id'>" .$cfgrow['catgluestart'] .$name .$cfgrow['catglueend']."</a> &nbsp;";
 		$image_category_all_paged .= "<a href='$PHP_SELF?x=browse&amp;category=$cat_id&amp;pagenum=1'>" .$cfgrow['catgluestart'] .$name .$cfgrow['catglueend']."</a> &nbsp;";
-		
+
 		$image_category_number     = $image_category_number +1;
 	}
 
 	if($image_category_number >1) {
-		
+
 		$image_categoryword = "$lang_category_plural ";
 	}else{
-		
+
 		$image_categoryword = "$lang_category_singular ";
 	}
 
@@ -760,7 +760,7 @@ if(!isset($_GET['x'])) {
 	$tpl = ereg_replace("<SUB_TITLE>",$pixelpost_sub_title,$tpl);
 	$tpl = ereg_replace("<SITE_URL>",$cfgrow['siteurl'],$tpl);
 	$tpl = ereg_replace("<IMAGE_CATEGORY>",$image_categoryword." ".$image_category_all,$tpl);
-	
+
 	// for paged_archive addon
 	$tpl = ereg_replace("<IMAGE_CATEGORY_PAGED>",$image_categoryword." ".$image_category_all_paged,$tpl);
 	$tpl = ereg_replace("<IMAGE_DATE_YEAR_FULL>",$image_date_year_full,$tpl);
@@ -768,7 +768,7 @@ if(!isset($_GET['x'])) {
 	$tpl = ereg_replace("<IMAGE_DATE_MONTH>",$image_date_month,$tpl);
 	$tpl = ereg_replace("<IMAGE_DATE_DAY>",$image_date_day,$tpl);
 	$tpl = ereg_replace("<IMAGE_THUMBNAIL>",$image_thumbnail,$tpl);
-	
+
 	// thumbnail no link
 	$tpl = ereg_replace("<IMAGE_THUMBNAIL_NO_LINK>",$image_thumbnail_no_link,$tpl);
 	$tpl = ereg_replace("<IMAGE_DATE>",$image_date,$tpl);
@@ -777,13 +777,13 @@ if(!isset($_GET['x'])) {
 	$tpl = ereg_replace("<IMAGE_TITLE>",$image_title,$tpl);
 	$tpl = ereg_replace("<IMAGE_DATETIME>",$image_datetime_formatted,$tpl);
 	$tpl = ereg_replace("<IMAGE_NOTES>",$image_notes,$tpl);
-	
+
 	// image notes without HTML tags and double quotes
 	$image_notes_clean = strip_tags($image_notes);
 	$image_notes_clean = htmlspecialchars($image_notes_clean,ENT_NOQUOTES);
 	$image_notes_clean = str_replace('"',"'",$image_notes_clean);
 	$tpl = ereg_replace("<IMAGE_NOTES_CLEAN>",$image_notes_clean,$tpl);
-	
+
 	$tpl = ereg_replace("<IMAGE_ID>",$image_id,$tpl);
 	$tpl = ereg_replace("<IMAGE_PERMALINK>",$image_permalink,$tpl);
 	$tpl = ereg_replace("<IMAGE_PREVIOUS_LINK>",$image_previous_link,$tpl);
@@ -815,43 +815,43 @@ if(!isset($_GET['x'])) {
 	// get latest comment
 	$latest_comment      =  sql_array("SELECT parent_id FROM ".$pixelpost_db_prefix."comments WHERE  publish='yes' ORDER BY id desc limit 0,1");
 	$latest_comment      =  $latest_comment['parent_id'];
-	
+
 	$queryrow            =  sql_array("SELECT headline FROM ".$pixelpost_db_prefix."pixelpost WHERE id='$latest_comment'");
 	$latest_comment_name =  pullout($queryrow['headline']);
-	
-	
+
+
 	// ##########################################################################################//
 	// EXIF STUFF
 	// ##########################################################################################//
-	
+
 	if ($cfgrow['exif']=='T') {
-	
+
 		include_once('includes/functions_exif.php');
-		
+
 		if($image_exif!==null) {
-			
+
 			$tpl = replace_exif_tags ($language_full, $image_exif, $tpl);
 		}else{
-		
+
 			$tpl = replace_exif_tags_null($tpl);
 		}
 	}else{
-	
+
 		include_once('includes/functions_exif.php');
 		$tpl = replace_exif_tags_null($tpl);
 	}
-	
-	
+
+
 	/**
 	 * Build a string with all comments.
 	 * Only perform this code when the user has commenting enabled
 	 *
 	 */
 	if(isset($_GET['x']) && ($_GET['x'] == "") or (isset($_GET['popup']) && $_GET['popup'] == "comment")) {
-	
+
 		$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '".$_POST['parent_id']."'");
 		$cmnt_setting = pullout($comments_result['comments']);
-		
+
 		if($cmnt_setting == 'F') { die('Die you SPAMMER!!'); }
 	}
 
@@ -867,18 +867,18 @@ if(!isset($_GET['x'])) {
  	$tpl = ereg_replace("<VINFO_EMAIL>",$vinfo_email,$tpl);
 
  	if($cfgrow['token'] == 'T') {
- 	
+
  		$tpl = ereg_replace("<TOKEN>","<input type='hidden' name='token' value='".$_SESSION['token']."' />",$tpl);
  	}else{
- 	
+
  		$tpl = ereg_replace("<TOKEN>",null,$tpl);
  	}
 
 	if(isset($_GET['showimage']) && $_GET['showimage'] != "") {
-	
+
 		$imageid = $_GET['showimage'];
 	}else{
-	
+
 		$imageid = $image_id;
 	}
 
@@ -886,7 +886,7 @@ if(!isset($_GET['x'])) {
 	$tpl = ereg_replace("<IMAGE_COMMENTS>",$image_comments,$tpl);
 
 	if((isset($_GET['popup']) && $_GET['popup'] == "comment") AND (!isset($_GET['x']) OR $_GET['x'] != "save_comment")) {
-	
+
 		include_once('includes/addons_lib.php');
 		echo $tpl;
 		exit;
@@ -895,6 +895,7 @@ if(!isset($_GET['x'])) {
 
 $tpl = ereg_replace("<SITE_TITLE>",$pixelpost_site_title,$tpl);
 $tpl = ereg_replace("<SUB_TITLE>",$pixelpost_sub_title,$tpl);
+$tpl = ereg_replace("<SITE_URL>",$cfgrow['siteurl'],$tpl);
 
 // ##########################################################################################//
 // BROWSE STUFF
