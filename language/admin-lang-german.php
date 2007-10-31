@@ -254,7 +254,7 @@ $admin_lang_cmnt_submenu2									= "Erwarte Moderation";
 // Option
 $admin_lang_optn_general             = "ALLGEMEIN";
 $admin_lang_optn_template            = "TEMPLATE";
-$admin_lang_optn_thumbnails          = "Miniaturbilder";
+$admin_lang_optn_thumbnails          = "MINIATURBILDER";
 $admin_lang_optn_tip                 = "Achten Sie darauf, dass der Schr&auml;gstrich <b>'/'</b> gesetzt ist. Beispiel: <i>http://www.pixelpost.org/</i>";
 $admin_lang_optn_update              = "Aktualisieren";
 $admin_lang_optn_yes                 = "Ja";
