@@ -37,24 +37,24 @@ if (isset($_GET['turnon'])){
     $dir = "../addons/";
     $query_ad_s = "select id,addon_name,status from {$pixelpost_db_prefix}addons ORDER BY `status` DESC ";
 		$query_ad_s = mysql_query($query_ad_s);
-		while (list($id,$filename,$status)= mysql_fetch_row($query_ad_s))	{
-			if (file_exists($dir.$filename.".php")){
+		while (list($id,$addonfilename,$status)= mysql_fetch_row($query_ad_s))	{
+			if (file_exists($dir.$addonfilename.".php")){
 				// check if we can read the file
-				if (is_readable($dir.$filename.".php")) {
-					include($dir.$filename.".php");
+				if (is_readable($dir.$addonfilename.".php")) {
+					include($dir.$addonfilename.".php");
 					//build the addon_on & addon_off arrays
 					if (!isset($addon_description)) $addon_description="This addon provides no further information. Please have a look into the addon file for what it is meant to be and blame the addon author for that.";
 					if (!isset($addon_version)) $addon_version="?";
 					if (!isset($addon_name)) $addon_name="no name specified";
 					$status = strtoupper($status);
 					if ($status=='ON'){
-						$addon_on[$addon_name] = array("status" => $status, "addon_description" => $addon_description, "addon_version" => $addon_version, "filename" => $filename);
+						$addon_on[$addon_name] = array("status" => $status, "addon_description" => $addon_description, "addon_version" => $addon_version, "filename" => $addonfilename);
 					}else{
-						$addon_off[$addon_name] = array("status" => $status, "addon_description" => $addon_description, "addon_version" => $addon_version, "filename" => $filename);
+						$addon_off[$addon_name] = array("status" => $status, "addon_description" => $addon_description, "addon_version" => $addon_version, "filename" => $addonfilename);
 					}
 				}else{
 					// we cannot read the file so we cannot include it. Show error messages to the user.
-					$addon_error[$filename] = array("status" => $status, "addon_description" => $admin_lang_pp_addon_error, "addon_version" => "?", "filename" => $filename);
+					$addon_error[$filename] = array("status" => $status, "addon_description" => $admin_lang_pp_addon_error, "addon_version" => "?", "filename" => $addonfilename);
 				}					
 			}
 			unset($addon_name);
