@@ -41,6 +41,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 error_reporting(0);
 
+$PHP_SELF = "index.php";
+
 if(!file_exists('../includes/pixelpost.php')) {
 	header("Location: install.php");
 	exit;
