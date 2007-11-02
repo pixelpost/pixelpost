@@ -318,10 +318,4 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	echo "</body></html>";
 } // commentemail yes
 
-//function log_it($stringData) {
-//	$fh = fopen("spamlog/log.txt", 'a') or die("can't open file");
-//	fwrite($fh, $stringData);
-//	fclose($fh);
-//}
-
 ?>
