@@ -224,14 +224,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			$extra_message = "<b>$lang_message_banned_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 	}
-}
 
 // ##########################################################################################//
 // EMAIL NOTE ON COMMENTS
 // ##########################################################################################//
-
-if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
-{
+	$comment_image_id = $_POST['parent_id'];
+	$link_to_comment = $cfgrow['siteurl']."index.php?showimage=$comment_image_id";	
 	if($cfgrow['commentemail'] == "yes" && $email_flag == 1)
 	{
 		$admin_email = $cfgrow['email'];
@@ -240,11 +238,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 
 		if(strpos($comment_url,'https://') === false && strpos($comment_url,'http://') === false && strlen($comment_url) > 0)	$comment_url = "http://".$comment_url;
 
-		$comment_image_id = $_POST['parent_id'];
 		$comment_message = clean_comment($_POST['message']);
 		$comment_message = stripslashes($comment_message);
 		$comment_email = clean_comment($_POST['email']);
-		$link_to_comment = $cfgrow['siteurl']."index.php?showimage=$comment_image_id";
+		
 		$comment_image_name = clean_comment($_POST['parent_name']);
 		$link_to_img_thumb_cmmnt = "Thumbnail Link:" .$cfgrow['siteurl'] .ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$comment_image_name;
 		$img_thumb_cmmnt = "<img src='" .$cfgrow['siteurl'] .ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$comment_image_name."' >";
@@ -295,7 +292,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
     // Sending notification
 		mail($recipient_email,$subject,$body,$headers);
 
-	} // end of if($_GET['x'] == "save_comment")
+	} 
 
 	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
 
@@ -316,6 +313,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	echo "<p />$lang_comment_thank_you<p />$extra_message<br />";
   	echo "<a href='$_SERVER[HTTP_REFERER]'>$lang_comment_redirect</a><p />";
 	echo "</body></html>";
-} // commentemail yes
 
+
+
+}
 ?>
