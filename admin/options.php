@@ -464,7 +464,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 
 		<div class='jcaption'>
-		$admin_lang_optn_tz
+		$admin_lang_optn_tz: ".gmdate($cfgrow['dateformat'],time()+(3600 * $cfgrow['timezone']))." localtime
 		</div>
 		<div class='content'>
 		$admin_lang_optn_tz_txt <br />
