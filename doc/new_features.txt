@@ -1,0 +1,129 @@
+# GettingStarted: NewFeatures 
+
+## What's New in Version 1.7 
+
+Your visitors won't notice any differences in this brand new Pixelpost version, which means you won't need to upgrade your templates.  
+But that doesn't mean there aren't any changes! Look at the list below to find out what's changed: 
+
+
+
+*   Smooth Install Assistant  
+    Users who are upgrading will appreciate the new super-smooth upgrade system as well. 
+*   Fancy Admin Stuff
+    Lots of little tweaks that are sure to make your life better. 
+*   New Tags for Image and Browse Page
+    New features that will make the template system even easier to use. 
+*   Cool Feed Options] 
+    Setup your feeds to fit your needs. 
+*   New Languages
+    For our friends all over the world! 
+*   Brand New Front Workspaces
+    Addon creators are going to love us for this! 
+*   Bug Fixes
+    Yes, we admit, there were a few bugs in the last version, we are only human. 
+
+
+
+##  Install Assistant
+
+The new install assistant will guide you through a new installation or an upgrade. It tests your system thoroughly before installing or upgrading Pixlpost to ensure everything will work ok.  
+If it finds an issue, don't worry: it also provides you with tips and information helping you correct any problems.  
+Find out more about it in the [Installation Guide][1].
+
+
+##  New Features in the Admin Panel 
+
+Ok, let's compare them one by one. There's quite a lot... 
+
+### Images
+    
+Looks the same? Yes, but there's a new hidden feature: click on the red headline which says  
+**Images - Re-upload, Edit or Delete images || Select Categories / Keywords, month, ID**
+and reveal the new filter functions of the image list.  
+
+
+### Comments  
+    
+
+We cleaned this section up a lot. A bunch of buttons have been removed and replaced by a neat submenu for published, moderated and Akismet marked comments.  
+
+
+### Options
+
+*   General  
+    New and most wanted: subtitle, admin panel language, thumbnails path, feed options and sorting preferences 
+*   Thumbnails  
+    New thumbnail sharpening option 
+*   Spam Control  
+    DISTRIBUTED SENDER BLACKHOLE LIST SETTING has gone as it wasn't very effective. (yes, we know that!) Akismet settings have moved here for that reason. 
+
+
+### General Info  
+    
+
+Check out the new Donate Button. And if you're in a generous mood, feel free to send a donation to help Pixelpost make even better!  
+
+
+### Addons 
+    
+
+The addons list has a new color scheme: green for running addons and orange for disabled ones. And to make it easier for you, we've sorted the addons in alphabetical order and grouped the disabled addons at the bottom of the page.  
+Addons with the wrong file permission are shown in red.  
+
+
+##  New Tags in Version 1.7 
+
+*   **<THUMBNAIL_WIDTH>** and **<THUMBNAIL_HEIGHT>**  
+    Free free to use them in your templates HTML code 
+*   **<FOCUS_TAG_LINKS_AS_LIST>** and **<FOCUS_TAG_LINKS_AS_LIST_PAGED>**  
+    They behave similar to already existing <TAG_LINKS_AS_LIST> and <TAG_LINKS_AS_LIST_PAGED> but the other way round: the less popular tags have a larger fontsize then the popular tags. 
+*   **<SUB_TITLE>**  
+    Displays the subtitle that you entered in the admin 
+
+
+
+##  Feed Options 
+
+You can set a feed title, description and copyright notice in admin options. Select which feeds you want to show and use the updated tag for autodetecting the feeds according to the feed settings: **<FEED_AUTO_DISCOVERY>**.  
+If you want to include your feed and link manually, you still can use the old tags <RSS_AUTODETECT_LINK> and <ATOM_AUTODETECT_LINK> (for backward-compatibility)  
+The comment feed can now be turned off and on in admin options. 
+
+
+
+##  New Languages 
+
+In addition to the incredible number of [available languages][2] already included in Pixelpost, we now have two new languages, Hungarian and Romanian. You can also choose Spanish and Swedish for the admin language. 
+
+
+
+##  Front Workspaces 
+
+Until now, workspaces were only provided for the admin section. It was almost impossible to bring new functions into the front pages, like the image or browse page, without hacking the core files.  
+With the new front workspaces, addons can benefit of Pixelpost's own functions. A new world opens to addon authors and we all are very excited to see what you will be able to create with this new flexibility.  
+Right now most front workspaces are found in the comment section but there are already rumours about some hot new addons taking advantage of this. Such as new anti-spam addons or a reply-to-comments addon. 
+
+
+
+##  Bug Fixes 
+
+*   Newline in comments editing 
+*   Removed hardcoded paths of images and thumbnails folder 
+*   Image autodelete security solution 
+*   "use exif date for publish" now works on all systems 
+*   HTML code in site title 
+*   Quotes in metatags 
+*   Mass delete function now deletes everything 
+*   Cleaning of spam lists in admin options 
+*   More appropriate error messages 
+*   Addon sorting before calling 
+*   Copy folder now stores the exif data in the database 
+*   No longer shows empty alt tags and alt title in the image list 
+*   Form fields keep their content in case of unsuccessful image upload 
+*   Time zone is correct now on image upload "post now" 
+
+Retrieved from http://www.pixelpost.org/docs/GettingStarted/NewFeatures 
+
+Page last modified on November 04, 2007, at 09:43 AM
+
+ [1]: http://www.pixelpost.org/docs/GettingStarted17/Install
+ [2]: http://www.pixelpost.org/docs/Languages/Languages

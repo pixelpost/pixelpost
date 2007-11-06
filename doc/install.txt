@@ -1,0 +1,21 @@
+# GettingStarted: Install 
+
+## Installation 
+
+Installation is now smooth and clean thanks to our new install assistant. It is self-explanatory, with tips and hints helping you know what to do if anything fails. 
+
+## How do I start? 
+
+1.  First, download Pixelpost (there is a download link on our home page) 
+2.  Second, create a database in your MySQL administration (if you don't have one already).  
+    ***Tip:* Usually you find your MySQL administration in** www.yourdomain.com/mysqladmin or in
+    **www.yourdomain.com/phpmyadmin**. Contact your web host if you need help creating a database. 
+3.  Third, unzip the Pixelpost package and upload it to your server. You can place it into the domain 
+    root as well as any folder of your choice. 
+4.  Open your browser and go to the following address:  
+    **www.example.com/(photoblog_foldername)/admin/install.php** 
+5.  Follow the instructions provided on screen and enjoy photoblogging with Pixelpost!
+
+Retrieved from http://www.pixelpost.org/docs/GettingStarted/Install
+
+Page last modified on November 03, 2007, at 04:52 PM
