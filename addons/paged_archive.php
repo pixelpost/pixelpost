@@ -39,8 +39,8 @@ NEW TAGS:
 
 */
 
-$addon_name = "Page-By-Page-Archive for category and month (for PP v1.4)";
-$addon_version = "1.0";
+$addon_name = "Page-By-Page-Archive for category and month";
+$addon_version = "1.7";
 
 $maxpthumb = $cfgrow['maxpthumb'];
 
@@ -95,7 +95,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "maxpthumb")
 
 // description
 $addon_description = "$attention_call Page by page category and month archive. Useful when you have
-plenty of photos in archive and you want to show them in few pages and not just as a whole. Compatible with Pixelpost version 1.3 with multi category mod and version 1.4.
+plenty of photos in archive and you want to show them in few pages and not just as a whole.
 Many new tags is added to handle the archives. Open the archive_page.php file to see the new tags.<p />
 Enter the maximum number of thumbnails in each page of the archive page:
 <form method='post' action='index.php?view=addons&amp;x=maxpthumb'>
