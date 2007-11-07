@@ -124,11 +124,13 @@ while(list($id,$name, $alt_name) = mysql_fetch_row($query))
 $browse_select .= "</select>";
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 
+$browse_order_by = ($language_abr == $default_language_abr) ? 'name' : 'alt_name';
+
 // build browse checkboxes
 $checkboxes = "<form method='post' action='index.php?x=browse'>";
-$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
+$query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY ".$browse_order_by);
 
-while(list($id,$name) = mysql_fetch_row($query))
+while(list($id,$name,$alt_name) = mysql_fetch_row($query))
 {
 	if ($language_abr == $default_language_abr)
 	{
