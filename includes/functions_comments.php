@@ -27,7 +27,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
     		$_SESSION['token'] = md5($_SERVER["HTTP_USER_AGENT"].$_SERVER["HTTP_ACCEPT_LANGUAGE"].$_SERVER["HTTP_ACCEPT_ENCODING"].$_SERVER["HTTP_ACCEPT_CHARSET"].$_SERVER["HTTP_ACCEPT"].$_SERVER["SERVER_SOFTWARE"].session_id().uniqid(rand(), TRUE));
     		$_SESSION['token_time'] = time();
     	}
-		}		
+		}
 		else
 		{
 			eval_addon_front_workspace('comment_blocked_token');
@@ -38,11 +38,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		}
 	}
 	// Get the time of the latest comment in the db
-	$comments_time_result = sql_array("SELECT datetime,ip FROM ".$pixelpost_db_prefix."comments ORDER BY datetime DESC LIMIT 1");
+	$comments_time_result = sql_array("SELECT datetime,ip FROM ".$pixelpost_db_prefix."comments WHERE ip LIKE '".$_SERVER['REMOTE_ADDR']."' ORDER BY datetime DESC LIMIT 1");
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
-	$ip_latest_comment = pullout($comments_time_result['ip']);
-	
-	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']) && ($ip_latest_comment==$_SERVER['REMOTE_ADDR']))
+
+	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
 	{
   		if ($cfgrow['comment_timebetween'] > 60){
   			$time_to_wait = floor($cfgrow['comment_timebetween']/60)." minute(s)";
@@ -57,8 +56,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // $parent_id
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
 
-	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){	
-		eval_addon_front_workspace('comment_blocked_id');	
+	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){
+		eval_addon_front_workspace('comment_blocked_id');
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 02).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -72,13 +71,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 03).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
 	}
-	
+
 	// $message
 	$message = isset($_POST['message']) ? $_POST['message'] : "";
 	$message = clean_comment($message);
 	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
 	$message = nl2br($message);
-	
+
 	// $url
 	$url = isset($_POST['url']) ? $_POST['url'] : "";
 	if(eregi("\r",$url) || eregi("\n",$url))	die("No intrusion! ?? :(");
@@ -133,13 +132,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '$parent_id'");
 	$cmnt_setting = pullout($comments_result['comments']);
 	if($cmnt_setting == 'F'){
-		eval_addon_front_workspace('comment_blocked_disabled');	
+		eval_addon_front_workspace('comment_blocked_disabled');
 		header("HTTP/1.0 404 Not Found");
 		header("Status: 404 File Not Found!");
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 06).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
    }
-	
+
 	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	if($cmnt_setting == 'A')
 	{
@@ -173,7 +172,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	// aditional check by schonhose
 	if (!$email==""){
 		if (!check_email_address($email)){
-			eval_addon_front_workspace('comment_invalid_email');	
+			eval_addon_front_workspace('comment_invalid_email');
 			header("HTTP/1.0 404 Not Found");
 			header("Status: 404 File Not Found!");
 	   	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 07).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
@@ -221,7 +220,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			if (!mysql_error())
 			$email_flag = 1;
 		} // end if is not in the blacklist
-		else { 
+		else {
 			eval_addon_front_workspace('comment_blocked_banlist');
 			$extra_message = "<b>$lang_message_banned_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
@@ -231,7 +230,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // EMAIL NOTE ON COMMENTS
 // ##########################################################################################//
 	$comment_image_id = $_POST['parent_id'];
-	$link_to_comment = $cfgrow['siteurl']."index.php?showimage=$comment_image_id";	
+	$link_to_comment = $cfgrow['siteurl']."index.php?showimage=$comment_image_id";
 	if($cfgrow['commentemail'] == "yes" && $email_flag == 1)
 	{
 		$admin_email = $cfgrow['email'];
@@ -243,7 +242,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		$comment_message = clean_comment($_POST['message']);
 		$comment_message = stripslashes($comment_message);
 		$comment_email = clean_comment($_POST['email']);
-		
+
 		$comment_image_name = clean_comment($_POST['parent_name']);
 		$link_to_img_thumb_cmmnt = "Thumbnail Link:" .$cfgrow['siteurl'] .ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$comment_image_name;
 		$img_thumb_cmmnt = "<img src='" .$cfgrow['siteurl'] .ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$comment_image_name."' >";
@@ -262,9 +261,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			$headers = "Content-type: text/plain; charset=UTF-8\n";
 			$headers .= "Content-Transfer-Encoding: 8bit\n";
 
-			if ($comment_email!="")     
-                {$headers .= "From: $comment_name  <$admin_email>\n";  
-                 $headers .= "Reply-To: $comment_name <$comment_email>\n"; } 
+			if ($comment_email!="")
+                {$headers .= "From: $comment_name  <$admin_email>\n";
+                 $headers .= "Reply-To: $comment_name <$comment_email>\n"; }
             else $headers .= "From: PIXELPOST <$admin_email>\n";
 
 			$recipient_email = "admin <$admin_email>";
@@ -294,7 +293,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
     // Sending notification
 		mail($recipient_email,$subject,$body,$headers);
 
-	} 
+	}
 
 	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
 
