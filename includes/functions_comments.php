@@ -73,7 +73,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	}
 
 	// $message
-	$message = isset($_POST['message']) ? $_POST['message'] : "";
+	$message = isset($_POST['message']) && $_POST['message']!='Type your comment here.' ? $_POST['message'] : "";
 	$message = clean_comment($message);
 	$message = preg_replace("/((\x0D\x0A){3,}|[\x0A]{3,}|[\x0D]{3,})/","\n\n",$message);
 	$message = nl2br($message);
