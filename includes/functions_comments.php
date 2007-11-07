@@ -38,19 +38,21 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		}
 	}
 	// Get the time of the latest comment in the db
-	$comments_time_result = sql_array("SELECT datetime FROM ".$pixelpost_db_prefix."comments ORDER BY datetime DESC LIMIT 1");
+	$comments_time_result = sql_array("SELECT datetime,ip FROM ".$pixelpost_db_prefix."comments ORDER BY datetime DESC LIMIT 1");
 	$time_latest_comment = strtotime(pullout($comments_time_result['datetime']));
-	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']))
+	$ip_latest_comment = pullout($comments_time_result['ip']);
+	
+	if ((strtotime($datetime) - $time_latest_comment) < ($cfgrow['comment_timebetween']) && ($ip_latest_comment==$_SERVER['REMOTE_ADDR']))
 	{
-  	if ($cfgrow['comment_timebetween'] > 60){
-  		$time_to_wait = floor($cfgrow['comment_timebetween']/60)." minute(s)";
-  	} else {
-  		$time_to_wait = $cfgrow['comment_timebetween']." seconds";
+  		if ($cfgrow['comment_timebetween'] > 60){
+  			$time_to_wait = floor($cfgrow['comment_timebetween']/60)." minute(s)";
+  		} else {
+  			$time_to_wait = $cfgrow['comment_timebetween']." seconds";
+  		}
+  		$spam_flood_message = str_replace("<TIME_TO_WAIT>", $time_to_wait, $lang_spamflood);
+  		eval_addon_front_workspace('comment_blocked_flood');
+  		die($spam_flood_message."<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
   	}
-  	$spam_flood_message = str_replace("<TIME_TO_WAIT>", $time_to_wait, $lang_spamflood);
-  	eval_addon_front_workspace('comment_blocked_flood');
-  	die($spam_flood_message."<br /><a href='javascript:history.back()'> Click here to go BACK</a>");
-  }
 
 // $parent_id
 	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
