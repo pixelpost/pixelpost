@@ -33,7 +33,7 @@ Dont edit                     ||      Edit                                   */
 
 $_lang_file_translator        = 'Piotr "GeoS" Galas - <a href="http://www.piotrgalas.com/" target="_blank">www.piotrgalas.com</a>';
 $_lang_file_email             = 'geos@pixelpost.org';
-$_lang_file_rev               = '1.6';
+$_lang_file_rev               = '1.7';
 
 $admin_lang_isrtl   = "no"; // yes for right-to-left languages and no for left-to-right languages
 $admin_lang_update  = "Aktualizacja";
