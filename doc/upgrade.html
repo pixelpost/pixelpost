@@ -2,7 +2,7 @@
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head>
-  <title>Pixelpost | GettingStarted / Upgrade</title>
+  <title>Pixelpost | GettingStarted17 / Upgrade</title>
   <link rel='stylesheet' href='http://www.pixelpost.org/docs/pub/skins/print/print.css' type='text/css' />
   <!--HTMLHeader--><style type='text/css'><!--
   ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
@@ -40,7 +40,7 @@ a.varlink { text-decoration:none; }
 <body>
   <div id='printhead'>
     <h3>From Pixelpost</h3>
-    <h1 class='pagename'>GettingStarted17: Upgrade</h1>
+    <h1 class='pagename'>GettingStarted: Upgrade</h1>
   </div>
 <!--PageText-->
 <div id='wikitext'>
@@ -51,11 +51,17 @@ a.varlink { text-decoration:none; }
 </p>
 <div class='vspace'></div><h2>How do I Upgrade?</h2>
 <ol><li>First, make a backup of your actual Pixelpost installation:
-</li></ol><ul><li>download all the files on your server and store them in a cool and dry place.
+<ul><li>download all the files on your server and store them in a cool and dry place.
 </li><li>go into your MySQL Administration, locate your Pixelpost tables and find the button "export".<br /><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/mysqladmin.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/mysqladmin_th.gif' alt='MySqlAdmin' title='MySqlAdmin' /></a> &lt;- See the screenshot for the recommended settings and save the sql file.
-</li></ul><ol><li>Download Pixelpost by clicking on the "Download" link located on our home page.
-</li><li>Unzip the Pixelpost package and upload it to your server. Don't delete the old Pixelpost files, just overwrite them. Make sure that the file pixelpost.php is still within the includes folder and the correct database login is there.
-</li><li>Open your browser and go to the following address:<br /><strong>www.yourdomain.com/(photoblog_foldername)/admin/install.php</strong><br /><span  style='color: #aaaaaa;'><strong><em>Tip:</strong> If you see the "Installation" screen instead of the "Upgrade" screen, the configuration file <strong>pixelpost.php</strong> may have been damaged or removed. Get it from your files backup, check the database login and re-upload it into the "includes" folder.</em></span>
+</li></ul></li><li>Download Pixelpost by clicking on the "Download" link located on our home page.
+</li><li>Unzip the Pixelpost package and upload it to your server.
+<ul><li><strong>Don't delete the old Pixelpost files, just overwrite them.</strong> 
+</li><li>Make sure that the file pixelpost.php is still within the includes folder and the correct database login is there.
+</li><li><strong>Open the addons folder and delete the following Addon files in the root addons folder:</strong>
+<ul><li>admin_akismet_comment.php
+</li><li>front_akismet_comment.php<br /><strong>(they moved to the addons/_akismet folder where they must not be deleted!)</strong>
+</li><li>referer_spam.php<br />(this isn't used anymore)
+</li></ul></li></ul></li><li>Open your browser and go to the following address:<br /><strong>www.yourdomain.com/(photoblog_foldername)/admin/install.php</strong><br /><span  style='color: #aaaaaa;'><strong><em>Tip:</strong> If you see the "Installation" screen instead of the "Upgrade" screen, the configuration file <strong>pixelpost.php</strong> may have been damaged or removed. Get it from your files backup, check the database login and re-upload it into the "includes" folder.</em></span>
 </li><li>Follow the instructions provided on screen and enjoy photoblogging with Pixelpost!
 </li></ol><div class='vspace'></div><h2>Screenshots</h2>
 <h4>Upgrade Welcome Screen</h4>
@@ -72,14 +78,14 @@ a.varlink { text-decoration:none; }
 <br clear='all' />
 </p><h4>Login</h4>
 <div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step11ready.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step11ready_th.gif' alt='Login' title='Login' /></a> </span></div>
-<p>After the Upgrade procedure you are directed to the login screen of your Admin Panel. You can now login and continue photoblogging.<br />Don't forget to check out all the <a class='wikilink' href='http://www.pixelpost.org/docs/GettingStarted/NewFeatures?action=print'>new exciting features</a>!
+<p>After the Upgrade procedure you are directed to the login screen of your Admin Panel. You can now login and continue photoblogging.<br />Don't forget to check out all the <a class='wikilink' href='http://www.pixelpost.org/docs/GettingStarted/NewFeatures'>new exciting features</a>!
 <br clear='all' />
 </p>
 </div>
 
   <div id='printfoot'>
     <div class='from'>Retrieved from http://www.pixelpost.org/docs/GettingStarted/Upgrade</div>
-    <div class='lastmod'>Page last modified on November 03, 2007, at 04:58 PM</div></div>
+    <div class='lastmod'>Page last modified on November 07, 2007, at 03:45 AM</div></div>
 <!--HTMLFooter-->
 </body>
 </html>
