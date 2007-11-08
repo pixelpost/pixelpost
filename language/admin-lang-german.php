@@ -238,7 +238,7 @@ $admin_lang_cmnt_commenter          = "Kommentar-Datum:";
 $admin_lang_cmnt_ip                 = "von  IP-Adresse ";
 $admin_lang_cmnt_save               = "speichern";
 $admin_lang_cmgt_edit2              = "OK";
-$admin_lang_cmnt_massdelete_text    = "(Kreuzen Sie alle Kommentare an, die Sie l&ouml;schen m&ouml;chten.)";
+$admin_lang_cmnt_massdelete_text    = "(Haken Sie alle Kommentare an, die Sie l&ouml;schen m&ouml;chten.)";
 $admin_lang_cmnt_js_del_comm        = "Soll dieser Kommentar wirklich gel&ouml;scht werden?";
 $admin_lang_cmnt_publish_sel        = "Selektierte Kommentare freigeben";
 $admin_lang_cmnt_unpublish_sel      = "Auswahl zur&uuml;cksetzen";
@@ -264,12 +264,12 @@ $admin_lang_optn_title_url          = "Seiten-Titel und URL";
 $admin_lang_optn_title              = "Titel:";
 $admin_lang_optn_sub_title         = "Sub-Titel:";
 $admin_lang_optn_url                = "URL:";
-$admin_lang_optn_usr_pss            = "ADMIN Benutzer &amp; PASSWORT";
-$admin_lang_optn_usr_pss_txt        = "Benutzernamen oder Passwort &auml;ndern?";
-$admin_lang_optn_usr                = "Benutzer:";
+$admin_lang_optn_usr_pss            = "Adminname &amp; Passwort";
+$admin_lang_optn_usr_pss_txt        = "Adminname oder Passwort &auml;ndern?";
+$admin_lang_optn_usr                = "Adminname:";
 $admin_lang_optn_pss                = "Passwort:";
 $admin_lang_optn_pss_re             = "Passwort best&auml;tigen:";
-$admin_lang_optn_email              = "ADMIN E-MAIL";
+$admin_lang_optn_email              = "Admin E-Mail";
 $admin_lang_optn_fillit             = "Tragen Sie die E-Mail-Adresse unbedingt hier ein. Sie wird f&uuml;r eine
                                       eventuelle Passwort-Wiederherstellung ben&ouml;tigt.";
 $admin_lang_optn_img_path          	= "Bilder & Miniaturbilder Pfad";
@@ -286,39 +286,39 @@ $admin_lang_optn_cmnt_mod_allowed		=	"Sofort ver&ouml;ffentlichen";
 $admin_lang_optn_cmnt_mod_moderation=	"Zur Freigabe-Queue";
 $admin_lang_optn_cmnt_mod_forbidden	=	"Kommentare verbieten";
 
-$admin_lang_optn_switch_template     = "TEMPLATE-AUSWAHL";
-$admin_lang_optn_lang_file           = "SPRACHDATEI";
+$admin_lang_optn_switch_template     = "Template-Auswahl";
+$admin_lang_optn_lang_file           = "Sprachdatei";
 $admin_lang_optn_lang_file_admin          = "Admin-Sprachdatei";
-$admin_lang_optn_dateformat          = "DATUMSFORMAT";
+$admin_lang_optn_dateformat          = "Datumsformat";
 $admin_lang_optn_dateformat_txt      = "Datumsformat f&uuml;r die Anzeige der Bilder und der Kommentare.<br />
                                         Die Syntax stimmt mit der PHP <a href='http://www.php.net/date' target='_blank'>date()</a> Funktion &uuml;berein.<br />\n
                                         Ein paar Beispiele f&uuml;r &uuml;bliche Ersetzungen: Y:Jahr m:Monat d:Tag H:Stunde i:Minute s:Sekunde";
 $admin_lang_optn_gmt                 = "Beachten Sie, dass Sommerzeit-&Auml;nderungen nicht ber&uuml;cksichtigt werden.\nDas m&uuml;ssen Sie manuell &auml;ndern.<br />Pr&uuml;fen Sie die <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='_blank'> aktuelle UTC-Zeit,</a> wenn Sie nicht sicher sind, welchen Wert Sie hier als Differenz zur UTC-ZEit eintragen m&uuml;ssen.<br />";
-$admin_lang_optn_cat_link_format     = "FORMAT DER KATEGORIE-LINKS";
+$admin_lang_optn_cat_link_format     = "Format der Kategorie-Links";
 $admin_lang_optn_catlinkformat_select = "Format der Links ausw&auml;hlen";
 $admin_lang_optn_cat_link_format_txt = "Das Format der Links zu allen Eintr&auml;gen einer Kategorie im Template.";
 $admin_lang_optn_catlinkformat_custom  = "Frei definiertes Format";
 $admin_lang_optn_catlinkformat_custom_start = "Begrenzungszeichen am Anfang: ";
 $admin_lang_optn_catlinkformat_custom_end = "Begrenzungszeichen am Ende: ";
 
-$admin_lang_optn_calendar_type       = "KALENDER-TYP";
+$admin_lang_optn_calendar_type       = "Kalender-Typ";
 
 $admin_lang_optn_thumb_row       = "Miniaturbilderreihe";
 $admin_lang_optn_thumb_row_txt   = "Wie viele Miniaturbilder sollen in einer Reihe angezeigt werden?<br />\nTragen Sie eine ungerade Zahl ein, z.B. 5, 7 oder 9, nicht 6 oder 8.";
-$admin_lang_optn_crop_thumbs     = "Miniaturbilder BESCHNEIDEN?";
-$admin_lang_optn_crop_thumbs_txt = "Wenn Miniaturbilder eine festgelegte Gr&ouml;&szlig;e erhalten sollen: w&auml;hlen Sie <b>Yes.</b><br/>\n
-                                    Wenn Sie das Ursprungs-Seiten-Verh&auml;ltnis beibehalten m&ouml;chten, w&auml;hlen Sie <b>No.</b><br/>\n
+$admin_lang_optn_crop_thumbs     = "Miniaturbilder beschneiden?";
+$admin_lang_optn_crop_thumbs_txt = "Wenn Miniaturbilder eine festgelegte Gr&ouml;&szlig;e erhalten sollen: w&auml;hlen Sie <b>Ja.</b><br/>\n
+                                    Wenn Sie das Ursprungs-Seiten-Verh&auml;ltnis beibehalten m&ouml;chten, w&auml;hlen Sie <b>Nein.</b><br/>\n
                                     M&ouml;chten Sie die Miniaturbilder nach dem Hochladen einzeln bearbeiten,  w&auml;hlen Sie <b>12CropImage.</b>";
-$admin_lang_optn_thumb_size      = "THUMBNAIL MA&szlig;E";
+$admin_lang_optn_thumb_size      = "Miniaturbilder Ma&szlig;e";
 $admin_lang_optn_thumb_size_txt     = "Geben Sie die Thumbnail-Ma&szlig;e an: Breite x H&ouml;he";
 $admin_lang_optn_thumb_size_new   = "Ma&szlig;e festlegen";
 $admin_lang_optn_reg_thumbs_button  = "Miniaturbilder neu erstellen";
 $admin_lang_optn_regen_thumbs_txt   = "Alle Miniaturbilder aller vorhandenen Fotos werden neu berechnet.\n
                                       Alle manuell ver&auml;nderten Miniaturbilder werden &uuml;berschrieben.\n
                                       Sie k&ouml;nnen Sie aber erneut mit 12CropImage erstellen..";
-$admin_lang_optn_img_compression     = "MINIATURBILDER KOMPRIMIERUNG";
+$admin_lang_optn_img_compression     = "Miniaturbilder-Komprimierung";
 $admin_lang_optn_img_compression_txt = "Wie stark soll die JPG-Komprimierung sein? 10 = niedrige Qualit&auml;t, 100 = maximale Qualit&auml;t (kein Verlust)";
-$admin_lang_optn_thumb_sharp              = "MINIATURBILDER Sch&auml;rfen";
+$admin_lang_optn_thumb_sharp              = "Miniaturbilder Sch&auml;rfen";
 $admin_lang_optn_thumb_sharp_txt          = "Wie scharf m&ouml;chten sie Ihre Miniaturbilder haben?";
 $admin_lang_optn_thumb_sharp0             = 'Kein Sch&auml;rfen';
 $admin_lang_optn_thumb_sharp1             = 'Light';
@@ -330,7 +330,7 @@ $admin_lang_optn_pass_notchngd_txt   = "Passwort wurde nicht ge&auml;ndert.Geben
 $admin_lang_optn_thumb_updated       = "Miniaturbilder aktualisiert!";
 $admin_lang_optn_updated             = "Miniaturbilder aktualisiert.";
 $admin_lang_optn_img_display						="Anordnung der Bilderausgabe";
-$admin_lang_optn_img_display_desc				="WÃƒÂ¤hlen Sie die Art und Weise aus, wie die Bilder bei der Ausgabe sortiert werden sollen. Sortieren: ";
+$admin_lang_optn_img_display_desc				="W&auml;hlen Sie die Art und Weise aus, wie die Bilder bei der Ausgabe sortiert werden sollen. Sortieren: ";
 $admin_lang_optn_img_display_default		="absteigender Reihenfolge";
 $admin_lang_optn_img_display_reversed		="aufsteigender Reihenfolge";
 
@@ -338,7 +338,7 @@ $admin_lang_optn_img_display_reversed		="aufsteigender Reihenfolge";
 $admin_lang_info_gd                  = "Die GD-LIB ist nicht installiert, bitten Sie Ihren Hoster, sie f&uuml;r Sie zu installieren!";
 $admin_lang_info_gd_jpg              = "mit Unterst&uuml;tzung des JPEG-Formates";
 $admin_lang_pp_version1              = "Pr&uuml;fen Sie, ob Sie die aktuellste Pixelpost-Version installiert haben =>";
-$admin_lang_pp_forum                 = "Informationen und Tips zu Pixelpost erhalten Sie im Pixelpost-Forum";
+$admin_lang_pp_forum                 = "Informationen und Tipps zu Pixelpost erhalten Sie im Pixelpost-Forum";
 $admin_lang_pp_min_php               = "Pixelpost ist lauff&auml;hig ab PHP-Version";
 $admin_lang_pp_min_mysql             = "Pixelpost ben&ouml;tigt mindestens die MySQL-Version";
 $admin_lang_pp_exif1                 = "<b>EXIF</b> Pixelpost verwendet";
@@ -471,7 +471,7 @@ $admin_lang_optn_rss_opt_none					= "Keine";
 $admin_lang_optn_rss_ext_type					= "Externer Feedtyp";
 $admin_lang_optn_rss_ext						= "Externer Feed";
 $admin_lang_optn_rss_enable_comment_feed		= "Aktivere Kommentar-Feed";
-$admin_lang_optn_rsstype_desc					= "WÃƒÂ¤hlen Sie die Darstellung des RSS/ATOM Feed:";
+$admin_lang_optn_rsstype_desc					= "W&auml;hlen Sie die Darstellung des RSS/ATOM Feed:";
 $admin_lang_optn_rss_full							= "Bilder in voller Gr&ouml;&szlig;e zeigen";
 $admin_lang_optn_rss_thumbs						= "Vorschaubilder zeigen";
 $admin_lang_optn_rss_thumbs_only					= "Nur Vorschaubilder zeigen";
@@ -480,8 +480,8 @@ $admin_lang_optn_rss_text							= "Nur Text zeigen";
 $admin_lang_optn_feeditems_desc				= "Anzahl der Eintr&auml;ge in der Feed-Liste: ";
 $admin_lang_optn_lang                  = "Einstellungen f&uuml;r die Hauptsprache: ";
 $admin_lang_optn_alt_lang             = "Zweite Sprache: ";
-$admin_lang_optn_alt_lang_dis         = "nicht ausgewÃƒÂ¤hlt";
-$admin_lang_optn_alt_lang_no          = "nicht ausgewÃƒÂ¤hlt";
+$admin_lang_optn_alt_lang_dis         = "nicht ausgew&auml;hlt";
+$admin_lang_optn_alt_lang_no          = "nicht ausgew&auml;hlt";
 
 
 
