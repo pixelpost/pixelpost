@@ -921,7 +921,6 @@ $tpl = ereg_replace("<SITE_BROWSELINK_PAGED>","./index.php?x=browse&amp;pagenum=
 
 if(!isset($_GET['x']) || isset($_GET['showimage'])){
 
-	$tpl = ereg_replace("<SITE_PHOTONUMBER>",$pixelpost_photonumb,$tpl);
 	$tpl = ereg_replace("<SITE_VISITORNUMBER>",$pixelpost_visitors,$tpl);
 	$tpl = ereg_replace("<IMAGE_COMMENTS_NUMBER>",$image_comments_number,$tpl);
 	$tpl = ereg_replace("<LATEST_COMMENT_ID>",$latest_comment,$tpl);
@@ -947,6 +946,7 @@ if(!isset($_GET['x']) || isset($_GET['showimage'])){
 $tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
 $tpl = ereg_replace("<SITE_URL>",$cfgrow['siteurl'],$tpl);
+$tpl = ereg_replace("<SITE_PHOTONUMBER>",$pixelpost_photonumb,$tpl);
 
 // ##########################################################################################//
 // COMMENT STUFF
