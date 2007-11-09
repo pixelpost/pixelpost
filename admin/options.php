@@ -471,50 +471,6 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<select name='timezone'>
 			".timezone_select()."
 		</select>";
-		/*
-		if ($cfgrow['timezone']=='0')
-		echo "<option selected='selected' value='0'>GMT</option>";
-		else {
-			$timezonevalue = $cfgrow['timezone'];
-			if ($timezonevalue >0) $timezonevalue = '+ ' .abs($timezonevalue);
-				else $timezonevalue = '- ' .abs($timezonevalue);
-		echo "<option selected='selected' value='".$cfgrow['timezone']."'>GMT ".$timezonevalue." hours</option>";
-			}
-		echo "
-			<option value='-12'>GMT - 12 Hours</option>
-			<option value='-11'>GMT - 11 Hours</option>
-			<option value='-10'>GMT - 10 Hours</option>
-			<option value='-9'>GMT - 9 Hours</option>
-			<option value='-8'>GMT - 8 Hours</option>
-			<option value='-7'>GMT - 7 Hours</option>
-			<option value='-6'>GMT - 6 Hours</option>
-			<option value='-5'>GMT - 5 Hours</option>
-			<option value='-4'>GMT - 4 Hours</option>
-			<option value='-3.5'>GMT - 3.5 Hours</option>
-			<option value='-3'>GMT - 3 Hours</option>
-			<option value='-2'>GMT - 2 Hours</option>
-			<option value='-1'>GMT - 1 Hours</option>
-			<option value='0' >GMT</option>
-			<option value='1'>GMT + 1 Hour</option>
-			<option value='2'>GMT + 2 Hours</option>
-			<option value='3'>GMT + 3 Hours</option>
-			<option value='3.5'>GMT + 3.5 Hours</option>
-			<option value='4'>GMT + 4 Hours</option>
-			<option value='4.5'>GMT + 4.5 Hours</option>
-			<option value='5'>GMT + 5 Hours</option>
-			<option value='5.5'>GMT + 5.5 Hours</option>
-			<option value='6'>GMT + 6 Hours</option>
-			<option value='6.5'>GMT + 6.5 Hours</option>
-			<option value='7'>GMT + 7 Hours</option>
-			<option value='8'>GMT + 8 Hours</option>
-			<option value='9'>GMT + 9 Hours</option>
-			<option value='9.5'>GMT + 9.5 Hours</option>
-			<option value='10'>GMT + 10 Hours</option>
-			<option value='11'>GMT + 11 Hours</option>
-			<option value='12'>GMT + 12 Hours</option>
-			<option value='13'>GMT + 13 Hours</option>
-			</select>
-		*/
 		echo "
 		$admin_lang_optn_gmt<p />
 		</div>
@@ -522,19 +478,11 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<div class='jcaption'>$admin_lang_optn_comment_setting</div>
     <div class='content'>$admin_lang_optn_cmnt_mod_txt
     		<select name=\"global_comments\">";
-    		if ($cfgrow["global_comments"] =='A')
-    		{
- 					echo "<option selected=\"selected\" value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
- 				}
- 				elseif ($cfgrow["global_comments"] =='M')
- 				{
- 					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option  selected=\"selected\" value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
- 				}
- 				else
- 				{
-					echo "<option value=\"A\">$admin_lang_optn_cmnt_mod_allowed</option><option value=\"M\">$admin_lang_optn_cmnt_mod_moderation</option><option selected=\"selected\" value=\"F\">$admin_lang_optn_cmnt_mod_forbidden</option>";
- 				}
-		echo"</select></div>
+		echo "
+				<option value=\"A\"".($cfgrow['global_comments']=='A'?' selected="selected"':'').">$admin_lang_optn_cmnt_mod_allowed</option>
+				<option value=\"M\"".($cfgrow['global_comments']=='M'?' selected="selected"':'').">$admin_lang_optn_cmnt_mod_moderation</option>
+				<option value=\"F\"".($cfgrow['global_comments']=='F'?' selected="selected"':'').">$admin_lang_optn_cmnt_mod_forbidden</option>";    		
+ 		echo"</select></div>
 		<div class='jcaption'>
 		$admin_lang_optn_sendemail
 		</div>
@@ -729,41 +677,21 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     			<br /><br />
     			$admin_lang_optn_rss_discovery:
     			<select name=\"feed_discovery\" onchange=\"if (this.selectedIndex=='3') { flip('external_feed_discovery'); }else{ hide('external_feed_discovery'); }return false;\" >";
-    			if($cfgrow['feed_discovery'] == 'RA')
-    			{
- 					echo "<option selected=\"selected\" value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
- 				}
- 				elseif($cfgrow['feed_discovery'] == 'R')
- 				{
- 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option selected=\"selected\" value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
- 				}
- 				elseif($cfgrow['feed_discovery'] == 'A')
- 				{
- 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option selected=\"selected\" value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
- 				}
- 				elseif($cfgrow['feed_discovery'] == 'E')
- 				{
- 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option selected=\"selected\" value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
- 				}
- 				else
- 				{
- 					echo "<option value=\"RA\">".$admin_lang_optn_rss_opt_both."</option><option value=\"R\">".$admin_lang_optn_rss_opt_rss."</option><option value=\"A\">".$admin_lang_optn_rss_opt_atom."</option><option value=\"E\">".$admin_lang_optn_rss_opt_ext."</option><option selected=\"selected\" value=\"N\">".$admin_lang_optn_rss_opt_none."</option>";
- 				}
-    			echo "
+    		echo "
+    			<option value=\"RA\"".($cfgrow['feed_discovery']=='RA'?' selected="selected"':'').">".$admin_lang_optn_rss_opt_both."</option>
+    			<option value=\"R\"".($cfgrow['feed_discovery']=='R'?' selected="selected"':'').">".$admin_lang_optn_rss_opt_rss."</option>
+    			<option value=\"A\"".($cfgrow['feed_discovery']=='A'?' selected="selected"':'').">".$admin_lang_optn_rss_opt_atom."</option>
+    			<option value=\"E\"".($cfgrow['feed_discovery']=='E'?' selected="selected"':'').">".$admin_lang_optn_rss_opt_ext."</option>
+    			<option value=\"N\"".($cfgrow['feed_discovery']=='N'?' selected="selected"':'').">".$admin_lang_optn_rss_opt_none."</option>";
+    		echo "
     			</select>
     			<br /><br />
     			<div id=\"external_feed_discovery\">
     			$admin_lang_optn_rss_ext_type: 
     			<select name=\"feed_external_type\">";
-    			if($cfgrow['feed_external_type'] == 'ER')
-    			{
- 					echo "<option selected=\"selected\" value=\"ER\">".$admin_lang_optn_rss_opt_rss."</option><option class=\"EA\" value=\"EA\">".$admin_lang_optn_rss_opt_atom."</option>";
- 				}
- 				else
- 				{
- 					echo "<option class=\"ER\" value=\"ER\">".$admin_lang_optn_rss_opt_rss."</option><option selected=\"selected\" value=\"EA\">".$admin_lang_optn_rss_opt_atom."</option>";
- 				}
-        		echo "
+    		echo "<option value=\"ER\"".($cfgrow['feed_external_type']=='ER'?' selected="selected"':' class="ER"').">".$admin_lang_optn_rss_opt_rss."</option>
+ 					<option value=\"EA\"".($cfgrow['feed_external_type']=='EA'?' selected="selected"':' class="EA"').">".$admin_lang_optn_rss_opt_atom."</option>";
+ 				echo "
     			</select>
     			<br /><br />
     			$admin_lang_optn_rss_ext:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"text\" name=\"feed_external\" value=\"".$feed_external."\" style=\"width:300px;\" />
@@ -800,26 +728,12 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     			<br /><br />
     			$admin_lang_optn_rsstype_desc 
     			<select name=\"rsstype\">";
-    			if ($cfgrow["rsstype"] =='F')
-    			{
- 						echo "<option selected=\"selected\" value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
- 					}
- 					elseif ($cfgrow["rsstype"] =='FO')
- 					{
- 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option selected=\"selected\" value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
- 					}
- 					elseif ($cfgrow["rsstype"] =='T')
- 					{
- 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option selected=\"selected\" value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
- 					}
- 					elseif ($cfgrow["rsstype"] =='O')
- 					{
- 						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option selected=\"selected\" value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option value=\"N\">$admin_lang_optn_rss_text</option>";
- 					}
- 					else
- 					{
-						echo "<option value=\"F\">$admin_lang_optn_rss_full</option><option value=\"FO\">$admin_lang_optn_rss_full_only</option><option value=\"T\">$admin_lang_optn_rss_thumbs</option><option value=\"O\">$admin_lang_optn_rss_thumbs_only</option><option selected=\"selected\" value=\"N\">$admin_lang_optn_rss_text</option>";
- 					}
+    		echo "
+    			<option value=\"F\"".($cfgrow['rsstype']=='F'?' selected="selected"':'').">$admin_lang_optn_rss_full</option>
+    			<option value=\"FO\"".($cfgrow['rsstype']=='FO'?' selected="selected"':'').">$admin_lang_optn_rss_full_only</option>
+    			<option value=\"T\"".($cfgrow['rsstype']=='T'?' selected="selected"':'').">$admin_lang_optn_rss_thumbs</option>
+    			<option value=\"O\"".($cfgrow['rsstype']=='O'?' selected="selected"':'').">$admin_lang_optn_rss_thumbs_only</option>
+    			<option value=\"N\"".($cfgrow['rsstype']=='N'?' selected="selected"':'').">$admin_lang_optn_rss_text</option>";	
 			echo"</select><br /><br />
 			$admin_lang_optn_feeditems_desc <input type='text' style=\"text-align: right;\" size=\"2\" name='feeditems' value='".$cfgrow['feeditems']."' />
 			</div>
@@ -828,25 +742,11 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				</div>
 				<div class='content'>$admin_lang_optn_img_display_desc";
 				echo "<select name=\"display_sort_by\">";
-    			if ($cfgrow["display_sort_by"] =='datetime')
-    			{
- 						echo "<option selected=\"selected\" value=\"datetime\">$admin_lang_ni_datetime</option><option value=\"headline\">$admin_lang_ni_image_title</option><option value=\"body\">$admin_lang_ni_description</option>";
- 					}
- 					elseif ($cfgrow["display_sort_by"] =='headline')
- 					{
- 						echo "<option value=\"datetime\">$admin_lang_ni_datetime</option><option selected=\"selected\" value=\"headline\">$admin_lang_ni_image_title</option><option value=\"body\">$admin_lang_ni_description</option>";
- 					}
- 					elseif ($cfgrow["display_sort_by"] =='body')
- 					{
- 						echo "<option value=\"datetime\">$admin_lang_ni_datetime</option><option value=\"headline\">$admin_lang_ni_image_title</option><option selected=\"selected\" value=\"body\">$admin_lang_ni_description</option>";
-
- 					}
- 					else
- 					{
- 						echo "<option selected=\"selected\" value=\"datetime\">Date/Time</option><option value=\"headline\">$admin_lang_ni_image_title</option><option value=\"body\">Body</option>";
- 					}
-			echo"</select>";
-				
+				echo "
+					<option value=\"datetime\"".($cfgrow['display_sort_by']=='datetime'?' selected="selected"':'').">$admin_lang_ni_datetime</option>
+					<option value=\"headline\"".($cfgrow['display_sort_by']=='headline'?' selected="selected"':'').">$admin_lang_ni_image_title</option>
+					<option value=\"body\"".($cfgrow['display_sort_by']=='body'?' selected="selected"':'').">$admin_lang_ni_description</option>";
+				echo"</select>";
 
 				if ($cfgrow['display_order']=='default')
 					$toecho = $admin_lang_optn_img_display_default;
@@ -898,7 +798,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		$dir = "../templates";
 		if($handle = opendir($dir)) {
 			while (false !== ($file = readdir($handle))) {
-				if($file != "." && $file != ".." && $file != "splash_page.html" && $file != "index.html" && $file != $cfgrow['template']) {
+				if($file != "." && $file != ".." && $file != $cfgrow['template'] && is_dir($dir.'/'.$file)) {
 					echo "<option value='$file'>$file</option>";
 					}
 				}
@@ -942,7 +842,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		echo"
 		<option value='".$cfgrow['catglueend']."' >$catglue</option>
 
-		<option value='['>[category-1] [category-2] [etc]</option>
+		<option value='[' >[category-1] [category-2] [etc]</option>
 		<option value='	,'>category-1, category-2, etc</option>
 		<option value=' -'>category-1 - category-2 - etc</option>
 		<option value=' |'>category-1 | category-2 | etc</option>
@@ -971,12 +871,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<form method='post' action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;optaction=updatecalendar' accept-charset='UTF-8'>
 		<select name='cal'>
 		";
-		if($cfgrow['calendar'] == "") { $nice_calendar = "No Calendar"; } else { $nice_calendar = $cfgrow['calendar']; }
 		echo "
-		<option value='".$cfgrow['calendar']."'>$nice_calendar</option>
-		<option value='Horizontal'>Horizontal</option>
-		<option value='Normal'>Normal</option>
-		<option value='No Calendar'>Don't Use a Calendar</option>
+		<option value='Horizontal'".($cfgrow['calendar']=='Horizontal'?' selected="selected"':'').">Horizontal</option>
+		<option value='Normal'".($cfgrow['calendar']=='Normal'?' selected="selected"':'').">Normal</option>
+		<option value='No Calendar'".($cfgrow['calendar']=='No Calendar'||$cfgrow['calendar']==''?' selected="selected"':'').">Don't Use a Calendar</option>
 		</select>
 		<input type='submit' value='$admin_lang_optn_update' />
 		</form>
@@ -1011,13 +909,10 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		$admin_lang_optn_crop_thumbs_txt<p />
 		<select name='new_crop'>";
 		$cropmethod = $cfgrow['crop'];
-		if ($cropmethod=='12c')
-			$cropmethod = '12CropImage';
 		echo "
-		<option value='".$cfgrow['crop']."'>".$cropmethod."</option>
-		<option value='yes'>$admin_lang_optn_yes</option>
-		<option value='12c'>12CropImage</option>
-		<option value='no'>$admin_lang_optn_no</option>
+		<option value='yes'".($cropmethod=='yes'?' selected=\'selected\'':'').">$admin_lang_optn_yes</option>
+		<option value='12c'".($cropmethod=='12c'?' selected=\'selected\'':'').">12CropImage</option>
+		<option value='no'".($cropmethod=='no'?' selected=\'selected\'':'').">$admin_lang_optn_no</option>
 		</select>
 		<input type='submit' value='$admin_lang_optn_update' />
 		</form>
