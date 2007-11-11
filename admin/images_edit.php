@@ -451,11 +451,28 @@ if($_GET['view'] == "images")
 		<td><input class='cmnt-buttons' type='submit' name='findid' value='$admin_lang_go' /></td>
 		</tr>
 		</table></form></div></div>";
+
+	//the filter stuff for showing the correct browse pages
+    if (isset($selectfcat)) {
+			$getfstring = '&amp;selectfcat='.$selectfcat;
+		}
+		else if (isset($selectftag)) {
+			$getfstring = '&amp;selectftag='.$selectftag;
+		}
+		else if (isset($selectfalttag)) {
+			$getfstring = '&amp;selectfalttag='.$selectfalttag;
+		}
+		else if (isset($selectfmon)) {
+			$getfstring = '&amp;selectfmon='.$selectfmon;
+		}
+		else {
+			$getfstring = '';
+		}
 	
 		echo "<div class=\"jcaption\"><strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
 			   		 </div>
 	           <div class=\"content\">
-	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images\">
+	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images&amp;page=$page$getfstring\">
 	           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
 						 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
 		 				 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
@@ -517,23 +534,6 @@ if($_GET['view'] == "images")
 		else {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
-
-	//the filter stuff for showing the correct browse pages
-    if (isset($selectfcat)) {
-			$getfstring = '&amp;selectfcat='.$selectfcat;
-		}
-		else if (isset($selectftag)) {
-			$getfstring = '&amp;selectftag='.$selectftag;
-		}
-		else if (isset($selectfalttag)) {
-			$getfstring = '&amp;selectfalttag='.$selectfalttag;
-		}
-		else if (isset($selectfmon)) {
-			$getfstring = '&amp;selectfmon='.$selectfmon;
-		}
-		else {
-			$getfstring = '';
-		}
 		
 		// construct the pagelinks
 		if($pixelpost_photonumb > $_SESSION['numimg_pp'])
@@ -575,7 +575,7 @@ if($_GET['view'] == "images")
 			$fs*=0.001;
     
 			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"".$cfgrow['thumbnailpath']."thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
-				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" />
+				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" ".(in_array($id, $_POST['moderate_image_boxes'])?' checked':'')."/>
 				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
 				<strong>#$id<br/>
 				$langs $admin_lang_imgedit_title</strong> $headline<br/>";
