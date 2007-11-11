@@ -14,7 +14,6 @@ $email_flag = 0;
 if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 {
 // token check
-	eval_addon_front_workspace('start_save_comment');
 	if ($cfgrow['token'] == 'T')
 	{
 		if (isset($_SESSION['token']) && ($_POST['token'] == $_SESSION['token']))
