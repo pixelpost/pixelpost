@@ -210,18 +210,22 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			}
 
 			// to the job now
-			if ($cmnt_moderate_permission =='yes')
-				$extra_message = "<b>$lang_message_moderating_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-				eval_addon_front_workspace('comment_passed');
+			if ($cmnt_moderate_permission =='yes')	$extra_message = "<b>$lang_message_moderating_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+			eval_addon_front_workspace('comment_passed');
+
 			$query = "INSERT INTO ".$pixelpost_db_prefix."comments(id,parent_id,datetime,ip,message,name,url,email,publish)
 		VALUES(NULL,'$parent_id','$datetime','$ip','$message','$name','$url','$email','$cmnt_publish_permission')";
-			$result = mysql_query($query);
-			eval_addon_front_workspace('comment_accepted');
-			// added by GeoS for sure that comment is saved (moved by ramin for bug fixing)
-			if (!mysql_error())
+
+			mysql_query($query) or die("MySQL error " . mysql_errno() . ": " . mysql_error());
+
+			// if we come here it means comment is in DB now and we can set flag enabling email notification
 			$email_flag = 1;
+
+			eval_addon_front_workspace('comment_accepted');
 		} // end if is not in the blacklist
-		else {
+		else
+		{
 			eval_addon_front_workspace('comment_blocked_banlist');
 			$extra_message = "<b>$lang_message_banned_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
@@ -263,9 +267,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 			$headers .= "Content-Transfer-Encoding: 8bit\n";
 
 			if ($comment_email!="")
-                {$headers .= "From: $comment_name  <$admin_email>\n";
-                 $headers .= "Reply-To: $comment_name <$comment_email>\n"; }
-            else $headers .= "From: PIXELPOST <$admin_email>\n";
+			{
+				$headers .= "From: $comment_name  <$admin_email>\n";
+				$headers .= "Reply-To: $comment_name <$comment_email>\n";
+			}
+			else $headers .= "From: PIXELPOST <$admin_email>\n";
 
 			$recipient_email = "admin <$admin_email>";
 		}
@@ -293,7 +299,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 
     // Sending notification
 		mail($recipient_email,$subject,$body,$headers);
-
 	}
 
 	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
