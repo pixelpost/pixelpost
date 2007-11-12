@@ -61,7 +61,7 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_G
 	  			$headline = pullout($headline);
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
 		
-				$body = pullout($body);
+				$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 				$body = stripslashes($body);
 				$body = strip_tags($body);
 				$body = htmlspecialchars($body,ENT_QUOTES);
@@ -81,18 +81,18 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && !isset($_GET['tag']) || isset($_G
   		
 				if ($alt_body == '') {
 		
-					$body = pullout($body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 					$body = stripslashes($body);
 					$body = strip_tags($body);
 					$body = htmlspecialchars($body,ENT_QUOTES);
 					$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 				} else {
 		
-					$body = pullout($alt_body);
-					$body = stripslashes($alt_body);
-					$body = strip_tags($alt_body);
-					$body = htmlspecialchars($alt_body,ENT_QUOTES);
-					$body = ereg_replace("\n","\n&lt;br /&gt;",$alt_body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($alt_body)) : pullout($alt_body);
+					$body = stripslashes($body);
+					$body = strip_tags($body);
+					$body = htmlspecialchars($body,ENT_QUOTES);
+					$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 				}
 	  		}
   		
@@ -191,9 +191,9 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag'])) {
   				$headline = pullout($headline);
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
 		
-				$body = pullout($body);
+				$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 				$body = stripslashes($body);
-				$body = strip_tags( $body);
+				$body = strip_tags($body);
 				$body = htmlspecialchars($body,ENT_QUOTES);
 				$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 		
@@ -211,18 +211,18 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag'])) {
   		
 				if ($alt_body == '') {
 		
-					$body = pullout($body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 					$body = stripslashes($body);
 					$body = strip_tags( $body);
 					$body = htmlspecialchars($body,ENT_QUOTES);
 					$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 				} else {
 		
-					$body = pullout($alt_body);
-					$body = stripslashes($alt_body);
-					$body = strip_tags( $alt_body);
-					$body = htmlspecialchars($alt_body,ENT_QUOTES);
-					$body = ereg_replace("\n","\n&lt;br /&gt;",$alt_body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($alt_body)) : pullout($alt_body);
+					$body = stripslashes($body);
+					$body = strip_tags($body);
+					$body = htmlspecialchars($body,ENT_QUOTES);
+					$body = ereg_replace("\n","\n&lt;br /&gt;",$body);
 				}
   			}
   		
@@ -430,9 +430,9 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_
   				$headline = pullout($headline);
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
 		
-				$body = pullout($body);
+				$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 				$body = stripslashes($body);
-				$body = strip_tags( $body);
+				$body = strip_tags($body);
 				$body = htmlspecialchars($body,ENT_QUOTES);
 				$body = ereg_replace("\n","\n<br />",$body);
 		
@@ -450,18 +450,18 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && !isset($_GET['tag']) || isset($_
   		
 				if ($alt_body == '') {
 		
-					$body = pullout($body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 					$body = stripslashes($body);
-					$body = strip_tags( $body);
+					$body = strip_tags($body);
 					$body = htmlspecialchars($body,ENT_QUOTES);
 					$body = ereg_replace("\n","\n<br />",$body);
 				} else {
 		
-					$body = pullout($alt_body);
-					$body = stripslashes($alt_body);
-					$body = strip_tags( $alt_body);
-					$body = htmlspecialchars($alt_body,ENT_QUOTES);
-					$body = ereg_replace("\n","\n<br />",$alt_body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($alt_body)) : pullout($alt_body);
+					$body = stripslashes($body);
+					$body = strip_tags($body);
+					$body = htmlspecialchars($body,ENT_QUOTES);
+					$body = ereg_replace("\n","\n<br />",$body);
 				}
   			}
 
@@ -580,7 +580,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
   				$headline = pullout($headline);
 				$headline = htmlspecialchars($headline,ENT_QUOTES);
 		
-				$body = pullout($body);
+				$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 				$body = stripslashes($body);
 				$body = strip_tags( $body);
 				$body = htmlspecialchars($body,ENT_QUOTES);
@@ -600,18 +600,18 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
   		
 				if ($alt_body == '') {
 		
-					$body = pullout($body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($body)) : pullout($body);
 					$body = stripslashes($body);
 					$body = strip_tags( $body);
 					$body = htmlspecialchars($body,ENT_QUOTES);
 					$body = ereg_replace("\n","\n<br />",$body);
 				} else {
 		
-					$body = pullout($alt_body);
-					$body = stripslashes($alt_body);
-					$body = strip_tags( $alt_body);
-					$body = htmlspecialchars($alt_body,ENT_QUOTES);
-					$body = ereg_replace("\n","\n<br />",$alt_body);
+					$body = ($cfgrow['markdown'] == 'T') ? markdown(pullout($alt_body)) : pullout($alt_body);
+					$body = stripslashes($body);
+					$body = strip_tags($body);
+					$body = htmlspecialchars($body,ENT_QUOTES);
+					$body = ereg_replace("\n","\n<br />",$body);
 				}
   			}
   		
