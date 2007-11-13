@@ -1,6 +1,8 @@
 // SVN file version:
 // $Id$
 
+flag = false;
+
 function flip(rid)
 {
     current=(document.getElementById(rid).style.display == 'none') ? 'block' : 'none';
@@ -31,14 +33,12 @@ function invertselection(form)
 
 function checkAll(form)
 {
+	flag = ((flag == false) ? true : false);
 	for (i = 0, n = form.elements.length; i < n; i++)
 	{
 		if(form.elements[i].type == "checkbox")
 		{	
-			if(form.elements[i].checked == true)
-				form.elements[i].checked = false;
-			else
-				form.elements[i].checked = true;
+				form.elements[i].checked = flag;
 		}
 	}
 }

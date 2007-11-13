@@ -470,22 +470,18 @@ if($_GET['view'] == "images")
 		}
 	
 		echo "<div class=\"jcaption\"><strong><span id=\"photonumb\">$pixelpost_photonumb</span>$admin_lang_imgedit_title2".$_SESSION['numimg_pp']."$admin_lang_imgedit_title3$currntpg$admin_lang_imgedit_title4$num_img_pages</strong>
-			   		 </div>
-	           <div class=\"content\">
-	           <form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images&amp;page=$page$getfstring\">
-	           <input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
-						 <input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
-		 				 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"
-						   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=massdelete'
-						   return confirm('Delete all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')\"/>
-						 <input class=\"cmnt-buttons\" type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
-						   document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masspublish'
-						   return confirm('Publish all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')\"/>
-						   <br/><br/>
-	           <select name=\"mass-edit-cat\" id=\"mass-edit-cat\" onchange=\"document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masscatedit&amp;cmd='+this.options[this.selectedIndex].value; \" >\n
-	           <option value=\"\">$admin_lang_imgedit_mass_1</option> \n
-	           <option value=\"\"></option> \n
-	           <option value=\"\">--- $admin_lang_imgedit_mass_2  ---</option> \n";
+		</div>
+		<div class=\"content\">
+		<form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images&amp;page=$page$getfstring\">
+			<input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
+			<input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
+			<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"return (confirm('Delete all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')) ? document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=massdelete' : false;\"/>
+			<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"return (confirm('Publish all selected images? \\n  \'Cancel\' to stop, \'OK\' to publish.')) ? document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masspublish' : false;\"/>
+			<br/><br/>
+			<select name=\"mass-edit-cat\" id=\"mass-edit-cat\" onchange=\"document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masscatedit&amp;cmd='+this.options[this.selectedIndex].value; \" >\n
+			<option value=\"\">$admin_lang_imgedit_mass_1</option> \n
+			<option value=\"\"></option> \n
+			<option value=\"\">--- $admin_lang_imgedit_mass_2  ---</option> \n";
 	
 		$query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by name");
 	
