@@ -165,6 +165,7 @@ echo "
     $ref_biglist = "";
     foreach($referer as $value) {
 	    if($value != "") {
+	    	$value=mysql_real_escape_string($value);
    	    	$row = sql_array("select count(*) as count from ".$pixelpost_db_prefix."visitors where (referer='$value') AND (datetime>'$from_date')");
        		$refnumb = $row['count'];
 	    	$ref_biglist .= "$refnumb@$value!";
