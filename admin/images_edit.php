@@ -19,14 +19,15 @@ if($_GET['view'] == "images")
 		// Since the latest image is displayed first we need to sort the idz because the lowest id have to be
 		// published first.
 		sort($idz);
-		$minute_offset = ceil(count($idz)/60);
+		$minute_offset = 1;
 		$current_hour = date("H");
 		$current_minutes = date("i");
-		$current_seconds = date("S");
+		$current_seconds = date("s");
+		$ids = count($idz) - 1;
  		$query = "UPDATE ".$pixelpost_db_prefix."pixelpost SET datetime = ";
  		for ($i=0; $i < count($idz); $i++)
  		{
- 			$datetimestamp = date("Y-m-d H:i:s",mktime($current_hour,$current_minutes-$minute_offset,$current_seconds+$i,date("m"),date("d"),date("Y")));
+ 			$datetimestamp = gmdate("Y-m-d H:i:s", mktime($current_hour, $current_minutes-($minute_offset*($ids-$i)), $current_seconds, date("m"), date("d"), date("Y"))+(3600 * $tz));
 			$finalquery=$query."'".$datetimestamp."' WHERE id = '$idz[$i]'";
  			$finalquery  = sql_query($finalquery);
  		}
