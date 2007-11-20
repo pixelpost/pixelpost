@@ -194,13 +194,6 @@ while(list($id, $name, $alt_name) = mysql_fetch_row($query))
 $category_Link_List_paged .= "</ul>";
 
 
-// tags of Category List Of Links (default version)
-$tpl = str_replace("<CATEGORY_LINKS_AS_LIST>",$category_Link_List,$tpl);
-
-// paged version tages
-$tpl = str_replace("<CATEGORY_LINKS_AS_LIST_PAGED>",$category_Link_List_paged,$tpl);
-
-
 //----------- Monthly Archive Menu and List
 if (isset($_GET['pagenum'])&&$_GET['pagenum'] != "")
 {
@@ -273,10 +266,6 @@ else
 	$archive_select .= "</select>";
 	$archive_select_links .= "</ul>";
 } // end else
-
-// bulid the new tag
-$tpl = str_replace("<BROWSE_MONTHLY_ARCHIVE_PAGED>",$archive_select,$tpl);
-$tpl = str_replace("<BROWSE_MONTHLY_ARCHIVE_AS_LINK_PAGED>",$archive_select_links,$tpl);
 
 //--------------- check if it should be the browse page
 if(isset($_GET['x'])&&$_GET['x'] == "browse")
@@ -575,17 +564,18 @@ while(list($id,$name,$alt_name) = mysql_fetch_row($query))
 
 // finilize the tag
 $browse_select .= "</select>";
-$tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
 /* TAGS support */
-if(!isset($_GET['x']) || (isset($_GET['x']) && $_GET['x']=='browse')){
-// only do this when we're on the browse or image page.
-	$tags_output = '<div id="tag_cloud">';
-	$tags_paged_output = $tags_output;
-	$tags_output_reversed = $tags_output;
-	$tags_paged_output_reversed = $tags_output;
+$tags_output = '<div id="tag_cloud">';
+$tags_output_reversed = $tags_output;
+$tags_paged_output = $tags_output;
+$tags_paged_output_reversed = $tags_output;
+$tags_output_no_num = $tags_output;
+$tags_output_reversed_no_num = $tags_output;
+$tags_paged_output_no_num = $tags_output;
+$tags_paged_output_reversed_no_num = $tags_output;
 
-	$default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
+$default_language_abr = strtolower($PP_supp_lang[$cfgrow['langfile']][0]);
 
 if($language_abr == $default_language_abr)	$queryr = "SELECT COUNT(*) AS max
 		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t
@@ -617,23 +607,35 @@ else	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as 
 
 $tags = mysql_query($queryr);
 
-while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags)){
+while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
+{
 	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
 	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
+	$tags_output_no_num .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.'</a> ';
+	$tags_paged_output_no_num .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.'</a> ';
 	$rank_reversed = $rank;
-	if ($rank[0]==1){
+	if ($rank[0]==1)
+	{
 		$rank_reversed[0]=0; //give the most important tag the lessest weight
-	} else {
+	}
+	else
+	{
 		$rank_reversed[2]=10-$rank[2];
 	}
 	$tags_output_reversed .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank_reversed[0].$rank_reversed[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
 	$tags_paged_output_reversed .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank_reversed[0].$rank_reversed[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
+	$tags_output_reversed_no_num .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank_reversed[0].$rank_reversed[2].'">'.$tag.'</a> ';
+	$tags_paged_output_reversed_no_num .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank_reversed[0].$rank_reversed[2].'">'.$tag.'</a> ';
 }
 
 $tags_output .= '</div>';
 $tags_paged_output .= '</div>';
 $tags_output_reversed .= '</div>';
 $tags_paged_output_reversed .= '</div>';
+$tags_output_no_num .= '</div>';
+$tags_paged_output_no_num .= '</div>';
+$tags_output_reversed_no_num .= '</div>';
+$tags_paged_output_reversed_no_num .= '</div>';
 
 if ($language_abr == $default_language_abr)	$queryr = "SELECT tag
 		FROM {$pixelpost_db_prefix}tags
@@ -650,14 +652,17 @@ $tags_img = "";
 $tags_paged_img = "";
 $tags_keywords ="";
 
-if (@mysql_num_rows($tags)>0){
+if (@mysql_num_rows($tags)>0)
+{
 	while(list($tag)  = mysql_fetch_array($tags))
 	{
 		$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
 		$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';
 		$tags_keywords .= $tag.', ';
 	}
-} else {
+}
+else
+{
 	$tags_img =NULL;
 	$tags_paged_img =NULL;
 	$tags_keywords = NULL;
@@ -680,7 +685,14 @@ $tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output_reversed
 $tpl = str_replace("<TAG_IMG_LIST>",$tags_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_PAGED>",$tags_paged_img,$tpl); // list of tags for showed image
 $tpl = str_replace("<TAG_IMG_LIST_KEYWORDS>",$tags_keywords,$tpl); // list of tags for meta keywords
-} // end do this only on the browse or image page
+
+//same tags as at the top but without image number
+$tpl = str_replace("<TAG_LINKS_AS_LIST_NO_NUM>",$tags_output_no_num,$tpl); //thumbnails in this page
+$tpl = str_replace("<TAG_LINKS_AS_LIST_PAGED_NO_NUM>",$tags_paged_output_no_num,$tpl); //thumbnails in this page
+$tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST_NO_NUM>",$tags_output_reversed_no_num,$tpl); //thumbnails in this page
+$tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST_PAGED_NO_NUM>",$tags_paged_output_reversed_no_num,$tpl); //thumbnails in this page
+
+
 //----------------- Build the additional new tages
 //-- If you use paged archive
 if (isset($pagenum))
@@ -706,5 +718,15 @@ else
 }// end else
 
 $tpl = str_replace("<LINK_TO_PAGED_ARCHIVE>",'<a href="index.php?x=browse&amp;pagenum=1">'.$lang_paged_archive.'</a>',$tpl);
+$tpl = str_replace("<BROWSE_CATEGORIES_PAGED>",$browse_select,$tpl); //Browse menu for paged archive
 
+// tags of Category List Of Links (default version)
+$tpl = str_replace("<CATEGORY_LINKS_AS_LIST>",$category_Link_List,$tpl);
+
+// paged version tages
+$tpl = str_replace("<CATEGORY_LINKS_AS_LIST_PAGED>",$category_Link_List_paged,$tpl);
+
+// bulid the new tag
+$tpl = str_replace("<BROWSE_MONTHLY_ARCHIVE_PAGED>",$archive_select,$tpl);
+$tpl = str_replace("<BROWSE_MONTHLY_ARCHIVE_AS_LINK_PAGED>",$archive_select_links,$tpl);
 ?>
