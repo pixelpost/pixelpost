@@ -149,7 +149,7 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag'])) {
     	$output  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		$output .= "<rss version=\"2.0\">\n";
 		$output .= "<channel>\n";
-		$output .= "<title>".$feed_title."</title>\n";
+		$output .= "<title>".$feed_title." (".ucfirst($_GET['tag']).")</title>\n";
 		$output .= "<link>".$cfgrow['siteurl']."</link>\n";
 		$output .= "<description>".$feed_description."</description>\n";
 		$output .= "<docs>http://blogs.law.harvard.edu/tech/rss</docs>\n";
@@ -551,7 +551,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag'])) {
 	
 		$atom  = "<?xml version='1.0' encoding='UTF-8'?>\n";
 		$atom .= "<feed xml:lang='en' xmlns='http://www.w3.org/2005/Atom'>\n";
-		$atom .= "<title>".$feed_title."</title>\n";
+		$atom .= "<title>".$feed_title." (".ucfirst($_GET['tag']).")</title>\n";
 		$atom .= "<subtitle>".$feed_description."</subtitle>\n";
 		$atom .= "<link rel='alternate' type='text/html' href='".$cfgrow['siteurl']."' title='".$pixelpost_site_title."' />\n";
 		$atom .= "<link rel='self' type='application/atom+xml' href='".$cfgrow['siteurl']."index.php?x=atom&amp;tag=".$tag."' title='".$pixelpost_site_title."' />\n";
