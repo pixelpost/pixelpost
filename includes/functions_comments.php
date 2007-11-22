@@ -300,7 +300,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		mail($recipient_email,$subject,$body,$headers);
 	}
 
-	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
+	$comment_redirect_url = (strlen($_SERVER['HTTP_REFERER']) > 0 && eregi($cfgrow['siteurl'],$_SERVER['HTTP_REFERER']) && eregi("popup=comment",$_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : $link_to_comment;
 
 	if($_POST['withthankyou'] == 'no')	header('Location: ' . $comment_redirect_url . '#comments');
 ?>
