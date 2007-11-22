@@ -802,6 +802,8 @@ $tpl = str_replace("<ATOM_AUTODETECT>",$atom_url,$tpl); // keeping this "old" ta
 $atom_auto = "<link rel=\"service.feed\" type=\"application/x.atom+xml\" title=\"".$feed_title." - ATOM Feed\" href=\"".$cfgrow["siteurl"]."index.php?x=atom\" />";
 $tpl = ereg_replace("<ATOM_AUTODETECT_LINK>",$atom_auto,$tpl);
 $tpl = ereg_replace("<SITE_ATOM_LINK>","<a href='./index.php?x=atom'>ATOM feed</a>",$tpl);
+if (isset($_GET['tag']) && $_GET['tag'] != '') $tpl = ereg_replace("<TAG_ATOM_LINK>","<a href='./index.php?x=atom&amp;tag=".$_GET['tag']."'>ATOM feed for &quot;".$_GET['tag']."&quot;</a>",$tpl);
+else $tpl = ereg_replace("<TAG_ATOM_LINK>","",$tpl);
 
 // Comment ATOM Tags
 $comment_atom_auto = "<link rel=\"service.feed\" type=\"application/x.atom+xml\" title=\"".$feed_title." - Comment ATOM Feed\" href=\"".$cfgrow["siteurl"]."index.php?x=comment_atom\" />";
@@ -812,6 +814,8 @@ $tpl = ereg_replace("<SITE_COMMENT_ATOM_LINK>","<a href='./index.php?x=comment_a
 $rss_auto = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"".$feed_title." - RSS Feed\" href=\"".$cfgrow["siteurl"]."index.php?x=rss\" />";
 $tpl = ereg_replace("<RSS_AUTODETECT_LINK>",$rss_auto,$tpl);
 $tpl = ereg_replace("<SITE_RSS_LINK>","<a href='./index.php?x=rss'>RSS 2.0</a>",$tpl);
+if (isset($_GET['tag']) && $_GET['tag'] != '') $tpl = ereg_replace("<TAG_RSS_LINK>","<a href='./index.php?x=rss&amp;tag=".$_GET['tag']."'>RSS 2.0 for &quot;".$_GET['tag']."&quot;</a>",$tpl);
+else $tpl = ereg_replace("<TAG_RSS_LINK>","",$tpl);
 
 // Comment RSS Tags
 $comment_rss_auto = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"".$feed_title." - Comment RSS Feed\" href=\"".$cfgrow["siteurl"]."index.php?x=comment_rss\" />";
