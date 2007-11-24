@@ -20,6 +20,7 @@ $pat2 = '/([^a-zA-Z 0-9_-]+)/';
 $tags_org = $_GET['tag'];
 
 if (($_GET['tag'] = @preg_replace( $pat1, '_', $_GET['tag']))===NULL) $_GET['tag'] = preg_replace( $pat2, '_', $tags_org);
+if($_GET['tag']=='')	unset($_GET['tag']);
 
 // ##########################################################################################//
 // RSS 2.0 FEED
@@ -191,6 +192,7 @@ if(isset($_GET['x']) && $_GET['x'] == "rss" && isset($_GET['tag']))
 		FROM `".$pixelpost_db_prefix."pixelpost`
 			INNER JOIN `".$pixelpost_db_prefix."tags` ON `".$pixelpost_db_prefix."tags`.`img_id` = `".$pixelpost_db_prefix."pixelpost`.`id`
 		WHERE ((`".$pixelpost_db_prefix."tags`.`tag`) = '".$tag."' OR (`".$pixelpost_db_prefix."tags`.`alt_tag`) = '".$tag."') AND (`datetime`<='$cdate')
+		GROUP BY `".$pixelpost_db_prefix."pixelpost`.`id`
 		ORDER BY `datetime` DESC
 		LIMIT ".$feeditems);
 
@@ -595,6 +597,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag']))
 		FROM `".$pixelpost_db_prefix."pixelpost`
 			INNER JOIN `".$pixelpost_db_prefix."tags` ON `".$pixelpost_db_prefix."tags`.`img_id` = `".$pixelpost_db_prefix."pixelpost`.`id`
 		WHERE ((`".$pixelpost_db_prefix."tags`.`tag`) = '".$tag."' OR (`".$pixelpost_db_prefix."tags`.`alt_tag`) = '".$tag."') AND (`datetime`<='$cdate')
+		GROUP BY `".$pixelpost_db_prefix."pixelpost`.`id`
 		ORDER BY `datetime` DESC
 		LIMIT ".$feeditems);
 
