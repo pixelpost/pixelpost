@@ -11,13 +11,13 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 if($_GET['view'] == "comments") {
  // delete a comment
     if($_GET['action'] == "delete") {
-	    $delid = $_GET['delid'];
+	    $delid = (int) $_GET['delid'];
 	    $query = sql_query("DELETE FROM ".$pixelpost_db_prefix."comments WHERE id='$delid'");
 	    echo "<div class='jcaption'>$admin_lang_cmnt_deleted </div>";
 	    }
  // edit a comment
  		if($_GET['action'] == "edit") {
- 			$editid = $_GET['editid'];
+ 			$editid = (int) $_GET['editid'];
  			$message = $_POST['message'.$editid];
  			// added by schonhose to escape characters
  			$message = nl2br(clean_comment($message));
