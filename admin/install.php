@@ -81,7 +81,6 @@ if(isset($_POST['dlconfig'])) {
 <title>Pixelpost Installation</title>
 <link rel="stylesheet" href="admin_index.css" type="text/css" />
 <link rel="stylesheet" href="install/install.css" type="text/css" />
-
 </head>
 
 <body>
@@ -106,7 +105,7 @@ if(isset($_POST['dlconfig'])) {
 
 <div id="wrapper">
 
-<div id="header">PIXELPOST 1.7</div>
+<div id="header">PIXELPOST <?php echo PP_VERSION; ?></div>
  
 <?php /* Start of fresh install */ if($installed_version == 0) { ?>
 
