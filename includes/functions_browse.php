@@ -53,7 +53,6 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 									$where
 									GROUP BY t2.id
 									ORDER BY ".$cfgrow['display_sort_by']." ".$display_order;
-									//ORDER BY datetime, t2.id ".$image_sorting;
 		$query = mysql_query($querystr);
 	}
 	elseif(isset($_GET['tag']) && eregi("[a-zA-Z 0-9_]+",$_GET['tag']))
