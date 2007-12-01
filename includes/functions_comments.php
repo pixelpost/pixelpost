@@ -84,8 +84,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	if(strpos($url,'https://') === false && strpos($url,'http://') === false && strlen($url) > 0)	$url = "http://".$url;
 	$url = clean_comment($url);
 
-	$blacklists = array('multi.surbl.org','multi.uribl.com','sbl-xbl.spamhaus.org','multihop.dsbl.org','dnsbl.sorbs.net','spam.dnsbl.sorbs.net');
-	$spam_domains_found=0;
 	//get site names found in body of comment.
 	$regex_url = "/(http:\/\/|https:\/\/|ftp:\/\/|www\.)([^\/\"<\s]*)/im";
 	$unwanted_chars="/[$%^&*!~@#+=?<>]/";
@@ -97,35 +95,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 		header("Status: 404 File Not Found!");
    		echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 04).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    		exit;
-	} else {
-		// add the url to the $mk_regex_array.
-		preg_match_all($regex_url, $url, $extra_mk_regex_array);
-		$domains_array=array_merge($mk_regex_array[2],$extra_mk_regex_array[2]);
-  		for( $cnt=0; $cnt < count($domains_array); $cnt++ ) {
-  			$domain_to_test = rtrim($domains_array[$cnt],"\\");
-  			$domain_to_test = preg_replace($unwanted_chars, "", $domain_to_test);
-  			if (strlen($domain_to_test) > 3){
-  				for( $cnt_blacklists=0; $cnt_blacklists < count($blacklists); $cnt_blacklists++ ) {
-  					$spam_domain_to_test = $domain_to_test . "." . $blacklists[$cnt_blacklists];
-  					if (gethostbyname("completebogus")=="completebogus"){
-						$domain_check = $spam_domain_to_test;
-					}else {
-						$domain_check = gethostbyname("completebogus");
-					}
-  					if( !strstr(gethostbyname($spam_domain_to_test),$domain_check)) {
-  						$spam_domains_found++;
-  					}
-  					$spam_domain_to_test=null;
-  				}
-  			}
-  		}
-    	if ($spam_domains_found>0){
-    		eval_addon_front_workspace('comment_blocked_urllisted');
-  			header("HTTP/1.0 404 Not Found");
-			header("Status: 404 File Not Found!");
-   			echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 05).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
-   			exit;
-  		}
 	}
 
 // check if current image has got enabled comments
