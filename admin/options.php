@@ -361,24 +361,37 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		<select name='new_lang'>
 		<option value='".$cfgrow['langfile']."'>".$cfgrow['langfile']."</option>
 		";
-		// go through template folder
+		// go through language folder
 		$dir = "../language";
-
-		if($handle = opendir($dir)) {
-			while (false !== ($file = readdir($handle))) {
-					if(is_file('../language/'.$file) && ($file != "index.html")) {
+		
+		$langFiles = array(); 
+         
+        if($handle = opendir($dir)) { 
+            while(false !== ($file = readdir($handle))) {
+			
+				if(is_file('../language/'.$file) && ($file != "index.html")) {
+				
 					$file = ereg_replace("lang-","",$file);
 					$file = ereg_replace(".php","",$file);
-		// check that admin-language-files are not listed
+					// check that admin-language-files are not listed
 					$admin_pre = substr("$file",0,6);
-					if ($admin_pre != "admin-"){
-						if ($file !== $cfgrow['langfile']) {
-							echo "<option value='$file'>$file</option>";}
+					if($admin_pre != "admin-"){
+						if($file !== $cfgrow['langfile']) {
+							$langFiles[] = $file; 
+						}
 					}
 				}
 			}
-			closedir($handle);
-			}
+            
+            closedir($handle); 
+        } 
+         
+        sort($langFiles); 
+         
+        foreach($langFiles as $val){ 
+            echo "<option value='$val'>$val</option>"; 
+        }
+		
 		echo "</select><p />";
 		// Alternative language settings
 		echo "$admin_lang_optn_alt_lang<br />
@@ -390,23 +403,37 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		} else {
 			echo "<option value='Off'>".ucfirst($admin_lang_optn_alt_lang_no)."</option>";
 		}
-		// go through template folder
+		// go through language folder
 		$dir = "../language";
-		if($handle = opendir($dir)) {
-			while (false !== ($file = readdir($handle))) {
-					if(is_file('../language/'.$file) && ($file != "index.html")) {
+			
+		$altLangFiles = array(); 
+         
+        if($handle = opendir($dir)) { 
+            while(false !== ($file = readdir($handle))) {
+			
+				if(is_file('../language/'.$file) && ($file != "index.html")) {
+				
 					$file = ereg_replace("lang-","",$file);
 					$file = ereg_replace(".php","",$file);
-			// check that admin-language-files are not listed
+					// check that admin-language-files are not listed
 					$admin_pre = substr("$file",0,6);
-					if ($admin_pre != "admin-"){
-						if ($file !== $cfgrow['altlangfile']) {
-						echo "<option value='$file'>$file</option>";}
+					if($admin_pre != "admin-"){
+						if($file !== $cfgrow['langfile']) {
+							$altLangFiles[] = $file; 
 						}
 					}
 				}
-			closedir($handle);
 			}
+			
+            closedir($handle); 
+        } 
+         
+        sort($altLangFiles); 
+         
+        foreach($altLangFiles as $val){ 
+            echo "<option value='$val'>$val</option>"; 
+        }
+        
 		echo "
 			</select></div>
 			
@@ -419,23 +446,33 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		if (!isset($cfgrow['admin_langfile'])) $cfgrow['admin_langfile'] = $cfgrow['langfile'];
 		echo "<option value='".$cfgrow['admin_langfile']."'>".$cfgrow['admin_langfile']."</option>
 		";
-		// go through template folder
+		// go through language folder
 		$dir = "../language";
-
-		if($handle = opendir($dir)) {
+		
+		$adminLangFiles = array(); 
+         
+        if($handle = opendir($dir)) { 
 			while (false !== ($file = readdir($handle))) {
+			
 				$admin_pre = substr("$file",0,6);
 				// only admin-language-files are listed
 				if(is_file('../language/'.$file) && ($file != "index.html") && $admin_pre == "admin-") {
 					$file = ereg_replace("admin-lang-","",$file);
 					$file = ereg_replace(".php","",$file);
 					if ($file !== $cfgrow['admin_langfile']) {
-						echo "<option value='$file'>$file</option>";
+						$adminLangFiles[] = $file;
 					}
 				}
 			}
-			closedir($handle);
-		}
+			
+            closedir($handle); 
+        } 
+         
+        sort($adminLangFiles); 
+         
+        foreach($adminLangFiles as $val){ 
+            echo "<option value='$val'>$val</option>"; 
+        }
 			
 		echo "</select></div>
 		
@@ -796,14 +833,22 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 		";
 		// go through template folder
 		$dir = "../templates";
-		if($handle = opendir($dir)) {
-			while (false !== ($file = readdir($handle))) {
-				if($file != "." && $file != ".." && $file != $cfgrow['template'] && is_dir($dir.'/'.$file)) {
-					echo "<option value='$file'>$file</option>";
-					}
-				}
-			closedir($handle);
-			}
+		$tmplFiles = array(); 
+         
+        if($handle = opendir($dir)) { 
+            while (false !== ($file = readdir($handle))) { 
+                if($file != "." && $file != ".." && $file != "splash_page.html" && $file != "index.html" && $file != $cfgrow['template']) { 
+                    $tmplFiles[] = $file; 
+                } 
+            } 
+            closedir($handle); 
+        } 
+         
+        sort($tmplFiles); 
+         
+        foreach($tmplFiles as $val){ 
+            echo "<option value='$val'>$val</option>"; 
+        }
 		echo "
 		</select>
 		<input type='submit' value='$admin_lang_optn_update' />
