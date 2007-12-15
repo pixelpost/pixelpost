@@ -170,7 +170,8 @@ $PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
 					  'japanese'=>array('JP','Japanese'),
 					  'hungarian'=>array('HU','Magyar'),
 					  'romanian'=>array('RO','Romana'),
-					  'russian'=>array('RU','Russian')
+					  'russian'=>array('RU','Russian'),
+					  'czech'=>array('CS','Česky')
 					 );
 
 /**
