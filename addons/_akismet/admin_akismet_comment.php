@@ -116,59 +116,61 @@ function get_akismet_pages() {
 
 function get_akismet_style() {
  	global $pixelpost_db_prefix;
- 	$query = mysql_query("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='spm' ");
-	$akismet_count = mysql_fetch_array($query);
-	echo '<style  type="text/css">
-	.akismet-spam-comment {background-color:#eca189;color:#666;}
-	</style><script type="text/javascript" src="../addons/_akismet/libraries/domFunction.js"></script>
-	<script type="text/javascript" charset="utf-8">
-	var ElementReady;
-		
-	var foobar = new domFunction(function()
-	{	
-	// Script to make sure the function "getElementById()" will work on ALL browsers
-	// Copied from: http://webbugtrack.blogspot.com/2007/08/bug-152-getelementbyid-returns.html
-	if(ElementReady != true){
-		//use browser sniffing to determine if IE or Opera (ugly, but required)
-		var isOpera, isIE = false;
-		if(typeof(window.opera) != \'undefined\'){isOpera = true;}
-		if(!isOpera && navigator.userAgent.indexOf(\'Internet Explorer\')){isIE = true};
-
-		//fix both IE and Opera (adjust when they implement this method properly)
-		if(isOpera || isIE){
-		  document.nativeGetElementById = document.getElementById;
-		  //redefine it!
-		  document.getElementById = function(id){
-		    var elem = document.nativeGetElementById(id);
-		    if(elem){
-		      //verify it is a valid match!
-		      if(elem.id == id){
-		        //valid match!
-		        return elem;
-		      } else {
-		        //not a valid match!
-		        //start at one, because we know the first match, is wrong!
-		        for(var i=1;i<document.all[id].length;i++){
-		          if(document.all[id][i].id == id){
-		            return document.all[id][i];
-		          }
-		        }
-		      }
-		    }
-		    return null;
-		  };
-		}
-		ElementReady = true;
-	}	
-	// The actual code the makes it work:
-		var akismet = document.getElementById(\'commentsAkismet\');
-		var akismet_total = \''.$akismet_count['count'].'\';
-		if(akismet){
-			akismet.innerHTML = akismet.innerHTML + \' (\' + akismet_total + \')\';
-		}
-	}); // End Dom Ready
-	</script>
-	';
+ 	if($_GET['view'] == "comments") {
+ 		$query = mysql_query("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='spm' ");
+		$akismet_count = mysql_fetch_array($query);
+		echo '<style  type="text/css">
+		.akismet-spam-comment {background-color:#eca189;color:#666;}
+		</style><script type="text/javascript" src="../addons/_akismet/libraries/domFunction.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		var ElementReady;
+			
+		var foobar = new domFunction(function()
+		{	
+		// Script to make sure the function "getElementById()" will work on ALL browsers
+		// Copied from: http://webbugtrack.blogspot.com/2007/08/bug-152-getelementbyid-returns.html
+		if(ElementReady != true){
+			//use browser sniffing to determine if IE or Opera (ugly, but required)
+			var isOpera, isIE = false;
+			if(typeof(window.opera) != \'undefined\'){isOpera = true;}
+			if(!isOpera && navigator.userAgent.indexOf(\'Internet Explorer\')){isIE = true};
+  	
+			//fix both IE and Opera (adjust when they implement this method properly)
+			if(isOpera || isIE){
+			  document.nativeGetElementById = document.getElementById;
+			  //redefine it!
+			  document.getElementById = function(id){
+			    var elem = document.nativeGetElementById(id);
+			    if(elem){
+			      //verify it is a valid match!
+			      if(elem.id == id){
+			        //valid match!
+			        return elem;
+			      } else {
+			        //not a valid match!
+			        //start at one, because we know the first match, is wrong!
+			        for(var i=1;i<document.all[id].length;i++){
+			          if(document.all[id][i].id == id){
+			            return document.all[id][i];
+			          }
+			        }
+			      }
+			    }
+			    return null;
+			  };
+			}
+			ElementReady = true;
+		}	
+		// The actual code the makes it work:
+			var akismet = document.getElementById(\'commentsAkismet\');
+			var akismet_total = \''.$akismet_count['count'].'\';
+			if(akismet){
+				akismet.innerHTML = akismet.innerHTML + \' (\' + akismet_total + \')\';
+			}
+		}); // End Dom Ready
+		</script>
+		';
+	}
 }
 
 
