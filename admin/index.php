@@ -66,7 +66,7 @@ if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
 require("../includes/pixelpost.php");
 require("../includes/functions.php");
 // Pixelpost Version
-$version = "MS43LjAgKEJldHRlciB0aGFuIEV2ZXIpIC0gTm92ZW1iZXIgMjAwNw==";
+$version = "MS43LjAgKEJldHRlciB0aGFuIEV2ZXIpIC0gSmFudWFyeSAyMDA4";
 
 $pixelpost_prefix_used = $pixelpost_db_prefix;
 start_mysql('../includes/pixelpost.php','admin');
