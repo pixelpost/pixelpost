@@ -660,13 +660,13 @@ function add_new_addons_2table($dir)
 									{
 										switch (strtolower($addontype)){
 											case "admin":
-												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'off', '".strtolower($addontype)."')";
 												break;	
 											case "front":
-												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'off', '".strtolower($addontype)."')";
 												break;	
 											default:
-												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal')";
+												$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'off', 'normal')";
 												break; 	
 										}
 										mysql_query( $query);
@@ -690,13 +690,13 @@ function add_new_addons_2table($dir)
 					{
 						switch (strtolower($addontype)){
 							case "admin":
-								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'off', '".strtolower($addontype)."')";
 								break;	
 							case "front":
-								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'on', '".strtolower($addontype)."')";
+								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename',  'off', '".strtolower($addontype)."')";
 								break;	
 							default:
-								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'on', 'normal')";
+								$query = "INSERT INTO {$pixelpost_db_prefix}addons VALUES ( NULL, '$filename', 'off', 'normal')";
 								break; 	
 						}
 						mysql_query( $query);

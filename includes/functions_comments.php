@@ -176,11 +176,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 				$cmnt_publish_permission = 'no';
 				$cmnt_moderate_permission ='yes';
 			}
-
+			eval_addon_front_workspace('comment_passed');
 			// to the job now
 			if ($cmnt_moderate_permission =='yes')	$extra_message = "<b>$lang_message_moderating_comment</b><p />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-			eval_addon_front_workspace('comment_passed');
 
 			$query = "INSERT INTO ".$pixelpost_db_prefix."comments(id,parent_id,datetime,ip,message,name,url,email,publish)
 		VALUES(NULL,'$parent_id','$datetime','$ip','$message','$name','$url','$email','$cmnt_publish_permission')";

@@ -926,6 +926,8 @@ function activatePxlpstAddons($prefix) {
 	// list of default PP addons:
 	$default_addons = array('_akismet/admin_akismet_comment',
 							'_akismet/front_akismet_comment',
+							'_defensio/admin_defensio',
+							'_defensio/front_defensio',
 							'admin_12CropImage',
 							'admin_ping',
 							'admin_update_exif',
@@ -963,7 +965,7 @@ function activatePxlpstAddons($prefix) {
 		$create_status['tpa_disabled_04'] = "</ul>$lang_dsb_addon_04<br />$lang_dsb_addon_04_1";
 		$cssClass = "statusmsg";
 
-		// Remove lines bellow if statment bellow is uncommented
+		// Remove lines below if statment below is uncommented
 		$status = createStatusMsg($create_status, 'statusmsg');
 
 		echo $status;
