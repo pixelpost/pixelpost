@@ -943,7 +943,7 @@ function activatePxlpstAddons($prefix) {
 
 	// we can get a list of disabled third party addons here:
 	$result   = mysql_query("SELECT `addon_name` FROM `{$prefix}addons` where `status_backup` = 'on'");
-	$num_rows = mysql_num_rows($result);
+	$num_rows = @mysql_num_rows($result);
 
 	// cleanup temp field
 	mysql_query("ALTER TABLE `{$prefix}addons` DROP `status_backup`");
