@@ -1,0 +1,91 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+  <title>Pixelpost | GettingStarted17 / Upgrade</title>
+  <link rel='stylesheet' href='http://www.pixelpost.org/docs/pub/skins/print/print.css' type='text/css' />
+  <!--HTMLHeader--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code.escaped { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border:2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  table.vert td.markup1 { border-bottom:1px solid #ccf; }
+  table.horiz td.markup1 { width:23em; border-right:1px solid #ccf; }
+  table.markup caption { text-align:left; }
+  div.faq p, div.faq pre { margin-left:2em; }
+  div.faq p.question { margin:1em 0 0.75em 0; font-weight:bold; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><link rel='alternate' title='Pixelpost RSS Feed'
+      href='http://www.pixelpost.org/docs/Main/AllRecentChanges?action=rss'
+      type='application/rss+xml' />
+    <meta name='robots' content='noindex,nofollow' />
+
+</head>
+<body>
+  <div id='printhead'>
+    <h3>From Pixelpost</h3>
+    <h1 class='pagename'>GettingStarted: Upgrade</h1>
+  </div>
+<!--PageText-->
+<div id='wikitext'>
+<h2>Upgrade</h2>
+<p>Upgrading to the latest version of Pixelpost is now smooth and easy with the new install assistant. It is self-explanatory and is done within one minute.<br />It works with all Pixelpost installations, no matter which version you are using. 
+</p>
+<p class='vspace'>Thanks to our team member Dave for all of his great work on this! (Sorry, but this must be said)
+</p>
+<div class='vspace'></div><h2>How do I Upgrade?</h2>
+<ol><li>First, make a backup of your actual Pixelpost installation:
+<ul><li>download all the files on your server and store them in a cool and dry place.
+</li><li>go into your MySQL Administration, locate your Pixelpost tables and find the button "export".<br /><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/mysqladmin.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/mysqladmin_th.gif' alt='MySqlAdmin' title='MySqlAdmin' /></a> &lt;- See the screenshot for the recommended settings and save the sql file.
+</li></ul></li><li>Download Pixelpost by clicking on the "Download" link located on our home page.
+</li><li>Unzip the Pixelpost package and upload it to your server.
+<ul><li><strong>Don't delete the old Pixelpost files, just overwrite them.</strong> 
+</li><li>Make sure that the file pixelpost.php is still within the includes folder and the correct database login is there.
+</li><li><strong>Open the addons folder and delete the following Addon files in the root addons folder:</strong>
+<ul><li>admin_akismet_comment.php
+</li><li>front_akismet_comment.php<br /><strong>(they moved to the addons/_akismet folder where they must not be deleted!)</strong>
+</li><li>referer_spam.php<br />(this isn't used anymore)
+</li></ul></li></ul></li><li>Open your browser and go to the following address:<br /><strong>www.yourdomain.com/(photoblog_foldername)/admin/install.php</strong><br /><span  style='color: #aaaaaa;'><strong><em>Tip:</strong> If you see the "Installation" screen instead of the "Upgrade" screen, the configuration file <strong>pixelpost.php</strong> may have been damaged or removed. Get it from your files backup, check the database login and re-upload it into the "includes" folder.</em></span>
+</li><li>Follow the instructions provided on screen and enjoy photoblogging with Pixelpost!
+</li></ol><div class='vspace'></div><h2>Screenshots</h2>
+<h4>Upgrade Welcome Screen</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step9.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step9_th.gif' alt='Upgrade' title='Upgrade' /></a> </span></div>
+<p>Pixelpost knows that the database has to be upgraded now. You can select your favorite language here.<br />Press the button "Begin Upgrade".
+<br clear='all' />
+</p><h4>Upgrade finished</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/upgrade2.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/upgrade2_th.gif' alt='Finished' title='Finished' /></a> </span></div>
+<p>Done! Pixelpost is now ready for working with the latest version.
+<br clear='all' />
+</p>
+<div class='vspace'></div><div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/upgrade3.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/upgrade3_th.gif' alt='Finished with Addons' title='Finished with Addons' /></a> </span></div>
+<p>If you are using third party addons on your Pixelpost installation, they are turned off by default because we can not guarantee that they will work properly with the latest version.<br />Go to your Admin Panel and turn them on one by one, checking if everything works ok.
+<br clear='all' />
+</p><h4>Login</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step11ready.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step11ready_th.gif' alt='Login' title='Login' /></a> </span></div>
+<p>After the Upgrade procedure you are directed to the login screen of your Admin Panel. You can now login and continue photoblogging.<br />Don't forget to check out all the <a class='wikilink' href='http://www.pixelpost.org/docs/GettingStarted/NewFeatures'>new exciting features</a>!
+<br clear='all' />
+</p>
+</div>
+
+  <div id='printfoot'>
+    <div class='from'>Retrieved from http://www.pixelpost.org/docs/GettingStarted/Upgrade</div>
+    <div class='lastmod'>Page last modified on November 07, 2007, at 03:45 AM</div></div>
+<!--HTMLFooter-->
+</body>
+</html>

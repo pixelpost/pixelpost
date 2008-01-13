@@ -1,0 +1,124 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+  <title>Pixelpost | GettingStarted / Install</title>
+  <link rel='stylesheet' href='http://www.pixelpost.org/docs/pub/skins/print/print.css' type='text/css' />
+  <!--HTMLHeader--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code.escaped { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border:2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  table.vert td.markup1 { border-bottom:1px solid #ccf; }
+  table.horiz td.markup1 { width:23em; border-right:1px solid #ccf; }
+  table.markup caption { text-align:left; }
+  div.faq p, div.faq pre { margin-left:2em; }
+  div.faq p.question { margin:1em 0 0.75em 0; font-weight:bold; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><link rel='alternate' title='Pixelpost RSS Feed'
+      href='http://www.pixelpost.org/docs/Main/AllRecentChanges?action=rss'
+      type='application/rss+xml' />
+    <meta name='robots' content='noindex,nofollow' />
+
+</head>
+<body>
+  <div id='printhead'>
+    <h3>From Pixelpost</h3>
+    <h1 class='pagename'>GettingStarted: Install</h1>
+  </div>
+<!--PageText-->
+<div id='wikitext'>
+<h2>Installation</h2>
+<p>Installation is now smooth and clean thanks to our new install assistant. It is self-explanatory, with tips and hints helping you know what to do if anything fails.
+</p>
+<div class='vspace'></div><h2>How do I start?</h2>
+<ol><li>First, download Pixelpost (there is a download link on our home page)
+</li><li>Second, create a database in your MySQL administration (if you don't have one already).<br /><span  style='color: #aaaaaa;'><strong><em>Tip:</strong> Usually you find your MySQL administration in <strong>www.yourdomain.com/mysqladmin</strong> or in <strong>www.yourdomain.com/phpmyadmin</strong>. Contact your web host if you need help creating a database.</em></span>
+</li><li>Third, unzip the Pixelpost package and upload it to your server. You can place it into the domain root as well as any folder of your choice.
+</li><li>Open your browser and go to the following address:<br /><strong>www.example.com/(photoblog_foldername)/admin/install.php</strong>
+</li><li>Follow the instructions provided on screen and enjoy photoblogging with Pixelpost!
+</li></ol><div class='vspace'></div><h2>Screenshots</h2>
+<h4>Welcome Screen</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step1.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step1_th.gif' alt='Welcome' title='Welcome' /></a></span></div>
+<p>You can select your favorite language here.
+<br clear='all' />
+</p><h4>Startup Information</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step2.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step2_th.gif' alt='Welcome Screen' title='Welcome Screen' /></a> </span></div>
+<p>What does Pixelpost need to know for the next installation step?
+<br clear='all' />
+</p><h4>Requirements</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step3.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step3_th.gif' alt='Requirements' title='Requirements' /></a> </span></div>
+<p>Here you see the result of some server tests Pixelpost runs before the installation.<br />If there is anything that doesn't pass the tests (red color), you have to go and correct that:
+</p><ul><li>PHP Version: ask your hosting provider for upgrade
+</li><li>register_globals: Pixelpost will work if it is not disabled, but for security reasons you should ask your hosting provder to set it to <em>off</em>.
+</li><li>getimagesize(): ask your hosting provider to set that in the php.ini file
+</li><li>PCRE UTF-8: ask your hosting provider... dull, isn't it, but usually you cannot set those things by yourself
+</li><li>GD graphics: yes, your hosters job too
+</li></ul><p><br clear='all' />
+</p>
+<div class='vspace'></div><div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step3a.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step3a_th.gif' alt='Requirements passed' title='Requirements passed' /></a> </span></div>
+<ul><li>/images folder: must be in place and writable.
+</li><li>/thumbnails folder: must be in place and writable<br />You can change these folder names later in the admin area of Pixelpost. To set the write permission, read <a class='wikilink' href='http://www.pixelpost.org/docs/FAQ/ServerRelated?action=print'>here</a>.
+</li></ul><p class='vspace'>&lt;- This is how it should look like if everything is ok.
+<br clear='all' />
+</p><h4>Database Settings</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step4.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step4_th.gif' alt='Database Settings' title='Database Settings' /></a></span></div>
+<p>Please enter your database connection login here and press the button "Test Connection". No tables will be created at this stage.
+<br clear='all' />
+</p>
+<div class='vspace'></div><div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step4a.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step4a_th.gif' alt='Database Settings ok' title='Database Settings ok' /></a></span></div>
+<p>&lt;- If Pixelpost could connect to the databse, you will see this screen.<br />If not, look up your database login information or ask your hosting provider.
+<br clear='all' />
+</p><h4>Administrator Details</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step5.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step5_th.gif' alt='Administrator Details' title='Administrator Details' /></a></span></div>
+<p>Please enter your administrator login and administrator email here. Pixelpost can send you your login data to the email address provided. You can change all of these settings later on in the administrator panel.
+<br clear='all' />
+</p>
+<div class='vspace'></div><div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step5a.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step5a_th.gif' alt='Administrator Details ok' title='Administrator Details ok' /></a></span></div>
+<p>&lt;- If everything worked well, you will see this screen.<br />If not, something went wrong with sending the email to the address given.
+<br clear='all' />
+</p><h4>Settings</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step6.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step6_th.gif' alt='Settings' title='Settings' /></a></span></div>
+<p>Here you can enter some main settings. You can change all of these settings later on in the admin panel.
+<br clear='all' />
+</p>
+<div class='vspace'></div><div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step6a.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step6a_th.gif' alt='Settings ok' title='Settings ok' /></a></span></div>
+<p>&lt;- If everything worked well, you will see this screen.<br />If not, I have no idea because it is very hard to do something wrong here.
+<br clear='all' />
+</p><h4>Configuration</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step7ok.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step7ok_th.gif' alt='Configuration OK' title='Configuration OK' /></a></span></div>
+<p>&lt;- If you see this screen, everything was ok and Pixelpost could create your configuration file automatically. You can proceed by pressing the button "Continue Installation".
+<br clear='all' />
+</p>
+<div class='vspace'></div><div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step7failed.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step7failed_th.gif' alt='Configuration Failed' title='Configuration Failed' /></a></span></div>
+<p>&lt;- If something went wrong, you will see this screen. Don't worry, there is help.<br />First thing to try is set the CHMOD of the includes folder to 777 and try again. You don't remember CHMOD? Look <a class='wikilink' href='http://www.pixelpost.org/docs/FAQ/ServerRelated?action=print'>here</a>!<br />If it still won't work you can now download the configuration file Pixelpost has created for you. Check the database connection settings and upload it via FTP into your includes folder.<br />If you are done, re-test the connection please. Now you should see the successful configuration screen.
+<br clear='all' />
+</p><h4>Finalize</h4>
+<div><span class='frame lfloat frame lfloat frame lfloat frame lfloat'><a target='_blank'  class='urllink' href='http://www.pixelpost.org/docs/uploads/GettingStarted17/step8.gif' rel='nofollow'><img width='100px' src='http://www.pixelpost.org/docs/uploads/GettingStarted17/step8_th.gif' alt='Finalize' title='Finalize' /></a></span></div>
+<p>&lt;- If you see this screen, you are done! All database tables are created and everything is to go. Pixelpost provides you once more with your administrator login data, keep it well, you will need it the next time you want to access the admin area.<br />For now, Pixelpost has logged you in already and will lead you right into the admin panel where you can upload your first image. And while you are there, you should explore your admin panel.  You can find out detailed information on each menu of the <a class='wikilink' href='http://www.pixelpost.org/docs/AdminPanel/AdminPanel?action=print'>Admin Panel</a> in the documentation.
+<br clear='all' />
+</p>
+</div>
+
+  <div id='printfoot'>
+    <div class='from'>Retrieved from http://www.pixelpost.org/docs/GettingStarted/Install</div>
+    <div class='lastmod'>Page last modified on November 03, 2007, at 04:52 PM</div></div>
+<!--HTMLFooter-->
+</body>
+</html>

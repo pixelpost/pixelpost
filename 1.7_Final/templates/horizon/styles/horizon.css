@@ -1,0 +1,510 @@
+/* 
+	TEMPLATE NAME / Horizon 
+	AUTHOR: Scott Craig
+	AUTHOR WEBSITE: http://www.cancerbox.com
+	VERSION: 1.0
+		
+	Valid xHTML & CSS
+
+*/
+
+/* CSS Document */
+
+
+/* STANDARDS */
+
+body {
+	background-color:#dae1d3;
+	font-size:11px;
+	line-height:16px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	padding:0px;
+	margin:0px;
+	color:#413f3b;
+	text-align:center;
+	}
+
+html {
+	min-height:100.1%;
+	}
+
+
+/* RESET */
+h1, h2, h3, h4, h5, h6, p, ul, li {
+	margin:0px;
+	padding:0px;
+	}
+
+h1 {
+	text-align:left;
+	}
+
+h2 {
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;	
+	text-align:left;
+	}
+	
+h3 {
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;	
+	font-size:14px;
+	letter-spacing:1px;
+	color:#666;
+	text-align:left;
+	}
+
+hr {
+	display:none;
+	}
+
+p {
+	text-align:left;
+	}
+
+a {
+	color:#993300;
+	text-decoration:none;
+	}
+
+a:hover {
+	color:#333;
+	text-decoration:none;
+	}
+
+
+
+/* CUSTOM CLASSES */
+
+
+.inside {
+	width:740px;
+	margin:0px auto;
+	}
+
+.leftimg {
+	float:left;
+	margin:0px 10px 10px 0px;
+	}
+
+.clear {
+	clear:both;
+	}
+
+.left {
+	float:left;
+	}
+
+.right {
+	float:right;
+	}
+	
+.summary {
+	color:#838d7a;
+	font-size:14px !important;
+	line-height:24px;
+	}
+
+/* HIDDEN IMAGE INFO AREA + COMMENTS LIST */
+
+
+#image-info {
+	text-align:left;
+	width:100%;
+	background:#FFF;
+	}
+
+#image-info .inside {
+	}
+	
+#image-info .inside p {
+	font-size:10px;
+	color:#666;
+	margin:0px;
+	}
+
+#image-info .inside ul {
+	}
+	
+
+/* IMAGE NOTES */
+
+#image-info h2 {
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;	
+	font-weight:normal;
+	letter-spacing:2px;
+	font-size:11px;
+	text-transform:uppercase;
+	padding:10px 0px 20px 0px;
+	}
+
+#image-info h2 em { 
+	margin-left:15px;
+	}
+
+		
+#image_notes {
+	width:45%;
+	float:left;
+	margin-bottom:10px;
+	}
+
+#image_notes, #image_comments {
+	font-style:italic;
+	line-height:16px;
+	}
+
+#image_notes p {
+	font-size:10px;
+	color:#666;
+	margin:0px;
+	padding-bottom:10px;
+	}
+
+	
+
+#image_comments {
+	width:45%;
+	float:right;
+	margin:0px 0px 10px 0px;
+	border-left:1px dashed #999;
+	}
+
+#image_comments ul {
+	padding:0px 0px 0px 10px;
+	}
+
+#image_comments li {
+	font-size:10px;
+	color:#666;
+	margin:0px 0px 15px 0px;
+	list-style:none;
+	}
+
+
+/* HEADER + NAVIGATION */
+
+#header {
+	width:100%;
+	height:100px;
+	background-color:#000;
+	}
+
+#header .inside {
+	background:#000;
+	height:100px;
+
+	}
+
+#header .inside h1 a {
+	float:right;
+	text-align:right;
+	color:#666;
+	padding-top:30px;
+	font-weight:normal;
+	display:block;
+	}
+
+#header .inside ul {
+	float:left;
+	margin-top:30px;
+	}
+
+
+#header .inside li {
+	font-family:Trebuchet MS, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	letter-spacing:2px;
+	text-transform:uppercase;
+	font-size:10px;
+	display:inline;
+	}
+	
+#header .inside li a {
+	color:#FFF;
+	padding-left:5px;
+	padding-right:5px;
+	}
+		
+#header .inside li a:hover {
+	text-decoration:none;
+	color:#993300;
+	}
+	
+.secondary a {
+	color:#666 !important;
+	}
+	
+
+/* MAIN PHOTO AREA */
+
+
+#photobox {
+	background-color:#000;
+	padding-bottom:30px;
+	width:100%;
+	text-align:center;
+	}
+	
+#photo {
+	background:#FFF;
+	padding:10px;
+	border:none;
+	margin-bottom:10px;
+	}
+
+
+
+/* IMAGE NAVIGATION */
+
+#infobox {
+	width:100%;
+	text-align:left;
+	}
+	
+
+#image-navigate {
+	padding:10px 0px;
+	}
+	
+#image-navigate li {
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;
+	text-transform:uppercase;
+	font-size:10px;
+	letter-spacing:2px;
+	list-style:none;
+	width:33%;
+	}
+
+#image-navigate a {
+	display:block;
+	}
+
+
+/* Pages */
+
+#page {
+	padding:20px 0px;
+	text-align:left;
+	width:740px;
+	margin:0px auto;
+	}
+
+#page h2 {
+	font-weight:normal;
+	letter-spacing:2px;
+	font-size:11px;
+	text-transform:uppercase;
+	margin:0px 0px 10px 0px;
+	}
+
+#page p {
+	font-size:10px;
+	font-style:italic;
+	margin: 0px 20px 20px 0px;
+	}
+
+#page ul {
+	font-size:10px;
+	font-style:italic;
+	margin:0px 20px 20px 0px;
+	}
+	
+#page ul li {
+	list-style:none;
+	padding:0px 5px 0px 0px;
+	}
+	
+#page a {
+	}
+
+
+#page img {
+	background:#FFF;
+    padding:3px;
+    border:1px solid #CCC;
+	}
+
+
+.thumbnails {
+	border:1px solid #CCC;
+	padding:3px;
+	margin:5px 5px 0px 0px;
+	}
+
+/* COLUMNS ON INFO PAGE */
+
+#col1 {
+	width:33%;
+	float:left;
+	}
+
+#col2 {
+	width:33%;
+	float:left;
+	}
+
+#col3 {
+	width:33%;
+	float:right;
+	}
+
+/* Footer */
+
+#footer {
+	border-top:1px dashed #838d7a;
+	clear:both;
+	width:740px;
+	margin:20px auto 0px auto;
+	padding:10px 0px;
+	text-transform:uppercase;
+	}
+
+#footer li {
+	text-align:center;
+	font-size:10px;
+	font-family:Trebuchet MS, Arial, Helvetica, sans-serif;
+	display:inline;
+	list-style:none;
+	padding:0px 5px;
+	color:#838d7a;
+	}
+
+#footer a {
+	color:#838d7a;
+	}
+	
+#footer a:hover {
+	color:#993300;
+	}
+
+
+/* Comments */
+
+#commentbox {
+	width:80%;
+	margin:0px auto;
+	}
+
+#comment-top {
+	background:#000;
+	padding:20px 5px;
+	color:#FFF;
+	}    
+
+#comments {
+    margin:0px auto;
+    width:90%;
+    text-align:left;
+	}
+
+#comment-top h2 {
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;	
+	font-weight:normal;
+	letter-spacing:2px;
+	font-size:11px;
+	text-transform:uppercase;
+	text-align:center;
+	}
+	
+#comment-middle h2 {
+	font-family: Trebuchet MS, Arial, Verdana, sans-serif;	
+	font-weight:normal;
+	letter-spacing:2px;
+	font-size:11px;
+	text-transform:uppercase;
+	}
+
+#comment-middle {
+	padding:20px 0px;
+	margin-bottom:7px;
+	} 
+
+#addcomment {
+	margin:20px 0px;
+	text-align:left;
+	}
+
+.input {
+	width:45%;
+	font-size:10px;
+	border:1px solid #333;
+	background-color:#fff;
+	color:#666;
+	padding:5px;
+	}
+
+#addcomment label {
+	color:#666;
+	font-style:italic;
+	font-size:10px;
+	}
+
+#addcomment textarea {
+	width:100%;
+	height:50px;
+	font-size:11px;
+	border:1px solid #333;
+	background-color:#fff;
+	color:#666;
+	padding:5px;
+	}
+
+.comment-button {
+    background:#fff;
+	border:3px double #CCC;
+	color:#666;
+	}
+
+/* TAG SUPPORT */
+.tags00
+{
+	font-size: 8px !important;
+}
+.tags01
+{
+	font-size: 10px !important;
+}
+
+.tags02
+{
+	font-size: 12px !important;
+}
+
+.tags03
+{
+	font-size: 14px !important;
+}
+
+.tags04
+{
+	font-size: 16px !important;
+}
+
+.tags05
+{
+	font-size: 18px !important;
+}
+
+.tags06
+{
+	font-size: 20px !important;
+}
+
+.tags07
+{
+	font-size: 22px !important;
+}
+
+.tags08
+{
+	font-size: 24px !important;
+}
+
+.tags09
+{
+	font-size: 26px !important;
+}
+
+.tags10
+{
+	font-size: 28px !important;
+}

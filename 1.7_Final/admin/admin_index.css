@@ -1,0 +1,316 @@
+/* .............................. */
+/* SVN file version: */
+/* $ID$ */
+/* Basic */
+/* .............................. */
+
+body {
+   background:#E4E4E4;
+   margin:0px;
+   padding:0px;
+   text-align:center;
+   font-family:Verdana, Helvetica, sans-serif;
+   font-size:12px;
+   color:#666;
+   }
+
+/* .............................. */
+/* Links */
+/* .............................. */
+
+a {
+   color:#993333;
+   text-decoration:none;
+   }
+
+/* .............................. */
+/* Wrapper */
+/* .............................. */
+
+#wrapper {
+   margin:20px auto;
+   padding:0px;
+   width:90%;
+   text-align:left;
+   background:#F6F6F6;
+   color:#666;
+   border:1px solid #ccc;
+   }
+
+/* .............................. */
+/* Header */
+/* .............................. */
+
+#header {
+   margin:0px;
+   padding-top:24px;
+   padding-bottom:0px;
+   padding-left:10px;
+   padding-right:0px;
+   font-family:Helvetica, verdana, sans-serif;
+   font-size:20px;
+   font-weight:bold;
+   color:#F9F9F9;
+   background:url('img/back0.gif') repeat-x;
+   letter-spacing:2px;
+   font-variant:small-caps;
+   }
+
+#header a {
+   color:#F9F9F9;
+   text-decoration:none;
+   }
+
+#header a:hover {
+   color:#E4E4E4;
+   text-decoration:underline;
+   }
+/* .............................. */
+/* Navigation */
+/* .............................. */
+
+#navigation {
+   clear:right;
+   margin:0px;
+   background:#ffffff;
+   color:#993333;
+   font-size:12px;
+   font-variant:small-caps;
+   border-top:1px solid #ccc;
+   border-bottom:1px solid #ccc;
+   text-align:center;
+   line-height:32px;
+   font-weight:bold;
+   }
+
+#navigation a {
+   color:#993333;
+   text-decoration:none;
+   padding:8px;
+   }
+
+#navigation a:hover {
+   background:#F4F4F4;
+   color:#666;
+   }
+
+#submenu {
+   border-bottom:1px solid #ccc;
+   border-top:1px solid #ccc;
+   padding-top:5px;
+   padding-bottom:5px;
+   background:#fff;
+   color:#666;
+   font-weight:bold;
+   font-size:10px;
+   margin:10px auto;
+   text-align:center;
+   }
+
+#submenu a {
+   padding:5px;
+   }
+
+#submenu a:hover {
+   background:#f4f4f4;
+   color:#666
+   }
+
+/* .............................. */
+/* Captions */
+/* .............................. */
+
+#caption {
+   margin:0px 0px 10px 0px;
+   padding:7px;
+   font-size:13px;
+   color:#666;
+   font-weight:bold;
+   text-align:right;
+   font-variant:small-caps;
+   border-bottom:1px solid #ccc;
+   border-top:1px solid #ccc;
+   background:url('img/back2.gif') repeat-x;
+   }
+
+.jcaption, .addon_on, .addon_off, .addon_error {
+   border-top:1px solid #ccc;
+   border-bottom:1px solid #ccc;
+   margin:0px 0px;
+   padding-top:3px;
+   padding-bottom:3px;
+   padding-left:10px;
+   padding-right:0px;
+   font-family:Helvetica, verdana, sans-serif;
+   font-size:12px;
+   font-weight:bold;
+   letter-spacing:1px;
+   color:#666;
+   }
+
+.jcaption {
+   background:url('img/back1.gif') repeat-x;
+   }
+
+.addon_on {
+   background:url('img/back_addon_on.gif') repeat-x;
+   }
+
+.addon_off {
+   background:url('img/back_addon_off.gif') repeat-x;
+   }
+
+.addon_error {
+   background:url('img/back_addon_error.gif') repeat-x;
+   }
+/* .............................. */
+/* Content and titles */
+/* .............................. */
+
+.content {
+   border:0px solid #000;
+   margin-left:0px;
+   margin-right:0px;
+   margin-top:10px;
+   margin-bottom:10px;
+   padding:10px;
+   font-size:11px;
+   color:#666;
+   }
+
+.content ul {
+   list-style:none;
+   display:block;
+   margin:0px;
+   padding:0px;
+   }
+
+.content ul li {
+   padding:10px;
+   margin:0px 0px 5px 0px;
+   border-top:0px;
+   border-left:0px;
+   border-right:0px;
+   border-bottom:1px solid #ccc;
+   }
+
+.content ul li img {
+   border:1px solid black;
+   float:left;
+   margin:5px 10px 0px 0px;
+   height:40px;
+   }
+
+.content ul a:hover {
+   text-decoration:underline;
+   color:#000;
+   background-color:#f5f5f1;
+   }
+
+
+/* .............................. */
+/* Misc. */
+/* .............................. */
+
+input {padding:2px;}
+
+.right {margin-left:2%;}
+.smaller {font-size:9px;font-weight:normal;}
+
+.item {
+   border:0px;
+   float:left;
+   padding-right:5px;
+   margin-right:5px;
+   font-weight:bolder;
+   font-size:110%;
+}
+
+hr {
+   background-color:#ccc;
+   height:1px;
+   border:0px;
+   }
+
+.selectedsubmenu {color:#666;}
+.published-comment {background-color:#f4f6f1;color:#666;}
+.unpublished-comment {background-color:#fff9e1;color:#666;}
+
+.cmnt-buttons {
+   background:#f5f5f5;
+   border:1px solid #aaa;
+   color:#666;
+   border-bottom:2px solid #aaa;
+   border-right:2px solid #aaa;
+   font-size:10px;
+   }
+
+.confirm {
+    font-size:12px;
+   font-weight:bold;
+   color:red;
+}
+
+
+#cattable {
+   width:100%;
+   margin:0px;
+   padding:1px;
+   clear:both;
+   }
+
+#cattable td {
+   width:25%;
+   }
+
+#logo {
+   position:relative;
+   float:left;
+   border:0px;
+   margin:0px 18px;
+   padding:0px;
+   }
+
+#itemimg {
+   margin-left:20px;
+   margin-top:5px;
+   border:1px solid #ccc;
+   }
+
+#photonumb {
+     color:#993333;
+   font-weight:bold;}
+
+#warning {
+   font-size:12px;
+   font-weight:bold;
+   color:#000;
+   background-color:#c30;
+   font-family:arial,verdana,sans-serif;
+   text-align:center;
+   margin-left:30%;
+   margin-right:30%;
+   padding:6px;
+   }
+
+#datetable {
+   text-align:center;
+   }
+
+#datetable td {
+   width:30px;
+   }
+
+#datetable td.gap {
+   width:5px;
+   }
+
+.images-checkbox{
+   margin-bottom:0px;
+   margin-top:0px;
+   margin-left:0px;
+   margin-right:0px;
+   }
+input {
+   background:#E4E4E4;
+   }

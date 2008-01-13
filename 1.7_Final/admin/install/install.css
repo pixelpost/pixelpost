@@ -1,0 +1,204 @@
+/* @group CSS Override */
+
+/* Overrides the variables in admin_index.css */
+
+#wrapper {
+	margin: 20px auto 0px auto;
+}
+
+#header {
+   font-size: 1.8em;
+}
+
+url.jcaption {
+	border: 0px;
+	margin: 0px;
+}
+
+.content {
+	margin-top:0px;
+}
+
+.content ul li {
+	border: 0px;
+	padding: 8px;
+	margin: 0px 0px 2px 0px;
+}
+
+/* @end */
+
+/* @group Text */
+
+h1 {
+	font-size: 1.9em;
+}
+
+div.explain {
+	width: 100%;
+	padding-top: 9px;
+	padding-left: 6px;
+	font-size: 0.9em;
+}
+
+.defaultBold { 	font-size: 11px; 	color: #666; 	padding: 1px 0 1px 0; 	margin: 0; 	background-color: transparent; }
+.defaultBold { 	font-weight: bold; 	font-size: 11px; }
+
+.grnHighlightBold { 	color: #85AD45; 	font-weight: bold; }
+.redHighlightBold { 	color: #993333; 	font-weight: bold; }
+
+#disabled_addons {
+	list-style-type: circle;
+	padding-left:25px;
+}
+
+a {
+	cursor: pointer; 
+}
+
+/* @end */
+
+/* @group Navigation */
+
+.nav_cell { 
+	background-color: #142129; /* 27343C */
+	padding: 0; 
+	margin: 0; 
+}
+
+.nav_off {
+	background: #142129; /* 142129 */
+	font-size: 12px; 
+	color: #768E9D; /* ADC0CB */
+	text-align: center; 
+	padding: 6px 4px 5px 4px; 
+	margin: 0; 
+	border-left: #27343C 1px solid; /* 27343C */
+	border-right: #27343C 2px solid; /* 27343C */
+	white-space: nowrap; 
+}
+
+.nav_off:hover { 
+	color: #E4E4E4; /* 787FA4 */
+	text-decoration: none;
+}
+
+.nav_on { 
+	font-size: 12px; 
+	color: #142129; /* 142129 */
+	background: #E4E4E4 url('../img/back2.gif') repeat-x;
+	padding: 8px 4px 3px 4px; 
+	margin: 0; 
+	text-align: center; 
+	font-weight: bold; 
+	border-left: #142129 1px solid; /* 142129 */
+	border-right: #27343C 2px solid; /* 27343C */
+}
+
+/* @end */
+
+/* @group Tables */
+
+.tableBorder { 	border-left: 1px solid #B1B6D2; 	border-right: 1px solid #B1B6D2; 	margin: 0px 0px 9px 0px; 	padding: 0px; }
+
+.tableHeading { 	font-size: 11px; 	font-weight: bold; 	color: #fff; 	padding: 7px 6px 7px 6px; 	background: #768E9D url(images/bg_tablehead.gif) repeat-x left bottom;}
+
+td.tableHeading.value {
+	width: 200px;
+	text-align: left;
+}
+.cellOne, .cellOneBold { 	color: #333; 	padding: 6px 10px 6px 6px; 	border-bottom: 1px solid #CAD0D5; 	background-color: #EEF4F9; }
+.cellOne a:link, .cellOne a:visited, .cellTwo a:link ,.cellTwo a:visited {	font-size:10px;	color: #8DAABE; }
+.cellOne div, .cellTwo div {	font-size:11px;}
+.cellTwo, .cellTwoBold { 	color: #333; 	padding: 6px 10px 6px 6px; 	border-bottom: 1px solid #CAD0D5; 	background: #fff; }
+.cellOneBold { 	font-weight: bold; }
+.cellTwoBold { 	font-weight: bold; }
+.cellOneHover, .cellTwoHover { 	background-color: #E1FAD8; 	font-size: 11px; 	color: #333; 	padding: 6px 10px 6px 6px; 	border-bottom: 1px solid #fff; }
+
+/* @end */
+
+/* @group Status Messages */
+
+.messageBox { 	background-color: transparent; 	padding: 6px 10px;}
+
+.statusmsg {
+	background-color:#FAFAB5;
+	border-top:1px solid #DBDB8E;		border-bottom:1px solid #DBDB8E;
+}
+
+.error{
+	background-color: #ffcccc;
+	border-top:1px solid #ec8d84;		border-bottom:1px solid #ec8d84;
+}
+
+.success{
+	background-color:#E1FAD8;
+	border-top:1px solid #BCD3B7;		border-bottom:1px solid #BCD3B7;
+}
+
+/* @end */
+
+/* @group Form Variables */
+
+.input {
+	width: 275px;
+}
+
+select {
+	top: 14px;
+	width: 275px;
+}
+
+textarea {
+	width: 100%;
+	font: normal 0.9em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+div#lang_select_head {
+	float: right;
+	margin-right: 85px;
+	margin-top: 15px;
+}
+
+select#lang_select {
+	width: 120px;
+}
+
+/* @end */
+
+/* @group Buttons */
+
+.button {
+	
+	padding: 7px;
+	text-align: center;
+	font-size: 1.0em;
+	color: #993333;
+	background-color: #FFF;
+	border: 1px dotted #B7C4D3;
+	cursor: pointer;
+}
+
+.button:hover {
+	color: #333;
+}
+
+#lang_button {
+	font-size: 1.0em;
+	text-align: center;
+	background-color: transparent;
+	color: #993333;
+	padding: 1px;
+	width: 80px;
+	border: 0px dotted #B7C4D3;
+}
+
+#lang_button:hover {
+	color: #333;
+}
+
+/* @end */
+
+div#footer {
+	font-size: x-small;
+	color: #f1f1f1;
+}

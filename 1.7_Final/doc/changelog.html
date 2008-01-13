@@ -1,0 +1,275 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+  <title>Pixelpost | Introduction / Changelog</title>
+  <link rel='stylesheet' href='http://www.pixelpost.org/docs/pub/skins/print/print.css' type='text/css' />
+  <!--HTMLHeader--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code.escaped { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border:2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  table.vert td.markup1 { border-bottom:1px solid #ccf; }
+  table.horiz td.markup1 { width:23em; border-right:1px solid #ccf; }
+  table.markup caption { text-align:left; }
+  div.faq p, div.faq pre { margin-left:2em; }
+  div.faq p.question { margin:1em 0 0.75em 0; font-weight:bold; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><link rel='alternate' title='Pixelpost RSS Feed'
+      href='http://www.pixelpost.org/docs/Main/AllRecentChanges?action=rss'
+      type='application/rss+xml' />
+    <meta name='robots' content='noindex,nofollow' />
+
+</head>
+<body>
+  <div id='printhead'>
+    <h3>From Pixelpost</h3>
+    <h1 class='pagename'>Introduction: Changelog</h1>
+  </div>
+<!--PageText-->
+<div id='wikitext'>
+<h2><a name='v1_6' id='v1_6'></a> Changelog from Pixelpost 1.6 to Pixelpost 1.7</h2>
+<h3>The Big Changes</h3>
+<ul><li>Install and Upgrade assistant
+</li><li>Front workspaces
+</li><li>Sorting options for front side image queue
+</li><li>Filtering options for admin side images list
+</li><li>Cleanups in comments and addons section
+</li></ul><div class='vspace'></div><h3>Admin Area:</h3>
+<ul><li>New filter functions in the images list
+</li><li>Comments sorted into submenus (published, moderated, Akismet)
+</li><li>Admin language set independent of blog language
+</li></ul><div class='vspace'></div><h3>Feeds</h3>
+<ul><li>Renewed autodetection of feeds
+</li><li>Feed description and copyright
+</li><li>Valid ATOM and RSS feed
+</li><li>Settings for feed display (image only, thumbnail only, image with text, thumbnail with text)
+</li></ul><div class='vspace'></div><h3>Language and Tags</h3>
+<ul><li>New tags for thumbnail size, subtitle and focus tag cloud
+</li><li>New languages: hungarian and romanian. Spanish and swedish for admin panel.
+</li><li>Admin language can be set independent now
+</li></ul><div class='vspace'></div><h3>Other Changes</h3>
+<ul><li>Frontpage workspaces which can be used for handling many of the front page functions of the blog (including comment actions)
+</li></ul><div class='vspace'></div><h3>Minor Changes and Bug Fixes</h3>
+<ul><li>Newline in comments editing
+</li><li>Removed hardcoded paths of images and thumbnails folder
+</li><li>Image autodelete security solution
+</li><li>"use exif date for publish" now works on all systems
+</li><li>HTML code in site title
+</li><li>Quotes in metatags
+</li><li>Mass delete function now deletes everything
+</li><li>Cleaning of spam lists in admin options
+</li><li>More appropriate error messages
+</li><li>Addon sorting before calling
+</li><li>Copy folder now stores the exif in database
+</li><li>Don't show empty alt tags and alt title in the image list
+</li><li>Form fields content in case of unsuccessful image upload
+</li><li>Time zone is correct now on image uplade "post now"
+</li></ul><div class='vspace'></div><h2><a name='v1_5' id='v1_5'></a> Changelog from Pixelpost 1.5 to Pixelpost 1.6</h2>
+<h3>The Big Changes</h3>
+<ul><li>Tag support
+</li><li>Secondary language support
+</li><li>More anti-spam features
+</li></ul><div class='vspace'></div><h3>Feeds</h3>
+<ul><li>Now Pixelpost produces valid ATOM 1.0 feed. Up to Version 1.5, Pixelpost produced valid ATOM 0.3 feed
+</li><li>As the feedvalidator at www.feedvalidator.org issues deprecation warnings whenever it encounters Atom 0.3 feeds, this upgrade was really necessary
+</li><li>RSS: &lt;guid&gt; now produces complete URL + index.php...<br />  Example where nn stands for the image-number: &lt;guid&gt;http://www.yourdomainhere.de/index.php?showimage=nn&lt;/guid&gt;
+</li></ul><div class='vspace'></div><h3>Security</h3>
+<ul><li>Comments enabled/disabled/moderated for individual posts
+</li><li>More security thanks to switching off error_reporting by default when not logged in
+</li><li>Check if the commenter IP address is in the DSBL list @ <a class='urllink' href='http://www.dsbl.org' rel='nofollow'>http://www.dsbl.org</a>. If it is, the user is redirected to a warning page mentioning the used address is blocked. Otherwise, comment gets trough
+</li><li>Users can set the number of seconds between comments in the admin user panel. If a comment is posted before that the script dies because of a possible spam flood
+</li></ul><div class='vspace'></div><h3>Comments</h3>
+<ul><li>Bug fix with double &lt;br /&gt; in comments visible on page
+</li><li>Markdown enable/disable
+</li><li>Comments for an individual picture can now be disabled through editing picture properties or set when uploading a picture
+</li><li>User comments with the same mail address as the admin mail address get a new style &lt;li class="admin_comment"&gt; to differentiate
+</li><li>Fixed comment redirection when $_SERVER['HTTP_referrer'] is empty
+</li><li>Added new functionality: direct redirection after posting comment (without "thank you screen"); it needs &lt;input type='hidden' name='withthankyou' value='no' /&gt; in comment form (in template file)
+</li></ul><div class='vspace'></div><h3>Language and Tags</h3>
+<ul><li>Fixed a bug that the selected language for the blog was shown twice in the list
+</li><li>Code added for selecting language files and language specific templates while maintaining backwards compatibility
+</li><li>TAG replacement and stuff is added in an addon
+</li><li>If no language is set the 'old' way is used to display the page
+</li><li>Support for <a class='wikilink' href='http://www.pixelpost.org/docs/TemplateTags/LANGUAGExx?action=print'>&lt;LANGUAGE=XX&gt;</a> tags (creates url) and <a class='wikilink' href='http://www.pixelpost.org/docs/TemplateTags/ALTERNATIVE_LANGUAGE?action=print'>&lt;ALTERNATIVE_LANGUAGE&gt;</a> tag (for switching between the secondary language)
+</li><li>Added secondary language support for title and description
+</li></ul><div class='vspace'></div><h3>Usability</h3>
+<ul><li>Switch template select: removed duplicate entry
+</li><li>Showing exif is an option in the admin panel
+</li><li>Added Mark all images in admin area (see: <a class='urllink' href='http://forum.pixelpost.org/showthread.php?t=5361' rel='nofollow'>http://forum.pixelpost.org/showthread.php?t=5361</a>)
+</li><li>Added a massdelete image option and a mass publish option
+</li><li>Added additional info to the file upload error message when there are incorrect write rights to the /images directory
+</li><li>Global setting, set through the Options, is used as default for new picture
+</li><li>Nice error message when the user selects an alternative language similar to the default language
+</li><li>Nice spam flood error message in the language file
+</li></ul><div class='vspace'></div><h3>Other Changes</h3>
+<ul><li>Many spelling errors corrected
+</li><li>Addon type 'front' added for (future) workspaces in the frontpage.
+</li><li>Added error_reporting switch. index.php?errors (E_ALL ^ E_NOTICE) or index.php?errorsall (E_ALL). Must be logged into admin to work
+</li><li>Added a count_addon_admin_menus function. If count_addon_admin_menus &gt; 0 then show HTML menu code. Otherwise don't show code
+</li><li>Small bug where index.html needed to prevent folder browsing showed up in the selection lists for language and templates fixed
+</li><li>When uploading picture Exif info is stored in database and on viewing restored from database
+</li><li>Added SVN tags for development
+</li><li>Fixed small bug when get_file_contents is disabled when checking for latest pixelpost version. if get_file_contents returns false, cURL method is tried. If cURL returns false, "Unable to retrieve current version" is displayed
+</li><li>When gpc_magic_quotes is not set PP title and site url is escaped by using addslahes. Bug fix for <a class='urllink' href='http://forum.pixelpost.org/showthread.php?t=5366' rel='nofollow'>http://forum.pixelpost.org/showthread.php?t=5366</a>
+</li><li>Added code for adding alt_fields in the categories table and tags table
+</li><li>Fixed problem with incorrect variable name used for taking thumbnail image size
+</li><li>Many more minor bugs fixed
+</li></ul><div class='vspace'></div><h2> Changelog from Pixelpost 1.4 to Pixelpost 1.5</h2>
+<h3>The Big Changes</h3>
+<ul><li>Admin Interface is completely language driven
+</li><li>More options to fight SPAM
+</li><li>Addons are now possible also in Admin-Area: new pages and customized functionality possible
+</li><li>Fixed version 1.4.x problems with PHP 5 and MySQL 5
+</li><li>Admin/index.php is split into thematic include-files (new_image.php, categories.php etc.)
+</li></ul><div class='vspace'></div><h3>Admin Area:</h3>
+<ul><li>Now complete ADMIN area is language-file driven as well
+</li><li>Fix program output is converted into variables
+</li><li>Admin-language-files are set like this:<br />  if admin-lang-XXX.php exist, when lang-XXX.php is choosen, this admin-language-file is activated<br />  if this admin-lang-XXX.php does not exist, admin-lang-english.php is activated<br />  if admin-lang-english.php does not exist, error message is printed out
+</li><li>Admin/Options/General: only one UPDATE button for all options
+</li><li>External links from Admin-section will open in new window
+</li><li>More information in GENERAL INFO section:<br />   added info about file_uploads setting<br />   added info about PP installation URL<br />   added CHMOD info about image and thumb dirs
+</li><li>Image path is ../images/ by default
+</li><li>New image can be posted to EXIF-date of the image
+</li><li>Time stamps ON/OFF switch added
+</li></ul><div class='vspace'></div><h3>Image Posting</h3>
+<ul><li>Added info with current time
+</li><li>If EXIF is not available post to EXIF Date will post the current time
+</li><li>Added opening MARKDOWN links in new window
+</li><li>"Edit link" added after uploading image for fast editing
+</li><li>12cropImage is now compatible with php5
+</li><li>Default category is selected only when user is inside the new_image (upload new image) page
+</li><li>When posting to the future and you are logged in as admin, Pixelpost will show you
+</li><li>The new image, non-admin users will see the actual image
+</li><li>This is added as kind of "preview" for administrators
+</li></ul><div class='vspace'></div><h3>Image Editing</h3>
+<ul><li>Now categories can be assigned or unassigned to selected images (more than one)
+</li><li>Images can be re-uploaded
+</li><li>Preview-option (especially for posting into future)
+</li><li>All &lt;img&gt; in the comments page now have alt attribute
+</li><li>Bigger input fields for image-description
+</li><li>When image is deleted, the comments of that image will be deleted as well
+</li></ul><div class='vspace'></div><h3>Comments</h3>
+<ul><li>Comment moderation + batch operations on comments
+</li><li>Delete selected comments
+</li><li>Publish selected comments
+</li><li>View moderation queue
+</li><li>Add to moderation queue
+</li><li>Report comment as SPAM
+</li><li>Edit the comment text
+</li><li>Redirection to comment after entering comment automatically
+</li><li>Changed email-handling: no email is sent, if no comment is inserted to DB
+</li><li>Error massage is visible after unsuccessful adding adding of comment
+</li><li>Added commenter URL to HTML notify
+</li><li>Now people can delete/moderate comments with compare to the black/moderation list
+</li><li>If no  http:// or https:// , the comment-url will not be echoed
+</li><li>Only one email-address can be entered in comment-form
+</li></ul><div class='vspace'></div><h3>Templates</h3>
+<ul><li>New template: "simple"
+</li><li>All links to referrer template are taken off, because referrer-List is not supported anymore
+</li><li>A descriptive splash page (splash_page.html) will show up in case the server/photoblog is not functioning well
+</li></ul><div class='vspace'></div><h3>Feeds</h3>
+<ul><li>Corrected atom-url for autodetect
+</li><li>RSS and ATOM Feed working / validating with apostrophes and special characters
+</li><li>Beside <a class='wikilink' href='http://www.pixelpost.org/docs/TemplateTags/ATOM_AUTODETECT?action=print'>&lt;ATOM_AUTODETECT&gt;</a>, which created the "href-part" of the autodetection-link in the header-section of image_template.html, we have now 2 new AUTODETECT-Tags: for RSS + Atom, implemented in the templates which come with Pixelpost
+</li></ul><div class='vspace'></div><h3>Security / SPAM</h3>
+<ul><li>No hijacking of the script possible
+</li><li>index.php shows 404-message when image number is not numeric or "x=ref" is called
+</li><li>No "index.php?x=foo" can be passed to a pixelpost photoblog unless "foo" is a valid argument
+</li><li>"Fight Spam" added to options
+</li><li>Moderation and black list for comments + referrer ban list for referrers
+</li><li>Added spam report to admin &gt;&gt; comments page
+</li><li>People can report spams and log their IPs in both black list and referrer banned list
+</li><li>Comment spam moderation and ban list is added
+</li><li>Admin / General Info shows the most referrers of last 7 days in the Options &gt;&gt; Fight Spam
+</li><li>.htaccess code generation for preventing ref spams from hitting Pixelpost's webistes is added.
+</li><li>Comment spam security hole is fixed
+</li><li>No one can send spams with use of pixelpost comment form
+</li><li>Only one email-address can be entered in comment-form
+</li><li>Visitor booking can be turned OFF/ON
+</li></ul><div class='vspace'></div><h3>New Tags</h3>
+<ul><li><a class='wikilink' href='http://www.pixelpost.org/docs/TemplateTags/SITE_URL?action=print'>&lt;SITE_URL&gt;</a> will show the complete URL of the site
+</li><li><a class='wikilink' href='http://www.pixelpost.org/docs/TemplateTags/BASE_HREF?action=print'>&lt;BASE_HREF&gt;</a>, set in the header of a template, allows to set all links relative to the Site-URI
+</li></ul><div class='vspace'></div><h3>Addons</h3>
+<ul><li>Admin-addons are introduced
+</li><li>You can have customize admin section with additional addons
+</li><li>Admin area can have new pages with costum functionalities
+</li><li>Existing Addons can be switched on/off by the admin
+</li><li>Page archive tags are listed in the addons page
+</li><li>CopyFolder Addon now can publish using exif capture date
+</li><li>Upload sorted files according to their exif info or their filename
+</li><li>The date of the posts is set as the actual date, if not set to use the exif date
+</li><li>Supports clean url
+</li><li>Added one second sleep before each post
+</li><li>Can set multi categories at upload
+</li><li>Calendar Addon is corrected, now it supports languages like chinese or farsi where letters are double-bytes
+</li></ul><div class='vspace'></div><h3>Development</h3>
+<ul><li>First steps to clear URL support (next and prev datetime variables)
+</li><li>Options now have a workspace. People can write addons that adds submenu to options page!
+</li><li>Updated paths - should work with &lt;base href=..&gt;
+</li><li>Avoiding maximum execution time reached in thumb generation!
+</li><li>Categories_as_list now a function inside functions.php
+</li><li>Lists categories as a table, included from includes/admin_category_table_as_list.inc.php
+</li><li>Some variables re-defined
+</li><li>Login mechanism using sessions
+</li><li>Small SQL optimization
+</li><li>Pixelpost is compatible with PHP 5.0
+</li></ul><div class='vspace'></div><h3>Installation</h3>
+<ul><li>Install will prompt that it will create addons table
+</li><li>No buttons / icons are packed to the release anymore
+</li></ul><div class='vspace'></div><h3>Minor changes</h3>
+<ul><li>Fixed that double quotes in <a class='wikilink' href='http://www.pixelpost.org/docs/TemplateTags/IMAGE_NOTES_CLEAN?action=print'>&lt;IMAGE_NOTE_CLEAN&gt;</a> broke the layout in IE
+</li><li>Fixed a bug that prevent deleting the comments with banned words or refs with names in the banned list
+</li><li>Bugfix for comment save
+</li><li>Corrected the information about creating thumbnails
+</li><li>Corrected typos
+</li><li>admin_index.css extended and corrected
+</li><li>Added the "category-title" to all Admin-sections
+</li><li>Fixed title encoding problems in image section preview at admin panel
+</li><li>Fixed warnings problem in new addons "installation" function
+</li><li>Corrected wrong select-value for year 2009 (posting possible from 2002 to 2009)
+</li><li>\\N to \\n
+</li><li>MJS code formated in a cool way
+</li><li>Exposure time of 350d was not showing for images on images with shutter time more than 1s
+</li><li>Cleared CSS and HTML in templates
+</li><li>Updated the version of markdown to Version 1.0.1c - Fri 9 Dec 2005
+</li></ul><div class='vspace'></div><h2><a name='v1_4' id='v1_4'></a> Changelog from Pixelpost 1.3 to Pixelpost 1.4.3</h2>
+<h3>Major Changes</h3>
+<ul><li>Full Unicode (UTF-8) support, no more strange characters
+</li><li>More security with better security measures
+</li><li>Password recovery feature is now available
+</li><li>Crop tool is added for creating selective thumbnails both when posting a new entry and editing an old entry
+</li><li>More than one image a day is supported now
+</li><li>Multi-category support compatible with v1.3 multi-cat
+</li><li>Cleaner RSS/ATOM feed support (also autodetect-feature in the Header-Links for RSS and ATOM)
+</li><li>Improved performance with database usage
+</li><li>Templates are valid CSS and valid HTML
+</li><li>Supports more languages
+</li><li>Improved usability of admin panel
+</li><li>More ways to integrate new templates
+</li><li>Better EXIF-support
+</li></ul>
+</div>
+
+  <div id='printfoot'>
+    <div class='from'>Retrieved from http://www.pixelpost.org/docs/Introduction/Changelog</div>
+    <div class='lastmod'>Page last modified on November 03, 2007, at 04:01 PM</div></div>
+<!--HTMLFooter-->
+</body>
+</html>

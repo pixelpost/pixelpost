@@ -1,0 +1,463 @@
+/* .............................. */
+/* Basic */
+/* .............................. */
+
+body {
+	background-color:#666;
+	font-size:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	letter-spacing:0.5px;
+	color:#eee;
+	padding:0px;
+	margin:0px;
+	margin-bottom:20px;
+	text-align:center;
+	}
+
+html, body {
+     min-height:100.1%;
+	}
+
+/* .............................. */
+/* Links */
+/* .............................. */
+
+a {
+	color:#eee;
+	text-decoration:none;
+	}
+
+a:hover {
+	text-decoration:underline;
+	}
+
+/* .............................. */
+/* Headings */
+/* .............................. */
+
+h1 {
+    float:left;
+	clear:left;
+	font-weight:bold;
+	font-size:11px;
+	letter-spacing:2px;
+	color:#eee;
+	margin:0px;
+	margin-left:5px;
+	padding:0px;
+	}
+	
+h1 a {
+    text-decoration:none;
+	color:#eee;
+	}
+
+h1 a:hover {
+    text-decoration:none;
+	}
+
+.title {
+	font-weight:bold;
+	font-size:11px;
+	letter-spacing:1px;
+	color:#eee;
+	margin:0px;
+	margin-bottom:5px;
+	margin-left:15px;
+	padding:0px;
+	}
+
+h3 {
+	font-weight:bold;
+	font-size:11px;
+	letter-spacing:1px;
+	color:#ddd;
+	text-align:center;
+	}
+
+/* .............................. */
+/* Navigation and menu */
+/* .............................. */
+
+#navigation {
+    background:#333333;
+	border-bottom:1px solid #aaa;
+	padding:5px;
+	height:15px;
+	margin-bottom:20px;
+	}
+
+.menu {
+    float:right;
+	clear:right;
+	text-align:right;
+	font-size:11px;
+	}
+.menu a {
+	padding:7px;
+	padding-left:10px;
+	padding-right:10px;
+	}
+		
+.menu a:hover {
+	text-decoration:none;
+	color:#CCC;
+	}
+	
+/* .............................. */
+/* Content*/
+/* .............................. */
+
+.addcomment {
+    float:right;
+	clear:right;
+	padding:0px;
+	}
+	
+#photo {
+    background:#eee;
+    padding:5px;
+	border:1px solid #515151;
+	}
+
+#image-navigate {
+    background:#666;
+	padding:20px;
+	height:15px;
+	width:70%;
+	margin:0px auto;
+	}
+	
+#image-navigate a {
+	padding:10px;
+	}
+
+.image-previous {
+    float:left;
+	}
+
+.image-next {
+	float:right;
+	}
+
+#image-info {
+    background:#515151;
+	border:1px solid #aaa;
+	padding:20px;
+	text-align:justify;
+	width:70%;
+	margin:0px auto;
+	margin-bottom:25px;
+	line-height:16px;
+	color:#eee;
+	}
+	
+#image-notes {
+	width:70%;
+	vertical-align:top;
+	}
+#image-exif {
+    padding-top:10px;
+    text-align:right;
+	width:25%;
+	vertical-align:top;
+	}
+	
+
+/* .............................. */
+/* Browse */
+/* .............................. */
+
+#page {
+    background:#515151;
+	border:1px solid #aaa;
+	padding:20px;
+	text-align:left;
+	width:65%;
+	margin:0px auto;
+	margin-bottom:25px;
+	line-height:16px;
+	}
+
+#page a {
+    font-weight:bold;
+	}
+	
+#page img {
+	background:#fff;
+    padding:5px;
+	border:1px solid #333;
+	}
+
+.column{
+	width:50%;
+	text-align:left;
+	vertical-align:top;
+	}
+	
+.thumbnails {
+	border:1px solid #515151;
+	padding:3px;
+	margin:3px;
+	}
+
+/* .............................. */
+/* Comments */
+/* .............................. */
+
+#comment-top {
+    background:#333;
+	border-bottom:1px solid #aaa;
+	padding:5px;
+	margin-bottom:25px;
+	height:15px;
+	}    
+
+#comments {
+    margin:0px auto;
+	width:95%;
+	text-align:left;
+	}
+	
+#comments ul {
+	list-style-type:none;
+	margin:0px;
+	padding:10px;
+	}
+	
+#comments li {
+	display:block;
+	margin:0px;
+	margin-bottom:10px;
+	color:#eee;
+	text-decoration:none;
+	padding:10px;
+	border:1px solid #aaa;
+	}
+	
+#comments li a {
+	color:#eee;
+	text-decoration:none;
+	}
+
+#comments li a:hover {
+	color:#fff;
+	}
+	
+#comments li:hover {
+	background:#515151;
+	}
+
+#comment-middle {
+    background:#666;
+	border-top:1px solid #aaa;
+	padding:5px;
+	margin-top:25px;
+	height:15px;
+	} 
+
+#addcomment {
+    width:90%;
+	text-align:left;
+	padding:10px;
+	margin:0px auto;
+	border:1px solid #aaa;
+	background:#515151;
+	}
+
+.input {
+    width:45%;
+	font-size:10px;
+	border:1px solid #aaa;
+	background-color:#666;
+	color:#eee;
+	padding:5px;
+    }
+	
+#addcomment textarea {
+	width:90%;
+	height:50px;
+	font-size:12px;
+	border:1px solid #aaa;
+	background-color:#666;
+	color:#eee;
+	padding:5px;
+	}
+
+.comment-button {
+    background:#fff;
+	border:1px solid #aaa;
+	color:#666;
+	border-bottom:2px solid #aaa;
+	border-right:2px solid #aaa;
+	}
+
+/* .............................. */
+/* Footer */
+/* .............................. */
+
+#footer {
+   text-align:center;
+   margin-bottom:20px;
+   }
+
+/* .............................. */
+/* Calendar if somebody wants to use */
+/* a calendar in the template        */
+/* .............................. */
+
+
+.td-calendar-days-vz {
+	padding:1px;
+	text-align:center;
+	border-top:0px solid #000;
+	border-bottom:1px solid #000;
+	border-right:0px;
+	border-left:0px;
+	background:#fff;
+	color:#000;
+	}
+.td-calendar-days-vz:hover {
+    background:#444;
+    }
+
+.td-calendar-days {
+	padding:1px;
+	text-align:center;
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	border-right:0px;
+	border-left:0px;
+	background:#fff;
+	color:#000;
+	}
+.td-calendar-days:hover {
+    background:#444;
+    }
+.td-calendar-navi-vz {
+	border-top:0px;
+	border-bottom:1px solid #000;
+	border-right:0px;
+	border-left:0px;
+	text-align:center;
+	letter-spacing:1px;
+	word-spacing:5px;
+	}
+.td-calendar-navi-vz a {
+    text-decoration:none;
+    color:#444;
+    }
+.td-calendar-navi {
+	border-top:0px;
+	border-bottom:1px solid #000;
+	border-right:0px;
+	border-left:0px;
+	text-align:right;
+	letter-spacing:1px;
+	word-spacing:5px;
+	}
+.td-calendar-navi a {
+    text-decoration:none;
+    color:#444;
+    }
+.td-calendar-days-imagefound {
+	padding:1px;
+	text-align:center;
+	border-top:1px dotted #000;
+	border-bottom:1px dotted #000;
+	border-left:1px dotted #000;
+	border-right:1px dotted #000;
+	background:#f5f5f5;
+	}
+.td-calendar-days-imagefound:hover {
+    border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	background:#666;
+    }
+.td-calendar-days-imagefound a {
+    text-decoration:none;
+    color:#444;
+    }
+.td-calendar-days-imagefound a:hover {
+    text-decoration:none;
+    color:#fff;
+    }
+.table-calendar {
+    font-family:Helvetica, verdana, sans-serif;
+	font-size:10px;
+	padding:0px;
+	margin:0px;
+	width:600px;
+	border-top:0px;
+	border-bottom:0px;
+	border-right:0px;
+	border-left:0px;
+	}
+.table-calendar-vz {
+    font-family:Helvetica, verdana, sans-serif;
+	font-size:10px;
+	padding:0px;
+	margin:0px;
+	width:200px;
+	border-top:0px;
+	border-bottom:0px;
+	border-right:0px;
+	border-left:0px;
+	}
+
+/* TAG SUPPORT */
+.tags00
+{
+	font-size: 8px !important;
+}
+.tags01
+{
+	font-size: 10px !important;
+}
+
+.tags02
+{
+	font-size: 12px !important;
+}
+
+.tags03
+{
+	font-size: 14px !important;
+}
+
+.tags04
+{
+	font-size: 16px !important;
+}
+
+.tags05
+{
+	font-size: 18px !important;
+}
+
+.tags06
+{
+	font-size: 20px !important;
+}
+
+.tags07
+{
+	font-size: 22px !important;
+}
+
+.tags08
+{
+	font-size: 24px !important;
+}
+
+.tags09
+{
+	font-size: 26px !important;
+}
+
+.tags10
+{
+	font-size: 28px !important;
+}

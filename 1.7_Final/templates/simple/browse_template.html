@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title><SITE_TITLE> :: Browse</title>
+<!-- META -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="templates/simple/styles/light.css" title="light" />
+<link rel="alternate stylesheet" type="text/css" href="templates/simple/styles/dark.css" title="dark" />
+<!-- SCRIPTS -->
+<script type="text/javascript" src="templates/simple/scripts/styleswitcher.js"></script>
+</head>
+<body>
+<div id="navigation">
+<h1><a href="index.php" title="Return to current image"><SITE_TITLE> - <SUB_TITLE></a></h1>
+<span class="menu">
+<a href="index.php" title="Return to Homepage">Home</a> |
+<a href="<SITE_BROWSELINK>" title="Browse">Browse</a> |
+<a href="index.php?x=about" title="About">About</a>
+</span>
+</div>
+
+<div id="page">
+<span class="title">Browse Archive:</span><hr /><br />
+<div align="center">
+<BROWSE_CATEGORIES>
+<br /><br />
+<THUMBNAILS>
+</div>
+</div>
+
+<div id="footer">
+Site Style: <a href="#" onclick="setActiveStyleSheet('light'); return false;">Light</a> /
+<a href="#" onclick="setActiveStyleSheet('dark'); return false;">Dark</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<SITE_RSS_LINK> / <SITE_ATOM_LINK>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="http://validator.w3.org/check/referer" title="This website uses Valid xHTML">Valid xHTML</a> / <a href="http://jigsaw.w3.org/css-validator/check/referer" title="This website uses Valid CSS2">Valid CSS</a>
+</div>
+
+</body>
+</html>

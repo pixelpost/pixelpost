@@ -1,0 +1,46 @@
+# GettingStarted: AlternativeLanguage 
+
+##  Alternative Language 
+
+You can set a default language and an alternative language in the admin panel. The default language is the behavior of the old version (1.5 and earlier) of Pixelpost. It uses the default templates (e.g. image\_template.html). If you select an alternative language and you want to switch back and forth you need a set of new template files for this language. So the best thing to do is make a copy of the old template (for example the about\_template.html), translate everything you want to the alternative language in that template and rename the template as follows: 
+
+Each language in Pixelpost has is own abbreviation as shown below: 
+
+
+
+Abbreviation: Language 
+
+NL: Dutch 
+EN: English 
+FR: French 
+DE: German 
+IT: Italian 
+NO: Norwegian 
+FA: Persian 
+PL: Polish 
+PT: Portuguese 
+CN: Simplified Chinese 
+ES: Spanish 
+SE: Swedish 
+JP: Japanese 
+
+So let's say, for the sake of argument, I have my alternative language set to Dutch and the default to English. I have a default template with all items in English and it uses the English language file. Now I want to switch between English and Dutch. So I copy the default template files, translate everything the users see from English in Dutch (like the about page) and rename the template following the scheme below: 
+
+image\_template.html => image\_nl_template.html 
+
+So right before "\_template.html" I add a "\_xx" where xx is the abbreviation of the alternative language. Do this for all template files. 
+
+I've included some tags to make switching easier: 
+
+[<ALTERNATIVE_LANGUAGE>][1] Gives a full URL to switch to the alternative language set from the adminpanel (warning: requires alternative language templates). Best part of this is when you switch to the alternative language a link will be displayed for the default language and vice versa. 
+
+[<LANGUAGE=xx>][2] Gives a full URL to switch to any language (provided there are templates) The xx part is the language abbreviation mentioned earlier. (This is a fixed link. If you switch to this language this link will not change) 
+
+So switching to another language will use new templates but will also include the correct language file and for the alternative language the alternative tags, categories, titles, image description will be used. 
+
+Retrieved from http://www.pixelpost.org/docs/GettingStarted/AlternativeLanguage 
+
+Page last modified on October 24, 2007, at 02:29 PM
+
+ [1]: http://www.pixelpost.org/docs/TemplateTags/ALTERNATIVE_LANGUAGE
+ [2]: http://www.pixelpost.org/docs/TemplateTags/LANGUAGExx

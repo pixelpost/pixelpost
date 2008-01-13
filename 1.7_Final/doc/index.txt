@@ -1,0 +1,46 @@
+# Main: HomePage 
+
+## Introduction 
+
+Meet Pixelpost, a small photoblog application that's a no-brainer to set up and use - this is truly for anyone wishing regularly to post their photos on the web like a blog. 
+
+It is very heavily geared towards photobloggers and comes with a set of features that caters to photobloggers needs. 
+
+There are a plethora of software for the literary minded out there, far fewer for the visual person who want to set up a photoblog. Pixelpost is wholly and fully geared towards photoblogging. If you want to write, this is not for you. 
+
+
+
+## The Next Step 
+
+New to Pixelpost? No problem, installation is a breeze. Check out the [Guide to Installing][1]. 
+
+A Pixelpost veteran? Still be sure to check out the [Guide to Upgrading][2]. 
+
+
+
+## The Next Next Steps 
+
+We do our best to make Pixelpost as simple to use as possible but every now and then you may run into problems not covered in this documentation. Your first point of call should be the [Pixelpost Wiki][3]. If you are still stuck after checking out the [Pixelpost Wiki][3], then feel free to amble into the [Pixelpost Forum][4] and throw your problem at the experienced users there. 
+
+
+
+## So, What's Changed? 
+
+A heck of a lot! So much so, that we've had to cram it all into a separate page. Check out the [Changelog][5] if you're interested in what we're up to. You can check all the new template tags, as well as the old ones, in [The Tag List][6]. 
+
+
+
+## Where can I find the old Wiki? 
+
+Fear not! You can still access it here: <http://wiki.pixelpost.org> 
+
+Retrieved from http://www.pixelpost.org/docs/Main/HomePage 
+
+Page last modified on September 07, 2007, at 10:03 AM
+
+ [1]: http://www.pixelpost.org/docs/GettingStarted/Install
+ [2]: http://www.pixelpost.org/docs/GettingStarted/Upgrade
+ [3]: http://wiki.pixelpost.org
+ [4]: http://www.pixelpost.org/forum/
+ [5]: http://www.pixelpost.org/docs/Main/Changelog
+ [6]: http://www.pixelpost.org/docs/TemplateTags/TemplateTags
