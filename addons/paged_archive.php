@@ -401,6 +401,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 
 	// initialize archive links
 	$Archive_pages_Links = "";
+	// selected category id
+	if (isset($_GET['category'])){
+		$cat_id = $_GET['category'];
+	} else {
+		$cat_id = null;
+	}
 
 	//-------- Make page number to archive as links (for the selected category)
 
