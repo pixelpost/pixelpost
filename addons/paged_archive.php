@@ -34,8 +34,15 @@ NEW TAGS:
 <LINK_TO_PAGED_ARCHIVE> // Link to Paged-by-page archive page as <a href="index.php?x=browse&pagenum=1">Archive</a>',$tpl);
 <TAG_LINKS_AS_LIST> // Tag links as a text list for default PP's archive page
 <TAG_LINKS_AS_LIST_PAGED> // Tag links as a text list for page-by-page archive
+<FOCUS_TAG_LINKS_AS_LIST> // Like <TAG_LINKS_AS_LIST> but with reverse font-size (css)
+<FOCUS_TAG_LINKS_AS_LIST_PAGED> // Like <TAG_LINKS_AS_LIST_PAGED> but with reverse font-size (css)
 <TAG_IMG_LIST> // list of tags for showed image
 <TAG_IMG_LIST_PAGED> // list of tags for showed image
+<TAG_IMG_LIST_KEYWORDS> // list of tags for showed image for use as Keywords in Meta Tag
+<TAG_LINKS_AS_LIST_NO_NUM> // Like <TAG_LINKS_AS_LIST> but without number of photos for this tag
+<TAG_LINKS_AS_LIST_PAGED_NO_NUM> // Like <TAG_LINKS_AS_LIST_PAGED> but without number of photos for this tag
+<FOCUS_TAG_LINKS_AS_LIST_NO_NUM> // Like <FOCUS_TAG_LINKS_AS_LIST> but without number of photos for this tag
+<FOCUS_TAG_LINKS_AS_LIST_PAGED_NO_NUM> // Like <FOCUS_TAG_LINKS_AS_LIST_PAGED> but without number of photos for this tag
 
 */
 
@@ -123,10 +130,17 @@ select<br/>
 
 <p>NEW TAGS:<br/>
 <br/>
-&lt;TAG_LINKS_AS_LIST&gt; // Tag links as a text list for default PP's archive page<br/>
-&lt;TAG_LINKS_AS_LIST_PAGED&gt; // Tag links as a text list for page-by-page archive<br/>
+&lt;TAG_LINKS_AS_LIST&gt; // Tag links as a text list for default PP's archive page (different font-size by css)<br/>
+&lt;TAG_LINKS_AS_LIST_PAGED&gt; // Tag links as a text list for page-by-page archive (different font-size by css)<br/>
+&lt;FOCUS_TAG_LINKS_AS_LIST&gt; // Like &lt;TAG_LINKS_AS_LIST&gt; but with reverse font-size (css)<br />
+&lt;FOCUS_TAG_LINKS_AS_LIST_PAGED&gt; // Like &lt;TAG_LINKS_AS_LIST_PAGED&gt; but with reverse font-size (css)<br />
 &lt;TAG_IMG_LIST&gt; // list of tags for showed image<br/>
-&lt;TAG_IMG_LIST_PAGED&gt; // list of tags for showed image</p>
+&lt;TAG_IMG_LIST_PAGED&gt; // list of tags for showed image<br />
+&lt;TAG_IMG_LIST_KEYWORDS&gt; // list of tags for showed image for use as Keywords in Meta Tag<br />
+&lt;TAG_LINKS_AS_LIST_NO_NUM&gt; // Like &lt;TAG_LINKS_AS_LIST&gt; but without number of photos for this tag<br />
+&lt;TAG_LINKS_AS_LIST_PAGED_NO_NUM&gt; // Like &lt;TAG_LINKS_AS_LIST_PAGED&gt; but without number of photos for this tag<br/>
+&lt;FOCUS_TAG_LINKS_AS_LIST_NO_NUM&gt; // Like &lt;FOCUS_TAG_LINKS_AS_LIST&gt; but without number of photos for this tag<br />
+&lt;FOCUS_TAG_LINKS_AS_LIST_PAGED_NO_NUM&gt; // Like &lt;FOCUS_TAG_LINKS_AS_LIST_PAGED&gt; but without number of photos for this tag<br /></p>
 
 ";
 
