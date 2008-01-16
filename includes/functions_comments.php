@@ -54,7 +54,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
   	}
 
 // $parent_id
-	$parent_id = isset($_POST['parent_id']) ? $_POST['parent_id'] : "";
+	$parent_id = isset($_POST['parent_id']) ? (int)$_POST['parent_id'] : "";
 
 	if (eregi("\r",$parent_id) || eregi("\n",$parent_id)){
 		eval_addon_front_workspace('comment_blocked_id');
