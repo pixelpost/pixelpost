@@ -853,7 +853,7 @@ if(!isset($_GET['x'])) {
 	 */
 	if(isset($_GET['x']) && ($_GET['x'] == "") or (isset($_GET['popup']) && $_GET['popup'] == "comment")) {
 
-		$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '".$_POST['parent_id']."'");
+		$comments_result = sql_array("SELECT comments FROM ".$pixelpost_db_prefix."pixelpost where id = '".intval($_POST['parent_id'])."'");
 		$cmnt_setting = pullout($comments_result['comments']);
 
 		if($cmnt_setting == 'F') { die('Die you SPAMMER!!'); }
