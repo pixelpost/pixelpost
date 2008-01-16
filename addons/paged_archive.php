@@ -449,7 +449,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		while ($pagecounter < $num_browse_pages)
 		{
 			$pagecounter++;
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+			if ($pagecounter != $pagenum){
+				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+			} else {
+				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+			}
 		}// end while
 	}// end if
 	else if($paged_arch_tag_flag > 0)
@@ -459,7 +463,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		while ($pagecounter < $num_browse_pages)
 		{
 			$pagecounter++;
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+			if ($pagecounter != $pagenum){
+				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a></span>";
+			} else {
+				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+				
+			}
 		}
 	}
 	else if($paged_arch_archdate_flag > 0)
@@ -471,7 +480,11 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			$monthname=str_replace(" ","%20",$monthname);
 			$pagecounter++;
 			$archivedate=mysql_real_escape_string($_GET['archivedate']);
-			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+			if ($pagecounter != $pagenum){
+				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+			} else {
+				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
+			}
 		}// whilte
 	}// end if $_GET['archivedate']!=""
 	else
