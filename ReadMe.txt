@@ -1,4 +1,4 @@
-Pixelpost version 1.7
+Pixelpost version 1.7.1
 
 SVN file version:
 $Id$
