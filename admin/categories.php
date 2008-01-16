@@ -38,7 +38,7 @@ if($_GET['view'] == "categories")
 
 	if($_GET['action'] == "edit")
 	{
-		$query = sql_array("select * from ".$pixelpost_db_prefix."categories where id='".$_POST['id']."'");
+		$query = sql_array("select * from ".$pixelpost_db_prefix."categories where id='".(int)$_POST['id']."'");
 		$name = pullout($query['name']);
 		$alt_name = pullout($query['alt_name']);
 		echo "<div class='jcaption'>$admin_lang_cats_edit_cat_txt</div>

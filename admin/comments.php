@@ -12,7 +12,7 @@ if($_GET['view'] == "comments") {
  // delete a comment
     if($_GET['action'] == "delete") {
 	    $delid = (int) $_GET['delid'];
-	    $query = sql_query("DELETE FROM ".$pixelpost_db_prefix."comments WHERE id='$delid'");
+	    $query = sql_query("DELETE FROM ".$pixelpost_db_prefix."comments WHERE id='".(int)$delid."'");
 	    echo "<div class='jcaption'>$admin_lang_cmnt_deleted </div>";
 	    }
  // edit a comment
@@ -21,7 +21,7 @@ if($_GET['view'] == "comments") {
  			$message = $_POST['message'.$editid];
  			// added by schonhose to escape characters
  			$message = nl2br(clean_comment($message));
- 			$query = "update ".$pixelpost_db_prefix."comments set message='$message' where id='$editid'";
+ 			$query = "update ".$pixelpost_db_prefix."comments set message='$message' where id='".(int)$editid."'";
  			$query  = sql_query($query);
  			echo "<div class='jcaption'>$admin_lang_cmnt_edited </div>";
 		}
@@ -33,7 +33,7 @@ if($_GET['view'] == "comments") {
  		$query = "DELETE FROM ".$pixelpost_db_prefix."comments ";
  		$where = "WHERE";
  		for ($i=0; $i < count($idz)-1; $i++)
- 		{	$where .= " id = '$idz[$i]' or ";	}
+ 		{	$where .= " id = '".(int)$idz[$i]."' or ";	}
  		$lastid = $idz[count($idz)-1];
  		$where .= " id = '$lastid'  ";
  		$query .= $where;
@@ -48,7 +48,7 @@ if($_GET['view'] == "comments") {
 		$idz= $_POST['moderate_commnts_boxes'];
 
 		foreach ($idz as $id){
-			$where[] = "id='$id'";
+			$where[] = "id='".(int)$id."'";
 		}
 		$where = implode(" OR ",$where);
 			$query = "SELECT DISTINCT ip FROM ".$pixelpost_db_prefix."comments WHERE $where";
@@ -117,7 +117,7 @@ if($_GET['view'] == "comments") {
 			$query = "update ".$pixelpost_db_prefix."comments set publish='yes' ";
 			$where = "WHERE";
 			for ($i=0; $i < count($idz)-1; $i++)
-			{	$where .= " id = '$idz[$i]' or ";	}
+			{	$where .= " id = '".(int)$idz[$i]."' or ";	}
 			$lastid = $idz[count($idz)-1];
 			$where .= " id = '$lastid'  ";
 			$query .= $where;
@@ -133,7 +133,7 @@ if($_GET['view'] == "comments") {
 			$query = "update ".$pixelpost_db_prefix."comments set publish='no' ";
 			$where = "WHERE";
 			for ($i=0; $i < count($idz)-1; $i++)
-			{	$where .= " id = '$idz[$i]' or ";	}
+			{	$where .= " id = '".(int)$idz[$i]."' or ";	}
 			$lastid = $idz[count($idz)-1];
 			$where .= " id = '$lastid'  ";
 			$query .= $where;

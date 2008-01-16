@@ -28,7 +28,7 @@ if($_GET['view'] == "images")
  		for ($i=0; $i < count($idz); $i++)
  		{
  			$datetimestamp = gmdate("Y-m-d H:i:s", mktime($current_hour, $current_minutes-($minute_offset*($ids-$i)), $current_seconds, date("m"), date("d"), date("Y"))+(3600 * $tz));
-			$finalquery=$query."'".$datetimestamp."' WHERE id = '$idz[$i]'";
+			$finalquery=$query."'".$datetimestamp."' WHERE id = '".(int)$idz[$i]."'";
  			$finalquery  = sql_query($finalquery);
  		}
  		$c = count($idz);
@@ -41,7 +41,7 @@ if($_GET['view'] == "images")
 		// delete all the images:
 		for ($i=0; $i < count($idz); $i++)
  		{
- 			$imagerow = sql_array("SELECT image FROM ".$pixelpost_db_prefix."pixelpost where id='$idz[$i]'");
+ 			$imagerow = sql_array("SELECT image FROM ".$pixelpost_db_prefix."pixelpost where id='".(int)$idz[$i]."'");
 			$image = $imagerow['image'];
  			$file_to_del = $cfgrow['imagepath'].$imagerow['image'];
 			unlink($file_to_del);
@@ -54,9 +54,9 @@ if($_GET['view'] == "images")
     $where3 = $where;
  		for ($i=0; $i < count($idz)-1; $i++)
  		{
- 			$where .= " id = '$idz[$i]' or ";
- 			$where2 .= " img_id = '$idz[$i]' or ";
-      $where3 .= " parent_id = '$idz[$i]' or ";
+ 			$where .= " id = '".(int)$idz[$i]."' or ";
+ 			$where2 .= " img_id = '".(int)$idz[$i]."' or ";
+      $where3 .= " parent_id = '".(int)$idz[$i]."' or ";
  		}
  		$lastid = $idz[count($idz)-1];
  		$where .= " id = '$lastid'  ";
@@ -89,7 +89,7 @@ if($_GET['view'] == "images")
 			$query = "DELETE FROM ".$pixelpost_db_prefix."catassoc ";
 			$where = "WHERE";
 			for ($i=0; $i < count($idz); $i++)
-			{	$where .= " (cat_id='$cat_id' and image_id='$idz[$i]') or ";	}
+			{	$where .= " (cat_id='$cat_id' and image_id='".(int)$idz[$i]."') or ";	}
 
 			$where .= " 0 ";
 			$query .= $where;
@@ -109,7 +109,7 @@ if($_GET['view'] == "images")
 			$where = "WHERE";
 			for ($i=0; $i < count($idz); $i++)
 			{
-				$where .= " (cat_id='$cat_id' and image_id='$idz[$i]') or ";
+				$where .= " (cat_id='$cat_id' and image_id='".(int)$idz[$i]."]') or ";
 			}
 
 			$where .= " 0 ";
@@ -122,7 +122,7 @@ if($_GET['view'] == "images")
 
 			for ($i=0; $i < count($idz); $i++)
 			{
-				$query_val[$i] = "(NULL,'$cat_id','$idz[$i]')";
+				$query_val[$i] = "(NULL,'$cat_id','".(int)$idz[$i]."')";
 			}
 
 			$query_st = "INSERT INTO ".$pixelpost_db_prefix."catassoc (id,cat_id,image_id) VALUES ".implode(",", $query_val).";";
@@ -181,7 +181,7 @@ if($_GET['view'] == "images")
 				{
 					for($y = 0; $y < count($tags_arr); $y++)
 					{
-						$values[1] = '('.$idz[$x].', "'.$tags_arr[$y].'", "")';
+						$values[1] = '('.(int)$idz[$i].', "'.$tags_arr[$y].'", "")';
 						$values[0] = implode(', ', $values);
 					}
 				}
@@ -192,7 +192,7 @@ if($_GET['view'] == "images")
 				{
 					for($y = 0; $y < count($tags_arr); $y++)
 					{
-						$values[1] = '('.$idz[$x].', "", "'.$tags_arr[$y].'")';
+						$values[1] = '('.(int)$idz[$i].', "", "'.$tags_arr[$y].'")';
 						$values[0] = implode(', ', $values);
 					}
 				}
