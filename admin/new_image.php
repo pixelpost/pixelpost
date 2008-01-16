@@ -26,7 +26,7 @@ if($_GET['view'] == "")
  		  //Obviously we would like to use the alternative language
 			$alt_headline = clean($_POST['alt_headline']);
 			$alt_body =  clean($_POST['alt_body']);
-			$alt_tags = $_POST['alt_tags'];
+			$alt_tags = clean($_POST['alt_tags']);
 		}
 		else
 		{
@@ -35,13 +35,13 @@ if($_GET['view'] == "")
 			$alt_tags = "";
 		}
 
-		$comments_settings = $_POST['allow_comments'];
+		$comments_settings = clean($_POST['allow_comments']);
 	  $datetime =
-             $_POST['post_year']."-".
-             $_POST['post_month']."-".
-             $_POST['post_day']." ".
-             $_POST['post_hour'].":".
-             $_POST['post_minute'].":".date('s');
+             intval($_POST['post_year'])."-".
+             intval($_POST['post_month'])."-".
+             intval($_POST['post_day'])." ".
+             intval($_POST['post_hour']).":".
+             intval($_POST['post_minute']).":".date('s');
 
 		if( $_POST['autodate'] == 1)
 		{
@@ -156,6 +156,7 @@ if($_GET['view'] == "")
 	
 				foreach($_POST['category'] as $val)
 				{
+					$val = clean($val);
 					$query_val[] = "(NULL,'$val','$theid')";
 				}
 	
@@ -168,10 +169,10 @@ if($_GET['view'] == "")
 			eval_addon_admin_workspace_menu('image_uploaded');
 
 			// save tags
-			save_tags_new($_POST['tags'],$theid);
+			save_tags_new(clean($_POST['tags']),$theid);
 
 			// save the alt_tags to if the variable is set
-			if($cfgrow['altlangfile'] != 'Off')	save_tags_new($_POST['alt_tags'],$theid,"alt_");
+			if($cfgrow['altlangfile'] != 'Off')	save_tags_new(clean($_POST['alt_tags']),$theid,"alt_");
 
 			// workspace: image_uploaded
 			eval_addon_admin_workspace_menu('upload_finished');
@@ -199,10 +200,11 @@ if($_GET['view'] == "")
   <?php	eval_addon_admin_workspace_menu('new_image_form_def_lang'); 	?>
   <?php echo $admin_lang_ni_select_cat;?>
 	<?php
-	category_list_as_table($_POST['category'], $cfgrow);
+	category_list_as_table(clean($_POST['category']), $cfgrow);
  	$tz = $cfgrow["timezone"];
  	$cur_time = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
  	$cur_year = gmdate("Y",time()+(3600 * $tz));
+	$_POST['autodate'] = clean($_POST['autodate']);
  	$selected_autodate[$_POST['autodate']] = 1;
  	if($_POST['autodate']=='')	$selected_autodate[2] = 1;
  ?>
@@ -330,7 +332,7 @@ if($_GET['view'] == "")
 		<div class='content'>$admin_lang_optn_cmnt_mod_txt2
 		<select name=\"allow_comments\">";
 
-	$allow_comments = (strlen($_POST['allow_comments']) > 0) ? $_POST['allow_comments'] : $cfgrow["global_comments"];
+	$allow_comments = (strlen($_POST['allow_comments']) > 0) ? clean($_POST['allow_comments']) : $cfgrow["global_comments"];
 
 	if($allow_comments == 'A')
 	{

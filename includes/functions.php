@@ -1097,7 +1097,7 @@ function update_banlist()
 		// acceptable_num_links
 		if (isset( $_POST['acceptable_num_links']))
 		{
-			$acceptable_num_links= $_POST['acceptable_num_links'];
+			$acceptable_num_links= clean($_POST['acceptable_num_links']);
 			$query = "UPDATE {$pixelpost_db_prefix}banlist SET acceptable_num_links='$acceptable_num_links' LIMIT 1";
 			mysql_query($query) ;
 

@@ -52,7 +52,7 @@ if ($_GET['optaction']=='updateall')
 				$update = sql_query(
 					"UPDATE ".$pixelpost_db_prefix."config
 					SET
-						admin='".$_POST['new_admin_user']."',
+						admin='".clean($_POST['new_admin_user'])."',
 						password='$new_pass'");
 
 				echo "<div class='content confirm'>$admin_lang_optn_pass_chngd_txt</div>";
@@ -72,8 +72,8 @@ if ($_GET['optaction']=='updateall')
 			$update = sql_query(
 				"UPDATE ".$pixelpost_db_prefix."config
 				SET
-					langfile='".$_POST['new_lang']."',
-					altlangfile='".$_POST['alt_lang']."'");
+					langfile='".clean($_POST['new_lang'])."',
+					altlangfile='".clean($_POST['alt_lang'])."'");
 
 			$lang_error=0;
 		} else {
@@ -92,14 +92,14 @@ if ($_GET['optaction']=='updateall')
 			$update = sql_query(
 				"UPDATE ".$pixelpost_db_prefix."config
 				SET
-					commentemail='".$_POST['new_commentemail']."',
-					htmlemailnote='".$_POST['new_htmlemailnote']."',
-					global_comments='".$_POST['global_comments']."',
-					timezone='".$_POST['timezone']."',
-					thumbnailpath='".$_POST['new_thumbnail_path']."',
-					imagepath='".$_POST['new_image_path']."',
-					email='".$_POST['new_email']."',
-					admin_langfile='".$_POST['new_admin_lang']."'");
+					commentemail='".clean($_POST['new_commentemail'])."',
+					htmlemailnote='".clean($_POST['new_htmlemailnote'])."',
+					global_comments='".clean($_POST['global_comments'])."',
+					timezone='".clean($_POST['timezone'])."',
+					thumbnailpath='".clean($_POST['new_thumbnail_path'])."',
+					imagepath='".clean($_POST['new_image_path'])."',
+					email='".clean($_POST['new_email'])."',
+					admin_langfile='".clean($_POST['new_admin_lang'])."'");
 
 		// markdown
 		// exif
@@ -108,10 +108,10 @@ if ($_GET['optaction']=='updateall')
 			$upquery = sql_query(
 				"UPDATE ".$pixelpost_db_prefix."config
 				SET
-					markdown='".$_POST['markdown']."',
-					exif='".$_POST['exif']."',
-					visitorbooking='".$_POST['visitorbooking']."',
-					timestamp='".$_POST['timestamp']."'");
+					markdown='".clean($_POST['markdown'])."',
+					exif='".clean($_POST['exif'])."',
+					visitorbooking='".clean($_POST['visitorbooking'])."',
+					timestamp='".clean($_POST['timestamp'])."'");
 
 		// RSS settings
 		if(!get_magic_quotes_gpc())
@@ -120,13 +120,13 @@ if ($_GET['optaction']=='updateall')
 			$upquery = sql_query(
 				"UPDATE ".$pixelpost_db_prefix."config
 				SET
-					rsstype='".$_POST['rsstype']."',
-					feed_discovery='".$_POST['feed_discovery']."',
+					rsstype='".addslashes($_POST['rsstype'])."',
+					feed_discovery='".addslashes($_POST['feed_discovery'])."',
 					feeditems='".(int) $_POST['feeditems']."',
 					feed_title='".addslashes($_POST['feed_title'])."',
 					feed_description='".addslashes($_POST['feed_description'])."',
 					feed_copyright='".addslashes($_POST['feed_copyright'])."',
-					allow_comment_feed='".$_POST['allow_comment_feed']."'");
+					allow_comment_feed='".addslashes($_POST['allow_comment_feed'])."'");
 		}
 		else
 		{
@@ -149,16 +149,16 @@ if ($_GET['optaction']=='updateall')
 			if(!get_magic_quotes_gpc())
 			{
 				// we need to escape the string before saving it to the db
-				$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET feed_external='".addslashes($_POST['feed_external'])."', feed_external_type='".$_POST['feed_external_type']."'");
+				$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET feed_external='".addslashes($_POST['feed_external'])."', feed_external_type='".clean($_POST['feed_external_type'])."'");
 			}
 			else
 			{
-				$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET feed_external='".$_POST['feed_external']."', feed_external_type='".$_POST['feed_external_type']."'");
+				$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET feed_external='".clean($_POST['feed_external'])."', feed_external_type='".clean($_POST['feed_external_type'])."'");
 			}
 		}
 		
 		// displayorder
-			$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET display_sort_by='".$_POST['display_sort_by']."', display_order='".$_POST['display_order']."'");
+			$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET display_sort_by='".clean($_POST['display_sort_by'])."', display_order='".$_POST['display_order']."'");
 		
 		// Refresh the settings
 		$cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config");
@@ -172,12 +172,12 @@ switch ($_GET['optaction'])
 
 //=========== START PAGE TWO: TEMPLATE ===========
 	case "updatetemplate":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET template='".$_POST['new_template']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET template='".clean($_POST['new_template'])."'");
 	break;
 
 
 	case "updatedateformat":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET dateformat='".$_POST['new_dateformat']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET dateformat='".clean($_POST['new_dateformat'])."'");
 	break;
 
 	case "updatecatformat":
@@ -187,7 +187,7 @@ switch ($_GET['optaction'])
 		{
 			// selected from the drop box
 			$startcatformat = '';
-			$endcatformat = $_POST['catformat'];
+			$endcatformat = clean($_POST['catformat']);
 			if ($_POST['catformat'] == '[')
 			{
 						$startcatformat = '[';
@@ -197,30 +197,30 @@ switch ($_GET['optaction'])
 		else
 		{
 			// custom fromat
-			$startcatformat = $_POST['startcatformat'];
-			$endcatformat = $_POST['endcatformat'];
+			$startcatformat = clean($_POST['startcatformat']);
+			$endcatformat = clean($_POST['endcatformat']);
 		}
 
 		$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET catgluestart='" .$startcatformat ."', catglueend='" .$endcatformat ."'");
 	break;
 
 	case "updatecalendar":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET calendar='".$_POST['cal']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET calendar='".clean($_POST['cal'])."'");
 	break;
 //=========== END OF PAGE TWO: TEMPLATE ===========
 
 
 //=========== START PAGE THREE: THUMBNAIL ===========
 	case "updatethumbrow":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET thumbnumber='".$_POST['thumbnumber']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET thumbnumber='".clean($_POST['thumbnumber'])."'");
 	break;
 
 	case "updatecrop":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET crop='".$_POST['new_crop']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET crop='".clean($_POST['new_crop'])."'");
 	break;
 
 	case "updatethumbsize":
-		$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET thumbwidth='".$_POST['thumbwidth']."', thumbheight='".$_POST['thumbheight']."'");
+		$upquery = sql_query("UPDATE ".$pixelpost_db_prefix."config SET thumbwidth='".clean($_POST['thumbwidth'])."', thumbheight='".clean($_POST['thumbheight'])."'");
 	break;
 
 	case "updatethumbnails":
@@ -248,10 +248,10 @@ switch ($_GET['optaction'])
 	break;
 
 	case "updatecompression":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET compression='".$_POST['new_compression']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET compression='".clean($_POST['new_compression'])."'");
 	break;
 	case "updatethumbsharpening":
-		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET thumb_sharpening='".$_POST['new_thumb_sharpening']."'");
+		$update = sql_query("UPDATE ".$pixelpost_db_prefix."config SET thumb_sharpening='".clean($_POST['new_thumb_sharpening'])."'");
 	break;
 //=========== END OF PAGE THREE: THUMBNAIL ===========
 
@@ -1025,7 +1025,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 				$upquery = sql_query(
 					"UPDATE ".$pixelpost_db_prefix."config
 					SET
-						token='".$_POST['token']."',
+						token='".clean($_POST['token'])."',
 						token_time='".(int) $_POST['token_time']."',
 						comment_timebetween='".(int) $_POST['comment_timebetween']."',
 						max_uri_comments='".(int) $_POST['max_uri_comment']."'

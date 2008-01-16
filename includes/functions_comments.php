@@ -200,7 +200,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 // ##########################################################################################//
 // EMAIL NOTE ON COMMENTS
 // ##########################################################################################//
-	$comment_image_id = $_POST['parent_id'];
+	$comment_image_id = intval($_POST['parent_id']);
 	$link_to_comment = $cfgrow['siteurl']."index.php?showimage=$comment_image_id";
 	if($cfgrow['commentemail'] == "yes" && $email_flag == 1)
 	{

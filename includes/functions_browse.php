@@ -41,6 +41,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 
 		foreach( $_POST['category'] as $cat)
 		{
+			$cat = clean($cat);
 			$where .= "t1.cat_id='$cat' OR ";
 			$lookingfor++;
 		}

@@ -166,7 +166,7 @@ if($_GET['x'] == "login")
 		// set autologin cookie
 		if($_POST['remember'] == 'on')
 		{
-			setcookie( "pp_user", $_POST['user'], time()+604800);
+			setcookie( "pp_user", clean($_POST['user']), time()+604800);
 			setcookie( "pp_password", sha1($cfgrow_password.$_SERVER["REMOTE_ADDR"]), time()+604800);
 		}
 		header("Location:index.php");
