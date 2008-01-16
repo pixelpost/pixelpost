@@ -222,7 +222,7 @@ function akismet_settings(){
 	$newakismet_keep = $cfgrow['akismet_keep'];
 
 	if ((isset($_GET['optaction'])) && ($_GET['optaction'] == "updateantispam")) {
-  	$newakismet_key = $_POST['newakismet_key'];
+  	$newakismet_key = mysql_real_escape_string($_POST['newakismet_key']);
 	  $newakismet_keep = $_POST['newakismet_keep'];
   	if ('valid' == akismet_verify_key($newakismet_key)) {
     	$query = "update ".$pixelpost_db_prefix."config set akismet_key='" .$newakismet_key ."'" ;
@@ -291,7 +291,7 @@ function pp_submit_nonspam_comment () {
   if (is_array($_POST['moderate_commnts_boxes'])) {
     foreach ($_POST['moderate_commnts_boxes'] as $cid) 
     {
-      $query = "SELECT * FROM {$pixelpost_db_prefix}comments WHERE id = '$cid'";
+      $query = "SELECT * FROM {$pixelpost_db_prefix}comments WHERE id = '".(int)$cid."'";
       $result = mysql_query($query);
       
       if ( !mysql_num_rows($result) ) 
@@ -310,7 +310,7 @@ function pp_submit_nonspam_comment () {
       $response = pp_http_post($query_string, $pp_api_host, "/1.1/submit-ham", $pp_api_port);
       
       //Since comment is not spam, let's mark it to publish
-      $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'yes' WHERE id = '$cid'";
+      $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'yes' WHERE id = '".(int)$cid."'";
       mysql_query($query);  
     }
     return true;
@@ -327,7 +327,7 @@ function pp_submit_spam_comment () {
   //Loop thru the $_POST['moderate_commnts_boxes'] and keep marking each comment as spam to Aksimet
   if (is_array($_POST['moderate_commnts_boxes'])) {
     foreach ($_POST['moderate_commnts_boxes'] as $cid) {
-      $query = "SELECT * FROM {$pixelpost_db_prefix}comments WHERE id = '$cid'";
+      $query = "SELECT * FROM {$pixelpost_db_prefix}comments WHERE id = '".(int)$cid."'";
       $result = mysql_query($query);
       if ( !mysql_num_rows($result) ) {// it was deleted
         continue;
@@ -343,7 +343,7 @@ function pp_submit_spam_comment () {
 
       $response = pp_http_post($query_string, $pp_api_host, "/1.1/submit-spam", $pp_api_port);
       //Since comment is spam, let's mark it not to publish
-      $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'spm' WHERE id = '$cid'";
+      $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'spm' WHERE id = '".(int)$cid."'";
       mysql_query($query);
     }
     return true;

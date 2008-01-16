@@ -291,7 +291,7 @@ function get_defensio_pages()
     {
         $_SESSION['defensio_hide_very_spam'] = "checked";
     }
-    if (isset($_POST['defensio_hide_very_spam']) && $_POST['defensio_hide_very_spam'] == 1)
+    if (isset($_POST['defensio_hide_very_spam']) && (int)$_POST['defensio_hide_very_spam'] == 1)
     {
         $_SESSION['defensio_hide_very_spam'] = "checked";
     } elseif (isset($_POST['dummy']))
@@ -629,7 +629,7 @@ function defensio_submit_nonspam_comment($defensio_conf)
         $signatures = null;
         foreach ($_POST['moderate_commnts_boxes'] as $cid)
         {
-            $query = "SELECT `signature` FROM {$pixelpost_db_prefix}comments WHERE id = '$cid'";
+            $query = "SELECT `signature` FROM {$pixelpost_db_prefix}comments WHERE id = '".(int)$cid."'";
             $result = mysql_query($query);
             if (mysql_num_rows($result))
             {
@@ -645,7 +645,7 @@ function defensio_submit_nonspam_comment($defensio_conf)
                         $signatures .= $row['signature'];
                     }
                     //Since comment is not spam, let's mark it to publish
-                    $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'yes' WHERE id = '$cid'";
+                    $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'yes' WHERE id = '".(int)$cid."'";
                     mysql_query($query);
                 } else
                 {
@@ -689,7 +689,7 @@ function defensio_submit_spam_comment($defensio_conf)
         $signatures = null;
         foreach ($_POST['moderate_commnts_boxes'] as $cid)
         {
-            $query = "SELECT `signature` FROM {$pixelpost_db_prefix}comments WHERE id = '$cid'";
+            $query = "SELECT `signature` FROM {$pixelpost_db_prefix}comments WHERE id = '".(int)$cid."'";
             $result = mysql_query($query) or die(mysql_error());
             if (mysql_num_rows($result))
             {
@@ -705,7 +705,7 @@ function defensio_submit_spam_comment($defensio_conf)
                         $signatures .= $row['signature'];
                     }
                     //Since comment is spam, let's mark it as marked by defensio
-                    $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'dfn' WHERE id = '$cid'";
+                    $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'dfn' WHERE id = '".(int)$cid."'";
                     mysql_query($query);
                 } else
                 {

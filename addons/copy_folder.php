@@ -34,7 +34,7 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 
 	$filenumber = 0;
 	$upload_dir = $cfgrow['imagepath'];
-	$folder = $_POST['folder_path'];
+	$folder = mysql_real_escape_string($_POST['folder_path']);
 	$folder = "$folder/";
 	$folder = ereg_replace("//","/",$folder);
 	$secondcount = 0;
@@ -116,7 +116,7 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 			{
 				foreach($_POST['category'] as $val)
 				{
-					$query  ="INSERT INTO ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'$val','$theid')";
+					$query  ="INSERT INTO ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'".mysql_real_escape_string($val)."','$theid')";
 					$result = mysql_query($query);
 					if (mysql_error())
 					{

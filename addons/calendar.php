@@ -56,7 +56,7 @@ $geos_cat = 0; //set to "1" if you're using geos_show_category addon
 if ( $geos_cat == 1){
 
 	if ( $_GET['showimage'] !="" && $_GET['category'] ==""){
-		$showimage = $_GET['showimage'];
+		$showimage = (int)$_GET['showimage'];
 		$query22 = mysql_query("select cat_id from ".$pixelpost_db_prefix."catassoc where image_id='$showimage'");
 		while(list($cat_id) = mysql_fetch_row($query22)) {
 		$get_cat_id = $cat_id;
@@ -87,11 +87,11 @@ $curr_year = $_GET['curr_year'];
 if(!$curr_year) { $curr_year = date("Y"); }
 if(!$curr_month) { $curr_month = date("n"); }
 if(!$curr_day) { $curr_day = date("j"); }
-$showimage = $_GET['showimage'];
+$showimage = (int)$_GET['showimage'];
 if(!$_GET['showimage']){ $showimage = $image_id; }
 
 if ( $_GET['showimage'] !="" && $_GET['curr_month'] ==""){
-       $showimage = $_GET['showimage'];
+       $showimage = (int)$_GET['showimage'];
 	
 
 	$query2 = mysql_query("select * from ".$pixelpost_db_prefix."pixelpost where id='$showimage'");

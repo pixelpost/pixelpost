@@ -381,8 +381,8 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}// end if
 	else if($paged_arch_tag_flag > 0)
 	{
-  	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
-	  else	$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+  	if ($language_abr == $default_language_abr)	$tag_selection = "AND (t2.tag = '" . mysql_real_escape_string($_GET['tag']) . "')";
+	  else	$tag_selection = "AND (t2.alt_tag = '" . mysql_real_escape_string($_GET['tag']) . "')";
 
 		$queryr = "SELECT count(*) AS count
 		FROM {$pixelpost_db_prefix}pixelpost AS t1, {$pixelpost_db_prefix}tags AS t2
@@ -392,10 +392,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else if($paged_arch_archdate_flag > 0)
 	{
-		$archivedate_start = $_GET['archivedate'] ."-01 00:00:00";
-		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
+		$archivedate_start = mysql_real_escape_string($_GET['archivedate']) ."-01 00:00:00";
+		$archivedate_end = mysql_real_escape_string($_GET['archivedate']) ."-31 23:59:59";
 		$where = " AND datetime >='$archivedate_start' AND datetime <= '$archivedate_end' ";
-		$monthname = $_GET['monthname'];
+		$monthname = mysql_real_escape_string($_GET['monthname']);
 		$queryr = "SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$datetime'" .$where;
 	} // end if($_GET['archivedate'] != "")
 	else // not cat selected return all images in the DB
@@ -417,7 +417,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	$Archive_pages_Links = "";
 	// selected category id
 	if (isset($_GET['category'])){
-		$cat_id = $_GET['category'];
+		$cat_id = (int)$_GET['category'];
 	} else {
 		$cat_id = null;
 	}
@@ -431,7 +431,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_previous</a> ";
 		else if($paged_arch_tag_flag > 0)
 		{
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_previous</a> ";
+			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$temp'>$lang_previous</a> ";
 		}
 		else if($paged_arch_archdate_flag > 0)
 		{
@@ -459,7 +459,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		while ($pagecounter < $num_browse_pages)
 		{
 			$pagecounter++;
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$pagecounter'>$pagecounter</a> ";
+			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a> ";
 		}
 	}
 	else if($paged_arch_archdate_flag > 0)
@@ -470,7 +470,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		{
 			$monthname=str_replace(" ","%20",$monthname);
 			$pagecounter++;
-			$archivedate=$_GET['archivedate'];
+			$archivedate=mysql_real_escape_string($_GET['archivedate']);
 			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$pagecounter'>$pagecounter</a> ";
 		}// whilte
 	}// end if $_GET['archivedate']!=""
@@ -497,12 +497,12 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		if($cat_id != '')	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;category=$cat_id&amp;pagenum=$temp'>$lang_next</a>";
 		else if($paged_arch_tag_flag > 0)
 		{
-			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".$_GET['tag']."&amp;pagenum=$temp'>$lang_next</a>";
+			$Archive_pages_Links .= "<a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$temp'>$lang_next</a>";
 		}
 		else if($paged_arch_archdate_flag > 0)
 		{
 			$monthname=str_replace(" ","%20",$monthname);
-			$archivedate=$_GET['archivedate'];
+			$archivedate=mysql_real_escape_string($_GET['archivedate']);
 			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$temp'>$lang_next</a>";
 		}
 		else	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;pagenum=$temp'>$lang_next</a>";
@@ -526,9 +526,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else
 	{
-		if (isset($_GET['tag']))	$images_category_or_date = $_GET['tag'];
+		if (isset($_GET['tag']))	$images_category_or_date = mysql_real_escape_string($_GET['tag']);
 		else if (isset($_GET['archivedate']))	{
-			$images_category_or_date = $_GET['monthname'];
+			$images_category_or_date = mysql_real_escape_string($_GET['monthname']);
 			preg_match('/(\w+),\s/', $images_category_or_date, $naturalmonth);
 			$natmonth = 'lang_'.strtolower($naturalmonth[1]);
 			$mynatmonth = $$natmonth;
