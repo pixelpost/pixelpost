@@ -464,7 +464,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		{
 			$pagecounter++;
 			if ($pagecounter != $pagenum){
-				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a></span>";
+				$Archive_pages_Links .= "<span class=\"archive_page_number\"><a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
 			} else {
 				$Archive_pages_Links .= "<span class=\"archive_active_page_number\"><a href='index.php?x=browse&amp;tag=".mysql_real_escape_string($_GET['tag'])."&amp;pagenum=$pagecounter'>$pagecounter</a></span> ";
 				
