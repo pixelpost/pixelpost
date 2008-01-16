@@ -10,7 +10,7 @@ define('PP_INSTALL', true);
  * This must be the same version number as stored in the version database table
  *
  */
-define('PP_VERSION', '1.7');
+define('PP_VERSION', '1.71');
 
 // Start Timer
 $time = microtime();
