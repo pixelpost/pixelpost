@@ -14,7 +14,7 @@ if($_GET['view'] == "addons") {
 // update status of addons
 if (isset($_GET['turnoff'])){
 // turn off the addon
-	$addon_name = $_GET['turnoff'];
+	$addon_name = addslashes($_GET['turnoff']);
 
 	$query_ad_s = "update {$pixelpost_db_prefix}addons set status='off' where addon_name='$addon_name' ";
 	$query_ad_s = mysql_query($query_ad_s);
@@ -25,7 +25,7 @@ if (isset($_GET['turnoff'])){
 // update status of addons
 if (isset($_GET['turnon'])){
 // trun off the addon
-	$addon_name = $_GET['turnon'];
+	$addon_name = addslashes($_GET['turnon']);
 	$query_ad_s = "update {$pixelpost_db_prefix}addons set status='on' where addon_name='$addon_name' ";
 	$query_ad_s = mysql_query($query_ad_s);
 	if (mysql_error())

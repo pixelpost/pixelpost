@@ -71,7 +71,7 @@ if($_GET['view'] == "categories")
 			$alt_category = "";
 		}
 
-		$getid = $_GET['id'];
+		$getid = intval($_GET['id']);
 		$upquery = sql_query("update ".$pixelpost_db_prefix."categories set name='$category', alt_name='$alt_category' where id='$getid'");
 		// echo "<div class='jcaption'>$admin_lang_update</div>
 		echo "<div class='content confirm'>$admin_lang_done $admin_lang_cats_updated<p /></div>";

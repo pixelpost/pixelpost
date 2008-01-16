@@ -15,7 +15,7 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 	if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
 	else	$display_order = 'ASC';
 	
-	if(isset($_GET['category'])) { $pp_cat = $_GET['category']; }else{ $pp_cat = 0; }
+	if(isset($_GET['category'])) { $pp_cat = addslashes($_GET['category']); }else{ $pp_cat = 0; }
 	
 	if(is_numeric($pp_cat) && $pp_cat != "")
 	{
@@ -62,11 +62,11 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 
   	if ($language_abr == $default_language_abr)
   	{
-  		$tag_selection = "AND (t2.tag = '" . $_GET['tag'] . "')";
+  		$tag_selection = "AND (t2.tag = '" . addslashes($_GET['tag']) . "')";
 	  }
 	  else
 	  {
-  		$tag_selection = "AND (t2.alt_tag = '" . $_GET['tag'] . "')";
+  		$tag_selection = "AND (t2.alt_tag = '" . addslashes($_GET['tag']) . "')";
   	}
 
 		$querystr = "SELECT 1, t1.id,t1.{$headline_selection},t1.image, t1.datetime

@@ -147,7 +147,7 @@ if($_GET['view'] == "comments") {
  // list of comments
     if($_GET['id'] == "") {
          $pagec = 0;
-        if($_GET['page'] == "") { $page = "0"; } else { $page = $_GET['page']; }
+        if($_GET['page'] == "") { $page = "0"; } else { $page = intval($_GET['page']); }
 // added for showing correct page number for masked comments				
 				// default setting
 				$moderate_where = " and publish='yes' ";

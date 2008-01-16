@@ -212,7 +212,7 @@ if($_GET['view'] == "images")
 		$alt_headline = clean($_POST['alt_headline']);
 		$alt_body = clean($_POST['alt_body']);
 		$comments_settings = clean($_POST['comments_settings']);
-		$getid = $_GET['imageid'];
+		$getid = intval($_GET['imageid']);
 		$newdatetime = $_POST['newdatetime'];
 		save_tags_edit($_POST['tags'],$getid);
 
@@ -296,7 +296,7 @@ if($_GET['view'] == "images")
 	if($_GET['x'] == "delete")
 	{
 		eval_addon_admin_workspace_menu('image_deleted');
-		$getid = $_GET['imageid'];
+		$getid = intval($_GET['imageid']);
 		del_tags_edit($getid);
 		$imagerow = sql_array("SELECT image FROM ".$pixelpost_db_prefix."pixelpost where id='$getid'");
 		$image = $imagerow['image'];
@@ -371,7 +371,7 @@ if($_GET['view'] == "images")
 
 	
 		if($_GET['page'] == "")	$page = "0";
-		else	$page = $_GET['page'];
+		else	$page = intval($_GET['page']);
  		$_SESSION['page_pp'] = (int) $page;
 		$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
     
@@ -630,7 +630,7 @@ if($_GET['view'] == "images")
   else
   {
     // an id is specified, edit the image, pull it out and put it in a form
-    $getid = $_GET['id'];
+    $getid = intval($_GET['id']);
     $imagerow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost where id='$getid'");
     $headline = pullout($imagerow['headline']);
     $headline = htmlspecialchars($headline,ENT_QUOTES);

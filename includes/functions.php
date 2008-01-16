@@ -560,7 +560,7 @@ function category_list_as_table($categories, $cfgrow)
   // get the id and name of the first entered category, default category.
   $query = mysql_query("select * from ".$pixelpost_db_prefix."categories order by id asc LIMIT 0,1");
   list($firstid,$firstname) = mysql_fetch_row($query);
-  $getid = $_GET['id'];
+  $getid = intval($_GET['id']);
  // begin of category-list as a table
 	$x = 0;
 	$query = mysql_query("select t1.id, name, alt_name, image_id from ".$pixelpost_db_prefix."categories as t1 left join ".$pixelpost_db_prefix."catassoc t2 on t2.cat_id = t1.id and t2.image_id='$getid' order by t1.name");
