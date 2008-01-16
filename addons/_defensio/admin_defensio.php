@@ -1,7 +1,7 @@
 <?php
 /*
 Requires Pixelpost version 1.7 or newer
-Defensio ADMIN-side ADDON-Version 1.2.1
+Defensio ADMIN-side ADDON-Version 1.2.2
 
 Written by: Schonhose
 @:			schonhose@pixelpost.org
@@ -900,7 +900,7 @@ function defensio_counter($defensio_conf)
         $counter_html = '
 		<div id="defensio_counter" style="width: 100%; margin: 10px 0 10px 0; text-align: ' . $defensio_conf['defensio_widget_align'] . '">
 			<a id="defensio_counter_link" style ="text-decoration: none;" href="http://defensio.com">
-				<div id="defensio_counter_image" style="background:url(\'addons/_defensio/images/defensio-counter-' . $defensio_conf['defensio_widget_image'] . '.gif\') no-repeat top left; border:none; font: 10px \'Trebuchet MS\', \'Myriad Pro\', sans-serif; overflow: hidden; text-align: left; height: 50px; width: 120px;' . $counter_image_style . '" ">
+				<div id="defensio_counter_image" style="background:url(\'addons/_defensio/images/defensio-counter-' . $defensio_conf['defensio_widget_image'] . '.gif\') no-repeat top left; border:none; font: 10px \'Trebuchet MS\', \'Myriad Pro\', sans-serif; overflow: hidden; text-align: left; height: 50px; width: 120px;' . $counter_image_style . '">
 					<div style="display:block; width: 100px; padding: 9px 9px 25px 12px; line-height: 1em; color: #211d1e;' . $counter_text_style . '" "><div style="font-size: 12px; font-weight: bold;">' . $v['spam'] . '</div> spam comments blocked</div>
 				</div>
 				<div style="clear:both;" class="defensio_clear">&nbsp;</div>

@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //   GENERAL INFORMATION DISPLAYED IN ADDON LIST
 //*******************************************************************************************************************
 $addon_name = "Pixelpost Defensio comment filter (Front Side)";
-$addon_version = '1.2.1';
+$addon_version = '1.2.2';
 $result = mysql_query("SELECT `status` FROM `{$pixelpost_db_prefix}addons` WHERE `addon_name` LIKE '%akismet%' and `type`='front'") or die(mysql_error());
 $akismet = mysql_fetch_array($result);
 if ($akismet['status'] == 'on')
