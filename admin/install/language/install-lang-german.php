@@ -32,7 +32,7 @@ ADMIN INSTALL PANEL LANGUAGE VARIABLES:                                         
 ////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-$lang_menu_overview    = "Überblick";
+$lang_menu_overview    = "Ãœberblick";
 $lang_menu_intro       = "Einleitung";
 $lang_menu_lic         = "Lizenz";
 $lang_menu_support     = "Support";
@@ -56,11 +56,11 @@ $lang_menu_pop         = "Fertigstellen";
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 $lang_install_caption  = "Installationskonsole";
-$lang_check_settings   = "Überprüfe deine Einstellungen:";
+$lang_check_settings   = "ÃœberprÃ¼fe deine Einstellungen:";
 
-$lang_language_btn     = "Ändern";
+$lang_language_btn     = "Ã„ndern";
 $lang_verify_btn       = "Details verifizieren";
-$lang_proceed_btn      = "Zum nächsten Schritt";
+$lang_proceed_btn      = "Zum nÃ¤chsten Schritt";
 $lang_test_btn         = "Verbindung testen";
 $lang_retest_btn       = "Anforderungen nochmals testen";
 $lang_start_btn        = "Beginne Installation";
@@ -112,10 +112,10 @@ $lang_config_error     = "Grund:";
 $lang_email_sent       = "Zugangsdaten erfolgreich gesendet!";
 $lang_email_failed     = "Zugangsdaten konnten nicht gesendet werden! Deaktiviere die E-Mail Option oder versuche es nochmal.";
 $lang_email_cred       = "Zusenden der Administrator Zugangsdaten:";
-$lang_email_cred_msg   = "Wenn du diese Option wählst, werden die Zugangsdaten für die Datenbank und den Administrationsbereich per E-Mail an die o.a. Adresse gesendet.";
+$lang_email_cred_msg   = "Wenn du diese Option wÃ¤hlst, werden die Zugangsdaten fÃ¼r die Datenbank und den Administrationsbereich per E-Mail an die o.a. Adresse gesendet.";
 
 $lang_email_subject    = "Willkommen bei Pixelpost!";
-$lang_email_message_0  = "Danke dass du dich für Pixelpost entschieden hast!";
+$lang_email_message_0  = "Danke dass du dich fÃ¼r Pixelpost entschieden hast!";
 $lang_email_message_1  = "Du findest hier deine Zugangsdaten zum Administrationsbereich sowie die Datenbankverbindungsdaten.";
 $lang_email_message_2  = "Du kannst dich in der Administrationskonsole hier einloggen:";
 $lang_email_footer     = "Bitte verwahre diese Informationen an einer sicheren Stelle.";
@@ -131,11 +131,11 @@ $lang_email_signature  = "Team Pixelpost";
 ////////////////////////////////////////////////////////////////////////////////////
 $lang_overview         = "Willkommmen bei Pixelpost!";
 
-$lang_overview_intro_1 = "Pixelpost ist eine freie, standardkonforme, mehrsprachige und voll erweiterbare Photoblog-Anwendung für das Web.";
+$lang_overview_intro_1 = "Pixelpost ist eine freie, standardkonforme, mehrsprachige und voll erweiterbare Photoblog-Anwendung fÃ¼r das Web.";
 $lang_overview_intro_2 = "Bitte lies unsere";
 $lang_overview_intro_3 = "Installationsanleitung";
-$lang_overview_intro_4 = "für die manuelle Installation von Pixelpost.";
-$lang_overview_intro_5 = "Dieser Installationsassistent führt dich durch den Installationsprozess von Pixelpost.";
+$lang_overview_intro_4 = "fÃ¼r die manuelle Installation von Pixelpost.";
+$lang_overview_intro_5 = "Dieser Installationsassistent fÃ¼hrt dich durch den Installationsprozess von Pixelpost.";
 						 
 						 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -157,10 +157,10 @@ $lang_overview_lic     = "GNU General Public License";
 ////////////////////////////////////////////////////////////////////////////////////
 $lang_overview_support = "Support";
 
-$lang_overview_sup_1   = "Für ausführlichen Support besuche bitte Pixelposts";
+$lang_overview_sup_1   = "FÃ¼r ausfÃ¼hrlichen Support besuche bitte Pixelposts";
 $lang_overview_sup_2   = "Support Forum";
-$lang_overview_sup_3   = "Du findest dort Antworten auf die meisten allgemeinen Fragen, die bei der ersten Installation, bei der Konfiguration und bei der Fehlersuche auftreten. Des weiteren werden im Forum Diskussionen über Modifikationen und Erweiterungen geführt.";
-$lang_overview_sup_4   = "Für weitere Unterstützung lies bitte die";
+$lang_overview_sup_3   = "Du findest dort Antworten auf die meisten allgemeinen Fragen, die bei der ersten Installation, bei der Konfiguration und bei der Fehlersuche auftreten. Des weiteren werden im Forum Diskussionen Ã¼ber Modifikationen und Erweiterungen gefÃ¼hrt.";
+$lang_overview_sup_4   = "FÃ¼r weitere UnterstÃ¼tzung lies bitte die";
 $lang_overview_sup_5   = "Online Dokumentation";
 						 
 						 
@@ -173,12 +173,12 @@ $lang_overview_sup_5   = "Online Dokumentation";
 ////////////////////////////////////////////////////////////////////////////////////
 $lang_install          = "Willkommen zur Installation";
 
-$lang_install_intro_1  = "Bitte halte für den nächsten Schritt die Zugangsdaten zu deiner Datenbank bereit.";
+$lang_install_intro_1  = "Bitte halte fÃ¼r den nÃ¤chsten Schritt die Zugangsdaten zu deiner Datenbank bereit.";
 $lang_install_intro_2  = "Wenn du diese Informationen nicht hast, kannst du sie bei deinem Webhoster erfragen.";
 $lang_install_intro_3  = "Du brauchst folgendes:";
 $lang_install_intro_4  = "Datenbank Hostname oder DSN - die Adresse des Datenbankservers (oft localhost).";
 $lang_install_intro_5  = "Datenbank Name - der Name der Datenbank am Server.";
-$lang_install_intro_6  = "Datenbank Benutzername und Passwort - die Login-Daten für den Datenbankzugriff.";
+$lang_install_intro_6  = "Datenbank Benutzername und Passwort - die Login-Daten fÃ¼r den Datenbankzugriff.";
 						 
 						 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -192,7 +192,7 @@ $lang_install_req      = "Systemvoraussetzungen";
 
 $lang_files_folders    = "Dateien und Verzeichnisse";
 
-$lang_req_msg_1        = "Bevor mit der Installation begonnen wird führt Pixelpost einige Tests auf deinem Server durch um sicherzustellen, dass du Pixelpost installieren und betreiben kannst.";
+$lang_req_msg_1        = "Bevor mit der Installation begonnen wird fÃ¼hrt Pixelpost einige Tests auf deinem Server durch um sicherzustellen, dass du Pixelpost installieren und betreiben kannst.";
 $lang_req_msg_2        = "Bitte lies dir die Ergebnisse dieser Tests genau durch und fahre nicht fort, bevor alle Tests bestanden sind.";
 
 $lang_req_php          = "PHP Version und Einstellungen";
@@ -202,7 +202,7 @@ $lang_req_globals_1    = "PHP Einstellungen";
 $lang_req_globals_2    = "register_globals";
 $lang_req_globals_3    = "ist deaktiviert:";
 
-$lang_req_globals_msg  = "Pixelpost wird auch laufen, wenn diese Einstellung aktiviert ist, aber es wird empfohlen, aus Sicherheitsgründen register_globals in deiner PHP-Installation zu deaktivieren.";
+$lang_req_globals_msg  = "Pixelpost wird auch laufen, wenn diese Einstellung aktiviert ist, aber es wird empfohlen, aus SicherheitsgrÃ¼nden register_globals in deiner PHP-Installation zu deaktivieren.";
 						  
 $lang_req_imagesize_1  = "PHP Funktion";
 $lang_req_imagesize_2  = "getimagesize()";
@@ -210,20 +210,20 @@ $lang_req_imagesize_3  = "ist vorhanden:";
 
 $lang_req_imgsize_msg  = "Damit Pixelpost korrekt funktioniert muss die getimagesize() Funktion vorhanden sein.";
 						 
-$lang_req_pcre         = "PCRE UTF-8 Unterstützung:";
-$lang_req_pcre_msg     = "Pixelpost wird nicht korrekt laufen, wenn deine PHP-Installation nicht mit UTF-8 Unterstützung in der PCRE Erweiterung kompiliert ist.";
+$lang_req_pcre         = "PCRE UTF-8 UnterstÃ¼tzung:";
+$lang_req_pcre_msg     = "Pixelpost wird nicht korrekt laufen, wenn deine PHP-Installation nicht mit UTF-8 UnterstÃ¼tzung in der PCRE Erweiterung kompiliert ist.";
 
-$lang_req_gd           = "GD Grafikunterstützung:";
-$lang_req_gd_msg       = "Pixelpost läuft nicht auf einer PHP-Installation ohne GD graphics library.";
+$lang_req_gd           = "GD GrafikunterstÃ¼tzung:";
+$lang_req_gd_msg       = "Pixelpost lÃ¤uft nicht auf einer PHP-Installation ohne GD graphics library.";
 
 
 $lang_req_required_1   = "Du brauchst mindestens PHP in Version 4.3.3 um Pixelpost zu betreiben.";
 
-$lang_req_required_2   = "Um korrekt zu laufen muss Pixelpost auf einige Dateien und Verzeichnisse zugreifen können.";
+$lang_req_required_2   = "Um korrekt zu laufen muss Pixelpost auf einige Dateien und Verzeichnisse zugreifen kÃ¶nnen.";
 
-$lang_req_not_found    = "Wenn du 'Nicht gefunden' siehst, mußt du das entsprechende Verzeichnis anlegen.";
-$lang_req_unwritable   = "Wenn du 'Nicht beschreibbar' siehst, mußt du die Berechtigung (CHMOD) des Verzeichnisses bzw. der Datei ändern, um Pixelpost Schreibrechte zu geben. (755 or 777)";
-$lang_req_unwritable_2 = "Vergiss nicht, die Schreibberechtigung des Verzeichnisses wieder auf den ursprünglichen Wert zu setzen, sobald die Installation beendet ist!";
+$lang_req_not_found    = "Wenn du 'Nicht gefunden' siehst, muÃŸt du das entsprechende Verzeichnis anlegen.";
+$lang_req_unwritable   = "Wenn du 'Nicht beschreibbar' siehst, muÃŸt du die Berechtigung (CHMOD) des Verzeichnisses bzw. der Datei Ã¤ndern, um Pixelpost Schreibrechte zu geben. (755 or 777)";
+$lang_req_unwritable_2 = "Vergiss nicht, die Schreibberechtigung des Verzeichnisses wieder auf den ursprÃ¼nglichen Wert zu setzen, sobald die Installation beendet ist!";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -251,13 +251,13 @@ $lang_db_pass          = "Datenbank Passwort:";
 $lang_db_pass_msg      = "Das Passwort, mit dem die Datenbankverbindung hergestellt wird.";
 
 $lang_db_prefix        = "Datenbank Prefix:";
-$lang_db_prefix_msg    = "Der Prefix wird den Tabellennamen in der Datenbank vorangestellt. Damit können mehrere Pixelpost-Installationen mit der gleichen Datenbank betrieben werden.";
+$lang_db_prefix_msg    = "Der Prefix wird den Tabellennamen in der Datenbank vorangestellt. Damit kÃ¶nnen mehrere Pixelpost-Installationen mit der gleichen Datenbank betrieben werden.";
 
 
 $lang_db_name_error    = "Kein Datenbankname angegeben.";
 $lang_db_host_error    = "Kein Hostname angegeben.";
-$lang_db_prefix_char   = "Der angegebene Tabellenprefix kann nicht verwendet werden. Bitte wähle einen anderen und verwende keine Sonderzeichen außer dem Unterstrich.";
-$lang_db_max_prefix    = "Der angegebene Tabellenprefix ist zu lang. Er darf nicht länger als 36 Zeichen sein.";
+$lang_db_prefix_char   = "Der angegebene Tabellenprefix kann nicht verwendet werden. Bitte wÃ¤hle einen anderen und verwende keine Sonderzeichen auÃŸer dem Unterstrich.";
+$lang_db_max_prefix    = "Der angegebene Tabellenprefix ist zu lang. Er darf nicht lÃ¤nger als 36 Zeichen sein.";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -270,25 +270,25 @@ $lang_db_max_prefix    = "Der angegebene Tabellenprefix ist zu lang. Er darf nic
 $lang_install_config   = "Konfiguration";
 $lang_config_config    = "Pixelpost Konfiguration";
 
-$lang_config_open      = "Datei öffnen:";
-$lang_config_open_msg  = "Öffnet die Konfigurationsdatei und bereitet sie zum Schreiben vor.";
+$lang_config_open      = "Datei Ã¶ffnen:";
+$lang_config_open_msg  = "Ã–ffnet die Konfigurationsdatei und bereitet sie zum Schreiben vor.";
 
 $lang_config_write     = "Datei schreiben:";
 $lang_config_write_msg = "Schreibt Inhalt in die Konfigurationsdatei.";
 
 
 $lang_config_chmod     = "Datei CHMOD:";
-$lang_config_chmod_msg = "Setzt die Schreibrechte für die Konfigurationsdatei (644). Wenn dieser Schritt nicht funktioniert, ist das nicht schlimm. Du kannst die Berechtigung später manuell ändern.";
+$lang_config_chmod_msg = "Setzt die Schreibrechte fÃ¼r die Konfigurationsdatei (644). Wenn dieser Schritt nicht funktioniert, ist das nicht schlimm. Du kannst die Berechtigung spÃ¤ter manuell Ã¤ndern.";
 
 
 $lang_config_exist     = "Konfiguration existiert:";
-$lang_config_exist_msg = "Überprüft, ob die Konfigurationsdatei gespeichert wurde.";
+$lang_config_exist_msg = "ÃœberprÃ¼ft, ob die Konfigurationsdatei gespeichert wurde.";
 
 $lang_config_conn_msg  = "Versucht eine Datenbankverbindung unter Verwendung der neuen Konfigurationsdatei herzustellen.";
 
 $lang_download_msg_1   = "Etwas ist schiefgegangen beim Versuch, die Konfigurationsdatei zu erstellen, zu speichern oder darauf zuzugreifen.";
-$lang_download_msg_2   = "Sieh unten nach Vorschlägen um das Problem zu korrigieren!";
-$lang_download_msg_2_2 = "Wenn das auch nicht klappt, benutze bitte den Download-Link oben um deine Konfigurationsdatei herunterzuladen. Lade sie mit FTP in das Verzeichnis 'include' hoch, nachdem du die Zugangsdaten überprüft bzw. eingetragen hast.";
+$lang_download_msg_2   = "Sieh unten nach VorschlÃ¤gen um das Problem zu korrigieren!";
+$lang_download_msg_2_2 = "Wenn das auch nicht klappt, benutze bitte den Download-Link oben um deine Konfigurationsdatei herunterzuladen. Lade sie mit FTP in das Verzeichnis 'include' hoch, nachdem du die Zugangsdaten Ã¼berprÃ¼ft bzw. eingetragen hast.";
 $lang_download_msg_3   = "Wenn du das getan hast, setzte die Installation bitte fort indem du Verbindung nochmals testest.";
 
 $lang_config_message   = "Deine Konfiguration wurde erfolgreich erstellt und gesichert. Alle Tests wurden bestanden!";
@@ -306,26 +306,26 @@ $lang_admin_conf       = "Administrator Konfiguration";
 $lang_admin_lang       = "Standardsprache Administration:";
 
 $lang_admin_user       = "Administrator Benutzername:";
-$lang_admin_user_msg   = "Bitte gib einen Benutzernamen an (Länge 3-20 Zeichen).";
+$lang_admin_user_msg   = "Bitte gib einen Benutzernamen an (LÃ¤nge 3-20 Zeichen).";
 
 $lang_admin_pass1      = "Administrator Passwort:";
-$lang_admin_pass1_msg  = "Bitte gib ein Passwort an (Länge 6-30 Zeichen).";
+$lang_admin_pass1_msg  = "Bitte gib ein Passwort an (LÃ¤nge 6-30 Zeichen).";
 
-$lang_admin_pass2      = "Bestätige Administrator Passwort:";
+$lang_admin_pass2      = "BestÃ¤tige Administrator Passwort:";
 
 
 $lang_admin_email1     = "Kontakt E-Mail Adresse:";
-$lang_admin_email2     = "Bestägige Kontakt E-Mail:";
+$lang_admin_email2     = "BestÃ¤gige Kontakt E-Mail:";
 
 $lang_admin_test_pass  = "Tests bestanden";
-$lang_admin_all_fields = "Du mußt alle Felder in diesem Block ausfüllen.";
-$lang_admin_match_psw  = "Die eingegebenen Passwörter stimmen nicht überein.";
-$lang_admin_user_short = "Der eingegebene Benutzername ist zu kurz. Die Mindestlänge ist 3 Zeichen.";
-$lang_admin_user_long  = "Der eingegebene Benutzername ist zu lang. Die Maximallänge ist 20 Zeichen.";
-$lang_admin_pass_short = "Das eingegebene Passwort ist zu kurz. Die Mindestlänge ist 6 Zeichen.";
-$lang_admin_pass_long  = "Das eingegebene Passwort ist zu lang. Die Maximallänge ist 30 Zeichen.";
-$lang_admin_mail_match = "Die eingegebenen E-Mail Adressen stimmen nicht überein.";
-$lang_admin_mail_wrong = "Die eingegebene E-Mail Adresse ist ungültig.";
+$lang_admin_all_fields = "Du muÃŸt alle Felder in diesem Block ausfÃ¼llen.";
+$lang_admin_match_psw  = "Die eingegebenen PasswÃ¶rter stimmen nicht Ã¼berein.";
+$lang_admin_user_short = "Der eingegebene Benutzername ist zu kurz. Die MindestlÃ¤nge ist 3 Zeichen.";
+$lang_admin_user_long  = "Der eingegebene Benutzername ist zu lang. Die MaximallÃ¤nge ist 20 Zeichen.";
+$lang_admin_pass_short = "Das eingegebene Passwort ist zu kurz. Die MindestlÃ¤nge ist 6 Zeichen.";
+$lang_admin_pass_long  = "Das eingegebene Passwort ist zu lang. Die MaximallÃ¤nge ist 30 Zeichen.";
+$lang_admin_mail_match = "Die eingegebenen E-Mail Adressen stimmen nicht Ã¼berein.";
+$lang_admin_mail_wrong = "Die eingegebene E-Mail Adresse ist ungÃ¼ltig.";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -340,13 +340,13 @@ $lang_set_sub_title    = "Untertitel:";
 $lang_set_path         = "URL:";
 
 $lang_set_timezone     = "Zeitzone:";
-$lang_set_timezone_msg = "Wähle die Zeitzone, die deiner am nächsten ist. Siehe <a href='http://www.timeanddate.com/' target='_blank'>Timeanddate.com</a> für mehr Information.";
+$lang_set_timezone_msg = "WÃ¤hle die Zeitzone, die deiner am nÃ¤chsten ist. Siehe <a href='http://www.timeanddate.com/' target='_blank'>Timeanddate.com</a> fÃ¼r mehr Information.";
 
 $lang_set_tz_dst       = "DST:";
-$lang_set_tz_dst_msg   = "Ist gerade Sommerzeit? (Vergiss nicht, das zu ändern, wenn die Uhren wieder verstellt werden!)";
+$lang_set_tz_dst_msg   = "Ist gerade Sommerzeit? (Vergiss nicht, das zu Ã¤ndern, wenn die Uhren wieder verstellt werden!)";
 
-$lang_set_title_long   = "Der eingegebene Titel / Untertitel ist zu lang. Die Maximallänger ist 100 Zeichen.";
-$lang_set_eos          = "Deine URL muss einen Schrägstrich am Ende haben (/).";
+$lang_set_title_long   = "Der eingegebene Titel / Untertitel ist zu lang. Die MaximallÃ¤nger ist 100 Zeichen.";
+$lang_set_eos          = "Deine URL muss einen SchrÃ¤gstrich am Ende haben (/).";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -356,11 +356,11 @@ $lang_set_eos          = "Deine URL muss einen Schrägstrich am Ende haben (/).";
 ////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////					 
-$lang_menu_pop_db      = "Datenbank befüllen";
-$lang_dsb_addon_00_01  = "Standardmäßig werden jetzt alle gefundenen Fremd-Addons deaktiviert:";				 
+$lang_menu_pop_db      = "Datenbank befÃ¼llen";
+$lang_dsb_addon_00_01  = "StandardmÃ¤ÃŸig werden jetzt alle gefundenen Fremd-Addons deaktiviert:";				 
 $lang_dsb_addon_01     = "Manche Fremd-Addons wurden deaktiviert:";
-$lang_dsb_addon_02     = "Manche Fremd-Addons könnten mit dieser Version von Pixelpost nicht mehr ordnungsgemäß funktionieren.";
-$lang_dsb_addon_02_1   = "Das Deaktivieren von Fremd-Addons soll verhindern, dass du eine neue Pixelpost-Version bekommst, die plötzlich nicht mehr funktioniert.";
+$lang_dsb_addon_02     = "Manche Fremd-Addons kÃ¶nnten mit dieser Version von Pixelpost nicht mehr ordnungsgemÃ¤ÃŸ funktionieren.";
+$lang_dsb_addon_02_1   = "Das Deaktivieren von Fremd-Addons soll verhindern, dass du eine neue Pixelpost-Version bekommst, die plÃ¶tzlich nicht mehr funktioniert.";
 $lang_dsb_addon_02_2   = "Pixelposts eigene Standard-Addons bleiben aktiviert / deaktiviert, basierend auf deiner bisherigen Konfiguration.";
 
 $lang_dsb_addon_03     = "Die folgenden Addons wurden deaktiviert:";
@@ -371,12 +371,12 @@ $lang_dsb_addon_00     = "Keine Fremd-Addons gefunden. Keine weiteren Addons wur
 
 $show_psw_msg          = "Hier sind deine Login-Daten. Schreibe sie dir auf und verwahre sie an einem sicheren Ort.";
 $lang_convert_psw      = "Passwort konvertieren:";
-$lang_convert_psw_suc  = "Dein Passwort wurde konvertiert und ist als MD5-Hash gespeichert. Dadurch wurde dein Passwort nicht geändert.";
-$lang_convert_psw_err  = "Beim Konvertieren des Passwortes in einen MD5-Hash ist ein Fehler aufgetreten . Dein Passwort wurde dadurch nicht geändert.";
+$lang_convert_psw_suc  = "Dein Passwort wurde konvertiert und ist als MD5-Hash gespeichert. Dadurch wurde dein Passwort nicht geÃ¤ndert.";
+$lang_convert_psw_err  = "Beim Konvertieren des Passwortes in einen MD5-Hash ist ein Fehler aufgetreten . Dein Passwort wurde dadurch nicht geÃ¤ndert.";
 
 $lang_created          = "Erzeugt";
-$lang_populated        = "Befüllt";
-$lang_updated          = "Update durchgeführt";
+$lang_populated        = "BefÃ¼llt";
+$lang_updated          = "Update durchgefÃ¼hrt";
 $lang_create_update_to = "Update zu";
 
 $lang_create_populate  = "Konfigurationstabelle geschrieben:";
@@ -398,8 +398,8 @@ $lang_create_addons    = "Erzeuge Tabelle addons:";
 ////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-$lang_upgrade_msg_1    = "Pixelposts Datenbanktabellen müssen upgedatet werden. Das ist nötig, damit die momentane Version von Pixelpost korrekt funktioniert.";
-$lang_upgrade_msg_2    = "Drücke den Upgrade-Button um fortzufahren.";
+$lang_upgrade_msg_1    = "Pixelposts Datenbanktabellen mÃ¼ssen upgedatet werden. Das ist nÃ¶tig, damit die momentane Version von Pixelpost korrekt funktioniert.";
+$lang_upgrade_msg_2    = "DrÃ¼cke den Upgrade-Button um fortzufahren.";
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -409,5 +409,5 @@ $lang_upgrade_msg_2    = "Drücke den Upgrade-Button um fortzufahren.";
 ////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-$lang_db_fix_msg       = "Deine Konfigurationsdatei kann keine Datenbankverbindung mehr herstellen. Entweder du oder dein Hosting-Provider haben die Zugangsdaten geändert. Bitte gib die korrekten Zugangsdaten hier ein.";
+$lang_db_fix_msg       = "Deine Konfigurationsdatei kann keine Datenbankverbindung mehr herstellen. Entweder du oder dein Hosting-Provider haben die Zugangsdaten geÃ¤ndert. Bitte gib die korrekten Zugangsdaten hier ein.";
 ?>
