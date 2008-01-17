@@ -435,7 +435,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && !isset($_GET['tag']))
 		$atom .= "<name>".$pixelpost_site_title."</name>\n";
 		$atom .= "<uri>".$url."</uri>\n";
 		$atom .= "</author>\n";
-		$atom .= "<generator uri='http://www.pixelpost.org/' version='1.6.0'>Pixelpost</generator>\n";
+		$atom .= "<generator uri='http://www.pixelpost.org/' version='1.7.1'>Pixelpost</generator>\n";
 		$atom .= "<rights>".$feed_copyright."</rights>\n";
 		$atom .= "<id>".$url."</id>\n";
 		$atom .= "<updated>".date("Y-m-d\TH:i:s".$tzoner."")."</updated>\n";
@@ -586,7 +586,7 @@ if(isset($_GET['x']) && $_GET['x'] == "atom" && isset($_GET['tag']))
 		$atom .= "<name>".$pixelpost_site_title."</name>\n";
 		$atom .= "<uri>".$url."</uri>\n";
 		$atom .= "</author>\n";
-		$atom .= "<generator uri='http://www.pixelpost.org/' version='1.6.0'>Pixelpost</generator>\n";
+		$atom .= "<generator uri='http://www.pixelpost.org/' version='1.7.1'>Pixelpost</generator>\n";
 		$atom .= "<rights>".$feed_copyright."</rights>\n";
 		$atom .= "<id>".$url."</id>\n";
 		$atom .= "<updated>".date("Y-m-d\TH:i:s".$tzoner."")."</updated>\n";
@@ -742,7 +742,7 @@ if(isset($_GET['x']) && $_GET['x'] == "comment_atom")
 		$atom .= "<name>".$pixelpost_site_title."</name>\n";
 		$atom .= "<uri>".$url."</uri>\n";
 		$atom .= "</author>\n";
-		$atom .= "<generator uri='http://www.pixelpost.org/' version='1.6.0'>Pixelpost</generator>\n";
+		$atom .= "<generator uri='http://www.pixelpost.org/' version='1.7.1'>Pixelpost</generator>\n";
 		$atom .= "<rights>".$feed_copyright."</rights>\n";
 		$atom .= "<id>".$url."</id>\n";
 		$atom .= "<updated>".date("Y-m-d\TH:i:s".$tzoner."")."</updated>\n";
