@@ -620,15 +620,10 @@ function refresh_addons_table($dir)
 function add_new_addons_2table($dir)
 {
 	global $pixelpost_db_prefix;
-	global $pixelpost_db_pixelpost;
-	//start_mysql();
-	// Check to see if the ban table exists, if not, create it
-	//$query = "show tables from ".$pixelpost_db_pixelpost." like '".$pixelpost_db_prefix."addons'";
-	$query = "SHOW TABLES FROM `".$pixelpost_db_pixelpost."` LIKE '".$pixelpost_db_prefix."addons'";
-	$query = mysql_query( $query);
-	$query = mysql_fetch_array($query);
-	if ($query !='')
-	{// addons table does exist
+
+	$query = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."addons` LIMIT 1");
+	if($query)
+	{
 		$str = '';
 
 		if($handle = opendir($dir))
@@ -713,15 +708,10 @@ function add_new_addons_2table($dir)
 function delete_obsolute_addon($dir,$db_prefix)
 {
 	global $pixelpost_db_prefix;
-	global $pixelpost_db_pixelpost;
-	//start_mysql();
-	// Check to see if the ban table exists, if not, create it
-	//$query = "show tables from `".$pixelpost_db_pixelpost."` like '".$pixelpost_db_prefix."addons'";
-	$query = "SHOW TABLES FROM `".$pixelpost_db_pixelpost."` LIKE '".$pixelpost_db_prefix."addons'";
-	$query = mysql_query( $query);
-	$query = mysql_fetch_array($query);
-	if ($query !='')
-	{     // addons table does exist
+
+	$query = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."addons` LIMIT 1");
+	if($query)
+	{
 		$query = "select id,addon_name from {$db_prefix}addons ";
 		$query = mysql_query($query);
 		while (list($id,$addon_name)= mysql_fetch_row($query))
