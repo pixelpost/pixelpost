@@ -75,12 +75,14 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 	}
 
 
-	for ($k=0;$k<count($files);$k++)
-	{
-		$file = $files[$k];
-
+	//for ($k=0;$k<count($files);$k++){
+	foreach($files as $k => $file){
+	
 		if($secondcount < 11)	$secondcount = "0$secondcount";
 		sleep(1);
+		
+		$file = $files[$k];
+		
 		$timenow = time()+(3600 * $tz);
 		if($_POST['sort']=='exifdate' AND $dates[$k]!='bad')	$datetime= $dates[$k];
 		else	$datetime  = gmdate("YmdHis",$timenow);
