@@ -49,11 +49,13 @@ Copy calendar.php to addons directory.<br />
 <b>&lt;SITE_CALENDAR&gt;</b> - insert this tag in image_template.html.<br />
 ";
 
-global $image_id;
+global $image_id, $cdate;
 
 $sunday_first = 1;  //set to "1" if you want sunday displayed first in the week in vertical type.
 $use_lang_var = 0; // set it to "1" if you want to use the language-variables from the active language file
 $geos_cat = 0; //set to "1" if you're using geos_show_category addon
+
+$geos_cat_id = '';
 
 if ( $geos_cat == 1){
 
@@ -184,6 +186,7 @@ for ($x=0; $x<7; $x++) {
 	$cal_vz .= "<td class='td-calendar-days-vz'>$day</td>";
 	}
 $cal_vz .= "</tr><tr>";
+$row_count = 0;
 for($x=2; $x<=$first_day_month; $x++) {
 	$row_count++;
 	$cal_vz .= "<td class='td-calendar-days-vz'>&nbsp;</td>";

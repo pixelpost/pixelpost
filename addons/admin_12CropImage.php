@@ -76,9 +76,13 @@ $addon_function_name = "cropimage12_admin_addon";
 add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);
 
 add_admin_functions('crop_image12_make_ready','admin_html_head','','');
+
+
+
 function crop_image12_make_ready()
 {
 	global $cfgrow , $txt ,$image, $spacer,$pixelpost_db_prefix,$javafile;
+	
 	if(isset($_GET['view']) AND $_GET['view']=="images" && isset($_GET['id']))
 	{
 		//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
@@ -86,9 +90,10 @@ function crop_image12_make_ready()
 		{
 		    die ("Try another day!!");
         }
-
-		include_once("../includes/12cropimageinc.php");
-		include_once("../includes/12cropimageincscripts.php");
+        if($cfgrow['crop'] == '12c'){
+		    require_once("../includes/12cropimageinc.php");
+		    require_once("../includes/12cropimageincscripts.php");
+		}
 	}
 }
 // your function to show a new page under a submenu in admin panel

@@ -41,7 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-error_reporting(0);
+error_reporting(E_ALL);
 
 /**
  * Define constants
@@ -278,7 +278,7 @@ var installed_ver = <?php echo $installed_version;?>;
 </script>
 
 <?php
-if($cfgrow['crop'] == "12c" AND !isset($_GET['view']) AND isset($_GET['x']) AND $_GET['x'] == 'save'  OR  isset($_GET['view']) AND $_GET['view'] == "images" AND isset($_GET['id']))
+if($cfgrow['crop'] == "12c" AND !isset($_GET['view']) AND isset($_GET['x']) AND $_GET['x'] == 'save'  OR  $cfgrow['crop'] == "12c" AND isset($_GET['view']) AND $_GET['view'] == "images" AND isset($_GET['id']))
 {
 	require_once("../includes/12cropimageincscripts.php");
 }
