@@ -92,7 +92,7 @@ if(!$curr_month) { $curr_month = date("n"); }
 if(!$curr_day) { $curr_day = date("j"); }
 $showimage = (isset($_GET['showimage'])) ? (int)$_GET['showimage'] : $image_id;
 
-if (isset($_GET['showimage']) AND $_GET['showimage'] != "" && $_GET['curr_month'] ==""){
+if (isset($_GET['showimage']) AND $_GET['showimage'] != "" && isset($_GET['curr_month']) AND $_GET['curr_month'] ==""){
        $showimage = (int)$_GET['showimage'];
 	
 
