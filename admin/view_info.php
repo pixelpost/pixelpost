@@ -12,6 +12,9 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 // view info
 if(isset($_GET['view']) AND $_GET['view'] == "info")
 {
+    if(!isset($_GET['infoview'])){
+        $_GET['infoview'] = '';
+    }
 	echo "<div id='caption'>$admin_lang_general_info</div>";
 
 	// add a workspace (only show when there are items.
