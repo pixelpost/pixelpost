@@ -3,13 +3,15 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
 // view = addons
 
-if($_GET['view'] == "addons") {
+if(isset($_GET['view']) AND $_GET['view'] == "addons") {
 
 // update status of addons
 if (isset($_GET['turnoff'])){
@@ -34,14 +36,14 @@ if (isset($_GET['turnon'])){
     echo "<div id='caption'>
     $admin_lang_addon_title
     </div>";
-    $dir = "../addons/";
+    //$dir = "../addons/";
     $query_ad_s = "select id,addon_name,status from {$pixelpost_db_prefix}addons ORDER BY `status` DESC ";
 		$query_ad_s = mysql_query($query_ad_s);
 		while (list($id,$addonfilename,$status)= mysql_fetch_row($query_ad_s))	{
-			if (file_exists($dir.$addonfilename.".php")){
+			if (file_exists(ADDON_DIR.$addonfilename.".php")){
 				// check if we can read the file
-				if (is_readable($dir.$addonfilename.".php")) {
-					include($dir.$addonfilename.".php");
+				if (is_readable(ADDON_DIR.$addonfilename.".php")) {
+					include(ADDON_DIR.$addonfilename.".php");
 					//build the addon_on & addon_off arrays
 					if (!isset($addon_description)) $addon_description="This addon provides no further information. Please have a look into the addon file for what it is meant to be and blame the addon author for that.";
 					if (!isset($addon_version)) $addon_version="?";

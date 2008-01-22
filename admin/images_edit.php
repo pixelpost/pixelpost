@@ -3,14 +3,16 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
 // view=images
-if($_GET['view'] == "images")
+if(isset($_GET['view']) AND $_GET['view'] == "images")
 {
-	if($_GET['action'] == "masspublish")
+	if(isset($_GET['action']) AND $_GET['action'] == "masspublish")
 	{
 		$idz= $_POST['moderate_image_boxes'];
 		// This is rather interesting since when multiple pictures have the same datetime stamp only the last one
@@ -35,7 +37,7 @@ if($_GET['view'] == "images")
  		echo "<div class='jcaption confirm'>$admin_lang_imgedit_published  $c $admin_lang_imgedit_unpublished_cmnts</div>";
  	}
 
-	if($_GET['action'] == "massdelete")
+	if(isset($_GET['action']) AND $_GET['action'] == "massdelete")
 	{
  		$idz= $_POST['moderate_image_boxes'];
 		// delete all the images:
@@ -74,8 +76,8 @@ if($_GET['view'] == "images")
  	}
 
 	// Mass add or delete categories to images
-	$_GET['id'] = (int)$_GET['id'];
-	if($_GET['action'] == "masscatedit")
+	if(isset($_GET['id'])){ $_GET['id'] = (int)$_GET['id']; }
+	if(isset($_GET['action']) AND $_GET['action'] == "masscatedit")
 	{
 		$command = $_GET['cmd'];
 		$command = explode('-',$command);
@@ -134,7 +136,7 @@ if($_GET['view'] == "images")
  	} // end if mass edit
 
 	// if tagging option
-	if($_POST['masstagopt'] != '')
+	if(isset($_POST['masstagopt']) AND $_POST['masstagopt'] != '')
 	{
 		if($_POST['masstagopt'] == 'unset')
 		{
@@ -205,7 +207,7 @@ if($_GET['view'] == "images")
 	}
 
   // x=update
-  if($_GET['x'] == "update")
+  if(isset($_GET['x']) AND $_GET['x'] == "update")
   {
 		$headline = clean($_POST['headline']);
 		$body = clean($_POST['body']);
@@ -293,7 +295,7 @@ if($_GET['view'] == "images")
 	echo "<div id='caption'><b>$admin_lang_images</b></div>";
 
 	// x=delete
-	if($_GET['x'] == "delete")
+	if(isset($_GET['x']) AND $_GET['x'] == "delete")
 	{
 		eval_addon_admin_workspace_menu('image_deleted');
 		$getid = intval($_GET['imageid']);
@@ -328,7 +330,7 @@ if($_GET['view'] == "images")
 	}
 
   // print out a list over images/posts
-  if($_GET['id'] == "")
+  if(!isset($_GET['id']) OR $_GET['id'] == "")
   {
 		// resetting filter entries
 		unset($selectfcat);
@@ -338,39 +340,49 @@ if($_GET['view'] == "images")
 		unset($findfid);
 		if (isset($_POST['filtercat']) && $_POST['selectfcat'] != '') $selectfcat = $_POST['selectfcat'];
 		else if (isset($_GET['selectfcat'])) $selectfcat = $_GET['selectfcat'];
+		else if (!isset($_GET['selectfcat']) OR !isset($_POST['filtercat'])) $selectfcat = '';
+		
 		if (isset($_POST['filtertag']) && $_POST['selectftag'] != '') $selectftag = $_POST['selectftag'];
 		else if (isset($_GET['selectftag'])) $selectftag = $_GET['selectftag'];
+		else if (!isset($_GET['selectftag']) OR !isset($_POST['filtertag'])) $selectftag = '';
+		
 		if (isset($_POST['filteralttag']) && $_POST['selectfalttag'] != '') $selectfalttag = $_POST['selectfalttag'];
 		else if (isset($_GET['selectfalttag'])) $selectfalttag = $_GET['selectfalttag'];
+		else if (!isset($_GET['selectfalttag']) OR !isset($_POST['filteralttag'])) $selectfalttag = '';
+		
 		if (isset($_POST['filtermon']) && $_POST['selectfmon'] != '') $selectfmon = $_POST['selectfmon'];
 		else if (isset($_GET['selectfmon'])) $selectfmon = $_GET['selectfmon'];
+		else if (!isset($_GET['selectfmon']) OR !isset($_POST['filtermon'])) $selectfmon = '';
+		
 		if (isset($_POST['findid']) && $_POST['findfid'] != '') $findfid = $_POST['findfid'];
+		else if (!isset($_POST['findid'])) $findfid = '';
 
 		// Get number of photos in database depending on filter		
-		if (isset($selectfcat)) {
+		if (isset($selectfcat) AND $selectfcat != '') {
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat;
 		}
-		else if (isset($selectftag)) {
+		else if (isset($selectftag) AND $selectftag != '') {
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.tag LIKE '".$selectftag."'";
 		}
-		else if (isset($selectfalttag)) {
+		else if (isset($selectfalttag) AND $selectfalttag != '') {
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.alt_tag LIKE '".$selectfalttag."'";
 		}
-		else if (isset($selectfmon)) {
+		else if (isset($selectfmon) AND $selectfmon != '') {
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost WHERE datetime LIKE '".$selectfmon."%'";
 		}
-		else if (isset($findfid)) {
+		else if (isset($findfid) AND $findfid != '') {
 			$query = "SELECT count(*) FROM ".$pixelpost_db_prefix."pixelpost WHERE id = ".$findfid." limit 0,1";
 		}		
 		else {
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost";
 		}
 		$photonumb = sql_array($query);
+		$photonumb['count'] = '';
 		if ($photonumb['count']) $pixelpost_photonumb = $photonumb['count'];
 		else $pixelpost_photonumb = "0";
 
 	
-		if($_GET['page'] == "")	$page = "0";
+		if(!isset($_GET['page']) OR $_GET['page'] == "")	$page = "0";
 		else	$page = intval($_GET['page']);
  		$_SESSION['page_pp'] = (int) $page;
 		$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
@@ -420,7 +432,7 @@ if($_GET['view'] == "images")
 		}
 		echo "<div class='jcaption'><a href='' onclick=\"flip('additionalSelects'); return false;\" title=\"$admin_lang_show $admin_lang_options\">$admin_lang_imgedit_title1 $admin_lang_ni_select_cat, $admin_lang_ni_month, ID</a></div>
 	  <div id=\"additionalSelects\">";
-	  if (!isset($selectfcat) &! isset($selectftag) &! isset($selectfalttag) &! isset($selectfmon)) echo "<script language='javascript' type='text/javascript'>flip('additionalSelects');</script>";
+	  if ($selectfcat == '' AND $selectftag == '' AND $selectfalttag == '' AND $selectfmon == '') echo "<script language='javascript' type='text/javascript'>flip('additionalSelects');</script>";
 		echo "<div class='content'>
 		<form method='post' name='filter' accept-charset='UTF-8' action='index.php?view=images'>
 		<table width='400' border='0' cellpadding='2'>
@@ -454,16 +466,16 @@ if($_GET['view'] == "images")
 		</table></form></div></div>";
 
 	//the filter stuff for showing the correct browse pages
-    if (isset($selectfcat)) {
+    if (isset($selectfcat)  AND $selectfcat != '') {
 			$getfstring = '&amp;selectfcat='.$selectfcat;
 		}
-		else if (isset($selectftag)) {
+		else if (isset($selectftag) AND $selectftag != '') {
 			$getfstring = '&amp;selectftag='.$selectftag;
 		}
-		else if (isset($selectfalttag)) {
+		else if (isset($selectfalttag) AND $selectfalttag != '') {
 			$getfstring = '&amp;selectfalttag='.$selectfalttag;
 		}
-		else if (isset($selectfmon)) {
+		else if (isset($selectfmon) AND $selectfmon != '') {
 			$getfstring = '&amp;selectfmon='.$selectfmon;
 		}
 		else {
@@ -476,10 +488,10 @@ if($_GET['view'] == "images")
 		<form method=\"post\" name=\"manageposts\" id=\"manageposts\"  accept-charset=\"UTF-8\" action=\"index.php?view=images&amp;page=$page$getfstring\">
 			<input class=\"cmnt-buttons\" type=\"button\" onclick=\"checkAll(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_check_all\" name=\"chechallbox\" />
 			<input class=\"cmnt-buttons\" type=\"button\" onclick=\"invertselection(document.getElementById('manageposts')); return false; \" value=\"$admin_lang_cmnt_invert_checks\" name=\"invcheckbox\" />
-			<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"return (confirm('Delete all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')) ? document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=massdelete' : false;\"/>
-			<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"return (confirm('Publish all selected images? \\n  \'Cancel\' to stop, \'OK\' to publish.')) ? document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masspublish' : false;\"/>
+			<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_del_selected\" onclick=\"return (confirm('Delete all selected images? \\n  \'Cancel\' to stop, \'OK\' to delete.')) ? document.getElementById('manageposts').action='".PHP_SELF."?view=images&amp;action=massdelete' : false;\"/>
+			<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"return (confirm('Publish all selected images? \\n  \'Cancel\' to stop, \'OK\' to publish.')) ? document.getElementById('manageposts').action='".PHP_SELF."?view=images&amp;action=masspublish' : false;\"/>
 			<br/><br/>
-			<select name=\"mass-edit-cat\" id=\"mass-edit-cat\" onchange=\"document.getElementById('manageposts').action='$PHP_SELF?view=images&amp;action=masscatedit&amp;cmd='+this.options[this.selectedIndex].value; \" >\n
+			<select name=\"mass-edit-cat\" id=\"mass-edit-cat\" onchange=\"document.getElementById('manageposts').action='".PHP_SELF."?view=images&amp;action=masscatedit&amp;cmd='+this.options[this.selectedIndex].value; \" >\n
 			<option value=\"\">$admin_lang_imgedit_mass_1</option> \n
 			<option value=\"\"></option> \n
 			<option value=\"\">--- $admin_lang_imgedit_mass_2  ---</option> \n";
@@ -510,22 +522,22 @@ if($_GET['view'] == "images")
 
 		
 		//cat filter
-		if (isset($selectfcat)) {
+		if (isset($selectfcat) AND $selectfcat !='') {
 			$query = "SELECT a.id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."catassoc as b WHERE a.id = b.image_id AND b.cat_id = ".$selectfcat." ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//tag filter
-		else if (isset($selectftag)) {
+		else if (isset($selectftag) AND $selectftag !='') {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.tag LIKE '".$selectftag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//alt tag filter
-		else if (isset($selectfalttag)) {
+		else if (isset($selectfalttag) AND $selectfalttag != '') {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost as a, ".$pixelpost_db_prefix."tags as b WHERE a.id = b.img_id AND b.alt_tag LIKE '".$selectfalttag."' ORDER BY a.datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
 		//month filter
-		else if (isset($selectfmon)) {
+		else if (isset($selectfmon) AND $selectfmon != '') {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime LIKE '".$selectfmon."%' ORDER BY datetime DESC limit $page,".$_SESSION['numimg_pp'];
 		}
-		else if (isset($findfid)) {
+		else if (isset($findfid) AND $findfid != '') {
 			$query = "SELECT id, datetime, headline, body, image, category, alt_headline FROM ".$pixelpost_db_prefix."pixelpost WHERE id = ".$findfid." limit 0,1";
 		}
 		else {
@@ -570,10 +582,12 @@ if($_GET['view'] == "images")
     
 			$fs = filesize($cfgrow['imagepath'].$image);
 			$fs*=0.001;
-    
+			
+			if(isset($_POST['moderate_image_boxes'])){ $checked = in_array($id, $_POST['moderate_image_boxes']) ? 'checked' : ''; }else{ $checked = ''; }
+			
 			echo "<li><a href=\"../index.php?showimage=$id\"><img src=\"".$cfgrow['thumbnailpath']."thumb_$image\" align=\"left\" hspace=\"3\" alt=\"Click to go to image\" /></a>
-				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" ".(in_array($id, $_POST['moderate_image_boxes'])?' checked':'')."/>
-				<strong><a href=\"$PHP_SELF?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"$PHP_SELF?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
+				<input type=\"checkbox\" class=\"images-checkbox\" name=\"moderate_image_boxes[]\" value=\"$id\" $checked />
+				<strong><a href=\"".PHP_SELF."?view=images&amp;id=$id\">[$admin_lang_imgedit_edit]</a> <a href=\"../index.php?showimage=$id\" target=\"_blank\">[$admin_lang_imgedit_preview]</a> <a onclick=\"return confirmDeleteImg()\" href=\"".PHP_SELF."?view=images&amp;x=delete&amp;imageid=$id\">[$admin_lang_imgedit_delete]</a></strong><br/>
 				<strong>#$id<br/>
 				$langs $admin_lang_imgedit_title</strong> $headline<br/>";
 				if ($cfgrow['altlangfile'] != 'Off') { 
@@ -617,10 +631,11 @@ if($_GET['view'] == "images")
     	{
          	echo $image_page_Links;
         }
-
-
+        
+        if(isset($_GET['page'])) { $page = '&amp;page='.$_GET['page']; }else{ $page = ''; }
+        
     echo '<br/>
-       <form method="post" action="'.$PHP_SELF .'?view=images&amp;page='.$_GET['page'].$getfstring.'" accept-charset="UTF-8">';
+       <form method="post" action="'.PHP_SELF.'?view=images'.$page.$getfstring.'" accept-charset="UTF-8">';
  		echo $admin_lang_show.' ';
     echo '<input type="text" name="numimg_pp" size="2" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_imgedit_img_page.'.
 	    <input type="submit" value="'.$admin_lang_go.'" />
@@ -647,8 +662,12 @@ if($_GET['view'] == "images")
     echo "
 		<div id='submenu'>
 		<a href='?view=images&amp;id=$getid&amp;imagessview=edit' ";
-
-		if (!isset($_GET["imagesview"])) $selecteclass = 'selectedsubmenu';
+		
+		$selectedclass = '';
+		if(!isset($_GET["imagesview"]))
+		{
+			$selectedclass = 'selectedsubmenu';
+		}
 
 		echo "class='".$selectedclass."'>$admin_lang_imgedit_edit_post</a>";
         	echo_addon_admin_menus($addon_admin_functions,"images","&amp;id=".$getid);
@@ -659,14 +678,14 @@ if($_GET['view'] == "images")
 
 // edit image, list categories etc.
 
-		if ($_GET['imagesview']=='edit' or $_GET['imagesview']=='') 
+		if (isset($_GET['imagesview']) AND $_GET['imagesview'] == 'edit' OR isset($_GET['imagesview']) AND $_GET['imagesview'] == '' OR !isset($_GET['imagesview'])) 
 		{
 			$tags = list_tags_edit($_GET['id']);
 
 			if ($cfgrow['altlangfile'] != 'Off')	$alt_tags = list_tags_edit($_GET['id'], "alt_");
 
 			echo "
-			<form method='post' action='$PHP_SELF?view=images&amp;x=update&amp;imageid=".$getid."&amp;page=".$_SESSION['page_pp']."' enctype='multipart/form-data' accept-charset='UTF-8'>";
+			<form method='post' action='".PHP_SELF."?view=images&amp;x=update&amp;imageid=".$getid."&amp;page=".$_SESSION['page_pp']."' enctype='multipart/form-data' accept-charset='UTF-8'>";
 			echo "
 			<div class='jcaption'>$admin_lang_imgedit_reupimg</div>
 			<div class='content'>

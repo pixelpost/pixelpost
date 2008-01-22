@@ -389,6 +389,7 @@ $lang_create_visitors  = "Create visitors table:";
 $lang_create_version   = "Create version table:";
 $lang_create_catassoc  = "Create catassoc table:";
 $lang_create_addons    = "Create addons table:";
+$lang_create_banlist   = "Create banlist table:";
 
 
 ////////////////////////////////////////////////////////////////////////////////////

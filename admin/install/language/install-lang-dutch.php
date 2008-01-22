@@ -388,6 +388,7 @@ $lang_create_visitors  = "Maak visitors tabel aan:";
 $lang_create_version   = "Maak version tabel aan:";
 $lang_create_catassoc  = "Maak catassoc tabel aan:";
 $lang_create_addons    = "Maak addons tabel aan:";
+$lang_create_banlist   = "Maak banlist tabel aan:";
 
 
 ////////////////////////////////////////////////////////////////////////////////////

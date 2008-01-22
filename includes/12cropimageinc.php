@@ -24,7 +24,8 @@
 // set the 12cropimage file path (in the include directory)
 
 // You do not need to access this if not logged in - securing it
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
 {
 	die ("Try another day!!");
 }
@@ -39,7 +40,7 @@ global $txt, $imgW,$imgH, $imgProp, $spacer, $redirect, $javafile, $crw, $crh, $
 mysql_error();
 
 // if the user selected '12c' as the cropping tool
-if ($_GET['x']=='12cropthumb')
+if (isset($_GET['x']) AND $_GET['x'] == '12cropthumb')
 {
 	$w = $_GET['sw'];
 	$h = $_GET['sh'];
@@ -87,7 +88,7 @@ function setsize_cropdiv ($file)
   // credit to codewalkers.com - there is 90% a tutorial there
   $max_width = $cfgrow['thumbwidth'];
   $max_height = $cfgrow['thumbheight'];
-  define(IMAGE_BASE, rtrim($cfgrow['imagepath'],"/"));
+  define('IMAGE_BASE', rtrim($cfgrow['imagepath'],"/"));
   $image_path = IMAGE_BASE . "/$file";
   $img = null;
   $ext_exp = explode('.', $image_path);
@@ -117,8 +118,8 @@ function setsize_cropdiv ($file)
 	  $imgProp1 = $crw*$imgProp;
 	  $imgProp2 = $crh*$imgProp;
 
-    echo "<style type='text/css'>#cropdiv {position:absolute;width:$imgProp1".px.";height:$imgProp2".px.";z-index:2;background-image:url(".$spacer."); }
-	      #editthumbnail{position:relative;height:$divsize".px.";visibility: hidden;}
+    echo "<style type='text/css'>#cropdiv {position:absolute;width:".$imgProp1."px;height:".$imgProp2."px;z-index:2;background-image:url(".$spacer."); }
+	      #editthumbnail{position:relative;height:".$divsize."px;visibility: hidden;}
 	       </style>";
   }
   else
@@ -140,7 +141,7 @@ function createthumbnail_12crop($w,$h,$dw,$dh,$file)
   $max_width = $cfgrow['thumbwidth'];
   $max_height = $cfgrow['thumbheight'];
   $tmp_img = imagecreatetruecolor($max_width,$max_height);
-  define(IMAGE_BASE, rtrim($cfgrow['imagepath'],"/"));
+  define('IMAGE_BASE', rtrim($cfgrow['imagepath'],"/"));
   $image_path = IMAGE_BASE . "/$file";
   $img = null;
   $ext_exp = explode('.', $image_path);
@@ -167,7 +168,7 @@ function createthumbnail_12crop($w,$h,$dw,$dh,$file)
 
 		// gd 2.0.1 or later: imagecopyresampled
 		// gd less than 2.0: imagecopyresized
-    if(function_exists(imagecopyresampled))
+    if(function_exists('imagecopyresampled'))
     {
       imagecopyresampled($tmp_img, $img, 0,0,$w,$h,$max_width,$max_height,$dw,$dh);
     }

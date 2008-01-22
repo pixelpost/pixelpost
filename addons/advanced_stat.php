@@ -32,9 +32,15 @@ $addon_version = "1.0";
 
 if( isset( $_GET['view']) && $_GET['view']=='addons')
 {
-	global $cfgrow;
-	if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])  die ("Try another day!!");
-
+	global $cfgrow,$tpl;
+	//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+	if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+	{
+	    die ("Try another day!!");
+	}
+	
+	$somestates = '';
+	
 	// Check to see if the ban table exists, if not, create it
 	$query = "SELECT id FROM {$pixelpost_db_prefix}stats LIMIT 1";
 	if( !mysql_query($query))	create_stat_table($pixelpost_db_prefix);
@@ -62,7 +68,7 @@ if( isset( $_GET['view']) && $_GET['view']=='addons')
 
     while(list($month) = mysql_fetch_row($query))
     {
-			if ($_GET['advncstat']!='domonth' && $month==$crrntmonth)	continue;
+			if (isset($_GET['advncstat']) AND $_GET['advncstat']!='domonth' && $month==$crrntmonth)	continue;
 	
 			if ("ok"==stat_update_month($pixelpost_db_prefix,$month))
 			{

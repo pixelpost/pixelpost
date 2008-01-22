@@ -2,6 +2,7 @@
 
 // SVN file version:
 // $Id$
+
 /*
 
 Pixelpost version 1.7
@@ -39,73 +40,95 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
+
 error_reporting(0);
 
-$PHP_SELF = "index.php";
+/**
+ * Define constants
+ *
+ */
+define('PHP_SELF', 'index.php');
+define('ADDON_DIR', '../addons/');
 
-if(!file_exists('../includes/pixelpost.php')) {
+if(!file_exists('../includes/pixelpost.php'))
+{
 	header("Location: install.php");
 	exit;
 }
+
 // variable clean up
-if(isset($_GET["loginmessage"]) || isset($_POST["loginmessage"]))	$loginmessage = "";
+if(isset($_GET["loginmessage"]) || !isset($_GET["loginmessage"])  || isset($_POST["loginmessage"])){ $loginmessage = ""; }
 
 // variable saying we are inside admin panel (i.e. to use in addons)
 $admin_panel = 1;
 
 session_start();
 
-if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
-	error_reporting(E_ALL ^ E_NOTICE);
-	
-}elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"]){
+if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"])
+{
+	error_reporting(E_ALL ^ E_NOTICE);	
+}
+elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"])
+{
 	error_reporting(E_ALL);
-	
 }
 
-require("../includes/pixelpost.php");
-require("../includes/functions.php");
+require_once("../includes/pixelpost.php");
+require_once("../includes/functions.php");
+
 // Pixelpost Version
 $version = "MS43LjEgKEJldHRlciB0aGFuIEV2ZXIpIC0gSmFudWFyeSAyMDA4";
 
 $pixelpost_prefix_used = $pixelpost_db_prefix;
+
 start_mysql('../includes/pixelpost.php','admin');
 
-// added to allow upgrades
-// This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
+/**
+ * Added to allow upgrades
+ * This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
+ *
+ */
 $installed_version = Get_Pixelpost_Version($pixelpost_db_prefix);
-if( $installed_version < 1.71 )
+if($installed_version < 1.71 )
 {
 	header("Location: install.php");
 	exit;
 }
 
 // Changed to allow upgrades
-if($cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config"))
+if($cfgquery = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."config`"))
 {
 	$cfgrow = mysql_fetch_assoc($cfgquery);
 	$upload_dir = $cfgrow['imagepath'];
-} else {
+}
+else
+{
 	header("Location: install.php");
 	exit;
 }
-// always include the default language file (English) if it exists. That way if we forget to update the variables in the alternative language files
-// the English ones are shown.
-if (file_exists("../language/admin-lang-english.php"))
+
+/**
+ * Always include the default language file (English) if it exists.
+ *
+ */
+if(file_exists("../language/admin-lang-english.php"))
 {
-	require("../language/admin-lang-english.php");
+	require_once("../language/admin-lang-english.php");
 }
-// now replace the contents of the variables with the selected language.
-/* Special language file for Admin-Section, default is english */
-if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
+
+/**
+ * Now replace the contents of the variables with the selected language.
+ *
+ */
+if($cfgrow = sql_array("SELECT * FROM `".$pixelpost_db_prefix."config`"))
 {
-	if (file_exists("../language/admin-lang-".$cfgrow['admin_langfile'].".php"))
+	if(file_exists("../language/admin-lang-".$cfgrow['admin_langfile'].".php"))
 	{
 		$admin_lang_file_name = "admin-lang-".$cfgrow['admin_langfile'];
 	}
 	else
 	{
-		if (file_exists("../language/admin-lang-english.php"))
+		if(file_exists("../language/admin-lang-english.php"))
 		{
 			$admin_lang_file_name = "admin-lang-english";
 		}
@@ -125,12 +148,15 @@ if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
 	}
 }
 
-require("../language/".$admin_lang_file_name.".php");
+require_once("../language/".$admin_lang_file_name.".php");
 
-// check whether the language-files for the public part exist
-if (file_exists("../language/lang-".$cfgrow['langfile'].".php"))
+/**
+ * Check if the language files for the public part exist
+ *
+ */
+if(file_exists("../language/lang-".$cfgrow['langfile'].".php"))
 {
-	require("../language/lang-".$cfgrow['langfile'].".php");
+	require_once("../language/lang-".$cfgrow['langfile'].".php");
 }
 else
 {
@@ -141,30 +167,28 @@ else
 /************************ BEGINNING OF LOGIN STUFF ************************/
 
 // forgot password?
-include('pass_recovery.php');
+include_once('pass_recovery.php');
 
 // autologin data are valid and cookies are set for a week (604800 seconds)
-if(($cfgrow['admin'] == $_COOKIE['pp_user']) AND (sha1($cfgrow['password'].$_SERVER["REMOTE_ADDR"]) === $_COOKIE['pp_password']) AND !isset($_SESSION["pixelpost_admin"]))
+if(($cfgrow['admin'] == isset($_COOKIE['pp_user'])) AND (sha1($cfgrow['password'].$_SERVER["REMOTE_ADDR"]) === $_COOKIE['pp_password']) AND !isset($_SESSION["pixelpost_admin"]))
 {
-  error_reporting('E_ALL');
   unset($login);
   $_SESSION["pixelpost_admin"] = $cfgrow['password'];
   setcookie( "pp_user", $_COOKIE['pp_user'], time()+604800);
   setcookie( "pp_password", sha1($cfgrow['password'].$_SERVER["REMOTE_ADDR"]), time()+604800);
 }
 
-if($_GET['x'] == "login")
+if(isset($_GET['x']) AND $_GET['x'] == "login")
 {
 	$cfgrow_password = md5($_POST['password']);
 	if(($cfgrow['admin'] == $_POST['user']) AND ($cfgrow_password == $cfgrow['password']))
 	{
-		error_reporting('E_ALL');
 		// login is valid, set session
 		unset($login);
 		$_SESSION["pixelpost_admin"]  = $cfgrow_password;
 
 		// set autologin cookie
-		if($_POST['remember'] == 'on')
+		if(isset($_POST['remember']) AND $_POST['remember'] == 'on')
 		{
 			setcookie( "pp_user", clean($_POST['user']), time()+604800);
 			setcookie( "pp_password", sha1($cfgrow_password.$_SERVER["REMOTE_ADDR"]), time()+604800);
@@ -173,13 +197,11 @@ if($_GET['x'] == "login")
 	}
 	else
 	{
-      $loginmessage = "$admin_start_userpw <br />
-        <a href='#' onclick=\"flip('askforpass'); return false;\">$admin_start_pw_forgot</a><br /><br />
-        ";
+		$loginmessage = "$admin_start_userpw <br /><a href='#' onclick=\"flip('askforpass'); return false;\">$admin_start_pw_forgot</a><br /><br />";
 	}
-} // if (login = yes) end
+}
 
-if($_GET['x'] == "logout")
+if(isset($_GET['x']) AND $_GET['x'] == "logout")
 {
 	unset($_SESSION["pixelpost_admin"]);
 	setcookie( "pp_user", "", time()-36000);
@@ -191,7 +213,9 @@ if(!isset($_SESSION["pixelpost_admin"]))
 {
 	// cookie is not set, send them to a form
 	$login = "true";
-} else {
+}
+else
+{
 	// cookie exists, check for validity
 	if($cfgrow['password'] != $_SESSION["pixelpost_admin"])	$login = "true";
 }
@@ -200,8 +224,8 @@ if(!isset($_SESSION["pixelpost_admin"]))
 
 //------------- addons in admin panel begins
 // refresh the addons table
-$dir = "../addons/";
-refresh_addons_table($dir);
+//$dir = "../addons/";
+refresh_addons_table(ADDON_DIR);
 
 $addon_admin_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
 create_admin_addon_array();
@@ -215,7 +239,7 @@ if($cfgrow['crop']=="12c" && isset($_SESSION["pixelpost_admin"]))
 
 // anti "image autodelete" security solution (i.e. after image update there is ?view=images&x=update&imageid=302 in URL;
 // when you hit this adres directly image will be erased)
-if($_GET['x'] == "update" && !isset($_POST['comments_settings']))
+if(isset($_GET['x']) AND $_GET['x'] == "update" && !isset($_POST['comments_settings']))
 {
 		header("Location: index.php?view=images");
 		die();
@@ -254,9 +278,9 @@ var installed_ver = <?php echo $installed_version;?>;
 </script>
 
 <?php
-if
-($cfgrow['crop']=="12c" &&  ( (!isset($_GET['view']) && isset($_GET['x']) && $_GET['x']=='save')  ||  ($_GET['view']=="images" && isset($_GET['id'])))){
-	require("../includes/12cropimageincscripts.php");
+if($cfgrow['crop'] == "12c" AND !isset($_GET['view']) AND isset($_GET['x']) AND $_GET['x'] == 'save'  OR  isset($_GET['view']) AND $_GET['view'] == "images" AND isset($_GET['id']))
+{
+	require_once("../includes/12cropimageincscripts.php");
 }
 eval_addon_admin_workspace_menu('admin_html_head');
 ?>
@@ -266,7 +290,7 @@ eval_addon_admin_workspace_menu('admin_html_head');
 <div id="wrapper">
 
 <?php
-if($login == "true")
+if(isset($login) && $login == "true")
 {
     ?>
 	<div id="header">
@@ -279,7 +303,7 @@ if($login == "true")
    <?php echo $admin_start_cookie; ?>
     </div>
     <div class="content">
-    <form method="post" action="<?php echo $PHP_SELF; ?>?x=login" accept-charset="UTF-8">
+    <form method="post" action="<?php echo PHP_SELF; ?>?x=login" accept-charset="UTF-8">
     <?php echo $admin_start_username;?> <br />
     <input type="text" name="user" class="input" /><br /><br />
     <?php echo $admin_start_pw;?> <br />
@@ -309,39 +333,39 @@ if($login == "true")
 </div>
 
 <div id="navigation">
-<a href="<?php echo $PHP_SELF; ?>?"><?php echo $admin_lang_new_image; ?></a>
-<a href="<?php echo $PHP_SELF; ?>?view=images"><?php echo $admin_lang_images ?></a>
-<a href="<?php echo $PHP_SELF; ?>?view=categories"><?php echo $admin_lang_categories ?></a>
-<a href="<?php echo $PHP_SELF; ?>?view=comments"><?php echo $admin_lang_comments ?></a>
-<a href="<?php echo $PHP_SELF; ?>?view=options"><?php echo $admin_lang_options ?></a>
-<a href="<?php echo $PHP_SELF; ?>?view=info"><?php echo $admin_lang_general_info ?></a>
-<a href="<?php echo $PHP_SELF; ?>?view=addons"><?php echo $admin_lang_addons ?></a>
+<a href="<?php echo PHP_SELF; ?>"><?php echo $admin_lang_new_image; ?></a>
+<a href="<?php echo PHP_SELF; ?>?view=images"><?php echo $admin_lang_images ?></a>
+<a href="<?php echo PHP_SELF; ?>?view=categories"><?php echo $admin_lang_categories ?></a>
+<a href="<?php echo PHP_SELF; ?>?view=comments"><?php echo $admin_lang_comments ?></a>
+<a href="<?php echo PHP_SELF; ?>?view=options"><?php echo $admin_lang_options ?></a>
+<a href="<?php echo PHP_SELF; ?>?view=info"><?php echo $admin_lang_general_info ?></a>
+<a href="<?php echo PHP_SELF; ?>?view=addons"><?php echo $admin_lang_addons ?></a>
 <?php eval_addon_admin_workspace_menu('admin_main_menu'); ?>
-<a href="<?php echo $PHP_SELF; ?>?x=logout"><?php echo $admin_lang_logout ?></a>
+<a href="<?php echo PHP_SELF; ?>?x=logout"><?php echo $admin_lang_logout ?></a>
 </div>
 
 <?php
 // new image
-include('new_image.php');
+require_once('new_image.php');
 
 // view = addons
-include('view_addons.php');
+require_once('view_addons.php');
 
 // options
-include('options.php');
+require_once('options.php');
 
 // view=images
-include('images_edit.php');
+require_once('images_edit.php');
 
 // view=comments
-include('comments.php');
+require_once('comments.php');
 
 // view=info
-include('view_info.php');
+require_once('view_info.php');
 
 
 // view=categories
-include('categories.php');
+require_once('categories.php');
 
 eval_addon_admin_workspace_menu('admin_main_menu_contents');
 

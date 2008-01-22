@@ -387,6 +387,7 @@ $lang_create_visitors  = "Skapa visitors tabell:";
 $lang_create_version   = "Skapa version tabell:";
 $lang_create_catassoc  = "Skapa catassoc tabell:";
 $lang_create_addons    = "Skapa addons tabell:";
+$lang_create_banlist   = "Skapa banlist tabell:";
 
 
 ////////////////////////////////////////////////////////////////////////////////////

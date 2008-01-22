@@ -3,22 +3,23 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
-// create banlist table if it does not exist
-create_banlist();
-
 // view = options
 
-if($_GET['view'] == "options") {
+if(isset($_GET['view']) AND $_GET['view'] == "options") {
 // switch ($_GET['optaction']) {
 
+$lang_error = 0;
+
 //=========== START PAGE ONE: GENERAL ===========
-if ($_GET['optaction']=='updateall')
+if(isset($_GET['optaction']) AND $_GET['optaction'] == 'updateall')
 {
-	if($_GET['optionsview']=='' OR $_GET['optionsview']=='general')
+	if(isset($_GET['optionsview']) AND $_GET['optionsview'] == '' OR isset($_GET['optionsview']) AND $_GET['optionsview'] == 'general')
 	{
 		//case "updatetitle":
 		//case "updatesubtitle":
@@ -75,9 +76,9 @@ if ($_GET['optaction']=='updateall')
 					langfile='".clean($_POST['new_lang'])."',
 					altlangfile='".clean($_POST['alt_lang'])."'");
 
-			$lang_error=0;
+			//$lang_error = 0;
 		} else {
-			$lang_error=1;
+			$lang_error = 1;
 		}
 		//break;
 
@@ -167,7 +168,13 @@ if ($_GET['optaction']=='updateall')
 } //end update all
 
 //=========== END OF PAGE ONE: GENERAL ===========
-switch ($_GET['optaction'])
+
+$action = '';
+if(isset($_GET['optaction'])){
+	$action = $_GET['optaction'];
+}
+
+switch ($action)
 {
 
 //=========== START PAGE TWO: TEMPLATE ===========
@@ -258,24 +265,24 @@ switch ($_GET['optaction'])
 } // end of switch:
 
 
-if($_GET['optaction'] != "")
+if(isset($_GET['optaction']) AND $_GET['optaction'] != "")
 {
-	if ($lang_error==0){
-		echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='$PHP_SELF?view=options'>$admin_lang_reload";
-		if ($_POST['token_time'] < 1 && $_GET['optionsview'] == 'antispam') {
+	if ($lang_error == 0){
+		echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='".PHP_SELF."?view=options'>$admin_lang_reload";
+		if (isset($_POST['token_time']) AND $_POST['token_time'] < 1 && $_GET['optionsview'] == 'antispam') {
 			// token time < 1 minute is not allowed. Correct it and show error mesage.
 			$_POST['token_time']=1;
 			echo "<br /><br />".$admin_lang_optn_token_error;
 		}
 		echo "</a></div><p />\n";
-	} else {
+	} elseif(isset($_GET['optaction']) AND $_GET['optaction'] == 'updateall' AND $lang_error = 1){
 		echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color=\"red\">$admin_lang_optn_upd_lang_error</font></div><p />\n";
 	}
 	
 }
 
 echo "<div id='caption'>$admin_lang_options</div>\n<div id='submenu'>";
-
+			$submenucssclass = 'notselected';
 if (!isset($_GET['optionsview']) || $_GET['optionsview']=='general')	$submenucssclass = 'selectedsubmenu';
 
 echo "<a href='index.php?view=options&amp;optionsview=general' class='".$submenucssclass."'>$admin_lang_optn_general</a>\n";
@@ -310,7 +317,7 @@ eval_addon_admin_workspace_menu("options","options");
 //function showoptions(){
 	//global $cfgrow;
 
-if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
+if (isset($_GET['optionsview']) AND $_GET['optionsview'] == 'general' OR isset($_GET['optionsview']) AND $_GET['optionsview']=='' OR !isset($_GET['optionsview']))
 {
 		$decoded_pass = "";
 		$_POST['newadminpass'] ='';
@@ -570,7 +577,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 		<!-- comment moderation
 		<div class='jcaption'>
-		$admin_lang_optn_comment_moderation
+		// $ admin_lang_optn_comment_moderation
 		</div> -->
 
 		<!-- Timestamp -->
@@ -818,7 +825,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 	} // end option / general
 
-	if ($_GET['optionsview']=='template')
+	if (isset($_GET['optionsview']) AND $_GET['optionsview'] == 'template')
 	{
 	echo "
 
@@ -928,7 +935,7 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
 
 	";
 	}
-	if ($_GET['optionsview']=='thumb')
+	if (isset($_GET['optionsview']) AND $_GET['optionsview'] == 'thumb')
 	{
 
 	echo "
@@ -1016,8 +1023,9 @@ if ($_GET['optionsview']=='general' OR $_GET['optionsview']=='')
     };
 
 
-    if ($_GET['optionsview']=='antispam'){
-    	if ($_GET['optaction']=='updateantispam'){
+    if(isset($_GET['optionsview']) AND $_GET['optionsview'] == 'antispam'){
+    
+    	if (isset($_GET['optaction']) AND $_GET['optaction']=='updateantispam'){
 				// token
 				// DSBL settings
 				// SPAM Flood settings

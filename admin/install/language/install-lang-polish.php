@@ -389,6 +389,7 @@ $lang_create_visitors  = "Utworzono tablę odwiedzających:";
 $lang_create_version   = "Utworzono tablę wersji:";
 $lang_create_catassoc  = "Utworzono tablę powiązania wersji:";
 $lang_create_addons    = "Utworzono tablę dodatków:";
+$lang_create_banlist   = "Utworzono tablę banlist:";
 
 
 ////////////////////////////////////////////////////////////////////////////////////

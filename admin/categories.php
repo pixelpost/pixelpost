@@ -3,22 +3,24 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
 // categories
-if($_GET['view'] == "categories")
+if(isset($_GET['view']) AND $_GET['view'] == "categories")
 {
 	echo "<div id='caption'>$admin_lang_categories</div>";
 
-	if($_GET['action'] == "delete")
+	if(isset($_GET['action']) AND $_GET['action'] == "delete")
 	{
 		$query = sql_query("delete from ".$pixelpost_db_prefix."categories where id='".$_POST['id']."'");
 		echo "<div class='jcaption'>$admin_lang_cats_delete_cat2</div><div class='content confirm'>$admin_lang_done $admin_lang_cats_deleted</div><p />";
 	}
 
-	if($_GET['action'] == "add")
+	if(isset($_GET['action']) AND $_GET['action'] == "add")
 	{
 		$category = clean($_POST['category']);
 		if (isset($_POST['alt_category']))
@@ -36,7 +38,7 @@ if($_GET['view'] == "categories")
 	    ";
 	}
 
-	if($_GET['action'] == "edit")
+	if(isset($_GET['action']) AND $_GET['action'] == "edit")
 	{
 		$query = sql_array("select * from ".$pixelpost_db_prefix."categories where id='".(int)$_POST['id']."'");
 		$name = pullout($query['name']);
@@ -44,7 +46,7 @@ if($_GET['view'] == "categories")
 		echo "<div class='jcaption'>$admin_lang_cats_edit_cat_txt</div>
         <div class='content'>$admin_lang_cats_edit_tip<p />
 
-	<form method='post' action='$PHP_SELF?view=categories&amp;action=update&amp;id=".$query['id']."' accept-charset='UTF-8'>
+	<form method='post' action='".PHP_SELF."?view=categories&amp;action=update&amp;id=".$query['id']."' accept-charset='UTF-8'>
         <input type='text' name='category' value='$name' style='width:300px;'/>";
 		if ($cfgrow['altlangfile'] != 'Off')
 		{
@@ -57,7 +59,7 @@ if($_GET['view'] == "categories")
         ";
 	}
 
-	if($_GET['action'] == "update")
+	if(isset($_GET['action']) AND $_GET['action'] == "update")
 	{
 		$category = clean($_POST['category']);
 
@@ -80,7 +82,7 @@ if($_GET['view'] == "categories")
 	echo "
     <div class='jcaption'>$admin_lang_cats_add_cat</div>
     <div class='content'>$admin_lang_cats_add_cat_txt<p />
-    <form method='post' action='$PHP_SELF?view=categories&amp;action=add' accept-charset='UTF-8'>
+    <form method='post' action='".PHP_SELF."?view=categories&amp;action=add' accept-charset='UTF-8'>
     <input type='text' name='category' style='width:300px;' /><p />";
 
 	if ($cfgrow['altlangfile'] != 'Off')
@@ -94,7 +96,7 @@ if($_GET['view'] == "categories")
     </div>
     <div class='jcaption'>$admin_lang_cats_edit_cat</div>
     <div class='content'>
-    <form method='post' action='$PHP_SELF?view=categories&amp;action=edit' accept-charset='UTF-8'>
+    <form method='post' action='".PHP_SELF."?view=categories&amp;action=edit' accept-charset='UTF-8'>
     <select name='id'>
     <option value=''>$admin_lang_cats_edit_cat_txt</option>
     <option value=''>----------</option>
@@ -123,7 +125,7 @@ if($_GET['view'] == "categories")
 
     <div class='jcaption'>$admin_lang_cats_delete_cat</div>
     <div class='content'>
-    <form method='post' action='$PHP_SELF?view=categories&amp;action=delete' accept-charset='UTF-8'>
+    <form method='post' action='".PHP_SELF."?view=categories&amp;action=delete' accept-charset='UTF-8'>
     <select name='id'>
     <option value=''>$admin_lang_cats_delete_cat_txt</option>
     <option value=''>----------</option>

@@ -22,7 +22,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // You do not need to access this if not logged in - securing it
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
 {
 	die ("Try another day!!");
 }
@@ -37,10 +39,12 @@ mysql_error();
 
     $cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config");
     $cfgrow = mysql_fetch_array($cfgquery);
-		if(($_GET['x'] == "save" || ($_GET['view']=="images" && $_GET['id']!=""))&& $cfgrow['crop']=='12c')
+
+		if((isset($_GET['x']) AND $_GET['x'] == "save" || ($_GET['view']=="images" && $_GET['id']!=""))&& $cfgrow['crop']=='12c')
+
 		{
 			$headline = 	clean($_POST['headline']);
-			if($headline == "" & $_GET['view']!="images")
+			if($headline == "" & isset($_GET['view']) AND $_GET['view']!="images")
 			{
 				echo "<div id='cropdiv'></div>
 						 <div id='myimg'></div>";
@@ -113,7 +117,7 @@ mysql_error();
 		$imgProp1 = $crw*$imgProp;
 		$imgProp2 = $crh*$imgProp;
 	$toecho = "<style type='text/css' >
-	#cropdiv {position:absolute;width:$imgProp1".px.";height:$imgProp2".px.";z-index:2;background-image: url(".$spacer."); }
+	#cropdiv {position:absolute;width:".$imgProp1."px;height:".$imgProp2."px;z-index:2;background-image: url(".$spacer."); }
 	#myimg {position:absolute;border:1px}
 	</style>";
 

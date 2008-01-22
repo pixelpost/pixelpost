@@ -3,12 +3,14 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
 // view info
-if($_GET['view'] == "info")
+if(isset($_GET['view']) AND $_GET['view'] == "info")
 {
 	echo "<div id='caption'>$admin_lang_general_info</div>";
 
@@ -16,7 +18,11 @@ if($_GET['view'] == "info")
 	if (count_addon_admin_menus($addon_admin_functions,"info") > 0)
 	{
 		echo"<div id='submenu'>";
-		if (!isset($_GET['infoview']) || $_GET['infoview']=='general')	$submenucssclass = 'selectedsubmenu';
+		$submenucssclass = '';
+		if(!isset($_GET['infoview']) || $_GET['infoview']=='general')
+		{
+		    $submenucssclass = 'selectedsubmenu';
+		}
 		echo "<a href='index.php?view=info&amp;infoview=general' class='".$submenucssclass."'>$admin_lang_optn_general</a>\n";
 		$submenucssclass = 'notselected';
   	echo_addon_admin_menus($addon_admin_functions,"info");
@@ -27,7 +33,7 @@ if($_GET['view'] == "info")
   eval_addon_admin_workspace_menu("info","info");
   // end add a workspace	
 
-if ($_GET['infoview']=='general' OR $_GET['infoview']=='')
+if (isset($_GET['infoview']) AND $_GET['infoview']=='general' OR isset($_GET['infoview']) AND $_GET['infoview']=='' OR !isset($_GET['infoview']))
 {
 	$mysql_version = mysql_get_server_info();
 
@@ -174,7 +180,7 @@ echo "
     $ref_biglist = split("!",$ref_biglist);
     rsort($ref_biglist,SORT_NUMERIC);
     foreach($ref_biglist as $value) {
-	    list($numb,$referer) = explode("@",$value);
+	    @list($numb,$referer) = explode("@",$value);
 	    if($numb > "0") {
 	    	if($numb < "10") { $numb = "0$numb"; }
 	    	$referername = $referer;

@@ -3,7 +3,20 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+/*
+echo "<pre>";
+var_dump('$_SESSION["pixelpost_admin"] = '.$_SESSION["pixelpost_admin"]);
+
+/var_dump('$_GET["_SESSION"]["pixelpost_admin"] = '.$_GET["_SESSION"]["pixelpost_admin"]);
+
+//var_dump('$_POST["_SESSION"]["pixelpost_admin"] = '.$_POST["_SESSION"]["pixelpost_admin"]);
+
+var_dump('$_COOKIE["PHPSESSID"] = '.$_COOKIE["PHPSESSID"]);
+echo "</pre>";
+*/
+
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
 {
 	die ("Try another day!!");
 }
@@ -11,12 +24,12 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 //require("../includes/exifer1_5/exif.php");
 
 // if no page is specified return a new post / image upload thing
-if($_GET['view'] == "")
+if(!isset($_GET['view']) OR $_GET['view'] == '')
 {
 	$show_image_after_upload = True; // For default behavior this is set to 'True' you can change this to false in your addons in the new image page
 
    // save new post
-	if($_GET['x'] == "save")
+	if(isset($_GET['x']) AND $_GET['x'] == "save")
 	{
 		$headline = clean($_POST['headline']);
 		$body = clean($_POST['body']);
@@ -43,6 +56,7 @@ if($_GET['view'] == "")
              intval($_POST['post_hour']).":".
              intval($_POST['post_minute']).":".date('s');
 
+        $postdatefromexif = FALSE;
 		if( $_POST['autodate'] == 1)
 		{
 			$query = mysql_query("select datetime + INTERVAL 1 DAY from ".$pixelpost_db_prefix."pixelpost order by datetime desc limit 1");
@@ -186,7 +200,7 @@ if($_GET['view'] == "")
 	}
 ?>
 
-	<form method="post" action="<?php echo $PHP_SELF;?>?x=save" enctype="multipart/form-data" accept-charset="UTF-8">
+	<form method="post" action="<?php echo PHP_SELF;?>?x=save" enctype="multipart/form-data" accept-charset="UTF-8">
 		<div id="caption"><b><?php echo $admin_lang_new_image;?></b></div>
 		<div class="jcaption"><?php echo $admin_lang_ni_post_a_new_image;?></div>
 		<div class="content">
@@ -200,14 +214,24 @@ if($_GET['view'] == "")
   <?php	eval_addon_admin_workspace_menu('new_image_form_def_lang'); 	?>
   <?php echo $admin_lang_ni_select_cat;?>
 	<?php
-	category_list_as_table(clean($_POST['category']), $cfgrow);
+	category_list_as_table(clean(isset($_POST['category'])), $cfgrow);
  	$tz = $cfgrow["timezone"];
  	$cur_time = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
  	$cur_year = gmdate("Y",time()+(3600 * $tz));
-	$_POST['autodate'] = clean($_POST['autodate']);
- 	$selected_autodate[$_POST['autodate']] = 1;
- 	if($_POST['autodate']=='')	$selected_autodate[2] = 1;
- ?>
+	if(isset($_POST['autodate']))
+	{
+	    $autodate = intval($_POST['autodate']);
+	    
+ 	    $selected_autodate[$autodate] = 1;
+ 	}
+ 	elseif(!isset($_POST['autodate']) OR $_POST['autodate'] == '')
+ 	{
+ 	    $selected_autodate[0] = '';
+ 	    $selected_autodate[1] = '';
+ 	    $selected_autodate[2] = 1;
+ 	    $selected_autodate[3] = '';
+ 	}
+ 	?>
 </div>
 
     <div class='jcaption'><?php echo $admin_lang_ni_description;?></div>
@@ -246,7 +270,7 @@ if($_GET['view'] == "")
 	while($lc <= (date("Y")+3))
 	{
 	  echo "<option";
-	  if($_POST['post_year']==$lc)	echo " SELECTED";
+	  if(isset($_POST['post_year']) AND $_POST['post_year']==$lc)	echo " SELECTED";
 	  echo " value='$lc'>$lc</option>";
 	  $lc++;
 	}
@@ -264,7 +288,7 @@ if($_GET['view'] == "")
 	{
 	  if($lc < 10) { $lc = "0$lc"; }
 	  echo "<option";
-	  if($_POST['post_month']==$lc)	echo " SELECTED";
+	  if(isset($_POST['post_month']) AND $_POST['post_month']==$lc)	echo " SELECTED";
 	  echo " value='$lc'>$lc</option>";
 	  $lc++;
 	}
@@ -282,7 +306,7 @@ if($_GET['view'] == "")
 	{
 	  if($lc < 10) { $lc = "0$lc"; }
 	  echo "<option";
-	  if($_POST['post_day']==$lc)	echo " SELECTED";
+	  if(isset($_POST['post_day']) AND $_POST['post_day']==$lc)	echo " SELECTED";
 	  echo " value='$lc'>$lc</option>";
 	  $lc++;
 	}
@@ -300,7 +324,7 @@ if($_GET['view'] == "")
 	{
 	  if($lc < 10) { $lc = "0$lc"; }
 	  echo "<option";
-	  if($_POST['post_hour']==$lc)	echo " SELECTED";
+	  if(isset($_POST['post_hour']) AND $_POST['post_hour']==$lc)	echo " SELECTED";
 	  echo " value='$lc'>$lc</option>";
 	  $lc++;
   }
@@ -317,7 +341,7 @@ if($_GET['view'] == "")
 	{
 	  if($lc < 10) { $lc = "0$lc"; }
 	  echo "<option";
-	  if($_POST['post_minute']==$lc)	echo " SELECTED";
+	  if(isset($_POST['post_minute']) AND $_POST['post_minute']==$lc)	echo " SELECTED";
 	  echo " value='$lc'>$lc</option>";
 	  $lc++;
 	}
@@ -357,8 +381,8 @@ if($_GET['view'] == "")
 		echo "
 		<div class='jcaption'>".$admin_lang_ni_alt_language."</div>
 		<div class='content'>".$admin_lang_ni_image_title."&nbsp;&nbsp;&nbsp;
-		<input type='text' name='alt_headline' style='width:550px;' value='".$alt_headline."'/><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type='text' name='alt_tags' style='width:550px;' value='".$alt_tags."'/><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
+		<input type='text' name='alt_headline' style='width:550px;' /><p/>".$admin_lang_ni_tags."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type='text' name='alt_tags' style='width:550px;' /><br/>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $admin_lang_ni_tags_desc . "<p/>";
 
 		eval_addon_admin_workspace_menu('new_image_form_alt_lang');
 
@@ -376,7 +400,7 @@ if($_GET['view'] == "")
 
 		echo "
 			<div style='text-align:center;'>
-				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''>".$alt_body."</textarea><p/>
+				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''></textarea><p/>
 			</div>
 		</div>";
 	}
@@ -392,7 +416,7 @@ if($_GET['view'] == "")
 	</form>
 
 <?php
-	if($_GET['x'] == "save" && $status == "ok")
+	if(isset($_GET['x']) AND $_GET['x'] == "save" AND $status == "ok")
 	{
 		$headline = pullout($_POST['headline']);
 		$body = pullout($_POST['body']);
@@ -401,7 +425,7 @@ if($_GET['view'] == "")
 		$to_echo = "
 		 <div id='caption'>$admin_lang_ni_posted: $headline</div>
 		 <div class='content'>$body<br/>
-		 $datetime<br/><a href=\"$PHP_SELF?view=images&id=$theid\">[$admin_lang_imgedit_edit]</a><p>
+		 $datetime<br/><a href=\"".PHP_SELF."?view=images&id=$theid\">[$admin_lang_imgedit_edit]</a><p>
 		 ";
 
 		// Check if the '12c' is selected as the crop then add 3 buttons to the page '+', '-', and 'crop'

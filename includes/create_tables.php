@@ -10,7 +10,7 @@ $prefix = $pixelpost_db_prefix;
 function Create13Tables($prefix) {
 
 	global $lang_created, $lang_create_config, $lang_create_cat, $lang_create_pixelpost;
-	global $lang_create_comments, $lang_create_visitors;
+	global $lang_create_comments, $lang_create_visitors, $lang_create_banlist;
 
 	// Config table
 	mysql_query("CREATE TABLE IF NOT EXISTS `{$prefix}config` (
@@ -80,6 +80,19 @@ function Create13Tables($prefix) {
 				 PRIMARY KEY (`id`))")or die("MySQL Error: ". mysql_error());
 	
 	$create_status[$lang_create_visitors] = $lang_created;
+	
+	// Visitors table
+	mysql_query("CREATE TABLE IF NOT EXISTS {$prefix}banlist (
+				 `id` INT(11) NOT NULL auto_increment,
+				 `moderation_list` MEDIUMTEXT NOT NULL default '',
+				 `blacklist` MEDIUMTEXT NOT NULL default '',
+				 `ref_ban_list` MEDIUMTEXT NOT NULL default '',
+				 `acceptable_num_links` INT(3) NOT NULL default '2',
+				 PRIMARY KEY (`id`))")or die("MySQL Error: ". mysql_error());
+				 
+	mysql_query("INSERT INTO `{$prefix}banlist` VALUES ( NULL,'','','tramadol\n-online\nadipex\nadvicer\nambien\nbllogspot\ncarisoprodol\ncasino\ncasinos\nbaccarrat\ncialis\ncwas\ncyclen\ncyclobenzaprine\nday-trading\ndiscreetordering\ndutyfree\nduty-free\nfioricet\nfreenet-shopping\nincest\nlevitra\nmacinstruct\nmeridia\nonline-gambling\npaxil\nphentermine\nplatinum-celebs\npoker-chip\npoze\nprescription\nsoma\nslot-machine\ntaboo\nteen\ntramadol\ntrim-spa\nultram\nviagra\nxanax\nbooker\nzolus\nchatroom\npoker\ncasino\ntexas\nholdem','2')")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_banlist] = $lang_created;	  
 	
 	return $create_status;
 }

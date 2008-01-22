@@ -169,11 +169,11 @@ if($sunday_first == 1){ $first_day_month++;}
 	$cal_vz .= "
 	<table class='table-calendar-vz' cellspacing='0'>
 	<tr>
-	<td class='td-calendar-navi-vz'><a href='$PHP_SELF?curr_month=$prev_month&amp;curr_year=$prev_year&amp;showimage=$prev_image_id$geos_cat_id'>&laquo;</a></td>
+	<td class='td-calendar-navi-vz'><a href='".PHP_SELF."?curr_month=$prev_month&amp;curr_year=$prev_year&amp;showimage=$prev_image_id$geos_cat_id'>&laquo;</a></td>
 	<td colspan='5' class='td-calendar-navi-vz'>
         $asc_mon-$curr_year
 	</td>
-	<td class='td-calendar-navi-vz'><a href='$PHP_SELF?curr_month=$next_month&amp;curr_year=$next_year&amp;showimage=$next_image_id$geos_cat_id'>&raquo;</a></td>
+	<td class='td-calendar-navi-vz'><a href='".PHP_SELF."?curr_month=$next_month&amp;curr_year=$next_year&amp;showimage=$next_image_id$geos_cat_id'>&raquo;</a></td>
 	</tr>
 	<tr>";
 for ($x=0; $x<7; $x++) {
@@ -217,7 +217,7 @@ while($day_count <= $total_days[$curr_month]) {
 		}
 	if($dayimage == "true") {
 		$class = "td-calendar-days-imagefound";
-		$link = "<a href='$PHP_SELF?curr_month=$curr_month&amp;curr_year=$curr_year&amp;showimage=$curr_image_id$geos_cat_id' title='An Image Was Posted This Day'>";
+		$link = "<a href='".PHP_SELF."?curr_month=$curr_month&amp;curr_year=$curr_year&amp;showimage=$curr_image_id$geos_cat_id' title='An Image Was Posted This Day'>";
 		$link2 = "</a>";
 		}
 	$cal_vz .= "<td class='$class'>$link$day_count$link2</td>";
@@ -286,7 +286,7 @@ while($day_count <= $total_days[$curr_month]) {
 		}
 	if($dayimage == "true") {
 		$class = "td-calendar-days-imagefound";
-		$link = "<a href='$PHP_SELF?curr_month=$curr_month&amp;curr_year=$curr_year&amp;showimage=$curr_image_id$geos_cat_id' title='An Image Was Posted This Day'>";
+		$link = "<a href='".PHP_SELF."?curr_month=$curr_month&amp;curr_year=$curr_year&amp;showimage=$curr_image_id$geos_cat_id' title='An Image Was Posted This Day'>";
 		$link2 = "</a>";
 		}
 	$cal_hz .= "<td class='$class'>$link$day_count$link2</td>";
@@ -299,9 +299,9 @@ while($day_count <= $total_days[$curr_month]) {
 	</tr>
 	<tr>
 	<td colspan='31' class='td-calendar-navi'>
-	<a href='$PHP_SELF?curr_month=$prev_month&amp;curr_year=$prev_year&amp;showimage=$prev_image_id$geos_cat_id'>&laquo;</a>
+	<a href='".PHP_SELF."?curr_month=$prev_month&amp;curr_year=$prev_year&amp;showimage=$prev_image_id$geos_cat_id'>&laquo;</a>
 	$asc_mon-$curr_year
-	<a href='$PHP_SELF?curr_month=$next_month&amp;curr_year=$next_year&amp;showimage=$next_image_id$geos_cat_id'>&raquo;</a>
+	<a href='".PHP_SELF."?curr_month=$next_month&amp;curr_year=$next_year&amp;showimage=$next_image_id$geos_cat_id'>&raquo;</a>
 	</td>
 	</tr></table>
 	";

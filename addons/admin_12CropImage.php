@@ -79,9 +79,13 @@ add_admin_functions('crop_image12_make_ready','admin_html_head','','');
 function crop_image12_make_ready()
 {
 	global $cfgrow , $txt ,$image, $spacer,$pixelpost_db_prefix,$javafile;
-	if($_GET['view']=="images" && isset($_GET['id']))
+	if(isset($_GET['view']) AND $_GET['view']=="images" && isset($_GET['id']))
 	{
-		if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])	die ("Try another day!!");
+		//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+		if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+		{
+		    die ("Try another day!!");
+        }
 
 		include_once("../includes/12cropimageinc.php");
 		include_once("../includes/12cropimageincscripts.php");

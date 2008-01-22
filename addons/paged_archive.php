@@ -359,7 +359,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		$thumbnail_extra = getimagesize($thumbnail);
 		$local_width = $thumbnail_extra['0'];
 		$local_height = $thumbnail_extra['1'];
-		$thumb_output .= "<a href='$PHP_SELF?showimage=$id'><img src='".$thumbnail."' alt='".$title."' title='".$title."' width='".$local_width."' height='".$local_height."' class='thumbnails' /></a>";
+		$thumb_output .= "<a href='".PHP_SELF."?showimage=$id'><img src='".$thumbnail."' alt='".$title."' title='".$title."' width='".$local_width."' height='".$local_height."' class='thumbnails' /></a>";
 	} //end while
 	// initialize page counter
 	$pagecounter=0;
@@ -620,6 +620,7 @@ else	$queryr = "SELECT COUNT(*) AS max
 $tag_max = mysql_query($queryr);
 $tag_max = mysql_fetch_row($tag_max);
 $tag_max = $tag_max[0];
+if($tag_max == ''){ $tag_max = 0; }
 
 if ($language_abr == $default_language_abr)	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, tag, COUNT(*) as cnt
 		FROM {$pixelpost_db_prefix}pixelpost AS p, {$pixelpost_db_prefix}tags AS t

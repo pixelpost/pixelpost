@@ -3,20 +3,22 @@
 // SVN file version:
 // $Id$
 
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"]) {
+//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+{
 	die ("Try another day!!");
 }
 
 // view=comments
-if($_GET['view'] == "comments") {
+if(isset($_GET['view']) AND $_GET['view'] == "comments") {
  // delete a comment
-    if($_GET['action'] == "delete") {
+    if(isset($_GET['action']) AND $_GET['action'] == "delete") {
 	    $delid = (int) $_GET['delid'];
 	    $query = sql_query("DELETE FROM ".$pixelpost_db_prefix."comments WHERE id='".(int)$delid."'");
 	    echo "<div class='jcaption'>$admin_lang_cmnt_deleted </div>";
 	    }
  // edit a comment
- 		if($_GET['action'] == "edit") {
+ 		if(isset($_GET['action']) AND $_GET['action'] == "edit") {
  			$editid = (int) $_GET['editid'];
  			$message = $_POST['message'.$editid];
  			// added by schonhose to escape characters
@@ -27,7 +29,7 @@ if($_GET['view'] == "comments") {
 		}
 
 	 // Mass delete comments
- 		if($_GET['action'] == "massdelete") {
+ 		if(isset($_GET['action']) AND $_GET['action'] == "massdelete") {
  		$idz= $_POST['moderate_commnts_boxes'];
 
  		$query = "DELETE FROM ".$pixelpost_db_prefix."comments ";
@@ -44,7 +46,7 @@ if($_GET['view'] == "comments") {
  		}
 
 	 // Mass SPAM-delete comments
-		if($_GET['action'] == "spamdelete" && isset($_POST['moderate_commnts_boxes'])) {
+		if(isset($_GET['action']) AND $_GET['action'] == "spamdelete" && isset($_POST['moderate_commnts_boxes'])) {
 		$idz= $_POST['moderate_commnts_boxes'];
 
 		foreach ($idz as $id){
@@ -111,7 +113,7 @@ if($_GET['view'] == "comments") {
  		}
 
 	 // Mass publish comments
-			if($_GET['action'] == "masspublish") {
+			if(isset($_GET['action']) AND $_GET['action'] == "masspublish") {
 			$idz= $_POST['moderate_commnts_boxes'];
 
 			$query = "update ".$pixelpost_db_prefix."comments set publish='yes' ";
@@ -127,7 +129,7 @@ if($_GET['view'] == "comments") {
 		}
 
 	 // Mass publish comments
-			if($_GET['action'] == "massunpublish") {
+			if(isset($_GET['action']) AND $_GET['action'] == "massunpublish") {
 			$idz= $_POST['moderate_commnts_boxes'];
 
 			$query = "update ".$pixelpost_db_prefix."comments set publish='no' ";
@@ -142,21 +144,21 @@ if($_GET['view'] == "comments") {
 			echo "<div class='jcaption confirm'>$admin_lang_cmnt_unpublished  $c $admin_lang_cmnt_published_cmnts</div>";
 	}
 
- echo "<div id='caption'>$admin_lang_$admin_lang_comments</div>";
+ echo "<div id='caption'>$admin_lang_comments</div>";
  
  // list of comments
-    if($_GET['id'] == "") {
+    if(isset($_GET['id']) AND $_GET['id'] == "" OR !isset($_GET['id'])) {
          $pagec = 0;
-        if($_GET['page'] == "") { $page = "0"; } else { $page = intval($_GET['page']); }
+        if(isset($_GET['page']) AND $_GET['page'] == "" OR !isset($_GET['page'])) { $page = "0"; } else { $page = intval($_GET['page']); }
 // added for showing correct page number for masked comments				
 				// default setting
 				$moderate_where = " and publish='yes' ";
 				$moderate_where2 = " WHERE publish='yes' ";	
-				if ($_GET['show']=='masked') {   
+				if (isset($_GET['show']) AND $_GET['show'] == 'masked') {   
 				 	$moderate_where = " and publish='no' ";
 				 	$moderate_where2 = " WHERE publish='no' ";
 				}
-				if ($_GET['show']=='published') {
+				if (isset($_GET['show']) AND $_GET['show'] == 'published') {
 					$moderate_where = " and publish='yes' ";	
 					$moderate_where2 = " WHERE publish='yes' ";	
 				}
@@ -201,9 +203,9 @@ if($_GET['view'] == "comments") {
 				$num_cmt_pages = ($num_cmt_pages > 0)	? $num_cmt_pages : 1;
 				
 				// styles for highlighting the actual link
-				$allstyle = ($_GET['show'] == ''?' style="border-color:#ff6d6d;"':'');	
-				$pubstyle = ($_GET['show']=='published'?' style="border-color:#ff6d6d;"':'');
-				$modstyle = ($_GET['show']=='masked'?' style="border-color:#ff6d6d;"':'');
+				$allstyfle = (isset($_GET['show']) AND $_GET['show'] == '' OR !isset($_GET['show']) ? ' style="border-color:#ff6d6d;"' : '');	
+				$pubstyle = (isset($_GET['show']) AND $_GET['show'] == 'published' OR !isset($_GET['show']) ? ' style="border-color:#ff6d6d;"':'');
+				$modstyle = (isset($_GET['show']) AND $_GET['show'] == 'masked' OR !isset($_GET['show']) ? ' style="border-color:#ff6d6d;"':'');
 	
 				echo "<div class=\"jcaption\">$admin_lang_cmnt_commentlist ".$_SESSION['numimg_pp'].", $admin_lang_page $currntpg $admin_lang_of $num_cmt_pages<br />
 				<span id=\"smaller\">$admin_lang_cmnt_massdelete_text</span></div>
@@ -225,7 +227,7 @@ if($_GET['view'] == "comments") {
 				<input class=\"cmnt-buttons\" type=\"submit\" name=\"submitdelete\" value=\"$admin_lang_cmnt_rep_spam\" onclick=\"
 				document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=spamdelete' \"/>";
 				
-			  if ($_GET['show']=='masked'){ 
+			  if (isset($_GET['show']) AND $_GET['show'] == 'masked'){ 
 				echo "<br /><br /><!-- publish selected comments -->
 				<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
 							document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=masspublish' \" />";
@@ -301,7 +303,7 @@ if($_GET['view'] == "comments") {
         echo "</ul>";
   	    
    	  // logical place for the buttons.
- 			  if ($_GET['show']=='masked'){ 
+ 			  if (isset($_GET['show']) AND $_GET['show'] == 'masked'){ 
 					echo "<!-- publish selected comments -->
 					<input class=\"cmnt-buttons\"type=\"submit\" name=\"submitpublish\" value=\"$admin_lang_cmnt_publish_sel\" onclick=\"
 								document.getElementById('managecomments').action='".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&amp;action=masspublish' \" />";
@@ -343,8 +345,11 @@ if($_GET['view'] == "comments") {
 	       echo "\n".$image_page_Links."<br/>";
 
 	      }
-
-				echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.pagenumber($_GET['page']).'" accept-charset="UTF-8">';
+	      		$page = '';
+				if(isset($_GET['page'])){
+					$page = $_GET['page'];
+				}
+				echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'?'.pagenumber($page).'" accept-charset="UTF-8">';
 
 				echo $admin_lang_show.' ';
 				echo '<input type="text" name="numimg_pp" size="3" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_cmnt_page
