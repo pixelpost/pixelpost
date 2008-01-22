@@ -99,7 +99,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     if (array_key_exists("FlashSubIFD", $exif_result)) {
 			$flash = $exif_result['FlashSubIFD']; // flash
 		} else {
-			$flash = $empty_exif;
+			$flash = null;
 		}
 		if (array_key_exists("FocalLengthSubIFD", $exif_result)) {
 			$focal = $exif_result['FocalLengthSubIFD']; // focal length
@@ -126,7 +126,7 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     elseif(isset($flash)&&$flash)	$flash = "$lang_flash_fired";
     else $flash = "$lang_flash_not_detected";
 
-    if(isset($exposure)&&$exposure != "")
+    if(isset($exposure)&&$exposure != "0")
     {
     	$exposure = "$exposure";
     	$tpl = ereg_replace("<EXIF_EXPOSURE_TIME>",$exposure,$tpl);
@@ -218,16 +218,8 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     $langiso = "$lang_iso $iso";
     $tpl = ereg_replace("<LANG_ISO>",$langiso,$tpl);
 
-    if(isset($flash)&&$flash != "")
-    {
-    	$flash = "$flash";
-    	$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
-    }
-    else
-    {
-    	$flash = "$empty_exif";
-    	$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
-    }
+   	$flash = "$flash";
+   	$tpl = ereg_replace("<EXIF_FLASH>",$flash,$tpl);
   }
 	return $tpl;
 }
