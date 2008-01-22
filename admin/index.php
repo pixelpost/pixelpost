@@ -178,7 +178,7 @@ if(($cfgrow['admin'] == isset($_COOKIE['pp_user'])) AND (sha1($cfgrow['password'
   setcookie( "pp_password", sha1($cfgrow['password'].$_SERVER["REMOTE_ADDR"]), time()+604800);
 }
 
-if(isset($_GET['x']) AND $_GET['x'] == "login")
+if(isset($_GET['x'],$_POST['user'],$_POST['password']) AND $_GET['x'] == "login")
 {
 	$cfgrow_password = md5($_POST['password']);
 	if(($cfgrow['admin'] == $_POST['user']) AND ($cfgrow_password == $cfgrow['password']))
