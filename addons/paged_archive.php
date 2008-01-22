@@ -49,6 +49,8 @@ NEW TAGS:
 $addon_name = "Page-By-Page-Archive for category and month";
 $addon_version = "1.7";
 
+global $default_language_abr, $language_abr, $PP_supp_lang, $cdate, $image_id, $tpl;
+
 $maxpthumb = $cfgrow['maxpthumb'];
 
 if ($cfgrow['display_order']=='default')	$display_order = 'DESC';

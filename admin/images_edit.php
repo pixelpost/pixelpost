@@ -97,7 +97,10 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 			$query .= $where;
 			$query  = sql_query($query);
 			$c = count($idz);
-			echo "<div class='jcaption'>$admin_lang_imgedit_mass_5 $c $admin_lang_imgedit_mass_6.</div>";
+			if(isset($admin_lang_imgedit_mass_5,$admin_lang_imgedit_mass_6))
+			{
+				echo "<div class='jcaption'>$admin_lang_imgedit_mass_5 $c $admin_lang_imgedit_mass_6.</div>";
+			}
 		} // end if un-assign
 
 		// if assign
@@ -131,7 +134,10 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 			$query  = sql_query($query_st);
 
 			$c = count($idz);
-			echo "<div class='jcaption'>$admin_lang_imgedit_mass_7 $c $admin_lang_imgedit_mass_8</div>";
+			if(isset($admin_lang_imgedit_mass_7,$admin_lang_imgedit_mass_8))
+			{
+				echo "<div class='jcaption'>$admin_lang_imgedit_mass_7 $c $admin_lang_imgedit_mass_8</div>";
+			}
 		} // end if assign
  	} // end if mass edit
 
@@ -661,12 +667,13 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 
     echo "
 		<div id='submenu'>
-		<a href='?view=images&amp;id=$getid&amp;imagessview=edit' ";
+		<a href='?view=images&amp;id=$getid' ";
 		
 		$selectedclass = '';
 		if(!isset($_GET["imagesview"]))
 		{
 			$selectedclass = 'selectedsubmenu';
+			$_GET['imagesview'] = '';
 		}
 
 		echo "class='".$selectedclass."'>$admin_lang_imgedit_edit_post</a>";

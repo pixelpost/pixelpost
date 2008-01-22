@@ -834,11 +834,11 @@ function delete_obsolete_addon($dir)
 	if($query)
 	{
 		$query = mysql_query("SELECT `id`, `addon_name` FROM `".$pixelpost_db_prefix."addons`");
-		while(list($id, $addon_name) = mysql_fetch_row($query))
+		while(@list($id, $addon_name) = mysql_fetch_row($query))
 		{
 			if(!file_exists($dir.$addon_name.'.php'))
 			{
-				$query = mysql_query("DELETE FROM `".$pixelpost_db_prefix."addons` WHERE `id` = '$id'");
+				mysql_query("DELETE FROM `".$pixelpost_db_prefix."addons` WHERE `id` = '$id'");
 				if(mysql_error()){ echo 'Failed to delete the addon_name: '.$addon_name; }
 			}
 		}

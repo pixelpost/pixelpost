@@ -82,15 +82,15 @@ if($cfgrow['calendar'] == "No Calendar") {
 $tpl = ereg_replace("<SITE_CALENDAR>"," ",$tpl);
 }
 
-$curr_month = $_GET['curr_month'];
-$curr_year = $_GET['curr_year'];
+$curr_month = (isset($_GET['curr_month'])) ? $_GET['curr_month'] : false;
+$curr_year  = (isset($_GET['curr_year'])) ? $_GET['curr_year'] : false;
+$curr_day   = date("j");
 if(!$curr_year) { $curr_year = date("Y"); }
 if(!$curr_month) { $curr_month = date("n"); }
 if(!$curr_day) { $curr_day = date("j"); }
-$showimage = (int)$_GET['showimage'];
-if(!$_GET['showimage']){ $showimage = $image_id; }
+$showimage = (isset($_GET['showimage'])) ? (int)$_GET['showimage'] : $image_id;
 
-if ( $_GET['showimage'] !="" && $_GET['curr_month'] ==""){
+if (isset($_GET['showimage']) AND $_GET['showimage'] != "" && $_GET['curr_month'] ==""){
        $showimage = (int)$_GET['showimage'];
 	
 

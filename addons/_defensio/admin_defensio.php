@@ -89,7 +89,7 @@ $defensio_conf = mysql_fetch_array($result);
 //*******************************************************************************************************************
 //   GLOBAL DECLARATION
 //*******************************************************************************************************************
-$GLOBALS['defensio_conf'] = $defensio_conf;
+$GLOBALS['defensio_conf'] = $defensio_conf; global $tpl;
 
 // widget support
 $defensio_widget = defensio_counter($defensio_conf);
@@ -99,18 +99,18 @@ $tpl = ereg_replace("<DEFENSIO_WIDGET>", $defensio_widget, $tpl);
 //   MARK COMMENTS AS SPAM OR HAM (SELECTOR BASED ON FORM SUBMIT)
 //*******************************************************************************************************************
 //Check whether ADMIN has submitted comment to mark as spam for Defensio
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'defensiospam')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'defensiospam')
 {
     defensio_submit_spam_comment($defensio_conf);
 }
 
 //Check whether ADMIN has submitted comment to mark as ham for Defensio
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'defensionotspam')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'defensionotspam')
 {
     defensio_submit_nonspam_comment($defensio_conf);
 }
 //Check whether ADMIN has submitted a comment to resend to Defensio
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'defensiorecheck')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'defensiorecheck')
 {
     // build $comment array used for testing.
     $comment = array();
@@ -143,7 +143,7 @@ if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'd
 }
 
 //Check whether ADMIN has submitted an empty quarantine request
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'emptyquarantine')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'emptyquarantine')
 {
     $query = "DELETE FROM {$pixelpost_db_prefix}comments WHERE publish='dfn'";
     $result = mysql_query($query);
@@ -741,7 +741,7 @@ function defensio_post($action, $defensio_conf, $args = null)
     // Use snoopy to post
     require_once ('libraries/Snoopy.class.php');
     $snoopy = new Snoopy();
-    $snoopy->read_timeout = $defensio_conf['post_timeout'];
+    $snoopy->read_timeout = (isset($defensio_conf['post_timeout'])) ? $defensio_conf['post_timeout'] : '';
     // Supress the possible fsock warning
     @$snoopy->submit(defensio_url_for($action, $defensio_conf, $defensio_conf['key']), $args, array());
     // Defensio will return 200 nomally, 401 on authentication failure, anything else is unexpected behaivour
@@ -897,11 +897,12 @@ function defensio_counter($defensio_conf)
         {
             $counter_text_style = "color:#211d1e;";
         }
+        $spam = (isset($v['spam'])) ? $v['spam'] : '';
         $counter_html = '
 		<div id="defensio_counter" style="width: 100%; margin: 10px 0 10px 0; text-align: ' . $defensio_conf['defensio_widget_align'] . '">
 			<a id="defensio_counter_link" style ="text-decoration: none;" href="http://defensio.com">
 				<div id="defensio_counter_image" style="background:url(\'addons/_defensio/images/defensio-counter-' . $defensio_conf['defensio_widget_image'] . '.gif\') no-repeat top left; border:none; font: 10px \'Trebuchet MS\', \'Myriad Pro\', sans-serif; overflow: hidden; text-align: left; height: 50px; width: 120px;' . $counter_image_style . '">
-					<div style="display:block; width: 100px; padding: 9px 9px 25px 12px; line-height: 1em; color: #211d1e;' . $counter_text_style . '" "><div style="font-size: 12px; font-weight: bold;">' . $v['spam'] . '</div> spam comments blocked</div>
+					<div style="display:block; width: 100px; padding: 9px 9px 25px 12px; line-height: 1em; color: #211d1e;' . $counter_text_style . '" "><div style="font-size: 12px; font-weight: bold;">' . $spam . '</div> spam comments blocked</div>
 				</div>
 				<div style="clear:both;" class="defensio_clear">&nbsp;</div>
 			</a>

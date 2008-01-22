@@ -17,7 +17,7 @@ $feed_copyright = htmlspecialchars($feed_copyright,ENT_QUOTES);
 
 $pat1 = '/([^a-zA-Z 0-9_-\pL]+)/u';
 $pat2 = '/([^a-zA-Z 0-9_-]+)/';
-$tags_org = $_GET['tag'];
+$tags_org = (isset($_GET['tag'])) ? $_GET['tag'] : '';
 
 if (($_GET['tag'] = @preg_replace( $pat1, '_', $_GET['tag']))===NULL) $_GET['tag'] = preg_replace( $pat2, '_', $tags_org);
 if($_GET['tag']=='')	unset($_GET['tag']);

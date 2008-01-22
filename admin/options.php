@@ -13,7 +13,9 @@ if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pix
 
 if(isset($_GET['view']) AND $_GET['view'] == "options") {
 // switch ($_GET['optaction']) {
-
+if(!isset($_GET['optionsview'])){
+    $_GET['optionsview'] = '';
+}
 $lang_error = 0;
 
 //=========== START PAGE ONE: GENERAL ===========
