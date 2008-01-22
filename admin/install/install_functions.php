@@ -673,8 +673,8 @@ function send_email($recipient) {
 	$server_name = (!empty($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : getenv('SERVER_NAME');
 	$server_name = preg_replace('#^www\.#', '', strtolower($server_name));
 
-	$admin_username = stripslashes($data['admin_username']);
-	$admin_password = stripslashes(decode($data['admin_password1']));
+	$admin_username = html_entity_decode(stripslashes($data['admin_username']));
+	$admin_password = html_entity_decode(stripslashes(decode($data['admin_password1'])));
 	$db_host        = stripslashes($data['db_host']);
 	$db_name        = stripslashes($data['db_name']);
 	$db_user        = stripslashes($data['db_user']);
@@ -1000,8 +1000,8 @@ function Show_username_password() {
 	 */
 	if(isset($_POST['send_email']) && $_POST['send_email'] == '0'){
 
-		$admin_user     = stripslashes($data['admin_username']);
-		$admin_password = stripslashes(decode($data['admin_password1']));
+		$admin_user     = html_entity_decode(stripslashes($data['admin_username']));
+		$admin_password = html_entity_decode(stripslashes(decode($data['admin_password1'])));
 
 		$create_status['show_psw_msg'] = $show_psw_msg."<p />";
 		$create_status['username']     = $lang_admin_user."&nbsp;".$admin_user."<br />";
