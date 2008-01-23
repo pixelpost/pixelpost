@@ -23,8 +23,7 @@
 
 // You do not need to access this if not logged in - securing it
 
-//if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
-if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"])
+if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || isset($_GET["_SESSION"]["pixelpost_admin"]) AND $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || isset($_POST["_SESSION"]["pixelpost_admin"]) AND $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || isset($_COOKIE["_SESSION"]["pixelpost_admin"]) AND $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
 {
 	die ("Try another day!!");
 }
@@ -37,90 +36,87 @@ mysql_error();
 
 // save new post when '12c' is selected as the croping tool
 
-    $cfgquery = mysql_query("select * from ".$pixelpost_db_prefix."config");
-    $cfgrow = mysql_fetch_array($cfgquery);
+$cfgquery = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."config`");
+$cfgrow   = mysql_fetch_array($cfgquery);
 
-		if((isset($_GET['x']) AND $_GET['x'] == "save" || ($_GET['view']=="images" && $_GET['id']!=""))&& $cfgrow['crop']=='12c')
-
-		{
-			$headline = 	clean($_POST['headline']);
-			if($headline == "" & isset($_GET['view']) AND $_GET['view']!="images")
-			{
-				echo "<div id='cropdiv'></div>
-						 <div id='myimg'></div>";
-			}
-		}
+if((isset($_GET['x']) AND $_GET['x'] == "save" || ($_GET['view'] == "images" && $_GET['id'] != "")) && $cfgrow['crop'] == '12c')
+{
+    $headline = clean($_POST['headline']);
+    if($headline == "" AND isset($_GET['view']) AND $_GET['view'] != "images")
+    {
+        echo "<div id='cropdiv'></div><div id='myimg'></div>";
+    }
+}
 
 // put these jscripts on the html section
-    echo '<script type="text/javascript">';
-		echo ' <!-- BEGIN ';
-		echo "\n\nfunction libinit(){
-	   obj=new lib_obj('cropdiv');
-	   obj.dragdrop();
-	   rimg = new lib_obj('myimg');
-	}
+echo "
+<script type=\"text/javascript\">
+<!-- BEGIN
 
-	function cropCheck(crA,thumbfilename){
-	   if (
-	   ( (obj.x) <=rimg.cr+ rimg.x)&&
-	   ( (obj.y) <= rimg.cb+rimg.y)&&
+function libinit(){
+    obj=new lib_obj('cropdiv');
+    obj.dragdrop();
+    rimg = new lib_obj('myimg');
+}
+function cropCheck(crA,thumbfilename){
+    if (
+	   ((obj.x) <= rimg.cr + rimg.x)&&
+	   ((obj.y) <= rimg.cb + rimg.y)&&
 	   (obj.x >= rimg.x)&&
 	   (obj.y >= rimg.y)&&
-	   (obj.x+obj.cr<=rimg.cr+rimg.x)&&
-	   (obj.y+obj.cb<=rimg.cb+rimg.y)
+	   (obj.x + obj.cr <= rimg.cr + rimg.x)&&
+	   (obj.y + obj.cb <= rimg.cb + rimg.y)
 	   )
- 	   {
-		var url = '?x=12cropthumb&sw='+(obj.x-rimg.x)+'&sh='+(obj.y-rimg.y)+'&dw='+obj.cr+'&dh='+obj.cb+'&filename='+thumbfilename;
-		if (crA == 'def'){
-		   location.href=url;
-		}
-	   } else {
-		alert('".$txt['selectioninpicture']."');
-	   }
-	}
+    {
+        var url = '?x=12cropthumb&sw='+(obj.x-rimg.x)+'&sh='+(obj.y-rimg.y)+'&dw='+obj.cr+'&dh='+obj.cb+'&filename='+thumbfilename;
+        if (crA == 'def'){
+            location.href=url;
+        }
+    } else {
+        alert('".$txt['selectioninpicture']."');
+    }
+}
+function stopZoom() {
+    loop = false;
+    clearTimeout(zoomtimer);
+}
+function cropZoom(dir){
+    zoomtimer = null;
+    loop = true;
+    prop = ".$crh." / ".$crw.";
 
-	function stopZoom() {
-	   loop = false;
-	   clearTimeout(zoomtimer);
-	}
+    direction = dir;
+    if (loop == true) {
+        if (direction == 'in') {
+            if ((obj.cr > ".$crw/$imgProp.")&&(obj.cb > ".$crh/$imgProp.")){
+                cW = obj.cr - 1;
+                cH = parseInt(prop * cW);
+                obj.clipTo(0,cW,cH,0,1);
+            }
+        }else{
+            if ((obj.cr < (rimg.cr-2))&&(obj.cb < (rimg.cr-2))){
+                cW = obj.cr + 1;
+                cH = parseInt(prop * cW);
+                obj.clipTo(0,cW,cH,0,1);
+            }
+        }
+        zoomtimer = setTimeout('cropZoom(direction)', 10);
+    }
+}
+onload = libinit;
+// -->
+</script>";
 
-	function cropZoom(dir){
-		zoomtimer = null;
-	   loop = true;
-	   prop = ".$crh." / ".$crw.";
+// necessary styles
+$imgProp1 = $crw * $imgProp;
+$imgProp2 = $crh * $imgProp;
 
-	   direction = dir;
-	   if (loop == true) {
-		if (direction == 'in') {
-		   if ((obj.cr > " .$crw/$imgProp .")&&(obj.cb > " .$crh/$imgProp.")){
-			cW = obj.cr - 1;
-			cH = parseInt(prop * cW);
-			obj.clipTo(0,cW,cH,0,1);
-		   }
-		} else {
-		   if ((obj.cr < (rimg.cr-2))&&
-		   (obj.cb < (rimg.cr-2))
-		   ){
-			cW = obj.cr + 1;
-			cH = parseInt(prop * cW);
-			obj.clipTo(0,cW,cH,0,1);
-		   }
-		}
-		zoomtimer = setTimeout('cropZoom(direction)', 10);
-	   }
-	}
-	onload = libinit;
-    // -->
-		</script>";
+$toecho = '
+<style type="text/css">
+    #cropdiv {position:absolute;width:'.$imgProp1.'px;height:'.$imgProp2.'px;z-index:2;background-image: url('.$spacer.'); }
+    #myimg {position:absolute;border:1px}
+</style>';
 
-    // necessary styles
-		$imgProp1 = $crw*$imgProp;
-		$imgProp2 = $crh*$imgProp;
-	$toecho = "<style type='text/css' >
-	#cropdiv {position:absolute;width:".$imgProp1."px;height:".$imgProp2."px;z-index:2;background-image: url(".$spacer."); }
-	#myimg {position:absolute;border:1px}
-	</style>";
-
-	echo $toecho; // add necessary styles to the admin/index.php
+echo $toecho; // add necessary styles to the admin/index.php
 
 ?>

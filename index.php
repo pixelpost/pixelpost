@@ -52,7 +52,7 @@ error_reporting(0);
  */
 define('PHP_SELF', 'index.php');
 define('ADDON_DIR', 'addons/');
-
+define('ADMIN_DIR', 'admin/');
 
 if(file_exists("includes/pixelpost.php")){ require_once("includes/pixelpost.php"); }
 

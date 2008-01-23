@@ -281,7 +281,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 	<meta http-equiv="refresh" content="8; URL=<?php echo $comment_redirect_url; ?>" />
 	<title><?php echo $lang_comment_page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="admin/admin_index.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo ADMIN_DIR; ?>admin_index.css" type="text/css" />
 	</head>
 	<body>
 	<?php
