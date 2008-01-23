@@ -973,18 +973,18 @@ function eval_addon_admin_workspace_menu($workspace,$menu_name ='')
 			// if main menu
 			if($funcs['workspace']=='admin_main_menu')
 			{
-				echo "<a href='".$_SERVER['PHP_SELF']."?view=".strtolower($funcs['menu_name'])."'>".$funcs['menu_name']."</a>";
+				echo "<a href='".$_SERVER['PHP_SELF']."?view=".rawurlencode(strtolower($funcs['menu_name']))."'>".$funcs['menu_name']."</a>";
 				continue;
 			}
 			// no menu
 			if($menu_name == '')
 			{
-				if($funcs['workspace']=='admin_main_menu_contents' & isset($_GET['view']) AND $_GET['view']!=strtolower($funcs['menu_name']))	continue;
+				if($funcs['workspace']=='admin_main_menu_contents' & isset($_GET['view']) AND $_GET['view']!=rawurldecode(strtolower($funcs['menu_name'])))	continue;
 				call_user_func ($funcs['function_name']);
 			}
 			else
 			{
-				if($_GET['view'] == strtolower($menu_name) && $_GET[$view_menu] == strtolower($funcs['submenu_name']))
+				if($_GET['view'] == strtolower($menu_name) && $_GET[$view_menu] == rawurldecode(strtolower($funcs['submenu_name'])))
 				{
 					call_user_func ($funcs['function_name']);
 				}
@@ -1067,7 +1067,7 @@ function echo_addon_admin_menus($addon_admin_menus,$menu_name,$additional = '')
 			{
 				$selecteclass='selectedsubmenu';
 			}
-			$toecho ="|<a class='".$selecteclass."' href='?view=".strtolower($menu_name) ."&amp;".$menuitem ."=".$submenuitem.$additional."' id='".$menu_name.$submenu_name."'>" .strtoupper($submenu_name) ."</a>";
+			$toecho ="|<a class='".$selecteclass."' href='?view=".rawurlencode(strtolower($menu_name)) ."&amp;".rawurlencode($menuitem) ."=".rawurlencode($submenuitem).$additional."' id='".$menu_name.str_replace(' ','_',$submenu_name)."'>" .strtoupper($submenu_name) ."</a>";
 			echo $toecho;
 		}
 	}
