@@ -110,7 +110,7 @@ function Set_Configuration($prefix) {
 	$images_path = "../images/";
 	
 	$admin     = addslashes($data['admin_username']);
-	$password  = addslashes(html_entity_decode(decode($data['admin_password1'])));
+	$password  = addslashes(decode($data['admin_password1']));
 	
 	$query = mysql_query("INSERT INTO `{$prefix}config`
 	
@@ -197,7 +197,7 @@ function UpgradeTo14($prefix) {
 	
 	// Move any existing categories into the new category association table
 	$result    = mysql_query("SELECT `id`, `category` FROM {$prefix}pixelpost")or die("MySQL Error: ". mysql_error());
-	while($row = mysql_fetch_array($result)){
+	while($row = mysql_fetch_array($result,MYSQL_NUM)){
 	
 		mysql_query("INSERT INTO `{$prefix}catassoc` VALUES (0, '{$row[1]}', '{$row[0]}')")or die("MySQL Error: ". mysql_error());
 	}

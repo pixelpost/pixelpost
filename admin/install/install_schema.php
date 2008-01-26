@@ -57,23 +57,16 @@ switch($installed_version) {
 		 $ins_data[] = UpgradeTo16final($prefix,'1.6');
 
 
-	case 1.6:		//upgrade from 1.6Final to 1.6.5
-		 //$ins_data[] = UpgradeTo165($prefix,'1.65');
-		 
-	//case 1.65:
-		 //$ins_data[] = UpgradeTo1651($prefix,'1.651');
-	
-	//case 1.651:
-		 //$ins_data[] = UpgradeTo1652($prefix,'1.652');
-		 
+	case 1.6:		//upgrade from 1.6Final to 1.7
 		 $ins_data[] = UpgradeTo17($prefix,'1.7');
-	case 1.7:
+		 
+	case 1.7:		//upgrade from 1.7 to 1.71
 		$ins_data[] = UpgradeTo171($prefix,'1.71');
 
 	break;
 	
 	default:
- 		 echo "<b>$lang_database_error</b><br/><br/>$lang_version_error</div>
+ 		 echo "<b>$lang_database_error</b><br /><br />$lang_version_error</div>
 		 </body>
 		 </html>";
 		 exit();

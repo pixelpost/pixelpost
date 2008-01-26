@@ -30,7 +30,11 @@ $supported_langs = array(
 				   'spanish'=>array('ES','Español'),
 				   'swedish'=>array('SE','Svenska'),
 				   'danish'=>array('DK','Dansk'),
-				   'japanese'=>array('JP','Japanese')
+				   'japanese'=>array('JP','Japanese'),
+				   'hungarian'=>array('HU','Magyar'),
+				   'romanian'=>array('RO','Romana'),
+				   'russian'=>array('RU','Russian'),
+				   'czech'=>array('CS','Česky')
 				   );
 
 /**
@@ -244,7 +248,7 @@ foreach($_POST as $key => $value) {
 }
 function clean_post_vars($var){
 
-	$var = htmlentities(stripslashes(strip_tags($var)));
+	$var = stripslashes(strip_tags($var));
 
 	return $var;
 }
@@ -673,8 +677,8 @@ function send_email($recipient) {
 	$server_name = (!empty($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : getenv('SERVER_NAME');
 	$server_name = preg_replace('#^www\.#', '', strtolower($server_name));
 
-	$admin_username = html_entity_decode(stripslashes($data['admin_username']));
-	$admin_password = html_entity_decode(stripslashes(decode($data['admin_password1'])));
+	$admin_username = stripslashes($data['admin_username']);
+	$admin_password = stripslashes(decode($data['admin_password1']));
 	$db_host        = stripslashes($data['db_host']);
 	$db_name        = stripslashes($data['db_name']);
 	$db_user        = stripslashes($data['db_user']);
@@ -953,7 +957,7 @@ function activatePxlpstAddons($prefix) {
 		$create_status['tpa_disabled_02'] = "$lang_dsb_addon_02<br />$lang_dsb_addon_02_1<br />$lang_dsb_addon_02_2<p />";
 		$create_status['tpa_disabled_03'] = "$lang_dsb_addon_03<ul id='disabled_addons'>";
 		$c = 0;
-		while($row = mysql_fetch_array($result)) {
+		while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 
 			$addon = $row['addon_name'];
 			$addon = ereg_replace("_"," ",$addon);
@@ -1000,8 +1004,8 @@ function Show_username_password() {
 	 */
 	if(isset($_POST['send_email']) && $_POST['send_email'] == '0'){
 
-		$admin_user     = html_entity_decode(stripslashes($data['admin_username']));
-		$admin_password = html_entity_decode(stripslashes(decode($data['admin_password1'])));
+		$admin_user     = stripslashes($data['admin_username']);
+		$admin_password = stripslashes(decode($data['admin_password1']));
 
 		$create_status['show_psw_msg'] = $show_psw_msg."<p />";
 		$create_status['username']     = $lang_admin_user."&nbsp;".$admin_user."<br />";
@@ -1024,7 +1028,7 @@ function ConvertPassword($prefix) {
 
 	$result = mysql_query("SELECT `password` FROM `{$prefix}config` LIMIT 1")or die("MySQL Error: ". mysql_error());
 
-	if($row = mysql_fetch_array($result)) {
+	if($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 
 		$adm_pass = base64_decode($row['password']);
 
