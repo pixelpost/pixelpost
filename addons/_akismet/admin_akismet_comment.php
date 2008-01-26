@@ -77,7 +77,7 @@ function get_akismet_links()
 		echo "<br /><br />".$GLOBALS['akismet_result_message'];
 	}
 	$query = mysql_query("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='spm' ");
-	$akismet_count = mysql_fetch_array($query);
+	$akismet_count = mysql_fetch_array($query,MYSQL_ASSOC);
 	if ($akismet_count['count'] < 1 && isset($_GET['commentsview']) && $_GET['commentsview']=='akismet'){
 		echo "<div class=\"content\">Your quarantine is empty.</div> ";
 	}
@@ -118,7 +118,7 @@ function get_akismet_style() {
  	global $pixelpost_db_prefix;
  	if(isset($_GET['view']) AND $_GET['view'] == "comments") {
  		$query = mysql_query("select count(*) as count from ".$pixelpost_db_prefix."comments  WHERE publish='spm' ");
-		$akismet_count = mysql_fetch_array($query);
+		$akismet_count = mysql_fetch_array($query,MYSQL_ASSOC);
 		echo '<style  type="text/css">
 		.akismet-spam-comment {background-color:#eca189;color:#666;}
 		</style><script type="text/javascript" src="../addons/_akismet/libraries/domFunction.js"></script>

@@ -156,7 +156,7 @@ $maxnumber_thumbs = $cfgrow['maxpthumb'];
 
 // number of all photos
 $photonumb = mysql_query("SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$datetime'");
-$row = mysql_fetch_array($photonumb);
+$row = mysql_fetch_array($photonumb,MYSQL_ASSOC);
 // number of photos in the database
 $pixelpost_all_photonumb = $row['count'] ;
 
@@ -193,7 +193,7 @@ while(list($id, $name, $alt_name) = mysql_fetch_row($query))
 	GROUP BY t1.cat_id ";
 
 	$count = mysql_query($queryr);
-	$count = mysql_fetch_array($count);
+	$count = mysql_fetch_array($count,MYSQL_ASSOC);
 	$count= $count['count'];
 	if ($count > 0){
 		if($language_abr == $default_language_abr)	$name = pullout($name);
@@ -229,7 +229,7 @@ if (isset($_GET['pagenum'])&&$_GET['pagenum'] != "")
 	{
 		$query2 = "SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$datetime' and DATE_FORMAT(datetime, '%Y-%m')='".$thedate ."'";
 		$count = mysql_query($query2);
-		$count = mysql_fetch_array($count);
+		$count = mysql_fetch_array($count,MYSQL_ASSOC);
 		$count= $count['count'];
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
 		$select_display_date2 = ucfirst(${"lang_".strtolower(date("F",strtotime($thedate."-01")))}) . date(", Y",strtotime($thedate."-01"));
@@ -269,7 +269,7 @@ else
 	{
 		$query3 = "SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE DATE_FORMAT(datetime, '%Y-%m')='".$thedate ."'";
 		$count = mysql_query($query3);
-		$count = mysql_fetch_array($count);
+		$count = mysql_fetch_array($count,MYSQL_ASSOC);
 		$count= $count['count'];
 
 		$select_display_date=date("F, Y",strtotime($thedate."-01"));
@@ -408,7 +408,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	} //end else
 
 	$photonumb = mysql_query($queryr);
-	$row = mysql_fetch_array($photonumb);
+	$row = mysql_fetch_array($photonumb,MYSQL_ASSOC);
 	// number of photos in the database in the same category
 	$pixelpost_photonumb = $row['count'];
 
@@ -529,13 +529,13 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		if ($language_abr == $default_language_abr)
 		{
 			$query = mysql_query("SELECT name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY name");
-			$images_category_or_date = mysql_fetch_array($query);
+			$images_category_or_date = mysql_fetch_array($query,MYSQL_ASSOC);
 			$images_category_or_date = pullout($images_category_or_date['name']);
 		}
 		else
 		{
 			$query = mysql_query("SELECT alt_name FROM ".$pixelpost_db_prefix."categories WHERE id='$cat_id' ORDER BY alt_name");
-			$images_category_or_date = mysql_fetch_array($query);
+			$images_category_or_date = mysql_fetch_array($query,MYSQL_ASSOC);
 			$images_category_or_date = pullout($images_category_or_date['alt_name']);
 		}
 	}
@@ -582,7 +582,7 @@ while(list($id,$name,$alt_name) = mysql_fetch_row($query))
 	WHERE (t1.cat_id = '".$id."' AND datetime<='$datetime')
 	GROUP BY t1.cat_id ";
 	$count = mysql_query($queryr);
-	$count = mysql_fetch_array($count);
+	$count = mysql_fetch_array($count,MYSQL_ASSOC);
 	$count= $count['count'];
 	// check if you are using this addon
 	// u r using
@@ -637,7 +637,7 @@ else	$queryr = "SELECT ROUND(COUNT(*)/$tag_max,1) AS rank, alt_tag, COUNT(*) as 
 
 $tags = mysql_query($queryr);
 
-while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags))
+while(list($rank, $tag, $cnt)  = mysql_fetch_array($tags,MYSQL_NUM))
 {
 	$tags_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
 	$tags_paged_output .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1" class="tags'.$rank[0].$rank[2].'">'.$tag.'&nbsp;('.$cnt.')</a> ';
@@ -684,7 +684,7 @@ $tags_keywords ="";
 
 if (@mysql_num_rows($tags)>0)
 {
-	while(list($tag)  = mysql_fetch_array($tags))
+	while(list($tag)  = mysql_fetch_array($tags,MYSQL_BOTH))
 	{
 		$tags_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'">'.$tag.'</a> ';
 		$tags_paged_img .= '<a href="index.php?x=browse&amp;tag='.$tag.'&amp;pagenum=1">'.$tag.'</a> ';

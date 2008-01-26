@@ -136,7 +136,7 @@ function Get_Pixelpost_Version($prefix)
 	$query = mysql_query("SELECT `version` FROM `{$prefix}version` ORDER BY `version` DESC LIMIT 1");
 	if($query)
 	{
-		if($row = mysql_fetch_array($query))
+		if($row = mysql_fetch_array($query,MYSQL_NUM))
 		{
 			if($row[0] > 1.3) return $row[0];
 		}
@@ -146,7 +146,7 @@ function Get_Pixelpost_Version($prefix)
 	$query = @mysql_query("SELECT COUNT(admin) FROM `{$prefix}config`");
 	if($query)
 	{
-		if($row = mysql_fetch_array($query))
+		if($row = mysql_fetch_array($query,MYSQL_NUM))
 		{
 			if($row[0] > 0) return 1.3;	// This could also be 1.2, but that is okay
 		}
@@ -240,7 +240,7 @@ function createthumbnail($file)
 	$img = null;
 	
 	$cfgquery = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."config`");
-	$cfgrow   = mysql_fetch_array($cfgquery);
+	$cfgrow   = mysql_fetch_array($cfgquery,MYSQL_ASSOC);
 	
 	// credit to codewalkers.com - there is 90% a tutorial there
 	$max_width  = $cfgrow['thumbwidth'];
@@ -494,7 +494,7 @@ function sql_query($str)
 function sql_array($str)
 {
 	$query = mysql_query($str) or die( mysql_error());
-	$row = mysql_fetch_array($query);
+	$row = mysql_fetch_array($query,MYSQL_BOTH);
 	return $row;
 }
 
@@ -1370,7 +1370,7 @@ function check_moderation_blacklist($cmnt_message,$cmnt_ip,$cmnt_name,$field)
 
 	// help from wordpress codes
 	$query = mysql_query("SELECT `".$field."` FROM `{$pixelpost_db_prefix}banlist` LIMIT 1");
-	$bad_keys = mysql_fetch_array($query);
+	$bad_keys = mysql_fetch_array($query,MYSQL_ASSOC);
 
 	$words = explode("\n", $bad_keys[$field]);
 

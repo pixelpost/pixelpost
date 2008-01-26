@@ -37,7 +37,7 @@ mysql_error();
 // save new post when '12c' is selected as the croping tool
 
 $cfgquery = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."config`");
-$cfgrow   = mysql_fetch_array($cfgquery);
+$cfgrow   = mysql_fetch_array($cfgquery,MYSQL_ASSOC);
 
 if((isset($_GET['x']) AND $_GET['x'] == "save" || ($_GET['view'] == "images" && $_GET['id'] != "")) && $cfgrow['crop'] == '12c')
 {

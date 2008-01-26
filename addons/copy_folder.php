@@ -43,7 +43,7 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 	$secondcount = 0;
 	$query = "select id from ".$pixelpost_db_prefix."categories order by id asc limit 0,1";
 	$catid = mysql_query($query);
-	$catid = mysql_fetch_array($catid);
+	$catid = mysql_fetch_array($catid,MYSQL_ASSOC);
 	$category = $catid['id'];
 	$tz = $cfgrow['timezone'];
 	$Errors  = "<div style='background-color:#ffcccc;padding:5px;margin:3px;font-weight:bold;' >List of Errors <br/>";

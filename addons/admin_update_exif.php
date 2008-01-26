@@ -40,7 +40,7 @@ if(isset($_POST['Action']) && ($_POST['Action']=="Update EXIF"))
 	$counter = 0;
 	$query = "SELECT id,image FROM ".$pixelpost_db_prefix."pixelpost WHERE exif_info IS NULL";
   $sql = mysql_query($query) or die("db error");
-  while($row = mysql_fetch_array($sql))
+  while($row = mysql_fetch_array($sql,MYSQL_ASSOC))
   {
   	$exif_info_db = serialize_exif ($cfgrow['imagepath'].$row['image']);
   	$id=$row['id'];

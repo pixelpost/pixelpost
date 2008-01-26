@@ -185,9 +185,9 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
 				$submenucssclass = 'notselected';
 				echo_addon_admin_menus($addon_admin_functions,"comments");
 				echo"</div>";
-				$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
+				(isset($_SESSION['numimg_pp'])) ? (int) $_SESSION['numimg_pp'] : '';
 
-				if ($_SESSION['numimg_pp'] == 0)
+				if (isset($_SESSION['numimg_pp']) AND $_SESSION['numimg_pp'] == 0 OR !isset($_SESSION['numimg_pp']))
 				{
 					$_SESSION['numimg_pp'] = 10;
 				}

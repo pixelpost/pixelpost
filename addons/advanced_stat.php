@@ -48,7 +48,7 @@ if( isset( $_GET['view']) && $_GET['view']=='addons')
 	{
 		$query = "select count(*) as count from ".$pixelpost_db_prefix."visitors";
 		$countall = mysql_query($query);
-		$countall = mysql_fetch_array($countall);
+		$countall = mysql_fetch_array($countall,MYSQL_ASSOC);
 		$countall = $countall['count'];
 		$somestates .= '<br /> number of visits '.$countall;
 		
@@ -116,7 +116,7 @@ $query = "SELECT id FROM ".$pixelpost_db_prefix."stats LIMIT 1";
 if( mysql_query($query))
 {
 	$visitorz = mysql_query("SELECT sum(visitors) as count FROM ".$pixelpost_db_prefix."stats");
-	$visitorz = mysql_fetch_array($visitorz);
+	$visitorz = mysql_fetch_array($visitorz,MYSQL_ASSOC);
 	$pixelpost_visitors  += $visitorz['count'];
 	$str = $pixelpost_visitors .'';
 	$tpl = ereg_replace("<ADVNCD_SITE_VISITORNUMBER>",$str,$tpl);
@@ -194,7 +194,7 @@ function build_insertquery($pixelpost_db_prefix,$where='',$thismonth)
 	$query = "select count(*) as count from ".$pixelpost_db_prefix."visitors".$where;
 
 	$countall = mysql_query($query);
-	$countall = mysql_fetch_array($countall);
+	$countall = mysql_fetch_array($countall,MYSQL_ASSOC);
 	$countall = $countall['count'];
 
 	$thismonth .= "-00 00:00:00";
@@ -313,7 +313,7 @@ function build_update_query_for_month($themonth,$id)
 	// count all visitors
 	$query = "select count(*) as count from ".$pixelpost_db_prefix."visitors" .$where;
 	$countall = mysql_query($query);
-	$countall = mysql_fetch_array($countall);
+	$countall = mysql_fetch_array($countall,MYSQL_ASSOC);
 	$countall = $countall['count'];
 	
 	$updatequery = "update {$pixelpost_db_prefix}stats set
@@ -382,7 +382,7 @@ function add_current_month($pixelpost_db_prefix)
 
 	if (mysql_query($query))
 	{
-		$row = mysql_fetch_array($query);
+		$row = mysql_fetch_array($query,MYSQL_ASSOC);
 		$updatequery = build_update_query_for_month($thismonth,$row['id']);
 		
 		if(mysql_query($updatequery))	$message = "Month ".$thismonth." is updated!";
