@@ -6,13 +6,13 @@
 // forgot password?
 if(isset($_GET['x']) && $_GET['x']=='passreminder')
 {
-echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 	<html>
 	<head><title>$admin_lang_pw_title</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" /></head>
+	<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\" /></head>
 	<body>
-	<p style="border:solid 2px;padding:5px;color:red;font-weight:bold;font-size:11px;margin-left:auto;margin-right:auto;margin-top:10%;font-family:verdana,arial,sans-serif;text-align:center;">';
+	<p style=\"border:solid 2px;padding:5px;color:red;font-weight:bold;font-size:11px;margin-left:auto;margin-right:auto;margin-top:10%;font-family:verdana,arial,sans-serif;text-align:center;\">";
 
 	if ($cfgrow['admin']!= $_POST['user'])
 	{
