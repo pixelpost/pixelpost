@@ -4,11 +4,11 @@
 // $Id$
 
 /*
-Pixelpost version 1.7
+Pixelpost version 1.7.1
 
 Pixelpost www: http://www.pixelpost.org/
 
-Version 1.7:
+Version 1.7.1:
 Development Team:
 Ramin Mehran, Will Duncan, Joseph Spurling,
 Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
@@ -171,6 +171,11 @@ else	$paged_arch_tag_flag = 0;
 
 if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))	$paged_arch_archdate_flag = 1;
 else	$paged_arch_archdate_flag = 0;
+
+// Browse images monthly
+$_GET['bryear'] = ($_GET['bryear']) ? (int)$_GET['bryear'] : '';
+$_GET['brmonth'] = ($_GET['brmonth']) ? (int)$_GET['brmonth'] : '';
+$brbrowse = ($_GET['bryear'] > 0 && $_GET['brmonth'] > 0) ?	1 : 0;
 
 //-------------------------------- Category Browse Menu (paged and original)
 /*---------------------------------**********************---------------------------------------*/
@@ -339,6 +344,17 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		GROUP BY t1.id
 		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	}
+	// Browse images monthly
+	else if($brbrowse)
+	{
+		$query = "
+			SELECT a.id, a.headline, a.alt_headline, a.image, DATE_FORMAT(a.datetime,'%d.%m.%Y'), count(b.id)
+			FROM {$pixelpost_db_prefix}pixelpost AS a
+			LEFT JOIN {$pixelpost_db_prefix}comments AS b ON (b.parent_id = a.id)
+			WHERE	DATE_FORMAT(a.datetime,'%Y%c') = '".$_GET['bryear'].$_GET['brmonth']."'
+			GROUP BY a.id
+			ORDER BY a.datetime DESC";
+	}
 	else
 	{
 		$query = "SELECT id, {$headline_selection}, image FROM {$pixelpost_db_prefix}pixelpost
@@ -351,18 +367,39 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 
 	//---------------------------- Making thumbs row
 
-	// for each record ...
-	while(list($id,$title,$name) = mysql_fetch_row($query))
+	// Browse images monthly
+	if($brbrowse)
 	{
-		// from the thumbnail row. This could be build by tables too.
-		$title = pullout($title);
-		$title = htmlspecialchars($title,ENT_QUOTES);
-		$thumbnail = ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$name;
-		$thumbnail_extra = getimagesize($thumbnail);
-		$local_width = $thumbnail_extra['0'];
-		$local_height = $thumbnail_extra['1'];
-		$thumb_output .= "<a href='".PHP_SELF."?showimage=$id'><img src='".$thumbnail."' alt='".$title."' title='".$title."' width='".$local_width."' height='".$local_height."' class='thumbnails' /></a>";
-	} //end while
+		$thumb_output = "<div id='browse_monthly_imgs'>";
+
+		while(list($id,$title,$alt_title,$name,$date,$coms) = mysql_fetch_row($query))
+		{
+			// from the thumbnail row. This could be build by tables too.
+			$title = ($language_abr == $default_language_abr) ? $title : $alt_title;
+			$title = htmlentities ( pullout($title), ENT_QUOTES, 'UTF-8');
+			$img = ltrim($cfgrow['imagepath'], "./").$name;
+			$thumbnail_extra = getimagesize($img);
+			$local_width = $thumbnail_extra['0'];
+			$local_height = $thumbnail_extra['1'];
+			$thumb_output .= "\n<div class='br_mo_img_link'><a href='".PHP_SELF."?showimage=$id' class='br_mo_link' title='$title ($date)'><img src='$img' alt='$title ($date)' class='br_mo_img' width='".$local_width."' height='".$local_height."' /></a></span><br/><span class='br_mo_title'>$title <span class='br_mo_date'>($date)</span> - <span class='br_mo_coms'>$lang_comment_plural: $coms</span></div>";
+		}
+
+		$thumb_output .= "\n</div>";
+	}
+	else
+	{
+		while(list($id,$title,$name) = mysql_fetch_row($query))
+		{
+			// from the thumbnail row. This could be build by tables too.
+			$title = pullout($title);
+			$title = htmlspecialchars($title,ENT_QUOTES);
+			$thumbnail = ltrim($cfgrow['thumbnailpath'], "./")."thumb_".$name;
+			$thumbnail_extra = getimagesize($thumbnail);
+			$local_width = $thumbnail_extra['0'];
+			$local_height = $thumbnail_extra['1'];
+			$thumb_output .= "<a href='".PHP_SELF."?showimage=$id'><img src='".$thumbnail."' alt='".$title."' title='".$title."' width='".$local_width."' height='".$local_height."' class='thumbnails' /></a>";
+		} //end while
+	}
 	// initialize page counter
 	$pagecounter=0;
 
@@ -708,6 +745,52 @@ $tags_img = trim($tags_img);
 $tags_paged_img = trim($tags_paged_img);
 $tags_keywords = str_replace('_',' ',$tags_keywords);
 
+/***********************************************
+*          BROWSE IMAGES MONTHLY
+***********************************************/
+$query = "SELECT DISTINCT DATE_FORMAT( datetime, '%Y%m' )
+	FROM ".$pixelpost_db_prefix."pixelpost
+	WHERE datetime <= '$datetime' AND datetime > '0000-00-00 00:00:00'
+	ORDER BY datetime ASC";
+$result = mysql_query($query);
+$start = mysql_fetch_row($result);
+
+$cym = $start[0];
+$y = substr($cym, 0, 4);
+$m = substr($cym, 4, 2);
+$cy = date('Y');
+
+$browse_monthly_menu = "<div id='br_mo_me'>\n";
+
+for($x = $y; $x <= $cy; $x++)
+{
+	$browse_monthly_menu .= "<div class='br_mo_me_$x'>\n";
+
+	for($m = 1; $m <= 12; $m++)
+	{
+		if($m == 1)	$browse_monthly_menu .= "<span class='br_mo_me_y_$x'>$x</span>\n";
+		$m = ($m < 10) ? "0$m" : $m;
+
+		if($cym < "$x$m")
+		{
+			$cym = @mysql_fetch_array($result,MYSQL_NUM);
+			$cym = $cym[0];
+		}
+
+		$browse_monthly_menu .= ($cym == "$x$m") ? " <a href='".PHP_SELF."?x=browse&bryear=$x&brmonth=$m' class='br_mo_me_".$x."_$m'>$m</a>\n" : " <span class='br_mo_me_".$x."_$m'>$m</span>\n";
+	}
+	$browse_monthly_menu .= "</div>\n";
+}
+
+$browse_monthly_menu .= "</div>\n";
+
+$tpl = str_replace("<BROWSE_MONTHLY_MENU>", $browse_monthly_menu, $tpl); //menu for browse images monthly
+
+/***********************************************
+*          TEMPLATE TAGS REPLACEMNET
+***********************************************/
+
+//tags for image tags
 $tpl = str_replace("<TAG_LINKS_AS_LIST>",$tags_output,$tpl); //thumbnails in this page
 $tpl = str_replace("<TAG_LINKS_AS_LIST_PAGED>",$tags_paged_output,$tpl); //thumbnails in this page
 $tpl = str_replace("<FOCUS_TAG_LINKS_AS_LIST>",$tags_output_reversed,$tpl); //thumbnails in this page

@@ -1,6 +1,6 @@
 <?PHP
 /*
-Requires Pixelpost version 1.7 or newer
+Requires Pixelpost version 1.7.1 or newer
 Defensio FRONT-side ADDON-Version 1.2.1
 
 Written by: Schonhose

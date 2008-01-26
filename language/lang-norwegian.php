@@ -1,12 +1,11 @@
 <?php
 /*
-
-Pixelpost version 1.7
+Pixelpost version 1.7.1
 
 SVN file version:
 $Id$
 
-Version 1.7:
+Version 1.7.1:
 Development Team:
 Ramin Mehran, Will Duncan, Joseph Spurling,
 Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
