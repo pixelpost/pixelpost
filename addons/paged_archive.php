@@ -777,7 +777,7 @@ for($x = $y; $x <= $cy; $x++)
 			$cym = $cym[0];
 		}
 
-		$browse_monthly_menu .= ($cym == "$x$m") ? " <a href='".PHP_SELF."?x=browse&bryear=$x&brmonth=$m' class='br_mo_me_".$x."_$m'>$m</a>\n" : " <span class='br_mo_me_".$x."_$m'>$m</span>\n";
+		$browse_monthly_menu .= ($cym == "$x$m") ? " <a href='".PHP_SELF."?x=browse&amp;bryear=$x&amp;brmonth=$m' class='br_mo_me_".$x."_$m'>$m</a>\n" : " <span class='br_mo_me_".$x."_$m'>$m</span>\n";
 	}
 	$browse_monthly_menu .= "</div>\n";
 }
