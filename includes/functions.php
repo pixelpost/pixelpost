@@ -319,12 +319,12 @@ function createthumbnail($file)
 			
 			$img = $tmp_img;
 		}
+		touch($cfgrow['thumbnailpath']."thumb_$file");
+		imagejpeg($img,$cfgrow['thumbnailpath']."thumb_$file",$cfgrow['compression']);
+		
+		$thumbimage = $cfgrow['thumbnailpath']."thumb_$file";
+		chmod($thumbimage,0644);
 	}
-	touch($cfgrow['thumbnailpath']."thumb_$file");
-	imagejpeg($img,$cfgrow['thumbnailpath']."thumb_$file",$cfgrow['compression']);
-	
-	$thumbimage = $cfgrow['thumbnailpath']."thumb_$file";
-	chmod($thumbimage,0644);
 }
 
 function unsharp_mask($img, $sharpeningsetting){
@@ -1485,7 +1485,7 @@ function create_htaccess_banlist()
  */
 function moderate_past_with_list()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $admin_lang_spam_err_6, $admin_lang_spam_com_upd;
 	
 	$additional_msg = '';
 	
@@ -1520,11 +1520,11 @@ function moderate_past_with_list()
 
 		if(mysql_error())
 		{
-			$additional_msg = "$admin_lang_spam_err_6 ".mysql_error()."<br/>";
+			$additional_msg = $admin_lang_spam_err_6.'&nbsp;'.mysql_error().'<br />';
 		}
 		else
 		{
-			$additional_msg = "$admin_lang_spam_com_upd"."<br/>";
+			$additional_msg = $admin_lang_spam_com_upd.'<br />';
 		}
 	}
 	
@@ -1539,7 +1539,7 @@ function moderate_past_with_list()
  */
 function delete_past_with_list()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $admin_lang_spam_com_del, $admin_lang_spam_err_7;
 	
 	$additional_msg = '';
 	
@@ -1573,11 +1573,11 @@ function delete_past_with_list()
 		mysql_query($query);
 		if(mysql_error())
 		{
-			$additional_msg = "$admin_lang_spam_err_7 ".mysql_error()."<br/>";
+			$additional_msg = $admin_lang_spam_err_7.'&nbsp;'.mysql_error().'<br />';
 		}
 		else
 		{
-			$additional_msg = "$admin_lang_spam_com_del"."<br/>";
+			$additional_msg = $admin_lang_spam_com_del.'<br />';
 		}
 	}
 
@@ -1592,7 +1592,7 @@ function delete_past_with_list()
  */
 function delete_from_badreferer_list()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $admin_lang_spam_err_8, $admin_lang_spam_visit_del;
 	
 	$additional_msg = '';
 	
@@ -1625,11 +1625,11 @@ function delete_from_badreferer_list()
 		mysql_query($query);
 		if(mysql_error())
 		{
-			$additional_msg = "$admin_lang_spam_err_8".mysql_error()."<br/>";
+			$additional_msg = $admin_lang_spam_err_8.'&nbsp;'.mysql_error().'<br />';
 		}
 		else
 		{
-			$additional_msg = "$admin_lang_spam_visit_del"."<br/>";
+			$additional_msg = $admin_lang_spam_visit_del.'<br />';
 		}
 	}
 
