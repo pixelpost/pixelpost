@@ -3,29 +3,34 @@
 // SVN file version:
 // $Id$
 
-if(isset($_GET['x']) &&$_GET['x'] == "browse")
+if(isset($_GET['x']) && $_GET['x'] == "browse")
 {
 	$thumb_output = "";
 	$where = "";
-	if ($language_abr == $default_language_abr){
- 		$headline_selection = 'headline';
-  } else  {
-  	$headline_selection = 'alt_headline';
- 	}
-	if ($cfgrow['display_order']=='default')	$display_order = 'DESC';
-	else	$display_order = 'ASC';
 	
-	if(isset($_GET['category'])) { $pp_cat = addslashes($_GET['category']); }else{ $pp_cat = 0; }
+	$headline_selection = ($language_abr == $default_language_abr) ? 'headline' : 'alt_headline';
+	
+	$display_order = ($cfgrow['display_order']=='default') ? 'DESC' : 'ASC';
+	
+	if(isset($_GET['category']))
+	{
+		$pp_cat = addslashes($_GET['category']);
+	}
+	else
+	{
+		$pp_cat = 0;
+	}
 	
 	if(is_numeric($pp_cat) && $pp_cat != "")
 	{
 		// Modified from Mark Lewin's hack for multiple categories
-		$query = mysql_query("SELECT 1,t2.id,{$headline_selection},image,datetime
-													FROM  {$pixelpost_db_prefix}catassoc as t1
-													INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
-													WHERE t1.cat_id = '".$pp_cat."'
-													AND (datetime<='$cdate')
-													ORDER BY ".$cfgrow['display_sort_by']." ".$display_order);
+		$query = mysql_query(
+		"SELECT 1,t2.id,{$headline_selection},image,datetime FROM  {$pixelpost_db_prefix}catassoc as t1
+			INNER JOIN {$pixelpost_db_prefix}pixelpost t2 on t2.id = t1.image_id
+		WHERE t1.cat_id = '".$pp_cat."' AND (datetime<='$cdate')
+		ORDER BY ".$cfgrow['display_sort_by']." ".$display_order
+		);
+		
 		$lookingfor = 1;
 	}
 	elseif(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
@@ -104,7 +109,6 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 }
 
 // build browse menu
-// $browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='?x=browse&amp;category='>$lang_browse_all</option>";
 $browse_select = "<select name='browse' onchange='self.location.href=this.options[this.selectedIndex].value;'><option value=''>$lang_browse_select_category</option><option value='index.php?x=browse&amp;category='>$lang_browse_all</option>";
 $query = mysql_query("SELECT * FROM ".$pixelpost_db_prefix."categories ORDER BY name");
 
@@ -118,7 +122,6 @@ while(list($id,$name, $alt_name) = mysql_fetch_row($query))
 	{
   	$name = pullout($alt_name);
   }
-//		$browse_select .= "<option value='?x=browse&amp;category=$id'>$name</option>";
 	$browse_select .= "<option value='index.php?x=browse&amp;category=$id'>$name</option>";
 }
 $browse_select .= "</select>";
