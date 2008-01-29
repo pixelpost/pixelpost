@@ -263,9 +263,9 @@ $admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "ADMIN GEBRUIKER &amp; WACHTWOORD";
 $admin_lang_optn_usr_pss_txt       = "Verander gebruikersnaam of wachtwoord?";
-$admin_lang_optn_usr               = "Gebruiker:";
-$admin_lang_optn_pss               = "Wachtwoord:";
-$admin_lang_optn_pss_re            = "Bevestig Wachtwoord:";
+$admin_lang_optn_usr               = "Gebruiker";
+$admin_lang_optn_pss               = "Wachtwoord";
+$admin_lang_optn_pss_re            = "Bevestig Wachtwoord";
 $admin_lang_optn_email             = "ADMIN EMAIL";
 $admin_lang_optn_fillit            = "Vul dit in, het wordt gebruikt wanneer u het wachtwoord niet meer weet.";
 $admin_lang_optn_img_path          = "AFBEELDINGEN & MINIATUREN PAD";
@@ -273,7 +273,7 @@ $admin_lang_optn_tz                = "TIJDZONE";
 $admin_lang_optn_tz_txt            = "Selecteer uw tijdzone (of de tijdzone van de server).";
 $admin_lang_optn_sendemail         = "VERSTUUR EMAIL BIJ REACTIE";
 $admin_lang_optn_sendemail_txt     = "Verstuur een email wanneer er een reactie is geplaatst?";
-$admin_lang_optn_sendemail_html_txt = "gebruik HTML in email?";
+$admin_lang_optn_sendemail_html_txt = "Gebruik HTML in email?";
 $admin_lang_optn_comment_setting 		= "GLOBALE REACTIE INSTELLINGEN";
 $admin_lang_optn_comment_setting2		= "Reactie instelling";
 $admin_lang_optn_cmnt_mod_txt       = "Standaard actie voor reacties:";
@@ -363,6 +363,7 @@ $admin_lang_optn_rss_thumbs_only			= "Laat alleen miniaturen zien";
 $admin_lang_optn_rss_full_only				= "Laat alleen de volledige afbeelding zien";
 $admin_lang_optn_rss_text							= "Laat alleen tekst zien";
 $admin_lang_optn_feeditems_desc				= "Aantal items in de feedlijst: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             = "Alternatieve taal instellingen: ";
 $admin_lang_optn_alt_lang_dis         = "uitgeschakeld";
@@ -454,6 +455,15 @@ $admin_lang_spam_err_7      = "Fout in het verwijderen van de reacties wanneer e
 $admin_lang_spam_com_del    = "Past: Reacties met woorden/IP nummers in de Blocklijsten zijn verwijderd.";
 $admin_lang_spam_err_8      = "Fout in het verwijderen van bezoekers wanneer er vergeleken wordt met de bad-referrers-lijst: ";
 $admin_lang_spam_visit_del  = "Bezoekers met woorden/IP nummers in de bad-referrer-lijst zijn verwijderd.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        = "Bijwerken Blocklijsten";

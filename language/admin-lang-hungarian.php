@@ -262,9 +262,9 @@ $admin_lang_optn_sub_title         			= "Név kiegészítés:";
 $admin_lang_optn_url               			= "Cím (URL):";
 $admin_lang_optn_usr_pss           			= "ADMINISZTRÁTOR FELHASZNÁLÓNÉV ÉS JELSZÓ";
 $admin_lang_optn_usr_pss_txt       			= "Felhasználónév vagy jelszó változtatás";
-$admin_lang_optn_usr               			= "Felhasználónév:";
-$admin_lang_optn_pss               			= "Jelszó:";
-$admin_lang_optn_pss_re            			= "Jelszó mégegyszer:";
+$admin_lang_optn_usr               			= "Felhasználónév";
+$admin_lang_optn_pss               			= "Jelszó";
+$admin_lang_optn_pss_re            			= "Jelszó mégegyszer";
 $admin_lang_optn_email             			= "ADMINISZTRÁTORI EMAIL CÍM";
 $admin_lang_optn_fillit            			= "Töltsd ki. Ha elveszik a jelszavad, hasznos lesz.";
 $admin_lang_optn_img_path          			= "KÉPEK ELÉRÉSI ÚTVONALA";
@@ -363,6 +363,7 @@ $admin_lang_optn_rss_thumbs_only			= "Csak előnézeti kép";
 $admin_lang_optn_rss_full_only				= "Csak teljes méretű kép";
 $admin_lang_optn_rss_text				= "Csak szöveg";
 $admin_lang_optn_feeditems_desc				= "A feedlista hossza: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  			= "Alapnyelv beállítása: ";
 $admin_lang_optn_alt_lang             			= "Alternatív nyelv beállítása: ";
 $admin_lang_optn_alt_lang_dis         			= "kikapcsolva";
@@ -453,6 +454,15 @@ $admin_lang_spam_err_7      				= "Hiba a megjegyzések tiltólistával való el
 $admin_lang_spam_com_del    				= "A tiltott szavakat vagy IP-címeket tartalmazó megjegyzéseket töröltük.";
 $admin_lang_spam_err_8      				= "Hiba a látogatók adatainak referrer-tiltó listával való ellenőrzésekor: ";
 $admin_lang_spam_visit_del  				= "A referrer-tiltó listában szereplő látogatók adatait töröltük.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        				= "Tiltási listák módosítása";

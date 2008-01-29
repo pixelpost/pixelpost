@@ -261,9 +261,9 @@ $admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "ADMIN BRUKERNAVN &amp; PASSORD";
 $admin_lang_optn_usr_pss_txt       = "Bytt brukernavn eller passord?";
-$admin_lang_optn_usr               = "Bruker:";
-$admin_lang_optn_pss               = "Passord:";
-$admin_lang_optn_pss_re            = "Gjennta Passord:";
+$admin_lang_optn_usr               = "Bruker";
+$admin_lang_optn_pss               = "Passord";
+$admin_lang_optn_pss_re            = "Gjennta Passord";
 $admin_lang_optn_email             = "ADMIN EPOST";
 $admin_lang_optn_fillit            = "Fyll ut. P&aring; denne adressen vil du motta glemt passord. Viktig!";
 $admin_lang_optn_img_path          = "BILDER & MINITYRBILDERS STI";
@@ -271,7 +271,7 @@ $admin_lang_optn_tz                = "Tidssone";
 $admin_lang_optn_tz_txt            = "Velg tidssone avvik for ditt land/by.";
 $admin_lang_optn_sendemail         = "SEND EPOST VED NY KOMMENTAR";
 $admin_lang_optn_sendemail_txt     = "Sende epost varsel ved ny kommentar?";
-$admin_lang_optn_sendemail_html_txt = "bruk HTML varsel epost?";
+$admin_lang_optn_sendemail_html_txt = "Bruk HTML varsel epost?";
 // NEW!
 $admin_lang_optn_comment_setting 		= "GLOBAL KOMMENTAR VALG";
 $admin_lang_optn_comment_setting2		= "Kommentar valg";
@@ -471,10 +471,19 @@ $admin_lang_optn_rss_thumbs_only					= "Vis bare miniatyrbilder";
 $admin_lang_optn_rss_full_only						= "Vis bare bilder i full st&oslash;rrelse";
 $admin_lang_optn_rss_text							= "Vis bare tekst";
 $admin_lang_optn_feeditems_desc				= "Anntal gjennstander i feedlisten: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Base spr&aring;k valg: ";
 $admin_lang_optn_alt_lang             = "Alternativt spr&aring;k valg: ";
 $admin_lang_optn_alt_lang_dis         = "sl&aring;tt av";
 $admin_lang_optn_alt_lang_no          = "sl&aring;tt av";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
 
 
 $admin_lang_imgedit_preview   = "Forh&aring;ndsvis";

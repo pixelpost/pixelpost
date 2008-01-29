@@ -266,9 +266,9 @@ $admin_lang_optn_sub_title         = "Sub-Titel:";
 $admin_lang_optn_url                = "URL:";
 $admin_lang_optn_usr_pss            = "Adminname &amp; Passwort";
 $admin_lang_optn_usr_pss_txt        = "Adminname oder Passwort &auml;ndern?";
-$admin_lang_optn_usr                = "Adminname:";
-$admin_lang_optn_pss                = "Passwort:";
-$admin_lang_optn_pss_re             = "Passwort best&auml;tigen:";
+$admin_lang_optn_usr                = "Adminname";
+$admin_lang_optn_pss                = "Passwort";
+$admin_lang_optn_pss_re             = "Passwort best&auml;tigen";
 $admin_lang_optn_email              = "Admin E-Mail";
 $admin_lang_optn_fillit             = "Tragen Sie die E-Mail-Adresse unbedingt hier ein. Sie wird f&uuml;r eine
                                       eventuelle Passwort-Wiederherstellung ben&ouml;tigt.";
@@ -478,11 +478,19 @@ $admin_lang_optn_rss_thumbs_only					= "Nur Vorschaubilder zeigen";
 $admin_lang_optn_rss_full_only						= "Zeige Bilder nur in voller Gr&ouml;&szlig;e";
 $admin_lang_optn_rss_text							= "Nur Text zeigen";
 $admin_lang_optn_feeditems_desc				= "Anzahl der Eintr&auml;ge in der Feed-Liste: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Einstellungen f&uuml;r die Hauptsprache: ";
 $admin_lang_optn_alt_lang             = "Zweite Sprache: ";
 $admin_lang_optn_alt_lang_dis         = "nicht ausgew&auml;hlt";
 $admin_lang_optn_alt_lang_no          = "nicht ausgew&auml;hlt";
 
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
 
 
 $admin_lang_cmnt_rep_spam = "Spam melden!!";

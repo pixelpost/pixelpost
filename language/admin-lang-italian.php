@@ -265,9 +265,9 @@ $admin_lang_optn_sub_title         = "Sottotitolo:";
 $admin_lang_optn_url               = "URL:";
 $admin_lang_optn_usr_pss           = "UTENTE AMMINISTRATORE &amp; PASSWORD";
 $admin_lang_optn_usr_pss_txt       = "Cambiare username o password?";
-$admin_lang_optn_usr               = "User:";
-$admin_lang_optn_pss               = "Password:";
-$admin_lang_optn_pss_re            = "Conferma Password:";
+$admin_lang_optn_usr               = "User";
+$admin_lang_optn_pss               = "Password";
+$admin_lang_optn_pss_re            = "Conferma Password";
 $admin_lang_optn_email             = "EMAIL AMMINISTRATORE";
 $admin_lang_optn_fillit            = "Compilalo. Servir&agrave; per il recupero password.";
 $admin_lang_optn_img_path          = "PERCORSO IMMAGINI & MINIATURE";
@@ -275,7 +275,7 @@ $admin_lang_optn_tz                = "FUSO ORARIO";
 $admin_lang_optn_tz_txt            = "Seleziona il fuso orario della tua localit&agrave;.";
 $admin_lang_optn_sendemail         = "NOTIFICA EMAIL DEI COMMENTI";
 $admin_lang_optn_sendemail_txt     = "Desideri la notifica via email dei commenti?";
-$admin_lang_optn_sendemail_html_txt = "utilizzare HTML nella email di notifica?";
+$admin_lang_optn_sendemail_html_txt = "Utilizzare HTML nella email di notifica?";
 $admin_lang_optn_switch_template       = "CAMBIA TEMPLATE";
 $admin_lang_optn_lang_file             = "FILE DELLA LINGUA";
 $admin_lang_optn_lang_file_admin          = "FILE DELLA LINGUA PER IL PANNELLO DI AMMINISTRAZIONE";
@@ -324,7 +324,7 @@ $admin_lang_optn_markdown_desc         = "Vuoi che Pixelpost abiliti Markdown fe
 $admin_lang_optn_exif			            = "Abilita Exif";
 $admin_lang_optn_exif_desc		        = "Vuoi che Pixelpost abiliti le funzioni Exif sulla pagina principale?";
 $admin_lang_optn_token			          = "Abilita i token nei form";
-$admin_lang_optn_token_desc		        = "L'utilizzo dei token riduce la possibilit‡ di attacco di tipo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
+$admin_lang_optn_token_desc		        = "L'utilizzo dei token riduce la possibilit√† di attacco di tipo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Attivando questa impostazione i commenti sono salvati solo quando il token del form corrisponde a quello nella sessione utente. Per implementare questa funzione devi aggiungere <strong>&lt;TOKEN&gt;</strong> al template dei commenti da qualche parte tra i tag <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
 																				 If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
 																				 Abilitare questa impostazione?";
@@ -366,6 +366,7 @@ $admin_lang_optn_rss_thumbs_only					= "Mostra solo miniature";
 $admin_lang_optn_rss_full_only						= "Mostra solo immagini a grandezza piena";
 $admin_lang_optn_rss_text							= "Mostra solo testo";
 $admin_lang_optn_feeditems_desc				= "Numero di voci nella feedlist: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Impostazioni lingua base: ";
 $admin_lang_optn_alt_lang             = "Impostazioni lingua alternativa: ";
 $admin_lang_optn_alt_lang_dis         = "disabilitato";
@@ -457,6 +458,15 @@ $admin_lang_spam_err_7      = "Errore nella cancellazione dei commenti durante i
 $admin_lang_spam_com_del    = "Passati: i commenti che contengono parole/IP presenti in blacklist sono cancellati.";
 $admin_lang_spam_err_8      = "Errore nella cancellazione dei visitatori durante il confronto con la ban list dei referer: ";
 $admin_lang_spam_visit_del  = "I visitatori con parole/IP presenti nella bad-referer-list sono cancellati.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        = "Aggiorna le Liste di Esclusione (Ban List)";

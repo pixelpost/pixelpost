@@ -263,9 +263,9 @@ $admin_lang_optn_sub_title         = "副标题：";
 $admin_lang_optn_url               = "网址：";
 $admin_lang_optn_usr_pss           = "管理员用户名和密码";
 $admin_lang_optn_usr_pss_txt       = "更改用户名或密码？";
-$admin_lang_optn_usr               = "用户名：";
-$admin_lang_optn_pss               = "密码：";
-$admin_lang_optn_pss_re            = "再次确认密码：";
+$admin_lang_optn_usr               = "用户名";
+$admin_lang_optn_pss               = "密码";
+$admin_lang_optn_pss_re            = "再次确认密码";
 $admin_lang_optn_email             = "管理员电子邮件";
 $admin_lang_optn_fillit            = "请填写。这对您密码恢复有用处。";
 $admin_lang_optn_img_path          = "图片和缩略图路径";
@@ -363,6 +363,7 @@ $admin_lang_optn_rss_thumbs_only					= "只显示缩略图";
 $admin_lang_optn_rss_full_only						= "只显示全图";
 $admin_lang_optn_rss_text							= "Show text only";
 $admin_lang_optn_feeditems_desc				= "feed清单中的条数";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "其本语言设置：";
 $admin_lang_optn_alt_lang             = "另一种语言设置：";
 $admin_lang_optn_alt_lang_dis         = "不允许";
@@ -452,6 +453,15 @@ $admin_lang_spam_err_7      = "当与黑名单比较的时候删除评论有误�
 $admin_lang_spam_com_del    = "结束：含有黑名单中的词语/IPs的评论已经删除。";
 $admin_lang_spam_err_8      = "当与恶意referers清单比较的时候删除来访者有误：";
 $admin_lang_spam_visit_del  = "含有恶意referers清单中的词语/IPs的来访者已被删除。";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        = "禁止清单";

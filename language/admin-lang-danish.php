@@ -263,9 +263,9 @@ $admin_lang_optn_sub_title         = "Sub Title:";
 $admin_lang_optn_url               = "Adresse:";
 $admin_lang_optn_usr_pss           = "ADMINISTRATOR &amp; KODEORD";
 $admin_lang_optn_usr_pss_txt       = "Skift brugernavn eller kodeord?";
-$admin_lang_optn_usr               = "Brugernavn:";
-$admin_lang_optn_pss               = "Kodeord:";
-$admin_lang_optn_pss_re            = "Bekr&aelig;ft kodeord:";
+$admin_lang_optn_usr               = "Brugernavn";
+$admin_lang_optn_pss               = "Kodeord";
+$admin_lang_optn_pss_re            = "Bekr&aelig;ft kodeord";
 $admin_lang_optn_email             = "ADMIN E-MAIL";
 $admin_lang_optn_fillit            = "Udfyld den. Bruges til gendannelse af kodeord.";
 $admin_lang_optn_img_path          = "IMAGES & THUMBNAILS PATH";
@@ -273,7 +273,7 @@ $admin_lang_optn_tz                = "TIDSZONE";
 $admin_lang_optn_tz_txt            = "V&aelig;lg tidszonen for din fotoblog.";
 $admin_lang_optn_sendemail         = "SEND E-MAIL MED KOMMENTAR";
 $admin_lang_optn_sendemail_txt     = "Send e-mail n&aring;r nogen kommenterer et billede?";
-$admin_lang_optn_sendemail_html_txt = "brug HTML e-mails?";
+$admin_lang_optn_sendemail_html_txt = "Brug HTML e-mails?";
 $admin_lang_optn_comment_setting 		= "GLOBALE KOMMENTARINDSTILLINGER";
 $admin_lang_optn_comment_setting2		= "Kommentarindstillinger";
 $admin_lang_optn_cmnt_mod_txt       = "Standard for kommentarer:";
@@ -363,6 +363,7 @@ $admin_lang_optn_rss_thumbs_only					= "Vis kun thumbnails";
 $admin_lang_optn_rss_full_only						= "Vis kun billedet i fuld stoslash;rrelse";
 $admin_lang_optn_rss_text							= "Vis kun tekst";
 $admin_lang_optn_feeditems_desc				= "Antal indl&aelig;g i listen: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Grundlaelig;ggende sprogindstillinger: ";
 $admin_lang_optn_alt_lang             = "Indstillinger for alternative sprog: ";
 $admin_lang_optn_alt_lang_dis         = "sl&aring;et fra";
@@ -454,6 +455,15 @@ $admin_lang_spam_err_7      = "Fejl ved sletning af kommentarer ved sammenlining
 $admin_lang_spam_com_del    = "Udf&oslash;rt: Kommentarer der indeholder ord/IP'er fra blacklisten er slettet.";
 $admin_lang_spam_err_8      = "Fejl ved sletning af bes&oslash;gende ved sammenlining med bad-referrers-list: ";
 $admin_lang_spam_visit_del  = "Udf&oslash;rt: Kommentarer med ord/IP'er fra bad-referrer-listen er slettet.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        = "Opdater banlister";

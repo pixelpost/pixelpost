@@ -264,9 +264,9 @@ $admin_lang_optn_sub_title         				= "Undertitel:";
 $admin_lang_optn_url               				= "ADRESS:";
 $admin_lang_optn_usr_pss           				= "ADMIN ANV&Auml;NDARNAMN &amp; L&Ouml;SENORD";
 $admin_lang_optn_usr_pss_txt       				= "&Auml;ndra anv&auml;ndarnamn och l&ouml;senord?";
-$admin_lang_optn_usr               				= "Anv&auml;ndarnamn:";
-$admin_lang_optn_pss               				= "L&ouml;senord:";
-$admin_lang_optn_pss_re            				= "Bekr&auml;fta l&ouml;senordet:";
+$admin_lang_optn_usr               				= "Anv&auml;ndarnamn";
+$admin_lang_optn_pss               				= "L&ouml;senord";
+$admin_lang_optn_pss_re            				= "Bekr&auml;fta l&ouml;senordet";
 $admin_lang_optn_email             				= "ADMIN EPOS-ADRESS";
 $admin_lang_optn_fillit            				= "Fyll i den. Den kommer att anv&auml;ndar om du beh&ouml;ver &aring;terst&auml;lla ditt l&ouml;senord.";
 $admin_lang_optn_img_path          				= "S&Ouml;KV&Auml;GAR TILL BILDER &amp; TUMNAGLAR";
@@ -274,7 +274,7 @@ $admin_lang_optn_tz                				= "TIDZON";
 $admin_lang_optn_tz_txt            				= "V&auml;lj din tidzon.";
 $admin_lang_optn_sendemail         				= "SKICKA EPOST N&Auml;R KOMMENTAR G&Ouml;RS";
 $admin_lang_optn_sendemail_txt    				= "Skicka epostmeddelande n&auml;r kommentarer g&ouml;rs?";
-$admin_lang_optn_sendemail_html_txt 			= "anv&auml;nd HTML i meddelandena?";
+$admin_lang_optn_sendemail_html_txt 			= "Anv&auml;nd HTML i meddelandena?";
 $admin_lang_optn_comment_setting 				= "GLOBALA INST&Auml;LLNIGAR F&Ouml;R KOMMENTARER";
 $admin_lang_optn_comment_setting2				= "Inst&auml;llning f&ouml;r kommentarer";
 $admin_lang_optn_cmnt_mod_txt       			= "Default action for comments:";
@@ -365,6 +365,7 @@ $admin_lang_optn_rss_thumbs_only				= "Visa endast tumnaglar";
 $admin_lang_optn_rss_full_only					= "Visa endast bilder i fullstorlek";
 $admin_lang_optn_rss_text						= "Visa endast text";
 $admin_lang_optn_feeditems_desc					= "Antal punkter i feedlistan: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  			= "Inst&auml;llning f&ouml;r spr&aring;k: ";
 $admin_lang_optn_alt_lang             			= "Inst&auml;llning f&ouml;r alternativt spr&aring;k: ";
 $admin_lang_optn_alt_lang_dis         			= "avaktiverad";
@@ -456,6 +457,15 @@ $admin_lang_spam_err_7      					= "Fel vid borttagning av kommentar, n&auml;r d
 $admin_lang_spam_com_del    					= "Past: kommentarer som inneh&aring;ller ord/IP-nummer fr&aring;n balcklist &auml;r borttagna.";
 $admin_lang_spam_err_8      					= "Fel vid borttagning av bes&ouml;kare vid j&auml;mf&ouml;relse med bad-referrers-list: ";
 $admin_lang_spam_visit_del  					= "Bes&ouml;kare med ord/IP-nummer fr&aring;n bad-referrer-list &auml;r borttagna.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        					= "Uppdatera bannlistor";

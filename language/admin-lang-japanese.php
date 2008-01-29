@@ -262,9 +262,9 @@ $admin_lang_optn_sub_title                      = "サブタイトル:";
 $admin_lang_optn_url                            = "URI:";
 $admin_lang_optn_usr_pss                        = "管理者およびパスワード";
 $admin_lang_optn_usr_pss_txt                    = "ユーザ名またはパスワードを変更しますか?";
-$admin_lang_optn_usr                            = "ユーザ:";
-$admin_lang_optn_pss                            = "パスワード:";
-$admin_lang_optn_pss_re                         = "パスワードをもう一度:";
+$admin_lang_optn_usr                            = "ユーザ";
+$admin_lang_optn_pss                            = "パスワード";
+$admin_lang_optn_pss_re                         = "パスワードをもう一度";
 $admin_lang_optn_email                          = "管理者メールアドレス";
 $admin_lang_optn_fillit                         = "このメールアドレスは、パスワードリカバリに使用されます。";
 $admin_lang_optn_img_path                       = "イメージおよびサムネイルパス";
@@ -363,6 +363,7 @@ $admin_lang_optn_rss_thumbs_only                = "サムネイルのみ表示�
 $admin_lang_optn_rss_full_only                  = "フルサイズの写真のみ表示する";
 $admin_lang_optn_rss_text                       = "テキストのみ表示する";
 $admin_lang_optn_feeditems_desc                 = "フィードリストのアイテム数: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                           = "ベース言語設定: ";
 $admin_lang_optn_alt_lang                       = "代替言語設定: ";
 $admin_lang_optn_alt_lang_dis                   = "無効";
@@ -453,6 +454,14 @@ $admin_lang_spam_err_7                          = "コメント削除におい�
 $admin_lang_spam_com_del                        = "パス: ブラックリストの単語/IPアドレスを含んでいるコメントを削除しました。";
 $admin_lang_spam_err_8                          = "訪問者削除においてリファラ禁止リストの比較中にエラーが発生しました: ";
 $admin_lang_spam_visit_del                      = "単語/IPアドレスがリファラ禁止リストに登録されている訪問者を削除しました。";
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban                            = "禁止リストを更新する";

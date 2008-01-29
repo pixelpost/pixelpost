@@ -263,9 +263,9 @@ $admin_lang_optn_sub_title         				= "Sub Title:";
 $admin_lang_optn_url               				= "URL:";
 $admin_lang_optn_usr_pss           				= "ADMIN USER &amp; PASSWORD";
 $admin_lang_optn_usr_pss_txt       				= "Change username or password?";
-$admin_lang_optn_usr               				= "User:";
-$admin_lang_optn_pss               				= "Password:";
-$admin_lang_optn_pss_re            				= "Reconfirm Password:";
+$admin_lang_optn_usr               				= "User";
+$admin_lang_optn_pss               				= "Password";
+$admin_lang_optn_pss_re            				= "Reconfirm Password";
 $admin_lang_optn_email             				= "ADMIN EMAIL";
 $admin_lang_optn_fillit            				= "Fill it. This will be used for password recovery.";
 $admin_lang_optn_img_path          				= "IMAGES & THUMBNAILS PATH";
@@ -273,7 +273,7 @@ $admin_lang_optn_tz                				= "TIMEZONE";
 $admin_lang_optn_tz_txt            				= "Select the timezone offset of your location.";
 $admin_lang_optn_sendemail         				= "SEND EMAIL ON COMMENT";
 $admin_lang_optn_sendemail_txt    				= "Send notification email on comments?";
-$admin_lang_optn_sendemail_html_txt 			= "use HTML notification emails?";
+$admin_lang_optn_sendemail_html_txt 			= "Use HTML notification emails?";
 $admin_lang_optn_comment_setting 				= "GLOBAL COMMENT SETTINGS";
 $admin_lang_optn_comment_setting2				= "Comment setting";
 $admin_lang_optn_cmnt_mod_txt       			= "Default action for comments:";
@@ -364,6 +364,7 @@ $admin_lang_optn_rss_thumbs_only				= "Show thumbnails only";
 $admin_lang_optn_rss_full_only					= "Show full size pictures only";
 $admin_lang_optn_rss_text						= "Show text only";
 $admin_lang_optn_feeditems_desc					= "Number of items in the feedlist: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Base language settings: ";
 $admin_lang_optn_alt_lang             			= "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         			= "disabled";
@@ -455,6 +456,15 @@ $admin_lang_spam_err_7      					= "Error in deleting the comments when comparin
 $admin_lang_spam_com_del    					= "Past: comments which contain words/IPs from the blacklist are deleted.";
 $admin_lang_spam_err_8      					= "Error in deleting the visitors when comparing with bad-referrers-list: ";
 $admin_lang_spam_visit_del  					= "Visitors with words/IPs from the bad-referrer-list are deleted.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        					= "Update Ban Lists";

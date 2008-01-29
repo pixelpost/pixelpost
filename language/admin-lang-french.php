@@ -263,9 +263,9 @@ $admin_lang_optn_sub_title         	  = "Sous-titre :";
 $admin_lang_optn_url                  = "URL :";
 $admin_lang_optn_usr_pss              = "Nom de l'administrateur &amp; mot de passe";
 $admin_lang_optn_usr_pss_txt          = "Changer de nom ou de mot de passe ?";
-$admin_lang_optn_usr                  = "Utilisateur :";
-$admin_lang_optn_pss                  = "Mot de passe :";
-$admin_lang_optn_pss_re               = "Confirmer le mot de passe :";
+$admin_lang_optn_usr                  = "Utilisateur";
+$admin_lang_optn_pss                  = "Mot de passe";
+$admin_lang_optn_pss_re               = "Confirmer le mot de passe";
 $admin_lang_optn_email                = "Email administrateur";
 $admin_lang_optn_fillit               = "A remplir. Ce sera utilis&eacute; pour r&eacute;cup&eacute;rer le mot de passe.";
 $admin_lang_optn_img_path          		= "Chemin vers les images et vignettes";
@@ -364,6 +364,7 @@ $admin_lang_optn_rss_thumbs_only	= "Afficher seulement les vignettes";
 $admin_lang_optn_rss_full_only		= "Afficher seulement les grandes images";
 $admin_lang_optn_rss_text			= "Afficher seulement le texte";
 $admin_lang_optn_feeditems_desc		= "Nombre d'articles dans le flux : ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang               = "R&eacute;glages de la langue principale : ";
 $admin_lang_optn_alt_lang           = "R&eacute;glages de la seconde langue : ";
 $admin_lang_optn_alt_lang_dis       = "d&eacute;sactiv&eacute;e";
@@ -455,6 +456,15 @@ $admin_lang_spam_err_7          = "Erreur dans la suppression des commentaires l
 $admin_lang_spam_com_del        = "Les commentaires qui contiennent certains mots ou adresse IP sont supprim&eacute;s.";
 $admin_lang_spam_err_8          = "Erreur dans la suppression des visiteurs lors de la comparaison avec la liste noire :";
 $admin_lang_spam_visit_del      = "Les visiteurs ayant fait des commentaires avec des mots ou adresse IP de la liste noire sont supprim&eacute;s.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban            = "Listes de banissement";

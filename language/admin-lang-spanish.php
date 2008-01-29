@@ -262,9 +262,9 @@ $admin_lang_optn_sub_title         				= "Sub T&iacute;tulo:";
 $admin_lang_optn_url               				= "URL:";
 $admin_lang_optn_usr_pss           				= "USUARIO &amp; CLAVE";
 $admin_lang_optn_usr_pss_txt       				= "&iquest;Cambiar nombre de usuario o password?";
-$admin_lang_optn_usr               				= "USUARIO:";
-$admin_lang_optn_pss               				= "cLAVE:";
-$admin_lang_optn_pss_re            				= "Confirmar Clave:";
+$admin_lang_optn_usr               				= "USUARIO";
+$admin_lang_optn_pss               				= "cLAVE";
+$admin_lang_optn_pss_re            				= "Confirmar Clave";
 $admin_lang_optn_email             				= "eMail";
 $admin_lang_optn_fillit            				= "Ingresalo. Ser&aacute; necesario para la recuperaci&oacute;n de clave.";
 $admin_lang_optn_img_path          				= "RUTA DE IM&Aacute;GENES Y MINIATURAS";
@@ -363,6 +363,7 @@ $admin_lang_optn_rss_thumbs_only				= "Mostrar solo miniaturas";
 $admin_lang_optn_rss_full_only					= "Mostrar solo imagenes";
 $admin_lang_optn_rss_text						= "Mostrar solo texto";
 $admin_lang_optn_feeditems_desc					= "N&uacute;mero de elementos en lista de alimentadores: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
 $admin_lang_optn_lang                  = "Opciones de idioma principal: ";
 $admin_lang_optn_alt_lang             			= "Opciones de idioma alternativo: ";
 $admin_lang_optn_alt_lang_dis         			= "desactivado";
@@ -454,6 +455,15 @@ $admin_lang_spam_err_7      					= "Error al borrar los comentarios cuando se co
 $admin_lang_spam_com_del    					= "Pasado: comentarios con palabras/IPs en la lista negra se borran.";
 $admin_lang_spam_err_8      					= "Error al borrar visitas cuando se comparan con la lista de remitentes prohibidos: ";
 $admin_lang_spam_visit_del  					= "Visitas con palabras/IPs en la lista de remitentes prohibidos se borran.";
+
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
 
 // Spam
 $admin_lang_spam_ban        					= "Actualizar lista de prohibidos";

@@ -263,9 +263,9 @@ $admin_lang_optn_sub_title         				= "Sub Title:";
 $admin_lang_optn_url               				= "URL:";
 $admin_lang_optn_usr_pss           				= "ADMIN USER &amp; PASSWORD";
 $admin_lang_optn_usr_pss_txt       				= "Change username or password?";
-$admin_lang_optn_usr               				= "User:";
-$admin_lang_optn_pss               				= "Password:";
-$admin_lang_optn_pss_re            				= "Reconfirm Password:";
+$admin_lang_optn_usr               				= "User";
+$admin_lang_optn_pss               				= "Password";
+$admin_lang_optn_pss_re            				= "Reconfirm Password";
 $admin_lang_optn_email             				= "ADMIN EMAIL";
 $admin_lang_optn_fillit            				= "Fill it. This will be used for password recovery.";
 $admin_lang_optn_img_path          				= "IMAGES & THUMBNAILS PATH";
@@ -273,7 +273,7 @@ $admin_lang_optn_tz                				= "TIMEZONE";
 $admin_lang_optn_tz_txt            				= "Select the timezone offset of your location.";
 $admin_lang_optn_sendemail         				= "SEND EMAIL ON COMMENT";
 $admin_lang_optn_sendemail_txt    				= "Send notification email on comments?";
-$admin_lang_optn_sendemail_html_txt 			= "use HTML notification emails?";
+$admin_lang_optn_sendemail_html_txt 			= "Use HTML notification emails?";
 $admin_lang_optn_comment_setting 				= "GLOBAL COMMENT SETTINGS";
 $admin_lang_optn_comment_setting2				= "Comment setting";
 $admin_lang_optn_cmnt_mod_txt       			= "Default action for comments:";
@@ -286,7 +286,7 @@ $admin_lang_optn_switch_template    			= "SWITCH TEMPLATE";
 $admin_lang_optn_lang_file           			= "LANGUAGE FILE";
 $admin_lang_optn_lang_file_admin          = "ADMIN PANEL LANGUAGE FILE";
 $admin_lang_optn_dateformat          			= "DATE FORMAT";
-$admin_lang_optn_dateformat_txt      			= "The dateformat for images and comments display. This syntax used is identical for the PHP <a href='http://www.php.net/date' target='_blank'>date()</a> function. These are examples of what would replace some common parameters: Y:year m:month d:day H:hour i:minute s:second";
+$admin_lang_optn_dateformat_txt      			= "The dateformat used for images and comments. The syntax used is identical to the PHP <a href='http://www.php.net/date' target='_blank'>date()</a> function.<p />The following are examples of what would replace some common parameters: Y:year m:month d:day H:hour i:minute s:second";
 $admin_lang_optn_gmt                 			= "Note that this does not support daylight saving automatically and you should change it manually.<br />Check <a href='http://www.worldtimeserver.com/current_time_in_UTC.aspx' target='__blank'> UTC Current time </a> if you are not sure about your local time offset form UTC.<br />";
 $admin_lang_optn_cat_link_format     			= "CATEGORY LINKS FORMAT";
 $admin_lang_optn_catlinkformat_select 			= "Select Category Links Format";
@@ -331,8 +331,8 @@ $admin_lang_optn_exif			        		= "ENABLE EXIF";
 $admin_lang_optn_exif_desc		        		= "Should Pixelpost enable Exif feature on the frontpage?";
 $admin_lang_optn_token			        		= "ENABLE TOKEN IN FORMS";
 $admin_lang_optn_token_desc		        		= "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
-												If this setting is on comments will only be saved when the token of the form corresponds to the one in the user session. To implement this you need to add <strong>&lt;TOKEN&gt;</strong> to the comments template file somewhere between the <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.
-												If you forget the <strong>&lt;TOKEN&gt;</strong> tag commenting will not work anymore and the user is presented with an error message.<br /><br/>\n
+												If this setting is on, comments will only be saved when the token of the form corresponds to the one within the users session.<br />To implement tokens, you must add the <strong>&lt;TOKEN&gt;</strong> tag to your comment form somewhere between the <strong><i>&lt;form&gt;</i></strong>...<strong><i>&lt;/form&gt;</i></strong> tags.<br />
+												If you forget to add the <strong>&lt;TOKEN&gt;</strong> tag, commenting will cease to work and the user will be presented with an error message.<br /><br/>\n
 												Should this setting be enabled?";
 $admin_lang_optn_token_time						= "Maximum time in minutes between opening the comment window and submit a comment: ";
 $admin_lang_optn_token_error					= "Attention: values smaller then 1 minute for the Token time are not possible. The Token time has been reset to 1 minute.";
@@ -364,14 +364,15 @@ $admin_lang_optn_rss_thumbs_only				= "Show thumbnails only";
 $admin_lang_optn_rss_full_only					= "Show full size pictures only";
 $admin_lang_optn_rss_text						= "Show text only";
 $admin_lang_optn_feeditems_desc					= "Number of items in the feedlist: ";
-$admin_lang_optn_lang                  = "Base language settings: ";
+$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
+$admin_lang_optn_lang							= "Base language settings: ";
 $admin_lang_optn_alt_lang             			= "Alternative language settings: ";
 $admin_lang_optn_alt_lang_dis         			= "disabled";
 $admin_lang_optn_alt_lang_no          			= "disabled";
-$admin_lang_optn_img_display						="IMAGE DISPLAY ORDER";
-$admin_lang_optn_img_display_desc				="Select the way the images are sorted for display. Sort on: ";
-$admin_lang_optn_img_display_default		="descending order";
-$admin_lang_optn_img_display_reversed		="ascending order";
+$admin_lang_optn_img_display					= "IMAGE DISPLAY ORDER";
+$admin_lang_optn_img_display_desc				= "Select the way the images are sorted for display. Sort on: ";
+$admin_lang_optn_img_display_default			= "descending order";
+$admin_lang_optn_img_display_reversed			= "ascending order";
 
 // Info
 $admin_lang_info_gd                  			= "Not installed, ask your host to install it for you!";
@@ -414,8 +415,8 @@ $admin_lang_pp_lng_author            			= 'Author';
 $admin_lang_pp_lng_ver               			= 'Version';
 $admin_lang_pp_lng_email             			= 'Email';
 $admin_lang_pp_newest_ver            			= 'You have the newest version of Pixelpost!';
-$admin_lang_pp_thumbnailpath 				 = "Guessed thumbnailpath";
-$admin_lang_pp_thumbnailpath_conf 	 = "Configured Thumbnailpath"; 
+$admin_lang_pp_thumbnailpath					= "Guessed thumbnailpath";
+$admin_lang_pp_thumbnailpath_conf				= "Configured Thumbnailpath"; 
 
 // AddOns
 $admin_lang_addon_title              			= "Installed Addons";
@@ -456,13 +457,22 @@ $admin_lang_spam_com_del    					= "Past: comments which contain words/IPs from 
 $admin_lang_spam_err_8      					= "Error in deleting the visitors when comparing with bad-referrers-list: ";
 $admin_lang_spam_visit_del  					= "Visitors with words/IPs from the bad-referrer-list are deleted.";
 
+
+// advanced options
+$admin_lang_adv									= "Advanced Options";
+$admin_lang_adv_optn_notice_title				= "NOTICE";
+$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
+$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
+$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+
+
 // Spam
 $admin_lang_spam_ban        					= "Update Ban Lists";
 $admin_lang_spam_content    					= "Add lists of banned words/IPs/names to the text-boxes below, one word per line.<br/>\n
                                					Any comment with a word, an IP, or name inside the moderation list will be sent to the moderation queue.<br/>\n
                                					Any comment with a word, an IP, or name inside the black list never gets permission to enter the comment list.<br/>
-                               					Any visitor with the IP inside the <b>Referrer Banned List</b> or with address that contains words in that list will\n
-                               					be denied from accessing your photoblog. ( You should add the given code to .htaccess to make it work!)";
+                               					Any visitor with an IP inside the <b>Referrer Banned List</b> or with an address that contains words in that list will\n
+                               					be denied from accessing your photoblog.<br /><i>(You should add the given code to an .htaccess to make it work!)</i>";
 $admin_lang_spam_modlist    					= "Moderation List";
 $admin_lang_spam_blacklist  					= "Black List";
 $admin_lang_spam_reflist    					= "Referrer Banned List";
