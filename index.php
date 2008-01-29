@@ -865,14 +865,19 @@ $tpl = ereg_replace("<SUB_TITLE>",$pixelpost_sub_title,$tpl);
 // BROWSE STUFF
 // ##########################################################################################//
 
-require_once("includes/functions_browse.php");
-
+if(isset($_GET['x']) && $_GET['x'] == "browse")
+{
+	require_once("includes/functions_browse.php");
+}
 
 // ##########################################################################################//
 // FEED STUFF
 // ##########################################################################################//
 
-require_once("includes/functions_feeds.php");
+if(isset($_GET['x']) && $_GET['x'] == "rss" OR isset($_GET['x']) && $_GET['x'] == "comment_rss" OR isset($_GET['x']) && $_GET['x'] == "atom" OR isset($_GET['x']) && $_GET['x'] == "comment_atom")
+{
+	require_once("includes/functions_feeds.php");
+}
 
 // ##########################################################################################//
 // Creating other tags
@@ -908,7 +913,6 @@ if(!isset($_GET['x']) || isset($_GET['showimage']))
 	}
 }
 
-$tpl = ereg_replace("<BROWSE_CATEGORIES>",$browse_select,$tpl);
 $tpl = str_replace("<BASE_HREF>","<base href='".$cfgrow['siteurl']."' />",$tpl);
 $tpl = ereg_replace("<SITE_URL>",$cfgrow['siteurl'],$tpl);
 $tpl = ereg_replace("<SITE_PHOTONUMBER>",$pixelpost_photonumb,$tpl);
