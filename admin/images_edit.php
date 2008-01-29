@@ -390,9 +390,9 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 		if(!isset($_GET['page']) OR $_GET['page'] == "")	$page = "0";
 		else	$page = intval($_GET['page']);
  		$_SESSION['page_pp'] = (int) $page;
-		$_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp'];
+		if(isset($_SESSION['numimg_pp'])) { $_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp']; }
     
-		if ($_SESSION['numimg_pp'] == 0)	$_SESSION['numimg_pp'] = 10;
+		if ($_SESSION['numimg_pp'] == 0 OR !isset($_SESSION['numimg_pp']))	$_SESSION['numimg_pp'] = 10;
 		elseif (isset($_POST['numimg_pp']) && $_POST['numimg_pp'] > 0)
 		{
 			$_SESSION['numimg_pp'] = ($pixelpost_photonumb < $_POST['numimg_pp'] && $pixelpost_photonumb > 0) ? $pixelpost_photonumb : $_POST['numimg_pp'];

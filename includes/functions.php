@@ -5,6 +5,38 @@
 
 
 /**
+ * Magic Quotes KILLER *dun! dun! dun!*
+ *
+ * Will strip all formating applied by magic quotes to any GLOBAL listed in the $in array
+ * All data will have to be manually escaped before use.
+ *
+ * FYI: Magic quotes will be DEPRECIATED and REMOVED from PHP as of version 6!
+ * @author http://talks.php.net/show/php-best-practices/26
+ */
+if(get_magic_quotes_gpc())
+{
+	if(isset($_GET) OR isset($_POST))// OR isset($_COOKIE) OR isset($_SESSION)
+	{
+		$in = array(&$_GET, &$_POST);//, &$_COOKIE, &$_SESSION);
+		while(list($k,$v) = each($in))
+		{
+			foreach($v as $key => $val)
+			{
+				if(!is_array($val))
+				{
+					$in[$k][$key] = stripslashes($val);
+					continue;
+				}
+				$in[] =& $in[$k][$key];
+			}
+		}
+		//var_dump($in);
+		unset($in);
+	}
+}
+
+
+/**
  * Check if directory exists. If it does not, attempt to create it.
  *
  */
