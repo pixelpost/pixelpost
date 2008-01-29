@@ -874,10 +874,7 @@ if(isset($_GET['x']) && $_GET['x'] == "browse")
 // FEED STUFF
 // ##########################################################################################//
 
-if(isset($_GET['x']) && $_GET['x'] == "rss" OR isset($_GET['x']) && $_GET['x'] == "comment_rss" OR isset($_GET['x']) && $_GET['x'] == "atom" OR isset($_GET['x']) && $_GET['x'] == "comment_atom")
-{
-	require_once("includes/functions_feeds.php");
-}
+require_once("includes/functions_feeds.php");
 
 // ##########################################################################################//
 // Creating other tags
