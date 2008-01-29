@@ -173,9 +173,9 @@ if(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedat
 else	$paged_arch_archdate_flag = 0;
 
 // Browse images monthly
-$_GET['bryear'] = ($_GET['bryear']) ? (int)$_GET['bryear'] : '';
-$_GET['brmonth'] = ($_GET['brmonth']) ? (int)$_GET['brmonth'] : '';
-$brbrowse = ($_GET['bryear'] > 0 && $_GET['brmonth'] > 0) ?	1 : 0;
+$bryear = (isset($_GET['bryear'])) ? (int)$_GET['bryear'] : '';
+$brmonth = (isset($_GET['brmonth'])) ? (int)$_GET['brmonth'] : '';
+$brbrowse = ($bryear > 0 && $brmonth > 0) ?	1 : 0;
 
 //-------------------------------- Category Browse Menu (paged and original)
 /*---------------------------------**********************---------------------------------------*/
@@ -351,7 +351,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 			SELECT a.id, a.headline, a.alt_headline, a.image, DATE_FORMAT(a.datetime,'%d.%m.%Y'), count(b.id)
 			FROM {$pixelpost_db_prefix}pixelpost AS a
 			LEFT JOIN {$pixelpost_db_prefix}comments AS b ON (b.parent_id = a.id)
-			WHERE	DATE_FORMAT(a.datetime,'%Y%c') = '".$_GET['bryear'].$_GET['brmonth']."'
+			WHERE	DATE_FORMAT(a.datetime,'%Y%c') = '".$bryear.$brmonth."'
 			GROUP BY a.id
 			ORDER BY a.datetime DESC";
 	}

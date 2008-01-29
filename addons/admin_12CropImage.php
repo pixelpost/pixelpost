@@ -54,90 +54,108 @@ and the others are used for utility of the addon in the admin panel.
 
 */
 
-// Same info as non admin addons
-$addon_name = "Admin Sample 12CropImage addon";
-$addon_description = "This is a sample addon testing 12CropImage inside admin panel of Pixelpost";
-$addon_version = "1.0";
+$addon_name         = "Admin Sample 12CropImage addon";
+$addon_description  = "This is a sample addon testing 12CropImage inside admin panel of Pixelpost";
+$addon_version      = "1.0";
 
-// The workspace. Where to activate the function inside index.php
+/**
+ * The workspace. Where to activate the function inside index.php
+ *
+ */
 $addon_workspace = "image_edit";
 
-// menu where the addon should appear in admin panel. in this case: images menu
+/**
+ * The menu where the addon should appear in the admin panel. In this case: images menu
+ *
+ */
 $addon_menu = "images";
 
-// What would be the title of submenu of this addon: 12cropimage
+/**
+ * What would be the title of submenu of this addon: 12cropimage
+ *
+ */
 $addon_admin_submenu = "12cropimage";
 
-// What is the function
+/**
+ * What is the function name
+ *
+ */
 $addon_function_name = "cropimage12_admin_addon";
 
-
-// add the function
+/**
+ * Add the function
+ *
+ */
 add_admin_functions($addon_function_name,$addon_workspace,$addon_menu,$addon_admin_submenu);
 
 add_admin_functions('crop_image12_make_ready','admin_html_head','','');
 
 
-
 function crop_image12_make_ready()
 {
-	global $cfgrow , $txt ,$image, $spacer,$pixelpost_db_prefix,$javafile;
+    global $cfgrow , $txt ,$image, $spacer,$pixelpost_db_prefix, $javafile;
 	
-	if(isset($_GET['view']) AND $_GET['view']=="images" && isset($_GET['id']))
-	{
-		if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || isset($_GET["_SESSION"]["pixelpost_admin"]) AND $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || isset($_POST["_SESSION"]["pixelpost_admin"]) AND $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || isset($_COOKIE["_SESSION"]["pixelpost_admin"]) AND $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
-
+    if(isset($_GET['view']) AND $_GET['view']=="images" && isset($_GET['id']))
+    {
+        if(!isset($_SESSION["pixelpost_admin"]) || $cfgrow['password'] != $_SESSION["pixelpost_admin"] || isset($_GET["_SESSION"]["pixelpost_admin"]) AND $_GET["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || isset($_POST["_SESSION"]["pixelpost_admin"]) AND $_POST["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"] || isset($_COOKIE["_SESSION"]["pixelpost_admin"]) AND $_COOKIE["_SESSION"]["pixelpost_admin"] == $_SESSION["pixelpost_admin"])
 		{
 		    die ("Try another day!!");
         }
+        
         if($cfgrow['crop'] == '12c'){
 		    require_once("../includes/12cropimageinc.php");
 		    require_once("../includes/12cropimageincscripts.php");
 		}
 	}
 }
-// your function to show a new page under a submenu in admin panel
+
 function cropimage12_admin_addon()
 {
-	// user defined globals ( used in your addon)
-
-	global $cfgrow , $txt ,$image, $spacer;
-
-
- // Check if the '12c' is selected as the crop then add 3 buttons to the page '+', '-', and 'crop'
-		//if ($cfgrow['crop']=='12c'){
-			$to_echo ="<hr><strong>12CropImage tool:</strong><br />
-			This functionality is already inside admin/index.php but this addon is for demo only that show the abilities of \"addons for admin panel\" feature. <br /><br />
-		  To edit the thumbnail for this photo, drag the crop window with mouse or expand/shrink it with '+'/'-' buttons: <br />
-		  <input type='button' name='Submit1' value='Update Thumbnail' onclick=\"cropCheck('def','".$image ."');\" />
- 	    <input type='button' name='Submit3' value='".$txt['smaller']."' onMouseDown=\"cropZoom('in');\" onMouseUp='stopZoom();' />
-	    <input type='button' name='Submit4' value='".$txt['bigger']."' onMouseDown=\"cropZoom('out');\" onMouseUp='stopZoom();' />
-	    ";
-
-      echo $to_echo;
-
-		 // set the size of the crop frame according to the uploaded image
-	  	setsize_cropdiv ($image);
-		 //--------------------------------------------------------
-			$for_echo ="<p/>
-			<img src='".$cfgrow['imagepath'].$image."' id='myimg' />
-			<div id='cropdiv'>
-			<table width='100%' height='100%' border='1' cellpadding='0' cellspacing='0' bordercolor='#000000'>
-			<tr>
-			<td><img src='".$spacer."' /></td>
-			</tr></table>
-			</div>
-				 ";
-			echo $for_echo;
-		//--------------------------------------------------------
-	//	 }// if 12cropimage
-	//	 else echo "<strong>Note:</strong> 12CropImage option is not selected for cropping thumbnails. Thus, thumbnails are not changeable.<p />";
-
-  echo "</div>
-  </div><p />
-       ";
-
-}// end function
-
-
+	global $cfgrow , $txt, $image, $spacer;
+	
+	if($cfgrow['crop']=='12c')
+	{
+	
+        echo "
+        <hr />
+        <strong>12CropImage tool:</strong>
+        <br />
+        
+        This functionality is already inside admin/index.php but this addon is for demo only that show the abilities of \"addons for admin panel\" feature.
+        <br /><br />
+        
+        To edit the thumbnail for this photo, drag the crop window with mouse or expand/shrink it with '+'/'-' buttons:
+        <br />
+        
+        <input type='button' name='Submit1' value='Update Thumbnail' onclick=\"cropCheck('def','".$image ."');\" />
+        <input type='button' name='Submit3' value='".$txt['smaller']."' onMouseDown=\"cropZoom('in');\" onMouseUp='stopZoom();' />
+        <input type='button' name='Submit4' value='".$txt['bigger']."' onMouseDown=\"cropZoom('out');\" onMouseUp='stopZoom();' />";
+        
+        /**
+         * Set the size of the crop frame according to the uploaded image
+         *
+         */
+        setsize_cropdiv($image);
+        
+        echo "
+        <p />
+        
+        <img src='".$cfgrow['imagepath'].$image."' id='myimg' />
+        
+        <div id='cropdiv'>
+            <table width='100%' height='100%' border='1' cellpadding='0' cellspacing='0' bordercolor='#000000'>
+                <tr>
+                    <td><img src='".$spacer."' /></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+        </div>
+        <p />";
+    }
+	else
+	{
+        echo "<strong>Note:</strong> The 12CropImage option is not selected for cropping thumbnails.<p />Please enable the 12CropImage option <a href='index.php?view=options&optionsview=thumb'>here</a>.";
+	}
+}
 ?>
