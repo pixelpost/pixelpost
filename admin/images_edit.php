@@ -382,7 +382,6 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 			$query = "select count(*) as count from ".$pixelpost_db_prefix."pixelpost";
 		}
 		$photonumb = sql_array($query);
-		$photonumb['count'] = '';
 		if ($photonumb['count']) $pixelpost_photonumb = $photonumb['count'];
 		else $pixelpost_photonumb = "0";
 
@@ -392,7 +391,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
  		$_SESSION['page_pp'] = (int) $page;
 		if(isset($_SESSION['numimg_pp'])) { $_SESSION['numimg_pp'] = (int) $_SESSION['numimg_pp']; }
     
-		if ($_SESSION['numimg_pp'] == 0 OR !isset($_SESSION['numimg_pp']))	$_SESSION['numimg_pp'] = 10;
+		if (isset($_SESSION['numimg_pp']) AND $_SESSION['numimg_pp'] == 0 OR !isset($_SESSION['numimg_pp']))	$_SESSION['numimg_pp'] = 10;
 		elseif (isset($_POST['numimg_pp']) && $_POST['numimg_pp'] > 0)
 		{
 			$_SESSION['numimg_pp'] = ($pixelpost_photonumb < $_POST['numimg_pp'] && $pixelpost_photonumb > 0) ? $pixelpost_photonumb : $_POST['numimg_pp'];
@@ -558,7 +557,10 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 			while ($pcntr < $num_img_pages)
 		  	{
 				$pcntr++;
-				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>".($_GET['page']==$pagecounter?'<b>'.$pcntr.'</b>':$pcntr)."</a> ";
+				
+				$page_num = ($page == $pagecounter) ? "<strong>$pcntr</strong>" : $pcntr;
+				
+				$image_page_Links .= "<a href='index.php?view=images&amp;page=$pagecounter$getfstring'>$page_num</a> ";
 				$pagecounter=$pagecounter+$_SESSION['numimg_pp'];
 			}// end while
 			if ($page < (($num_img_pages-1)*$_SESSION['numimg_pp']))
