@@ -12,7 +12,11 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 {
 	if(!isset($_GET['optionsview'])){ $_GET['optionsview'] = ''; }
 	
-	$lang_error = 0;
+	/**
+	 * Initialize error array
+	 *
+	 */
+	$error = array();
 
 	////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +91,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 			}
 			else
 			{
-				$lang_error = 1;
+				$error['lang'] = $admin_lang_optn_upd_lang_error;
 			}
 			
 			/**
@@ -261,6 +265,16 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
     {
     	if(isset($_GET['optaction']) AND $_GET['optaction']=='updateantispam')
     	{
+			if(isset($_POST['token_time']) AND $_POST['token_time'] < 1)
+			{
+				/**
+				 * Token time < 1 minute is not allowed. Correct it and show error mesage.
+				 *
+				 */
+				$_POST['token_time'] = 1;
+				$error['token_time'] = $admin_lang_optn_token_error;
+			}
+			
     		/**
     		 * UPDATE;
     		 * token, DSBL, flood, max URI
@@ -347,7 +361,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 	////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////
 	////
-	////					ADVANCED OPTIONS SQL 
+	////					ADVANCED GENERAL OPTIONS SQL 
 	////
 	////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////
@@ -379,8 +393,174 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 			$cfgrow = sql_array("SELECT * FROM `".$pixelpost_db_prefix."config`");
 
 		}	// END updateadv_gen
-	}	// END optionsview / advanced
+	}	// END advanced / general
 	
+	////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////
+	////
+	////					ADVANCED LOCALIZATION OPTIONS SQL 
+	////
+	////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////
+	if(isset($_GET['advancedview']) AND $_GET['advancedview'] == '' OR isset($_GET['advancedview']) AND $_GET['advancedview'] == 'localization')
+	{
+		if(isset($_GET['optaction']) AND $_GET['optaction'] == 'updateadv_local' AND !isset($_POST['delete']))
+		{
+			/**
+			 * Clean the posted variables.
+			 *
+			 */
+			$language = strtolower($_POST['language']);
+			$language = preg_replace('# {1,}#', '_', trim($language)); // Replace recursive spaces with one underscore
+			$language = eregi_replace('[^a-zA-Z_]+','',$language);
+							
+			$abbreviation  = strtoupper(trim($_POST['abbr']));
+			$abbreviation  = eregi_replace('[^A-Z]+','',$abbreviation);
+			
+			$native_tongue = trim($_POST['native_tongue']);
+			
+			/**
+			 * Perform some simple checks before verifying the new language against the default pixelpost array.
+			 * Make sure all fields are filled and make sure the abbr has a string length of exactly two alpha characters.
+			 *
+			 */
+			if(empty($language) OR empty($abbreviation) OR empty($native_tongue))
+			{
+				$error['newlang_missing'] = $admin_lang_adv_local_err_fields;
+			}
+			elseif(strlen($abbreviation) < '2' OR  strlen($abbreviation) > '2')
+			{
+				$error['abbr_strlen'] = $admin_lang_adv_local_err_abbr_strlen;
+			}
+			else
+			{
+				/**
+				 * Query the database and pullout the default pixelpost language array.
+				 *
+				 */
+				$query = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."localization`");
+				$row   = mysql_fetch_array($query,MYSQL_ASSOC);
+				
+				/**
+				 * Unserialize the defualt language array using the UTF8 safe unserialize function, mb_unserialize.
+				 *
+				 */
+				$pp_supp_lang = mb_unserialize(stripslashes($row['pp_supp_lang']));
+				
+				/**
+				 * If a user supplied language array exists,
+				 * Unserialize the user language array using the UTF8 safe unserialize function, mb_unserialize,
+				 * and merge with the default pixelpost array.
+				 *
+				 */
+				if(!empty($row['user_supp_lang']))
+				{
+					$user_supp_lang = mb_unserialize(stripslashes($row['user_supp_lang']));
+					$pp_supp_lang   = array_merge($pp_supp_lang, $user_supp_lang);
+				}
+				
+				//var_dump($pp_supp_lang);
+				
+				/**
+				 * Create an array of default and user supplied language abbreviations and names.
+				 * Used to check for duplicate languages.
+				 *
+				 */
+				$languages		= array();
+				$abbreviations	= array();
+				foreach($pp_supp_lang as $lang => $abbr)
+				{
+					$languages[]	 = $lang;		// EG: german
+					$abbreviations[] = $abbr[0];	// EG: DE
+				}
+				
+				if(in_array($language, $languages) OR in_array($abbreviation, $abbreviations))
+				{
+					$error['duplicate'] = $admin_lang_adv_local_err_duplicate;
+				}
+				else
+				{
+					/**
+					 * Create the new user supplied language array
+					 *
+					 */
+					$user_supp_lang_new = array($language => array($abbreviation,$native_tongue));
+					
+					/**
+					 * Query the database and pullout the user supplied language array.
+					 *
+					 */
+					$query = mysql_query("SELECT `user_supp_lang` FROM `".$pixelpost_db_prefix."localization`");
+					$row   = mysql_fetch_array($query,MYSQL_ASSOC);
+					
+					/**
+					 * If a user supplied language array already exists,
+					 * Unserialize the user language array using the UTF8 safe unserialize function, mb_unserialize,
+					 * and merge with the new user supplied language array.
+					 *
+					 */
+					if(!empty($row['user_supp_lang']))
+					{
+						$user_supp_lang = mb_unserialize(stripslashes($row['user_supp_lang']));
+						$user_supp_lang_new = array_merge($user_supp_lang, $user_supp_lang_new);
+					}
+					
+					/**
+					 * Serialize the new array and insert it back into the database
+					 *
+					 */
+					$user_supp_lang_new = addslashes(serialize($user_supp_lang_new));
+					
+					//var_dump($user_supp_lang_new);
+					
+					$query = mysql_query("UPDATE `".$pixelpost_db_prefix."localization` SET `user_supp_lang` = '$user_supp_lang_new' WHERE `id` = '1'");
+					
+					/**
+					 * Flag that clears the text boxes upon successfully adding a new language
+					 *
+					 */
+					$lang_success = true;
+				}
+			}
+		}	// END updateadv_local
+		if(isset($_GET['optaction']) AND $_GET['optaction'] == 'updateadv_local' AND isset($_POST['delete']))
+		{
+			$abbr_to_del = $_POST['delete'];
+			
+			/**
+			 * Query the database and pullout the default pixelpost language array.
+			 *
+			 */
+			$query = mysql_query("SELECT `user_supp_lang` FROM `".$pixelpost_db_prefix."localization`");
+			$row   = mysql_fetch_array($query,MYSQL_ASSOC);
+			
+			/**
+			 * Unserialize the defualt language array using the UTF8 safe unserialize function, mb_unserialize.
+			 *
+			 */
+			$user_supp_lang = mb_unserialize(stripslashes($row['user_supp_lang']));
+			
+			
+			$user_supp_lang_new = array();
+			foreach($user_supp_lang as $lang => $abbr)
+			{
+				if(!in_array($abbr[0], $abbr_to_del))
+				{
+					$user_supp_lang_new[$lang] = array($abbr[0],$abbr[1]);
+				}
+			}
+			
+			/**
+			 * Serialize the new array and insert it back into the database
+			 *
+			 */
+			$user_supp_lang_new = addslashes(serialize($user_supp_lang_new));
+			
+			//var_dump($user_supp_lang_new);
+			
+			$query = mysql_query("UPDATE `".$pixelpost_db_prefix."localization` SET `user_supp_lang` = '$user_supp_lang_new' WHERE `id` = '1'");
+		}
+	}	// END advanced / localization
 	
 	/**
 	 * Display error or done when saving
@@ -388,28 +568,20 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 	 */
 	if(isset($_GET['optaction']) AND $_GET['optaction'] != "")
 	{
-		if($lang_error == 0)
+		/**
+		 * Show success or error message
+		 *
+		 */
+		if(!sizeof(&$error))
 		{
-			echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='".PHP_SELF."?view=options'>$admin_lang_reload";
-			
-			if(isset($_POST['token_time']) AND $_POST['token_time'] < 1 && $_GET['optionsview'] == 'antispam')
-			{
-				/**
-				 * Token time < 1 minute is not allowed. Correct it and show error mesage.
-				 *
-				 */
-				$_POST['token_time'] = 1;
-				echo "<br /><br />".$admin_lang_optn_token_error;
-			}
-			
-			echo "</a></div><p />\n";
+			echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='".PHP_SELF."?view=options'>$admin_lang_reload</a></div><p />";
 		}
-		elseif(isset($_GET['optaction']) AND $_GET['optaction'] == 'updateall' AND $lang_error = 1)
+		else
 		{
-			echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color=\"red\">$admin_lang_optn_upd_lang_error</font></div><p />\n";
+			$result = implode('<br />', $error);
+			echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color='red'><strong>$result</strong></font></div><p />";
 		}
 	}
-	
 	
 	/**
 	 * Options Menu Items
@@ -427,6 +599,14 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 		}
 
 		echo "<a href='index.php?view=options&amp;advancedview=general' class='$submenucssclass'>$admin_lang_optn_general</a>\n";
+		
+		$submenucssclass = 'notselected';
+		if(isset($_GET['advancedview']) AND $_GET['advancedview'] == 'localization')
+		{
+			$submenucssclass = 'selectedsubmenu';
+		}
+
+		echo "|<a href='index.php?view=options&amp;advancedview=localization' class='$submenucssclass'>LOCALIZATION</a>";//$admin_lang_localization
 		
 		$submenucssclass = 'notselected';
 		if(isset($_GET['advancedview']) AND $_GET['advancedview'] == 'antispam')
@@ -984,7 +1164,7 @@ echo <<<EOE
 		
 	</div>
 	<div id="footer">
-	<div id="footer"><a href="index.php?view=options&advancedview=general" title="$admin_lang_adv_optn_show_adv" id="show_optn">$admin_lang_adv_optn_show_adv</a></div>
+	<div id="footer"><a href="index.php?view=options&amp;advancedview=general" title="$admin_lang_adv_optn_show_adv" id="show_optn">$admin_lang_adv_optn_show_adv</a>
 EOE;
 
 	}	// END options / general
@@ -1350,7 +1530,7 @@ echo <<<EOE
 		</form>
 		
 	</div>
-	<div id="footer"><a href="index.php?view=options&advancedview=antispam" title="$admin_lang_adv_optn_show_adv" id="show_optn">$admin_lang_adv_optn_show_adv</a></div>
+	<div id="footer"><a href="index.php?view=options&amp;advancedview=antispam" title="$admin_lang_adv_optn_show_adv" id="show_optn">$admin_lang_adv_optn_show_adv</a>
 EOE;
 
 	}	// END options / antispam
@@ -1587,11 +1767,136 @@ echo <<<EOE
 		</form>
 		
 	</div>
-	<div id="footer"><a href="index.php?view=options&optionsview=general" title="$admin_lang_adv_optn_show_basic" id="show_optn">$admin_lang_adv_optn_show_basic</a></div>
+	<div id="footer"><a href="index.php?view=options&amp;optionsview=general" title="$admin_lang_adv_optn_show_basic" id="show_optn">$admin_lang_adv_optn_show_basic</a>
 	
 EOE;
 
 	}	// END view advanced / general
+	
+	////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////
+	////
+	////					START ADVANCED: LOCALIZATION OPTIONS
+	////
+	////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////
+	if(isset($_GET['advancedview']) AND $_GET['advancedview'] == 'localization')
+	{		
+		$language = '';
+		if(isset($_POST['language']) AND !isset($lang_success))
+		{
+			$language = strtolower($_POST['language']);
+			$language = preg_replace('# {1,}#', '_', trim($language));
+			$language = eregi_replace('[^a-zA-Z_]+','',$language);
+						
+		}
+		$abbreviation = '';
+		if(isset($_POST['abbr']) AND strlen($_POST['abbr']) == '2' AND !isset($lang_success))
+		{
+			$abbreviation = strtoupper(trim($_POST['abbr']));
+			$abbreviation  = eregi_replace('[^A-Z]+','',$abbreviation);
+		}
+		
+		$native_tongue = (isset($_POST['native_tongue']) AND !isset($lang_success)) ? trim($_POST['native_tongue']) : '';
+		
+		/**
+		 * Query the database and pullout the language array(s).
+		 *
+		 */
+		$query = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."localization`");
+		$row   = mysql_fetch_array($query,MYSQL_ASSOC);
+		
+		/**
+		 * Unserialize the defualt language array using the UTF8 safe unserialize function, mb_unserialize.
+		 *
+		 */
+		$pp_supp_lang = mb_unserialize(stripslashes($row['pp_supp_lang']));
+		
+		/**
+		 * If a user supplied language array exists,
+		 * Unserialize the user language array using the UTF8 safe unserialize function, mb_unserialize,
+		 * and merge with the default pixelpost array.
+		 *
+		 */
+		if(!empty($row['user_supp_lang']))
+		{
+			$user_supp_lang = mb_unserialize(stripslashes($row['user_supp_lang']));
+			$pp_supp_lang   = array_merge($pp_supp_lang, $user_supp_lang);
+		}
+		
+		//var_dump($pp_supp_lang);
+		
+		/**
+		 * Sort Array By Second Index (SABSI)
+		 *
+		 */		
+		$pp_supp_lang = sabsi($pp_supp_lang, 1);
+		
+		$i = 0;
+		$pp_available_langs = '';
+		foreach($pp_supp_lang as $lang => $parts)
+		{
+			$i++;
+			$className = ($i % 2) ? 'cellTwo' : 'cellOne';
+						
+			$delete = ($parts[0] != 'EN') ? '<td class="'.$className.'" align="center"><input type="checkbox" name="delete[]" value="'.$parts[0].'" /></td>' : '<td></td>';
+			
+			$pp_available_langs .= '
+			<tr>
+				<td class="'.$className.'">'.$parts[1].'</td>
+				<td class="'.$className.'">'.$lang.'</td>
+				<td class="'.$className.'" align="center">'.$parts[0].'</td>
+				<td class="'.$className.'"></td>
+				'.$delete.'
+			</tr>';
+			
+		}
+	
+echo <<<EOE
+		<form method="post" action="{$_SERVER['PHP_SELF']}?view=options&amp;advancedview=localization&amp;optaction=updateadv_local" accept-charset="UTF-8">
+			
+			<!-- LOCALIZATION -->
+			
+			<div class="jcaption">$admin_lang_adv_local_local</div>
+	
+			<div class="content">
+				<table border="0" cellspacing="2" cellpadding="0">
+					<tr>
+						<td>$admin_lang_adv_local_tongue</td>
+						<td>$admin_lang_adv_local_lang</td>
+						<td>$admin_lang_adv_local_abbr</td>
+						<td style="width:20px;"></td>
+						<td>$admin_lang_adv_local_del</td>
+					</tr>
+					<tr>
+						<td class="cellOne"><input type="text" name="native_tongue" value="$native_tongue" size="30" /></td>
+						<td class="cellOne"><input type="text" name="language" value="$language" size="30" /></td>
+						<td class="cellOne" align="center"><input type="text" name="abbr" value="$abbreviation" size="5" maxlength="2" style="text-align: center;" /></td>
+						<td class="cellOne"></td>
+						<td class="cellOne" align="center"><input type="checkbox" name="checkall" onclick="checkUncheckAll(this);" /></td>
+					</tr>
+					$pp_available_langs
+				</table>
+			</div>
+			
+			
+			<!-- UPDATE -->
+			
+			<div class="jcaption">$admin_lang_optn_update</div>
+	
+			<div class="content">
+				<input type="submit" value="$admin_lang_optn_update"  />
+			</div>
+			
+		</form>
+		
+	</div>
+	<div id="footer"><a href="index.php?view=options&amp;optionsview=general" title="$admin_lang_adv_optn_show_basic" id="show_optn">$admin_lang_adv_optn_show_basic</a>
+	
+EOE;
+
+
+	}	// END view advanced / antispam
 
 	////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////
@@ -1616,7 +1921,7 @@ echo <<<EOE
 		</form>
 		
 	</div>
-	<div id="footer"><a href="index.php?view=options&optionsview=antispam" title="$admin_lang_adv_optn_show_basic" id="show_optn">$admin_lang_adv_optn_show_basic</a></div>
+	<div id="footer"><a href="index.php?view=options&amp;optionsview=antispam" title="$admin_lang_adv_optn_show_basic" id="show_optn">$admin_lang_adv_optn_show_basic</a>
 	
 EOE;
 
@@ -1838,5 +2143,39 @@ function select_option($dir, $type)
 		$options .= "<option value=\"$val\"$selected>$name</option>\n";
     }
     return $options;
+}
+/**
+ * Sort Array By Second Index (SABSI)
+ * Source: http://us2.php.net/manual/en/function.asort.php#43513
+ *
+ */
+function sabsi($array, $index, $order='asc', $natsort = true, $case_sensitive = false)
+{
+	if(is_array($array) && count($array) > 0)
+	{
+		foreach(array_keys($array) as $key)
+		{
+			$temp[$key] = $array[$key][$index];
+		}
+		
+	    if(!$natsort)
+		{
+			($order == 'asc') ? asort($temp) : arsort($temp);
+		}
+		else
+		{
+			($case_sensitive) ? natsort($temp) : natcasesort($temp);
+			if($order != 'asc')
+			{
+				$temp = array_reverse($temp,true);
+			}
+	    }
+	    foreach(array_keys($temp) as $key)
+		{
+			(is_numeric($key)) ? $sorted[] = $array[$key] : $sorted[$key] = $array[$key];
+		}
+	    return $sorted;
+	}
+	return $array;
 }
 ?>

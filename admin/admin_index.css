@@ -333,3 +333,8 @@ hr {
 input {
    background:#E4E4E4;
    }
+   
+/* Localization table */
+.cellOne {
+	background-color: #eee;
+}

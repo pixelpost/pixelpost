@@ -162,32 +162,38 @@ $cdate    = $datetime; // for future posting, current date+time
 
 
 /**
- * LANGUAGE SELECTION - Original idea by RobbieMc (http://forum.pixelpost.org/showthread.php?t=3668)
+ * LANGUAGE SELECTION
  *
  * This is an array of all supported languages in PP. It contains the country abbreviation
  * and the native word for the language spoken in that country. This is used to get all
  * variables.
  *
+ */					
+
+/**
+ * Query the database and pullout the language array(s).
+ *
  */
-$PP_supp_lang = array('dutch'=>array('NL','Nederlands'),
-					  'english'=>array('EN','English'),
-					  'french'=>array('FR','Français'),
-					  'german'=>array('DE','Deutsch'),
-					  'italian'=>array('IT','Italiano'),
-					  'norwegian'=>array('NO','Norsk'),
-					  'persian'=>array('FA','Farsi'),
-					  'polish'=>array('PL','Polskiego'),
-					  'portuguese'=>array('PT','Português'),
-					  'simplified_chinese'=>array('CN','Chinese'),
-					  'spanish'=>array('ES','Español'),
-					  'swedish'=>array('SE','Svenska'),
-					  'danish'=>array('DK','Dansk'),
-					  'japanese'=>array('JP','Japanese'),
-					  'hungarian'=>array('HU','Magyar'),
-					  'romanian'=>array('RO','Romana'),
-					  'russian'=>array('RU','Russian'),
-					  'czech'=>array('CS','Česky')
-					 );
+$query = mysql_query("SELECT * FROM `".$pixelpost_db_prefix."localization`");
+$row   = mysql_fetch_array($query,MYSQL_ASSOC);
+
+/**
+ * Unserialize the defualt language array using the UTF8 safe unserialize function, mb_unserialize.
+ *
+ */
+$PP_supp_lang = mb_unserialize(stripslashes($row['pp_supp_lang']));
+
+/**
+ * If a user supplied language array exists,
+ * Unserialize the user language array using the UTF8 safe unserialize function, mb_unserialize,
+ * and merge with the default pixelpost array.
+ *
+ */
+if(!empty($row['user_supp_lang']))
+{
+	$user_supp_lang = mb_unserialize(stripslashes($row['user_supp_lang']));
+	$PP_supp_lang   = array_merge($PP_supp_lang, $user_supp_lang);
+}
 
 /**
  * The default language is the language the user has set in the adminpanel

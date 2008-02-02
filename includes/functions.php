@@ -549,6 +549,16 @@ function clean_url($str)
 }
 
 /**
+ * UTF8 unserialize function
+ *
+ */
+function mb_unserialize($serial_str)
+{
+    $serial_str = preg_replace('!s:(\d+):"(.*?)";!se', "'s:'.strlen('$2').':\"$2\";'", $serial_str);
+    return unserialize($serial_str);
+}
+
+/**
  * Book a visitor
  *
  */
