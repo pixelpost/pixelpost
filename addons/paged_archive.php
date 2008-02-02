@@ -759,6 +759,7 @@ $cym = $start[0];
 $y = substr($cym, 0, 4);
 $m = substr($cym, 4, 2);
 $cy = date('Y');
+$cm = date('m');
 
 $browse_monthly_menu = "<div id='br_mo_me'>\n";
 
@@ -770,6 +771,7 @@ for($x = $y; $x <= $cy; $x++)
 	{
 		if($m == 1)	$browse_monthly_menu .= "<span class='br_mo_me_y_$x'>$x</span>\n";
 		$m = ($m < 10) ? "0$m" : $m;
+		$m2 = ($x == $cy && $m == $cm) ? $m.' br_mo_me_curr' : $m;
 
 		if($cym < "$x$m")
 		{
@@ -777,7 +779,7 @@ for($x = $y; $x <= $cy; $x++)
 			$cym = $cym[0];
 		}
 
-		$browse_monthly_menu .= ($cym == "$x$m") ? " <a href='".PHP_SELF."?x=browse&amp;bryear=$x&amp;brmonth=$m' class='br_mo_me_".$x."_$m'>$m</a>\n" : " <span class='br_mo_me_".$x."_$m'>$m</span>\n";
+		$browse_monthly_menu .= ($cym == "$x$m") ? " <a href='".PHP_SELF."?x=browse&amp;bryear=" . $x . "&amp;brmonth=" . $m . "' class='br_mo_me_" . $x . "_" . $m2 . "'>" . $m . "</a>\n" : " <span class='br_mo_me_" . $x . "_" . $m2 . "'>" . $m . "</span>\n";
 	}
 	$browse_monthly_menu .= "</div>\n";
 }
