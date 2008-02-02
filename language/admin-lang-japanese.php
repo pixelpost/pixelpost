@@ -462,6 +462,15 @@ $admin_lang_adv_optn_notice						= "The settings below are for advanced users on
 $admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
 $admin_lang_adv_optn_show_basic					= "Show Basic Settings";
 
+$admin_lang_adv_local_local						= "LOCALIZATION";
+$admin_lang_adv_local_lang						= "Language:";
+$admin_lang_adv_local_tongue					= "Native Tongue:";
+$admin_lang_adv_local_abbr						= "Abbreviation:";
+$admin_lang_adv_local_del						= "Delete:";
+$admin_lang_adv_local_err_fields				= "All fields must be filled in!";
+$admin_lang_adv_local_err_abbr_strlen			= "The language abbreviation must contain exactly two characters!";
+$admin_lang_adv_local_err_duplicate				= "I'm Sorry, the language already exists!";
+
 
 // Spam
 $admin_lang_spam_ban                            = "禁止リストを更新する";
