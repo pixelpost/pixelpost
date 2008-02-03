@@ -165,6 +165,7 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
 	    	}
 	    	// done
 	    	// moved by Dennis to get a more consistent upload process.
+			$to_echo = '';
 			if ($show_thumbnail_creation_page){
 				$to_echo = "<div id='caption'>$admin_lang_ni_posted: $headline</div>
 		 			<div class='content'>$body<br/>
@@ -237,7 +238,7 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
 	{
 		unset($alt_headline, $alt_tags, $alt_body, $_POST['category'], $_POST['autodate'], $_POST['post_year'], $_POST['post_month'], $_POST['post_day'], $_POST['post_hour'], $_POST['post_minute'], $_POST['allow_comments']);
 	}
-	if ($_GET['x'] != "save")
+	if (isset($_GET['x']) AND $_GET['x'] != "save" OR !isset($_GET['x']))
     {
 ?>
 
@@ -397,7 +398,7 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
 		<div class='content'>$admin_lang_optn_cmnt_mod_txt2
 		<select name=\"allow_comments\">";
 
-	$allow_comments = (strlen($_POST['allow_comments']) > 0) ? clean($_POST['allow_comments']) : $cfgrow["global_comments"];
+	$allow_comments = (isset($_POST['allow_comments']) AND strlen($_POST['allow_comments']) > 0) ? clean($_POST['allow_comments']) : $cfgrow["global_comments"];
 
 	if($allow_comments == 'A')
 	{
