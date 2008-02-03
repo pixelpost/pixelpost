@@ -220,9 +220,14 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 		$alt_body = clean($_POST['alt_body']);
 		$comments_settings = clean($_POST['comments_settings']);
 		$getid = intval($_GET['imageid']);
-		$newdatetime = $_POST['newdatetime'];
+		
+		$newdatetime =
+             intval($_POST['post_year'])."-".
+             intval($_POST['post_month'])."-".
+             intval($_POST['post_day'])." ".
+             intval($_POST['post_hour']).":".
+             intval($_POST['post_minute']).":".date('s');
 		save_tags_edit($_POST['tags'],$getid);
-
 		if ($cfgrow['altlangfile'] != 'Off')	save_tags_edit($_POST['alt_tags'],$getid,"alt_");
 
 		$query = "delete from ".$pixelpost_db_prefix."catassoc where image_id='$getid'";
@@ -733,14 +738,78 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
 
 			list($img_width,$img_height,$type,$attr) = getimagesize($cfgrow['imagepath'].$image);
 			$img_size = filesize($cfgrow['imagepath'].$image);
-      $img_size = number_format($img_size);
-
-   		echo "
-			<div class='jcaption'>$admin_lang_imgedit_dtime</div>
+      	$img_size = number_format($img_size);
+      	
+      	$yearUpload=substr($imagerow['datetime'],0,4);
+        $monthUpload=substr($imagerow['datetime'],5,2);
+        $dayUpload=substr($imagerow['datetime'],8,2);
+        $hourUpload=substr($imagerow['datetime'],11,2);
+        $minuteUpload=substr($imagerow['datetime'],14,2);
+        $secondUpload=substr($imagerow['datetime'],17,2);
+        $dateUpload=mktime($hourUpload,$minuteUpload,$secondUpload,$monthUpload,$dayUpload,$yearUpload);
+		
+		echo "<div class='jcaption'>$admin_lang_imgedit_dtime</div>
 			<div class='content'>
-				<input type='text' name='newdatetime' value='".$imagerow['datetime']."' style='width:300px;' />
-			</div>
-			<div class='jcaption'>$admin_lang_optn_comment_setting2</div>
+					 <table id=\"datetable\"><tr>
+					 <td>{$admin_lang_ni_year}</td><td style=\"width:5px;\">-</td><td>{$admin_lang_ni_month}</td><td style=\"width:5px;\">-</td><td>{$admin_lang_ni_day}</td><td><img src='../includes/spacer.gif' height='1' width='30' alt=''/></td><td>{$admin_lang_ni_hour}</td><td style=\"width:5px;\">-</td><td>{$admin_lang_ni_min}</td>
+ 					</tr><tr><td><select name='post_year'>
+						<option value='".date("Y",$dateUpload)."'>".date("Y",$dateUpload)."</option>";
+		$lc = 2002;
+		while($lc <= (date("Y")+3))
+		{
+	  		echo "<option";
+	  		if(isset($_POST['post_year']) AND $_POST['post_year']==$lc)	echo " SELECTED";
+	  		echo " value='$lc'>$lc</option>";
+	  		$lc++;
+		}
+		echo "</select></td><td style=\"width:5px;\">-</td><td><select name='post_month'>
+			<option value='".date("m",$dateUpload)."'>".date("m",$dateUpload)."</option>";
+		$lc = 1;
+		while($lc <= 12)
+		{
+	  		if($lc < 10) { $lc = "0$lc"; }
+	  		echo "<option";
+	  		if(isset($_POST['post_month']) AND $_POST['post_month']==$lc)	echo " SELECTED";
+	  		echo " value='$lc'>$lc</option>";
+	  		$lc++;
+		}
+		echo "</select></td><td style=\"width:5px;\">-</td><td><select name='post_day'>
+			<option value='".date("d",$dateUpload)."'>".date("d",$dateUpload)."</option>";
+		$lc = 1;
+		while($lc <= 31)
+		{
+	  		if($lc < 10) { $lc = "0$lc"; }
+	  		echo "<option";
+	  		if(isset($_POST['post_day']) AND $_POST['post_day']==$lc)	echo " SELECTED";
+	  		echo " value='$lc'>$lc</option>";
+	  		$lc++;
+		}
+		echo "</select></td><td><img src='../includes/spacer.gif' height='1' width='30' alt=\"\"/></td><td>
+			<select name='post_hour'>
+			<option value='".date("H",$dateUpload)."'>".date("H",$dateUpload)."</option>";
+		$lc = 0;
+		while($lc < 24)
+		{
+	  		if($lc < 10) { $lc = "0$lc"; }
+	  		echo "<option";
+	  		if(isset($_POST['post_hour']) AND $_POST['post_hour']==$lc)	echo " SELECTED";
+	  		echo " value='$lc'>$lc</option>";
+	  		$lc++;
+  		}
+		echo "</select></td><td style=\"width:5px;\">-</td><td><select name='post_minute'>
+			<option value='".date("i",$dateUpload)."'>".date("i",$dateUpload)."</option>";
+		$lc = 0;
+		while($lc <= 59)
+		{
+	  		if($lc < 10) { $lc = "0$lc"; }
+	  		echo "<option";
+	  		if(isset($_POST['post_minute']) AND $_POST['post_minute']==$lc)	echo " SELECTED";
+	  		echo " value='$lc'>$lc</option>";
+	  		$lc++;
+		}
+		echo "</select></td></tr></table></div>";
+
+   		echo "<div class='jcaption'>$admin_lang_optn_comment_setting2</div>
  			<div class='content'>$admin_lang_optn_cmnt_mod_txt2
  				<select name=\"comments_settings\">";
 
