@@ -111,6 +111,8 @@ $admin_lang_ni_description        				= "Bildbeskrivning / text";
 $admin_lang_ni_datetime           				= "Datum och tid f&ouml;r posten";
 $admin_lang_ni_post_now           				= "Posta nu";
 $admin_lang_ni_post_one_day_after 				= "Posta en dag efter senaste posten";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     				= "Posta ett speciellt datum. Ange datumet nedan:";
 $admin_lang_ni_post_entry         				= "Posta bilden";
 $admin_lang_ni_upload             				= "Ladda upp";
@@ -330,6 +332,8 @@ $admin_lang_optn_markdown             			= "AKTIVERA MARKDOWN";
 $admin_lang_optn_markdown_desc        			= "Ska Pixel post aktivera Markdown feature f&ouml;r bildbeskrivningar?";
 $admin_lang_optn_exif			        		= "AKTIVERA EXIF";
 $admin_lang_optn_exif_desc		        		= "Ska Pixelpost aktivera Exif feature p&aring; startsidan?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			        		= "AKTIVERA TOKEN I FORMUL&Auml;R";
 $admin_lang_optn_token_desc		        		= "Om du anv&auml;nder Token s&aring; kommer sannolikheten f&ouml;r <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a> att minska<br/><br/>\n
 												Om den h&auml;r inst&auml;llningen &auml;r aktiverad s&aring; kommer kommentarer bara sparas om Token-f&auml;ltet st&auml;mmer &ouml;vernes med det i din anv&auml;ndarsession. F&ouml;r att l&auml;gga till funktionen p&aring; din fotoblogg s&aring; m&aring;ste du l&auml;gga till Pixelpost-taggen <strong>&lt;TOKEN&gt;</strong> i sidmallen f&ouml;r kommentarer. Placera den n&aring;gonstans mellan <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> taggarna.

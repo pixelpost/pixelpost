@@ -119,6 +119,8 @@ $admin_lang_ni_description        = "Opis zdjęcia / tekst";
 $admin_lang_ni_datetime           = "Data i czas wpisu";
 $admin_lang_ni_post_now           = "Zrób wpis teraz";
 $admin_lang_ni_post_one_day_after = "Zrób wpis dzień po ostatnim wpisie";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     = "Zrób wpis z konkretną datą. Ustaw datę poniżej:";
 $admin_lang_ni_post_entry         = "Wyślij wpis";
 $admin_lang_ni_upload             = "Wyślij";
@@ -349,6 +351,8 @@ $admin_lang_optn_markdown             = "DOSTĘPNOŚĆ MARKDOWN";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie zdjęcia?";
 $admin_lang_optn_exif			            = "EXIF";
 $admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF do pokazania na stronie głównej?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			          = "AKTYWACJA TOKENÓW W FORMULARZACH";
 $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobieństwo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html lub innego, w którym znajduje się formularz komentarzy) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.

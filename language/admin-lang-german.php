@@ -117,6 +117,8 @@ $admin_lang_ni_description        = "Bild-Beschreibung / Text";
 $admin_lang_ni_datetime           = "Datum und Zeitangaben";
 $admin_lang_ni_post_now           = "Jetzt ver&ouml;ffentlichen";
 $admin_lang_ni_post_one_day_after = "Einen Tag nach dem aktuellsten Eintrag posten";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     = "Zu einem bestimmten Zeitpunkt posten. Tragen Sie das Datum hier ein:";
 $admin_lang_ni_post_entry         = "Eintrag ver&ouml;ffentlichen";
 $admin_lang_ni_upload             = "Hochladen";
@@ -444,6 +446,8 @@ $admin_lang_optn_markdown             = "Markdown verwenden";
 $admin_lang_optn_markdown_desc        = "Soll Pixelpost die Markdown-Funktion in der Bildbeschreibung verwenden?";
 $admin_lang_optn_exif			            = "Exif verwenden";
 $admin_lang_optn_exif_desc		        = "Soll Pixelpost die Exif-Funktion in der Bildseite verwenden?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			          = "Token in Formularen aktivieren";
 $admin_lang_optn_token_desc		        = "Die Verwendung eines Token reduziert die Wahrscheinlichkeit von <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Wenn diese Option aktiviert ist, werden Kommentare nur gespeichert, wenn der Token im Formular dem Token in der Benutzer-Session entspricht. Um das zu implementieren mÃƒÂ¼ssen Sie <strong>&lt;TOKEN&gt;</strong> im Kommentarfeld einfÃƒÂ¼gen (irgendwo zwischen den <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> Tags).

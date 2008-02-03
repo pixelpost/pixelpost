@@ -45,7 +45,7 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
         $postdatefromexif = FALSE;
 		if( $_POST['autodate'] == 1)
 		{
-			$query = mysql_query("select datetime + INTERVAL 1 DAY from ".$pixelpost_db_prefix."pixelpost order by datetime desc limit 1");
+			$query = mysql_query("select datetime + INTERVAL ".$cfgrow['daysafterlastpost']." DAY from ".$pixelpost_db_prefix."pixelpost order by datetime desc limit 1");
 			$row = mysql_fetch_row($query);
 			if( $row) $datetime = $row[0];	// If there is none, will default to the other value
 		}
@@ -295,7 +295,7 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
     <?php echo $admin_lang_ni_datetime;?></div>
     <div class='content'>
      <input type="radio" name="autodate" value="2" <?php if($selected_autodate[2]) echo 'checked="checked" ';?>id="postnow"/><label for="postnow"><?php echo $admin_lang_ni_post_now . ' (~'.$cur_time.')';?></label><br/>
-     <input type="radio" name="autodate" value="1" <?php if($selected_autodate[1]) echo 'checked="checked" ';?>id="postdayaft"/><label for="postdayaft"><?php echo $admin_lang_ni_post_one_day_after;?></label><br/>
+     <input type="radio" name="autodate" value="1" <?php if($selected_autodate[1]) echo 'checked="checked" ';?>id="postdayaft"/><label for="postdayaft"><?php if ($cfgrow['daysafterlastpost']==1){echo $admin_lang_ni_post_one_day_after;}else{echo $admin_lang_ni_post.$cfgrow['daysafterlastpost'].$admin_lang_ni_post_multiple_days_after;}?></label><br/>
      <input type='radio' name='autodate' value='3' <?php if($selected_autodate[3]) echo 'checked="checked" ';?>id="exifdate"/><label for="exifdate"><?php echo $admin_lang_ni_post_exif_date;?></label><br/>
      <input type='radio' name='autodate' value='0' <?php if($selected_autodate[0]) echo 'checked="checked" ';?>id="specificdate"/><label for="specificdate"><?php echo $admin_lang_ni_post_spec_date;?></label><br/><br/>
 

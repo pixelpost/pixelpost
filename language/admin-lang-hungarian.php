@@ -108,6 +108,8 @@ $admin_lang_ni_description        			= "Képleírás";
 $admin_lang_ni_datetime           			= "Dátum és idő megadása";
 $admin_lang_ni_post_now           			= "Most";
 $admin_lang_ni_post_one_day_after 			= "Egy nappal az utolsó bejegyzés után";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     			= "Adott időpontban. Alul beállíthatod, hogy mikor:";
 $admin_lang_ni_post_entry         			= "Feltöltés";
 $admin_lang_ni_upload             			= "Feltölt";
@@ -328,6 +330,8 @@ $admin_lang_optn_markdown             			= "MARKDOWN ENGEDÉLYEZÉSE";
 $admin_lang_optn_markdown_desc        			= "Szeretnéd, ha a Pixelpost engedélyezné a Markdown-t a képek leírásában?";
 $admin_lang_optn_exif			        	= "EXIF ENGEDÉLYEZÉSE";
 $admin_lang_optn_exif_desc		        	= "Szeretnéd, ha a Pixelpost engedélyezné az EXIF információk megjelenítését a főoldalon?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			        	= "TOKENEK ENGEDÉLYEZÉSE";
 $admin_lang_optn_token_desc		        	= "A token használata csökkenti az ún. <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgery</a> valószínűségét.<br/><br/>\n
 							Ha ezt engedélyezed, akkor megjegyzések csak akkor mentődnek, ha a formban visszakapott token azonos a kapcsolat (session) tokenjével. Ahhoz, hogy ez működjön, egy  <strong>&lt;TOKEN&gt;</strong> taget kell hozzáadnod a megjegyzés mintához (comments template) a <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tagek közé.

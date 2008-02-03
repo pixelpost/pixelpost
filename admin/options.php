@@ -67,6 +67,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 			`markdown`				=  '".clean($_POST['markdown'])."',
 			`exif`					=  '".clean($_POST['exif'])."',
 			`visitorbooking`		=  '".clean($_POST['visitorbooking'])."',
+			`daysafterlastpost`		=  '".(int) $_POST['daysafterlastpost']."',
 			`rsstype`				=  '".clean($_POST['rsstype'])."',
 			`feed_discovery`		=  '".clean($_POST['feed_discovery'])."',
 			`feeditems`				=  '".(int) $_POST['feeditems']."',
@@ -1086,6 +1087,14 @@ echo <<<EOE
 			</select>
 		</div>
 		
+		<!-- Post every X days -->
+		
+		<div class="jcaption">$admin_lang_optn_postafterdays</div>
+		
+		<div class="content">
+			$admin_lang_optn_postafterdays_desc
+			&nbsp;<input type="text" name="daysafterlastpost" value="{$cfgrow['daysafterlastpost']}" class="input" style="width:20px;" />
+		</div>
 
 		<!-- RSS feed options -->
 		

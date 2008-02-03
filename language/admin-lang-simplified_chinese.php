@@ -112,6 +112,8 @@ $admin_lang_ni_description        = "图片描述";
 $admin_lang_ni_datetime           = "发表图片的日期时间";
 $admin_lang_ni_post_now           = "使用现在的时间";
 $admin_lang_ni_post_one_day_after = "使用最后一张上传图片一天后的时间";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     = "自定义时间。请在下面设置：";
 $admin_lang_ni_post_entry         = "发表图片";
 $admin_lang_ni_upload             = "上传";
@@ -329,6 +331,8 @@ $admin_lang_optn_markdown             = "使用Markdown";
 $admin_lang_optn_markdown_desc        = "在图片说明使用Markdown功能吗？";
 $admin_lang_optn_exif			            = "使用Exif";
 $admin_lang_optn_exif_desc		        = "在首页使用Exif功能吗？";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			          = "在表单中使用记号";
 $admin_lang_optn_token_desc		        = "使用记号会有效降低<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">跨网站的虚假请求</a>。<br/><br/>\n
 																				 如果这个设置用在评论上，只有表单的记号与用户的session一致才保存。实施的话需要加入<strong>&lt;TOKEN&gt;</strong>到评论的模板文件中的<strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>标签。

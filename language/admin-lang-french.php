@@ -110,6 +110,8 @@ $admin_lang_ni_description          = "L&eacute;gende de l'image";
 $admin_lang_ni_datetime             = "Date et heure de la publication";
 $admin_lang_ni_post_now             = "Publier maintenant";
 $admin_lang_ni_post_one_day_after   = "Publier 24 heures apr&egrave;s la pr&eacute;c&eacute;dente";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date       = "Publier &agrave; une date pr&eacute;cise, indiqu&eacute;e ci-dessous:";
 $admin_lang_ni_post_entry           = "Publier";
 $admin_lang_ni_upload               = "T&eacute;l&eacute;charger";
@@ -329,6 +331,8 @@ $admin_lang_optn_markdown             = "Activer le code Markdown";
 $admin_lang_optn_markdown_desc        = "Pixelpost doit-il activer le code Markdown dans la l&eacute;gende des images ? (<a href=\"http://fr.wikipedia.org/wiki/Markdown\">plus d'info</a>)";
 $admin_lang_optn_exif			      = "Activer Exif";
 $admin_lang_optn_exif_desc		      = "Pixelpost doit-il activer l'affichage des donn&eacute;es Exif sur la page principale ?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			      = "Autoriser les jetons dans les formulaires";
 $admin_lang_optn_token_desc		      = "Autoriser l'usage d'un jeton (token) r&eacute;duira la possibilit&eacute; d'un piratage (<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>).<br/><br/>\n
 								Si cette option est activ&eacute;e, les commentaires ne seront enregistr&eacute;s que si le jeton du formulaire correspond &agrave; la session du visiteur. Pour mettre en oeuvre cette fonctionnalit&eacute;, il vous faut ajouter <strong>&lt;TOKEN&gt;</strong> au fichier comments de votre mod&egrave;le, quelque part entre les balises  <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.

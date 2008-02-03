@@ -110,6 +110,8 @@ $admin_lang_ni_description        				= "Image description / text";
 $admin_lang_ni_datetime           				= "Date and Time for the entry";
 $admin_lang_ni_post_now           				= "Post now";
 $admin_lang_ni_post_one_day_after 				= "Post one day after the last post";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     				= "Post on a specific date. Please set the date below:";
 $admin_lang_ni_post_entry         				= "Post Entry";
 $admin_lang_ni_upload             				= "Upload";
@@ -329,6 +331,8 @@ $admin_lang_optn_markdown             			= "ENABLE MARKDOWN";
 $admin_lang_optn_markdown_desc        			= "Should Pixelpost enable Markdown feature in Image description?";
 $admin_lang_optn_exif			        		= "ENABLE EXIF";
 $admin_lang_optn_exif_desc		        		= "Should Pixelpost enable Exif feature on the frontpage?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			        		= "ENABLE TOKEN IN FORMS";
 $admin_lang_optn_token_desc		        		= "Using a token will reduce the probability of <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 												If this setting is on, comments will only be saved when the token of the form corresponds to the one within the users session.<br />To implement tokens, you must add the <strong>&lt;TOKEN&gt;</strong> tag to your comment form somewhere between the <strong><i>&lt;form&gt;</i></strong>...<strong><i>&lt;/form&gt;</i></strong> tags.<br />

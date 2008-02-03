@@ -109,6 +109,8 @@ $admin_lang_ni_description                      = "イメージ説明/テキス�
 $admin_lang_ni_datetime                         = "エントリの日時";
 $admin_lang_ni_post_now                         = "現在の日時で投稿する";
 $admin_lang_ni_post_one_day_after               = "最終投稿日時の1日後に投稿する";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date                   = "投稿日時を指定する。下記で日時を指定してください:";
 $admin_lang_ni_post_entry                       = "エントリの投稿";
 $admin_lang_ni_upload                           = "アップロード";
@@ -328,6 +330,8 @@ $admin_lang_optn_markdown                       = "Markdownを有効にする";
 $admin_lang_optn_markdown_desc                  = "イメージ説明でPixelpostのMarkdown機能を有効にしますか?";
 $admin_lang_optn_exif                           = "Exifを有効にする";
 $admin_lang_optn_exif_desc                      = "フロントページでPixelpostのExif機能を有効にしますか?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token                          = "フォームでトークンを有効にする";
 $admin_lang_optn_token_desc                     = "トークンを使用することで、おそらく<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>を減らすことができます。<br/><br/>\n
                                                    コメントでトークンの使用を設定することにより、ユーザセッションとトークンが一致する場合のみコメントが保存されます。この機能を実装するには、コメントテンプレートファイル内で <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> タグの間に <strong>&lt;TOKEN&gt;</strong> を追加してください。

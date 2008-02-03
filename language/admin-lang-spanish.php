@@ -109,6 +109,8 @@ $admin_lang_ni_description        				= "Descripc&iacute;&oacute;n / texto";
 $admin_lang_ni_datetime           				= "Fecha y hora";
 $admin_lang_ni_post_now           				= "Publicar ahora";
 $admin_lang_ni_post_one_day_after 				= "Publicar un d&iacute;a despues de la ultima imagen";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     				= "Publicar el(ingresar fecha):";
 $admin_lang_ni_post_entry         				= "Publicar";
 $admin_lang_ni_upload             				= "Subir";
@@ -328,6 +330,8 @@ $admin_lang_optn_markdown             			= "HABILITAR MARKDOWN";
 $admin_lang_optn_markdown_desc        			= "&iquest;Habilitar la funci&oacute;n Markdown en la descripci&oacute;n de la imagen?";
 $admin_lang_optn_exif			        		= "HABILITAR EXIF";
 $admin_lang_optn_exif_desc		        		= "&iquest;Habilitar datos EXIF en la p&aacute;gina principal?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			        		= "HABILITAR FICHAS EN FORMULARIOS";
 $admin_lang_optn_token_desc		        		= "Utilizar fichas reducir&aacute; la probabilidad de ataques de tipo<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgerie</a>.<br/><br/>\n
 																				 Si el par&aacute;metro est&aacute; activdo, s&oacute;lo se guardar&aacute;n comentarios cuando el el token del formulario corresponda al usuario que ha iniciado sesi&oacute;n. Pra implementar &eacute;sto debes a&ntilde;adir <strong>&lt;TOKEN&gt;</strong> a la plantilla de comentarios entre las etiquetas <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.

@@ -110,6 +110,9 @@ $admin_lang_ni_description        = "Afbeeldingsomschrijving / tekst";
 $admin_lang_ni_datetime           = "Datum en Tijd voor de afbeelding";
 $admin_lang_ni_post_now           = "Plaats nu";
 $admin_lang_ni_post_one_day_after = "Plaats een dag na de laatste plaatsing";
+$admin_lang_ni_post												= "Plaats ";
+$admin_lang_ni_post_multiple_days_after		= " dagen na de laatste plaatsing";
+
 $admin_lang_ni_post_spec_date     = "Plaats op een specifiek moment. Stel hieronder de datum in:";
 $admin_lang_ni_post_entry         = "Plaats afbeelding";
 $admin_lang_ni_upload             = "Upload";
@@ -329,6 +332,8 @@ $admin_lang_optn_markdown             = "SCHAKEL MARKDOWN IN";
 $admin_lang_optn_markdown_desc        = "Moet Pixelpost Markdown eigenschap inschakelen in de afbeeldingsomschrijving?";
 $admin_lang_optn_exif			            = "SCHAKEL EXIF IN";
 $admin_lang_optn_exif_desc		        = "Moet Pixelpost EXIF eigenschap inschakelen op de voorpagina?";
+$admin_lang_optn_postafterdays      = "AANTAL DAGEN NA DE LAATSTE PLAATSING";
+$admin_lang_optn_postafterdays_desc ="Geef het aantal dagen wanneer een foto geplaatst moet worden na de laatste plaatsing:";
 $admin_lang_optn_token			          = "SCHAKEL TOKEN IN IN FORMULIEREN";
 $admin_lang_optn_token_desc		        = "Wanneer een token gebruikt wordt verminderd dit de kans op een zogenaamde <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Vervalsing</a><br/><br/>\n
 																				 Als deze instelling is ingeschakeld zullen reacties alleen maar opgeslagen worden wanneer het token in de formulier overeenkomt met het TOKEN in de gebruikerssessie. Om dit te implementeren moet u <strong>&lt;TOKEN&gt;</strong> toevoegen aan de reactie template bestand ergens tussen de <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> tags.

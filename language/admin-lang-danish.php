@@ -109,6 +109,8 @@ $admin_lang_ni_description        = "Beskrivelse / tekst";
 $admin_lang_ni_datetime           = "Dato og tid for indl&aelig;gget";
 $admin_lang_ni_post_now           = "Post nu";
 $admin_lang_ni_post_one_day_after = "Post en dag efter sidste indl&aelig;g";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     = "Post p&aring; en specifik dato. Indstil datoen herunder:";
 $admin_lang_ni_post_entry         = "Udf&oslash;r";
 $admin_lang_ni_upload             = "Upload";
@@ -329,6 +331,8 @@ $admin_lang_optn_markdown             = "BRUG MARKDOWN";
 $admin_lang_optn_markdown_desc        = "Skal Pixelpost sl&aring; Markdown-funktionen til i billedbekrivelsen?";
 $admin_lang_optn_exif			            = "BRUG EXIF";
 $admin_lang_optn_exif_desc		        = "Skal Pixelpost sl&aring; Exif-information p&aring; forsiden til?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			          = "BRUG TOKEN VED KOMMENTARER";
 $admin_lang_optn_token_desc		        = "Brug af token vil reducere risikoen for s&aring;kaldte<a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Hvis denne funktion er sl&aring;et til vil kommentarer kun bliver gemt, hvis kommentarfeltets token passer med den der er gemt i brugerens session. For at implementere dette skal du tilf&oslash;je <strong>&lt;TOKEN&gt;</strong> til kommentar-skabelonen et sted mellem <strong><i>&lt;form&gt; og &lt;/form&gt;</i></strong>.

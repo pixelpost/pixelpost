@@ -552,4 +552,55 @@ function UpgradeTo171($prefix, $newversion) {
 	return $create_status;
 }
 
+
+function UpgradeTo18($prefix, $newversion) {
+
+	global $lang_updated, $lang_create_update_to;
+	
+	deactivateAddons($prefix);
+	activatePxlpstAddons($prefix);
+	
+	$create_status[null] = null;
+
+	mysql_query("
+		CREATE TABLE IF NOT EXISTS `".$pixelpost_db_prefix."localization` (
+	  	`id` int(11) NOT NULL auto_increment,
+	  	`pp_supp_lang` text,
+	  	`user_supp_lang` text,
+	  	PRIMARY KEY  (`id`))
+	") or die("MySQL Error: ". mysql_error());
+	$pp_supp_lang = array('english'=>array('EN','English'));
+	$pp_supp_lang = serialize($pp_supp_lang);
+	mysql_query("INSERT INTO `".$pixelpost_db_prefix."localization` (`pp_supp_lang`) VALUE ('$pp_supp_lang')") or die("MySQL Error: ". mysql_error());
+	$user_supp_lang = array('dutch'=>array('NL','Nederlands'),
+						  'french'=>array('FR','Français'),
+						  'german'=>array('DE','Deutsch'),
+						  'italian'=>array('IT','Italiano'),
+						  'norwegian'=>array('NO','Norsk'),
+						  'persian'=>array('FA','Farsi'),
+						  'polish'=>array('PL','Polskiego'),
+						  'portuguese'=>array('PT','Português'),
+						  'simplified_chinese'=>array('ZH','Chinese'),//CN
+						  'spanish'=>array('ES','Español'),
+						  'swedish'=>array('SV','Svenska'),//SE
+						  'danish'=>array('DA','Dansk'),//DK
+						  'japanese'=>array('JA','Japanese'),//JP
+						  'hungarian'=>array('HU','Magyar'),
+						  'romanian'=>array('RO','Romana'),
+						  'russian'=>array('RU','Russian'),
+						  'czech'=>array('CS','Česky')
+						 );
+
+	$user_supp_lang = serialize($user_supp_lang);
+	mysql_query("UPDATE `".$pixelpost_db_prefix."localization` SET `user_supp_lang` = '$user_supp_lang'") or die("MySQL Error: ". mysql_error());
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `feed_enclosure` ENUM('Y', 'N') NOT NULL DEFAULT 'Y' AFTER `feed_external_type`") or die("MySQL Error: ". mysql_error());
+	mysql_query("ALTER TABLE `".$pixelpost_db_prefix."config` ADD `daysafterlastpost` VARCHAR( 3 ) NOT NULL DEFAULT '1'") or die("MySQL Error: ". mysql_error());
+
+	// Update version
+	mysql_query("INSERT INTO `{$prefix}version` (version) VALUES ($newversion)")or die("MySQL Error: ". mysql_error());
+	
+	$create_status[$lang_create_update_to."&nbsp;".$newversion] = $lang_updated;
+	
+	return $create_status;
+}
 ?>

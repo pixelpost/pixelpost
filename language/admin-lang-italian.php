@@ -113,6 +113,8 @@ $admin_lang_ni_description        = "Testo / descrizione immagine";
 $admin_lang_ni_datetime           = "Data e Ora per la Pubblicazione";
 $admin_lang_ni_post_now           = "Pubblica in data attuale";
 $admin_lang_ni_post_one_day_after = "Pubblica un giorno dopo l'ultima pubblicazione";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     = "Pubblica in una data specifica. Imposta la data sotto:";
 $admin_lang_ni_post_entry         = "Pubblica";
 $admin_lang_ni_upload             = "Carica";
@@ -323,6 +325,8 @@ $admin_lang_optn_markdown              = "Abilita Markdown";
 $admin_lang_optn_markdown_desc         = "Vuoi che Pixelpost abiliti Markdown feature nella descrizione immagine?";
 $admin_lang_optn_exif			            = "Abilita Exif";
 $admin_lang_optn_exif_desc		        = "Vuoi che Pixelpost abiliti le funzioni Exif sulla pagina principale?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			          = "Abilita i token nei form";
 $admin_lang_optn_token_desc		        = "L'utilizzo dei token riduce la possibilità di attacco di tipo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Attivando questa impostazione i commenti sono salvati solo quando il token del form corrisponde a quello nella sessione utente. Per implementare questa funzione devi aggiungere <strong>&lt;TOKEN&gt;</strong> al template dei commenti da qualche parte tra i tag <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.

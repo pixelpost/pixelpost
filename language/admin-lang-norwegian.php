@@ -112,6 +112,8 @@ $admin_lang_ni_description        = "Bilde beskrivelse / tekst";
 $admin_lang_ni_datetime           = "Dato og tid for innlegget";
 $admin_lang_ni_post_now           = "Legg ut n&aring;";
 $admin_lang_ni_post_one_day_after = "Legg ut en dag etter forrige post";
+$admin_lang_ni_post												= "Post ";
+$admin_lang_ni_post_multiple_days_after		= " days after the last post";
 $admin_lang_ni_post_spec_date     = "Legg ut p&aring; en valgfri dato. Vennligst sett dato under:";
 $admin_lang_ni_post_entry         = "Legg ut innlegg";
 $admin_lang_ni_upload             = "Last Opp";
@@ -437,6 +439,8 @@ $admin_lang_optn_markdown             = "Sl&aring; p&aring; Markdown";
 $admin_lang_optn_markdown_desc        = "Skal Pixelpost sl&aring; p&aring; Markdown valget i Bilde beskrivelse?";
 $admin_lang_optn_exif			            = "Enable Exif";
 $admin_lang_optn_exif_desc		        = "Skal Pixelpost sl&aring; p&aring; Exif valget p&aring; f&oslash;rstesiden?";
+$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
+$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
 $admin_lang_optn_token			          = "Sl&aring; p&aring; token i former";
 $admin_lang_optn_token_desc		        = "Bruk av en token vil redusere sannsynligheten for <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Hvis dette valget er p&aring;, vil kommentarer bare bli lagret n&aring;r token fra formen korresponderer med den i brukerens session. For &aring; implementere dette m&aring; du legge til <strong>&lt;TOKEN&gt;</strong> til kommentarens template fil en plass mellom <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong> taggene.
