@@ -200,7 +200,6 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
 					// if crop is not '12c' use the oldfashioned crop
 					if($cfgrow['crop']!='12c')
 					{
-						if($show_image_after_upload)	echo "<img src='".$cfgrow['imagepath'].$filnamn."'/>";
 						echo "</div><!-- end of content div -->" ; // close content div
 					}
 					else
