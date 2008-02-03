@@ -177,11 +177,11 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
 				$submenucssclass = 'notselected';
 				if (!isset($_GET['show']) || $_GET['show']=='published')	$submenucssclass = 'selectedsubmenu';
 				if (isset($_GET['commentsview'])) $submenucssclass = 'notselected';
-				echo "<a href='index.php?view=comments&show=published' class='".$submenucssclass."'>".$admin_lang_cmnt_submenu1."</a>\n";
+				echo "<a href='index.php?view=comments&amp;show=published' class='".$submenucssclass."'>".$admin_lang_cmnt_submenu1."</a>\n";
 				$submenucssclass = 'notselected';
 				echo "|";
 				if (isset($_GET['show']) && $_GET['show']=='masked')	$submenucssclass = 'selectedsubmenu';
-				echo "<a href='index.php?view=comments&show=masked' class='".$submenucssclass."'>".$admin_lang_cmnt_submenu2." (".$commentnumb_moderation['count'].")</a>\n";
+				echo "<a href='index.php?view=comments&amp;show=masked' class='".$submenucssclass."'>".$admin_lang_cmnt_submenu2." (".$commentnumb_moderation['count'].")</a>\n";
 				$submenucssclass = 'notselected';
 				echo_addon_admin_menus($addon_admin_functions,"comments");
 				echo"</div>";
@@ -288,7 +288,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
 				[$admin_lang_cmnt_delete]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<!-- To add edit ability to admin/comments page -->
-				<a href='' onclick=\"flip('editme$id'); return false;\">[$admin_lang_cmnt_edit]</a>
+				<a href='#' onclick=\"flip('editme$id'); return false;\">[$admin_lang_cmnt_edit]</a>
 				<div id='editme$id' class='editcmtarea'>
 				<script language='javascript' type='text/javascript'>flip('editme$id');</script>
 				<textarea name='message$id' rows='4' cols='70' >$edit_message</textarea><br/>
@@ -354,7 +354,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
 				echo '<input type="text" name="numimg_pp" size="3" value="'.$_SESSION['numimg_pp'].'" /> '.$admin_lang_cmnt_page
 				    .' <input class="cmnt-buttons" type="submit" value="'.$admin_lang_go.'"/></form>';
 
-		    echo "\n</div><p />\n";
+		    echo "\n</div>\n";
 	    } // end list
 }
 

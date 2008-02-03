@@ -240,7 +240,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 						}
 					}
 					closedir($handle);
-					echo "<div class='jcaption'>$admin_lang_optn_thumb_updated</div><div class='content confirm'>$admin_lang_done $thumbnail_counter $admin_lang_optn_updated </div><p />";
+					echo "<div class='jcaption'>$admin_lang_optn_thumb_updated</div><div class='content confirm'>$admin_lang_done $thumbnail_counter $admin_lang_optn_updated </div><p>&nbsp;</p>";
 				}
 			}
 		}
@@ -574,12 +574,12 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 		 */
 		if(!sizeof(&$error))
 		{
-			echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='".PHP_SELF."?view=options'>$admin_lang_reload</a></div><p />";
+			echo "<div class='jcaption'>$admin_lang_optn_upd_done</div><div class='content confirm'>$admin_lang_done <a href='".PHP_SELF."?view=options'>$admin_lang_reload</a></div><p>&nbsp;</p>";
 		}
 		else
 		{
 			$result = implode('<br />', $error);
-			echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color='red'><strong>$result</strong></font></div><p />";
+			echo "<div class='jcaption'>$admin_lang_optn_upd_error</div><div class='content'><font color='red'><strong>$result</strong></font></div><p>&nbsp;</p>";
 		}
 	}
 	
@@ -951,7 +951,7 @@ echo <<<EOE
 		
 		<div class="content">
 			$admin_lang_optn_title_url_text
-			<p />
+			<p>&nbsp;</p>
 			
 			<table border="0" cellspacing="2" cellpadding="0">
 				<tr>
@@ -967,7 +967,7 @@ echo <<<EOE
 					<td align="right">&nbsp;<input type="text" name="new_site_url" value="{$cfgrow['siteurl']}" class="input" style="width:300px;" /></td>
 				</tr>
 			</table>
-			<p />
+			<p>&nbsp;</p>
 			
 			$admin_lang_optn_tip
 		</div>
@@ -985,12 +985,12 @@ echo <<<EOE
 			<select name="new_lang">
 				$default_lang_select
 			</select>
-			<p />			
+			<p>&nbsp;</p>			
 			
 			$admin_lang_optn_alt_lang
 			<br />
 			
-			<select name="alt_lang">";
+			<select name="alt_lang">
 				$alternative_lang_select
 			</select>
 		</div>		
@@ -1023,7 +1023,7 @@ echo <<<EOE
 				<option value="{$cfgrow['commentemail']}">$toecho_ce</option>
 				<option value="$optnval_ce">$optnecho_ce</option>
 			</select>
-			<p />
+			<br /><br />
 			
 			
 		<!-- Send HTML Email (yes/no) -->
@@ -1094,20 +1094,20 @@ echo <<<EOE
 		
 		<div class="content">
 			$admin_lang_optn_rss_title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="feed_title" value="$feed_title" style="width:300px;" />
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_rss_desc:&nbsp;&nbsp;<input type="text" name="feed_description" value="$feed_description" style="width:300px;" />
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_rss_copyright:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="feed_copyright" value="$feed_copyright" style="width:300px;" />
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_rss_discovery:&nbsp;&nbsp;
 			
 			<select name="feed_discovery" onchange="if (this.selectedIndex=='3') { flip('external_feed_discovery'); }else{ hide('external_feed_discovery'); }return false;" >
 				$feed_type_select
     		</select>
-    		<p />
+    		<br /><br />
     		
     		<div id="external_feed_discovery">
     			$admin_lang_optn_rss_ext_type:
@@ -1116,13 +1116,13 @@ echo <<<EOE
     				<option value="{$cfgrow['feed_external_type']}">$toecho_feed_type</option>
 					<option value="$optnval_feed_type">$optnecho_feed_type</option>
     			</select>
-    			<p />
+    			<br /><br />
     			
     			$admin_lang_optn_rss_ext:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="feed_external" value="$feed_external" style="width:300px;" />
     			<br />
     			
     			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$admin_lang_example: http://feeds.feedburner.com/YourBurnedBlog
-    			<p />
+    			<br /><br />
     		</div>
     		
     		$show_ext_opt
@@ -1133,7 +1133,7 @@ echo <<<EOE
 				<option value="{$cfgrow['allow_comment_feed']}">$toecho_feed</option>
 				<option value="$optnval_feed">$optnecho_feed</option>
 			</select>
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_rss_enable_feed_enc:
 			
@@ -1141,14 +1141,14 @@ echo <<<EOE
 				<option value="{$cfgrow['feed_enclosure']}">$toecho_feed_enc</option>
 				<option value="$optnval_feed_enc">$optnecho_feed_enc</option>
 			</select>
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_rsstype_desc 
 			
 			<select name="rsstype">
 				$feed_style_select
     		</select>
-    		<p />
+    		<br /><br />
     		
 			$admin_lang_optn_feeditems_desc
 			
@@ -1163,7 +1163,6 @@ echo <<<EOE
 		</form>
 		
 	</div>
-	<div id="footer">
 	<div id="footer"><a href="index.php?view=options&amp;advancedview=general" title="$admin_lang_adv_optn_show_adv" id="show_optn">$admin_lang_adv_optn_show_adv</a>
 EOE;
 
@@ -1282,7 +1281,7 @@ echo <<<EOE
 		
 		<div class="content">			
 			$admin_lang_optn_dateformat_txt
-			<p />
+			<br /><br />
 			
 			<input type="text" name="new_dateformat" value="{$cfgrow['dateformat']}" style="width:150px;" /> <input type="button" value="PREVIEW" name="preview" onclick="previewDT()" />
 			
@@ -1394,7 +1393,7 @@ echo <<<EOE
 		
 		<div class="content">
 			$admin_lang_optn_thumb_row_txt
-			<p />
+			<br /><br />
 				
 			<input type="text" name="thumbnumber" value="{$cfgrow['thumbnumber']}" style="width:50px;" />
 		</div>
@@ -1403,7 +1402,7 @@ echo <<<EOE
 		
 		<div class="content">
 			$admin_lang_optn_crop_thumbs_txt
-			<p />
+			<br /><br />
 				
 			<select name="new_crop">
 				$crop_select
@@ -1417,7 +1416,7 @@ echo <<<EOE
 			<br />
 				
 			<input type="text" name="thumbwidth" value="{$cfgrow['thumbwidth']}" /> x <input type="text" name="thumbheight" value="{$cfgrow['thumbheight']}" /> <input type="checkbox" name="do" value="do" /> <input type="submit" value="$admin_lang_optn_reg_thumbs_button" name="regenerate" />
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_regen_thumbs_txt
 		</div>
@@ -1426,7 +1425,7 @@ echo <<<EOE
 		
 		<div class="content">
 			$admin_lang_optn_img_compression_txt
-			<p />
+			<br /><br />
 							
 			<input type="text" name="new_compression" value="{$cfgrow['compression']}" style="width:50px;" />
 		</div>
@@ -1435,7 +1434,7 @@ echo <<<EOE
 		
 		<div class="content">
 			$admin_lang_optn_thumb_sharp_txt
-			<p />
+			<br /><br />
 						
 			<select name="new_thumb_sharpening" value="{$cfgrow['thumb_sharpening']}" style="width:150px;">";
 				$usm_select
@@ -1490,7 +1489,7 @@ echo <<<EOE
     			<option value="{$cfgrow['token']}">$toecho_token</option>
     			<option value="$optnval_token">$optnecho_token</option>
     		</select>
-    		<p />
+    		<br /><br />
     		
     		$admin_lang_optn_token_time  
     		
@@ -1569,7 +1568,7 @@ echo <<<EOE
 		<div class="content">
 			<table border="0" cellspacing="2" cellpadding="0">
 				<tr>
-					<td colspan="2" align="left">$admin_lang_optn_usr_pss_txt<p /></td>
+					<td colspan="2" align="left">$admin_lang_optn_usr_pss_txt<br /><br /></td>
 				</tr>
 				<tr>
 					<td align="left">$admin_lang_optn_usr:</td>
@@ -1622,10 +1621,10 @@ echo <<<EOE
 			<select name="timezone">
 				$timezone_select
 			</select>
-			<p />
+			<br /><br />
 			
 			$admin_lang_optn_gmt
-			<p />
+			<br /><br />
 		</div>
 		
 		
@@ -1980,7 +1979,7 @@ function options_anti_spam_html($additional_msg)
 	
 	<div class="content">
 		$admin_lang_spam_content
-		<p />
+		<br /><br />
 		
 		<!-- <form method="post" action="{$_SERVER['PHP_SELF']}?{$_SERVER['QUERY_STRING']}#banlist"> -->
 		
@@ -2039,10 +2038,10 @@ EOE;
 		{
 			$html .=
 <<<EOE
-			<p />
+			<br /><br />
 			
 			<a href="#" onclick="flip('htaccess-deny'); return false;"><i>$admin_lang_spam_htaccess_text</i></a>
-			<p />
+			<br /><br />
 			
 			<div id="htaccess-deny" >
 				<script type="text/javascript">flip('htaccess-deny');</script>
