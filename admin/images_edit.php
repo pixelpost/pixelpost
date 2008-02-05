@@ -227,6 +227,33 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
              intval($_POST['post_day'])." ".
              intval($_POST['post_hour']).":".
              intval($_POST['post_minute']).":".date('s');
+             
+    if( $_POST['autodate'] == 1) // post nn days after last post
+		{
+			$query = mysql_query("select datetime + INTERVAL ".$cfgrow['daysafterlastpost']." DAY from ".$pixelpost_db_prefix."pixelpost order by datetime desc limit 1");
+			$row = mysql_fetch_row($query);
+			if( $row) $newdatetime = $row[0];	// If there is none, will default to the other value
+		}
+		else if( $_POST['autodate'] == 2) // post now
+		{
+			$newdatetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone']));
+		}
+		else if($_POST['autodate'] == 3)// exifdate
+		{
+			$query = mysql_query("select exif_info from ".$pixelpost_db_prefix."pixelpost where id = '".$getid."'");
+			$exif_image = mysql_fetch_row($query);
+    	if ($exif_image[0] != '') {
+    		include_once('../includes/functions_exif.php');
+    		$exif_info = stripslashes($exif_image[0]);
+				$exif_result=unserialize_exif($exif_info);
+				$exposuredatetime = $exif_result['DateTimeOriginalSubIFD'];
+				if($exposuredatetime!='') {
+					list($exifyear,$exifmonth,$exifday,$exifhour,$exifmin, $exifsec) = split('[: ]', $exposuredatetime);
+					$newdatetime = date("Y-m-d H:i:s", mktime($exifhour, $exifmin, $exifsec, $exifmonth, $exifday, $exifyear));
+				}
+			}
+		}
+				  
 		save_tags_edit($_POST['tags'],$getid);
 		if ($cfgrow['altlangfile'] != 'Off')	save_tags_edit($_POST['alt_tags'],$getid,"alt_");
 
@@ -747,9 +774,19 @@ if(isset($_GET['view']) AND $_GET['view'] == "images")
         $minuteUpload=substr($imagerow['datetime'],14,2);
         $secondUpload=substr($imagerow['datetime'],17,2);
         $dateUpload=mktime($hourUpload,$minuteUpload,$secondUpload,$monthUpload,$dayUpload,$yearUpload);
+        $tz = $cfgrow["timezone"];
+        $cur_time = gmdate("Y-m-d H:i:s",time()+(3600 * $tz));
 		
 		echo "<div class='jcaption'>$admin_lang_imgedit_dtime</div>
 			<div class='content'>
+     <input type='radio' name='autodate' value='2' id='postnow'/><label for='postnow'>".$admin_lang_ni_post_now." (~".$cur_time.")</label><br/>
+     <input type='radio' name='autodate' value='1' id='postdayaft'/><label for='postdayaft'>";
+     if ($cfgrow['daysafterlastpost']==1) echo $admin_lang_ni_post_one_day_after;
+     else echo $admin_lang_ni_post.$cfgrow['daysafterlastpost'].$admin_lang_ni_post_multiple_days_after;
+     echo "</label><br/>
+     <input type='radio' name='autodate' value='3' id='exifdate'/><label for='exifdate'>".$admin_lang_ni_post_exif_date."</label><br/>
+     <input type='radio' name='autodate' value='0' checked='checked' id='specificdate'/><label for='specificdate'>".$admin_lang_ni_post_spec_date."</label><br/><br/>
+
 					 <table id=\"datetable\"><tr>
 					 <td>{$admin_lang_ni_year}</td><td style=\"width:5px;\">-</td><td>{$admin_lang_ni_month}</td><td style=\"width:5px;\">-</td><td>{$admin_lang_ni_day}</td><td><img src='../includes/spacer.gif' height='1' width='30' alt=''/></td><td>{$admin_lang_ni_hour}</td><td style=\"width:5px;\">-</td><td>{$admin_lang_ni_min}</td>
  					</tr><tr><td><select name='post_year'>
