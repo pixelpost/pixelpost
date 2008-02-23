@@ -267,6 +267,11 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
         	$comment_row_class = "unpublished-comment";
 				eval_addon_admin_workspace_menu('single_comment_list');
 				$edit_message= str_replace("<br />", "", $message);
+				if (isset($comment_divider_header)){
+		     		// this variable can be used to overide display of the meta information for a comment
+		     		// is used for the defensio addon.
+				 	echo $comment_divider_header;
+				}
 				echo "
 				<li class='$comment_row_class' ><a href='../index.php?showimage=".$parent_id."'>
 				<img src='".$cfgrow['thumbnailpath']."thumb_$image' alt='$image' /></a>
