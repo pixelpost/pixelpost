@@ -444,7 +444,7 @@ if(!isset($_GET['view']) OR $_GET['view'] == '')
 			<div style='text-align:center;'>
 				<textarea name='alt_body' style='width:97%;height:100px;' rows='' cols=''></textarea><p/>
 			</div>
-		</div>";
+		</div></div>";
 	}
 		// workspace: new_image_form
 		eval_addon_admin_workspace_menu('new_image_form');
