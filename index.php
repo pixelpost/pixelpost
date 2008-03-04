@@ -43,6 +43,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
+ini_set('arg_separator.output', '&amp;');
 
 error_reporting(0);
 
@@ -60,6 +61,18 @@ require_once("includes/functions.php");
 
 start_mysql('includes/pixelpost.php','front');
 
+/**
+ * Load the $cfgrow configuration variable and set the upload directory
+ *
+ */
+if($cfgrow = sql_array("SELECT * FROM `".$pixelpost_db_prefix."config`"))
+{
+	//$upload_dir = $cfgrow['imagepath'];
+}
+else
+{
+	show_splash('Coming Soon. Not Installed Yet. Cause #1','templates');
+}
 
 /**
  * Begin frontpage addons
@@ -72,9 +85,10 @@ $addon_admin_functions = array(0 => array('function_name' => '', 'workspace' => 
 
 create_front_addon_array();
 
+session_start();
+
 // Initialize the workspace
 eval_addon_front_workspace('frontpage_init');
-
 
 // Fix proposed by tomyeah on the forum
 header('Content-Type: text/html; charset=utf-8');
@@ -95,11 +109,6 @@ if(isset($_POST['vcookie']))
 // cleanup $_GET['x']
 if(isset($_GET['x'])){ $_GET['x'] = eregi_replace('[^a-z0-9_-]', '', $_GET['x']); }
 
-
-ini_set('arg_separator.output', '&amp;');
-
-session_start();
-
 if(isset($_GET['errors']) && $_SESSION["pixelpost_admin"])
 {
 	error_reporting(E_ALL ^ E_NOTICE);
@@ -111,19 +120,6 @@ elseif(isset($_GET['errorsall']) && $_SESSION["pixelpost_admin"])
 }
 
 if(isset($_GET['showimage'])){ $_GET['showimage'] = (int) $_GET['showimage']; }
-
-/**
- * Load the $cfgrow configuration variable and set the upload directory
- *
- */
-if($cfgrow = sql_array("SELECT * FROM `".$pixelpost_db_prefix."config`"))
-{
-	//$upload_dir = $cfgrow['imagepath'];
-}
-else
-{
-	show_splash('Coming Soon. Not Installed Yet. Cause #1','templates');
-}
 
 if($cfgrow['markdown'] == 'T'){ require_once("includes/markdown.php"); }
 
@@ -943,5 +939,4 @@ require_once('includes/addons_lib.php');
 // ##########################################################################################//
 
 if((isset($_GET['x']) && $_GET['x'] != "save_comment") || (!isset($_GET['x']))) { echo $tpl; }
-
 ?>
