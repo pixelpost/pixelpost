@@ -37,6 +37,24 @@ if(get_magic_quotes_gpc())
 
 
 /**
+ * Compile the specified file, executing any PHP code it contains and return it as a string.
+ * Used to include template HTML files.
+ *
+ */
+
+function compile($file) {
+	if(@is_readable($file)){
+		ob_start();
+	    require $file;
+	    return ob_get_clean();
+	}else{
+		return false;
+	}
+}
+
+
+
+/**
  * Check if directory exists. If it does not, attempt to create it.
  *
  */

@@ -300,11 +300,11 @@ if(isset($_GET['popup']) && $_GET['popup'] != "comment" || !isset($_GET['popup']
 {
 	if(file_exists("templates/".$cfgrow['template']."/header.html"))
 	{
-		$header = file_get_contents("templates/".$cfgrow['template']."/header.html");
+		$header = compile("templates/".$cfgrow['template']."/header.html");
 	}
 	if(file_exists("templates/".$cfgrow['template']."/footer.html"))
 	{
-		$footer = file_get_contents("templates/".$cfgrow['template']."/footer.html");
+		$footer = compile("templates/".$cfgrow['template']."/footer.html");
 	}
 }
 
@@ -334,7 +334,7 @@ if($language_full==$cfgrow['langfile'])
     {
     	if(eregi("[.]",$_GET['x'])) { die("Come on! forget about it..."); }
 
-    	$tpl = file_get_contents("templates/".$cfgrow['template']."/".$_GET['x']."_template.html");
+    	$tpl = compile("templates/".$cfgrow['template']."/".$_GET['x']."_template.html");
 
     }
     else
@@ -353,7 +353,7 @@ if($language_full==$cfgrow['langfile'])
 			exit;
 		}
 
-    	$tpl = file_get_contents("templates/".$cfgrow['template']."/image_template.html");
+    	$tpl = compile("templates/".$cfgrow['template']."/image_template.html");
     }
 
 }
@@ -363,7 +363,7 @@ else
 	{
 		if (eregi("[.]",$_GET['x'])) { die("Come on! forget about it..."); }
 
-		$tpl = file_get_contents("templates/".$cfgrow['template']."/".$_GET['x']."_".$language_abr."_template.html");
+		$tpl = compile("templates/".$cfgrow['template']."/".$_GET['x']."_".$language_abr."_template.html");
 
 	}
 	else
@@ -382,7 +382,7 @@ else
             exit;
 		}
 
-    	$tpl = file_get_contents("templates/".$cfgrow['template']."/image_".$language_abr."_template.html");
+    	$tpl = compile("templates/".$cfgrow['template']."/image_".$language_abr."_template.html");
 	}
 
 	if($cfgrow['display_sort_by'] == 'headline') { $cfgrow['display_sort_by'] = 'alt_headline'; }
@@ -393,11 +393,11 @@ if(isset($_GET['popup'])&&$_GET['popup'] == "comment")
 {   // additional language file for comment template
 	if(file_exists("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html"))
 	{
-		$tpl = file_get_contents("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html");
+		$tpl = compile("templates/".$cfgrow['template']."/comment_".$language_abr."_template.html");
 	}
 	else
 	{   // if not existing or no additional language chosen, default template file is called without error
-		$tpl = file_get_contents("templates/".$cfgrow['template']."/comment_template.html");
+		$tpl = compile("templates/".$cfgrow['template']."/comment_template.html");
 	}
 }
 
