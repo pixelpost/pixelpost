@@ -351,8 +351,8 @@ $admin_lang_optn_markdown             = "DOSTĘPNOŚĆ MARKDOWN";
 $admin_lang_optn_markdown_desc        = "Czy Pixelpost powinien udostępnić Markdown w Opisie zdjęcia?";
 $admin_lang_optn_exif			            = "EXIF";
 $admin_lang_optn_exif_desc		        = "Czy Pixelpost powinien udostępniać informacje EXIF do pokazania na stronie głównej?";
-$admin_lang_optn_postafterdays      = "NUMBER OF DAYS TO POST AFTER LAST POST";
-$admin_lang_optn_postafterdays_desc ="Here you can set the number of days after the last post you want to post the new image:";
+$admin_lang_optn_postafterdays        = "LICZBA DNI JAKA MA BYĆ POMIĘDZY WPISAMI";
+$admin_lang_optn_postafterdays_desc   = "Wpisz liczbę dni, która ma dzielić datę publikacji nowego obrazka i poprzedzającego go:";
 $admin_lang_optn_token			          = "AKTYWACJA TOKENÓW W FORMULARZACH";
 $admin_lang_optn_token_desc		        = "Użycie tokenów zmniejszy prawdopodobieństwo <a href=\"http://en.wikipedia.org/wiki/Cross-site_request_forgery\">Cross-Site Request Forgeries</a>.<br/><br/>\n
 																				 Gdy ta opcja jest aktywna komentarze będą zapisywane tylko pod warunkiem zgodności tokenu z formularza z tym zapisanym w sesji użytkownika. Skorzystać z tego można poprzez dodanie <strong>&lt;TOKEN&gt;</strong> do pliku template dla komentarzy (comments_template.html lub innego, w którym znajduje się formularz komentarzy) pomiędzy tagami <strong><i>&lt;form&gt;...&lt;/form&gt;</i></strong>.
@@ -387,7 +387,7 @@ $admin_lang_optn_rss_thumbs_only       = "Pokazuj tylko miniaturki";
 $admin_lang_optn_rss_full_only         = "Pokazuj tylko zdjęcia (pełnowymiarowe)";
 $admin_lang_optn_rss_text              = "Pokazuj tylko tekst";
 $admin_lang_optn_feeditems_desc        = "Liczba publikowanych w RSS/ATOM wiadomości: ";
-$admin_lang_optn_rss_enable_feed_enc			= "Enable feed enclosures";
+$admin_lang_optn_rss_enable_feed_enc   = "Aktywacja załączników w feedach";
 $admin_lang_optn_lang                  = "Ustawienia podstawowego języka: ";
 $admin_lang_optn_alt_lang              = "Ustawienia alternatywnego języka: ";
 $admin_lang_optn_alt_lang_dis          = "niedostępne";
@@ -481,20 +481,20 @@ $admin_lang_spam_visit_del = "Odwiedzający ze słowami/adresami IP z listy bad-
 
 
 // advanced options
-$admin_lang_adv									= "Advanced Options";
-$admin_lang_adv_optn_notice_title				= "NOTICE";
-$admin_lang_adv_optn_notice						= "The settings below are for advanced users only, and can easily cause undesirable changes to your photoblog!";
-$admin_lang_adv_optn_show_adv					= "Show Advanced Settings";
-$admin_lang_adv_optn_show_basic					= "Show Basic Settings";
+$admin_lang_adv                   = "Opcje zaawansowane";
+$admin_lang_adv_optn_notice_title = "OSTRZEŻENIE";
+$admin_lang_adv_optn_notice       = "Ustawienia poniżej są tylko dla zaawansowanych użytkowników i mogą łatwo spowodować niepożądane zmiany w Twoim photoblogu!";
+$admin_lang_adv_optn_show_adv     = "Pokaż Zaawansowane Ustawienia";
+$admin_lang_adv_optn_show_basic   = "Pokaż Podstawowe Ustawienia";
 
-$admin_lang_adv_local_local						= "LOCALIZATION";
-$admin_lang_adv_local_lang						= "Language:";
-$admin_lang_adv_local_tongue					= "Native Tongue:";
-$admin_lang_adv_local_abbr						= "Abbreviation:";
-$admin_lang_adv_local_del						= "Delete:";
-$admin_lang_adv_local_err_fields				= "All fields must be filled in!";
-$admin_lang_adv_local_err_abbr_strlen			= "The language abbreviation must contain exactly two characters!";
-$admin_lang_adv_local_err_duplicate				= "I'm Sorry, the language already exists!";
+$admin_lang_adv_local_local           = "LOKALIZACJA";
+$admin_lang_adv_local_lang            = "Język:";
+$admin_lang_adv_local_tongue          = "Język ojczysty:";
+$admin_lang_adv_local_abbr            = "Skrót:";
+$admin_lang_adv_local_del             = "Usuń:";
+$admin_lang_adv_local_err_fields      = "Wszystkie pola muszą być uzupełnione!";
+$admin_lang_adv_local_err_abbr_strlen = "Skrót języka musi zawierać dokładnie dwie litery!";
+$admin_lang_adv_local_err_duplicate   = "Niestety język już istnieje!";
 
 
 // New!

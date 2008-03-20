@@ -359,7 +359,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	{
 		$query = "SELECT id, {$headline_selection}, image FROM {$pixelpost_db_prefix}pixelpost
 		WHERE (datetime<='$cdate')
-		GROUP BY id
 		ORDER BY ".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	}
 

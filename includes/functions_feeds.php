@@ -70,7 +70,7 @@ EOE;
             if ($alt_headline != '')
             {
                 $headline = pullout($alt_headline);
-                $headline = htmlspecialchars($alt_headline,ENT_QUOTES);
+                $headline = htmlspecialchars($headline,ENT_QUOTES);
             }
             else
             {
@@ -313,7 +313,7 @@ EOE;
             else
             {
                 $headline = pullout($alt_headline);
-                $headline = htmlspecialchars($alt_headline,ENT_QUOTES);
+                $headline = htmlspecialchars($headline,ENT_QUOTES);
             }
 
             if ($alt_body == '')
