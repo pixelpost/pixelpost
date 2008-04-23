@@ -436,6 +436,7 @@ $admin_lang_pp_up_error_4            = "没有上传到文件。";
 $admin_lang_pp_up_error_6            = "没有临时目录。";
 $admin_lang_pp_up_error_7            = "写入文件失败。";
 $admin_lang_pp_addon_error								= "Pixelpost不能读入插件文件。请检查属性并更改他们为755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "时间标签";

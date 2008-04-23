@@ -437,6 +437,7 @@ $admin_lang_pp_up_error_4      = "Aucun fichier n'a &eacute;t&eacute; t&eacute;l
 $admin_lang_pp_up_error_6      = "Il manque un dossier temporaire.";
 $admin_lang_pp_up_error_7      = "Impossible d\'enregistrer le fichier sur le disque.";
 $admin_lang_pp_addon_error	   = "Pixelpost ne peut pas lire le fichier de l\'addon. V&eacute;rifiez les autorisations d\'&eacute;criture pour les fixer &agrave; 755.";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 
 // options >> time stamps

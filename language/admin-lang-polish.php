@@ -457,6 +457,7 @@ $admin_lang_pp_up_error_4  = "Żaden plik nie został przesłany.";
 $admin_lang_pp_up_error_6  = "Brak katalogu tymczasowego.";
 $admin_lang_pp_up_error_7  = "Plik nie został zapisany na dysku.";
 $admin_lang_pp_addon_error = "Pixelpost nie może odczytać pliku z dodatkiem. Proszę sprawdzić ustawienia CHMOD i zmienić je w razie potrzeby na 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title = "ZNACZNIK CZASU";

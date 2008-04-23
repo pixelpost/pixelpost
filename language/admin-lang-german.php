@@ -395,6 +395,7 @@ $admin_lang_pp_up_error_4           = "Es wurde keine Datei hochgeladen.";
 $admin_lang_pp_up_error_6           = "Tempor&auml;rer Ordner fehlt.";
 $admin_lang_pp_up_error_7           = "Datei konnte nicht geschrieben werden.";
 $admin_lang_pp_addon_error								= "Pixelpost ist nicht in der Lage die Erweiterungsdatei zu lesen. Bitte ÃƒÂ¼berprÃƒÂ¼fen Sie die chmod-Einstellungen und ÃƒÂ¤ndern Sie diese zu 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 $admin_lang_cmnt_moderation_que     = "Freigabe-Queue";
 
 

@@ -438,6 +438,7 @@ $admin_lang_pp_up_error_4            			= "Ingen fil blev uppladdad.";
 $admin_lang_pp_up_error_6            			= "Tempor&auml;r mapp saknas.";
 $admin_lang_pp_up_error_7            			= "Misslyckades att skriva filen till disken.";
 $admin_lang_pp_addon_error						= "Pixelpost kunde inte l&auml;sa till&auml;ggsfilen. Kontrollera chmod-inst&auml;llnigarna och &auml;ndra dom till 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 
 // options >> time stamps

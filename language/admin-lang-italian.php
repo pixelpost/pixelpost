@@ -440,6 +440,7 @@ $admin_lang_pp_up_error_4            = "Nessun file &egrave; stato caricato.";
 $admin_lang_pp_up_error_6            = "Manca una cartella temporanea.";
 $admin_lang_pp_up_error_7            = "Non sono riuscito a scrivere il file su disco.";
 $admin_lang_pp_addon_error								= "Pixelpost non &egrave; in grado di leggere il file dell'addon. Controllare i permessi chmod e cambiarli in 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "Codici data/ora";

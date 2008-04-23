@@ -437,6 +437,7 @@ $admin_lang_pp_up_error_4            			= "No file was uploaded.";
 $admin_lang_pp_up_error_6            			= "Missing a temporary folder.";
 $admin_lang_pp_up_error_7            			= "Failed to write file to disk.";
 $admin_lang_pp_addon_error								= "Pixelpost is not able to read the addon file. Please check the chmod settings and change them to 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 
 // options >> time stamps

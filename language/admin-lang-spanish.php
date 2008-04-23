@@ -436,6 +436,7 @@ $admin_lang_pp_up_error_4            			= "No se subi&oacute; ning&uacute;n arch
 $admin_lang_pp_up_error_6            			= "No existe la carpeta temporal.";
 $admin_lang_pp_up_error_7            			= "Error al escribir al disco.";
 $admin_lang_pp_addon_error								= "PixelPost no puede leer el archivo de opci&oacute;nes. Revise configuraci&oacute;n chmod y cambie por 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 
 // options >> time stamps

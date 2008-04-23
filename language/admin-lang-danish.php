@@ -437,6 +437,7 @@ $admin_lang_pp_up_error_4            = "Der blev ikke uploadet nogen fil.";
 $admin_lang_pp_up_error_6            = "Mangler en midlertidig mappe (temp).";
 $admin_lang_pp_up_error_7            = "Kunne ikke skrive til disken.";
 $admin_lang_pp_addon_error								= "Pixelpost er ikke i stand til at laelig;se add-on-filen. Kontroller chmod indstillingerne og saelig;t dem til 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 // options >> time stamps
 $admin_lang_optn_timestamps_title  = "TIDSSTEMPLER";

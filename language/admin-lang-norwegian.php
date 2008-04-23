@@ -388,6 +388,7 @@ $admin_lang_pp_up_error_4            = "Ingen fil ble lastet opp.";
 $admin_lang_pp_up_error_6            = "Mangler en temporary folder.";
 $admin_lang_pp_up_error_7            = "Feilet &aring; skrive fil til disken.";
 $admin_lang_pp_addon_error								= "Pixelpost kan ikke lese tilleggs filen. Vennligst sjekk chmod innstillingene og forandre dem til 755";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 // newly added ones
 $admin_lang_cmnt_moderation_que    = "Moderasjons k&oslash;";
 

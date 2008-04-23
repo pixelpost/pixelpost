@@ -436,6 +436,7 @@ $admin_lang_pp_up_error_4            			= "Nem töltöttünk fel fájlt.";
 $admin_lang_pp_up_error_6            			= "Nincs meg a temporális könyvtár.";
 $admin_lang_pp_up_error_7            			= "Diszkírási hiba.";
 $admin_lang_pp_addon_error				= "Az addon fájl nem olvasható. Ellenőrizd a jogosultságot és állítsd 775-re.";
+$admin_lang_pp_up_not_an_image						= "Uploaded file is not an image!";
 
 
 // options >> time stamps
