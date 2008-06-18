@@ -228,21 +228,20 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
          	 */
 			if(function_exists('gd_info'))
 			{
+				$image	= mysql_query("SELECT `image` FROM `{$pixelpost_db_prefix}pixelpost`");
+
+				$dir	= rtrim($cfgrow['imagepath'],"/");
+
 				$thumbnail_counter = 0;
-				$dir = rtrim($cfgrow['imagepath'],"/");
-				if($handle = opendir($dir))
-				{
-					while (false !== ($file = readdir($handle)))
+				while($row = mysql_fetch_assoc($image))
+				{	
+					if(file_exists($dir.'/'.$row['image']))
 					{
-						if(is_file($dir.'/'.$file) && ($file != "index.html"))
-						{
-							$thumbnail = createthumbnail($file);
-							$thumbnail_counter++;
-						}
+						$thumbnail = createthumbnail($row['image']);
+						$thumbnail_counter++;
 					}
-					closedir($handle);
-					echo "<div class='jcaption'>$admin_lang_optn_thumb_updated</div><div class='content confirm'>$admin_lang_done $thumbnail_counter $admin_lang_optn_updated </div><p>&nbsp;</p>";
 				}
+				echo "<div class='jcaption'>$admin_lang_optn_thumb_updated</div><div class='content confirm'>$admin_lang_done $thumbnail_counter $admin_lang_optn_updated </div><p>&nbsp;</p>";
 			}
 		}
 		if(isset($_GET['optaction']) AND $_GET['optaction'] == 'updatethumb' AND isset($_POST['submit']) OR isset($_GET['optaction']) AND $_GET['optaction'] == 'updatethumb' AND isset($_POST['regenerate']))
@@ -588,7 +587,7 @@ if(isset($_GET['view']) AND $_GET['view'] == "options")
 	 * Options Menu Items
 	 *
 	 */
-	$optn_title = (!isset($_GET['advancedview'])) ? $admin_lang_options : "$admin_lang_adv";
+	$optn_title = (!isset($_GET['advancedview'])) ? $admin_lang_options : $admin_lang_adv;
 	echo "<div id='caption'>$optn_title</div>\n<div id='submenu'>";
 	
 	if(isset($_GET['advancedview'])) // advanced options
