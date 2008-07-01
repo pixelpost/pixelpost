@@ -76,82 +76,72 @@ if( isset($_POST['folder_path']) && isset($_POST['copyfolder']))
 			$dates[$k] = $files_withdate[$k]['date'] ;
 		}
 	}
-
-
-	//for ($k=0;$k<count($files);$k++){
 	foreach($files as $k => $file){
-	
-		if($secondcount < 11)	$secondcount = "0$secondcount";
-		sleep(1);
+		if (getimagesize($folder.$file))
+        {
+			if($secondcount < 11)	$secondcount = "0$secondcount";
+			sleep(1);
 		
-		$file = $files[$k];
+			$file = $files[$k];
 		
-		$timenow = time()+(3600 * $tz);
-		if($_POST['sort']=='exifdate' AND $dates[$k]!='bad')	$datetime= $dates[$k];
-		else	$datetime  = gmdate("YmdHis",$timenow);
+			$timenow = time()+(3600 * $tz);
+			if($_POST['sort']=='exifdate' AND $dates[$k]!='bad')	$datetime= $dates[$k];
+			else	$datetime  = gmdate("YmdHis",$timenow);
+			$datetime .=$secondcount;
+			$secondcount++;
+			// prepare the file
+			$oldfile = $file;
+			if ($cfgrow['timestamp']=='yes')	$newfile = "{$datetime}_$file";
+			else	$newfile = $file;
 
-		//$clean_url = gmdate("Y_m_d_H_i_s",$timenow);
-		$datetime .=$secondcount;
-		$secondcount++;
-
-		// prepare the file
-		$oldfile = $file;
-		if ($cfgrow['timestamp']=='yes')	$newfile = "{$datetime}_$file";
-		else	$newfile = $file;
-
-		$newpath = "$upload_dir$newfile";
-		$file = "$folder$file";
-		if(copy($file,$newpath))
-		{
-			$filenumber++;
-			// insert post in mysql - supports new multi-category table in ver 1.4
-			$query = "insert into ".$pixelpost_db_prefix."pixelpost(id,datetime,headline,body,image,category)
-			VALUES(NULL,'$datetime','$oldfile','','$newfile','$category')";
-			$result = mysql_query($query);
-			if (mysql_error())
+			$newpath = "$upload_dir$newfile";
+			$file = "$folder$file";
+			if(copy($file,$newpath))
 			{
-				$Errors .= "Failed to insert $oldfile to db: ".mysql_error() ."<br/>";
-				$errored = TRUE;
-			}
-
-			// get new image ID
-			$theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"
-
-			if(isset($_POST['category']))
-			{
-				foreach($_POST['category'] as $val)
+				$filenumber++;
+				// insert post in mysql - supports new multi-category table in ver 1.4
+				$query = "insert into ".$pixelpost_db_prefix."pixelpost(id,datetime,headline,body,image,category)
+				VALUES(NULL,'$datetime','$oldfile','','$newfile','$category')";
+				$result = mysql_query($query);
+				if (mysql_error())
 				{
-					$query  ="INSERT INTO ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'".mysql_real_escape_string($val)."','$theid')";
-					$result = mysql_query($query);
-					if (mysql_error())
+					$Errors .= "Failed to insert $oldfile to db: ".mysql_error() ."<br/>";
+					$errored = TRUE;
+				}
+
+				// get new image ID
+				$theid = mysql_insert_id(); //Gets the id of the last added image to use in the next "insert"
+
+				if(isset($_POST['category']))
+				{
+					foreach($_POST['category'] as $val)
 					{
+						$query  ="INSERT INTO ".$pixelpost_db_prefix."catassoc(id,cat_id,image_id) VALUES(NULL,'".mysql_real_escape_string($val)."','$theid')";
+						$result = mysql_query($query);
+						if (mysql_error())
+						{
 							$Errors .= "Insert categories to db error: ".mysql_error() ."<br/>";
 							$errored = TRUE;
-					}
+						}	
 
-				} // end foreach
-			}// end if isset
-			// update the exif in the database
-			include_once('../includes/functions_exif.php');
-			$exif_info_db = serialize_exif ($cfgrow['imagepath'].$newfile);
-			mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$theid'");
-			if (mysql_error())
-			{
-				$Errors .= "Insert EXIF information to db error: ".mysql_error() ."<br/>";
-				$errored = TRUE;
-			}
-			// create thumbnail  too
-			createthumbnail($newfile);
-
-			// clean URLs code
-			//save_permalink($clean_url, $theid, $cfgrow['siteurl']);
-
-		} // if copy done
+					} // end foreach
+				}// end if isset
+				// update the exif in the database
+				include_once('../includes/functions_exif.php');
+				$exif_info_db = serialize_exif ($cfgrow['imagepath'].$newfile);
+				mysql_query("update ".$pixelpost_db_prefix."pixelpost set exif_info='$exif_info_db' where id='$theid'");
+				if (mysql_error())
+				{
+					$Errors .= "Insert EXIF information to db error: ".mysql_error() ."<br/>";
+					$errored = TRUE;
+				}
+				// create thumbnail  too
+				createthumbnail($newfile);
+			} // if copy done
+		} else {
+			//someone is trying to copy a file that is not an image. Ignore it.
+		}
 	} // end foreach
-	//		} // if file done
-	//	} // while false done
-	//	closedir($addon_handle);
-	//} // if addon_handle done
 
 	$Errors  .="</div>";
 	$message = "<span class='confirm'><b>Copied $filenumber files.</b><br />
