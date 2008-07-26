@@ -265,6 +265,7 @@ if(!empty($language_full))
 	// check if illegal characters are used
 	if (!ereg("^[A-Za-z]+([0-9]+)?$", $language_full)) {
 		echo '<b>Error:</b><br />Pixelpost cannot include this file. If you need assistance in resolving this error please visit the <a href="http://www.pixelpost.org/forum/">Pixelpost Forum</a>.';
+		setcookie ('lang', "", time() - 3600, '/', false, 0);
 		exit;
 	} else {
 		if(file_exists("language/lang-".$language_full.".php"))
@@ -277,6 +278,7 @@ if(!empty($language_full))
 		else
 		{
 			echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-'.$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+			setcookie ('lang', "", time() - 3600, '/', false, 0);
 			exit;
 		}
 	}
@@ -284,6 +286,7 @@ if(!empty($language_full))
 else
 {
 	echo '<b>Error:</b><br />Pixelpost has problem selecting a default language.<br />Make sure that you have chosen a default language in the adminpanel.';
+	setcookie ('lang', "", time() - 3600, '/', false, 0);
 	exit;
 }
 
