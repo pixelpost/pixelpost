@@ -43,6 +43,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
+// the function below is from wordpress. It cleans globals set by register_globals is enabled;
+require_once("includes/functions.php");
+PP_unregister_GLOBALS();
+
 ini_set('arg_separator.output', '&amp;');
 
 error_reporting(0);
@@ -56,8 +60,6 @@ define('ADDON_DIR', 'addons/');
 define('ADMIN_DIR', 'admin/');
 
 if(file_exists("includes/pixelpost.php")){ require_once("includes/pixelpost.php"); }
-
-require_once("includes/functions.php");
 
 start_mysql('includes/pixelpost.php','front');
 

@@ -3,6 +3,31 @@
 // SVN file version:
 // $Id$
 
+/**
+ * PP_unregister_GLOBALS() - Turn register globals off
+ *
+ * @access private
+ * @since 2.1.0
+ * @return null Will return null if register_globals PHP directive was disabled
+ */
+function PP_unregister_GLOBALS() {
+	// function borrowed from Wordpress 2.60
+	if ( !ini_get('register_globals') )
+		return;
+	if ( isset($_REQUEST['GLOBALS']) )
+		die('GLOBALS overwrite attempt detected');
+
+	// Variables that shouldn't be unset
+	$noUnset = array('GLOBALS', '_GET', '_POST', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES');
+
+	$input = array_merge($_GET, $_POST, $_COOKIE, $_SERVER, $_ENV, $_FILES, isset($_SESSION) && is_array($_SESSION) ? $_SESSION : array());
+	foreach ( $input as $k => $v )
+		if ( !in_array($k, $noUnset) && isset($GLOBALS[$k]) ) {
+			$GLOBALS[$k] = NULL;
+			unset($GLOBALS[$k]);
+		}
+}
+
 
 /**
  * Magic Quotes KILLER *dun! dun! dun!*
