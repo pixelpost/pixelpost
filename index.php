@@ -5,11 +5,11 @@
 
 /*
 
-Pixelpost version 1.7.1
+Pixelpost version 1.7.2
 
 Pixelpost www: http://www.pixelpost.org/
 
-Version 1.7.1:
+Version 1.7.2:
 Development Team:
 Ramin Mehran, Will Duncan, Joseph Spurling,
 Piotr "GeoS" Galas, Dennis Mooibroek, Karin Uhlig, Jay Williams, David Kozikowski
@@ -260,17 +260,23 @@ if(file_exists("language/lang-english.php"))
 // now replace the contents of the variables with the selected language.
 if(!empty($language_full))
 {
-	if(file_exists("language/lang-".$language_full.".php"))
-	{
-		if(!isset($_GET['x']) OR ($_GET['x'] != "rss" AND $_GET['x'] != "atom"))
-		{
-			require_once("language/lang-".$language_full.".php");
-		}
-	}
-	else
-	{
-		echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-'.$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+	// check if illegal characters are used
+	if (!ereg("^[A-Za-z]+([0-9]+)?$", $language_full)) {
+		echo '<b>Error:</b><br />Pixelpost cannot include this file. If you need assistance in resolving this error please visit the <a href="http://www.pixelpost.org/forum/">Pixelpost Forum</a>.';
 		exit;
+	} else {
+		if(file_exists("language/lang-".$language_full.".php"))
+		{
+			if(!isset($_GET['x']) OR ($_GET['x'] != "rss" AND $_GET['x'] != "atom"))
+			{
+				require_once("language/lang-".$language_full.".php");
+			}
+		}
+		else
+		{
+			echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-'.$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+			exit;
+		}
 	}
 }
 else
