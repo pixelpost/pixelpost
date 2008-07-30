@@ -5,13 +5,11 @@
 
 /**
  * PP_unregister_GLOBALS() - Turn register globals off
- *
- * @access private
- * @since 2.1.0
+ * 
  * @return null Will return null if register_globals PHP directive was disabled
+ * @author Wordpress 2.60
  */
 function PP_unregister_GLOBALS() {
-	// function borrowed from Wordpress 2.60
 	if ( !ini_get('register_globals') )
 		return;
 	if ( isset($_REQUEST['GLOBALS']) )

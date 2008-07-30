@@ -83,7 +83,9 @@ function replace_exif_tags ($language_full, $image_exif, $tpl)
     	$exposure = "$exposure sec";
     }
 		if (array_key_exists("FNumberSubIFD", $exif_result)) {
-			$aperture =  $exif_result['FNumberSubIFD']; // Aperture
+			$aperture = $exif_result['FNumberSubIFD']; // Aperture
+			$aperture = round(trim($aperture,' f'),1);
+			$aperture = "f/$aperture";
 		} else {
 			$aperture = $empty_exif;
 		}
