@@ -249,12 +249,28 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
 
   while( $row = mysql_fetch_assoc($images)) {
         $message = pullout($row['message']);
-
+        $number_words_excerpt = 10;
+		$id = $row['id'];
+		if (strlen($message) > $number_words_excerpt){
+			$words = str_word_count($message, 2);
+			$pos = array_keys($words);
+			if (count($pos) > $number_words_excerpt){
+				$message_excerpt = substr($message, 0, $pos[$number_words_excerpt]) . " <a href=\"javascript:;\" onmousedown=\"if(document.getElementById('full_$id').style.display == 'none'){ document.getElementById('full_$id').style.display = 'block'; document.getElementById('excerpt_$id').style.display = 'none'; }else{ document.getElementById('excerpt_$id').style.display = 'block'; document.getElementById('full_$id').style.display = 'none'; }\">".$admin_lang_cmnt_excerpt."</a>";
+				$message = $message . " <a href=\"javascript:;\" onmousedown=\"if(document.getElementById('full_$id').style.display == 'none'){ document.getElementById('full_$id').style.display = 'block'; document.getElementById('excerpt_$id').style.display = 'none'; }else{ document.getElementById('excerpt_$id').style.display = 'block'; document.getElementById('full_$id').style.display = 'none'; }\">".$admin_lang_cmnt_full."</a>";
+			}
+			else
+			{
+				$message_excerpt=$message;
+			}
+		} 
+		else
+		{
+			$message_excerpt=$message;
+		}
        	$name = pullout($row['name']);
         $url = pullout($row['url']);
         if(strpos($url,'http://')===FALSE)	$url = 'http://' . $url;
 				$image = $row['image'];
-				$id = $row['id'];
 				$parent_id = $row['parent_id'];
 				$ip = $row['ip'];
 				$email = $row['email'];
@@ -278,7 +294,8 @@ if(isset($_GET['view']) AND $_GET['view'] == "comments") {
 
 				$admin_lang_cmnt_name <a target=\"_blank\" href=\"$url\">$name</a>
 				$admin_lang_cmnt_email $email <br />$admin_lang_cmnt_comment
-				<b>$message</b><br />
+				<div id=\"full_$id\" style=\"display:none\"><b>$message</b></div>
+				<div id=\"excerpt_$id\"><b>$message_excerpt</b></div><br />
 				$admin_lang_cmnt_image: \"$imagename\"<br />";
 		    if (isset($comment_meta_information)){
 		     // this variable can be used to overide display of the meta information for a comment

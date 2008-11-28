@@ -246,8 +246,11 @@ $admin_lang_cmnt_error_blacklist    = "Fout in het bijwerken van de zwarte lijst
 $admin_lang_cmnt_error_banlist      = "Fout in het bijwerken van de zwarte lijst met referrers: ";
 $admin_lang_cmnt_moderation_que     = "Moderation rij";
 $admin_lang_cmnt_rep_spam           = 'Meld als Spam';
-$admin_lang_cmnt_submenu1						= "REACTIES";
-$admin_lang_cmnt_submenu2						= "Wachtend op moderatie";
+$admin_lang_cmnt_submenu1			= "REACTIES";
+$admin_lang_cmnt_submenu2			= "Wachtend op moderatie";
+$admin_lang_cmnt_full				= "(lees minder)";
+$admin_lang_cmnt_excerpt			= "(lees meer)";
+
 
 
 // Option

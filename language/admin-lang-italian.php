@@ -249,6 +249,9 @@ $admin_lang_cmnt_moderation_que     = "Coda di moderazione";
 $admin_lang_cmnt_rep_spam 	        = 'Segnala Spam';
 $admin_lang_cmnt_submenu1									= "COMMENTI";
 $admin_lang_cmnt_submenu2									= "IN ATTESA DI MODERAZIONE";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 
 // Option

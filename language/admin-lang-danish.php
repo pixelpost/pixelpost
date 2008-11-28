@@ -245,8 +245,11 @@ $admin_lang_cmnt_error_blacklist    = "Fejl ved opdatering af blacklist: ";
 $admin_lang_cmnt_error_banlist      = "Fejl ved opdatering af referrer-ban-listen: ";
 $admin_lang_cmnt_moderation_que     = "Godkendelses-k&oslash;";
 $admin_lang_cmnt_rep_spam           = 'Rapporter spam';
-$admin_lang_cmnt_submenu1									= "KOMMENTARER";
-$admin_lang_cmnt_submenu2									= "AFVENTER GODKENDELSE";
+$admin_lang_cmnt_submenu1			= "KOMMENTARER";
+$admin_lang_cmnt_submenu2			= "AFVENTER GODKENDELSE";
+$admin_lang_cmnt_full				= "(show less)";
+$admin_lang_cmnt_excerpt			= "(show more)";
+
 
 
 // Option

@@ -246,8 +246,11 @@ $admin_lang_cmnt_error_blacklist    			= "Error in updating the blacklist: ";
 $admin_lang_cmnt_error_banlist      			= "Error in updating the referrer ban list: ";
 $admin_lang_cmnt_moderation_que     			= "Moderation queue";
 $admin_lang_cmnt_rep_spam           			= 'Report Spam';
-$admin_lang_cmnt_submenu1									= "COMMENTS";
-$admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_submenu						= "COMMENTS";
+$admin_lang_cmnt_submenu						= "AWAITING MODERATION";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general            			= "GENERAL";

@@ -248,6 +248,9 @@ $admin_lang_cmnt_moderation_que     			= "Moderation queue";
 $admin_lang_cmnt_rep_spam           			= 'Report Spam';
 $admin_lang_cmnt_submenu1									= "COMMENTS";
 $admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general            			= "GENERAL";

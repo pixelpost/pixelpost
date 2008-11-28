@@ -247,6 +247,9 @@ $admin_lang_cmnt_moderation_que                 = "モデレーションキュ�
 $admin_lang_cmnt_rep_spam                       = 'スパム報告';
 $admin_lang_cmnt_submenu1                       = "コメント";
 $admin_lang_cmnt_submenu2                       = "モデレーション待ち";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general                        = "一般";

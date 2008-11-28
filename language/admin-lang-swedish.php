@@ -249,6 +249,9 @@ $admin_lang_cmnt_moderation_que     			= "Modereringsk&ouml;";
 $admin_lang_cmnt_rep_spam           			= 'Rapportera spam';
 $admin_lang_cmnt_submenu1									= "KOMMENTARER";
 $admin_lang_cmnt_submenu2									= "V&Auml;NTAR P&Aring; MODERERING";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general            			= "ALLM&Auml;NT";

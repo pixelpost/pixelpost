@@ -247,6 +247,9 @@ $admin_lang_cmnt_moderation_que     			= "Moderációs sor";
 $admin_lang_cmnt_rep_spam           			= "Spam jelentése";
 $admin_lang_cmnt_submenu1				= "MEGJEGYZÉSEK";
 $admin_lang_cmnt_submenu2				= "MODERÁLÁSRA VÁRÓ MEGJEGYZÉSEK";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general            			= "ÁLTALÁNOS";

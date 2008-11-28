@@ -258,6 +258,9 @@ $admin_lang_cmnt_moderation_que    = "Kolejka moderacji";
 $admin_lang_cmnt_rep_spam          = 'Zgłoś Spam';
 $admin_lang_cmnt_submenu1									= "COMMENTS";
 $admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 
 // Option

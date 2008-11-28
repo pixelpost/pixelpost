@@ -247,6 +247,9 @@ $admin_lang_cmnt_moderation_que     			= "Cola de Moderaci&oacute;n";
 $admin_lang_cmnt_rep_spam           			= 'Reportar Spam';
 $admin_lang_cmnt_submenu1									= "COMENTARIOSS";
 $admin_lang_cmnt_submenu2									= "ESPERANDO MODERACI&Oacute;N";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general            			= "GENERAL";

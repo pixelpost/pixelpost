@@ -241,6 +241,9 @@ $admin_lang_cmnt_unpublished        = "Maskerte";
 $admin_lang_cmnt_published_cmnts    = "tidligere publiserte kommentar(er).";
 $admin_lang_cmnt_submenu1									= "COMMENTS";
 $admin_lang_cmnt_submenu2									= "AWAITING MODERATION";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // New in comment:
 $admin_lang_cmnt_error_blacklist    = "Feil under oppdatering av svartelisten: ";

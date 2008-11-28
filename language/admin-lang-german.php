@@ -252,6 +252,9 @@ $admin_lang_cmnt_error_blacklist    = "Die Blacklist konnte nicht aktualisiert w
 $admin_lang_cmnt_error_banlist      = "Die Referer-Block-Liste konnte nicht aktualisiert werden: ";
 $admin_lang_cmnt_submenu1									= "Kommentare";
 $admin_lang_cmnt_submenu2									= "Erwarte Moderation";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 // Option
 $admin_lang_optn_general             = "ALLGEMEIN";

@@ -247,6 +247,9 @@ $admin_lang_cmnt_moderation_que     = "待审批队列";
 $admin_lang_cmnt_rep_spam 			= '报告垃圾广告';
 $admin_lang_cmnt_submenu1									= "评论";
 $admin_lang_cmnt_submenu2									= "等待审查";
+$admin_lang_cmnt_full							= "(show less)";
+$admin_lang_cmnt_excerpt						= "(show more)";
+
 
 
 // Option
