@@ -10,7 +10,7 @@
 // variable which says if notofication can be send (SPAM and problem free comment)
 // by default it can't
 $email_flag = 0;
-
+$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
 {
 // token check
@@ -107,8 +107,6 @@ if(isset($_GET['x'])&&$_GET['x'] == "save_comment")
    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because it got flagged as SPAM by our anti-SPAM measures. (ERR: 06).<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n<br /><a href='javascript:history.back()'> Click here to go BACK</a></BODY></HTML>";
    	exit;
    }
-
-	$datetime = gmdate("Y-m-d H:i:s",time()+(3600 * $cfgrow['timezone'])) ;
 	if($cmnt_setting == 'A')
 	{
 		$cmnt_moderate_permission='no';
