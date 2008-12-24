@@ -782,9 +782,14 @@ if (isset($_GET['view']) and $_GET['view'] == "images")
         $alt_body = pullout($imagerow['alt_body']);
 
         $image = $imagerow['image'];
-        $category = $imagerow['category'];
-        $category = explode(",", $category);
-
+        // fetch the categories
+        $category = array();
+		$query = mysql_query("SELECT `cat_id` FROM " . $pixelpost_db_prefix . "catassoc where image_id='$getid'");
+		while(list($cat_id) = mysql_fetch_row($query))
+		{
+			$category[] = $cat_id;
+		}
+		
         echo "
 		<div id='submenu'>
 		<a href='?view=images&amp;id=$getid' ";
@@ -848,7 +853,7 @@ if (isset($_GET['view']) and $_GET['view'] == "images")
 			<div class='jcaption'>$admin_lang_imgedit_category_plural</div>
 			<div class='content'>
 			";
-            category_list_as_table(array(), $cfgrow);
+            category_list_as_table($category, $cfgrow);
             echo "</div>";
 
             list($img_width, $img_height, $type, $attr) = getimagesize($cfgrow['imagepath'] . $image);
