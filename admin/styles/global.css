@@ -1,0 +1,304 @@
+/* @override http://localhost:8888/pixelpost18/admin/styles/global.css */
+
+* { padding: 0; margin: 0; }
+
+body {
+	font: normal 12px/1.5em "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: #eee;
+	color: #333;
+}
+
+h1 {
+	font-size: 2.0em;
+}
+
+h2.caption {
+	font-size: 1.6em;
+}
+
+h3 {
+	color: #333;
+	font-size: 1.2em;
+}
+
+h4.title,
+label.title {
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+a:link,
+a:visited {
+	color: #6087ab;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+#bloginfo dd {
+	padding: 3px 0 3px 10px;
+}
+
+img {
+	border: none;
+}
+
+.notice {
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+.tiny {
+	font-size: 0.8em;
+}
+
+.dim {
+	color: #aaa;
+}
+
+.center {
+	text-align: center;
+}
+
+fieldset.box {
+	background-color: #ddd;
+}
+
+fieldset.box.alt {
+	background-color: #ccc;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 922px;
+}
+
+#content {
+	width: 100%;
+	color: #333;
+	padding: 0px;
+	margin: 0px;
+}
+
+fieldset {
+	border-top: none;
+	border-bottom: 2px solid #eee;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+/* @group Header */
+
+#header {
+	width: 900px; /*902*/
+	color: #333;
+	padding: 10px;
+	height: 30px;
+	margin: 10px 0px 5px 0px;
+	background-color: #ddd;
+}
+
+#header h1 {
+	float: left;
+}
+
+#header #headerlinks {
+	float: right;
+}
+
+#header h1,
+#header #headerlinks {
+	padding-top: 8px;
+}
+
+#header span#logout,
+#header span#dashlink {
+	padding-left: 5px;
+}
+
+#header h1 a:link,
+#header h1 a:visited {
+	color: #333;
+	text-decoration: none;
+}
+
+/* @end */
+
+/* @group Navigation */
+
+#navigation {
+	color: #333;
+	background-color: #ccc;
+	text-align: center;
+	padding: 9px 0 8px;
+	margin: 0 0 5px;
+}
+
+#navigation a:link,
+#navigation a:visited {
+	padding: 10px;
+	margin: 0px 3px;
+	background-color: transparent;
+	text-transform: capitalize;
+}
+
+#navigation a:hover,
+#navigation a.active {
+	padding-top: 7px;
+	margin: 0;
+	color: #6087ab;
+	background-color: #eee;
+	border-left: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	font-weight: normal;
+	padding-bottom: 18px;
+}
+
+#subnavigation {
+	margin: 0;
+	padding: 6px 0 7px;
+	color: #333;
+	font-size: 0.9em;
+	text-transform: lowercase;
+	border-top: 3px solid #ccc;
+	border-bottom: 3px solid #ccc;
+}
+
+
+
+#subnavigation a:link,
+#subnavigation a:visited {
+	color: #aaa;
+	background-color: #eee;
+	padding: 0 10px;
+	margin: 0;	
+}
+
+#subnavigation a:hover,
+#subnavigation a.active {
+	color: #6087ab;
+	background-color: transparent;
+	padding: 6px 10px;
+}
+
+/* @end */
+
+/* @group Status Messages */
+
+#status {
+	color: #333;
+	text-align: left;
+}
+#status.error,
+#status.ok {
+	padding: 20px;
+	margin: 2px 0px 3px;
+}
+
+.error {
+	background-color: #EFB6B6;
+	border: 1px solid #DF9999;
+}
+
+.ok {
+	background-color: #CDEFB6;
+	border: 1px solid #B5DF99;
+}
+
+.error ul {
+	list-style: none;
+	padding-left: 10px;
+}
+
+#closeBox {
+	display: block;
+	text-align: right;
+	margin-bottom: -15px;
+	color: #333;
+	font-size: 0.8em;
+}
+
+/* @end */
+
+/* @group Pagination */
+
+#pagination {
+	/*margin-bottom: -3px;*/
+	padding: 6px 0 7px;
+	color: #333;
+	font-size: 0.9em;
+	text-transform: lowercase;
+	border-top: 3px solid #ccc;
+	border-bottom: 3px solid #ccc;
+}
+
+#pagination a:link,
+#pagination a:visited {
+	color: #aaa;
+	font-weight: normal;
+	background-color: #eee;
+	padding: 0 10px;
+	margin: 0;	
+}
+
+#pagination a:hover,
+#pagination a.active {
+	color: #6087ab;
+	font-weight: normal;
+	background-color: transparent;
+	padding: 6px 10px;
+}
+
+.pagination {
+	text-align: right;
+}
+
+.pagination,
+.pagination #pagination_value {
+	color: #333;
+	font-weight: bold;
+	font-size: 1.0em;
+}
+
+.pagination input#pagination_value {
+	background-color: #eee;
+}
+
+.pagination input#pagination_value:hover {
+	background-color: #fff;
+}
+
+/* @end */
+
+/* @group Footer */
+
+#footer {
+	color: #333;
+	background-color: #ccc;
+	padding: 6px;
+	text-align: right;
+	margin: 5px 0px 10px;
+}
+
+#footer span#copyright {
+	font-size: 10px;
+}
+
+#footer span#copyright a:link, #footer span#copyright a:visited {
+	color: #333;
+	text-decoration: none;
+}
+
+#footer span#copyright a:hover {
+	text-decoration: none;
+}
+
+/* @end */
+
+.clear {
+	clear: both;
+	background: none;
+}

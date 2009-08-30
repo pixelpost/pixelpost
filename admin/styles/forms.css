@@ -1,0 +1,140 @@
+/* @override http://localhost:8888/pixelpost18/admin/styles/forms.css */
+
+
+fieldset {
+	padding: 20px 15px 20px 30px;
+	margin: 0;
+}
+
+fieldset#submitbtn {
+	background-color: #eee;
+}
+
+#submit input#upload.submit {
+	width: 94px;
+}
+
+#submit {
+	text-align: right;
+	padding: 30px 0 0 0;
+}
+
+input[type='text'], input[type='password'] {
+	height: 20px;
+	border: 1px solid #ccc;
+	border-top: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+}
+
+.formfield {
+	height: 20px;
+	border: 1px solid #ccc;
+	border-top: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+}
+
+.textfield {
+	min-height: 100px;
+	border: 1px solid #ccc;
+	border-top: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+}
+
+.formfield.long,
+.textfield.long {
+	min-width: 450px;
+}
+
+.formfield.extralong,
+.textfield.extralong {
+	min-width: 600px;
+}
+
+.formfield.medium,
+.textfield.medium {
+	min-width: 250px;
+}
+
+.formfield.small,
+.textfield.small {
+	min-width: 200px;
+}
+
+.formfield.extrasmall,
+.textfield.extrasmall {
+	width: 40px;
+	text-align: center;
+}
+
+textarea#photo_desc.textfield {
+	width: 450px;
+	
+}
+
+textarea#copyPaste {
+	width: 100%;
+	text-align: left;
+}
+
+#datetable {
+	text-align: left;
+}
+
+select#post_year,
+select#post_month,
+select#post_day,
+select#post_hour,
+select#post_minute {
+	width: 70px;
+}
+
+label.title {
+	font-size: 0.9em;
+	font-weight: normal;
+	display: block;
+	padding-bottom: 10px;
+}
+
+div.frmwrapper,
+div.localewrapper,
+div.imagewrapper {
+	width: 670px;
+	padding: 10px 0 0 10px;
+}
+
+div.frmwrapper label,
+div.frmwrapper input,
+div.frmwrapper select,
+div.frmwrapper textarea,
+div.frmwrapper p.notice {
+	display: block;
+	float: left;
+}
+
+div.frmwrapper label {
+	text-align: left;
+	width: 150px;
+	padding-right: 20px;
+}
+
+div.frmwrapper p.notice{
+	margin: -8px 0 0 170px;
+	padding-bottom: 5px;
+}
+
+div.frmwrapper br,
+div.frmwrapper p.notice {
+	clear: left;
+}
+
+/* @group Settings : Advanced : Localization */
+
+input#abbr {
+	text-transform: uppercase;
+}
+
+input#language {
+	text-transform: lowercase;
+}
+
+/* @end */

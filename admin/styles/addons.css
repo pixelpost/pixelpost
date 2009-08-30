@@ -1,0 +1,42 @@
+/* @override http://localhost:8888/pixelpostSVN/admin/admin/styles/addons.css */
+
+h2.title {
+	text-align: right;
+	border-top: 3px solid #ccc;
+	border-bottom: 3px solid #ccc;
+	padding: 6px 5px 7px 0;
+	margin: 0;
+}
+
+h2.caption {
+	float: left;
+	font-size: 1.2em;
+}
+
+h3.status {
+	text-align: right;
+	font-size: 0.8em;
+	font-weight: normal;
+}
+
+#switch {
+	float: right;
+}
+
+.on {
+	
+}
+
+.off {
+	
+}
+
+.description {
+	padding-top: 15px;
+	font-size: 0.9em;
+}
+
+fieldset {
+	padding: 20px 15px 20px 30px;
+	margin: 0;
+}

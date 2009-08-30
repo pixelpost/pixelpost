@@ -1,0 +1,34 @@
+
+[list]
+[*]Pixelpost Information:
+[list]
+[*][b]Version:[/b] 1.8
+[/list]
+[/list]
+
+[list]
+[*]Host Information:
+[list]
+[*][b]URL:[/b] [url]http://localhost/pixelpostSVN/admin/index.php[/url]
+[*][b]PHP-version:[/b] 5.2.5 [size=1][i](Pixelpost's min requirement: PHP version: 4.3.0)[/i][/size]
+[*][b]Session save path:[/b] [i]/Applications/MAMP/tmp/php[/i]
+[*][b]MySQL version:[/b] 5.0.41 [size=1][i](Pixelpost's min requirement: MySQL: 3.23.58)[/i][/size]
+[*][b]GD-lib:[/b] bundled (2.0.34 compatible) with JPEG support
+[*][b]File Uploads to Pixelpost site are possible.[/b]
+[*][b]Server Software:[/b] Apache/2.0.59 (Unix) PHP/5.2.5 DAV/2
+[/list]
+[/list]
+
+[list]
+[*]Path Information:
+[list]
+[*][b]Configured Image Path:[/b] [i]../images/[/i]
+[*][b]Configured Thumbnail Path:[/b] [i]../thumbnails/[/i]
+[*][b]Image Directory: [color=green]OK[/color][/b] - Can we write to the directory? [b][color=green]YES[/b][/color]. Current CHMOD: [b]0755[/b]
+[*][b]Thumbnails Directory: [color=green]OK[/color][/b] - Can we write to the directory? [b][color=green]YES[/b][/color]. Current CHMOD: [b]0755[/b]
+[*][b]Language Directory: [color=green]OK[/color][/b]
+[*][b]Addons Directory: [color=green]OK[/color][/b]
+[*][b]Includes Directory: [color=green]OK[/color][/b]
+[*][b]Templates Directory: [color=green]OK[/color][/b]
+[/list]
+[/list]

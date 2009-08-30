@@ -1,0 +1,92 @@
+/* @override http://localhost:8888/pixelpost18/admin/styles/settings.css */
+
+h2 {
+	float: right;
+}
+
+h2.title {
+	float: right;
+	padding: 9px 5px 0 0;
+	margin: 0;
+}
+
+h2.subtitle {
+	float: right;
+	font-size: 1.3em;
+	padding: 4px 5px 0 0;
+	margin: 0;
+}
+
+h3 {
+	text-align: left;
+	font-size: 1.1em;
+	text-transform: uppercase;
+	padding-bottom: 5px;
+	color: #aaa;
+}
+
+select {
+	min-width: 50px;
+}
+
+div.frmwrapper span.tiny.dim {
+	display: block;
+	padding-top: 2px;
+}
+
+/* @group Localization Table */
+
+div.localewrapper input {
+	margin-bottom: 5px;
+}
+
+div.localewrapper {
+	font-size: 0.9em;
+}
+div.localewrapper .title {
+	color: #333;
+}
+.cellOne, .cellTwo {
+	border-bottom: 1px solid #aaa;
+}
+
+table .header {
+	font-weight: bold;
+}
+
+table .header.long {
+	width: 250px;
+}
+
+table .header.small {
+	width: 20px;
+}
+
+/* @end */
+
+/* @group General Settings */
+
+select#feed_discovery {
+	min-width: 105px;
+}
+
+fieldset#rss_settings .rightcolumn select {
+	display: block;
+	margin-bottom: 10px;
+	margin-top: -2px;
+}
+
+/* @end */
+
+/* @group Template Settings */
+
+a#previewDTF {
+	display: block;
+	padding-top: 3px;
+}
+
+/* @end */
+
+div#htaccess textarea#htaccess_deny_list {
+	overflow: hidden;
+}

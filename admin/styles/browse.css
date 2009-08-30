@@ -1,0 +1,107 @@
+/* @override http://localhost:8888/pixelpostSVN/admin/admin/styles/browse.css */
+
+h2.title {
+	float: right;
+	padding: 9px 5px 0 0;
+	margin: 0;
+}
+
+h2.caption {
+	float: left;
+	font-size: 1.2em;
+}
+/*
+h3.photoid {
+	text-align: right;
+	font-size: 1.7em;
+	font-weight: normal;
+	padding-bottom: 5px;
+}
+*/
+h3.photoid {
+    text-align: right;
+    font-size: 2.5em;
+    font-weight: normal;
+    font-style: normal;
+    opacity: 0.45;
+    float: right;
+}
+
+input.imgchkbox {
+    float: right;
+    margin-top: 2px;
+    opacity: 0.30;
+}
+
+h3.photoid:hover,
+input.imgchkbox:hover {
+    opacity: 1.0;
+}
+
+.imagemenu {
+	font-size: 0.8em;
+	text-transform: lowercase;
+	clear: left;
+}
+
+div.imagewrapper img,
+ul.imageinfo {
+	display: block;
+	float: left;
+}
+
+div.imagewrapper img {
+	width: 75px;
+	padding: 5px;
+	border: 2px solid #aaa;
+}
+
+ul.imageinfo {
+	width: 550px;
+	list-style: none;
+	font-style: italic;
+	font-size: 0.9em;
+	padding-left: 5px;
+}
+
+ul.imageinfo.toggle {
+	padding: 0px;
+}
+
+div.extrainfo {
+	float: left;
+	margin-left: 5px;
+}
+
+br {
+	clear: left;
+}
+
+#filter.box,
+#massedit.box {
+	background-color: #eee;
+	border-bottom: 3px solid #ccc;
+}
+
+#filter select,
+#massedit select {
+	width: 150px;
+}
+
+input.cmnt-buttons {
+	margin-left: 10px;
+}
+
+input#submit-mass-edit {
+	margin-top: 10px;
+}
+
+input.imgchkbox {
+	float: right;
+	margin-top: 2px;
+}
+
+fieldset.box.checked {
+	background-color: #fff;
+	color: #aaa;
+}
