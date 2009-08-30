@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: admin_12CropImage.php 306 2007-06-01 15:35:56Z schonhose $
 
 /*
 

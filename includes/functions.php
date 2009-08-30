@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: functions.php 516 2008-01-16 19:51:02Z d3designs $
 
 // Will work in despite of Windows ACLs bug
 // NOTE: use a trailing slash for folders!!!
@@ -895,6 +895,12 @@ function create_front_addon_array()
 	$addon_dir = "addons/";
 	$query_ad_s = "select * from {$pixelpost_db_prefix}addons where status='on' and type='front'";
 	$result = mysql_query($query_ad_s);
+	
+	// The database is having issues, or doesn't exist.
+	if ($result === false) {
+		die("ERROR: There is a problem with the database, please make sure pixelpost has been installed.");
+	}
+	
 	while (list($id,$filename,$status,$addon_type)= mysql_fetch_row($result))
 	{
 		include_once($addon_dir.$filename.".php");

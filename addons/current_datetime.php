@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: current_datetime.php 455 2007-10-30 18:20:53Z austriaka $
 
 /*
 

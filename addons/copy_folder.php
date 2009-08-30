@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: copy_folder.php 513 2008-01-16 18:43:22Z schonhose $
 
 /*
 

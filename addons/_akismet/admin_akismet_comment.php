@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: admin_akismet_comment.php 513 2008-01-16 18:43:22Z schonhose $
 
 /**
  * Akismet comment filter addon for Pixelpost 1.7

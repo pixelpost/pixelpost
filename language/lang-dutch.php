@@ -3,12 +3,12 @@
 Pixelpost version 1.7
 
 SVN file version:
-$Id$
+$Id: lang-dutch.php 434 2007-10-19 16:59:01Z schonhose $
 
 Pixelpost version 1.7
 
 SVN file version:
-$Id$
+$Id: lang-dutch.php 434 2007-10-19 16:59:01Z schonhose $
 
 Version 1.7:
 Development Team:

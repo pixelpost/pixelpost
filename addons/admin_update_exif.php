@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: admin_update_exif.php 393 2007-09-30 19:55:17Z schonhose $
 
 /*
 Pixelpost version 1.7

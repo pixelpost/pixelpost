@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: index.php 511 2008-01-16 17:40:58Z d3designs $
 
 /*
 
@@ -243,14 +243,19 @@ if(file_exists("language/lang-english.php")){
 
 // now replace the contents of the variables with the selected language.
 if(!empty($language_full)) {
-	if(file_exists("language/lang-".$language_full.".php")) {
-
-		if( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom")) {
-			require("language/lang-".$language_full.".php");
-		}
-	}else{
-		echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-' .$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+	// check if illegal characters are used
+	if (!ereg("^[A-Za-z]+([0-9]+)?$", $language_full)) {
+		echo '<b>Error:</b><br />Pixelpost cannot include this file. If you need assistance in resolving this error please visit the <a href="http://www.pixelpost.org/forum/">Pixelpost Forum</a>.';
 		exit;
+	} else {
+		if(file_exists("language/lang-".$language_full.".php")) {
+			if( !isset($_GET['x'])OR($_GET['x'] != "rss" & $_GET['x'] != "atom")) {
+				require("language/lang-".$language_full.".php");
+			}
+		}else{
+			echo '<b>Error:</b><br />No <b>language</b> folder exists or the file <b>"lang-' .$language_full.'.php"</b> is missing in that folder.<br />Make sure that you have uploaded all necessary files with the exact same names as mentioned here.';
+			exit;
+		}
 	}
 }else{
 	echo '<b>Error:</b><br />Pixelpost has problem selecting a default language.<br />Make sure that you have chosen a default language in the adminpanel.';
@@ -427,7 +432,11 @@ if(!isset($_GET['x'])) {
 			$row = sql_array("SELECT * FROM ".$pixelpost_db_prefix."pixelpost WHERE (id='".$_GET['showimage']."') AND datetime<='$cdate'");
 		}
 
-	}else{
+		/**
+		 * If the display_sort_by config option exists, try to load an image.
+		 * Otherwise, just display the "Coming Soon!" message.
+		 */
+		}else if (isset($cfgrow['display_sort_by'])){
 
 		if(!isset($_GET['showimage']) || $_GET['showimage'] == "") {
 

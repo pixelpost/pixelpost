@@ -1,0 +1,29 @@
+Version 1.4 (25 June 2008)
+	* Added some stuff that will be only used in Pixelpost 1.8 (backwards compatible with 1.7)
+	* Detailed log inspection by Carl Mercier showed comments to none existing images. This is now fixed.
+	* If Defensio is down, code for the Statswidget slowed down the blogs notably. This has been fixed (and eases the load on Defensio)
+Version 1.3.2 (14 March 2008)
+	* Small bug fix regarding commentmail
+Version 1.3.1 (16 February 2008)
+	* the inclusion of the Snooyp class was causing problems.
+	* There should be no mail when a comment is marked as SPAM
+Version 1.3 (17 January 2008)
+	* remove additional spaces (begin and end) from the Defensio key
+Version 1.2.2 (16 January 2008)
+	* Two minor places where theoretical SQL injections could be performed were fixed.
+	* Removed one " to many in the <DEFENSIO_WIDGET> HTML output.
+Version 1.2.1 (06 January 2008)
+	* In Akismet check static pixelpost prefix was used.
+Version 1.2 (14 December 2007)
+	* Added information about the learning status to the stats overview
+	* Fixed a small bug with an if statement (use == to test and not =... >_< )
+	* Unprocess comments are placed in the Defensio queue and displayed with a blue color.
+	  These comments can be reprocessed by clicking the appropiate link.
+	* Cleanup of the code (Removed some testing code as well)
+	* Replaced the signup url with the correct one
+Version 1.1 (22 November 2007)
+	* Added support for the same nifty counter the Wordpress plugin has
+	* Cached stats in database
+	* Added link to detailed stat panel at Defensio
+Version 1.0 (07 November 2007)
+	Initial release

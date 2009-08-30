@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: index.php 517 2008-01-16 20:01:47Z d3designs $
 /*
 
 Pixelpost version 1.7
@@ -66,7 +66,7 @@ if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
 require("../includes/pixelpost.php");
 require("../includes/functions.php");
 // Pixelpost Version
-$version = "MS43LjEgKEJldHRlciB0aGFuIEV2ZXIpIC0gSmFudWFyeSAyMDA4";
+$version = "MS43LjIgKFF1aWNraWUpIC0gSnVseSAyMDA5";
 
 $pixelpost_prefix_used = $pixelpost_db_prefix;
 start_mysql('../includes/pixelpost.php','admin');
@@ -74,7 +74,7 @@ start_mysql('../includes/pixelpost.php','admin');
 // added to allow upgrades
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version($pixelpost_db_prefix);
-if( $installed_version < 1.71 )
+if( $installed_version < 1.72 )
 {
 	header("Location: install.php");
 	exit;

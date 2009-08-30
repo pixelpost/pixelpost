@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: functions_feeds.php 495 2007-11-24 01:17:57Z piotr.galas $
 
 $feeditems = (($cfgrow['feeditems'] > 0) ? $cfgrow['feeditems'] : 10);
 $rsspicdir = (($cfgrow['rsstype'] == 'T' || $cfgrow['rsstype'] == 'O') ? ltrim($cfgrow['thumbnailpath'], "./")."thumb_" : (($cfgrow['rsstype'] == 'F' || $cfgrow['rsstype'] == 'FO') ? ltrim($cfgrow['imagepath'], "./") : ''));

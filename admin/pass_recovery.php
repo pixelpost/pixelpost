@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: pass_recovery.php 460 2007-11-02 14:02:06Z piotr.galas $
 
 // forgot password?
 if(isset($_GET['x']) && $_GET['x']=='passreminder')

@@ -4,7 +4,7 @@
 Pixelpost version 1.7
 
 SVN file version:
-$Id$
+$Id: lang-norwegian.php 456 2007-10-30 18:41:12Z schonhose $
 
 Version 1.7:
 Development Team:

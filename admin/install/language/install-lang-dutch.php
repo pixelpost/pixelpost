@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: install-lang-dutch.php 451 2007-10-22 14:50:30Z schonhose $
 
 /*
 Pixelpost version 1.7

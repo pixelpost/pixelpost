@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: install_schema.php 514 2008-01-16 19:24:38Z schonhose $
 
 if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 
@@ -69,6 +69,8 @@ switch($installed_version) {
 		 $ins_data[] = UpgradeTo17($prefix,'1.7');
 	case 1.7:
 		$ins_data[] = UpgradeTo171($prefix,'1.71');
+	case 1.71:
+		$ins_data[] = UpgradeTo171($prefix,'1.72');
 
 	break;
 	

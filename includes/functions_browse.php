@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: functions_browse.php 516 2008-01-16 19:51:02Z d3designs $
 
 if(isset($_GET['x']) &&$_GET['x'] == "browse")
 {

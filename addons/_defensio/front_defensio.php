@@ -1,7 +1,7 @@
 <?PHP
 /*
-Requires Pixelpost version 1.7 or newer
-Defensio FRONT-side ADDON-Version 1.2.1
+Requires Pixelpost version 1.8 or newer
+Defensio FRONT-side ADDON-Version 1.4
 
 Written by: Schonhose
 @:			schonhose@pixelpost.org
@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //   GENERAL INFORMATION DISPLAYED IN ADDON LIST
 //*******************************************************************************************************************
 $addon_name = "Pixelpost Defensio comment filter (Front Side)";
-$addon_version = '1.2.2';
+$addon_version = '1.4';
 $result = mysql_query("SELECT `status` FROM `{$pixelpost_db_prefix}addons` WHERE `addon_name` LIKE '%akismet%' and `type`='front'") or die(mysql_error());
 $akismet = mysql_fetch_array($result);
 if ($akismet['status'] == 'on')
@@ -87,11 +87,20 @@ function check_defensio_comment()
     // get the date/time of the original posting
     $query = "SELECT `datetime` FROM `{$pixelpost_db_prefix}pixelpost` WHERE `id` = '" . $parent_id . "'";
     $result = mysql_query($query) or die(mysql_error());
-    while ($row = mysql_fetch_array($result))
-    {
-   	    $comment['article-date'] = gmdate("Y/m/d", $row[0]);
-    }
-    defensio_check_comment_front($defensio_conf, $comment);
+    if (mysql_num_rows($result)==1){
+    	// check comment
+		while ($row = mysql_fetch_array($result))
+    	{
+   	    	$comment['article-date'] = gmdate("Y/m/d", $row[0]);
+    	}
+    	defensio_check_comment_front($defensio_conf, $comment);
+    } else {
+		// trying to comment on a non-existent blog post
+		header("HTTP/1.0 404 Not Found");
+		header("Status: 404 File Not Found!");
+    	echo "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><HTML><HEAD>\n<TITLE>404 Not Found</TITLE>\n</HEAD><BODY>\n<H1>Not Found</H1>\nThe comment could not be accepted because the blogpost doesn't exists.<P>\n<P>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.\n</BODY></HTML>";
+    	exit;
+	}
 }
 
 //*******************************************************************************************************************
@@ -102,7 +111,11 @@ function check_defensio_comment()
 function defensio_post_front($action, $defensio_conf, $args = null)
 {
     // Use snoopy to post
-    require_once ($defensio_conf['addon_path'] . '/libraries/Snoopy.class.php');
+    if (file_exists($defensio_conf['addon_path'] . '/libraries/Snoopy.class.php')) {
+   		require_once ($defensio_conf['addon_path'] . '/libraries/Snoopy.class.php');
+	} else {
+   		require_once ($defensio_conf['addon_path'] . '/libraries/snoopy.class.php');
+	} 
     $snoopy = new Snoopy();
     $snoopy->read_timeout = $defensio_conf['post_timeout'];
     // Supress the possible fsock warning
@@ -128,7 +141,7 @@ function defensio_url_for_front($action, $defensio_conf, $key = null)
 
 function defensio_check_comment_front($defensio_conf, $comment)
 {
-    global $pixelpost_db_prefix;
+    global $pixelpost_db_prefix, $cfgrow;
     define('DF_SUCCESS', 'success');
     define('DF_FAIL', 'fail');
     require_once ($defensio_conf['addon_path'] . '/libraries/spyc.php');
@@ -145,6 +158,7 @@ function defensio_check_comment_front($defensio_conf, $comment)
                 mysql_query($query);
                 if ($ar['defensio-result']['spam'])
                 {
+                	$cfgrow['commentemail'] = 'no';
                     // in this case defensio thinks it is spam
                     $query = "UPDATE {$pixelpost_db_prefix}comments SET publish = 'dfn' WHERE id = last_insert_id()";
                     mysql_query($query);

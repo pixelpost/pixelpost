@@ -3,7 +3,7 @@
 Pixelpost version 1.7
 
 SVN file version:
-$Id$
+$Id: admin-lang-romanian.php 450 2007-10-22 00:00:42Z david.kozikowski $
 
 Version 1.7:
 Development Team:

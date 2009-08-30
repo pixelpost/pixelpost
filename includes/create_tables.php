@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: create_tables.php 514 2008-01-16 19:24:38Z schonhose $
 
 if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 

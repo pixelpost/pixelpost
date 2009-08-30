@@ -2,7 +2,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: index.php 233 2007-04-08 07:20:51Z blinking8s $
 
 //This page just shows how you would use my library.  
 //Look in exif.php for more information

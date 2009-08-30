@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: install.php 514 2008-01-16 19:24:38Z schonhose $
 
 define('PP_INSTALL', true);
 
@@ -10,7 +10,7 @@ define('PP_INSTALL', true);
  * This must be the same version number as stored in the version database table
  *
  */
-define('PP_VERSION', '1.71');
+define('PP_VERSION', '1.72');
 
 // Start Timer
 $time = microtime();

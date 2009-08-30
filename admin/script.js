@@ -1,5 +1,5 @@
 // SVN file version:
-// $Id$
+// $Id: script.js 487 2007-11-13 19:31:49Z piotr.galas $
 
 flag = false;
 

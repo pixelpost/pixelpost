@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: install_functions.php 505 2008-01-12 13:00:42Z austriaka $
 
 if(!defined('PP_INSTALL')) { die(header("Location: ../index.php")); }
 
@@ -268,6 +268,13 @@ function encode($var){
 function decode($var){
 
 	global $salt1, $salt2;
+	
+	$last_char = substr($var, -1, 1);
+
+	// If last char is a "+", remove it before decoding
+	if($last_char == '+') {
+		$var = substr($var, 0, strlen($var) - 1);
+	}
 
 	$var = base64_decode($var);
 	$var = ereg_replace($salt1, "", $var);
@@ -789,7 +796,7 @@ function tz_select($default = '-5', $truncate = false, $chars = '80') {
 
 		if(is_numeric($offset)) {
 
-			$selected   = ($offset == $data['pp_timezone']) ? ' selected="selected"' : '';
+			$selected   = ($offset == @$data['pp_timezone']) ? ' selected="selected"' : '';
 			$tz_select .= "<option value=\"$offset\"$selected>$zone</option>\n";
 		}
 	}
@@ -1092,6 +1099,59 @@ function create_config_file($config_dir,$config_path) {
 	global $lang_conn_success,$lang_conn_fail;
 
 	$db_pass = decode($data['db_pass']);
+
+
+	/**
+	 * Check if the file config already exists
+	 * If it does, and it has the correct information,
+	 * we can safely skip writing to the file.
+	 */
+	if (file_exists($config_path)) {
+		
+		@include($config_path);
+		
+		if (
+			$pixelpost_db_host == $data['db_host'] &&
+			$pixelpost_db_user == $data['db_user'] &&
+			$pixelpost_db_pass == $db_pass &&
+			$pixelpost_db_pixelpost == $data['db_name'] &&
+			$pixelpost_db_prefix == $data['tbl_prefix']
+			) {
+				
+				$connect_test = connect_check($error, $pixelpost_db_host, $pixelpost_db_pixelpost, $pixelpost_db_user, $pixelpost_db_pass, $pixelpost_db_prefix);
+				
+				if ($connect_test) {
+					
+					$result['writable']     = $lang_writable_no;
+		
+					$result['writable']     = $lang_writable_no;
+					$result['error']        = $result['writable'];
+					$result['css_writable'] = "redHighlightBold";
+		
+					$result['fopen']        = $lang_passed;
+					$result['css_fopen']    = "grnHighlightBold";
+					
+					$result['fwrite']       = $lang_fail;
+					$result['css_fwrite']   = "redHighlightBold";
+		
+					$result['exists']       = $lang_found;
+					$result['css_exists']   = "grnHighlightBold";
+					
+					$result['chmod']        = $lang_fail;
+					$result['error']        = $result['chmod'];
+					$result['css_chmod']    = "redHighlightBold";
+					
+					$result['connect']      = $lang_conn_success;
+					$result['verifed']      = true;
+					$result['css_connect']  = "grnHighlightBold";
+
+					return $result;
+				}
+			}
+			
+			// Remove the test variables
+			unset($error,$pixelpost_db_host,$pixelpost_db_user,$pixelpost_db_pass,$pixelpost_db_pixelpost,$pixelpost_db_prefix);	
+	}
 
 	$written = false;
 

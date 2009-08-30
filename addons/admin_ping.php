@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: admin_ping.php 391 2007-09-30 19:18:45Z david.kozikowski $
 
 // Admin-Ping addon for Pixelpost 1.7
 /*

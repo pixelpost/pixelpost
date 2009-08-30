@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: advanced_stat.php 344 2007-08-24 13:20:31Z schonhose $
 
 /*
 Pixelpost version 1.7

@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: install-lang-german.php 446 2007-10-21 14:23:53Z piotr.galas $
 
 /*
 Pixelpost version 1.7

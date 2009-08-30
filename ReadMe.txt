@@ -1,7 +1,7 @@
-Pixelpost version 1.7.1
+Pixelpost version 1.7.2
 
 SVN file version:
-$Id$
+$Id: ReadMe.txt 520 2008-01-16 20:32:24Z d3designs $
 
 Welcome to the Pixelpost version 1.7!
 

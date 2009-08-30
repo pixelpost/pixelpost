@@ -1,7 +1,7 @@
 /****************************************************************************
 
 SVN file version:
-$Id$
+$Id: 12cropimage.js 78 2006-12-24 02:23:47Z piotr.galas $
 
 DHTML library from DHTMLCentral.com
 *   Copyright (C) 2001 Thomas Brattli 2001

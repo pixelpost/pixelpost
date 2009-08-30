@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: pixelpost-sample.php 412 2007-10-08 18:52:59Z schonhose $
 
 /*
 

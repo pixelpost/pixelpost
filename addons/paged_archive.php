@@ -1,7 +1,7 @@
 <?php
 
 // SVN file version:
-// $Id$
+// $Id: paged_archive.php 522 2008-01-16 20:57:29Z schonhose $
 
 /*
 Pixelpost version 1.7

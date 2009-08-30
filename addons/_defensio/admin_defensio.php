@@ -1,7 +1,7 @@
 <?php
 /*
-Requires Pixelpost version 1.7 or newer
-Defensio ADMIN-side ADDON-Version 1.2.2
+Requires Pixelpost version 1.8 or newer
+Defensio ADMIN-side ADDON-Version 1.4
 
 Written by: Schonhose
 @:			schonhose@pixelpost.org
@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //   GENERAL INFORMATION DISPLAYED IN ADDON LIST
 //*******************************************************************************************************************
 $addon_name = "Pixelpost Defensio comment filter (Admin Side)";
-$addon_version = '1.2.1';
+$addon_version = '1.4';
 $result = mysql_query("SELECT `status` FROM `{$pixelpost_db_prefix}addons` WHERE `addon_name` LIKE '%akismet%' and `type`='front'") or die(mysql_error());
 $akismet = mysql_fetch_array($result);
 if ($akismet['status'] == 'on')
@@ -89,8 +89,14 @@ $defensio_conf = mysql_fetch_array($result);
 //*******************************************************************************************************************
 //   GLOBAL DECLARATION
 //*******************************************************************************************************************
-$GLOBALS['defensio_conf'] = $defensio_conf;
+$GLOBALS['defensio_conf'] = $defensio_conf; global $tpl;
+$_SESSION['divide_somewhat'] = "<h2>Somewhat Spammy</h2>";
+$_SESSION['divide_moderately']="<h2>Moderately Spammy</h2>";
+$_SESSION['divide_quite']="<h2>Quite Spammy</h2>";
+$_SESSION['divide_extreme']="<h2>Very Spammy</h2>";
 
+
+    
 // widget support
 $defensio_widget = defensio_counter($defensio_conf);
 $tpl = ereg_replace("<DEFENSIO_WIDGET>", $defensio_widget, $tpl);
@@ -99,18 +105,18 @@ $tpl = ereg_replace("<DEFENSIO_WIDGET>", $defensio_widget, $tpl);
 //   MARK COMMENTS AS SPAM OR HAM (SELECTOR BASED ON FORM SUBMIT)
 //*******************************************************************************************************************
 //Check whether ADMIN has submitted comment to mark as spam for Defensio
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'defensiospam')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'defensiospam')
 {
     defensio_submit_spam_comment($defensio_conf);
 }
 
 //Check whether ADMIN has submitted comment to mark as ham for Defensio
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'defensionotspam')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'defensionotspam')
 {
     defensio_submit_nonspam_comment($defensio_conf);
 }
 //Check whether ADMIN has submitted a comment to resend to Defensio
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'defensiorecheck')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'defensiorecheck')
 {
     // build $comment array used for testing.
     $comment = array();
@@ -143,7 +149,7 @@ if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'd
 }
 
 //Check whether ADMIN has submitted an empty quarantine request
-if (isset($_GET['view']) && $_GET['view'] == 'comments' && $_GET['action'] == 'emptyquarantine')
+if (isset($_GET['view']) && $_GET['view'] == 'comments' && isset($_GET['action']) AND $_GET['action'] == 'emptyquarantine')
 {
     $query = "DELETE FROM {$pixelpost_db_prefix}comments WHERE publish='dfn'";
     $result = mysql_query($query);
@@ -310,11 +316,13 @@ function get_defensio_pages()
             $moderate_where2 = " WHERE publish='dfn' ";
         }
     }
+
 }
 
 function defensio_commentlist()
 {
-    global $comment_row_class, $id, $pixelpost_db_prefix, $comment_meta_information, $admin_lang_cmnt_commenter, $datetime, $admin_lang_cmnt_ip, $ip;
+    global $comment_row_class, $id, $pixelpost_db_prefix, $comment_meta_information, $comment_divider_header, $admin_lang_cmnt_commenter, $datetime, $admin_lang_cmnt_ip, $ip, $divide_somewhat,$divide_moderately,$divide_quite, $divide_extreme;
+    // the headers have not been set
     if (isset($_GET['commentsview']) && $_GET['commentsview'] == 'defensio')
     {
         $query = "SELECT `spaminess` FROM {$pixelpost_db_prefix}comments WHERE `id`='" . $id . "'";
@@ -335,6 +343,23 @@ function defensio_commentlist()
         }
         // overide the comment meta information
         $comment_meta_information = "<i>$admin_lang_cmnt_commenter $datetime. $admin_lang_cmnt_ip  $ip. Spaminess: $spaminess_show.<br /></i>";
+		
+		if($spaminess <= 0.55){
+			$comment_divider_header=$_SESSION['divide_somewhat'];
+			$_SESSION['divide_somewhat'] = null;
+		}
+		if(($spaminess > 0.55) && ($spaminess <= 0.77)){
+			$comment_divider_header=$_SESSION['divide_moderately'];
+			$_SESSION['divide_moderately'] = null;
+		}
+		if(($spaminess > 0.77) && ($spaminess <= 0.9)){
+			$comment_divider_header=$_SESSION['divide_quite'];
+			$_SESSION['divide_quite'] = null;
+		}
+		if($spaminess > 0.9){
+			$comment_divider_header=$_SESSION['divide_extreme'];
+			$_SESSION['divide_extreme'] = null;
+		}
     }
 }
 
@@ -371,7 +396,7 @@ function defensio_settings()
         {
             $v['remove_older_than_days'] = (int)$_POST['defensio_remove_older_than_days'];
         }
-        $v['key'] = mysql_real_escape_string($_POST['new_key']);
+        $v['key'] = mysql_real_escape_string(trim($_POST['new_key']));
         if (defensio_verify_key($defensio_conf, $v['key']))
             $v['valid'] = true;
         else
@@ -739,9 +764,13 @@ function defensio_submit_spam_comment($defensio_conf)
 function defensio_post($action, $defensio_conf, $args = null)
 {
     // Use snoopy to post
-    require_once ('libraries/Snoopy.class.php');
+    if (file_exists(dirname(__file__).'/libraries/Snoopy.class.php')) {
+   		require_once (dirname(__file__).'/libraries/Snoopy.class.php');
+	} else {
+   		require_once (dirname(__file__).'/libraries/snoopy.class.php');
+	} 
     $snoopy = new Snoopy();
-    $snoopy->read_timeout = $defensio_conf['post_timeout'];
+    $snoopy->read_timeout = (isset($defensio_conf['post_timeout'])) ? $defensio_conf['post_timeout'] : '';
     // Supress the possible fsock warning
     @$snoopy->submit(defensio_url_for($action, $defensio_conf, $defensio_conf['key']), $args, array());
     // Defensio will return 200 nomally, 401 on authentication failure, anything else is unexpected behaivour
@@ -821,6 +850,12 @@ function defensio_get_stats($defensio_conf)
         mysql_query("UPDATE " . $pixelpost_db_prefix . "defensio SET defensio_stats='" . $defensio_stats . "', defensio_stats_updated_at='" . $defensio_stats_updated_at . "'");
         return $ar['defensio-result'];
     } else
+    	// the defensio_service might be down
+    	// to prevent hamering of the servers update the time minus 1 hour. This way the stats might be
+    	// out of sync for a maximum of one hour.
+    	$one_hour = 60 * 60;
+    	$defensio_stats_updated_at = mktime() - $one_hour;
+        mysql_query("UPDATE " . $pixelpost_db_prefix . "defensio SET defensio_stats_updated_at='" . $defensio_stats_updated_at . "'");
         return false;
 }
 
@@ -897,11 +932,12 @@ function defensio_counter($defensio_conf)
         {
             $counter_text_style = "color:#211d1e;";
         }
+        $spam = (isset($v['spam'])) ? $v['spam'] : '';
         $counter_html = '
 		<div id="defensio_counter" style="width: 100%; margin: 10px 0 10px 0; text-align: ' . $defensio_conf['defensio_widget_align'] . '">
 			<a id="defensio_counter_link" style ="text-decoration: none;" href="http://defensio.com">
 				<div id="defensio_counter_image" style="background:url(\'addons/_defensio/images/defensio-counter-' . $defensio_conf['defensio_widget_image'] . '.gif\') no-repeat top left; border:none; font: 10px \'Trebuchet MS\', \'Myriad Pro\', sans-serif; overflow: hidden; text-align: left; height: 50px; width: 120px;' . $counter_image_style . '">
-					<div style="display:block; width: 100px; padding: 9px 9px 25px 12px; line-height: 1em; color: #211d1e;' . $counter_text_style . '" "><div style="font-size: 12px; font-weight: bold;">' . $v['spam'] . '</div> spam comments blocked</div>
+					<div style="display:block; width: 100px; padding: 9px 9px 25px 12px; line-height: 1em; color: #211d1e;' . $counter_text_style . '" "><div style="font-size: 12px; font-weight: bold;">' . $spam . '</div> spam comments blocked</div>
 				</div>
 				<div style="clear:both;" class="defensio_clear">&nbsp;</div>
 			</a>
