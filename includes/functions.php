@@ -818,14 +818,14 @@ function eval_addon_admin_workspace_menu ($workspace,$menu_name ='')
 			// if main menu
 			if ($funcs['workspace']=='admin_main_menu')
 			{
-				echo "<a href='".$_SERVER['PHP_SELF']."?view=".strtolower($funcs['menu_name'])."'>".$funcs['menu_name']."</a>";
+				echo "<a href='".$_SERVER['PHP_SELF']."?view=".rawurlencode(strtolower($funcs['menu_name']))."'>".$funcs['menu_name']."</a>";
 				continue;
 			}
 	
 			// no menu
 			if ($menu_name=='')
 			{
-				if ($funcs['workspace']=='admin_main_menu_contents' & $_GET['view']!=strtolower($funcs['menu_name']))	continue;
+				if ($funcs['workspace']=='admin_main_menu_contents' & $_GET['view']!=rawurlencode(strtolower($funcs['menu_name'])))	continue;
 				call_user_func ($funcs['function_name']);
 			}	// end if menu is empty
 			else
@@ -913,7 +913,7 @@ function echo_addon_admin_menus ($addon_admin_menus,$menu_name,$additional = '')
 			$selecteclass = '';
 			if (isset($_GET[$menuitem]) && ($_GET[$menuitem] == $submenuitem))
 				$selecteclass='selectedsubmenu';
-				$toecho ="|<a class='".$selecteclass."' href='?view=".strtolower($menu_name) ."&amp;".$menuitem ."=".$submenuitem.$additional."' id='".$menu_name.$submenu_name."'>" .strtoupper($submenu_name) ."</a>";
+				$toecho ="|<a class='".$selecteclass."' href='?view=".rawurlencode(strtolower($menu_name)) ."&amp;".$menuitem ."=".$submenuitem.$additional."' id='".$menu_name.$submenu_name."'>" .strtoupper($submenu_name) ."</a>";
 			echo $toecho;
 		}
 	}
