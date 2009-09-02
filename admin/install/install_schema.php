@@ -71,6 +71,8 @@ switch($installed_version) {
 		$ins_data[] = UpgradeTo171($prefix,'1.71');
 	case 1.71:
 		$ins_data[] = UpgradeTo171($prefix,'1.72');
+	case 1.72:
+		$ins_data[] = UpgradeTo171($prefix,'1.73');
 
 	break;
 	

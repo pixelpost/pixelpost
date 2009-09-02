@@ -68,7 +68,7 @@ if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
 require("../includes/pixelpost.php");
 require("../includes/functions.php");
 // Pixelpost Version
-$version = "MS43LjIgKFF1aWNraWUpIC0gSnVseSAyMDA5";
+$version = "MS43LjMgKFF1aWNraWUgRml4KSAtIFNlcHRlbWJlciAyMDA5";
 
 $pixelpost_prefix_used = $pixelpost_db_prefix;
 start_mysql('../includes/pixelpost.php','admin');
@@ -76,7 +76,7 @@ start_mysql('../includes/pixelpost.php','admin');
 // added to allow upgrades
 // This will be 0 for clean install, 1.3 for that version, 1.4+ for newer versions...
 $installed_version = Get_Pixelpost_Version($pixelpost_db_prefix);
-if( $installed_version < 1.72 )
+if( $installed_version < 1.73 )
 {
 	header("Location: install.php");
 	exit;
