@@ -1296,7 +1296,7 @@ function create_htaccess_banlist()
 // compare the moderation list with comments
 function moderate_past_with_list()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $admin_lang_spam_err_6, $admin_lang_spam_com_upd;
 	//	if( isset( $_POST['banlistupdate'])){
 	// moderation list
 	//	if (isset( $_POST['moderation_list'])) {
@@ -1330,8 +1330,8 @@ function moderate_past_with_list()
 		$query = "UPDATE {$pixelpost_db_prefix}comments SET publish='no' WHERE $where ";
 		mysql_query($query);
 
-		if (mysql_error())	$additional_msg = "$admin_lang_spam_err_6 ".mysql_error()."<br/>";
-		else	$additional_msg = "$admin_lang_spam_com_upd"."<br/>";
+		if (mysql_error())	$additional_msg = $admin_lang_spam_err_6.'&nbsp;'.mysql_error().'<br />';
+		else	$additional_msg = $admin_lang_spam_com_upd.'<br />';
 	}// end if moderation
 
 //	}// end if (isset( $_POST['moderation_list'])) {
@@ -1344,7 +1344,7 @@ function moderate_past_with_list()
 // delete comments which contains words from the blacklist
 function delete_past_with_list()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $admin_lang_spam_com_del, $admin_lang_spam_err_7;
 	//	if( isset( $_POST['banlistupdate'])){
 	// moderation list
 	//	if (isset( $_POST['moderation_list'])) {
@@ -1377,8 +1377,8 @@ function delete_past_with_list()
 		$query = "delete from {$pixelpost_db_prefix}comments WHERE $where ";
 
 		mysql_query($query);
-		if (mysql_error())	$additional_msg = "$admin_lang_spam_err_7 ".mysql_error()."<br/>";
-		else	$additional_msg = "$admin_lang_spam_com_del"."<br/>";
+		if (mysql_error())	$additional_msg = $admin_lang_spam_err_7.'&nbsp;'.mysql_error().'<br />';
+		else	$additional_msg = $admin_lang_spam_com_del.'<br />';
 	}// end if moderation
 
 //	}// end if (isset( $_POST['moderation_list'])) {
@@ -1390,7 +1390,7 @@ function delete_past_with_list()
 // delete refs that are listed in the ref ban list
 function delete_from_badreferer_list()
 {
-	global $pixelpost_db_prefix;
+	global $pixelpost_db_prefix, $admin_lang_spam_err_8, $admin_lang_spam_visit_del;
 	//	if( isset( $_POST['banlistupdate'])){
 	// moderation list
 	//	if (isset( $_POST['moderation_list'])) {
@@ -1423,9 +1423,9 @@ function delete_from_badreferer_list()
 		$query = "delete from {$pixelpost_db_prefix}visitors WHERE $where ";
 		mysql_query($query);
 		if (mysql_error())
-			$additional_msg = "$admin_lang_spam_err_8".mysql_error()."<br/>";
+			$additional_msg = $admin_lang_spam_err_8.'&nbsp;'.mysql_error().'<br />';
 		else
-			$additional_msg = "$admin_lang_spam_visit_del"."<br/>";
+			$additional_msg = $admin_lang_spam_visit_del.'<br />';
 	}// end if moderation
 
 //	}// end if (isset( $_POST['moderation_list'])) {
