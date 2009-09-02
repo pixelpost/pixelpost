@@ -97,7 +97,7 @@ function Set_Configuration($prefix) {
 	$images_path = "../images/";
 	
 	$admin     = addslashes($data['admin_username']);
-	$password  = addslashes(decode($data['admin_password1']));
+	$password  = addslashes(html_entity_decode(decode($data['admin_password1'])));
 	
 	$query = mysql_query("INSERT INTO `{$prefix}config`
 	
