@@ -160,7 +160,7 @@ $addon_description = "Copy the entire contents of a folder into pixelpost databa
 Each entry will have the filename as title and and the first category (default) as category.<br />
 <!--  <i>No thumbnails will be created.</i> You will have to come back to admin and update your thumbnails. -->
 <br /><br />
-Enter the absolute path to folder:<br /><br />
+Enter the relative path to the folder:<br /><br />
 <form method='post' action='index.php?view=addons' accept-charset='UTF-8'>
 
 <input type='hidden' name='copyfolder' value='1'>
