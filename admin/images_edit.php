@@ -181,7 +181,7 @@ if($_GET['view'] == "images")
 				{
 					for($y = 0; $y < count($tags_arr); $y++)
 					{
-						$values[1] = '('.(int)$idz[$i].', "'.$tags_arr[$y].'", "")';
+						$values[1] = '('.(int)$idz[$x].', "'.$tags_arr[$y].'", "")';
 						$values[0] = implode(', ', $values);
 					}
 				}
@@ -192,7 +192,7 @@ if($_GET['view'] == "images")
 				{
 					for($y = 0; $y < count($tags_arr); $y++)
 					{
-						$values[1] = '('.(int)$idz[$i].', "", "'.$tags_arr[$y].'")';
+						$values[1] = '('.(int)$idz[$x].', "", "'.$tags_arr[$y].'")';
 						$values[0] = implode(', ', $values);
 					}
 				}
