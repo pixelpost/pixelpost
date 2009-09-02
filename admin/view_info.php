@@ -133,8 +133,46 @@ if(file_exists("../templates/")) {
 echo "<b><font color=\"red\">ERROR - ".$admin_lang_pp_folder_missing. " ../templates/)</font></b><p />";
 }
 echo "</div><p />";
-	
 echo "
+  <div class='jcaption'>Comment ERROR codes explanation</div>
+  <div class='content'>
+	<table border=\"0\" cellspacing=\"5\">
+	  <tbody><tr>
+    <td><b>Errorcode</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>ERR: 01</td>
+    <td>The comment was blocked because the token didn't match with the controltoken.</td>
+  </tr>
+  <tr>
+    <td>ERR: 02</td>
+    <td>The ID of the image didn't correspond with the image ID in the form.</td>
+  </tr>
+  <tr>
+    <td>ERR: 03</td>
+    <td>The comment was blocked on an intrusion ID.</td>
+  </tr>
+  <tr>
+    <td>ERR: 04</td>
+    <td>The comment contained more than the allowed maximum of URLS.</td>
+  </tr>
+  <tr>
+    <td>ERR: 05</td>
+    <td>The comment contains blacklisted words or IPaddress.</td>
+  </tr>
+  <tr>
+    <td>ERR: 06</td>
+    <td>The comment doesn't allow comments (disabled by the administrator).</td>
+  </tr>
+  <tr>
+    <td>ERR: 07</td>
+    <td>The comment was blocked because the e-mailaddress failed the check. People are required to fill in either a real e-mailaddress or leave it blank.</td>
+  </tr>
+</table>";
+
+echo "
+  </div>
 	<div class='jcaption'>$admin_lang_pp_langs</div>
 	<div class='content'>";
 
