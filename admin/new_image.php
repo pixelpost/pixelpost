@@ -78,7 +78,8 @@ if($_GET['view'] == "")
 	  // prepare the file
 		if($_FILES['userfile'] != "")
 		{
-			$userfile = strtolower($_FILES['userfile']['name']);
+			$userfile = strtolower(str_replace(" ", "_", $_FILES['userfile']['name']));
+			$userfile = preg_replace('/[^0-9a-z\-_\.]/', '', $userfile);
 			$tz = $cfgrow['timezone'];
 
 			if($cfgrow['timestamp']=='yes')	$time_stamp_r = gmdate("YmdHis",time()+(3600 * $tz)) .'_';
