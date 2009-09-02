@@ -43,6 +43,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
+ini_set('arg_separator.output', '&amp;');
 error_reporting(0);
 
 $PHP_SELF = "index.php";
@@ -54,6 +55,17 @@ require("includes/functions.php");
 
 start_mysql('includes/pixelpost.php','front');
 
+/**
+ * Load the $cfgrow configuration variable and set the upload directory
+ */
+// get config
+if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
+{
+	$upload_dir = $cfgrow['imagepath'];
+}else{
+	$extra_message= "Coming Soon. Not Installed Yet. Cause #1";
+	show_splash($extra_message,"templates");
+}
 
 // Frontpage addons begin
 $dir = "addons/"; // refresh the addons table
@@ -61,6 +73,8 @@ refresh_addons_table($dir);
 $addon_front_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
 $addon_admin_functions = array(0 => array('function_name' => '','workspace' => '','menu_name' => '','submenu_name' => ''));
 create_front_addon_array();
+
+session_start();
 
 
 // Initialise workspace.
@@ -88,10 +102,6 @@ if(isset($_POST['vcookie'])) {
 	setcookie("visitorinfo","$vcookiename%$vcookieurl%$vcookieemail",time() +60*60*24*30); // save cookie 30 days
 }
 
-ini_set('arg_separator.output', '&amp;');
-
-session_start();
-
 if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
 
 	error_reporting(E_ALL ^ E_NOTICE);
@@ -102,16 +112,6 @@ if (isset($_GET['errors']) && $_SESSION["pixelpost_admin"]){
 }
 
 if(isset($_GET['showimage'])){ $_GET['showimage'] = (int) $_GET['showimage']; }
-
-// get config
-if($cfgrow = sql_array("SELECT * FROM ".$pixelpost_db_prefix."config"))
-{
-	$upload_dir = $cfgrow['imagepath'];
-}else{
-	$extra_message= "Coming Soon. Not Installed Yet. Cause #1";
-	show_splash($extra_message,"templates");
-
-}
 
 if ($cfgrow['markdown'] == 'T') {
 	require("includes/markdown.php");
