@@ -316,9 +316,10 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		ORDER BY t1.".$cfgrow['display_sort_by']." ".$display_order.$limit;
 	} // if ($_GET['archivedate']=="")
 	else if($paged_arch_archdate_flag > 0)
-	{ // archive date is available
-		$archivedate_start = $_GET['archivedate'] ."-01 00:00:00";
-		$archivedate_end = $_GET['archivedate'] ."-31 23:59:59";
+	{ // archive date is available.
+		$archivedate = preg_replace('/[^0-9\-]/', '', $_GET['archivedate']);
+		$archivedate_start = $archivedate ."-01 00:00:00";
+		$archivedate_end = $archivedate ."-31 23:59:59";
 		$query = "SELECT id,{$headline_selection},image FROM ".$pixelpost_db_prefix."pixelpost
 		WHERE (datetime<='$cdate' and datetime >='$archivedate_start' and datetime <= '$archivedate_end')
 		$where ORDER BY ".$cfgrow['display_sort_by']." ".$display_order.$limit;
@@ -392,8 +393,9 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 	}
 	else if($paged_arch_archdate_flag > 0)
 	{
-		$archivedate_start = mysql_real_escape_string($_GET['archivedate']) ."-01 00:00:00";
-		$archivedate_end = mysql_real_escape_string($_GET['archivedate']) ."-31 23:59:59";
+		$archivedate = preg_replace('/[^0-9\-]/', '', $_GET['archivedate']);
+		$archivedate_start = mysql_real_escape_string($archivedate) ."-01 00:00:00";
+		$archivedate_end = mysql_real_escape_string($archivedate) ."-31 23:59:59";
 		$where = " AND datetime >='$archivedate_start' AND datetime <= '$archivedate_end' ";
 		$monthname = mysql_real_escape_string($_GET['monthname']);
 		$queryr = "SELECT count(*) AS count FROM ".$pixelpost_db_prefix."pixelpost WHERE datetime<='$datetime'" .$where;
@@ -436,7 +438,7 @@ if(isset($_GET['x'])&&$_GET['x'] == "browse")
 		else if($paged_arch_archdate_flag > 0)
 		{
 			$monthname=str_replace(" ","%20",$monthname);
-			$archivedate=$_GET['archivedate'];
+			$archivedate = preg_replace('/[^0-9\-]/', '', $_GET['archivedate']);
 			$Archive_pages_Links .= "<a  href='index.php?x=browse&amp;archivedate=$archivedate&amp;monthname=$monthname&amp;pagenum=$temp'>$lang_previous</a> ";
 		}
 		else	$Archive_pages_Links .= "<a href='index.php?x=browse&amp;pagenum=$temp'>$lang_previous</a> ";

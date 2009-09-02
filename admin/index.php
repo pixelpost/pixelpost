@@ -43,6 +43,8 @@ error_reporting(0);
 
 $PHP_SELF = "index.php";
 
+define('PIXELPOST',true);
+
 if(!file_exists('../includes/pixelpost.php')) {
 	header("Location: install.php");
 	exit;

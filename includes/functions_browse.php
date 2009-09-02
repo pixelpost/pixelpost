@@ -30,7 +30,8 @@ if(isset($_GET['x']) &&$_GET['x'] == "browse")
 	}
 	elseif(isset($_GET['archivedate']) && eregi("^[0-9]{4}-[0-9]{2}$", $_GET['archivedate']))
 	{
-		$where = "AND (DATE_FORMAT(datetime, '%Y-%m')='".$_GET['archivedate']."')"; //DATE_FORMAT(foo, '%Y-%m-%d')
+		$archivedate = preg_replace('/[^0-9\-]/', '', $_GET['archivedate']);
+		$where = "AND (DATE_FORMAT(datetime, '%Y-%m')='$archivedate')"; //DATE_FORMAT(foo, '%Y-%m-%d')
 		$query = mysql_query("SELECT 1,id,{$headline_selection},image, datetime FROM ".$pixelpost_db_prefix."pixelpost WHERE (datetime<='$cdate') $where ORDER BY ".$cfgrow['display_sort_by']." ".$display_order);
 		$lookingfor = 1;
 	}

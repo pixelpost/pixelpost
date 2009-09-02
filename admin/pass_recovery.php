@@ -1,5 +1,7 @@
 <?php
 
+if(!defined('PIXELPOST')){die("Try another day!!");}
+
 // SVN file version:
 // $Id: pass_recovery.php 460 2007-11-02 14:02:06Z piotr.galas $
 

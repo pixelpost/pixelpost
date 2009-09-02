@@ -47,6 +47,7 @@ error_reporting(0);
 
 $PHP_SELF = "index.php";
 
+define('PIXELPOST',true);
 
 if(file_exists("includes/pixelpost.php")) { require("includes/pixelpost.php"); }
 require("includes/functions.php");
