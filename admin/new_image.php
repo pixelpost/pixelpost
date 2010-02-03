@@ -93,8 +93,7 @@ if($_GET['view'] == "")
 			{
 				chmod($uploadfile, 0644);
 				$result = check_upload($_FILES['userfile']['error']);
-				$filnamn =strtolower($_FILES['userfile']['name']);
-				$filnamn = $time_stamp_r .$filnamn;
+				$filnamn = $time_stamp_r.$userfile;
 				$filtyp = $_FILES['userfile']['type'];
 				$filstorlek = $_FILES['userfile']['size'];
 				$status = "ok";
