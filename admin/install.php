@@ -3,6 +3,8 @@
 // SVN file version:
 // $Id: install.php 514 2008-01-16 19:24:38Z schonhose $
 
+error_reporting(0);
+
 define('PP_INSTALL', true);
 
 /**

@@ -1014,7 +1014,7 @@ function Show_username_password() {
   		$admin_password = stripslashes(decode($data['admin_password1']));
 
 		$create_status['show_psw_msg'] = $show_psw_msg."<p />";
-		$create_status['username']     = $lang_admin_user."&nbsp;".$admin_user."<br />";
+		$create_status['username']     = $lang_admin_user."&nbsp;".$admin_username."<br />";
 		$create_status['password']     = $lang_admin_pass1."&nbsp;&nbsp;".$admin_password;
 
 		$status = createStatusMsg($create_status, 'success');
